@@ -19,3 +19,7 @@ The installation procedure depends on what operating system you have installed:
 ## Why Python?
 
 ## Who uses Python?
+
+## How to make the most of this class
+
+> The best way to learn is by doing. And the best way to remember what you learn is by doing it a lot.
