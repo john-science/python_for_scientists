@@ -2,28 +2,29 @@
 
 ## Variables
 
-### numbers
-
-#### int
-
-#### float
-
-#### string
+ * numbers
+ * int
+ * float
+ * string
 
 ### letters
 
-#### strings
-
-#### characters
+ * strings
+ * characters
 
 ## Math
 
 ## Controls
 
-### for
-
-### while
-
-### if
+ * for
+ * while
+ * if
 
 ## indentation
+
+## Data Structures
+
+ * lists
+ * tuples
+ * sets
+ * dictionaries
