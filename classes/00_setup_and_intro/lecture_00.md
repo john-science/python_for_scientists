@@ -22,6 +22,10 @@ To understand Python it is probably best to consider how Python differs from oth
 
 #### High-Level
 
+A low-level language is a list of instructions for a computer's processor, telling it exactly what (extremely basic) calculations to perform. The lowest level languages are not even readable by humans. Slightly more high level than those languages is machine code, which is code written for the operating system (because an operating system gives us the ability to write programs that can be shared between many different computers with different hardware. Slightly more high-level than that are assembly languages, which are technically human-readable, but extremely opaque and hard to use. Next come languages like C and Fortran. These languages are extremely fast and perform very well. But you still have to think about how the computer itself works to write code: you have to deal with pointers and arrays and stack overflows explicitly. Finally, the highest level languages try to abstract away how the computer works and let your write code as simply as possible to deal with your concepts, not your hardware. Python and Java are among these languages
+
+![high-level language diagram](http://blog.malwarebytes.org/wp-content/uploads/2012/09/FlowDiagram2.png)
+
 #### Interpretted
 
 #### Dynamically Typed
@@ -29,6 +33,10 @@ To understand Python it is probably best to consider how Python differs from oth
 #### Batteries Included
 
 ## Why Python?
+
+> You'll never find a programming language that frees you from the burden of clarifying your ideas.
+
+![the well](http://imgs.xkcd.com/comics/well_2.png)
 
 ## Who uses Python?
 
