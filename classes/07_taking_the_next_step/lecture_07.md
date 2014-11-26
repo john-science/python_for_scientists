@@ -42,4 +42,8 @@ The two most popular code repositories are Git and SVN.
 
 I have already written a short introduction to Git, it is on GitHub [here](https://gist.github.com/theJollySin/7a2ee80c05d073996d16).
 
+## GitHub
 
+Of course, these class notes are stored and displayed using [GitHub](https://help.github.com/articles/set-up-git/), a free web app for your Git Repositories.
+
+[Back to Syllabus](../../README.md)
