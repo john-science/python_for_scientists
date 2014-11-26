@@ -22,15 +22,76 @@ To understand Python it is probably best to consider how Python differs from oth
 
 #### High-Level
 
-A low-level language is a list of instructions for a computer's processor, telling it exactly what (extremely basic) calculations to perform. The lowest level languages are not even readable by humans. Slightly more high level than those languages is machine code, which is code written for the operating system (because an operating system gives us the ability to write programs that can be shared between many different computers with different hardware. Slightly more high-level than that are assembly languages, which are technically human-readable, but extremely opaque and hard to use. Next come languages like C and Fortran. These languages are extremely fast and perform very well. But you still have to think about how the computer itself works to write code: you have to deal with pointers and arrays and stack overflows explicitly. Finally, the highest level languages try to abstract away how the computer works and let your write code as simply as possible to deal with your concepts, not your hardware. Python and Java are among these languages
+A low-level language is one designed directly for a computer's hardware. It is not human readable, and details the exact calculations to be performed by the computer to the smallest detail. A high-level language is meant to abstract away the inner workings of a computer and make code easily readable by humans.
 
 ![high-level language diagram](http://blog.malwarebytes.org/wp-content/uploads/2012/09/FlowDiagram2.png)
 
+There are several layers of languages in the above pyramid. If you've ever worked with C or Fortran, those languages are somewhere in the middle. They are human readable, but deal with the specifics of a computer's hardware all the time (pointers, allocating and freeing memory, stack overflows). It would be worth your time to look up each of the above terms or languages on Wikipedia.
+
 #### Interpretted
+
+If you've ever written Fortran or C code, you will remember having to "compile" your code. This is the process of taking your text file and turning it into an executable that can be run as a program. This final executable is a series of commands that the computer will understand when executed.
+
+But you don't have to compile Python code. The Python programming language comes with an interpretter, that will read directly from your text file on the fly and executes commands as it finds them. This means you never have to compile, but it also means you can type commands into the Python interpretter and they will be executed as you go:
+
+    john@neutrino:~$ python
+    Python 2.6.6 (r266:84292, Jan 22 2014, 09:42:36) 
+    [GCC 4.4.7 20120313 (Red Hat 4.4.7-4)] on linux2
+    Type "help", "copyright", "credits" or "license" for more information.
+    >>> def fib(n):
+    >>>     a, b = 0, 1
+    >>>     while a < n:
+    >>>         print(a, end=' ')
+    >>>         a, b = b, a+b
+    >>>     print()
+    >>> fib(1000)
+    0 1 1 2 3 5 8 13 21 34 55 89 144 233 377 610 987
+
+You can try out the Python interpreter online, by going to [Python.org](https://www.python.org/) and clicking "Launch Interpreter" at the top.
+
+Of course, you can still write Python scripts, or "modules", as text files and execute those from the command line, a bit like they were executables (but more like Shell scripts if you ever used Linux):
+
+    john@neutrino:~$ python my_awesome_script.py
 
 #### Dynamically Typed
 
+In most programming languages, when you define a variable `x`, you have to tell the computer what "type" that variable will be: integer, decimal, letter, string, array, list of strings, table, plot, whatever. But the Python interpretter is designed to figure out what the type of the variable is, from context.
+
+If you have seen another programming language before, the comparison becomes interesting in what you, as the programmer, *don't* have to do:
+
+In Java:
+
+    int three = 3;
+    int six = 2 * three;
+
+In C:
+
+    int three = 3;
+    int six = 2 * three;
+
+In Fortran:
+
+    integer three,six
+    three = 3
+    six = 2 * three
+
+In Python:
+
+    three = 3
+    six = 2 * three
+
+Python is smart enough to figure out what type your variables are, without you telling it. This is valid Python code:
+
+    name = "Jesse Owens"
+    height = 180
+    height = 180.5
+    weight = 75.5
+    year = 1936
+    gold_medals = ["long jump", "100m sprint", "long jump", "200m sprint", "4x100m sprint relay"]
+
 #### Batteries Included
+
+That's the Python motto. The author of the first version of Python, [Guido von Rossom](http://en.wikipedia.org/wiki/Benevolent_dictator_for_life), has started a culture in the Python community that code should be easy to use. To that end, Python comes with a large collection of [standard libraries](https://en.wikipedia.org/wiki/Standard_library). Python comes with a wide range of tools to do the sorts of things that people frequently want to do with a computer programming language: complex math, random numbers, calendars, dates and times, dealing with *.zip files, communicating over the internet with HTTP, reading CSV files, you name it.
 
 ## Why Python?
 
