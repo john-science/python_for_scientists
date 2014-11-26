@@ -100,7 +100,49 @@ There are also basic operations for strings:
 
 ## Data Structures
 
+When designing a huge program or a short script, it is important to choose your data structure appropriately. Following the "batteries included" philosophy, Python has several handy data structures built right in.
+
 ####  lists
+
+The most commonly used data structure in the Python is the list. This is basic collection of values. The values don't have to be related in any particular way: they don't have to be the same type, like arrays in Fortran, C, or Java:
+
+    new_list = []
+    my_list = [1, 2, 3]
+    my_other_list = [1, 2.2222, 'three']
+
+You can select elements from an array in almost arbitrary fashion:
+
+    >>> my_list = [1, 22, 333, 4444, 55555]
+    >>> my_list[0]
+    1
+    >>> my_list[2]
+    333
+    >>> my_list[1:3]
+    [22, 333]
+    >>> my_list[-1]
+    55555
+    >>> my_list[-2:]
+    [4444, 55555]
+
+You can also modify lists in a wide variety of convenient ways:
+
+    >>> list1 = [1, 2, 3]
+    >>> list2 = [4, 5, 6]
+    >>> list1 + list 2
+    [1, 2, 3, 4, 5, 6]
+    >>> list1.append(9)
+    >>> list1
+    [1, 2, 3, 9]
+    >>> len(list1)  # strictly speaking, this isn't modifying the list
+    4
+    >>> list2.reverse()
+    >>> list2
+    [6, 5, 4]
+
+If you want to learn more about what kinds of functionality are built into Python for lists (or anything else, for that matter), simply type `help` in the interpreter:
+
+    >>> help(list1)
+
 ####  tuples
 ####  sets
 ####  dictionaries
