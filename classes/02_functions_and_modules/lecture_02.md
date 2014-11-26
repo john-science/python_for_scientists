@@ -8,7 +8,7 @@
 
 Try:
 
-    >>> import this
+    import this
 
 ## main()
 
