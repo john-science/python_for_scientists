@@ -92,9 +92,9 @@ There are also basic operations for strings:
 
 ## Control Statements
 
-#### for
-####  while
-####  if
+#### for loops
+#### while loops
+#### if statements
 
 ## Indentation
 
