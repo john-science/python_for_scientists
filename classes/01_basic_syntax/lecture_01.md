@@ -113,6 +113,12 @@ Finally, the basic operations for boolean logic are similar to those in other la
     False
     >>> a and not b
     True
+    >>> 1 and True
+    True
+    >>> 0 and False
+    0
+
+(**NOTE**: In a pinch, you can replace `True` and `False` with the numbers `1` and `0`.)
 
 ## Data Structures
 
@@ -295,7 +301,9 @@ We also just learned about the `range` function. The `range` function produces a
 
 Did you notice in the `for` and `while` loops above how the content *inside* the loop was indented? That indentation is how Python decides what logic is contained within a loop, function, or class (more on those later). Unlike in other languages you might have seen, the indentation *really* matters in Python.
 
-`White Space` is almost as important as the text you write in Python.
+`White Space` is very important in Python.
+
+![white space](http://imgs.xkcd.com/comics/python.png)
 
 Here is an example of a correctly (though confusingly) indented piece of Python code:
 
