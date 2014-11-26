@@ -24,7 +24,14 @@ Let's try some basic variable definitions.
     book_title = "Orion's Belt"
     sentence = 'Never say "I will be back." in a movie.'
 
+### Booleans
+
+    its_friday = False
+    python_is_awesome = True
+
 ## Operations
+
+### Numbers
 
 The Python interpreter can act just like a calculator:
 
@@ -69,6 +76,8 @@ If a variable that has not been assigned is used, Python will throw an error:
       File "<stdin>", line 1, in <module>
     NameError: name 'denominator' is not defined
 
+### Text
+
 There are also basic operations for strings:
 
     >>> s1 = "Hello "
@@ -89,6 +98,21 @@ There are also basic operations for strings:
     'or'
     >>> len(s1)
     5
+
+### Booleans
+
+Finally, the basic operations for boolean logic are similar to those in other langauges:
+
+    >>> a = True
+    >>> b = False
+    >>> a and b
+    False
+    >>> a or b
+    True
+    >>> not a
+    False
+    >>> a and not b
+    True
 
 ## Data Structures
 
