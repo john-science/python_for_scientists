@@ -106,3 +106,5 @@ Every programming language has syntax, rules you have to learn. But Python has a
 > The best way to learn is by doing. And the best way to remember what you learn is by doing it a lot.
 
 Write code. Don't use Excel or a calculator for that little thing that needs to get done at work, write it in Python. Do it in the interpreter. Try out the latest thing you've learned about. Make sure and practice what you learn about between lectures.
+
+[Back to Syllabus](../../README.md)
