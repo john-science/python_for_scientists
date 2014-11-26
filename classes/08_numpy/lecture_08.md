@@ -9,3 +9,6 @@ NumPy is not built into the Python Standard libraries, but needs to be installed
 ## Major NumPy Topics
 
 ## For More Information
+
+
+[Back to Syllabus](../../README.md)
