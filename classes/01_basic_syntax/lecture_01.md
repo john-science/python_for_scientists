@@ -120,6 +120,23 @@ Finally, the basic operations for boolean logic are similar to those in other la
 
 (**NOTE**: In a pinch, you can replace `True` and `False` with the numbers `1` and `0`.)
 
+There are some basic comparison operators that act on numbers and return boolean values, these are called `predicates`:
+
+    >>> 1 < 2
+    True
+    >>> 7 > 99
+    False
+    >>> 314 <= 9
+    False
+    >>> 7 >= 7
+    True
+    >>> 3 == 3.0
+    True
+    >>> 8 != 9.1234
+    True
+    
+    
+
 ## Data Structures
 
 When designing a huge program or a short script, it is important to choose your data structure appropriately. Following the "batteries included" philosophy, Python has several handy data structures built right in.
@@ -291,11 +308,81 @@ We also just learned about the `range` function. The `range` function produces a
 
 #### while loops
 
+A `while` loop does something until its main condition is no longer met:
 
+    a = 0
+    while a < 10:
+        a = a + 1
+        print(a)
+
+The above loop will print the numbers `0` through `10` and then comparison between `a` and `10` will be no longer true, and the loop will terminate. You can also create more complicated predicates for the while loop:
+
+    n = 15
+    while n > 0 and n < 30:
+        n -= 3  # this is the same as `n = n - 3`
+        print(n)
+
+The above loop will print the numbers 15, 12, 9, 6, 3 and then the complicated predicate will no longer be true, and the loop will terminate.
+
+Unlike your typical `for` loop, `while` loops leave open an interesting possibility. What if the predicate is *never* true?
+
+    >>> n = 7.0
+    >>> while n > 0:
+    ...     n += 0.5
+    ... 
+
+This is called an `infinte loop`, because it would never terminate on its own. This is, obviously, not a good thing.
 
 #### if statements
 
+In order to write useful programs, we almost always need the ability to check conditions and change the behavior of the program accordingly. Conditional statements give us this ability. The simplest form is the if statement, which has the genaral form:
 
+    if PREDICATE:
+        BODY STATEMENTS
+
+In this case, only if the predicate is true is the body of the statement executed. For example:
+
+    food = 'spam'
+    
+    if food == 'spam':
+        print('Ummmm, my favorite!')
+        print('I feel like saying it 100 times...')
+        print(100 * (food + '! '))
+
+Above is the basic `if` statement. You will use these to control the flow of the program. But what if you want to execute a different block of code if the predicate isn't satisfied? Well, you could do this:
+
+    food = 'spam'
+    
+    if food == 'spam':
+        print('Joy!')
+    
+    if food != 'spam':
+        print('Sadness...')
+
+But the above logic is *so* common, and needed so often, that Python provides a shortcut:
+
+    if food == 'spam':
+        print('Ummmm, my favorite!')
+    else:
+        print("No, I won't have it. I want spam!")
+
+There is another option, what if you want to have several different conditionals chained together, to execute one of many different blocks of code, based on various predicates? That is the purpose of the `elif` symbol:
+
+    if food == 'spam':
+        print('Ummmm, my favorite!')
+    elif food == 'spam and eggs':
+        print('Acceptable. I can pick out the eggs.')
+    elif food == 'spam and bacon':
+        print('Acceptable. I can pick out the bacon.')
+    else:
+        print("No, I won't have it. I want spam!")
+
+Lastly, the `else` symbol is always optional:
+
+    if food == 'spam':
+        print('Ummmm, my favorite!')
+    elif food == 'spam and eggs':
+        print('Acceptable. I can pick out the eggs.')
 
 ## Indentation
 
