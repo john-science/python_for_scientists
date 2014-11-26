@@ -104,7 +104,7 @@ When designing a huge program or a short script, it is important to choose your 
 
 ####  lists
 
-The most commonly used data structure in the Python is the list. This is basic collection of values. The values don't have to be related in any particular way: they don't have to be the same type, like arrays in Fortran, C, or Java:
+This is the collection of data most commonly used in Python. Lists are what they seem: a list of values. Each value is numbered, starting with zero. You can remove values from a list or add values to the end. The elements of the list don't even need to be the same type:
 
     new_list = []
     my_list = [1, 2, 3]
@@ -144,8 +144,31 @@ If you want to learn more about what kinds of functionality are built into Pytho
     >>> help(list1)
 
 ####  tuples
+
+Tuples are just like lists, but you can't change their values. Again, each value is numbered starting from zero. As an example, the days of the week:
+
+    dow = ('Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday')
+
 ####  sets
+
+A set is a bit like a list, except every value in a set is unique. If you had an empty set of numbers and you added the number `3` a million times, the set would still just be `(3)`. Sets are designed to preserve this uniqueness when you add a new element.
+
 ####  dictionaries
+
+Dictionaries are similar to what their name suggests - a dictionary. In a dictionary, you have an 'index' of words, and for each of them a definition. In Python, the word is called a 'key', and the definition a 'value'. The values in a dictionary aren't numbered - they aren't in any specific order, either - the key does the same thing. (Each key must be unique, though!) You can add, remove, and modify the values in dictionaries.
 
 ## Comments!
 
+You are what you comment. If you write code and there are no comments and no documentation, the code doesn't exist. No one will want to touch it, and they won't be able to understand it if they do.
+
+    # this is the first comment
+    spam = 1  # and this is the second comment
+              # ... and now a third!
+    text = "# This is not a comment because it's inside quotes."
+    
+    """This is an especially long comment,
+    that takes up two lines."""
+    '''This is another especially long comment,
+    that takes up multiple
+    lines.
+    '''
