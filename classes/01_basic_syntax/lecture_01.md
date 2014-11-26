@@ -90,14 +90,6 @@ There are also basic operations for strings:
     >>> len(s1)
     5
 
-## Control Statements
-
-#### for loops
-#### while loops
-#### if statements
-
-## Indentation
-
 ## Data Structures
 
 When designing a huge program or a short script, it is important to choose your data structure appropriately. Following the "batteries included" philosophy, Python has several handy data structures built right in.
@@ -239,6 +231,53 @@ To retreive all the keys or values from a dictionary:
     [16244600, 8358400, 40711, 681, 3425956]
 
 **NOTE**: It is important to know that when you retreive all of the keys or values from a dictionary in this way, they will not be ordered. Do not expect that you can predict what *order* these keys or values come out in.
+
+## Control Statements
+
+#### for loops
+
+
+
+#### while loops
+
+
+
+#### if statements
+
+
+
+## Indentation
+
+Did you notice in the `for` and `while` loops above how the content *inside* the loop was indented? That indentation is how Python decides what logic is contained within a loop, function, or class (more on those later). Unlike in other languages you might have seen, the indentation *really* matters in Python.
+
+`White Space` is almost as important as the text you write in Python.
+
+Here is an example of a correctly (though confusingly) indented piece of Python code:
+
+    if n == 0:
+     return 0
+    elif n == 1:
+          return 1
+    else:
+      return (n - 1) + (n - 2)
+
+The following example shows various indentation errors:
+
+        if n == 0:               # error: first line indented
+    return 0                     # error: not indented
+    elif n == 1:
+          return 1
+     else:                       # error: inconsistent dedent
+       return (n - 1) + (n - 2)
+
+In the end, the only way to make your code correct *and* readable is to be consistent with your indents. Do the same thing every time. The standard is four space per indent:
+
+    if n == 0:
+        return 0
+    elif n == 1:
+        return 1
+    else:
+        return (n - 1) + (n - 2)
 
 ## Comments!
 
