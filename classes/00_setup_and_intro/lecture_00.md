@@ -99,7 +99,7 @@ That's the Python motto. The author of the first version of Python, [Guido von R
 
 ![the well](http://imgs.xkcd.com/comics/well_2.png)
 
-Every programming language has syntax, rules you have to learn. But Python has a lot of traction right now with scientists and engineers. The rules are easy enough to learn that you can focus on what really matters. And after a few years of that traction there are a lot of libraries and tools written just for scientists and engineers. And that's really what Python brings to the table, a load of handy tools designed right for you.
+Every programming language has syntax; rules you have to learn. But Python has a lot of traction right now with scientists and engineers. Python's rules are easier to learn than most, which lets you focus on what really matters. And after a few years of traction, there are a lot of libraries and tools written in Python just for scientists and engineers. That's really what Python brings to the table: a load of handy tools designed right for you.
 
 ## How to make the most of this class
 
