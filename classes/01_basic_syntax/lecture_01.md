@@ -236,7 +236,28 @@ To retreive all the keys or values from a dictionary:
 
 #### for loops
 
+Basically, a `for` loop just does something for every value in a list. For instance:
 
+    new_list = [1950, 'There Will Come Soft Rains', 'Ray Bradbury', 2026]
+    
+    for element in new_list:
+        print(element)
+
+Try that out yourself and see, when the loop executes, it runs through all of the values in the list mentioned after `in`. It then puts them into `element`, and executes through the loop, each time with `element` being worth something different. Let's write another example, printing the square of the odd numbers from `1` to `10`:
+
+    for number in range(1, 11, 2):
+        print(number * number)
+
+We also just learned about the `range` function. The `range` function produces a list, given: `start`, `end`, and `step` value2, though the `step` value is optional. For instance:
+
+    >>> range(1, 5, 2)
+    [1, 3]
+    >>> range(1, 5)
+    [1, 2, 3, 4]
+    >>> range(1, 30, 7)
+    [1, 8, 15, 22, 29]
+
+(**NOTE**: As you can see above, the `start` value is *inclusive* and the `end` value is *exclusive*.)
 
 #### while loops
 
