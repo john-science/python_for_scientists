@@ -55,7 +55,7 @@ Of course, you can still write Python scripts, or "modules", as text files and e
 
 #### Dynamically Typed
 
-In most programming languages, when you define a variable `x`, you have to tell the computer what "type" that variable will be: integer, decimal, letter, string, array, list of strings, table, plot, whatever. But the Python interpreter is designed to figure out what the type of the variable is, from context.
+In most programming languages, when you define a variable `x`, you have to tell the computer what "[type](https://en.wikipedia.org/wiki/Data_type)" that variable will be: integer, decimal, letter, string, array, list of strings, table, plot, whatever. But the Python interpreter is designed to figure out what the type of the variable is, from context.
 
 If you have seen another programming language before, the comparison becomes interesting in what you, as the programmer, *don't* have to do:
 
