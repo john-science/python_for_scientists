@@ -4,6 +4,12 @@
 
 ## Modules
 
+#### Imports
+
+Try:
+
+    >>> import this
+
 ## main()
 
 ### How to execute Python code
