@@ -115,6 +115,12 @@ Above we can see that the function `numop1` is defined in the `scope` of the `su
     >>> super_happy_fun_nums.numop1(2,3,2,greetings=None)
     NameError: name 'numop1' is not defined
 
+You can even rename things `as` you import them:
+
+    >>> from super_happy_fun_nums import numop1 as number_op
+    >>> number_op(2,3,2,greetings=None)
+    10
+
 The Python moto is "batteries included", because there are many handy modules built right into Python to help you do various things. For instance, the standard math library:
 
     >>> import math
