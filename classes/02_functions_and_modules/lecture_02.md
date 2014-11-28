@@ -70,7 +70,7 @@ The [scope](https://en.wikipedia.org/wiki/Scope_%28computer_science%29) of a var
 
 ![docstrings](../../resources/glorious_docstrings.png)
 
-**Docstring**: The first unassigned string in a function (or class, method, program, etc.).
+**Docstring**: The first unassigned string in a function (or class, method, program, etc.). Here is a nice example of a helpful docstring for the function `numop1`:
 
     def numop1(x,y,multiplier=1.0,greetings="Thank you for your inquiry."):
         """
@@ -82,26 +82,65 @@ The [scope](https://en.wikipedia.org/wiki/Scope_%28computer_science%29) of a var
             Output: return x + y times the multiplier
         """
         if greetings is not None:
-            print greetings
+            print(greetings)
             return (x + y)*multiplier
+
+If we copy the Python code for `numop1` into a file, say `super_happy_fun_nums.py`, we can go to the command line and type `pydoc -w super_happy_fun_nums` and you will create a nicely-formmated HTML file with all the documentation for the functions in that file:
 
 ![docstrings](../../resources/docstring_screencap.png)
 
 ## Modules
 
+Up until the docstring example above, you could have done all of the work for this class in the interpreter. But when you quit the interpreter, all of the variables and functions you have defined are lost. Another option is to write all of your Python code into a text file, and run that text file directly from the commandline. As your programs get longer, you may want to break the code into multiple files for easier maintenance. You can also have one handy function shared between multiple files, saving repetition.
+
+> Any file ending in .py is treated as a module by Python.
+
+A module is an organized unit of Python code. Easy Python file has it's own global variable `scope`, so you can name your variables and functions there whatever you want without conflicting with other modules.
+
 #### Imports
 
-Try:
+Back in the interpreter, let's try importing the `numop1` function from our new module:
+
+    >>> import super_happy_fun_nums
+    >>> super_happy_fun_nums.numop1(2,3,2,greetings=None)
+    10
+    >>> numop1(2,3,2,greetings=None)
+    NameError: name 'numop1' is not defined
+
+Above we can see that the function `numop1` is defined in the `scope` of the `super_happy_fun_nums` module. If we want to use the function a little more easily, we could import it as:
+
+    >>> from super_happy_fun_nums import numop1
+    >>> numop1(2,3,2,greetings=None)
+    10
+    >>> super_happy_fun_nums.numop1(2,3,2,greetings=None)
+    NameError: name 'numop1' is not defined
+
+The Python moto is "batteries included", because there are many handy modules built right into Python to help you do various things. For instance, the standard math library:
+
+    >>> import math
+    >>> math.sqrt(4.00)
+    2.0
+    >>> math.trunc(3.14159265358979)
+    3
+    >>> math.floor(3.14159265358979)
+    3.0
+    >>> math.sin(0.0)
+    0.0
+
+Some other libraries that you will find very useful:
+
+    import os, sys, gzip, zlib, timeit, urllib2, datetime, random, shutil
+
+Try this:
 
     import this
 
-## main()
-
-### How to execute Python code
+## How to execute Python code
 
 #### Interpretter
 
 #### Execute Bytecode
 
+main()
 
 [Back to Syllabus](../../README.md)
