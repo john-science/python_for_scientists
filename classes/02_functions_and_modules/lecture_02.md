@@ -65,17 +65,18 @@ The [scope](https://en.wikipedia.org/wiki/Scope_%28computer_science%29) of a var
 
 **Documentation**: Just the Right thing to Do and Python makes it dead simple.
 
-**Docstring**: the first unassigned string in a function (or class, method, program, etc.).
+**Docstring**: The first unassigned string in a function (or class, method, program, etc.).
 
     def numop1(x,y,multiplier=1.0,greetings="Thank you for your inquiry."):
-        """ numop1 -- this does a simple operation on two numbers.
-        We expect x,y are numbers and return x + y times the multiplier
-        multiplier is also a number (a float is preferred) and is optional.
-        It defaults to 1.0.
-        You can also specify a small greeting as a string. """
+        """
+            Purpose: does a simple operation on two numbers.\n
+            Input: We expect x,y are numbers multiplier is also a number (a float is preferred) and is optional.
+            It defaults to 1.0. You can also specify a small greeting as a string.\n
+            Output: return x + y times the multiplier
+        """
         if greetings is not None:
-            print(greetings)
-        return (x + y) * multiplier
+            print greetings
+            return (x + y)*multiplier
 
 ## Modules
 
