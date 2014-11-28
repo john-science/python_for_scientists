@@ -121,6 +121,12 @@ You can even rename things `as` you import them:
     >>> number_op(2,3,2,greetings=None)
     10
 
+If there are multiple functions in the module, you can import them all at the same time:
+
+    >>> from super_happy_fun_nums import *
+    >>> numop1(2,3,2,greetings=None)
+    10
+
 The Python moto is "batteries included", because there are many handy modules built right into Python to help you do various things. For instance, the standard math library:
 
     >>> import math
