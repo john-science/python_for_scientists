@@ -24,7 +24,7 @@ To understand Python it is probably best to consider how Python differs from oth
 
 A low-level language is one designed directly for a computer's hardware. It is not human readable, and details the exact calculations to be performed by the computer to the smallest detail. A high-level language is meant to abstract away the inner workings of a computer and make code easily readable by humans.
 
-![high-level language diagram](../resources/high_lvl_langs.png)
+![high-level language diagram](../../resources/high_lvl_langs.png)
 
 There are several layers of languages in the above pyramid. If you've ever worked with C or Fortran, those languages are somewhere in the middle. They are human readable, but deal with the specifics of a computer's hardware all the time (pointers, allocating and freeing memory, stack overflows). It would be worth your time to look up each of the above terms or languages on Wikipedia.
 
