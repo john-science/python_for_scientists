@@ -78,6 +78,8 @@ The [scope](https://en.wikipedia.org/wiki/Scope_%28computer_science%29) of a var
             print greetings
             return (x + y)*multiplier
 
+![docstrings](../resources/glorious_docstrings.png)
+
 ## Modules
 
 #### Imports
