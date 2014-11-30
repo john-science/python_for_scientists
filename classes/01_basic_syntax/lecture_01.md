@@ -1,6 +1,8 @@
 # Basic Python Syntax
 
-You gotta start somewhere. Let's try some simple commands. Start the interpreter and follow along.
+You gotta start somewhere. Let's try some simple commands. To follow along, start the Python interpreter by typing `python` on the commandline:
+
+    ~$ python
 
 ## Variable Definition
 
