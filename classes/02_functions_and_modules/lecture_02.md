@@ -149,10 +149,34 @@ Try this:
 
 ## How to execute Python code
 
+There are a few ways to execute Python code.
+
 #### Interpretter
 
-#### Execute Bytecode
+The method we've already seen for executing Python code is by using the Python interpreter. This is a great way to do a small amount of work, make a quick plot, or test out code you are writing. But, as we've already discussed, it is limited in that you can't reuse the code you've written.
 
-main()
+#### Executing Modules as Scripts
+
+When you run a Python module with:
+
+    python super_happy_fun_nums.py <arguments>
+
+The code in the module will be executed, just as if you imported it, but with the `__name__` set to `"__main__"`. That means that by adding this code at the end of your module:
+
+    if __name__ == "__main__":
+        import sys
+        print(numop1(int(sys.argv[1]), 3, 2, greetings=None))
+
+you can make the file usable as a script as well as an importable module, because the code that parses the command line only runs if the module is executed as the `main` file:
+
+    $ python super_happy_fun_nums.py 2
+    10
+
+If the module is imported, the code is not run:
+
+    >>> import super_happy_fun_nums
+    >>>
+
+This is often used either to provide a convenient user interface to a module, or for testing purposes (running the module as a script executes a test suite). The important thing when writing a Python module is to think ahead to how others will want to use your script or progam. Does it need a `main()` method, or is it just a library module?
 
 [Back to Syllabus](../../README.md)
