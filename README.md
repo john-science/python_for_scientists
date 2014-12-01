@@ -19,14 +19,15 @@ This class does not cover the deep mysteries of software, nor does it attempt to
 Introductory classes include:
 
  * [Basic Syntax](classes/01_basic_syntax/lecture_01.md)
- * [Functions and Modules](classes/02_functions_and_modules/lecture_02.md)
- * [Advanced Strings](classes/03_advanced_strings/lecture_03.md)
- * [Lists and Lambdas](classes/04_lists_and_lambdas/lecture_04.md)
- * [Object-Oriented Programming, Part 1](classes/05_object_oriented_programming_1/lecture_05.md)
- * [Object-Oriented Programming, Part 2](classes/06_object_oriented_programming_2/lecture_06.md)
- * [Taking the Next Step](classes/07_taking_the_next_step/lecture_07.md)
+ * [Data Structures](classes/02_data_structures/lecture_02.md)
+ * [Functions and Modules](classes/03_functions_and_modules/lecture_03.md)
+ * [Advanced Strings](classes/04_advanced_strings/lecture_04.md)
+ * [Lists and Lambdas](classes/05_lists_and_lambdas/lecture_05.md)
+ * [Object-Oriented Programming, Part 1](classes/06_object_oriented_programming_1/lecture_06.md)
+ * [Object-Oriented Programming, Part 2](classes/07_object_oriented_programming_2/lecture_07.md)
+ * [Taking the Next Step](classes/08_taking_the_next_step/lecture_08.md)
 
 Topical classes include:
 
- * [NumPy](classes/08_numpy/lecture_08.md)
- * [matplotlib](classes/09_matplotlib/lecture_09.md)
+ * [NumPy](classes/09_numpy/lecture_09.md)
+ * [matplotlib](classes/10_matplotlib/lecture_10.md)
