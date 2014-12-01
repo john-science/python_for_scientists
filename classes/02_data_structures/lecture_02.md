@@ -139,3 +139,5 @@ To retreive all the keys or values from a dictionary:
     [16244600, 8358400, 40711, 681, 3425956]
 
 **NOTE**: It is important to know that when you retreive all of the keys or values from a dictionary in this way, they will not be ordered. Do not expect that you can predict what *order* these keys or values come out in.
+
+[Back to Syllabus](../../README.md)
