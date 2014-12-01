@@ -270,7 +270,7 @@ The following example shows various indentation errors:
      else:                       # error: inconsistent dedent
        return (n - 1) + (n - 2)
 
-In the end, the only way to make your code correct *and* readable is to be consistent with your indents. Do the same thing every time. The standard is four space per indent:
+In the end, the only way to make your code correct *and* readable is to be consistent with your indents. Do the same thing every time. The standard is four spaces per indent:
 
     if n == 0:
         return 0
@@ -292,6 +292,7 @@ If you write code and there are no comments and no documentation, the code doesn
     
     """This is an especially long comment,
     that takes up two lines."""
+
     '''This is another especially long comment,
     that takes up multiple
     lines.
