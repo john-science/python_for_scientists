@@ -32,5 +32,6 @@ Learning the Python Language:
 
 Python Libraries for Scientists and Engineers:
 
- * [NumPy](classes/09_numpy/lecture_09.md)
- * [matplotlib](classes/10_matplotlib/lecture_10.md)
+ * [Batteries Included](classes/09_std_libs/lecture_09.md)
+ * [NumPy](classes/10_numpy/lecture_10.md)
+ * [matplotlib](classes/11_matplotlib/lecture_11.md)
