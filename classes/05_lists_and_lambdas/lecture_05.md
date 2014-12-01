@@ -37,7 +37,7 @@ Well, these look pretty similar. But now let's say we want to print the odd numb
 
 This is a major principle in Python:
 
-> DRY = Don't Repeat Yourself.
+> DRY = Don't Repeat Yourself
 
 ## Map, Reduce, Filter
 
