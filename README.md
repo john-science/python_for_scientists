@@ -3,20 +3,23 @@ python_for_scientists
 
 > Python for Scientists and Engineers
 
-Software is the tool of the modern world. The great thing about software is that it is so general a tool that is used almost everywhere. A person who masters a language or two has the ability to truly do what they want. For many scientists and engineers, software has become *the* tool and Python has become *the* language.
+Software is the tool of the modern world. Software is so general a tool it is used in almost every field. That means that a person who has mastered a language or two can truly do what they want. For many scientists and engineers, software has become *the* tool and Python has become *the* language.
 
 ### What This Class is
 
-The purpose of this class is to provide an introduction to the Python language in general and more specifically to Python libraries used every day by scientists and engineers.
+The purpose of this class is to provide an introduction to the Python language in general and more specifically to the Python libraries used every day by scientists and engineers.
 
 ### What This Class is Not
 
-This class does not cover the deep mysteries of software, nor does it attempt to give a solid review of computer science theory. For more on those topics, see [these](http://amzn.com/0262510871) [three](http://amzn.com/0262033844
-) [books](http://amzn.com/0735619670 ).
+This class is not meant to provide a solid overview of computer science theory. For more on those topics, see [these](http://amzn.com/0262510871) [three](http://amzn.com/0262033844) [books](http://amzn.com/0735619670 ).
 
 ### Syllabus
 
-Introductory classes include:
+Setup and Introduction
+
+ * [Introduction](classes/00_setup_and_intro/lecture_00.md)
+
+Learning the Python Language:
 
  * [Basic Syntax](classes/01_basic_syntax/lecture_01.md)
  * [Data Structures](classes/02_data_structures/lecture_02.md)
@@ -27,7 +30,7 @@ Introductory classes include:
  * [Object-Oriented Programming, Part 2](classes/07_object_oriented_programming_2/lecture_07.md)
  * [Taking the Next Step](classes/08_taking_the_next_step/lecture_08.md)
 
-Topical classes include:
+Python Libraries for Scientists and Engineers:
 
  * [NumPy](classes/09_numpy/lecture_09.md)
  * [matplotlib](classes/10_matplotlib/lecture_10.md)
