@@ -45,7 +45,7 @@ If you want to learn more about what kinds of functionality are built into Pytho
 
 ####  tuples
 
-Tuples are just like lists, but you can't change their values. Again, each value is numbered starting from zero. As an example, the days of the week:
+Tuples are just like lists, but you can't change their values (they are "immutable"). Again, each value is numbered starting from zero. As an example, the days of the week:
 
     dow = ('Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday')
 
