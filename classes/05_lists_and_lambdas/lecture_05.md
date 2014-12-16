@@ -13,7 +13,7 @@ But these `anonymous functions` are often really handy. You can pass them around
 
 This piece of code shows the difference between a normal function definition (`f`) and a lambda function (`g`):
 
-	>>> def f (x): return x**2
+    >>> def f (x): return x**2
     ... 
     >>> print f(8)
     64
@@ -39,12 +39,12 @@ Let us try to print the even numbers in the Fibonacci Sequence (the usual way):
 Now let's do the same thing, using a lambda funciton:
 
     is_even = lambda n: n % 2 == 0
-
+    
     def print_some_numbers(lst, predicate):
         for element in lst:
             if predicate(element):
                 print(element)
-
+    
     print_some_numbers(fibonacci, is_even)
 
 Well, those approaches look pretty similar. But now let's say we want to print the odd numbers in the Fibonacci Sequence. We would have to write a whole new method `print_odd_numbers`. And if we wanted to print numbers divisible by 3, the same thing. But with the `print_some_numbers` method, all we have to do is define one new (short) lambda predicate function. This keeps us having to repeat ourselves. As you can imagine, if `print_some_numbers` was very long, you could save yourself a lot of typing and repitition.
@@ -74,7 +74,7 @@ All we did there was apply a squaring function (a `lambda` function) to each ele
 
 One more example. Let's split a sentence into a list of words and create a final list with the length of each word:
 
-	>>> sentence = 'It is raining cats and dogs'
+    >>> sentence = 'It is raining cats and dogs'
     >>> words = sentence.split()
     >>> print words
     ['It', 'is', 'raining', 'cats', 'and', 'dogs']
@@ -189,6 +189,23 @@ This is a really easy tool to use:
 And can make creating a dictionary much easier:
 
     >>> days = [(0, 'Mon'), (1, 'Tue'), (2, 'Wed'), (3, 'Thu'), (4, 'Fri'), (5, 'Sat'), (6, 'Sun')]
+    >>> dict(tup for tup in days)
+    {0: 'Mon', 1: 'Tue', 2: 'Wed', 3: 'Thu', 4: 'Fri', 5: 'Sat', 6: 'Sun'}
+
+Another handy tool, frequently used along side dictionary comprehension, is the `zip` function:
+
+    >>> zip(['a', 'b', 'c'], range(3))
+    [('a', 0), ('b', 1), ('c', 2)]
+    >>> 
+    >>> zip(range(4), range(4, 8), range(8, 12))
+    [(0, 4, 8), (1, 5, 9), (2, 6, 10), (3, 7, 11)]
+
+Rewriting the day-of-week example using the `zip` function:
+
+    >>> dow = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
+    >>> days = zip(range(7), dow)
+    >>> days
+    [(0, 'Mon'), (1, 'Tue'), (2, 'Wed'), (3, 'Thu'), (4, 'Fri'), (5, 'Sat'), (6, 'Sun')]
     >>> dict(tup for tup in days)
     {0: 'Mon', 1: 'Tue', 2: 'Wed', 3: 'Thu', 4: 'Fri', 5: 'Sat', 6: 'Sun'}
 
