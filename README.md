@@ -35,3 +35,5 @@ Python Libraries for Scientists and Engineers:
  * [Batteries Included](classes/09_std_libs/lecture_09.md)
  * [NumPy](classes/10_numpy/lecture_10.md)
  * [matplotlib](classes/11_matplotlib/lecture_11.md)
+ * [pandas](classes/12_pandas/lecture_12.md)
+ * [NetCDF](classes/13_netcdf/lecture_13.md)
