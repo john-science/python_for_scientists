@@ -240,9 +240,39 @@ Of course, so many people have wanted to read CSV files with Python that there i
 
 #### Read as Lists
 
+How you read the CSV file should depend on what you want to do. Some times it might be easest just to read each line in the CSV file into an array of strings, for further manipulation:
+
+    >>> import csv
+    >>> f = open('radiation_dose.csv', 'r')
+    >>> reader = csv.reader(f)
+    >>> for row in reader:
+    ...     print row
+    ... 
+    ['source', 'dose (Sv)', 'dose (BED)']
+    ['eating a banana', '1.0E-7', '1']
+    ['arm x-ray', '1.0e-6', '10']
+    ...
+    >>> f.close()
+
+This is essentially the same as when we read the CSV file as a raw text file, except a lot of the stripping and splitting has been taken care of for us.
 
 #### Read as Dictionaries
 
+Another popular option is to read each line of the CSV file into a small dictionary of values, with the column headers as keys and the row split into values:
+
+    >>> import csv
+    >>> f = open('radiation_dose.csv', 'r')
+    >>> dict_reader = csv.DictReader(f)
+    >>> for row in dict_reader:
+    ...     print row
+    ... 
+    {'dose (Sv)': '1.0E-7', 'source': 'eating a banana', 'dose (BED)': '1'}
+    {'dose (Sv)': '1.0e-6', 'source': 'arm x-ray', 'dose (BED)': '10'}
+    {'dose (Sv)': '5.0e-6', 'source': 'dental x-ray', 'dose (BED)': '50'}
+    ... 
+    >>> f.close()
+
+This is particularly handy if the CSV data will eventually be read into any kind of dictionary. But mostly this is just another way to do things, for convenience sake. Either of these two options in the `csv` library will work fine. Neither is particularly faster or smarter.
 
 
 [Back to Syllabus](../../README.md)
