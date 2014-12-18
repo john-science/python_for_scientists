@@ -1,14 +1,14 @@
 # Taking the Next Step
 
-## What make's some code "good"?
+## What make's some code "better"?
 
-Code needs to work, that's key. But what makes the code written by a guru better than the code written by a newbie?
+Step one is that your code needs to work. But what makes code written by a guru better than code written by a newbie?
 
-**When a expert writes code it is easy to read, easy to use, easy to understand, and easy to modify.**
+**Good code is easy to use, easy to understand, and easy to modify.**
 
-You will sometimes write code that is just for you, you will only use it once, and you will never see it again. Python is good for these one-off scripts. But more often you will be writing code that another person will need to read. In that case, you are not writing code for yourself.
+Good code will make your life easier. And it will make other people's life easier. It will create *less* work for you, not *more*. And it will create less work for other people, and they will like you for that.
 
-**You will always understand your own code, but your goal is to make it easy for other people to pick up and use.**
+In this lecture we will introduce the methods and tools needed to make better code.
 
 ## Syntax
 
