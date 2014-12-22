@@ -10,7 +10,7 @@ Python has a nice variety of tools to do commonly-desired things to strings.
     'Funky town'
     >>> "funky tOwn".lower()
     'funky town'
-    >>> "funky tOwn".ooper()
+    >>> "funky tOwn".upper()
     'FUNKY TOWN'
 
 #### `split` splits a string using another string:
@@ -48,10 +48,10 @@ Notice that by default, `split` uses spaces to split the string.
 #### `replace` strings in strings with other strings
 
     >>> csv_string = 'Dog,Cat,Spam,Defenestrate,1, 3.1415 \n\t'
-    >>> alt_csv = csv_string.strip().replace(' ','')
+    >>> alt_csv = csv_string.strip().replace(' ', '')
     >>> alt_csv
     'Dog,Cat,Spam,Defenestrate,1,3.1415'
-    >>> print csv_string.strip().replace(' ','').replace(',','\t')
+    >>> print csv_string.strip().replace(' ', '').replace(',', '\t')
     Dog! Cat! Spam!
     Defenestrate!1! 3.1415
 
