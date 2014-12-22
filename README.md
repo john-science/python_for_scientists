@@ -21,7 +21,8 @@ Setup and Introduction
 
 Learning the Python Language:
 
- * [Basic Syntax](classes/01_basic_syntax/lecture_01.md)
+ * [Variables](classes/01_basic_syntax/lecture_01.md)
+ * [Control Structures](classes/01_control_statements/lecture_01.5.md)
  * [Data Structures](classes/02_data_structures/lecture_02.md)
  * [Functions and Modules](classes/03_functions_and_modules/lecture_03.md)
  * [Advanced Strings](classes/04_advanced_strings/lecture_04.md)
