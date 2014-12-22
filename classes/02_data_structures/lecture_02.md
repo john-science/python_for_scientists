@@ -43,6 +43,43 @@ If you want to learn more about what kinds of functionality are built into Pytho
 
     >>> help(list1)
 
+####  dictionaries
+
+Dictionaries are similar to what their name suggests - a dictionary. In a dictionary, you have an 'index' of words, and for each of them a definition. In Python, the word is called a 'key', and the definition a 'value'. The values in a dictionary aren't numbered - they aren't in any specific order, either - the key does the same thing. (Each key must be unique, though!) You can add, remove, and modify the values in dictionaries.
+
+Creating a dictionary is much like anything else, but you use curly brace (`{`, `}`) to define a collection as dictionary and a colon (`:`) to define a key/value pair:
+
+    gdp = {'USA': 16244600, 'China': 8358400, 'Japan': 5960180, 'Ghana': 40711, 'Samoa': 681}
+
+To retreive a value from a dictionary, simply supply the related key:
+
+    >>> gdp['Samoa']
+    681
+
+However, if that key doesn't exist, Python will throw an error:
+
+    >>> gdp['Czechoslovakia']
+    Traceback (most recent call last):
+      File "<stdin>", line 1, in <module>
+    KeyError: 'Czechoslovakia'
+
+To add a new key/value pair to an existing dictionary, just asign the new value:
+
+    gdp['Germany'] = 3425956
+
+You can also delete an element from a dictionary:
+
+    del gdp['Japan']
+
+To retreive all the keys or values from a dictionary:
+
+    >>> gdp.keys()
+    ['USA', 'Germany', 'China', 'Samoa', 'Ghana']
+    >>> gdp.values()
+    [16244600, 8358400, 40711, 681, 3425956]
+
+**NOTE**: It is important to know that when you retreive all of the keys or values from a dictionary in this way, they will not be ordered. Do not expect that you can predict what *order* these keys or values come out in.
+
 ####  tuples
 
 Tuples are just like lists, but you can't change their values (they are "immutable"). Again, each value is numbered starting from zero. As an example, the days of the week:
@@ -103,41 +140,5 @@ And perform various other operations:
 
 Set theory is a whole field in mathematics. But the basics of set theory, as they apply to computer science are easy to understand. For more information, just look on Wikipedia for: [sets](http://en.wikipedia.org/wiki/Set_%28abstract_data_type%29), [subset](http://en.wikipedia.org/wiki/Subset), [superset](http://en.wikipedia.org/wiki/Subset), [union](https://en.wikipedia.org/wiki/Union_%28set_theory%29), and [intersection](https://en.wikipedia.org/wiki/Intersection_%28set_theory%29).
 
-####  dictionaries
-
-Dictionaries are similar to what their name suggests - a dictionary. In a dictionary, you have an 'index' of words, and for each of them a definition. In Python, the word is called a 'key', and the definition a 'value'. The values in a dictionary aren't numbered - they aren't in any specific order, either - the key does the same thing. (Each key must be unique, though!) You can add, remove, and modify the values in dictionaries.
-
-Creating a dictionary is much like anything else, but you use curly brace (`{`, `}`) to define a collection as dictionary and a colon (`:`) to define a key/value pair:
-
-    gdp = {'USA': 16244600, 'China': 8358400, 'Japan': 5960180, 'Ghana': 40711, 'Samoa': 681}
-
-To retreive a value from a dictionary, simply supply the related key:
-
-    >>> gdp['Samoa']
-    681
-
-However, if that key doesn't exist, Python will throw an error:
-
-    >>> gdp['Czechoslovakia']
-    Traceback (most recent call last):
-      File "<stdin>", line 1, in <module>
-    KeyError: 'Czechoslovakia'
-
-To add a new key/value pair to an existing dictionary, just asign the new value:
-
-    gdp['Germany'] = 3425956
-
-You can also delete an element from a dictionary:
-
-    del gdp['Japan']
-
-To retreive all the keys or values from a dictionary:
-
-    >>> gdp.keys()
-    ['USA', 'Germany', 'China', 'Samoa', 'Ghana']
-    >>> gdp.values()
-    [16244600, 8358400, 40711, 681, 3425956]
-
-**NOTE**: It is important to know that when you retreive all of the keys or values from a dictionary in this way, they will not be ordered. Do not expect that you can predict what *order* these keys or values come out in.
 
 [Back to Syllabus](../../README.md)
