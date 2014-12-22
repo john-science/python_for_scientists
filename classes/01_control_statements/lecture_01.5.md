@@ -90,7 +90,7 @@ But the above logic is *so* common, and needed so often, that Python provides a 
 There is another option, what if you want to have several different conditionals chained together, to execute one of many different blocks of code, based on various predicates? That is the purpose of the `elif` symbol:
 
     if food == 'spam':
-        print('Ummmm, my favorite!')
+        print('Mmmmm, my favorite!')
     elif food == 'spam and eggs':
         print('Acceptable. I can pick out the eggs.')
     elif food == 'spam and bacon':
@@ -101,7 +101,7 @@ There is another option, what if you want to have several different conditionals
 Lastly, the `else` symbol is always optional:
 
     if food == 'spam':
-        print('Ummmm, my favorite!')
+        print('Mmmmm, my favorite!')
     elif food == 'spam and eggs':
         print('Acceptable. I can pick out the eggs.')
 
