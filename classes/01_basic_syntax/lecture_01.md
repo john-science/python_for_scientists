@@ -99,7 +99,7 @@ There are also several basic operations for strings:
     >>> s2[1:3]
     'or'
     >>> len(s1)
-    5
+    6
 
 #### Booleans
 
