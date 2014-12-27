@@ -59,7 +59,17 @@ The `emmy` object is a realized version of the `Student` class. It takes the gen
 
 ### `self`
 
+Okay, what is with that `self` parameter spread throughout the `Student` class? What is it? It is a reference to the "instance" of that object. For example, let's say we had all these "instances" of the `Student` class:
 
+    emmy = Student("Emmy Noether", 837195783)
+    al = Student("Albert Einstein", 986534568)
+    issac = Student("Issac Newton", 191739171)
+    
+    name = "Marie"
+
+Notice I also have the variable `name` in the code for some reason. Now, what if I want to print Emmy's full name? Well, I would do `emmy.name`. And the `self` variable inside the `Student` class allows me to reference the `name` attribute of the `emmy` instance, instead of returning the `name` of the `al` instance, or the `name = "Marie"` global variable I defined later.
+
+In short `self` is the way to tell Python you want to address something about the specific instance of the class involved.
 
 ### Instance Attributes
 
