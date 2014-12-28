@@ -137,5 +137,10 @@ There are some basic comparison operators that act on numbers and return boolean
     >>> 8 != 9.1234
     True
 
+## Types
+
+The above (integers, floats, booleans, and strings) are all called `types` of variables. Ignoring strings for the moment, we can imagine one byte of memory. That byte is a series of zeros and ones. But that same byte could hold the data for an integer, a float, or a boolean. It's still just one byte either way.
+
+There are a lot of implementation details here, but that is a solid picture to have in your mind: one byte of memory can be any of several different `types` of variables.
 
 [Back to Syllabus](../../README.md)
