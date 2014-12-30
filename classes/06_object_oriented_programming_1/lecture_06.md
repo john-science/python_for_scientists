@@ -71,13 +71,70 @@ Notice I also have the variable `name` in the code for some reason. Now, what if
 
 In short `self` is the way to tell Python you want to address something about the specific instance of the class involved.
 
+### `__init__`
+
+Okay, what is the deal with that `__init__` in `Student`? When we create a new object by doing something like `emmy = Student("Emmy Noether", 837195783)`, the `__init__` is called, and the code inside is executed to create the initial form of the (mutable) object.
+
+In this case, the `__init__` method is called, and four variables are set: `self.name`, `self.student_id`, `self.hw_grades`, and `self.test_grades`. Two variables are set to the values `"Emmy Noether"` and `837195783` and the other two are given default values. This is the purpose of the `__init__` method; to give the attributes of the object starting values.
+
 ### Instance Attributes
 
+This brings us to an important piece of jargon: "instance attributes". The "instance" of the `Student` class `emmy` has four "attributes": `self.name`, `self.student_id`, `self.hw_grades`, and `self.test_grades`. These "attributes" are attributes of the class, yes. But since they have specific values in the `emmy` instance, they are called "instance attributes".
 
+This is not meant to be confusing, there are just two things to understand. First, the difference between an object, or an "instance" of a class. And second, the "attributes" are the values/data stored inside of an object.
 
-### Static vs Class Methods
+### Static Methods
 
+Classes (and their objects) have more than just attributes. They also have methods. (Remember, any function inside a class is called a "method".) A typical method will make use of the instance attributes, like `def calculate_grade(self)` defined above. However, what if you want to include a method inside a class that is independent of the values of the object? These are called "static methods", and here are a couple examples:
 
+    class Student(object):
+    
+        # rest of the class defined as normal
+        
+        @staticmethod
+        def fail_student():
+            '''Hilarious print statement'''
+            print "You Fail!"
+        
+        @staticmethod
+        def letter_grade(percent_grade):
+            '''return a letter grade from a percentage grade'''
+            if percent_grade >= 90.0:
+                return 'A'
+            elif percent_grade >= 80.0:
+                return 'B'
+            elif percent_grade >= 70.0:
+                return 'C'
+            elif percent_grade >= 60.0:
+                return 'D'
+            else:
+                return 'F'
 
+Notice that these two new methods defined inside `Student` don't have the `self` included in their argument lists. That's because they don't make use of any instance attributes, like `self.name`. Also notice, that to tell Python about this fact, we have included the `@staticmethod` [decorator](http://thecodeship.com/patterns/guide-to-python-function-decorators/). This just stops Python from throwing an error when it doesn't see that `self` in the method's argument list.
+
+So why use static methods? Why bother with the static method decorator?  Well, it's true, you could have just written these methods without worrying about that:
+
+    class Student(object):
+    
+        # rest of the class defined as normal
+
+        def fail_student(self):
+            '''Hilarious print statement'''
+            print "You Fail!"
+
+        def letter_grade(self, percent_grade):
+            '''return a letter grade from a percentage grade'''
+            if percent_grade >= 90.0:
+                return 'A'
+            elif percent_grade >= 80.0:
+                return 'B'
+            elif percent_grade >= 70.0:
+                return 'C'
+            elif percent_grade >= 60.0:
+                return 'D'
+            else:
+                return 'F'
+
+Written like this, these methods would still run. But using the `@staticmethod` decorator has some performance improvements. It will make your code faster to use this when you can. Also, when you look at a method with the `@staticmethod` decorator on top, you instantly know a lot about it. It will help the next person who looks at your code read and understand what is going on.
 
 [Back to Syllabus](../../README.md)
