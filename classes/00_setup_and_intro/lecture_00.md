@@ -4,7 +4,7 @@
 
 Python should be easy to install on basically all home computers and laptops. There are many different versions and flavors of Python. This class will be built around Python v2.7, but you will probably be fine using anything above Python v2.5.
 
-The installation procedure depends on what operating system you have installed. As always, [The Hitchhiker's Guide to Python](http://docs.python-guide.org/en/latest/) has a great description of how to install for the three different operating systems.
+The installation procedure depends on what operating system you have installed. As always, [The Hitchhiker's Guide to Python](http://docs.python-guide.org/en/latest/) has a great description of how to install for the three major operating systems.
 
  * [Windows](http://docs.python-guide.org/en/latest/starting/install/win/)
  * [Mac OS X](http://docs.python-guide.org/en/latest/starting/install/osx/)
@@ -14,7 +14,7 @@ The installation procedure depends on what operating system you have installed. 
 
 ## What is Python?
 
-Python is a [high-level](https://en.wikipedia.org/wiki/High-level_programming_language), [interpretted](https://en.wikipedia.org/wiki/Interpreted_language), [dynamically-typed](https://en.wikipedia.org/wiki/Dynamic_programming_language) computer programming language whose goal appears to be to make code as easy to write as possible. The Python programming language is [free](http://www.howtogeek.com/howto/31717/what-do-the-phrases-free-speech-vs.-free-beer-really-mean/) and [open-source](https://en.wikipedia.org/wiki/Open_source#Computer_software).
+Python is a [high-level](https://en.wikipedia.org/wiki/High-level_programming_language), [interpretted](https://en.wikipedia.org/wiki/Interpreted_language), [dynamically-typed](https://en.wikipedia.org/wiki/Dynamic_programming_language) computer programming language whose apparent goal is to make code as easy to write as possible. The Python programming language is [free](http://www.howtogeek.com/howto/31717/what-do-the-phrases-free-speech-vs.-free-beer-really-mean/) and [open-source](https://en.wikipedia.org/wiki/Open_source#Computer_software).
 
 ### Comparing Python to other languages
 
@@ -32,7 +32,9 @@ There are several layers of languages in the above pyramid. If you've ever worke
 
 If you've ever written Fortran or C code, you will remember having to "compile" your code. This is the process of taking your text file and turning it into an executable that can be run as a program. This final executable is a series of commands that the computer will understand when executed.
 
-But you don't have to compile Python code. The Python programming language comes with an interpreter, that will read directly from your text file on the fly and executes commands as it finds them. This means you never have to compile, but it also means you can type commands into the Python interpreter and they will be executed as you go:
+Alternately, if you've ever run a program on a Windows computer, you will know about *.exe programs. You double click on them, and the program opens. But if you try to open them in a text editor, it is meaningless garbage. That's because these programs are written in terms your computer can understand, and not in anything human-readable.
+
+But you don't have to compile Python code. The Python programming language comes with an interpreter that will read directly from your text file on the fly and executes commands as it finds them. This means you never have to compile, but it also means you can type commands into the Python interpreter and they will be executed as you go:
 
     john@neutrino:~$ python
     Python 2.6.6 (r266:84292, Jan 22 2014, 09:42:36) 
@@ -55,7 +57,7 @@ Of course, you can still write Python scripts, or "modules", as text files and e
 
 #### Dynamically Typed
 
-In most programming languages, when you define a variable `x`, you have to tell the computer what "[type](https://en.wikipedia.org/wiki/Data_type)" that variable will be: integer, decimal, letter, string, array, list of strings, table, plot, whatever. But the Python interpreter is designed to figure out what the type of the variable is, from context.
+In most programming languages, when you define a variable `x`, you have to tell the computer what "[type](https://en.wikipedia.org/wiki/Data_type)" that variable will be: integer, decimal, letter, string, array, list of strings, table, plot, whatever. But the Python interpreter is designed to figure out what the type of the variable is on its own, from context.
 
 If you have seen another programming language before, the comparison becomes interesting in what you, as the programmer, *don't* have to do:
 
@@ -103,8 +105,8 @@ Every programming language has syntax; rules you have to learn. But Python has a
 
 ## How to make the most of this class
 
-> The best way to learn is by doing. And the best way to remember what you learn is by doing it a lot.
+> The best way to learn is by doing.
 
-Write code. Don't use Excel or a calculator for that little thing that needs to get done at work, write it in Python. Do it in the interpreter. Try out the latest thing you've learned about. Make sure and practice what you learn about between lectures.
+Write code. Don't use Excel or a calculator for that little thing that needs to get done at work, write it in Python. Do it in the interpreter. Try out the latest thing you've learned any chance you get. Make sure you practice what you learn about between lectures, or it'll be very easy to forget.
 
 [Back to Syllabus](../../README.md)
