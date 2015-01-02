@@ -3,15 +3,15 @@ python_for_scientists
 
 > Python for Scientists and Engineers
 
-Software is the tool of the modern world. Software is so general a tool it is used in almost every field. That means that a person who has mastered a language or two can truly do what they want. For many scientists and engineers, software has become *the* tool and Python has become *the* language.
+Software is the tool of the modern world. Software is so general a tool it is used in almost every field. That means that a person who has mastered a few languages can truly do what they want. For many scientists and engineers, software has become *the* tool and Python has become *the* language.
 
 ### What This Class is
 
-The purpose of this class is to provide an introduction to the Python language in general and more specifically to the Python libraries used every day by scientists and engineers.
+The purpose of this class is to provide a practical introduction to the Python language in general and more specifically to the Python libraries used every day by scientists and engineers.
 
 ### What This Class is Not
 
-This class is not meant to provide a solid overview of computer science theory. For more on those topics, see [these](http://amzn.com/0262510871) [three](http://amzn.com/0262033844) [books](http://amzn.com/0735619670 ).
+This class is not meant to provide a thorough background in computer science. For more on that, see [these](http://amzn.com/0262510871) [three](http://amzn.com/0262033844) [books](http://amzn.com/0735619670 ).
 
 ### Syllabus
 
