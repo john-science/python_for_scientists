@@ -1,12 +1,10 @@
 # Taking the Next Step
 
-## What make's some code "better"?
+## Writting Better Code
 
-Step one is that your code needs to work. But what makes code written by a guru better than code written by a newbie?
+The most important thing is always that your code works. That is obviously the case. But getting better at code means writing code that will make your life, and the lives of those around you, easier. Good code creates *less* work for you, not *more*.
 
 **Good code is easy to use, easy to understand, and easy to modify.**
-
-Good code will make your life easier. And it will make other people's life easier. It will create *less* work for you, not *more*. And it will create less work for other people, and they will like you for that.
 
 In this lecture we will introduce the methods and tools needed to make better code.
 
