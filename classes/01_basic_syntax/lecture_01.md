@@ -1,6 +1,6 @@
 # Basic Python Syntax
 
-You gotta start somewhere. Let's try some simple commands. To follow along, start the Python interpreter by typing `python` on the commandline:
+You gotta start somewhere. Let's try some simple examples. To follow along, start the Python interpreter by typing `python` on the commandline:
 
     ~$ python
 
@@ -28,7 +28,7 @@ Let's try some basic variable definitions.
 
 #### Booleans
 
-    its_friday = False
+    skynet_rocks = False
     python_is_awesome = True
 
 ## Operations
@@ -46,7 +46,7 @@ The Python interpreter can act like a calculator:
     >>> 8 / 5.0
     1.6
 
-But you can also do math with stored variables:
+But you can also do algebra with stored variables:
 
     >>> x = 20
     >>> x += 1
@@ -56,6 +56,8 @@ But you can also do math with stored variables:
     >>> y / x
     3
     >>> z = y / x
+    >>> z
+    3
 
 After a mathematical operation is performed, a variable of a new type is returned:
 
@@ -101,6 +103,8 @@ There are also several basic operations for strings:
     >>> len(s1)
     6
 
+Above, the `[1]` notation returns element number `1` from the list (start counting with zero in Python). And `len` returns the length of, or number of elements in, the list.
+
 #### Booleans
 
 Finally, the basic operations for boolean logic are similar to those in other langauges:
@@ -139,8 +143,8 @@ There are some basic comparison operators that act on numbers and return boolean
 
 ## Types
 
-The above (integers, floats, booleans, and strings) are all called `types` of variables. Ignoring strings for the moment, we can imagine one byte of memory. That byte is a series of zeros and ones. But that same byte could hold the data for an integer, a float, or a boolean. It's still just one byte either way.
+The above (integers, floats, booleans, and strings) are different `types` of variables. Ignoring strings for the moment, we can imagine one byte of memory. That byte is a series of zeros and ones. But that same byte could hold the data for an integer, a float, or a boolean. It's still just one byte either way.
 
-There are a lot of implementation details here, but that is a solid picture to have in your mind: one byte of memory can be any of several different `types` of variables.
+There are a lot of implementation details here, but that is a solid picture to have in your mind: one byte of memory can be used for any of several different `types` of variables.
 
 [Back to Syllabus](../../README.md)
