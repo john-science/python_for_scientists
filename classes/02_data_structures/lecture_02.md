@@ -1,6 +1,6 @@
 # Data Structures
 
-Whether designing a huge program or a short script, it is important to choose your data structures appropriately. Following the "batteries included" philosophy, Python has several handy data structures built right in.
+A "data structure" is how you decide to organize the data you are interacting with. You can imagine that you could organize, store, and interact with computer data in all kinds of complicated ways. Well, Python has four standard data structures built right in, that people use most often: lists, dictionaries, tuples, and sets.
 
 ####  lists
 
@@ -77,6 +77,10 @@ To retreive all the keys or values from a dictionary:
     ['USA', 'Germany', 'China', 'Samoa', 'Ghana']
     >>> gdp.values()
     [16244600, 8358400, 40711, 681, 3425956]
+
+You can create an empty dictionary with just the curly braces:
+
+    d = {}
 
 **NOTE**: It is important to know that when you retreive all of the keys or values from a dictionary in this way, they will not be ordered. Do not expect that you can predict what *order* these keys or values come out in.
 
