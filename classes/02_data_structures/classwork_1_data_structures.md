@@ -1,59 +1,53 @@
 # Python Data Structures
 
-#### Lists
+For this classwork, don't scroll down too far, or you'll see the solutions.
 
-There are several ways to initalize a list:
+### Lists
 
-    lst = []
-    odds = [1, 3, 5, 7]
-    evens = ['two', 'four', 'six', 'eight']
-    wibbly_wobbly = [0.0, 1, 'two', 3L]
+#### Classwork
 
-And several ways to access elements in a list:
+1. Initialize a list called "boys" with the elements: "Fred", "George", "Percy", "Ron".
+2. Initialize a list called "girls" with elements: "Giney".
+3. Print both lists.
+4. Print the first element in "girls".
+5. Find two or three ways to print the last element in "boys".
+6. Add the element "Charles" to the "boys" list.
+7. Add the "boys" and "girls" together, and save the results as a list called "weasleys".
+8. Use the `.sort()` method to sort the "weasleys" list into alphabetical order.
 
-    evens[2]
-    odds[-1]
-    evens[:2]
-    odds[1:33]
+#### Solutions
 
-But we also have several ways to loop over the elements of a list:
-
-    for element in odds:
-        print(element)
+    # 1. Initialize a list called "boys" with the elements: "Fred", "George", "Percy", "Ron".
+    boys = ["Fred", "George", "Percy", "Ron"]
     
-    for index,value in enumerate(evens):
-        print(index, value)
+    # 2. Initialize a list called "girls" with elements: "Giney".
+    girls = ["Giney"]
     
-    # This is very common, but not very Pythonic:
-    for i in range(len(evens)):
-        print(evens[i])
+    # 3. Print both lists.
+    print(boys)
+    print(girls)
+    
+    # 4. Print the first element in "girls".
+    girls[0]
+    
+    # 5. Find two or three ways to print the last element in "boys".
+    boys[3]
+    boys[len(boys) - 1]
+    boys[-1]
+    
+    # 6. Add the element "Charles" to the "boys" list.
+    boys.append("Charles")
+    
+    # 7. Add the "boys" and "girls" together, and save the results as a list called "weasleys".
+    weasleys = boys + girls
+    
+    # 8. Use the `.sort()` method to sort the "weasleys" list into alphabetical order.
+    weasleys.sort()
+    print(weasleys)
 
-There are also several major ways to modify a list:
+#### Sorting
 
-    evens.append('ten')
-    print(evens)
-    
-    evens.extend(['12', '14', '16'])
-    print(evens)
-    
-    evens.insert(18, -1)
-    print(evens)
-    
-    del evens[4:]
-    print(evens)
-    
-    item = evens.pop()
-    print(evens)
-    
-    evens.reverse()
-    print(evens)
-
-There are also several ways to search for items in a list:
-
-    evens.index('two')
-    evens.count('two')
-
-In general, sorting a list of items can be a complex task. Because if the list is very long, it could take a *very* long time. But for the case of short lists, or list of things that are easy to sort, like numbers, Python has some sorting functionality included:
+In general, sorting a list of items is a classic, but difficult computational tast. However, it has been studied so thoroughly, that there are two methods built right into Python to do this for you:
 
     lst = [7, 4, 3, 1, 8, 4, 333, -1234]
     lst.sort()
@@ -64,120 +58,133 @@ In general, sorting a list of items can be a complex task. Because if the list i
 
 So, what is the difference between `sort` and `sorted` above?
 
-#### Tuples
+### Dictionaries
 
-Because Tuples are immutable, you need to give ALL the elements when you initially define it:
+#### Classwork
 
-    tup = ('Rock', "Lobster", 1, '!')
+1. Create an empty dictionary named "tardis".
+2. Add a key/value pair to tardis of "Doctor"/"Who".
+3. Add a key/value pair to the tardis dictionary of "Dalek"/"Evil".
+4. Print the tardis dictionary. Print the keys and the values in tardis.
+5. Change the value of "Dalek" to "Exterminate"
+6. Print tardis (in two different ways).
+7. Save the Doctor! Remove the "Dalek" key from the dictonary.
+8. Print tardis.
 
-Once you have defined a tuple, you can't alter the elements. Try it:
+#### Solutions
 
-    tup[0] = 'Red'
-
-But you can append multiple tuples together to create new tuples:
-
-    new_tup = tup + ('big', 'as', 'a', whale)
-
-Because creating a new tuple does not alter an old one.
-
-You can also find the length of a tuple:
-
-    >>>> len(new_tup)
-    8
-
-We tend to use tuples for things that won't need to change, like the names of things: days of the week, months of the year, counties, vehicle types, etc.
-
-#### Sets
-
-You can declare a new set in one of three ways:
-
-    >>> primes = {2,3,5,7,11,13,17}
-    >>> primes = set([2,3,5,7,11,13,17])
-    >>> primes = set()
-    >>> primes.add(2)
-    >>> primes.add(3)
-    >>> primes.add(5)
-
-Let's say you have information about the location of wildfires in California. And, among other things, you want a complete list of all the counties that had fires. You could loop through each fire and add that fire's county to a set:
-
-    >>> counties = set()
-    >>> counties.add('Yolo')
-    >>> counties.add('Napa')
-    >>> counties.add('Napa')
-    >>> counties.add('Yolo')
-    >>> counties.add('Mendicino')
-    >>> counties.add('Humboldt')
-
-Because sets only include unique values, you won't have two copies of 'Yolo' and 'Napa' in you final set. You will only have the unique values you want:
-
-    >>> counties
-    set(['Humboldt', 'Mendicino', 'Napa', 'Yolo'])
-
-And, if what you really wanted was a list, you could just convert the set to a list:
-
-    >>> cnty_list = list(counties)
-    ['Humboldt', 'Mendicino', 'Napa', 'Yolo']
-
-To remove an item from a set:
-
-    counties.remove('Yolo')
-
-#### Dictionaries
-
-There are four ways to create a list:
-
-Number 1, the standard way:
-
-    d = {"favorite cat": None, "favorite spam": "all"}
-
-Number 2, method declaration:
-
-    d = dict(one=1, two=2, cat='dog')
-
-Number 3, filling in items as you go:
-
-    d = {}  # empty dictionary
-    d['cat'] = 'dog'
-    d['one'] = 1
-    d['two'] = 2
-
-Number 4, start with a list of tuples:
-
-    mylist = [("cat", "dog"), ("one", 1), ("two", 2)]
-
-You can also use dictionaries to format print statements. The `%` operator works conveniently to substitute values from a dict into a string by name:
-
-    >>> hash = {}
-    >>> hash['word'] = 'garfield'
-    >>> hash['count'] = 42
-    >>> s = 'I want %(count)d copies of %(word)s' % hash  # %d for int, %s for string
-    'I want 42 copies of garfield'
-
-The `del` operator does deletions. In the simplest case, it can remove the definition of a variable, as if that variable had not been defined. `del` can also be used on list elements or slices to delete that part of the list and to delete entries from a dictionary.
-
-    var = 6
-    del var  # var no more!
+    # 1. Create an empty dictionary named "tardis".
+    tardis = {}
     
-    list = ['a', 'b', 'c', 'd']
-    del list[0]     ## Delete first element
-    del list[-2:]   ## Delete last two elements
-    print list      ## result is ['b']
+    # 2. Add a key/value pair to tardis of "Doctor"/"Who".
+    tardis['Doctor'] = 'Who'
     
-    dict = {'a':1, 'b':2, 'c':3}
-    del dict['b']   ## Delete 'b' entry
-    print dict      ## result is {'a':1, 'c':3}
+    # 3. Add a key/value pair to the tardis dictionary of "Dalek"/"Evil".
+    tardis['Dalek'] = 'Evil'
+    
+    # 4. Print the tardis dictionary. Print the keys. Print the values.
+    tardis
+    tardis.keys()
+    tardis.values()
+    
+    # 5. Change the value of "Dalek" to "Exterminate"
+    tardis["Dalek"] = "Exterminate"
+    
+    # 6. Print tardis (in two different ways).
+    tardis
+    print(tardis)
+    
+    # 7. Save the Doctor! Remove the "Dalek" key from the dictonary.
+    del tardis["Dalek"]
+    
+    # 8. Print tardis.
+    tardis
 
-Of course, you can also make dictionaries where the values are themselves dictionaries. This for a nearly arbitarily complex collection of data:
+### Tuples
 
-    >>> books = {}
-    >>> dune = {'title': 'Dune', 'author': 'Herbert', 'genre': 'sci-fi'}
-    >>> enders = {'title': 'Ender\'s Game', 'author': 'Card', 'genre': 'sci-fi'}
-    >>> hobbit = {'title': 'The Hobbit', 'author': 'Tolkein', 'genre': 'fantasy'}
-    >>> books['Dune'] = dune
-    >>> books['Enders'] = enders
-    >>> books['Hobbit'] = hobbit
-    >>> books['Guide'] = {'title': "Hitchhiker's Guide to the Galaxy", 'author': 'Adams', 'genre': 'sci-fi'}
-    >>> books
-    {'Enders': {'genre': 'sci-fi', 'author': 'Card', 'title': "Ender's Game"}, 'Hobbit': {'genre': 'fantasy', 'author': 'Tolkein', 'title': 'The Hobbit'}, 'Dune': {'genre': 'sci-fi', 'author': 'Herbert', 'title': 'Dune'}, 'Guide': {'genre': 'sci-fi', 'author': 'Adams', 'title': "Hitchhiker's Guide to the Galaxy"}}
+This will be short, because tuples are so much like lists.
 
-Notice that in the `books` dictionary above, we can catalog a great amount of information about our books: the title, author, genre, ISBN, copies sold, pages, language, you name it. But if we forgot to list the `title` for one book, no error would be thrown. It is up to us to validate our data entry or write code to look through the dictionary and make sure all the correct fields exist. `With great flexibility comes great error checking.`
+#### Classwork
+
+1. Create a tuple called "months" containing the words "January" and "February".
+2. Add "March" to the "months" tuple.
+3. Change "January" to "June".
+4. Return the first element in "months"
+5. Return the last element in "months" in two or three different ways.
+
+#### Solutions
+
+    # 1. Create a tuple called "months" containing the words "January" and "February".
+    months = ("January", "February")
+    
+    # 2. Add "March" to the "months" tuple.
+    # TRICK QUESTION: You can't modify a tuple.
+    
+    # 3. Change "January" to "June".
+    # TRICK QUESTION: You can't modify a tuple.
+    
+    # 4. Return the first element in "months"
+    months[0]
+    
+    # 5. Return the last element in "months" in two or three different ways.
+    months[-1]
+    months[1]
+    months[len(months) - 1]
+
+### Sets
+
+#### Classwork
+
+1. Create a empty sets called "insects".
+2. One-at-a-time, add these elements to insects: "6 legs", "exoskeleton", "3-part bodies", "small", "lay eggs"
+3. Create a new set called "spiders" that starts off including the elements: "8 legs", "spin webs", "2-part bodies", "small", "lay eggs"
+4. Print both sets.
+5. Find the intersection of both sets.
+6. Determine if either set is a subset of the other.
+7. Add "not cuddly" to the spider set, and print.
+8. Remove the "not cuddly" from the spider set, and print.
+
+#### Solutions
+
+    # 1. Create a empty sets called "insects".
+    insects = set()
+    
+    # 2. One-at-a-time, add these elements to insects: "6 legs", "exoskeleton",
+    #    "3-part bodies", "small", "lay eggs"
+    insects.add("6 legs")
+    insects.add("exoskeleton")
+    insects.add("3-part bodies")
+    insects.add("small")
+    insects.add("lay eggs")
+    
+    # 3. Create a new set called "spiders" that starts off including the elements:
+    #    "8 legs", "spin webs", "2-part bodies", "small", "lay eggs"
+    spiders = set(["8 legs", "spin webs", "2-part bodies", "small", "lay eggs"])
+    
+    # 4. Print both sets.
+    >>> insects
+    >>> spiders
+    
+    # 5. Find the intersection of both sets.
+    >>> insects.intersection(spiders)
+    set(["small", "lay eggs"])
+    
+    # 6. Determine if either set is a subset of the other.
+    >>> insects.issubset(spiders)
+    False
+    >>> spiders.issubset(insects)
+    False
+    >>> insects.issuperset(spiders)
+    False
+    >>> spiders.issuperset(insects)
+    False
+    
+    # 7. Add "not cuddly" to the spider set, and print.
+    >>> spider.add("not cuddly")
+    >>> spider
+    set(["8 legs", "spin webs", "2-part bodies", "small", "lay eggs", "not cuddly"])
+    
+    8. Remove the "not cuddly" from the spider set, and print.
+    >>> spider.remove("not cuddly")
+    >>> spider
+    set(["8 legs", "spin webs", "2-part bodies", "small", "lay eggs"])
