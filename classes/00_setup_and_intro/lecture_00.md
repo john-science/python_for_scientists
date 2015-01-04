@@ -55,6 +55,8 @@ Of course, you can still write Python scripts, or "modules", as text files and e
 
     john@neutrino:~$ python my_awesome_script.py
 
+Long version short, unlike in Fortran, you will no longer have this excuse:
+
 ![compiling](http://imgs.xkcd.com/comics/compiling.png)
 
 #### Dynamically Typed
