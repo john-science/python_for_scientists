@@ -104,13 +104,22 @@ But you can't modify the tuple:
       File "<stdin>", line 1, in <module>
     TypeError: 'tuple' object does not support item assignment
 
+Of course, you can create and empty tuple, by doing this:
+
+    empty = ()
+
+But I find that I don't do this much, as now I have an empty tuple that I can't modify. So... what good does it do me?
+
 ####  sets
 
-A set is a bit like a list, except every value in a set is unique. If you had an empty set of numbers and you added the number `3` a million times, the set would still just be `(3)`. Sets are designed to preserve this uniqueness when you add a new element.
+Imagine we want to know every country the students in the class are from. If we went through each student in the class, we would probably get a list with "United States" in it many times. But that's not quite what we want. We want a short list with each country just written once. Luckily, this kind of thing is common enough that it is built right into Python, in a data structure called "sets"
 
-You can define a new set and add some values:
+First, let's create an empty set:
 
     >>> tolkein = set()
+
+Now, let's add some elements to it:
+
     >>> tolkein.add('orc')
     >>> tolkein.add('goblin')
     >>> tolkein.add('troll')
@@ -121,16 +130,19 @@ You can define a new set and add some values:
     >>> tolkein
     set(['orc', 'goblin', 'troll', 'dragon'])
 
-And you can remove values from a set:
+And we can remove an element from a set:
 
     >>> tolkein.remove('dragon')
     >>> tolkein
     set(['orc', 'goblin', 'troll'])
 
-And perform various other operations:
+We can find the number of elements in a set, just like it was a list:
 
     >>> len(tolkein)
     3
+
+The picture to have in your mind, is that [sets](http://en.wikipedia.org/wiki/Set_%28abstract_data_type%29) are like [Venn diagrams](https://en.wikipedia.org/wiki/Venn_diagram). Two different sets might overlap a little or a lot. And we can consider their [union](https://en.wikipedia.org/wiki/Union_%28set_theory%29), [intersection](https://en.wikipedia.org/wiki/Intersection_%28set_theory%29), or if one is a [subset](http://en.wikipedia.org/wiki/Subset) of another. All of these general ideas about sets can be computed inside Python:
+
     >>> tolk2 = set(['elf', 'dwarf'])
     >>> tolkein.union(tolk2)
     set(['orc', 'goblin', 'troll', 'elf', 'dwarf'])
@@ -141,8 +153,6 @@ And perform various other operations:
     True
     >>> elf.intersection(tolk2)  # find the intersection of two sets
     set(['elf'])
-
-Set theory is a whole field in mathematics. But the basics of set theory, as they apply to computer science are easy to understand. For more information, just look on Wikipedia for: [sets](http://en.wikipedia.org/wiki/Set_%28abstract_data_type%29), [subset](http://en.wikipedia.org/wiki/Subset), [superset](http://en.wikipedia.org/wiki/Subset), [union](https://en.wikipedia.org/wiki/Union_%28set_theory%29), and [intersection](https://en.wikipedia.org/wiki/Intersection_%28set_theory%29).
 
 
 [Back to Syllabus](../../README.md)
