@@ -11,7 +11,7 @@ The purpose of this class is to provide a practical introduction to the Python l
 
 ### What This Class is Not
 
-This class is not meant to provide a thorough background in computer science. For more on that, see [these](http://amzn.com/0262510871) [three](http://amzn.com/0262033844) [books](http://amzn.com/0735619670 ).
+This class is not meant to provide a thorough background in computer science. For more on that, start with [these](http://amzn.com/0262510871) [three](http://amzn.com/0262033844) [books](http://amzn.com/0735619670 ).
 
 ### Syllabus
 
