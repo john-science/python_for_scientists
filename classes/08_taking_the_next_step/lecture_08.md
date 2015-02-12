@@ -1,12 +1,14 @@
 # Taking the Next Step
 
+All the material in this course so far was just too define "the rules" of Python. But writing good code means knowing more than just the rules that define a language. You can teach a six-year-old the rules to chess, but that doesn't mean the world's Grand Master. A lot of practice, knowledge, and skill are needed for that. The rest of this class will be devoted to taking this next step.
+
 ## Writting Better Code
 
-The most important thing is always that your code works. That is obviously the case. But getting better at code means writing code that will make your life, and the lives of those around you, easier. Good code creates *less* work for you, not *more*.
+The most important thing is always that your code works. Obviously. But some software is better than others. Good code creates *less* work for you, not *more*.
 
 **Good code is easy to use, easy to understand, and easy to modify.**
 
-In this lecture we will introduce the methods and tools needed to make better code.
+In this lecture we will introduce the methods and tools needed to write better code.
 
 ## Syntax
 
