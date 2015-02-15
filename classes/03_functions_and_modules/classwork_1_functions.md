@@ -89,7 +89,60 @@ XKCD is always relevant:
         
         # need to return a list, so I type cast
         return list(odds)
+
+## Keyword Arguments
+
+### Classwork
+
+Write functions to fill the following goals, using at least one keyword argument:
+
+    1. Print "Hello, X!", where the default value of X is "World".
+    2. Given a list of integers, print all that are evenly divided by X (default value 2).
+    3. Extend a set of values (default empty set), by another set.
+
+### Solutions
+
+    # 1. Print "Hello, X!", where the default value of X is "World".
+    def greeting(X="World"):
+        '''Print "Hello, X!" with a default X of "World"'''
+        print("Hello, " + X + "!")
+    
+    # 2. Given a list of integers, return all that are evenly divided by X (default value 2).
+    def modulo_filter(lst, X=2):
+        '''return the subset of a list that shares a common denominator'''
+        new_lst = []
+        for val in lst:
+            if val % X == 0:
+                new_lst.append(val)
+        
+        return new_lst
+    
+    # 3. Extend a set of values (default empty set), by another set.
+    def extend_set(new_set, old_set=set()):
+        '''extend one set by another'''
+        for s in new_set:
+            old_set.add(s)
+        
+        return old_set
+    
     
 ## Nested Functions
+
+### Classwork
+
+### Solutions
+    
+    def fibonacci(n):
+        def recursion():
+            return fibonacci(n-1) + fibonacci(n-2)
+        if n == 0:
+            return 0
+        elif n == 1:
+            return 1
+        else:
+            return recursion()
+    
+    >>> map(fibonacci, range(10))
+    [0, 1, 1, 2, 3, 5, 8, 13, 21, 34]
 
     > Homework not Complete Yet
