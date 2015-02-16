@@ -1,7 +1,15 @@
 # Object-Oriented Programming, Part 2
 
-### Why We Need Inheritance
+## Why We Need Inheritance
 
-### Abstract Classes
+ * Coming Soon
+
+## Abstract Classes
+
+ * Coming Soon
+
+## Problem Sets
+
+ * None Yet
 
 [Back to Syllabus](../../README.md)
