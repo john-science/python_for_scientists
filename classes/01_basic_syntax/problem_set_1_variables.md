@@ -1,6 +1,4 @@
-# Classwork for Python Variable Definitions
-
-Just work through the code shown below, ask any questions as they occur to you.
+# Problem Set for Python Variable Definitions
 
 ## The Python Calculator
 
