@@ -147,4 +147,8 @@ The above (integers, floats, booleans, and strings) are different `types` of var
 
 There are a lot of implementation details here, but that is a solid picture to have in your mind: one byte of memory can be used for any of several different `types` of variables.
 
+## Problem Sets
+
+ * [Lists](problem_set_1_variables.md)
+
 [Back to Syllabus](../../README.md)
