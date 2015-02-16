@@ -244,4 +244,10 @@ If the module is imported, the code is not run:
 
 The take-away message here is there are several ways to write, store, and execute Python code. You should choose among these based on how much you might want to reuse this code later. If you just want to use Python as a simple calculate: write your code in the interpreter and be done with it. If you might ever want to run the code again, put it into a text file with a `.py` extension. And if you understand your code well enough to break it into logical pieces that might be useful again one day, separate your code into functions, and call them with a `main` method.
 
+
+## Problem Sets
+
+ * [Basic Functions](problem_set_1_basic_functions.md)
+
+
 [Back to Syllabus](../../README.md)
