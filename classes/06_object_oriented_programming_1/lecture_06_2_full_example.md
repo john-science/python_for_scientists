@@ -144,7 +144,7 @@ Or, if you put all of your `FILES` into a `MASTER_FILES` list-of-lists, and all 
     for i in xrange(len(MASTER_FILES)):
         ftp.pull_data(MASTER_FILES[i], MASTER_DIRS[i])
 
-### Flexibility of Usage
+### Flexibility for Importing
 
 Also, the OOP version is easier to import into a different script:
 
