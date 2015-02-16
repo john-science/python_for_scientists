@@ -188,3 +188,6 @@ This will be short, because tuples are so much like lists.
     >>> spider.remove("not cuddly")
     >>> spider
     set(["8 legs", "spin webs", "2-part bodies", "small", "lay eggs"])
+
+
+[Back to Lecture](lecture_02.md)
