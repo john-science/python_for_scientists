@@ -154,5 +154,10 @@ The picture to have in your mind, is that [sets](http://en.wikipedia.org/wiki/Se
     >>> elf.intersection(tolk2)  # find the intersection of two sets
     set(['elf'])
 
+## Problem Sets
+
+ * [Basic Data Structures](problem_set_1_data_structures.md)
+ * [Lists](problem_set_2_lists.py)
+
 
 [Back to Syllabus](../../README.md)
