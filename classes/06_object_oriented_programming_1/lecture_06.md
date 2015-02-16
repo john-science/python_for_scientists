@@ -137,4 +137,11 @@ So why use static methods? Why bother with the static method decorator?  Well, i
 
 Written like this, these methods would still run. But using the `@staticmethod` decorator has some performance improvements. It will make your code faster to use this when you can. Also, when you look at a method with the `@staticmethod` decorator on top, you instantly know a lot about it. It will help the next person who looks at your code read and understand what is going on.
 
+## Problem Sets
+
+ * [Lecture Part 2: Full Example](lecture_06_2_full_example.md)
+ * [Simple Example Problems](problem_set_1_try_it_out.md)
+ * [init Problems](problem_set_2_init.md)
+
+
 [Back to Syllabus](../../README.md)
