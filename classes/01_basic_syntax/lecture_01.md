@@ -149,6 +149,6 @@ There are a lot of implementation details here, but that is a solid picture to h
 
 ## Problem Sets
 
- * [Lists](problem_set_1_variables.md)
+ * [Lists](problem_set_1.md)
 
 [Back to Syllabus](../../README.md)
