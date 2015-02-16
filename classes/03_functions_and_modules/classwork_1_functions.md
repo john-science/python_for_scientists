@@ -130,6 +130,10 @@ Write functions to fill the following goals, using at least one keyword argument
 
 ### Classwork
 
+The first two numbers in the [Fibonacci Sequence](https://en.wikipedia.org/wiki/Fibonacci_number) are: 1 and 1. Every number after that is the sum of the last two elements in the sequence.
+
+Write a function `fibonacci` that returns the nth Fibonacci Number, with another function inside of it (`recursion`) that calls the `fibonacci` function twice. 
+
 ### Solutions
     
     def fibonacci(n):
@@ -145,4 +149,3 @@ Write functions to fill the following goals, using at least one keyword argument
     >>> map(fibonacci, range(10))
     [0, 1, 1, 2, 3, 5, 8, 13, 21, 34]
 
-    > Homework not Complete Yet
