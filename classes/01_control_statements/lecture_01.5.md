@@ -159,4 +159,10 @@ If you write code and there are no comments and no documentation, the code doesn
     lines.
     '''
 
+## Problem Sets
+
+ * [Basic Control Flow](problem_set_1_flow_controls.md)
+ * [Modifying Strings](problem_set_2_strings.py)
+
+
 [Back to Syllabus](../../README.md)
