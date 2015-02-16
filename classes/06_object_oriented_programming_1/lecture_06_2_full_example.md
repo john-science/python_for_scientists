@@ -192,3 +192,6 @@ Now we can reuse the SimpleFTP class in all our various work. Using the original
     >>> simpleftp()
 
 The first thing to notice is that in order to import and use the non-OOP version of the script you HAD to name a bunch of variables as in the original script ("FTP_DIR" and so forth). But why should you spend your time memorizing or looking up what names other people used for their variables? You don't have time for that.
+
+
+[Back to Lecture](lecture_06.md)
