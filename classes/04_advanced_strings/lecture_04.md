@@ -275,4 +275,9 @@ Another popular option is to read each line of the CSV file into a small diction
 This is particularly handy if the CSV data will eventually be read into any kind of dictionary. But mostly this is just another way to do things, for convenience sake. Either of these two options in the `csv` library will work fine. Neither is particularly faster or smarter.
 
 
+## Problem Sets
+
+ * [Advanced Strings](problem_set_1_strings.py)
+
+
 [Back to Syllabus](../../README.md)
