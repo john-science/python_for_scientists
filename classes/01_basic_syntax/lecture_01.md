@@ -154,6 +154,7 @@ There are a lot of implementation details here, but that is a solid picture to h
 ## Further Reading
 
  * [Google Ed - Python Strings](https://developers.google.com/edu/python/strings)
+ * [Dive Into Python - Native Datatypes](http://www.diveintopython3.net/native-datatypes.html)
 
 
 [Back to Syllabus](../../README.md)
