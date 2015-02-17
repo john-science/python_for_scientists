@@ -4,9 +4,19 @@ Scientists from all walks of life find themselves using the NetCDF file format. 
 
 ## Available Libraries
 
+ * Coming Soon
+
 ## Reading NetCDF
 
+ * Coming Soon
+
 ## Writing NetCDF
+
+ * Coming Soon
+
+## Further Reading
+
+ * Coming Soon
 
 
 [Back to Syllabus](../../README.md)
