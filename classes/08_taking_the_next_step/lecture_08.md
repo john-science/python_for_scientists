@@ -14,17 +14,29 @@ In this lecture we will introduce the methods and tools needed to write better c
 
 #### The Counter Example
 
+ * Coming Soon
+
 #### PEP8
 
+ * Coming Soon
+
 ## Comments
+
+ * Coming Soon
 
 ## Code Organization
 
 #### Functions, Methods, and Classes
 
+ * Coming Soon
+
 #### Will your code be imported?
 
+ * Coming Soon
+
 #### The Counter Example
+
+ * Coming Soon
 
 ## Code Repositories
 
