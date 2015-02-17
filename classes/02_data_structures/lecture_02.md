@@ -165,7 +165,6 @@ The picture to have in your mind, is that [sets](http://en.wikipedia.org/wiki/Se
  * [An Informal Introduction - Lists](https://docs.python.org/2/tutorial/introduction.html#lists)
  * [Python Tutorial: Sets](http://www.python-course.eu/sets_frozensets.php)
  * [Python Tutorial: Lists, Tuples, and Slicing](http://www.python-course.eu/sequential_data_types.php)
- * 
 
 
 [Back to Syllabus](../../README.md)
