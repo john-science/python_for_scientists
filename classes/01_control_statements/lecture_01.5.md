@@ -164,5 +164,9 @@ If you write code and there are no comments and no documentation, the code doesn
  * [Basic Control Flow](problem_set_1_flow_controls.md)
  * [Modifying Strings](problem_set_2_strings.py)
 
+## Further Reading
+
+ * [Python Tutorial: Conditional Statements](http://www.python-course.eu/conditional_statements.php)
+
 
 [Back to Syllabus](../../README.md)
