@@ -30,10 +30,11 @@ Learning the Python Language:
  * [Object-Oriented Programming, Part 1](classes/06_object_oriented_programming_1/lecture_06.md)
  * [Object-Oriented Programming, Part 2](classes/07_object_oriented_programming_2/lecture_07.md)
  * [Taking the Next Step](classes/08_taking_the_next_step/lecture_08.md)
+ * [Batteries Included, Part 1](classes/09_std_libs/lecture_09.md)
+ * [Batteries Included, Part 2](classes/09_std_libs/lecture_09.5.md)
 
 Python Libraries for Scientists and Engineers:
 
- * [Batteries Included](classes/09_std_libs/lecture_09.md)
  * [NumPy](classes/10_numpy/lecture_10.md)
  * [matplotlib](classes/11_matplotlib/lecture_11.md)
  * [pandas](classes/12_pandas/lecture_12.md)
