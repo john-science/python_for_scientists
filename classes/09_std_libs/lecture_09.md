@@ -1,12 +1,8 @@
-# Batteries Included
+# Batteries Included, Part 1
 
 That's the Python motto. Python comes with a whole collection of standard libraries to do various things. And several of these are extremely useful to scientists and engineers.
 
 ## datetime
-
-
-
-## math
 
 
 
@@ -27,6 +23,7 @@ That's the Python motto. Python comes with a whole collection of standard librar
 
 ## Problem Sets
 
+ * None yet, just wait.
 
 ## Further Reading
 
