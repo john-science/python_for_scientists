@@ -1,6 +1,6 @@
 # Taking the Next Step
 
-All the material in this course so far was just too define "the rules" of Python. But writing good code means knowing more than just the rules that define a language. You can teach a six-year-old the rules to chess, but that doesn't mean the world's Grand Master. A lot of practice, knowledge, and skill are needed for that. The rest of this class will be devoted to taking this next step.
+All the material in this course so far was just too define "the rules" of Python. But writing good code means more than just knowing the rules that define a language. You can teach a six-year-old the rules to chess, but that doesn't make them the world's Grand Master. A lot of knowledge, skill, and practice are needed to earn that title. The rest of this class will be devoted to taking the next step beyond basic syntax.
 
 ## Writting Better Code
 
