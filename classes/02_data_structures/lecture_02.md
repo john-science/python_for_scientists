@@ -163,6 +163,7 @@ The picture to have in your mind, is that [sets](http://en.wikipedia.org/wiki/Se
 
  * [Google Ed - lists and using them](https://developers.google.com/edu/python/lists)
  * [An Informal Introduction - Lists](https://docs.python.org/2/tutorial/introduction.html#lists)
+ * [Python Tutorial: Sets](http://www.python-course.eu/sets_frozensets.php)
 
 
 [Back to Syllabus](../../README.md)
