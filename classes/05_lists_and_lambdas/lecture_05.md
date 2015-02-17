@@ -210,4 +210,9 @@ Rewriting the day-of-week example using the `zip` function:
     {0: 'Mon', 1: 'Tue', 2: 'Wed', 3: 'Thu', 4: 'Fri', 5: 'Sat', 6: 'Sun'}
 
 
+[Problem Sets]
+
+ * [Map, Reduce, Filter](problem_set_1_map_reduce_filter.md)
+
+
 [Back to Syllabus](../../README.md)
