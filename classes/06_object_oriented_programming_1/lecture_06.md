@@ -143,5 +143,9 @@ Written like this, these methods would still run. But using the `@staticmethod` 
  * [Simple Example Problems](problem_set_1_try_it_out.md)
  * [init Problems](problem_set_2_init.md)
 
+## Further Reading
+
+ * [Python Tutorial: OOP](http://www.python-course.eu/object_oriented_programming.php)
+
 
 [Back to Syllabus](../../README.md)
