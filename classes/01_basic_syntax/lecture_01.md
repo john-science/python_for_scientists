@@ -155,6 +155,8 @@ There are a lot of implementation details here, but that is a solid picture to h
 
  * [Google Ed - Python Strings](https://developers.google.com/edu/python/strings)
  * [Dive Into Python - Native Datatypes](http://www.diveintopython3.net/native-datatypes.html)
+ * [An Informal Introduction - Numbers](https://docs.python.org/2/tutorial/introduction.html#numbers)
+ * [An Informal Introduction - Strings](https://docs.python.org/2/tutorial/introduction.html#strings)
 
 
 [Back to Syllabus](../../README.md)
