@@ -10,6 +10,11 @@
 
 ## Problem Sets
 
- * None Yet
+ * Coming Soon
+
+## Further Reading
+
+ * [Python Tutorial: Inheritance](http://www.python-course.eu/inheritance_example.php)
+
 
 [Back to Syllabus](../../README.md)
