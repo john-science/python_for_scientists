@@ -214,5 +214,9 @@ Rewriting the day-of-week example using the `zip` function:
  * [Map, Reduce, Filter](problem_set_1_map_reduce_filter.md)
  * [Comprehensions](problem_set_2_comprehensions.md)
 
+## Further Reading
+
+ * [Dictionary Comprehensions and Zip](http://www.bogotobogo.com/python/python_dictionary_comprehension_with_zip_from_list.php)
+
 
 [Back to Syllabus](../../README.md)
