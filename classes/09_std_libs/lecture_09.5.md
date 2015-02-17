@@ -2,23 +2,23 @@
 
 ## Exceptions
 
-
+ * Coming Soon
 
 ## Random
 
-
+ * Coming Soon
 
 ## Math
 
-
+ * Coming Soon
 
 ## Copy
 
-
+ * Coming Soon
 
 ## Problem Sets
 
- * None yet, just wait.
+ * Coming Soon
 
 ## Further Reading
 
