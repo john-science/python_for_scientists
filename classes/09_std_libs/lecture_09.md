@@ -4,26 +4,27 @@ That's the Python motto. Python comes with a whole collection of standard librar
 
 ## datetime
 
-
+ * Coming Soon
 
 ## os
 
-
+ * Coming Soon
 
 ## sys
 
-
+ * Coming Soon
 
 ## gzip
 
-
+ * Coming Soon
 
 ## cPickle
 
+ * Coming Soon
 
 ## Problem Sets
 
- * None yet, just wait.
+ * Coming Soon
 
 ## Further Reading
 
