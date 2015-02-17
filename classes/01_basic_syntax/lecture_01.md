@@ -151,4 +151,9 @@ There are a lot of implementation details here, but that is a solid picture to h
 
  * [Lists](problem_set_1.md)
 
+## Further Reading
+
+ * [Google Ed - Python Strings](https://developers.google.com/edu/python/strings)
+
+
 [Back to Syllabus](../../README.md)
