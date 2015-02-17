@@ -23,6 +23,7 @@
 ## Further Reading
 
  * [effbot - exceptions](http://www.effbot.org/librarybook/exceptions.htm)
+ * [Python Tutorial: copy](http://www.python-course.eu/deep_copy.php)
 
 
 [Back to Syllabus](../../README.md)
