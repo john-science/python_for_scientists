@@ -167,6 +167,8 @@ If you write code and there are no comments and no documentation, the code doesn
 ## Further Reading
 
  * [Python Tutorial: Conditional Statements](http://www.python-course.eu/conditional_statements.php)
+ * [Python Tutorial: For Loop](http://www.python-course.eu/for_loop.php)
+ * [Python Tutorial: While Loop](http://www.python-course.eu/loops.php)
 
 
 [Back to Syllabus](../../README.md)
