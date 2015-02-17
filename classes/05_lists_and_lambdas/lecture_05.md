@@ -217,6 +217,8 @@ Rewriting the day-of-week example using the `zip` function:
 ## Further Reading
 
  * [Dictionary Comprehensions and Zip](http://www.bogotobogo.com/python/python_dictionary_comprehension_with_zip_from_list.php)
+ * [Python Tutorial: Map, Reduce, Filter](http://www.python-course.eu/lambda.php)
+ * [Python Tutorial: List Comprehension](http://www.python-course.eu/list_comprehension.php)
 
 
 [Back to Syllabus](../../README.md)
