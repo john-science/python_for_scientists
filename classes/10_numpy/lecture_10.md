@@ -6,9 +6,15 @@ NumPy is not built into the Python Standard libraries, but needs to be installed
 
 ## NumPy Data Structures
 
+ * Coming Soon
+
 ## Major NumPy Topics
 
-## For More Information
+ * Coming Soon
+
+## Further Reading
+
+ * Coming Soon
 
 
 [Back to Syllabus](../../README.md)
