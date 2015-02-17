@@ -209,10 +209,10 @@ Rewriting the day-of-week example using the `zip` function:
     >>> dict(tup for tup in days)
     {0: 'Mon', 1: 'Tue', 2: 'Wed', 3: 'Thu', 4: 'Fri', 5: 'Sat', 6: 'Sun'}
 
-
-[Problem Sets]
+## Problem Sets
 
  * [Map, Reduce, Filter](problem_set_1_map_reduce_filter.md)
+ * [Comprehensions](problem_set_2_comprehensions.md)
 
 
 [Back to Syllabus](../../README.md)
