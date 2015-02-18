@@ -252,6 +252,7 @@ The take-away message here is there are several ways to write, store, and execut
 ## Further Reading
 
  * [Python Tutorial: Functions](http://www.python-course.eu/functions.php)
+ * [Special Topic: Underscores in Python](http://shahriar.svbtle.com/underscores-in-python)
 
 
 [Back to Syllabus](../../README.md)
