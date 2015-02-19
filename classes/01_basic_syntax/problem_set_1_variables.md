@@ -160,6 +160,5 @@ You can also use these indexes to grab sub-strings:
     s[:2]     # python runs the index to the beginning
     s[::-1]   # print it out backwards
 
-For more practice with strings, check out this nicely laid out page full of a ton of all the best Python string tools: [String Processing](http://www.idiotinside.com/2014/09/04/string-processing-in-python/)
 
 [Back to Lecture 1](lecture_01_variables.md)
