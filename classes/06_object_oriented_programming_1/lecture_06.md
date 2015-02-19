@@ -1,30 +1,32 @@
 # Object-Oriented Programming, Part 1
 
-Object-Oriented Programming (OOP) is programming that uses "classes". The "class" is a fundamental building block in Python. The standard libraries all use classes, as do nearly all popular Python programs.
+Object-Oriented Programming (OOP) means programming with "classes". The "class" is a fundamental building block in Python. All of Python's standard libraries use classes, as do nearly all popular Python programs.
 
 ### The `class` Keyword
 
-In Python we use the `class` keyword to create classes in the same way we use the `def` keyword to create functions. And what is a class? A class is a logical grouping of data and functions. Fun fact, when a function is part of a class, we call it a method.
+In Python we use the `class` keyword to create classes in the same way we use the `def` keyword to create functions. And what is a class? A class is a logical grouping of data and functions.
 
-What do we mean by "logical grouping"? Well, a class can contain any data or functions (methods) we want. But Rather than just throwing random things together into a "class", we try to create classes where there is a logical connection between things. Many times, classes are based on objects in the real world (like `Refinery` or `Wildfire`). Other times, classes are based on concepts in our system, like `LinePlot` or `MeteorologyDatabase`.
+Fun Fact: when a function is part of a class, we call it a method.
 
-Classes are an abstraction technique; a way of thinking about programs. When used wisely, creating a class will make your programs easier to reason about and understand. The core ideas will be separated into classes and all related data will be kept together.
+What do we mean by "logical grouping"? Well, a class can contain any data or functions (methods) we want. But Rather than just throwing random things together into a "class", we try to create classes where there is a logical connection between things. Many times, classes are based on objects in the real world (like a `Refinery` or a `Wildfire`). Other times, classes are based on concepts in our system, like `LinePlot` or `Meteorological Database`.
+
+Classes are an abstraction technique; a way of thinking about programs. When used well, creating a class will make your programs easier to reason about and understand. The core ideas will be separated into classes and all related data will be kept together.
 
 ### Classes are Blueprints
 
 A class is a blueprint of an idea. For instance, you might have a class for a `student`, but there might be many "objects" made from that `student` class. Each object would represent a `student` with different identifying information: `name`, `student_id`, `homework_grades`, `test_grades`. So, while `john` might be an "object" it is an "instance" of the class `student`.
 
-Let us look at an example.
+Enough talk, let's look at some examples:
 
     class Student(object):
         '''A Student is a person currently enrolled in this awesome course.
         Students have the following properties:
       
         Attributes:
-          name: A string representing the students name.
-          student_id: An integer given as a unique identifier for the student.
-          hw_grades: A list of 10 numbers (0 to 100) representing the student's homework grades.
-          test_grades: A list of 2 numbers (0 to 100) representing the student's test grades.
+            name: A string representing the students name.
+            student_id: An integer given as a unique identifier for the student.
+            hw_grades: A list of 10 numbers (0 to 100) representing the student's homework grades.
+            test_grades: A list of 2 numbers (0 to 100) representing the student's test grades.
         '''
     
         def __init__(self, name, sid):
@@ -33,11 +35,11 @@ Let us look at an example.
             self.student_id = sid
             self.hw_grades = [0.0] * 10
             self.test_grades = [0.0, 0.0]
-        
+
         def set_hw_grade(self, grade, week):
             '''Set the grade for a specific homework'''
             self.hw_grades[week] = grade
-        
+
         def set_test_grade(self, grade, exam):
             '''Set the grade for a specific test'''
             self.test_grades[exam] = grade
@@ -51,15 +53,15 @@ Let us look at an example.
             
             return final_grade
 
-The first line `class Student(object)` does *not* create a new class. All the code above does is create the *blueprint* for a student object. To actually create a `Student` object, we need to use the `__init__` method above, giving it two values (ignoring `self`, which we will get to next).
+The first line `class Student(object)` does *not* create a new class. All the code above does is create the *blueprint* for a student object. To actually create a `Student` object, we need to use the `__init__` method above, giving it two values (ignoring `self`, which we will get to).
 
 To create an object, we would do something like: `emmy = Student('Emmy Noether', 837195783)`. All this says is that we want to create an "instance" of the `Student` class, where the student has the name "Emmy Noether" and she has the student id "837195783".
 
-The `emmy` object is a realized version of the `Student` class. It takes the generic, abstract notion of a "Student" and fills in the specifics. There is still only one `Student` class, even if we created dozens of different instances.
+The `emmy` object is a realized version of the `Student` class. It takes the generic, abstract notion of a "Student" and fills in the specifics. There is still only one `Student` class, even if we created dozens of different students.
 
 ### `self`
 
-Okay, what is with that `self` parameter spread throughout the `Student` class? What is it? It is a reference to the "instance" of that object. For example, let's say we had all these "instances" of the `Student` class:
+Okay, what is with that `self` parameter spread throughout the `Student` class? It is a reference to the "instance" of that object. For example, let's say we had all these "instances" of the `Student` class:
 
     emmy = Student("Emmy Noether", 837195783)
     al = Student("Albert Einstein", 986534568)
@@ -69,13 +71,13 @@ Okay, what is with that `self` parameter spread throughout the `Student` class? 
 
 Notice I also have the variable `name` in the code for some reason. Now, what if I want to print Emmy's full name? Well, I would do `emmy.name`. And the `self` variable inside the `Student` class allows me to reference the `name` attribute of the `emmy` instance, instead of returning the `name` of the `al` instance, or the `name = "Marie"` global variable I defined later.
 
-In short `self` is the way to tell Python you want to address something about the specific instance of the class involved.
+The `self` is the way to tell Python you want to address something about the specific instance of the class involved.
 
 ### `__init__`
 
 Okay, what is the deal with that `__init__` in `Student`? When we create a new object by doing something like `emmy = Student("Emmy Noether", 837195783)`, the `__init__` is called, and the code inside is executed to create the initial form of the (mutable) object.
 
-In this case, the `__init__` method is called, and four variables are set: `self.name`, `self.student_id`, `self.hw_grades`, and `self.test_grades`. Two variables are set to the values `"Emmy Noether"` and `837195783` and the other two are given default values. This is the purpose of the `__init__` method; to give the attributes of the object starting values.
+In this case, the `__init__` method is called and four variables are set: `self.name`, `self.student_id`, `self.hw_grades`, and `self.test_grades`. Two variables are set to the values `"Emmy Noether"` and `837195783` and the other two are given default values. This is the purpose of the `__init__` method; to give the attributes of the object starting values.
 
 ### Instance Attributes
 
@@ -89,12 +91,12 @@ Classes (and their objects) have more than just attributes. They also have metho
 
     class Student(object):
     
-        # rest of the class defined as normal
+        # rest of the class defined as before
         
         @staticmethod
         def fail_student():
             '''Hilarious print statement'''
-            print "You Fail!"
+            print("You Fail!")
         
         @staticmethod
         def letter_grade(percent_grade):
@@ -110,7 +112,7 @@ Classes (and their objects) have more than just attributes. They also have metho
             else:
                 return 'F'
 
-Notice that these two new methods defined inside `Student` don't have the `self` included in their argument lists. That's because they don't make use of any instance attributes, like `self.name`. Also notice, that to tell Python about this fact, we have included the `@staticmethod` [decorator](http://thecodeship.com/patterns/guide-to-python-function-decorators/). This just stops Python from throwing an error when it doesn't see that `self` in the method's argument list.
+Notice that these two new methods defined inside `Student` don't have the `self` included in their argument lists. That's because they don't make use of any instance attributes (like `self.name`). Also notice that to tell Python about this fact, we have included the `@staticmethod` [decorator](http://thecodeship.com/patterns/guide-to-python-function-decorators/). This just stops Python from throwing an error when it doesn't see that `self` in the method's argument list.
 
 So why use static methods? Why bother with the static method decorator?  Well, it's true, you could have just written these methods without worrying about that:
 
@@ -120,7 +122,7 @@ So why use static methods? Why bother with the static method decorator?  Well, i
 
         def fail_student(self):
             '''Hilarious print statement'''
-            print "You Fail!"
+            print("You Fail!")
 
         def letter_grade(self, percent_grade):
             '''return a letter grade from a percentage grade'''
@@ -135,7 +137,7 @@ So why use static methods? Why bother with the static method decorator?  Well, i
             else:
                 return 'F'
 
-Written like this, these methods would still run. But using the `@staticmethod` decorator has some performance improvements. It will make your code faster to use this when you can. Also, when you look at a method with the `@staticmethod` decorator on top, you instantly know a lot about it. It will help the next person who looks at your code read and understand what is going on.
+Written like this, these methods would still run. But using the `@staticmethod` decorator has some performance improvements. Also, when you look at a method with the `@staticmethod` decorator on top, you instantly know a lot about it. It will help the next person who looks at your code read and understand what is going on.
 
 ## Problem Sets
 
@@ -146,6 +148,7 @@ Written like this, these methods would still run. But using the `@staticmethod` 
 ## Further Reading
 
  * [Python Tutorial: OOP](http://www.python-course.eu/object_oriented_programming.php)
+ * [Decorators](http://thecodeship.com/patterns/guide-to-python-function-decorators/)
 
 
 [Back to Syllabus](../../README.md)
