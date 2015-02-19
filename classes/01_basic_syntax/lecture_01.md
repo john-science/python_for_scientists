@@ -157,6 +157,7 @@ There are a lot of implementation details here, but that is a solid picture to h
  * [Dive Into Python - Native Datatypes](http://www.diveintopython3.net/native-datatypes.html)
  * [An Informal Introduction - Numbers](https://docs.python.org/2/tutorial/introduction.html#numbers)
  * [An Informal Introduction - Strings](https://docs.python.org/2/tutorial/introduction.html#strings)
+ * [String Processing](http://www.idiotinside.com/2014/09/04/string-processing-in-python/)
 
 
 [Back to Syllabus](../../README.md)
