@@ -40,17 +40,17 @@ Use a single-line dictionary comprehension to create a dictionary of the followi
 
 ### Solutions
 
-# 1. Using `zip`, where the keys are `keys = ["a", "b", "c"]`
-#    and the values are `values = [1, 2, 3]`.
-dict(zip(keys, values))
-
-# 2. A dictionary where the keys are 1 through 10
-#    and the values are the cube of the keys.
-{i: i**3 for i in xrange(1, 11)}
-
-# 3. A dictionary where the keys are 1 through 10
-#    and the values are True if the key is odd and False if even.
-{a: False if a % 2 == 0 else True for a in xrange(1, 11)}
+    # 1. Using `zip`, where the keys are `keys = ["a", "b", "c"]`
+    #    and the values are `values = [1, 2, 3]`.
+    dict(zip(keys, values))
+    
+    # 2. A dictionary where the keys are 1 through 10
+    #    and the values are the cube of the keys.
+    {i: i**3 for i in xrange(1, 11)}
+    
+    # 3. A dictionary where the keys are 1 through 10
+    #    and the values are True if the key is odd and False if even.
+    {a: False if a % 2 == 0 else True for a in xrange(1, 11)}
 
 
 [Back to Lecture](lecture_05.md)
