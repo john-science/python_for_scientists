@@ -161,4 +161,4 @@ You can also use these indexes to grab sub-strings:
     s[::-1]   # print it out backwards
 
 
-[Back to Lecture 1](lecture_01s.md)
+[Back to Lecture 1](lecture_01.md)
