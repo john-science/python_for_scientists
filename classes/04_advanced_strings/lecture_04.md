@@ -15,45 +15,48 @@ Python has a nice variety of tools to do commonly-desired things to strings.
 
 #### `split` splits a string using another string:
 
-    >>> "funKY tOwn".split()
-    ['funKY', 'tOwn']
-    >>> "funKY tOwn".capitalize().split()
-    ['Funky', 'town']
-    >>> [x.capitalize() for x in "funKY tOwn".split()]
-    ['Funky', 'Town']
     >>> "I want to take you to, funKY tOwn".split("u")
     ['I want to take yo', ' to, f', 'nKY tOwn']
     >>> "I want to take you to, funKY tOwn".split("you")
     ['I want to take ', ' to, funKY tOwn']
 
+### By default, `split` uses any white space (`' '`, `'/t'`,  or `'\n'`):
+
+    >>> "funKY tOwn".split()
+    ['funKY', 'tOwn']
+    >>> "funKY tOwn".capitalize().split()
+    ['Funky', 'town']
+
 Notice that by default, `split` uses spaces to split the string.
 
-#### `strip`, `join`, `replace` are also super usefule:
+#### `strip`, `join`, `replace` are also super useful:
 
-    >>> csv_string = 'Dog,Cat,Spam,Defenestrate,1, 3.1415 \n\t'
+    >>> csv_string = '  Dog,Cat,Spam, Defenestrate,1, 3.1415 \n\t'
     >>> csv_string.strip()
-    'Dog,Cat,Spam,Defenestrate,1, 3.1415'
-    >>> clean_list = [x.strip() for x in csv_string.split(",")]
-    >>> clean_list
-    ['Dog', 'Cat', 'Spam', 'Defenestrate', '1', '3.1415']
+    'Dog,Cat,Spam, Defenestrate,1, 3.1415'
+    >>> csv_string.rstrip()
+    '  Dog,Cat,Spam, Defenestrate,1, 3.1415'
+    >>> csv_string.lstrip()
+    'Dog,Cat,Spam, Defenestrate,1, 3.1415 \n\t'
     
+    Notice `rstrip()` just strips the right side of the string, `lstrip()` just strips the left side, and `strip()` strips both.
+
 #### `join` allows you to combine a list of strings into one:
 
-    >>> print ",".join(clean_list)
-    'Dog,Cat,Spam,Defenestrate,1,3.1415'
-    >>> print "\t".join(clean_list)
-    Dog! Cat! Spam!
-    Defenestrate!1! 3.1415
+    >>> zen = ['Simple', 'is', 'better', 'than', 'complex.']
+    >>> ' '.join(zen)
+    'Simple is better than complex.'
+    >>> under = ['python', 'naming', 'convension']
+    >>> '_'.join(under)
+    'python_naming_convension'
 
 #### `replace` strings in strings with other strings
 
     >>> csv_string = 'Dog,Cat,Spam,Defenestrate,1, 3.1415 \n\t'
-    >>> alt_csv = csv_string.strip().replace(' ', '')
-    >>> alt_csv
+    >>> csv_string.strip().replace(' ', '')
     'Dog,Cat,Spam,Defenestrate,1,3.1415'
-    >>> print csv_string.strip().replace(' ', '').replace(',', '\t')
-    Dog! Cat! Spam!
-    Defenestrate!1! 3.1415
+    >>> csv_string.strip().replace(' ', '').replace(',', '! ')
+    'Dog! Cat! Spam! Defenestrate! 1! 3.1415'
 
 #### `find` searches for a substring, and returns the index of the first found:
 
