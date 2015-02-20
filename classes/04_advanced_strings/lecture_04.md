@@ -58,18 +58,34 @@ Notice that by default, `split` uses spaces to split the string.
     >>> csv_string.strip().replace(' ', '').replace(',', '! ')
     'Dog! Cat! Spam! Defenestrate! 1! 3.1415'
 
-#### `find` searches for a substring, and returns the index of the first found:
+#### `find` searches for a substring
+
+If the string exists, it returns the index of the first time the string is found:
 
     >>> s = 'My Funny Valentine'
+    >>> s.find("M")
+    0
     >>> s.find("y")
     1
-    >>> s.find("y",2)
-    7
-    >>> s[s.find("Funny"):]
-    'Funny Valentine'
+
+But you can also ask it to find the second or third location of the substring:
+
+    >>> s.find('n', 2)
+    5
+    >>> s.find('n', 3)
+    5
+    >>> s.find('n', 4)
+
+If the substring is not found, it returns a `-1`:
+
     >>> s.find("z")
     -1
-    >>> ss = [s,"Argentine","American","Quarentine"]
+    >>> s.find("Halloween")
+    -1
+    
+See if you understand this short example:
+
+    >>> ss = [s, "Argentine","American","Quarentine"]
     >>> for thestring in ss:
             if thestring.find("tine") != -1:
                 print "'" + str(thestring) + "' contains 'tine'."
