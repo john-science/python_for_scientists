@@ -22,6 +22,10 @@ That's the Python motto. Python comes with a whole collection of standard librar
 
  * Coming Soon
 
+## itertools
+
+ * Coming Soon
+
 ## Problem Sets
 
  * Coming Soon
