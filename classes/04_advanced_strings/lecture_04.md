@@ -4,7 +4,7 @@
 
 Python has a nice variety of tools to do commonly-desired things to strings.
 
-#### `lower`, `upper`, `capitalize` do what you'd think:
+### `lower`, `upper`, `capitalize` do what you'd think
 
     >>> "funKY tOwn".capitalize()
     'Funky town'
@@ -13,14 +13,14 @@ Python has a nice variety of tools to do commonly-desired things to strings.
     >>> "funky tOwn".upper()
     'FUNKY TOWN'
 
-#### `split` splits a string using another string:
+### `split` splits a string using another string
 
     >>> "I want to take you to, funKY tOwn".split("u")
     ['I want to take yo', ' to, f', 'nKY tOwn']
     >>> "I want to take you to, funKY tOwn".split("you")
     ['I want to take ', ' to, funKY tOwn']
 
-### By default, `split` uses any white space (`' '`, `'/t'`,  or `'\n'`):
+### By default, `split` uses any white space (`' '`, `'/t'`,  or `'\n'`)
 
     >>> "funKY tOwn".split()
     ['funKY', 'tOwn']
@@ -29,7 +29,7 @@ Python has a nice variety of tools to do commonly-desired things to strings.
 
 Notice that by default, `split` uses spaces to split the string.
 
-#### `strip`, `join`, `replace` are also super useful:
+### `strip`, `join`, `replace` are also super useful:
 
     >>> csv_string = '  Dog,Cat,Spam, Defenestrate,1, 3.1415 \n\t'
     >>> csv_string.strip()
@@ -41,7 +41,7 @@ Notice that by default, `split` uses spaces to split the string.
     
 Notice `rstrip()` just strips the right side of the string, `lstrip()` just strips the left side, and `strip()` strips both.
 
-#### `join` allows you to combine a list of strings into one:
+### `join` allows you to combine a list of strings into one:
 
     >>> zen = ['Simple', 'is', 'better', 'than', 'complex.']
     >>> ' '.join(zen)
@@ -50,7 +50,7 @@ Notice `rstrip()` just strips the right side of the string, `lstrip()` just stri
     >>> '_'.join(under)
     'python_naming_convension'
 
-#### `replace` strings in strings with other strings
+### `replace` strings in strings with other strings
 
     >>> csv_string = 'Dog,Cat,Spam,Defenestrate,1, 3.1415 \n\t'
     >>> csv_string.strip().replace(' ', '')
@@ -58,7 +58,7 @@ Notice `rstrip()` just strips the right side of the string, `lstrip()` just stri
     >>> csv_string.strip().replace(' ', '').replace(',', '! ')
     'Dog! Cat! Spam! Defenestrate! 1! 3.1415'
 
-#### `find` searches for a substring
+### `find` searches for a substring
 
 If the string exists, it returns the index of the first time the string is found:
 
@@ -93,22 +93,54 @@ See if you understand this short example:
     'Argentine' contains 'tine'.
     'Quarentine' contains 'tine'.
 
-#### `str` casts a variable to a string format, where available:
+### `str` creates a string from another variable type
 
-    >>> str(3)
+Here are some easy examples:
+
+    >>> str(3)          # convert an integer to a string
     '3'
-    >>> str(3.14)
+    >>> str(3.14)       # convert a float to a string
     '3.14'
-    >>> str(True)
+    >>> str(True)       # convert a boolean to a string
     'True'
-    >>> str(type(3.14))
-    "<type 'float'>"
-    >>> str(True and False)
-    'False'
-    >>> str(1 + 2 + 3 + 4 + 5.0)
-    '15.0'
+    >>> str([1, 2, 3])  # convert a list to a string
+    '[1, 2, 3]'
 
-Not everything can be converted using `str()`, only classes which have a `__str__` method. (We'll see more about classes later.)
+## Type Conversions
+
+This is a quick aside. Python has several methods built-in to do type coversions, just like we did with `str()` above. There are built-in type converters for each primitive type:
+
+ * str
+ * int
+ * float
+ * bool
+
+And they all work much like you would expect:
+
+    >>> int(3.0)
+    3
+    >>> int(3.1415926535897932384626)
+    3
+    >>> float(3)
+    3.0
+    >>> bool(0)
+    False
+    >>> bool(1)
+    True
+    >>> bool(2.0)
+    True
+
+Notice that here Python equates `False` with `0` and `True` with `1` (or anything else that's not zero).
+
+    >>> int(False)
+    0
+    >>> int(True)
+    1
+    >>> float(False)
+    0.0
+    >>> float(True)
+    1.0
+
 
 ## Reading and Writing Text Files
 
