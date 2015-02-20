@@ -39,7 +39,7 @@ Notice that by default, `split` uses spaces to split the string.
     >>> csv_string.lstrip()
     'Dog,Cat,Spam, Defenestrate,1, 3.1415 \n\t'
     
-    Notice `rstrip()` just strips the right side of the string, `lstrip()` just strips the left side, and `strip()` strips both.
+Notice `rstrip()` just strips the right side of the string, `lstrip()` just strips the left side, and `strip()` strips both.
 
 #### `join` allows you to combine a list of strings into one:
 
