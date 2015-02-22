@@ -2,28 +2,27 @@
 
 ## Lambdas
 
-The `lambda` keywork just creates unnamed function. Here is an example a typical function `check_is_even`, and a lambda statement with the same meaning:
+The `lambda` keywork just creates unnamed function. Here we create a simple function that tests if a number is even, and a lambda statement that does the same thing:
 
     def check_is_even(n):
         return n % 2 == 0
     
     lambda n: n % 2 == 0
 
-But these `anonymous functions` are often really handy. You can pass them around like variables (Python 2.2 and newer).
+These [anonymous functions](https://en.wikipedia.org/wiki/Anonymous_function) can be really handy. You can pass them around like variables (Python 2.2 and newer).
 
-This piece of code shows the difference between a normal function definition (`f`) and a lambda function (`g`):
+Here is another compare-and-contrast example between a regular function (`f`) and a lambda function (`g`):
 
     >>> def f (x): return x**2
     ... 
     >>> print f(8)
     64
-    >>> 
     >>> g = lambda x: x**2
     >>> 
     >>> print g(8)
     64
 
-As you can see, `f()` and `g()` do exactly the same and can be used in the same ways. Note that the lambda definition does not include a `return` statement -- it always contains an expression which is returned. Also note that you can put a lambda definition anywhere a function is expected, and you don't have to assign it to a variable at all. 
+As you can see, `f()` and `g()` do exactly the same thing and can be used in similar ways. Note that the lambda definition does not include a `return` statement -- it always contains a single expression which is then returned. Also note that you can put a lambda definition anywhere a function is expected, and you don't have to assign it to a variable at all. 
 
 Let us try to print the even numbers in the Fibonacci Sequence (the usual way):
 
@@ -47,7 +46,13 @@ Now let's do the same thing, using a lambda funciton:
     
     print_some_numbers(fibonacci, is_even)
 
-Well, those approaches look pretty similar. But now let's say we want to print the odd numbers in the Fibonacci Sequence. We would have to write a whole new method `print_odd_numbers`. And if we wanted to print numbers divisible by 3, the same thing. But with the `print_some_numbers` method, all we have to do is define one new (short) lambda predicate function. This keeps us having to repeat ourselves. As you can imagine, if `print_some_numbers` was very long, you could save yourself a lot of typing and repitition.
+Well, those approaches look pretty similar. But now let's say we want to print the odd numbers in the Fibonacci Sequence. We would have to write a whole new method `print_odd_numbers`. And if we wanted to print numbers divisible by 3, again we'd need to write a whole new function. But with the `print_some_numbers` method, all we have to do is define one new (short) lambda predicate function. This keeps us having to repeat ourselves. As you can imagine, if `print_some_numbers` was very long, you could save yourself a lot of typing and repitition.
+
+    is_odd = lambda n: n % 2 == 1
+    divisible_by_three = lambda n: n % 3 == 0
+    
+    print_some_numbers(fibonacci, is_odd)
+    print_some_numbers(fibonacci, divisible_by_three)
 
 This is a major principle in Python:
 
