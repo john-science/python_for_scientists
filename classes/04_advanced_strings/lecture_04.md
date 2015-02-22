@@ -144,7 +144,7 @@ Notice that here Python equates `False` with `0` and `True` with `1` (or anythin
 
 ## Reading and Writing Text Files
 
-Python has one of the most convenient interfaces for reading and writing text files of any language. Everything can be done using the `open` function.
+Python has a really great interface for reading and writing text files. Everything can be done using the `open` function.
 
 To read an existing text file, we might do:
 
@@ -154,11 +154,11 @@ To write text to a new file we might do:
 
     f = open('ray_bradbury.txt', 'w')
 
-And if the text file already exists, and we want to `append` more lines to the end of the file (as you might with a log file), we might do:
+And if the text file already exists, and we want to `append` more lines to the end it (like you might do in a log file):
 
     f = open('ray_bradbury.txt', 'a')
 
-Now, let's see an example of how we would actualy write text to a new text file:
+Now, let's try a simple example of writing to a new file:
 
     >>> soft_rains = '''"There will come soft rains and the smell of the ground,
     ... And swallows circling with their shimmering sound;
@@ -180,7 +180,7 @@ Now, let's see an example of how we would actualy write text to a new text file:
     
 It is very important that we remember to use the `close()` statement at the end. Python does a pretty good job of handling these details if you forget. But there is no subsitute for doing it right.
 
-Now, let's say we want to add one extra line to this file:
+Now, let's say we want to add one extra line to the end of the file:
 
     >>> author_line = '             - Ray Bradbury'
     >>> 
@@ -188,7 +188,7 @@ Now, let's say we want to add one extra line to this file:
     >>> fout.write(author_line)
     >>> fout.close()
 
-But darn, we just erased the original contents of the file. Python thought we wanted a fresh file, so it erased the old one.  That was not what we wanted. Instead, we should have used the `a` flag to append the extra line:
+Darn, we just erased the original contents of the file. Python thought we wanted a fresh file, so it erased the old one. Instead, we should have used the `a` flag to append the extra line:
 
     >>> author_line = '             - Ray Bradbury'
     >>> 
@@ -212,7 +212,7 @@ Another option is to just read the entire file into one big, long string:
     >>> lines
     '"There will come soft rains and the smell of the ground,\nAnd swallows circling with their shimmering sound;\nAnd frogs in the pools singing at night,\nAnd wild plum trees in tremulous white;\nRobins will wear their feathery fire,\nWhistling their whims on a low fence-wire;\nAnd not one will know of the war, not one\nWill care at last when it is done.\nNot one would mind, neither bird nor tree,\nif mankind perished utterly;\nAnd Spring herself, when she woke at dawn\nWould scarcely know that we were gone."\n             - Ray Bradbury'
 
-If the file is of the old fixed-format Fortran type, you might just want to read a certain number of characters at a time. Which you can also do with `readlines`:
+If it's an old fixed-format text file (like Fortran prefers), you might just want to read a certain number of characters at a time. Which you can do with `read`:
 
     >>> fin = open('ray_bradbury.txt', 'r')
     >>> fin.read(27)
