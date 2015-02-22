@@ -2,7 +2,7 @@
 
 ## Lambdas
 
-The `lambda` keywork just creates unnamed function:
+The `lambda` keywork just creates unnamed function. Here is an example a typical function `check_is_even`, and a lambda statement with the same meaning:
 
     def check_is_even(n):
         return n % 2 == 0
