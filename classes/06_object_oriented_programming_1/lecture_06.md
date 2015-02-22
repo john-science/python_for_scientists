@@ -1,16 +1,16 @@
 # Object-Oriented Programming, Part 1
 
-Object-Oriented Programming (OOP) means programming with "classes". The "class" is a fundamental building block in Python. All of Python's standard libraries use classes, as do nearly all popular Python programs.
+[Object-Oriented Programming](https://en.wikipedia.org/wiki/Object-oriented_programming) (OOP) means programming with [classes](https://en.wikipedia.org/wiki/Class_%28computer_programming%29). The "class" is a fundamental building block in Python. All of Python's standard libraries use classes, as do nearly all popular Python programs.
 
 ### The `class` Keyword
 
-In Python we use the `class` keyword to create classes in the same way we use the `def` keyword to create functions. And what is a class? A class is a logical grouping of data and functions.
+In Python we use the `class` keyword to create classes in a similar way we use the `def` keyword to create functions. "And what is a class?" you ask. A class is a logical grouping of data and functions.
 
-Fun Fact: when a function is part of a class, we call it a method.
+**Fun Fact**: when a "function" is part of a class, we call it a "method".
 
-What do we mean by "logical grouping"? Well, a class can contain any data or functions (methods) we want. But Rather than just throwing random things together into a "class", we try to create classes where there is a logical connection between things. Many times, classes are based on objects in the real world (like a `Refinery` or a `Wildfire`). Other times, classes are based on concepts in our system, like `LinePlot` or `Meteorological Database`.
+What do we mean by "logical grouping"? Well, a class can contain any data or functions (methods) we want. But rather than just throwing random things together into a "class", we try to create classes where there is a logical connection between things. For instance, classes are often based on physical things (like students, beers, refineries, or wildfires). Other times, classes are based more abstract concepts, like line plots or meteorological databases.
 
-Classes are an abstraction technique; a way of thinking about programs. When used well, creating a class will make your programs easier to reason about and understand. The core ideas will be separated into classes and all related data will be kept together.
+Classes are an abstraction technique. They help us organize groups of things that are logically connected. In this way the help us organize and reason about large amounts of code. If all the core ideas in a program are separated into classes, we can think about one class at a time and how it interacts with another class. This saves us from having to think about all the details our code at the same time.
 
 ### Classes are Blueprints
 
@@ -23,7 +23,7 @@ Enough talk, let's look at some examples:
         Students have the following properties:
       
         Attributes:
-            name: A string representing the students name.
+            name: A string representing the student's name.
             student_id: An integer given as a unique identifier for the student.
             hw_grades: A list of 10 numbers (0 to 100) representing the student's homework grades.
             test_grades: A list of 2 numbers (0 to 100) representing the student's test grades.
@@ -55,23 +55,28 @@ Enough talk, let's look at some examples:
 
 The first line `class Student(object)` does *not* create a new class. All the code above does is create the *blueprint* for a student object. To actually create a `Student` object, we need to use the `__init__` method above, giving it two values (ignoring `self`, which we will get to).
 
-To create an object, we would do something like: `emmy = Student('Emmy Noether', 837195783)`. All this says is that we want to create an "instance" of the `Student` class, where the student has the name "Emmy Noether" and she has the student id "837195783".
+To create an object, we would do something like: `emmy = Student('Emmy Noether', 837195783)`. All this says is that we want to create an "instance" of the `Student` class, where the student has the name `Emmy Noether` and she has the student id `837195783`.
 
 The `emmy` object is a realized version of the `Student` class. It takes the generic, abstract notion of a "Student" and fills in the specifics. There is still only one `Student` class, even if we created dozens of different students.
 
 ### `self`
 
-Okay, what is with that `self` parameter spread throughout the `Student` class? It is a reference to the "instance" of that object. For example, let's say we had all these "instances" of the `Student` class:
+Okay, what is with that `self` parameter used throughout the `Student` class? It is a reference to the "instance" of that object. For example, let's say we had all these "instances" of the `Student` class:
 
     emmy = Student("Emmy Noether", 837195783)
     al = Student("Albert Einstein", 986534568)
     issac = Student("Issac Newton", 191739171)
-    
     name = "Marie"
 
-Notice I also have the variable `name` in the code for some reason. Now, what if I want to print Emmy's full name? Well, I would do `emmy.name`. And the `self` variable inside the `Student` class allows me to reference the `name` attribute of the `emmy` instance, instead of returning the `name` of the `al` instance, or the `name = "Marie"` global variable I defined later.
+To help clear up why we use `self`, I have put that string variable `name = "Marie"` alongside the three `Student` objects. How would you retrieve the value of `name`? Easy, you would do something like:
 
-The `self` is the way to tell Python you want to address something about the specific instance of the class involved.
+    print(name)
+
+You've done this before. But let's say we want to retrieve the value of `name` inside the `al` object. Well, we would do:
+
+    print(al.name)
+
+When we do that, we make clear that we want the value of the `name` variable stored inside the `al` object; not the `emmy` object, and not the global `name = "Marie"`. Well, inside the class itself we also need a way to show we are talking about `al.name = "Albert Einstein"` and not any other `name` variable. To do this, we identify all values associated with the current instance of the class using the `self` keyword.
 
 ### `__init__`
 
