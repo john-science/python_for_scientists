@@ -60,19 +60,19 @@ This is a major principle in Python:
 
 ## Map, Reduce, Filter
 
-In theory, scientists and engineers might want to do almost anything with a long list of data. In practice, there are only a few general things we do with lists: apply a function to each member of a list, sum or reduce a whole list to one number, or select just some elements from a list. Python has some handy tools built right in to do each of these.
+In theory, scientists and engineers might want to do almost anything with a long list of data. In practice, most of what we do can be divided into a few general categories: apply a function to each member of a list, sum or reduce a whole list to one number, or select some elements from a list. Python has three handy tools built in to speed those processes up: `map`, `reduce`, and `filter`.
 
 ### Map
 
-Let's say we want to take a list of numbers and create another list, by applying some function to each member of the list. That's a pretty general goal, and something you might want to do a lot:
+Let's say we want to take a list of numbers and create another list, by applying some function to each member of the original list. That's a pretty generic goal, and can be accomplished using `map` along with a `lambda` function:
 
     >>> map(lambda n: n * n, range(5))
     [0, 1, 4, 9, 16]
 
 All we did there was apply a squaring function (a `lambda` function) to each element of a list from zero to four. Let's try a more realistic example. Let's say we want to do a unit conversion on a long list of values:
 
-    >>> temps_fahrenheit = [0.0, 32.0, 72.0, 98.6, 212.0]
-    >>> f2c = lambda t: (5.0 / 9.0 ) * (t - 32.0)
+    >>> temps_fahrenheit = [0.0, 32.0, 72.0, 98.6, 212.0]  # pretend this is much longer
+    >>> f2c = lambda t: (5.0 / 9.0 ) * (t - 32.0)          # Fahrenheit to Celcius
     >>> temps_celcius = map(f2c, temps_fahrenheit)
     >>> temps_celcius
     [-17.777777777777779, 0.0, 22.222222222222221, 37.0, 100.0]
@@ -103,16 +103,16 @@ All of the above examples create `lambda` expresssions that only take one variab
 
 ### Filter
 
-You will want to use a `filter` whenever you need to take a subset of a long list of data points. As a simple example, let's find all the even numbers under 5:
+You will want to use a `filter` whenever you need to take a subset of a long list of data points. As a simple example, let's find all the even numbers under 21:
 
-    >>> filter(lambda n: n % 2 == 0, range(5))
-    [0, 2, 4]
+    >>> filter(lambda n: n % 2 == 0, range(21))
+    [0, 2, 4, 6, 8, 10, 12, 14, 16, 18, 20]
 
 Of course, we could re-write this defining the predicate separately:
 
     >>> is_even = lambda n: n % 2 == 0
-    >>> filter(is_even, range(5))
-    [0, 2, 4]
+    >>> filter(is_even, range(21))
+    [0, 2, 4, 6, 8, 10, 12, 14, 16, 18, 20]
 
 We could even make our own function, that filters the positive integers up to some value:
 
@@ -120,8 +120,8 @@ We could even make our own function, that filters the positive integers up to so
     ...     return filter(predicate, range(max))
     ... 
     >>> 
-    >>> filter_integers(is_even, 5)
-    [0, 2, 4]
+    >>> filter_integers(is_even, 21)
+    [0, 2, 4, 6, 8, 10, 12, 14, 16, 18, 20]
 
 This may seem like more work, but now we have a lot of flexibility to filter numbers:
 
@@ -133,25 +133,21 @@ This may seem like more work, but now we have a lot of flexibility to filter num
     >>> filter_integers(less_than_10, 999999)
     [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
 
-These examples may seem overly simple, but the important idea is that code that is designed to smartly pass around lambda expressions can be shorter and more flexible.
+These examples may seem overly simple, but the important idea is that code that is designed to smartly pass around lambda expressions can be optimally shorter and flexible.
 
 ### Reduce
 
-Reduce is somewhat special, it takes a list and creates a single element. For instance, if we wanted to sum the integers below 5:
+Reduce is special, in that it takes a list and creates a single element. For instance, if we wanted to sum the integers below 1337:
 
-    >>> reduce(lambda a,d: a + d, range(5), 0)
-    10
+    >>> reduce(lambda a,b: a + b, range(1337), 0)
+    893116
 
-Remembering what the `range` function does, the line above could also be written:
+We know that the lambda expression above takes two variables and adds them.  But what two elements are being added? Reduce takes a list and a single value, in this case `range(1337)` and `0`. Each element in `range(1337)` is added to the running total that starts with a value of `0`. We could use a different starting value:
 
-    reduce(lambda a,d: a + d, [0, 1, 2, 3, 4], 0)
+    >>> reduce(lambda a,d: a + d, range(1337), 2)
+    893118
 
-We know that the lambda expression above takes two variables and adds them.  But what two elements are being added? Reduce takes a list and a single value, in this case `range(5)` and `0`. Each element in `range(5)` is added to the running total that starts with a value of `0`. We could use a different starting value:
-
-    >>> reduce(lambda a,d: a + d, range(5), 2)
-    12
-
-Of course, `map`, `reduce`, and `filter` work with more than just numbers:
+Of course, `map`, `filter`, and `reduce` work with more than just numbers:
 
     >>> words = ['Time', 'is', 'an', 'illusion.', 'Lunchtime', 'doubly', 'so.']
     >>> make_sentence = lambda a,b: a + ' ' + b
@@ -160,7 +156,7 @@ Of course, `map`, `reduce`, and `filter` work with more than just numbers:
 
 ## List Comprehensions
 
-If want to create a list from another list, there is another option than using `map`. You can use a `list comprenhension`. In this example, we take a list of integers and create another list of their squares:
+If want to create a list from another list, there is another option than `map`. You can use a [list comprenhension](https://en.wikipedia.org/wiki/List_comprehension). In this example, we take a list of integers and create another list of their squares:
 
     >>> [i*i for i in range(5)]
     [0, 1, 4, 9, 16]
@@ -169,35 +165,40 @@ By adding an `if` into the `list comprenhension`, we can create a `filter` state
 
     >>> string = "The answer is... 42."
     >>> numbers = [x for x in string if x.isdigit()]
-    >>> print numbers
+    >>> print(numbers)
     >>> ['4', '2']
 
-We can even make the predicate (`if` statement) more complex. Here we fine all numbers: above 30, less than 100, and evenly divisible by 42:
+We can even make the predicate (`if` statement) more complex. Here we find all numbers: above 30, less than 100, and evenly divisible by 21:
 
     >>> [i for i in xrange(100) if i > 30 and i % 21 == 0]
     [42, 63, 84]
 
 ## Dictionary Comprehensions
 
-Lastly, in Python 2.7 and newer there are even dictionary comprehensions:
+Lastly, in Python 2.7 and newer there are even dictionary comprehensions. In this example we create a dictionary where the key is a letter and the value is the number of times that letter appears in the given string:
 
-    >>> word = 'droog'
+    >>> word = 'droog'  # a short example
     >>> dict((item, word.count(item)) for item in set(word))
     {'o': 2, 'r': 1, 'd': 1, 'g': 1}
+    
+    >>> # a longer example
+    >>> sentence = 'The quick brown fox jumps over the lazy dog'
+    >>> dict((item, sentence.count(item)) for item in set(sentence))
+    {' ': 8, 'T': 1, 'a': 1, 'c': 1, 'b': 1, 'e': 3, 'd': 1, 'g': 1, 'f': 1, 'i': 1, 'h': 2, 'k': 1, 'j': 1, 'm': 1, 'l': 1, 'o': 4, 'n': 1, 'q': 1, 'p': 1, 's': 1, 'r': 2, 'u': 2, 't': 1, 'w': 1, 'v': 1, 'y': 1, 'x': 1, 'z': 1}
 
-This is a really easy tool to use:
+This is a really easy tool to use. Let's create a dictionary where the keys are words in a list and the values are the length of those words:
 
     >>> sentence = ['The', 'spice', 'is', 'life.']
     >>> dict((word, len(word)) for word in sentence)
     {'life.': 5, 'The': 3, 'is': 2, 'spice': 5}
 
-And can make creating a dictionary much easier:
+And dictionary comprehensions can make creating a dictionary much easier, using a list of tuples:
 
     >>> days = [(0, 'Mon'), (1, 'Tue'), (2, 'Wed'), (3, 'Thu'), (4, 'Fri'), (5, 'Sat'), (6, 'Sun')]
     >>> dict(tup for tup in days)
     {0: 'Mon', 1: 'Tue', 2: 'Wed', 3: 'Thu', 4: 'Fri', 5: 'Sat', 6: 'Sun'}
 
-Another handy tool, frequently used along side dictionary comprehension, is the `zip` function:
+Another handy tool, frequently used along side dictionary comprehension, is the `zip` function. It takes two or more lists and creates lists of tuples:
 
     >>> zip(['a', 'b', 'c'], range(3))
     [('a', 0), ('b', 1), ('c', 2)]
