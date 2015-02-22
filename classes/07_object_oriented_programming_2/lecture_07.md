@@ -2,7 +2,7 @@
 
 ## Inheritance
 
-Inheritance is taking the abstractions we create with Objects one step further. Instead of just creating a class for `Rectangle` and a class for `Triangle`, we make the logical leap that both of these are polygons and will have many things in common. So we create a `Polygon` class and have each `Rectangle` and `Triangle` inherit many of it's properties from the Polygon.
+Inheritance is taking the abstractions we create with Objects one step further. Instead of just creating a class for `Rectangle` and a class for `Triangle`, we make the logical leap that both of these are polygons and so have things in common. So we create a `Polygon` class and have each inherit properties from `Polygon`.
 
 Let's see some concrete examples:
 
@@ -12,6 +12,7 @@ Let's see some concrete examples:
             self.number_of_sides = n
         
         def print_num_sides(self):
+            '''a quick, informational print statement'''
             print('There are ' + str(self.number_of_sides) + 'sides.')
     
     class Triangle(Polygon):
@@ -39,19 +40,19 @@ Let's see some concrete examples:
             x, y = self.lenghts_of_sides
             return x * y
 
-There are a few things to notice here. First of all, the `Polygon` class is very simple, used primarily to organize our thoughts on what a polygon is. Then in the class signatures for `Triangle` and `Rectangle` we actually reference the `Polygon` class. Then in the `__init__` methods for each `Triangle` and `Rectangle` class we reference the `Polygon` `__init__` method, so that when we create a `Triangle` class, we are also initializing the attributes of a `Polygon` class, and including it's methods.
+There are a few things to notice here. First of all, the `Polygon` class is very simple. In the class signatures for `Triangle` and `Rectangle` we actually reference the `Polygon` class. Then in the `__init__` methods for each `Triangle` and `Rectangle` class we reference the `Polygon` `__init__` method, so that when we create a `Triangle` class, we are also initializing the attributes of a `Polygon` class, and including it's methods.
 
 Now if we create a `Triangle`, we can call both the methods in `Triangle` and those in `Polygon`:
 
     >>> tri = Triangle([3, 4, 5])
     >>> print(tri.get_area())
     6.0
-    >>> print(tri.print_num_sides())
+    >>> tri.print_num_sides()
     3
 
-What we have done is create a connection between the ideas of a triangle and a rectangle by having them both "inherit" from the `Polygon` class. This also means that both method classes share the `print_num_sides` method, but we didn't have to write it twice: DRY.
+What we have done is created a connection between the ideas of a triangle and a rectangle by having them both "inherit" from the `Polygon` class. This also means that both method classes share the `print_num_sides` method, but we didn't have to write it twice.
 
-So that is what inheritance is in OOP. It is adding another layer of abstraction to the ideas in our code. And from that layer of abstraction we can reason more generally about the functionality of the separate components  of software we are creating.
+So that is inheritance. It is adding another layer of abstraction to the ideas in our code. And from that layer of abstraction we can reason more generally about the functionality of the separate components  of software we are creating.
 
 ## Abstract Classes
 
@@ -61,10 +62,10 @@ What we do when we define an [abstract class](https://en.wikipedia.org/wiki/Clas
 
 In the example above we can modify `Polygon` to become an abstract class:
 
-    import abc
+    from abc import ABCMeta,abstractmethod
 
     class Polygon(object):
-        __metaclass__ = abc.ABCMeta
+        __metaclass__ = ABCMeta
     
         def __init__(self, n):
             self.number_of_sides = n
@@ -72,25 +73,24 @@ In the example above we can modify `Polygon` to become an abstract class:
         def print_num_sides(self):
             print('There are ' + str(self.number_of_sides) + 'sides.')
             
-        @abc.abstractmethod
+        @abstractmethod
         def get_area(self):
             pass
 
-Here we have imported the Python standard library `abc` to create an abstract class. We use the `__metaclass__ = abc.ABCMeta` statement to define it as an abstract class. And every abstract method we mark with the `@abc.abstractmethod` decorator. This marks the method as not being implemented. Every subclass of `Polygon` must now give an implementation of the `get_area` method, or Python will throw an error:
+Here we have imported the Python standard library `abc` to create an abstract class. We use the `__metaclass__ = ABCMeta` statement to define it as an abstract class. And every abstract method we mark with the `@abstractmethod` decorator. This marks the method as not being implemented. Every subclass of `Polygon` must now give an implementation of the `get_area` method, or Python will throw an error:
 
     >>> class Circle(Polygon)
-    >>> __metaclass__ = abc.ABCMeta
     >>> def __init__(self):
-    >>>         self.number_of_sides = 1
+    >>>     Polygon.__init__(self, 1)
     >>> 
     >>> c = Circle()
     TypeError: Can't instantiate abstract class Circle with abstract methods get_area
 
-What we did by making `Polygon` abstract is create a more complete blueprint for `Triangle` and `Rectangle`, that includes the idea (if not the implementation) that every polygon has an area. This can be useful in organizing our thoughts on code. If at some point in the distant future we want to add a `Rhombus` class, we would have the abstract blueprint in `Polygon` to remind us we need a `get_area` method.
+What we did by making `Polygon` abstract is create a more complete blueprint for `Triangle` and `Rectangle`, that includes the idea (if not the implementation) that every polygon has an area. This can be useful in organizing our thoughts on code. If at some point in the distant future we want to add a `Heptadecagon` class, we would have the abstract blueprint in `Polygon` to remind us we need to write a `get_area` method.
 
 ## Multiple Inheritance
 
-There is one more really major topic we need to cover in OOP before we can move on. Starting with the examples above, imagine we want to create a `Square` class. Now, we could do this be inheriting directly from our abstract `Polygon` class as before:
+There is one more really major topic we need to cover in OOP before we can move on. Starting with the examples above, imagine we want to create a `Square` class. Now, we could do this by inheriting directly from our abstract `Polygon` class as before:
 
     class Square(Polygon):
     
@@ -103,15 +103,14 @@ There is one more really major topic we need to cover in OOP before we can move 
             x = self.lenghts_of_sides[0]
             return x * x
 
-But this misses out on a key idea from basic geometry: squares are just a special type of rectangle. So perhaps it would be better if `Square` inherited directly from `Rectangle`:
-
+But this misses out on a key idea from basic geometry: squares are just a special type of rectangle. So perhaps it would be better if `Square` inherited from `Rectangle`:
 
     class Square(Rectangle):
     
         def __init__(self, side):
             Rectangle.__init__(self, 4, [side, side])
 
-Not only does recognizing this basic fact about our system help organize our thoughts, it makes the code much shorter.
+Not only does recognizing something basic about our system help organize our thoughts, it makes the code much shorter.
 
 In the language of OOP, we could describe the above classes in a few ways:
 
@@ -123,7 +122,7 @@ The jargon itself is not as important as the relationship between these classes.
 
 ## The Warning
 
-Be warned. The above example of `Square` seems reasonable enough. But using multiple inhertance comes with a danger. You can create classes with subclasses of subclasses of subclasses of subclasses of subclasses of subclasses so deep that you can no longer keep the whole chain of inheritance easily in mind. At some level deep down the rabbit hole adding another layer of abstraction begins to add more complexity than it removes. At what point that happens is entirely up to you.
+Be warned. The above example of `Square` seems reasonable enough. But using multiple inhertance is not risk free. You can create classes with subclasses of subclasses of subclasses of subclasses of subclasses of subclasses so deep that you can no longer keep the whole chain of inheritance easily in mind. At some level deep down the rabbit hole adding another layer of abstraction begins to add more complexity than it removes. At what point that happens is entirely up to you.
 
 ## Problem Sets
 
@@ -132,6 +131,10 @@ Be warned. The above example of `Square` seems reasonable enough. But using mult
 ## Further Reading
 
  * [Python Tutorial: Inheritance](http://www.python-course.eu/inheritance_example.php)
+ * [Learn Python the Hard Way: Inheritance vs Composition](http://learnpythonthehardway.org/book/ex44.html)
+ * [Python Inheritance Intro](http://www.jesshamrick.com/2011/05/18/an-introduction-to-classes-and-inheritance-in-python/)
+ * [Dave On Code: Abstract Classes](http://www.daveoncode.com/2014/10/07/abstract-classes-in-python-using-abc-module/)
+ * [Module of the Week: abc](http://pymotw.com/2/abc/)
 
 
 [Back to Syllabus](../../README.md)
