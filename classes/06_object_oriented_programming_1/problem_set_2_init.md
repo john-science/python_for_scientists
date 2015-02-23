@@ -89,4 +89,88 @@ Fix the problem with this object initialization:
             '''
             return sum(self.grades) / len(self.grades)
 
+## Problem 3
+
+Create a valid `__init__` method for this class.
+
+    class GPSLocation(object):
+    
+        def print_location(self):
+            '''A simple print statement, to describe the exact
+            GPS location in human terms.
+            '''
+            print('This GPS location is at a lat/lon of: ' + \
+                  str(self.lat) + '/' + str(self.lon) + \
+                  'degrees and at an elevation of : '  + \
+                  str(self.elevation) + ' meters.')
+
+## Solution 3
+
+    class GPSLocation(object):
+    
+        def __init__(self, lat, lon, elevation):
+            self.lat = lat
+            self.lon = lon
+            self.elevation = elevation
+
+## Problem 4
+
+Create an initializing method for this class:
+
+    class Species(object):
+        '''This class is meant to help classify various
+        endangered species.'''
+
+        @staticmethod
+        def conservation_status_string(n):
+            '''Returns the IUCN description for the conservation
+            status of a species, given a simple number representing
+            that status.'''
+            if n == -2:
+                return "Not Evaluated"
+            elif n == -1:
+                return "Data Deficient"
+            elif n == 0:
+                return "Least Concern"
+            elif n == 1:
+                return "Not Threatened"
+            elif n == 2:
+                return "Vulnerable"
+            elif n == 3:
+                return "Endangered"
+            elif n == 4:
+                return "Critically Endangered"
+            elif n == 5:
+                return "Extinct in the Wild"
+            elif n == 6:
+                return "Extinct"
+    
+            return "Status Unknown"
+    
+        def get_status(self):
+            '''Based on the status number in this object, returns
+            the IUCN string for the conservation status of the species.
+            '''
+            return Species.conservation_status_string(self.status)
+    
+        def info(self):
+            '''Returns a nice string, describing the species and its 
+            conservation status. For instance:
+            Elephant Seal (Mirounga angustirostris). Least Concern
+            Kakapo (Strigops habroptilus). Critically Endangered
+            '''
+            full_name_text = self.common_name + "  (" + self.scientific_name + ")."
+            
+            return full_name_text + "  " + self.get_status()
+
+## Solution 4
+
+    class Species(object):
+    
+        def __init__(self, com, sci, status):
+            self.common_name = com
+            self.scientific_name = sci
+            self.status = int(status)
+
+
 [Back to Lecture](lecture_06.md)
