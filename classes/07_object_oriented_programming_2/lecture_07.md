@@ -126,7 +126,7 @@ Be warned. The above example of `Square` seems reasonable enough. But using mult
 
 ## Problem Sets
 
- * Coming Soon
+ * [Inheritance](problem_set_1_interheritance.md)
 
 ## Further Reading
 
