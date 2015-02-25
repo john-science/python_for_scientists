@@ -8,7 +8,7 @@
     print(2 + 2)
 
     # Now what do you expect?
-    pring(2.1 + 2)
+    print(2.1 + 2)
     # Why did that happen?
 
 Python stores floats as their byte representation so they are limited by the same 16-bit issues as most other languages.
