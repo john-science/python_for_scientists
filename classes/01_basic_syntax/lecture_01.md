@@ -53,9 +53,9 @@ But you can also do algebra with stored variables:
     >>> x
     21
     >>> y = 7
-    >>> y / x
+    >>> x / y
     3
-    >>> z = y / x
+    >>> z = x / y
     >>> z
     3
 
