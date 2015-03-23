@@ -49,8 +49,7 @@ But you don't have to compile Python code. The Python programming language comes
     >>> fib(1000)
     0 1 1 2 3 5 8 13 21 34 55 89 144 233 377 610 987
 
-You can try out the Python interpreter online, by going to [Python.org](https://www.python.org/) and clicking "Launch Interpreter" at the top. There are two more great online interpreters at [PythonAnywhere](https://www.pythonanywhere.com/try-ipython/) and [REPL](http://repl.it/languages/Python3).
-
+You can try out the Python interpreter online, by going to [PythonAnywhere](https://www.pythonanywhere.com/try-ipython/) or [REPL](http://repl.it/languages/Python3).
 
 Of course, you can still write Python scripts, or "modules", as text files and execute those from the command line, a bit like they were executables (but more like Shell scripts if you ever used Linux):
 
