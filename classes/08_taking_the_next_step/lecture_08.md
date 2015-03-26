@@ -10,15 +10,36 @@ The most important thing is always that your code works. Obviously. But some sof
 
 In this lecture we will introduce the methods and tools needed to write better code.
 
-## Syntax
+## Style
 
 #### The Counter Example
 
- * Coming Soon
+You are reading though someone else's code and come across this function:
+
+    def F(n):
+      if n==0:    return 0
+      elif n ==1:
+       return 1
+      else:return F(n-1)+F(n- 2)
+
+What does it do? This method has a subtle bug, can you find it?
 
 #### PEP8
 
- * Coming Soon
+Here is the same code, but following the PEP8 style guide:
+
+    def fibonacci(n):
+        '''Returns the n-th term in the Fibonacci Sequence'''
+        if n == 0:
+            return 0
+        elif n == 1:
+            return 1
+        else:
+            return fibonacci(n - 1) + fibonacci(n - 2)
+
+It has comments, so you immediately know exactly what it does. The even 4-space tabs make it easier to compare the if statements. And now that you fully grasp what the function does, you can start testing it with various values to see how it behaves. The bug is that the method fails when passed a negative number.
+
+To make your code readable you have to be extremely consistent about your spaces, naming conventions, comments, etcetera. If you want to spend the time to develop all of your own conventions, and stick to them stoically, great. Good for you. The rest of the world will use the [PEP8 Style Guide](https://www.python.org/dev/peps/pep-0008/).
 
 ## Comments
 
