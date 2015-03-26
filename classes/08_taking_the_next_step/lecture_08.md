@@ -14,7 +14,7 @@ In this lecture we will introduce the methods and tools needed to write better c
 
 #### The Counter Example
 
-You are reading though someone else's code and come across this function:
+Imagine you are reading though someone else's code and you come across this function:
 
     def F(n):
       if n==0:    return 0
@@ -26,7 +26,7 @@ What does it do? This method has a subtle bug, can you find it?
 
 #### PEP8
 
-Here is the same code, but following the PEP8 style guide:
+Here is the exact same function, but following the [PEP8 Style Guide](https://www.python.org/dev/peps/pep-0008/):
 
     def fibonacci(n):
         '''Returns the n-th term in the Fibonacci Sequence'''
@@ -43,7 +43,20 @@ To make your code readable you have to be extremely consistent about your spaces
 
 ## Comments
 
- * Coming Soon
+> You are what you comment.
+
+If someone else has to look at your code and there are no comments, you are wasting their time. They're going to spend minutes or hours looking through your code trying to figure out things they could read in less than a second if there were a short comment.
+
+Code that isn't commented well is destined to be thrown away. But first people will get a little angry with you.
+
+The [PEP8 Style Guide](https://www.python.org/dev/peps/pep-0008/) has lots of good notes on how to comment your code. The basic comment is the `#`:
+
+    # find the factorial of N
+    result = 1  # integer
+    for i in xrange(2, N+1):
+        result *= i
+
+The `#` can be used at the start or the end of a line of code. Everything after the `#` is a comment, not code. And we have already seen the `'''` and `"""` comments in our [Functions and Modules](classes/03_functions_and_modules/lecture_03.md) lecture.
 
 ## Code Organization
 
