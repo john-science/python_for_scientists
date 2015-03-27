@@ -37,7 +37,7 @@ Here is the exact same function, but following the [PEP8 Style Guide](https://ww
         else:
             return fibonacci(n - 1) + fibonacci(n - 2)
 
-It has comments, so you immediately know exactly what it does. The even 4-space tabs make it easier to compare the if statements. And now that you fully grasp what the function does, you can start testing it with various values to see how it behaves. The bug is that the method fails when passed a negative number.
+It has comments, so you immediately know exactly what it does. The regular 4-space tabs make it easy to compare the if-statements. And now that you fully grasped what the function does, you can start testing it with various values to see how it behaves. The bug: the method fails when passed a negative number.
 
 To make your code readable you have to be extremely consistent about your spaces, naming conventions, comments, etcetera. If you want to spend the time to develop all of your own conventions, and stick to them stoically, great. Good for you. The rest of the world will use the [PEP8 Style Guide](https://www.python.org/dev/peps/pep-0008/).
 
@@ -45,9 +45,9 @@ To make your code readable you have to be extremely consistent about your spaces
 
 > You are what you comment.
 
-If someone else has to look at your code and there are no comments, you are wasting their time. They're going to spend minutes or hours looking through your code trying to figure out things they could read in less than a second if there were a short comment.
+If someone else has to look at your code, and there are no comments, you are wasting their time. They might spend minutes or hours trying to figure out a detail they could have understood in a second if there were a short comment.
 
-Code that isn't commented well is destined to be thrown away. But first people will get a little angry with you.
+Code that isn't commented well is destined to be thrown away. But first people might get angry with you.
 
 The [PEP8 Style Guide](https://www.python.org/dev/peps/pep-0008/) has lots of good notes on how to comment your code. The basic comment is the `#`:
 
