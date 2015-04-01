@@ -60,17 +60,23 @@ The `#` can be used at the start or the end of a line of code. Everything after 
 
 ## Code Organization
 
-#### Functions, Methods, and Classes
+Be smart when choosing between functions and classes in your code.
 
- * Coming Soon
+#### Example: A good time to use functions
 
-#### Will your code be imported?
+ * Coming Soon: small, independent pieces
 
- * Coming Soon
+#### Example: A good time to use classes
 
-#### The Counter Example
+ * Coming Soon: too many arguments
 
- * Coming Soon
+#### Example: Another good time to use classes
+
+ * Coming Soon: lots of global variables
+
+#### Example: Are you going to be `import`ed?
+
+ * Coming Soon: be careful what you put in `main`
 
 ## Code Repositories
 
