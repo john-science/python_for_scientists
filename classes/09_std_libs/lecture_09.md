@@ -1,6 +1,8 @@
 # Batteries Included, Part 1
 
-That's the Python motto. Python comes with a whole collection of standard libraries to do various things. And several of these are extremely useful to scientists and engineers.
+Batteries Included. That's the Python motto. Python comes with a whole collection of [standard libraries](http://en.wikipedia.org/wiki/Standard_library). Standard libraries are packages of code that come included with Python to help you solve common problems. Why reinvent the wheel every time, if you know someone else has already solved it? Unlike the Python language itself, you have to use the `import` keyword to use a standard library.
+
+Now let's start looking at some of the most helpful ones for scientists and engineers.
 
 ## datetime
 
