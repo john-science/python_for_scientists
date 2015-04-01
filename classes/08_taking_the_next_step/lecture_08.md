@@ -45,7 +45,7 @@ To make your code readable you have to be extremely consistent about your spaces
 
 > You are what you comment.
 
-If someone else has to look at your code, and there are no comments, you are wasting their time. They might spend minutes or hours trying to figure out a detail they could have understood in a second if there were a short comment.
+If someone else has to look at your code, and there are no comments, you are wasting their time. They might spend minutes or hours trying to figure out a detail they could have understood in a second if there were a comment.
 
 Code that isn't commented well is destined to be thrown away. But first people might get angry with you.
 
@@ -57,6 +57,20 @@ The [PEP8 Style Guide](https://www.python.org/dev/peps/pep-0008/) has lots of go
         result *= i
 
 The `#` can be used at the start or the end of a line of code. Everything after the `#` is a comment, not code. And we have already seen the `'''` and `"""` comments in our [Functions and Modules](classes/03_functions_and_modules/lecture_03.md) lecture.
+
+## Exceptions
+
+#### Example: fixing `fibonacci`
+
+ * Coming Soon
+
+#### More kinds of exceptions
+
+ * Coming Soon
+
+#### Creating your own exceptions
+
+ * Coming Soon
 
 ## Code Organization
 
@@ -93,5 +107,12 @@ I have already written a short introduction to Git, it is on GitHub [here](https
 ## GitHub
 
 As you may have already noticed, this class is being stored and displayed using [GitHub](https://help.github.com/articles/set-up-git/), which is just a nice web interface for a Git repository.
+
+ * Coming Soon: a link to how to creat your own repo or github
+
+## Further Reading
+
+ * [After Hours Tutorial](http://www.afterhoursprogramming.com/tutorial/Python/Exceptions/)
+ * [Python Documentation](https://docs.python.org/2/tutorial/errors.html)
 
 [Back to Syllabus](../../README.md)
