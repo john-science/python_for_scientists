@@ -62,7 +62,18 @@ The `#` can be used at the start or the end of a line of code. Everything after 
 
 #### Example: fixing `fibonacci`
 
- * Coming Soon
+There are several ways to fix any problem. But for learning purposes, let's fix the `fibonacci` function above by raising an `Exception`.
+
+An `Exception` is a Python class designed to halt the current program politely when an error occurs and return a string so the user can know what the problem is. You have already seen many Exceptions in Python. Every time we make a bone-headed mistake Python returns an `Error`, which is just a type of `Exception`:
+
+    >>> 4 / 'a'
+    Traceback (most recent call last):
+      File "<stdin>", line 1, in <module>
+    TypeError: unsupported operand type(s) for /: 'int' and 'str'
+
+In the case above, `TypeError` subclasses `Error` which subclasses `Exception`.
+
+
 
 #### More kinds of exceptions
 
