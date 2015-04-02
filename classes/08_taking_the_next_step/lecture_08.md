@@ -246,8 +246,6 @@ I have already written a short introduction to Git, it is on GitHub [here](https
 
 As you may have already noticed, this class is being stored and displayed using [GitHub](https://help.github.com/articles/set-up-git/), which is just a nice web interface for a Git repository.
 
- * Coming Soon: a link to how to creat your own repo or github
-
 ## Further Reading
 
  * [PEP8 Style Guide](http://legacy.python.org/dev/peps/pep-0008/)
