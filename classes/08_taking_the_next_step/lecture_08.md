@@ -30,6 +30,7 @@ Here is the exact same function, but following the [PEP8 Style Guide](https://ww
 
     def fibonacci(n):
         '''Returns the n-th term in the Fibonacci Sequence'''
+        print '1'
         if n == 0:
             return 0
         elif n == 1:
@@ -73,15 +74,69 @@ An `Exception` is a Python class designed to halt the current program politely w
 
 In the case above, `TypeError` subclasses `Error` which subclasses `Exception`.
 
+We could fix the `fibonacci` function above by adding a raising a single `Exception`:
 
+    def fibonacci(n):
+        '''Returns the n-th term in the Fibonacci Sequence'''
+        if n < 0:
+            raise Exception('fibonacci only accepts non-negative inputs')
+        
+        if n == 0:
+            return 0
+        elif n == 1:
+            return 1
+        else:
+            return fibonacci(n - 1) + fibonacci(n - 2)
+
+This certainly fixes the problem. But if you call `fibonacci(6)`, the statement `if n < 0` will be called 24 times. This is a lot of extra calculation that doesn't need to be done. Another option is that you can put a `try / except` around the function when you call it:
+
+    def fibonacci(n):
+        '''Returns the n-th term in the Fibonacci Sequence'''
+        if n == 0:
+            return 0
+        elif n == 1:
+            return 1
+        else:
+            return fibonacci(n - 1) + fibonacci(n - 2)
+        
+    try:
+        fibonacci(-333)
+    except:
+        print('fibonacci only accepts non-negative inputs')
+
+Enclosing the called to `fibonacci` with `try / except` means the program / interpretter will print the given line to the screen and supress all of the ugly errors you would have seen. This is an extremely powerful tool in Python to help you control practically any unexpected behaivor in Python.
 
 #### More kinds of exceptions
 
- * Coming Soon
+Let's take another look at that `except` statement above. It is pretty vague. What if you called `fibonacci('oops')`? Well, that would cause an error, but your `try / except` block would print the wrong message. This time it is the `TypeError` we saw earlier. It would be more helpful to your user if you printed a helpful message that actually told them what the problem was. Let's show a `try / except` block that will catch both types of errors:
+        
+    try:
+        fibonacci(-333)
+    except RuntimeError:
+        print('fibonacci only accepts non-negative inputs')
+    except TypeError:
+        print('fibonacci needs to be passed integer values')
+    except Exception as e:
+        print('An error occured in fibonacci: ', e)
+
+In the final `except` statement, we can catch any old general kind of `Exception` in case something unexpected happens. In this case it is handy to print the `Exception` and code itself, to provide more information.
 
 #### Creating your own exceptions
 
- * Coming Soon
+One last thing we might want to do is create our own Exceptions. This will help us catch a specific kind of problem that we might face in our own code. For instance:
+
+    >>> class BadScienceError(Exception):
+    ...     def __init__(self, value):
+    ...         self.value = value
+    ...     def __str__(self):
+    ...         return repr(self.value)
+    ...
+    >>> initial_mass = 5.213
+    >>> final_mass = some_projectile_motion(initial_mass, velocity)
+    >>> if intial_mass != final_mass:
+            raise BadScienceError('Initial and Final masses were not equal.')
+
+You will never *need* to create your own Exceptions. But you may find it useful, particularly in larger projects.
 
 ## Code Organization
 
@@ -89,19 +144,19 @@ Be smart when choosing between functions and classes in your code.
 
 #### Example: A good time to use functions
 
- * Coming Soon: small, independent pieces
+ * Coming Soon: (small, independent pieces)
 
 #### Example: A good time to use classes
 
- * Coming Soon: too many arguments
+ * Coming Soon: (too many arguments)
 
 #### Example: Another good time to use classes
 
- * Coming Soon: lots of global variables
+ * Coming Soon: (lots of global variables)
 
 #### Example: Are you going to be `import`ed?
 
- * Coming Soon: be careful what you put in `main`
+ * Coming Soon: (be careful what you put in `main`)
 
 ## Code Repositories
 
