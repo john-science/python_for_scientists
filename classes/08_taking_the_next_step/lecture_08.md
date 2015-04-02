@@ -30,7 +30,6 @@ Here is the exact same function, but following the [PEP8 Style Guide](https://ww
 
     def fibonacci(n):
         '''Returns the n-th term in the Fibonacci Sequence'''
-        print '1'
         if n == 0:
             return 0
         elif n == 1:
@@ -153,15 +152,45 @@ Be smart when choosing between functions and classes in your code.
 
 #### Example: A good time to use functions
 
- * Coming Soon: (small, independent pieces)
+The `fibonacci` function above is a good example of when to use a function. It is a small piece of code that you might want to call. It doesn't have a lot of variables that should be stored off as class attributes. It doesn't have multiple functions working together.
+
+It is a small, self-contained piece of code that you will want to call independently from anything else.
 
 #### Example: A good time to use classes
 
- * Coming Soon: (too many arguments)
+If you have more than, say, five arguments to a function consider making it a class. So instead of having to do something like this:
+
+    def my_super_plot(x_data, y_data, x_title, y_title, x_pixels, y_pixels):
+        # making an amazing, beautiful plot
+    
+    my_super_plot(x_data, y_data, 'Energy from atomic tests (kJ)',
+                  'amount of U239 (kg)', 320, 480)
+
+We could do something more like this:
+    
+    class MySuperPlot(object):
+    
+        def __init__(self, x_data, y_data):
+            self.x_data = x_data
+            self.y_data = y_data
+            self.x_title = ''
+            self.y_title = ''
+            self.x_pixels = 640
+            self.y_pixels = 800
+        
+        def show_plot(self):
+            # making an amazing, beautiful plot
+    
+    plot = MySuperPlot(x_data, y_data)
+    plot.x_pixels = 1500
+    plot.y_pixels = 1000
+    plot.show_plot()
+
+The class version of the plot-making function is actually more code. But it will be easier to less messy and far easier to read.
 
 #### Example: Another good time to use classes
 
- * Coming Soon: (lots of global variables)
+If you ever find that you have written a script with a lot of information saved in global variables, consider using a class. If you have more than, say, five global variables in your script it might be easier to place them inside your class.
 
 #### Example: Are you going to be `import`ed?
 
