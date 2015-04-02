@@ -188,7 +188,47 @@ If you ever find that you have written a script with a lot of information saved 
 
 #### Example: Are you going to be `import`ed?
 
- * Coming Soon: (be careful what you put in `main`)
+Imagine you are writing a script (`glitter_gold.py`) that might get used by someone else.
+
+    if __name__ == '__main__':
+        glitter = '''All that is gold does not glitter,
+    Not all those who wander are lost;
+    The old that is strong does not wither,
+    Deep roots are not reached by the frost.
+
+    From the ashes a fire shall be woken,
+    A light from the shadows shall spring;
+    Renewed shall be blade that was broken,
+    The crownless again shall be king.
+    '''
+        print(glitter)
+
+Now, if someone were to call this script from the command line, they would see your poem printed:
+
+    $ python glitter_gold.py
+    All that is gold does not glitter,
+    ...
+
+But what if you want to import this string from another script?  Well, this is suddenly much harder. To help other people import and use your code, you have to make your data globally accessible in the file:
+
+    glitter = '''All that is gold does not glitter...'''
+    
+    if __name__ == '__main__':
+        print(glitter)
+
+Now someone importing your script can do the same thing simply by typing:
+
+    import glitter_gold
+    
+    print(glitter_gold.glitter)
+
+Or they could just do:
+
+    from glitter_gold import glitter
+    
+    print(glitter)
+
+It works the same with functions as it does with the `glitter` string above. The more content you put under the `if __name__ == '__main__':` statement, the less will be easily available for import.
 
 ## Code Repositories
 
