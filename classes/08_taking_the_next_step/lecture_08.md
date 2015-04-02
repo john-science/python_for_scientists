@@ -50,14 +50,23 @@ If someone else has to look at your code, and there are no comments, you are was
 
 Code that isn't commented well is destined to be thrown away. But first people might get angry with you.
 
-The [PEP8 Style Guide](https://www.python.org/dev/peps/pep-0008/) has lots of good notes on how to comment your code. The basic comment is the `#`:
+The [PEP8 Style Guide](https://www.python.org/dev/peps/pep-0008/) has lots of good notes on how to comment your code.
 
-    # find the factorial of N
-    result = 1  # integer
+The single-line comment is the `#`:
+
+    # beginning of the line comment
+    result = 1  # end of the line comment
     for i in xrange(2, N+1):
         result *= i
 
-The `#` can be used at the start or the end of a line of code. Everything after the `#` is a comment, not code. And we have already seen the `'''` and `"""` comments in our [Functions and Modules](classes/03_functions_and_modules/lecture_03.md) lecture.
+But there are also multi-line comments as we saw in the [Functions and Modules](classes/03_functions_and_modules/lecture_03.md) lecture:
+
+    '''
+    This can be a multi-line comment
+    '''
+    
+    """This is also a multi-line comment.
+    """
 
 ## Exceptions
 
