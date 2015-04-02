@@ -210,7 +210,10 @@ As you may have already noticed, this class is being stored and displayed using 
 
 ## Further Reading
 
- * [After Hours Tutorial](http://www.afterhoursprogramming.com/tutorial/Python/Exceptions/)
- * [Python Documentation](https://docs.python.org/2/tutorial/errors.html)
+ * [PEP8 Style Guide](http://legacy.python.org/dev/peps/pep-0008/)
+ * [Comments - Zentut](http://www.zentut.com/python-tutorial/python-comments/)
+ * [Comments - After Hours](http://www.afterhoursprogramming.com/tutorial/Python/Comments/)
+ * [Exceptions - After Hours](http://www.afterhoursprogramming.com/tutorial/Python/Exceptions/)
+ * [Exceptions - Python Documentation](https://docs.python.org/2/tutorial/errors.html)
 
 [Back to Syllabus](../../README.md)
