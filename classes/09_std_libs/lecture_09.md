@@ -8,23 +8,19 @@ Now let's start looking at some of the most helpful ones for scientists and engi
 
  * Coming Soon
 
-## os
+## Math
 
  * Coming Soon
 
-## sys
-
- * Coming Soon
-
-## gzip
-
- * Coming Soon
-
-## cPickle
+## Random
 
  * Coming Soon
 
 ## itertools
+
+ * Coming Soon
+
+## Copy
 
  * Coming Soon
 
