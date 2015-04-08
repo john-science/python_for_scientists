@@ -1,18 +1,18 @@
 # Batteries Included, Part 2
 
-## Exceptions
+## os
 
  * Coming Soon
 
-## Random
+## sys
 
  * Coming Soon
 
-## Math
+## gzip
 
  * Coming Soon
 
-## Copy
+## cPickle
 
  * Coming Soon
 
