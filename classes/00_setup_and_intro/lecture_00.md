@@ -32,9 +32,9 @@ There are several layers of languages in the above pyramid. If you've ever worke
 
 If you've ever written Fortran or C code, you will remember having to "compile" your code. This is the process of taking your text file and turning it into an executable that can be run as a program. This final executable is a series of commands that the computer will understand when executed.
 
-Alternately, if you've ever run a program on a Windows computer, you will know about *.exe programs. You double click on them, and the program opens. But if you try to open them in a text editor, it is meaningless garbage. That's because these programs are written in terms your computer can understand, and not in anything human-readable.
+Alternately, if you've ever run a program on a Windows computer, you will know about *.exe programs. You double click on them, and the program opens. But if you try to open them in a text editor, they are meaningless garbage. That's because these programs are written in terms your computer can understand, and not in anything human-readable.
 
-But you don't have to compile Python code. The Python programming language comes with an interpreter that will read directly from your text file on the fly and executes commands as it finds them. This means you never have to compile. It also means you can type commands into the Python interpreter and they will be executed as you go:
+But you don't have to compile Python code. The Python programming language comes with an interpreter that will read directly from your text file on the fly and execute commands as it finds them. This means you never have to compile. It also means you can type commands into the Python interpreter and they will be executed as you go:
 
     john@antineutrino:~$ python
     Python 2.6.6 (r266:84292, Jan 22 2014, 09:42:36) 
@@ -86,7 +86,7 @@ If you have seen another programming language before, you may find that you have
     three = 3
     six = 2 * three
 
-Python is smart enough to figure out what type your variables are, without you telling it. This is valid Python code:
+Python is smart enough to figure out what type your variables are, without you telling it. All of this is valid Python code:
 
     name = "Jesse Owens"
     height = 180
@@ -111,6 +111,8 @@ Every programming language has syntax; rules you have to learn. But Python has a
 
 > The best way to learn is by doing.
 
-Write code. Don't use Excel or a calculator for that little thing that needs to get done at work, write it in Python. Do it in the interpreter. Try out the latest thing you've learned any chance you get. Make sure you practice what you learn about between lectures, or it'll be very easy to forget.
+Write code. If you really want to learn the material in this class, there's only one solution. You have to use what you learn.
+
+At the beginning of the class, maybe all you can do is replace your calculator with the Python interpreter. As the class continues, you should be able to replace Excel with Python. But the trick is to start using what you learn every week and practice. It's a lot harder to forget something you've used a dozen times.
 
 [Back to Syllabus](../../README.md)
