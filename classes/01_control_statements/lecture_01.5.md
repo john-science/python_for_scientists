@@ -25,6 +25,8 @@ We also just learned about the `range` function. The `range` function produces a
 
 (**NOTE**: As you can see above, the `start` value is *inclusive* and the `end` value is *exclusive*.)
 
+![loops](http://www.jeffpalm.com/fox/fox.jpg)
+
 #### while loops
 
 A `while` loop does something until its main condition is no longer met:
@@ -110,8 +112,6 @@ Lastly, the `else` symbol is always optional:
 Did you notice in the `for` and `while` loops above how the content *inside* the loop was indented? That indentation is how Python decides what logic is contained within a loop, function, or class (more on those later). Unlike in other languages you might have seen, the indentation *really* matters in Python.
 
 `White Space` is very important in Python.
-
-![white space](http://imgs.xkcd.com/comics/python.png)
 
 Here is an example of a correctly (though confusingly) indented piece of Python code:
 
