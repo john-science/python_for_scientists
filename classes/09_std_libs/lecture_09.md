@@ -16,6 +16,8 @@ Now let's start looking at some of the most helpful ones for scientists and engi
 
 ## Random
 
+![random](http://imgs.xkcd.com/comics/random_number.png)
+
  * Coming Soon
 
 ## itertools
