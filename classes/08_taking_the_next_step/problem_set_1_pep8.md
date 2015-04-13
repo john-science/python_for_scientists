@@ -1,4 +1,4 @@
-# PEP8 Formatting
+# PEP8 & Code Choices
 
 All of the "problems" in this set are just examples of poorly formatted Python. Just reformat them, as best you can, to match the [PEP8 standards](https://www.python.org/dev/peps/pep-0008/). Some of the examples are not PEP8 formatting, but just examples of code that is bad far other reasons.
 
@@ -14,7 +14,7 @@ Just reformat the given code. If there are things here that you didn't know abou
 
 Reformat this code to meet PEP8 standards:
 
-    print 'one'; print 'two'
+    print 'one'; print "two"
     
     if x == 1: print 'one'
     
@@ -47,18 +47,13 @@ Reformat this code to meet PEP8 standards:
 
 #### Solution (Reformatted Code)
 
-Wait, what is going on in the example above? What if the value of thing is `False`? And while we're at it, why would you ever write `if thing == True`? Isn't that just the same as `if thing`?
+What if the value of `thing` is `False`? And while we're at it, why would you ever write `if thing == True`? Isn't that just the same as `if thing`? And let's connect all of these `if` statements in the standard way:
 
-    # check the value
     if thing:
         print('thing is truthy!')
-    
-    # check for the opposite
-    if not thing:
+    elif not thing:
         print('thing is falsey!')
-    
-    # since None is considered false, explicitly check for it
-    if thing is None:
+    elif thing is None:
         print('thing is None!')
 
 ### Searching in a Dictionary
@@ -159,9 +154,87 @@ Okay, the major problem here is `f.readlines()`. Much like `range`, this will lo
 
 *NOTE:* Python is pretty good at this, but just go ahead and `.close()` every file you open. Worst case scenario, at least the person reading your code knows you're done with that file.
 
+### Importing
+
+#### Example Code
+
+    import sys, os
+
+#### Solution (Reformatted Code)
+
+Keep each `import` on a separate line. And most people keep them in alphabetical order, because things easier to find when you start to get a lot of imports.
+
+    import os
+    import sys
+
+### Naming Things
+
+#### Example Code
+
+    class parallel_universe(object):
+    
+        def __init__(self):
+            self.EvilSpock = True
+        
+        def MirrorMirror(self):
+            # do something
+    
+    universeOne = parallel_universe()
+
+#### Solution (Reformatted Code)
+
+Class names should be `CamelCase`.
+Function and Method names should be `underscore_case`.
+Variable and Attribute names should be `underscore_case`.
+
+    class ParallelUniverse(object):
+    
+        def __init__(self):
+            self.evil_spock = True
+        
+        def mirror_mirror(self):
+            # do something
+        
+    universe_one = ParallelUniverse()
+
+### Mystery Example 1
+
+#### Example Code
+
+This function returns all the Fibonacci numbers below n. Fix it up.
+
+    def Fib(n):
+        resultList = []
+        a, b = 0,1
+        while b <n:
+              resultList.append(b)
+              a, b = b, a+b
+        return resultList
+    
+    F100 = Fib(100)
+    print F100
+
+#### Solution (Reformatted Code)
+
+    def fibonacci_list(n):
+        '''Returns all of the Fibonacci Numbers below n'''
+        result_list = []
+        a = 0
+        b = 1
+        while b < n:
+            result_list.append(b)
+            temp = a
+            a = b
+            b += temp
+        return result_list
+    
+    first_100 = fibonacci_list(100)
+    print(first_100)
+
+
 ## Further Reading
 
-    Some of the examples above originated in these two websites:
+Some of the examples above originated in these two websites:
     
  * [Hitchhiker's Guide to Python](http://docs.python-guide.org/en/latest/writing/style/)
  * [Google Code](https://code.google.com/p/soc/wiki/PythonStyleGuide)
