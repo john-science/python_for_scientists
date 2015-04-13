@@ -1,4 +1,4 @@
-# PEP8 & Code Choices
+# PEP8 & Style
 
 All of the "problems" in this set are just examples of poorly formatted Python. Just reformat them, as best you can, to match the [PEP8 standards](https://www.python.org/dev/peps/pep-0008/). Some of the examples are not PEP8 formatting, but just examples of code that is bad far other reasons.
 
@@ -197,6 +197,69 @@ Variable and Attribute names should be `underscore_case`.
         
     universe_one = ParallelUniverse()
 
+### Save Your Indents
+
+#### Example Code
+
+    for littleList in someBigList:
+        if littleList[0]:
+            if littleList[1] == 'Spock':
+                if littleList[2] == 'fire':
+                    print('Spock! Fire the torpedos!')
+                else:
+                    print('Runaway!')
+            else:
+                if littleList[2] == 'fire':
+                    print('Sulu! Fire the torpedos!')
+                else:
+                    print('Runaway!')
+
+#### Solution (Reformatted Code)
+
+First off, fix those variable names. But the big problem with the code above is that `if littleList[0]:` causes everything below it to be indented one more time. This is fine once, but with all the loops and `if`s below it, suddenly the code can become so indented it's hard to read. The solution is to use a `continue`:
+
+    for little_list in some_big_list:
+        if not little_list[0]:
+            continue  # notice how using a 'continue' improves the indents below?
+        if little_list[1] == 'Spock':
+            if little_list[2] == 'fire':
+                print('Spock! Fire the torpedos!')
+            else:
+                print('Runaway!')
+        else:
+            if little_list[2] == 'fire':
+                print('Sulu! Fire the torpedos!')
+            else:
+                print('Runaway!')
+
+But, you know what, the rest of those `if` statements could be combined to be shorter too:
+
+    for little_list in some_big_list:
+        if not little_list[0]:
+            continue
+        
+        if little_list[2] != 'fire':
+            print('Runaway!')
+        else:
+            if little_list[1] == 'Spock':
+                crew_member = 'Spock'
+            else:
+                crew_member = 'Sulu'
+            
+            print(crew_member + ' Fire the torpedos!')
+
+Lastly, we *could* make that whole `crew_member` definition shorter. This one is a lot more optional, but a good use of Python's [ternary operator](http://www.blog.pythonlibrary.org/2012/08/29/python-101-the-ternary-operator/):
+
+    for little_list in some_big_list:
+        if not little_list[0]:
+            continue
+        
+        if little_list[2] != 'fire':
+            print('Runaway!')
+        else:
+            crew_member = 'Spock' if little_list[1] == 'Spock' else 'Sulu'
+            print(crew_member + ' Fire the torpedos!')
+
 ### Mystery Example 1
 
 #### Example Code
@@ -231,6 +294,66 @@ This function returns all the Fibonacci numbers below n. Fix it up.
     first_100 = fibonacci_list(100)
     print(first_100)
 
+### Mystery Example 2
+
+#### Example Code
+
+    # d is some big dictionary of craziness
+    # a is some big list of string
+    
+    for i in len(d.keys()):
+        someFunction(i, d[i])
+    
+    for j in range(len(a)):
+        print('Value number ' + str(j) + ' is: ' + a[j])
+
+#### Solution (Reformatted Code)
+
+Did you use `xrange`? Good! That's still not the write answer, but that's wrong for good reasons. In this case, for both the list `a` and the dictionary `d`, we want to iterate over the indexes and values at the same time. This is where `enumerate` comes in handy. Not only will it be faster than the two procedures in the code above, but it makes for much cleaner, easier to read code.
+
+    # d is some big dictionary of craziness
+    # a is some big list of string
+    
+    for i, value in enumerate(d):
+        some_function(i, value)
+    
+    for j, value in enumerate(a):
+        print('Value number ' + str(j) + ' is: ' + value)
+
+### Mystery Example 3
+
+#### Example Code
+
+    import numpy, matplotlib
+    
+    try:
+        f = open('/path/to/some_file.txt', 'r')
+    except:
+        print('Failed to open file: /path/to/some_file.txt')
+        exit()
+    
+    for Line in f.readlines():
+        plotThingsUsingMatplotlib(Line)
+
+#### Solution (Reformatted Code)
+
+There are a few things that could be improved about that messy plotting loop:
+
+    import matplotlib
+    import numpy
+    
+    file_path = '/path/to/some_file.txt'
+    
+    try:
+        f = open(file_path, 'r')
+    except IOError:
+        print('Failed to open file: ' + file_path)
+        exit()
+    
+    for line in f.xreadlines():
+        plot_things_using_matplotlib(line)
+    
+    f.close()
 
 ## Further Reading
 
