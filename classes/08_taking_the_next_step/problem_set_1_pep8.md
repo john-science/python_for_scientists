@@ -355,6 +355,27 @@ There are a few things that could be improved about that messy plotting loop:
     
     f.close()
 
+### Mystery Example 4
+
+#### Example Code
+
+    s={};c={}
+    for i in range(1e7):
+     if(i%3==0):s[i]=i*i;if(i%y)==0:c[i]=i*i*i
+
+#### Solution (Reformatted Code)
+
+Don't fight Python on this whitespace thing. You won't come out looking good.
+
+    squares = {}
+    cubes = {}
+    
+    for i in xrange(1e7):
+        if i %% 3 == 0:
+            squares[i] = i * i
+        if i %% 7 == 0:
+            cubes[i] = i * i * i
+
 ## Further Reading
 
 Some of the examples above originated in these two websites:
