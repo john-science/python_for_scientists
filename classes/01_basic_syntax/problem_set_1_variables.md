@@ -5,10 +5,10 @@
 > Python has integers and floats, but not doubles.
 
     # What do you expect?
-    print(2 + 2)
+    print(6 - 2)
 
     # Now what do you expect?
-    print(2.1 + 2)
+    print(6 - 2.4)
     # Why did that happen?
 
 Python stores floats as their byte representation so they are limited by the same 16-bit issues as most other languages.
