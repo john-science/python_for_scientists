@@ -41,10 +41,14 @@ The Python interpreter can act like a calculator:
     4
     >>> 50 - 5 * 6
     20
+    >>> 3.0 + 3.0 + 3.0
+    9.0
     >>> (50 - 5.0 * 6) / 4
     5.0
     >>> 8 / 5.0
     1.6
+    >>> 9 / 7
+    1
 
 But you can also do algebra with stored variables:
 
@@ -149,7 +153,7 @@ There are a lot of implementation details here, but that is a solid picture to h
 
 ## Problem Sets
 
- * [Lists](problem_set_1_variables.md)
+ * [Practice with Variables](problem_set_1_variables.md)
 
 ## Further Reading
 
