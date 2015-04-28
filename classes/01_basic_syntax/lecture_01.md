@@ -15,16 +15,20 @@ Let's try some basic variable definitions.
     three = 3
     fake_id = 18
     
-    # floats
+    # decimals (floats)
     pi = 3.1415926535
     hydrogens_atomic_weight = 1.00794
 
-#### Text
+#### Text (Strings)
 
     first_name = "Beth"
     last_name = 'Sanders'
     book_title = "Orion's Belt"
     sentence = 'Never say "I will be back." in a movie.'
+
+Notice here that you can use `'` or `"` to enclose a character string. And this has the added bonus of including either `'` or `"` in the `string` easier. But what if you have to include both in the `string`? Use the escape character:
+
+    book_title = 'Orion\'s Belt'
 
 #### Booleans
 
@@ -50,7 +54,7 @@ The Python interpreter can act like a calculator:
     >>> 9 / 7
     1
 
-But you can also do algebra with stored variables:
+But you can also do algebra (math with variables):
 
     >>> x = 20
     >>> x += 1
@@ -65,18 +69,20 @@ But you can also do algebra with stored variables:
 
 After a mathematical operation is performed, a variable of a new type is returned:
 
-    >>> 17 / 3     # int / int -> int
-    5
-    >>> 17 / 3.0   # int / float -> float
+    >>> 17.0 / 3.0  # float / float -> float
     5.666666666666667
-    >>> 17 // 3.0  # explicit floor division discards the fractional part
+    >>> 15 / 3      # int / int -> int
+    5
+    >>> 15 / 3.0    # int / float -> float
     5.0
-    >>> 17 % 3     # the % operator returns the remainder of the division
-    2
-    >>> 5 * 3 + 2  # result * divisor + remainder
-    17
+    >>> 15.0 / 3    # float / int -> float
+    5.0
+    >>> 17 / 3.0    # int / float -> float
+    5.666666666666667
+    >>> 17 / 3      # int / int -> int
+    5
 
-If a variable that has not been assigned is used, Python will throw an error:
+But if you try to use a variable that has not been assigned a value, Python will throw an error:
 
     >>> numerator = 34.2
     >>> numerator / denominator
@@ -86,28 +92,54 @@ If a variable that has not been assigned is used, Python will throw an error:
 
 #### Text
 
-There are also several basic operations for strings:
+There are also several basic operations for strings. For instance, you can add two strings:
 
     >>> s1 = "Hello "
     >>> s2 = "World"
+    >>>
     >>> s1 + s2
     "Hello World"
+
+You can also retrive a single letter from a string. Notice, in Python we always start counting from zero, not one:
+
     >>> s1[0]
     'H'
     >>> s1[1]
     'e'
+
+You can also get the last character in a string, if that's easier:
+
     >>> s2[-1]
     'd'
     >>> s2[-2]
     'l'
+
+Less common, but you can even multiply a string:
+
     >>> 3 * 'un' + 'ium'
     'unununium'
+
+A really, really useful tool is the ability to be able to take a `slice` of a string. Notice, the first number is inclusive, but the last number isn't:
+
     >>> s2[1:3]
     'or'
+    >>> s1[0:4]
+    'Hell'
+    >>> s1[:4]
+    'Hell'
+    >>> s2[1:5]
+    'orld'
+    >>> s2[1:999]
+    'orld'
+    >>> s2[1:]
+    'orld'
+
+Another really useful tool is `len`, which calculates the number of characters in a string:
+
     >>> len(s1)
     6
-
-Above, the `[1]` notation returns element number `1` from the list (start counting with zero in Python). And `len` returns the length of, or number of elements in, the list.
+    >>> len(s2)
+    5
 
 #### Booleans
 
@@ -149,7 +181,7 @@ There are some basic comparison operators that act on numbers and return boolean
 
 The above (integers, floats, booleans, and strings) are different `types` of variables. Ignoring strings for the moment, we can imagine one byte of memory. That byte is a series of zeros and ones. But that same byte could hold the data for an integer, a float, or a boolean. It's still just one byte either way.
 
-There are a lot of implementation details here, but that is a solid picture to have in your mind: one byte of memory can be used for any of several different `types` of variables.
+There are a lot of implementation details here, but that is a useful picture to have in your mind: one byte of memory can be used to hold any of several different `types` of variables.
 
 ## Problem Sets
 
