@@ -4,13 +4,13 @@
 
 Python should be easy to install on basically all home computers and laptops. There are many different versions and flavors of Python. This class will be built around Python v2.7, but you will probably be fine using anything above Python v2.5.
 
-The installation procedure depends on what operating system you have installed. As always, [The Hitchhiker's Guide to Python](http://docs.python-guide.org/en/latest/) has a great description of how to install for the three major operating systems.
+The installation procedure depends on what operating system you have installed. [The Hitchhiker's Guide to Python](http://docs.python-guide.org/en/latest/) has a great description of how to install for the three major operating systems.
 
  * [Windows](http://docs.python-guide.org/en/latest/starting/install/win/)
  * [Mac OS X](http://docs.python-guide.org/en/latest/starting/install/osx/)
  * [Linux](http://docs.python-guide.org/en/latest/starting/install/linux/)
 
-(NOTE: The above guide also explains how to install SetupTools, Pip, and VirtualEnv. While these are great tools worth learning, and I highly encourage it, they are not necessary for this course.)
+(NOTE: The above guide also explains how to install SetupTools, Pip, and VirtualEnv. While these are great tools worth learning, and I highly encourage it, they are not yet necessary for this course.)
 
 ## What is Python?
 
@@ -18,7 +18,7 @@ Python is a [high-level](https://en.wikipedia.org/wiki/High-level_programming_la
 
 ### Comparing Python to other languages
 
-To understand Python it is probably best to consider how Python differs from other programming languages. This is a good chance to explain those esoteric terms used above.
+To understand Python it is probably best to consider how Python differs from other programming languages. This is a good chance to explain those esoteric terms I used above.
 
 #### High-Level
 
@@ -86,7 +86,7 @@ If you have seen another programming language before, you may find that you have
     three = 3
     six = 2 * three
 
-Python is smart enough to figure out what type your variables are, without you telling it. All of this is valid Python code:
+Python is smart enough to figure out what type your variables are, without you telling it. For instance, Python can tell what all of these variables are, just like you can:
 
     name = "Jesse Owens"
     height = 180
@@ -105,14 +105,16 @@ That's the Python motto. The author of the first version of Python, [Guido von R
 
 ![the well](http://imgs.xkcd.com/comics/well_2.png)
 
-Every programming language has syntax; rules you have to learn. But Python has a lot of traction right now with scientists and engineers. Python's rules are easier to learn than most, which lets you focus on what really matters. And after a few years of traction, there are a lot of libraries and tools written in Python just for scientists and engineers. That's really what Python brings to the table: a load of handy tools designed right for you.
+Every programming language has syntax; rules you have to learn. But Python has a lot of traction right now with scientists and engineers. Python's rules are easier to learn than most, which lets you focus on what really matters. And after a few years of traction, there are a lot of libraries and tools written in Python just for scientists and engineers. That's what Python brings to the table: a load of handy tools designed right for you.
 
 ## How to make the most of this class
 
 > The best way to learn is by doing.
 
-Write code. If you really want to learn the material in this class, there's only one solution. You have to use what you learn.
+Write code. If you really want to learn the material in this class, there's only one solution: use what you learn.
 
-At the beginning of the class, maybe all you can do is replace your calculator with the Python interpreter. As the class continues, you should be able to replace Excel with Python. But the trick is to start using what you learn every week and practice. It's a lot harder to forget something you've used a dozen times.
+As a starting point, there will be example problem sets at the end of each lecture. But don't stop there!
+
+At the beginning of the class, maybe all you can do is replace your calculator with the Python interpreter. As the class continues, you should be able to replace Excel with Python. But the trick is to start using what you learn every week and practice. It's a lot harder to forget something once you've used a dozen times.
 
 [Back to Syllabus](../../README.md)
