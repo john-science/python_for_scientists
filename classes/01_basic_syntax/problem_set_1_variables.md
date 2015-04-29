@@ -122,7 +122,7 @@ String literals are defined with double quotes or quotes. The outermost quote ty
 
 Triple quotes are real useful for multiple line strings:
 
-    y = '''For score and seven minutes ago,
+    y = '''Four score and seven minutes ago,
         you folks all learned some basic mathy stuff with Python
         and boy were you blown away!'''
     print(y)
