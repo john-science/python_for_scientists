@@ -134,8 +134,8 @@ Try out these basic string operations:
     print(s + e)
     print(s + " and " + e)
     print("green " + e + " and\n " + s)
-    print s * 3 + e
-    print "*" * 50
+    print(s * 3 + e)
+    print("*" * 50)
     "spam" < "zoo"
     "s" < "spam"
 
@@ -160,5 +160,25 @@ You can also use these indexes to grab sub-strings:
     s[:2]     # python runs the index to the beginning
     s[::-1]   # print it out backwards
 
+That last item, where we printed the string backwards is actually really powerful. Say, for instance, we only want to print every other character in a string:
+
+    >>> alpha = 'abcdefghijklmnop'
+    >>> alpha[::2]
+    'acegikmo'
+
+Or we could print every third character in the string, starting with the fourth character:
+
+    >>> alpha[3::3]
+    'dgjmp'
+
+Slicing strings with one and two colons in Python gives the developer (you) a lot of flexibility. Try playing around with this, and get used to it.
+
+Another really powerful string tool in Python is `find`. Try out these examples and see if you can determine how `find` works and what it does:
+
+alpha = 'abcdefghijklmnop'
+alpha.find('d')
+alpha.find('jk')
+alpha.find('x')
+alpha[alpha.find('fg')::2]
 
 [Back to Lecture 1](lecture_01.md)
