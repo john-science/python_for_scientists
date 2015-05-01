@@ -43,7 +43,7 @@ The above loop will print the numbers `0` through `10` and then comparison betwe
         n -= 3  # this is the same as `n = n - 3`
         print(n)
 
-The above loop will print the numbers 15, 12, 9, 6, 3 and then the complicated predicate will no longer be true, and the loop will terminate.
+The above loop will print the numbers 12, 9, 6, 3, 0 and then the complicated predicate will no longer be true, and the loop will terminate.
 
 Unlike your typical `for` loop, `while` loops leave open an interesting possibility. What if the predicate is *never* true?
 
