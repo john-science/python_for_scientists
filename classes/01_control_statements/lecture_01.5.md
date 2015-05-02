@@ -151,46 +151,42 @@ This will produce following result:
     Current variable value : 3
     Good bye!
 
-#### Syntatic Sugar
-
-Flow is done within blocks (where indentation matters):
-
-    x = 1
-    if x > 0:
-        print("yo")
-    else:
-        print("dude")
-
-A quick note colons & indentations (tabbed or spaced):
-
-    x = 1
-    if x > 0:
-          print('yo')
-    else:
-               print('dude')
-
-You can also put a whole if-else statment on one line:
-
-    "yo" if x > 0 else "dude"
+#### The `break` Statement
 
 One important way to control the flow of a program is to use `break`:
 
-    x = 1
-    y = 0
+    x = 0
     while True:
-        print("yo" if x > 0 else "dude")
-        x *= -1
-        y += 1
-        if y > 100:
+        x += 1
+        print(x)
+        if x > 99:
             break
 
-Blocks can not be empty in Python:
+This will print the numbers `1` to `100` and then stop. The `break` statement will stop whatever is happening inside a `for` or `while` loop, and exit out of the loop. You could, for instance, use this to figure how many integers (starting with 1) you need to add to get 10,000:
 
-    if x == "spam for dinner":
-        print "I will destroy the universe"
-    else:
+    sum = 0
+    i = 1
+    while True:
+        sum += i
+        i += 1
+        if sum > 10000:
+            break
+    
+    print('The sum of the first ' + str(i) + ' integers is over 10,000.')
+
+#### The `pass` Statement
+
+What if we don't want to do anything in Python? Well, you can't just leave a block empty, so we have the `pass` statement:
+
+    if x == "not spam for dinner":
+        print("I will destroy the universe")
+    elif x == "spam for dinner":
         # I'm fine with that. I'll do nothing
         pass
+    else:
+        print("I demand spam!")
+
+Without that `pass` statement, the `elif` block would be empty, and Python would throw an error. Prove that to yourself, try it.
 
 ### Indentation
 
