@@ -23,7 +23,7 @@ We also just learned about the `range` function. The `range` function produces a
     >>> range(1, 30, 7)
     [1, 8, 15, 22, 29]
 
-(**NOTE**: As you can see above, the `start` value is *inclusive* and the `end` value is *exclusive*.)
+(**NOTE**: As you can see above, the `start` value is *inclusive* and the `end` value is *exclusive*, and the default step is 1.)
 
 ![loops](http://www.jeffpalm.com/fox/fox.jpg)
 
@@ -36,7 +36,7 @@ A `while` loop does something until its main condition is no longer met:
         a = a + 1
         print(a)
 
-The above loop will print the numbers `0` through `10` and then comparison between `a` and `10` will be no longer true, and the loop will terminate. You can also create more complicated predicates for the while loop:
+The above loop will print the numbers `1` through `10` and then comparison between `a` and `10` will be no longer true, and the loop will terminate. You can also create more complicated predicates for the while loop:
 
     n = 15
     while n > 0 and n < 30:
@@ -45,7 +45,7 @@ The above loop will print the numbers `0` through `10` and then comparison betwe
 
 The above loop will print the numbers 12, 9, 6, 3, 0 and then the complicated predicate will no longer be true, and the loop will terminate.
 
-Unlike your typical `for` loop, `while` loops leave open an interesting possibility. What if the predicate is *never* true?
+Unlike your typical `for` loop, `while` loops leave open an interesting possibility. What if the predicate is *never* false?
 
     >>> n = 7.0
     >>> while n > 0:
