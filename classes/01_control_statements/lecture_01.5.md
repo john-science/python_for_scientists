@@ -1,6 +1,6 @@
 ## Control Statements
 
-#### for loops
+### for loops
 
 Basically, a `for` loop just does something for every value in a list. (Lists will be discussed in the next class.) For instance:
 
@@ -27,7 +27,7 @@ We also just learned about the `range` function. The `range` function produces a
 
 ![loops](http://www.jeffpalm.com/fox/fox.jpg)
 
-#### while loops
+### while loops
 
 A `while` loop does something until its main condition is no longer met:
 
@@ -54,7 +54,7 @@ Unlike your typical `for` loop, `while` loops leave open an interesting possibil
 
 This is called an `infinte loop`, because it would never terminate on its own. This is, obviously, not a good thing.
 
-#### if statements
+### if statements
 
 ![spam and eggs](http://upload.wikimedia.org/wikipedia/commons/a/a7/SPAM_and_Eggs.jpg)
 
@@ -107,7 +107,92 @@ Lastly, the `else` symbol is always optional:
     elif food == 'spam and eggs':
         print('Acceptable. I can pick out the eggs.')
 
-## Indentation
+### Continue, Break, and Pass
+
+The major Python control statements we have already seen:
+
+    for,  while, if...elif...else
+
+But there are also three minor control statements:
+
+    continue, break, pass
+
+These are used in conjunction with the major control statements, to allow for great flexibility and to help deal with special cases.
+
+#### The continue Statement
+
+The `continue` statement in Python returns the control to the beginning of the `for` or `while` loop. The `continue` statement rejects all the remaining statements in the current iteration of the loop and moves the control back to the top of the loop.
+
+    # First Example
+    for letter in 'Python':
+        if letter == 'h':
+            continue
+         print('Current Letter: ' + letter)
+    
+    # Second Example
+    var = 7
+    while var > 3:              
+        var = var - 1
+        if var == 5:
+            continue
+        print('Current variable value :' + str(var))
+
+    print("Good bye!")
+
+This will produce following result:
+
+    Current Letter : P
+    Current Letter : y
+    Current Letter : t
+    Current Letter : o
+    Current Letter : n
+    Current variable value : 6
+    Current variable value : 4
+    Current variable value : 3
+    Good bye!
+
+#### Syntatic Sugar
+
+Flow is done within blocks (where indentation matters):
+
+    x = 1
+    if x > 0:
+        print("yo")
+    else:
+        print("dude")
+
+A quick note colons & indentations (tabbed or spaced):
+
+    x = 1
+    if x > 0:
+          print('yo')
+    else:
+               print('dude')
+
+You can also put a whole if-else statment on one line:
+
+    "yo" if x > 0 else "dude"
+
+One important way to control the flow of a program is to use `break`:
+
+    x = 1
+    y = 0
+    while True:
+        print("yo" if x > 0 else "dude")
+        x *= -1
+        y += 1
+        if y > 100:
+            break
+
+Blocks can not be empty in Python:
+
+    if x == "spam for dinner":
+        print "I will destroy the universe"
+    else:
+        # I'm fine with that. I'll do nothing
+        pass
+
+### Indentation
 
 Did you notice in the `for` and `while` loops above how the content *inside* the loop was indented? That indentation is how Python decides what logic is contained within a loop, function, or class (more on those later). Unlike in other languages you might have seen, the indentation *really* matters in Python.
 
@@ -140,7 +225,7 @@ In the end, the only way to make your code correct *and* readable is to be consi
     else:
         return (n - 1) + (n - 2)
 
-## Comments!
+### Comments!
 
 > You are what you comment.
 
