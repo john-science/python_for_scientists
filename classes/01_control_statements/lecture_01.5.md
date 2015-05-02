@@ -243,6 +243,7 @@ If you write code and there are no comments and no documentation, the code doesn
 ## Problem Sets
 
  * [Basic Control Flow](problem_set_1_flow_controls.md)
+ * [Basic Control Flow - Solutions](problem_set_1_solutions.md)
  * [Modifying Strings](problem_set_2_strings.py)
 
 ## Further Reading
