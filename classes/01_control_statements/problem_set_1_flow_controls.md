@@ -13,4 +13,8 @@
  11. Using `range` and `while`, sum all the numbers evenly divisble by 7, from 0 to 10000.
 
 
+## Solutions
+
+ * [Control Flow - Solutions](problem_set_1_solutions.md)
+
 [Back to Lecture](lecture_01.5.md)
