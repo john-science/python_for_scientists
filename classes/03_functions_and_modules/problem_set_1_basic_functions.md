@@ -34,4 +34,9 @@ The first two numbers in the [Fibonacci Sequence](https://en.wikipedia.org/wiki/
 Write a function `fibonacci` that returns the nth Fibonacci Number, with another function inside of it (`recursion`) that calls the `fibonacci` function twice.
 
 
+## Solutions
+
+ 
+* [Functions - Solutions](problem_set_1_solutions.md)
+
 [Back to Lecture](lecture_03.md)
