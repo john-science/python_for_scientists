@@ -7,6 +7,8 @@
  4. Given strings `a` and `b`, print a single string with `a` and `b` separated by a space `'<a> <b>'`, except swap the first 2 characters of each string (e.g.  `'dog', 'dinner'` becomes `'dig donner'`). Assume `a` and `b` are length 2 or more.
  5. Given a sentence as a string `s`, use a `for` loop to print each word in that sentence.
     * **Hint**: `s.split(',')` will break a string into bits, using commas as a seperator.
+ 6. Start with the string `text = 'Emigrate'`, replace the letter `m` with `n`, replace the letter `r` with `m`, and remove the last two characters.
+ 7. Start with the string `cipher = 'planbluring'`, replace the fifth character with a space, replace all `A`s with `p`, and replace the sixth character with `T`.
 
 #### Where did these problems come from?
 
