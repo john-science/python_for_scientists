@@ -157,7 +157,6 @@ The picture to have in your mind, is that [sets](http://en.wikipedia.org/wiki/Se
 ## Problem Sets
 
  * [Basic Data Structures](problem_set_1_data_structures.md)
- * [Lists](problem_set_2_lists.py)
 
 ## Further Reading
 
