@@ -91,5 +91,30 @@
     
     # answer: 1429
 
+#### 12. Using `for` or `while` and/or an `if` statement, print the numbers `10` through `1`, then the string `"Blast off!"`.
+
+    # version 1
+    for count in range(10, 0, -1):
+        if count > 0:
+            print(count)
+        else:
+            print("Blast off!")
+
+    # version 2
+    count = 10
+    while count > 0:
+        print(count)
+        count -= 1
+    
+    print("Blast off!")
+
+#### 13. Following the example below for the multiplication table from 1 to 2, use two `for` loops to print the multiplication table from 1 to 5.
+
+    print('x\t1\t2\t3\t4\t5')
+    for row in range(1, 6):
+        line = str(row)
+        for col in range(1, 6):
+            line += '\t' + str(col * row)
+        print(line)
 
 [Back to Problem Set](problem_set_1_flow_controls.md)
