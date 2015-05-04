@@ -15,7 +15,7 @@
 13. Use a `while` loop to calculate the sum of the first 100 odd integers.
 14. Use a `for` loop to calculate the 10th [Triangular Number](https://en.wikipedia.org/wiki/Triangular_number). The nth Triangular Number is: `1 + 2 + 3 + ... + n`.
 15. Using two `for` loops (one nested inside the other), print out the factorials of `10` through `1` (in that order).
-16. Following the example below for the multiplication table from 1 to 2, use two `for` loops to print the multiplication table from 1 to 5.
+16. Below is the multiplication table up to 2. Following that example, use two nested `for` loops to print the multiplication table up to 5.
 
         x    1    2
         1    1    2
