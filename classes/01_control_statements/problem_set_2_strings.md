@@ -10,9 +10,9 @@
  6. Start with the string `text = 'Emigrate'`, replace the letter `m` with `n`, replace the letter `r` with `m`, and remove the last two characters.
  7. Start with the string `cipher = 'planbluring'`, replace the fifth character with a space, replace all `A`s with `p`, and replace the sixth character with `T`.
 
-#### Where did these problems come from?
+#### Citation
 
-The first four problems were taken from the Google Code guide to Python Strings [here](https://developers.google.com/edu/python/strings).
+The first four problems were taken from [Google Code](https://developers.google.com/edu/python/strings).
 
 ## Solutions
 
