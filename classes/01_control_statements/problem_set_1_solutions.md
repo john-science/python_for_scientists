@@ -142,7 +142,7 @@ Actually, if you looked at the Wikipedia link in the problem set, you would see 
             fact *= i
         print(fact)
 
-#### 16. Following the example below for the multiplication table from 1 to 2, use two `for` loops to print the multiplication table from 1 to 5.
+#### 16. Below is the multiplication table up to 2. Following that example, use two nested `for` loops to print the multiplication table up to 5.
 
     # In this solution, I build each tab-seperated line seperately.
 
