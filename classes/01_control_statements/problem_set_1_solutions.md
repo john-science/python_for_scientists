@@ -54,7 +54,7 @@
 
     # using range
     sum = 0
-    for i in range(2, 10001 2):
+    for i in range(2, 10001, 2):
         sum += i
     
     print(sum)
@@ -66,6 +66,8 @@
             sum += i
     
     print(sum)
+    
+    # answer is: 25005000
 
 #### 10. Using a `while` loop, an `if-elif` block, and the `%` operator, find the smallest number that is evenly divisible by: 2, 3, 4, 5, 6, 10, and 12.
 
@@ -77,14 +79,17 @@
                 break
         i += 1
     
+    # answer: 60 (This is why there are 60 seconds in a minute.)
 
 #### 11. Using `range` and `for`, sum all the numbers evenly divisble by 7, from 0 to 10000.
 
     sum = 0
     for i in range(0, 10001, 7):
-        sum == i
+        sum += i
     
     print(sum)
+    
+    # answer: 1429
 
 
 [Back to Problem Set](problem_set_1_flow_controls.md)
