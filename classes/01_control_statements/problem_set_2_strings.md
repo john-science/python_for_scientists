@@ -1,6 +1,6 @@
 # Modifying Strings - Problems
 
- 1. Given an integer count of a number of donuts, return a string of the form: `'Number of donuts: <count>',` where `<count>` is the number passed in. However, if `count` is `10` or more, then use the word `'many'` instead of the `count`.
+ 1. Given an integer `count`, a number of donuts, return a string of the form: `'Number of donuts: <count>',` where `<count>` is the number passed in. However, if `count` is `10` or more, then use the word `'many'` instead of the `count`.
  2. Given a string `s`, return a string made of the first 2 and the last 2 charachters of the original string, so `'spring'` yields `'spng'`. However, if the string length is less than 2, return the empty string.
  3. Given a string `s`, return a string where all occurences of its first character have been changed to `'*'`, except do not change the first character itself (e.g. `'babble'` yields `'ba**le'`). Assume that the string is length 1 or more.
    * **Hint**: `s.replace(stra, strb)` returns a version of string `s` where all instances of `stra` have been replaced by `strb`.
