@@ -1,6 +1,6 @@
 # Basic Control Flow - Problems
 
- 1. Print the numbers 1 through 10 with a `for` loop.
+ 1. Print the numbers 3 through 13 with a `for` loop and a `range` statement.
  2. Print the numbers 2 through 20 with a `while` loop.
  3. Using `range`, print only the odd numbers from 4 to 40.
  4. Using an `if` statement inside a `for` loop, print only the odd numbers from 4 to 40.
