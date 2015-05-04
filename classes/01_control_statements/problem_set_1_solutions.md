@@ -84,7 +84,7 @@
 #### 11. Using `range` and `for`, sum all the numbers evenly divisble by 7, from 0 to 10000.
 
     sum = 0
-    for i in range(0, 10001, 7):
+    for i in range(0, 10001, 7):  # 0, 7, 14, 21, ...
         sum += i
     
     print(sum)
@@ -93,14 +93,14 @@
 
 #### 12. Using `for` or `while` and/or an `if` statement, print the numbers `10` through `1`, then the string `"Blast off!"`.
 
-    # version 1
+    # Version 1: Using for, range, and an if statement
     for count in range(10, 0, -1):
         if count > 0:
             print(count)
         else:
             print("Blast off!")
 
-    # version 2
+    # Version 2: Use a while, but no if
     count = 10
     while count > 0:
         print(count)
@@ -110,7 +110,9 @@
 
 #### 13. Following the example below for the multiplication table from 1 to 2, use two `for` loops to print the multiplication table from 1 to 5.
 
-    print('x\t1\t2\t3\t4\t5')
+    # In this solution, I build each tab-seperated line seperately.
+
+    print('x\t1\t2\t3\t4\t5')  # header
     for row in range(1, 6):
         line = str(row)
         for col in range(1, 6):
