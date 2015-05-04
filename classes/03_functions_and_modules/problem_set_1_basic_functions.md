@@ -22,9 +22,9 @@ XKCD is always relevant:
 
 Write functions to fill the following goals, using at least one keyword argument:
 
-    1. Print "Hello, X!", where the default value of X is "World".
-    2. Given a list of integers, print all that are evenly divided by X (default value 2).
-    3. Extend a set of values (default empty set), by another set.
+1. Print "Hello, X!", where the default value of X is "World".
+2. Given a list of integers, print all that are evenly divided by X (default value 2).
+3. Extend a set of values (default empty set), by another set.
 
     
 ## Nested Functions
