@@ -80,8 +80,6 @@
 
 ### Sets
 
-#### Solutions
-
     # 1. Create a empty sets called "insects".
     insects = set()
     
