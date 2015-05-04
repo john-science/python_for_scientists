@@ -2,8 +2,6 @@
 
 ### Lists
 
-#### Solutions
-
     # 1. Initialize a list called "boys" with the elements: "Fred", "George", "Percy", "Ron".
     boys = ["Fred", "George", "Percy", "Ron"]
     
@@ -34,8 +32,6 @@
 
 ### Dictionaries
 
-#### Solutions
-
     # 1. Create an empty dictionary named "tardis".
     tardis = {}
     
@@ -64,8 +60,6 @@
     tardis
 
 ### Tuples
-
-#### Solutions
 
     # 1. Create a tuple called "months" containing the words "January" and "February".
     months = ("January", "February")
