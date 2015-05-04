@@ -1,11 +1,11 @@
 # Basic Control Flow - Solutions
 
-#### 1. Print the numbers 1 through 10 with a `for` loop.
+#### 1. Print the numbers 3 through 13 using a `for` loop and a `range` statement.
  
     for i in range(1, 11):
         print(i)
  
-#### 2. Print the numbers 2 through 20 with a `while` loop.
+#### 2. Print the numbers 2 through 20 using a `while` loop.
 
     i = 2
     while i < 21:
@@ -39,7 +39,7 @@
             continue
         print(i)
 
-#### 7. Using a `range` as part of a `for` loop, loop through every number divsible by 5 below 100. Using an `if` statement, print only the even numbers from that set.
+#### 7. Using `range` as part of a `for` loop, loop through every number evenly divsible by 5 from zero to 100. Using an `if` statement, print only the even numbers from that set.
 
     for i in range(0, 101, 5):
         if i % 2 == 0:
@@ -50,7 +50,7 @@
     if type(x) == str:
         print(x)
 
-#### 9. Using a `for` loop, sum up the even numbers from 1 to 10,000.
+#### 9. Using a `for` loop, sum the even numbers from 1 to 10,000.
 
     # using range
     sum = 0
@@ -69,7 +69,7 @@
     
     # answer is: 25005000
 
-#### 10. Using a `while` loop, an `if-elif` block, and the `%` operator, find the smallest number that is evenly divisible by: 2, 3, 4, 5, 6, 10, and 12.
+#### 10. Using a `while` loop, an `if-elif` block, and the `%` operator, find the smallest number that is evenly divisible by: 1, 2, 3, 4, 5, 6, 10, and 12.
 
     i = 1
     while True:
@@ -79,7 +79,7 @@
                 break
         i += 1
     
-    # answer: 60 (This is why there are 60 seconds in a minute.)
+    # answer: 60 (This is why there are 60 seconds in a minute and 60 minutes in an hour.)
 
 #### 11. Using `range` and `for`, sum all the numbers evenly divisble by 7, from 0 to 10000.
 
