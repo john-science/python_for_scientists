@@ -108,7 +108,41 @@
     
     print("Blast off!")
 
-#### 13. Following the example below for the multiplication table from 1 to 2, use two `for` loops to print the multiplication table from 1 to 5.
+#### 13. Use a `while` loop to calculate the sum of the first 100 odd integers.
+
+    found = 0  # How many odd integers have I found so far?
+    sum = 0    # Place to store the sum, thus far.
+    i = 1      # Place to store what integer I'm on.
+    while found <= 100:
+        sum += i    # increment the sum thus far
+        found += 1  # we found another odd integer
+        i += 2      # Every other number is odd
+    
+    print(sum)
+    
+    # answer: 10201
+
+#### 14. Use a `for` loop to calculate the 10th Triangular Number. The nth Triangular Number is: `1 + 2 + 3 + ... + n`.
+
+    sum = 0
+    for i in range(1, 11):
+        sum += i
+    
+    print(sum)
+    
+    # answer:55
+
+Actually, if you looked at the Wikipedia link in the problem set, you would see that the nth Triangular Number can be calculated by: `n * (n + 1) / 2`. This would be a great way to check your work for any `n`.
+
+#### 15. Using two `for` loops (one nested inside the other), print out the factorials of `10` through `1` (in that order).
+
+    for n in range(10, 0, -1):
+        fact = 1
+        for i in range(1, n + 1):
+            fact *= i
+        print(fact)
+
+#### 16. Following the example below for the multiplication table from 1 to 2, use two `for` loops to print the multiplication table from 1 to 5.
 
     # In this solution, I build each tab-seperated line seperately.
 
