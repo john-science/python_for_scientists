@@ -39,8 +39,6 @@ def write_quote_2_file(filename, text):
     """This function takes in a file name and a string and writes
     the contents of that string to the file name given."""
     exit('The function "write_quote_2_file" is unfinished.')
-    
-    return lines
 
 
 def read_quote_file(filename):
@@ -52,8 +50,9 @@ def read_quote_file(filename):
 
 
 def remove_non_letters(lines):
-    """This function takes in a list of strings that contain and
-    returns that same list where all the non-letter characterss have been removed.
+    """This function takes in a list of strings that contain numbers and other
+    non-letter characters and returns a list where all the non-letter
+    characters have been removed.
     
     Input Example: ['Arrakis 1!', 'Paul Atreides', 'Spice...']
     Output Example: ['Arrakis', 'PaulAtreides', 'Spice']
