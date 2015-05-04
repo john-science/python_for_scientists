@@ -25,7 +25,7 @@
     
     first = s[0]
     new_s = s.replace(first, '*')
-    new_s[0] = first
+    new_s = first + new_s[1:]
     print(new_s)
 
 #### 4. Given strings `a` and `b`, print a single string with `a` and `b` separated by a space `'<a> <b>'`, except swap the first 2 characters of each string (e.g.  `'dog', 'dinner'` becomes `'dig donner'`). Assume `a` and `b` are length 2 or more.
@@ -33,8 +33,8 @@
     # given strings a and b
     
     temp = a[1]
-    a[1] = b[1]
-    b[1] = temp
+    a = a[0] + b[1] + a[2:]
+    b = b[0] + temp + b[2:]
     print(a + ' ' + b)
 
 #### 5. Given a sentence as a string `s`, use a `for` loop to print each word in that sentence.
@@ -43,5 +43,19 @@
     
     for word in s.split(' '):
         print(word)
+
+#### 6. Start with the string `text = 'Emigrate'`, replace the letter `m` with `n`, replace the letter `r` with `m`, and remove the last two characters.
+
+    text = 'Emigrate'
+    new_text = text.replace('m', 'n').replace('r', 'm')[:-2]
+    print(new_text)  # Enigma
+
+#### 7. Start with the string `cipher = 'planbluring'`, replace the fifth character with a space, replace all `p`s with `A`, and replace the sixth character with `T`.
+
+    cipher = 'planbluring'
+    text = cipher[:4] + ' ' + cipher[5:]
+    text = text.replace('p', 'A')
+    text = text[:5] + 'T' + text[6:]
+    print(text)
 
 [Back to Problem Set](problem_set_2_strings.md)
