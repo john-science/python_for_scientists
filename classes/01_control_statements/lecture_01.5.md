@@ -9,7 +9,7 @@ Basically, a `for` loop just does something for every value in a list. (Lists wi
     for element in new_list:
         print(element)
 
-Try that out and you will see that the above `for` loop prints every item in `new_list`. There are two important keywords here: `for` and `in`. The keyword `for` signifies the kind of loop we're going to be executing and `in` show us that we're going to be putting each item in `new_list` into the variable `element` one at a time.
+Try that out and you will see that the above `for` loop prints every item in `new_list`. There are two important keywords here: `for` and `in`. The keyword `for` signifies the kind of loop we're going to be executing and `in` show us that we're going to be putting each item of `new_list` into the variable `element` one at a time.
 
 Let's print the numbers 1 through 10:
 
@@ -21,16 +21,16 @@ That was easy enough, but there is a better way to write that in Python:
     for number in range(1, 11):
         print(number)
 
-The `range` function is really helpful in Python. Much like `slice` that we saw with strings, `range` can take three inputs: `start`, `end`, and `step`. It turns out that `start` and `step` are optional though:
+The `range` function is really helpful in Python. Much like `slice` that we saw with strings, `range` can take three inputs: `start`, `end`, and `step`. It turns out that `start` and `step` are optional:
 
-    >>> range(1, 5)
-    [1, 2, 3, 4]
     >>> range(5)
     [0, 1, 2, 3, 4]
+    >>> range(1, 5)
+    [1, 2, 3, 4]
     >>> range(1, 5, 2)
     [1, 3]
-    >>> range(1, 30, 7)
-    [1, 8, 15, 22, 29]
+    >>> range(0, 30, 5)
+    [0, 5, 10, 15, 20, 25]
 
 (**NOTE**: As you can see above, the `start` value is *inclusive* and the `end` value is *exclusive*. The default `start` is zero and the default `step` is 1.)
 
@@ -56,9 +56,9 @@ The above loop will print the numbers 12, 9, 6, 3, 0 and then the complicated pr
 
 Unlike your typical `for` loop, `while` loops can fail in an interesting way. What if the predicate is *never* false?
 
-    >>> n = 7.0
+    >>> n = 7
     >>> while n > 0:
-    ...     n += 0.5
+    ...     n += 1
     ... 
 
 This is called an `infinte loop`, because it would never terminate on its own. This is, obviously, not a good thing.
@@ -91,14 +91,14 @@ Above is the basic `if` statement. You will use these to control the logical flo
     if food != 'spam':
         print('Sadness...')
 
-But the above logic happens so often, that Python provides a shortcut:
+The logic desired above is so common Python provides a shortcut:
 
     if food == 'spam':
         print('Ummmm, my favorite!')
     else:
         print("No, I won't have it. I want spam!")
 
-There is another option, what if you want to have several different conditionals chained together, to execute one of many different blocks of code, based on various predicates? That is the purpose of the `elif` symbol:
+There is another option. What if you want to have several different conditionals chained together? That is the purpose of the `elif` symbol:
 
     if food == 'spam':
         print('Mmmmm, my favorite!')
@@ -109,7 +109,7 @@ There is another option, what if you want to have several different conditionals
     else:
         print("No, I won't have it. I want spam!")
 
-Lastly, the `else` symbol is always optional:
+The `else` symbol is optional, but it is usually good practice to include it:
 
     if food == 'spam':
         print('Mmmmm, my favorite!')
@@ -130,7 +130,7 @@ These are used in conjunction with the major control statements to allow for gre
 
 #### The continue Statement
 
-The `continue` statement is used inside a `for` or `while` loop, skipping the rest of this iteration and going to the next items in the list. Let us look at a couple examples:
+The `continue` statement is used inside a `for` or a `while` loop, skipping the rest of this iteration and fast forwarding to the next item in the list. Let us look at a couple examples:
 
     for letter in 'Python':
         if letter == 'h':
@@ -145,26 +145,26 @@ This will print:
     Current Letter : o
     Current Letter : n
 
-Here the `print` statement inside the `for` loop was hit for every letter in the string `Python`, except the letter `h` because of that `continue statement. Let's try another example:
+Here the `print` statement was hit for every letter in `Python` except the letter `h`, because of the `continue` statement. Let's try another example:
 
     var = 10
     while var > 0:              
         var = var - 1
         if var % 2 == 0:
             continue
-        print('Current variable value :' + str(var))
+        print('Current variable value: ' + str(var))
 
 This will produce following result, because the `continue` statement will skip all of the even values:
 
-    Current variable value :9
-    Current variable value :7
-    Current variable value :5
-    Current variable value :3
-    Current variable value :1
+    Current variable value: 9
+    Current variable value: 7
+    Current variable value: 5
+    Current variable value: 3
+    Current variable value: 1
 
 #### The `break` Statement
 
-Another important way to control the flow of a program is to use `break`. When a `break` statement is reached, you immediately terminate your `for` or `while` loop:
+Another important way to control the flow of a program is to use `break`. When a `break` statement is reached, you immediately terminate the `for` or `while` loop:
 
     x = 0
     while True:
@@ -187,7 +187,7 @@ This will print the numbers `1` to `100` and then stop. You could, for instance,
 
 #### The `pass` Statement
 
-There is one final logical control we want to discuss. What if, when a certain set of predicates are true we want to do nothing? This seems like something we might want to do every now and again. But we can't just leave the block empty, so use `pass` statement:
+There is one final logical control we want to discuss. What if, when a certain set of predicates are true, we want to do nothing? That's possible. But we can't just leave the block empty, so use `pass` statement:
 
     if x == "not spam for dinner":
         print("I will destroy the universe")
@@ -197,7 +197,7 @@ There is one final logical control we want to discuss. What if, when a certain s
     else:
         print("I demand spam!")
 
-Without that `pass` statement, the `elif` block would be empty, and Python would throw an error. Try that and prove that to yourself.
+Without that `pass` statement the `elif` block would be empty and Python would throw an error. Try that and prove that to yourself.
 
 ### Indentation
 
