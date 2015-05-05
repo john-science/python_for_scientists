@@ -1,6 +1,6 @@
 # Data Structures
 
-A "data structure" is how you decide to organize the data you are interacting with. You can imagine that you could organize, store, and interact with computer data in all kinds of complicated ways. Well, Python has four standard data structures built right in, that people use most often: lists, dictionaries, tuples, and sets.
+A "data structure" is a way to organize data you want to store in the computer. In the first class we saw simple pieces of data we wanted to store, as a basic `type`: integers, floats, strings, and booleans. But what if we want to store several pieces of data together? You will want to be able to assign, store, and retrieve large amounts of data as easily as possible. Python has four standard data structures built right in, that you will find useful: lists, dictionaries, tuples, and sets.
 
 ####  lists
 
@@ -45,9 +45,9 @@ If you want to learn more about what kinds of functionality are built into Pytho
 
 ####  dictionaries
 
-Dictionaries are similar to what their name suggests - a dictionary. In a dictionary, you have an 'index' of words, and for each of them a definition. In Python, the word is called a 'key', and the definition a 'value'. The values in a dictionary aren't numbered - they aren't in any specific order, either - the key does the same thing. (Each key must be unique, though!) You can add, remove, and modify the values in dictionaries.
+Dictionaries are similar to what their name suggests. In a dictionary, you have an 'index' of words, and for each of them a definition. In Python, the word is called a 'key', and the definition a 'value'. The keys and values in a dictionary aren't numbered or ordered. But you can retrieve a value by asking using the unique key related to it. You can add, remove, and modify the values in dictionaries.
 
-Creating a dictionary is much like anything else, but you use curly brace (`{`, `}`) to define a collection as dictionary and a colon (`:`) to define a key/value pair:
+To create a dictionary you use curly brace (`{`, `}`) to define a collection as dictionary and a colon (`:`) to define a key/value pair:
 
     gdp = {'USA': 16244600, 'China': 8358400, 'Japan': 5960180, 'Ghana': 40711, 'Samoa': 681}
 
