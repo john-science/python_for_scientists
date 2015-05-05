@@ -63,6 +63,8 @@ Unlike your typical `for` loop, `while` loops can fail in an interesting way. Wh
 
 This is called an `infinte loop`, because it would never terminate on its own. This is, obviously, not a good thing.
 
+(Also, notice how we have to put an extra line at the end of this for the interpretter to know the loop is done.)
+
 ### if statements
 
 ![spam and eggs](http://upload.wikimedia.org/wikipedia/commons/a/a7/SPAM_and_Eggs.jpg)
@@ -135,7 +137,7 @@ The `continue` statement is used inside a `for` or a `while` loop, skipping the 
     for letter in 'Python':
         if letter == 'h':
             continue
-         print('Current Letter: ' + letter)
+        print('Current Letter: ' + letter)
 
 This will print:
 
@@ -185,6 +187,8 @@ This will print the numbers `1` to `100` and then stop. You could, for instance,
     
     print('The sum of the first ' + str(i) + ' integers is over 10,000.')
 
+(Notice the extra line before the `print` statement. The interpreter needs that extra line to know the `while` loop is complete.)
+
 #### The `pass` Statement
 
 There is one final logical control we want to discuss. What if, when a certain set of predicates are true, we want to do nothing? That's possible. But we can't just leave the block empty, so use `pass` statement:
@@ -205,25 +209,7 @@ Did you notice in the `for` and `while` loops above how the content *inside* the
 
 `White Space` is very important in Python.
 
-Here is an example of a correctly (though confusingly) indented piece of Python code:
-
-    if n == 0:
-     return 0
-    elif n == 1:
-          return 1
-    else:
-      return (n - 1) + (n - 2)
-
-The following example shows various indentation errors:
-
-        if n == 0:               # error: first line indented
-    return 0                     # error: not indented
-    elif n == 1:
-          return 1
-     else:                       # error: inconsistent dedent
-       return (n - 1) + (n - 2)
-
-In the end, the only way to make your code correct *and* readable is to be consistent with your indents. Do the same thing every time. The standard is four spaces per indent:
+Here is an example of a correctly indented piece of Python:
 
     if n == 0:
         return 0
@@ -231,6 +217,25 @@ In the end, the only way to make your code correct *and* readable is to be consi
         return 1
     else:
         return (n - 1) + (n - 2)
+
+Notice how the indents line up. If we didn't align the `if`, `elif`, or `else` together, Python would throw an error:
+
+    if n == 0:
+        return 0
+    elif n == 1:
+          return 1
+      else:                       # ERROR: inconsistent dedent
+       return (n - 1) + (n - 2)
+
+Or if we didn't indent the code inside the blocks Python would throw an error:
+
+    if n == 0:
+        return 0
+    elif n == 1:
+    return 1                       # ERROR: no indent
+    else:
+       return (n - 1) + (n - 2)
+
 
 ### Comments!
 
