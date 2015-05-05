@@ -113,14 +113,14 @@
     found = 0  # How many odd integers have I found so far?
     sum = 0    # Place to store the sum, thus far.
     i = 1      # Place to store what integer I'm on.
-    while found <= 100:
+    while found < 100:
         sum += i    # increment the sum thus far
         found += 1  # we found another odd integer
         i += 2      # Every other number is odd
     
     print(sum)
     
-    # answer: 10201
+    # answer: 10000
 
 #### 14. Use a `for` loop to calculate the 10th Triangular Number. The nth Triangular Number is: `1 + 2 + 3 + ... + n`.
 
