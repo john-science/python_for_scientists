@@ -94,19 +94,46 @@
 #### 5. Change the value of "Dalek" to "Exterminate"
 
     tardis["Dalek"] = "Exterminate"
+
+#### 6. Add the key/value pair "Companion"/"Human" to `tardis`.
     
-#### 6. Print tardis (in two different ways).
+    tardis["Companion"] = "Human"
+    
+#### 7. Print tardis (in two different ways).
 
     tardis
     print(tardis)
-    
-#### 7. Save the Doctor! Remove the "Dalek" key from the dictonary.
+
+#### 8. Using a `for` loop and `.keys()`, print the values of the `tardis`.
+
+    tardis_keys = tardis.keys()
+    for key in tardis_keys:
+        print(tardis[key])
+
+#### 9. Without using `.keys()` or `.values()`, use a `for` loop to print the values of the `tardis`.
+
+    for name in tardis:
+        print(tardis[name])
+
+#### 10. Save the Doctor! Remove the "Dalek" key from the dictonary.
 
     del tardis["Dalek"]
     
-#### 8. Print tardis.
+#### 11. Print tardis.
 
     tardis
+
+#### 12. Find the number of keys in the `tardis`.
+
+    # version 1 - Best Option
+    len(tardis)
+    
+    # version 2
+    len(tardis.keys())
+
+#### 13. Using `sorted` and a slice (`[:]`), print the `keys` of `tardis` in reverse alphabetical order.
+
+    sorted(tardis.keys())[::-1]
 
 ## Tuples
 
