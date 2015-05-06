@@ -28,7 +28,7 @@
     new_s = first + new_s[1:]
     print(new_s)
 
-#### 4. Given strings `a` and `b`, print a single string with `a` and `b` separated by a space `'<a> <b>'`, except swap the first 2 characters of each string (e.g.  `'dog', 'dinner'` becomes `'dig donner'`). Assume `a` and `b` are length 2 or more.
+#### 4. Given strings `a` and `b`, print a single string with `a` and `b` separated by a space `'<a> <b>'`, except swap the second character of each string (e.g.  `'dog', 'dinner'` becomes `'dig donner'`). Assume `a` and `b` are length 2 or more.
 
     # given strings a and b
     
