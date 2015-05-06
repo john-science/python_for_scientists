@@ -29,6 +29,33 @@
     # 8. Use the `.sort()` method to sort the "weasleys" list into alphabetical order.
     weasleys.sort()
     print(weasleys)
+    
+    # 9. Print the length of `weasleys`.
+    print(len(weasleys))
+    
+    # 10. Using a `for` loop, iterate through `weasleys` and add the first letter of each name to into a string called "firsts", then print that string.
+    firsts = ''
+    for name in weasleys:
+        first += name[0]
+    
+    print(firsts)
+    
+    # 11. Using a `for` loop and an `if` statement, iterate through `weasleys` and create a new list, "reds", of only names longer than 4 letters.
+    reds = []
+    for name in weasleys:
+        if len(name) > 4:
+            reds.append(name)
+    
+    print(name)
+    
+    # 12. Using an `in` statement, test if "Charles" is in the `weasleys`.
+    "Charles" in weasleys
+    
+    # 13. Using a slice (`[:]`), take a slice of all but the first and last elements of `weasleys`.
+    weasleys[1:-1]
+    
+    # 14. Using two slices (`[:]`), add the first element of `boys` to the last element of `weasleys`.
+    boys[0] + weasleys[-1]
 
 ### Dictionaries
 
