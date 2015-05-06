@@ -5,11 +5,17 @@
 1. Initialize a list called "boys" with the elements: "Fred", "George", "Percy", "Ron".
 2. Initialize a list called "girls" with elements: "Giney".
 3. Print both lists.
-4. Print the first element in "girls".
-5. Find two or three ways to print the last element in "boys".
+4. Print the first element in `girls`.
+5. Find two or three ways to print the last element in `boys`.
 6. Add the element "Charles" to the "boys" list.
-7. Add the "boys" and "girls" together, and save the results as a list called "weasleys".
+7. Add the `boys` and `girls` together, and save the results as a list called "weasleys".
 8. Use the `.sort()` method to sort the "weasleys" list into alphabetical order.
+9. Print the length of `weasleys`.
+10. Using a `for` loop, iterate through `weasleys` and add the first letter of each name to into a string called "firsts", then print that string.
+11. Using a `for` loop and an `if` statement, iterate through `weasleys` and create a new list, "reds", of only names longer than 4 letters.
+12. Using an `in` statement, test if "Charles" is in the `weasleys`.
+13. Using a slice (`[:]`), take a slice of all but the first and last elements of `weasleys`.
+14. Using two slices (`[:]`), add the first element of `boys` to the last element of `weasleys`.
 
 #### Sorting
 
