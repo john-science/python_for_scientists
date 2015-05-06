@@ -1,6 +1,6 @@
 # Python Data Structures
 
-### Lists
+## Lists
 
 1. Initialize a list called "boys" with the elements: "Fred", "George", "Percy", "Ron".
 2. Initialize a list called "girls" with elements: "Giney".
@@ -30,18 +30,23 @@ In general, sorting a list of items is a classic, but difficult computational ta
 
 So, what is the difference between `sort` and `sorted` above?
 
-### Dictionaries
+## Dictionaries
 
 1. Create an empty dictionary named "tardis".
-2. Add a key/value pair to tardis of "Doctor"/"Who".
-3. Add a key/value pair to the tardis dictionary of "Dalek"/"Evil".
-4. Print the tardis dictionary. Print the keys and the values in tardis.
+2. Add a key/value pair to `tardis` of "Doctor"/"Who".
+3. Add a key/value pair to the `tardis` dictionary of "Dalek"/"Evil".
+4. Print the `tardis` dictionary. Print the keys and the values in `tardis`.
 5. Change the value of "Dalek" to "Exterminate"
-6. Print tardis (in two different ways).
-7. Save the Doctor! Remove the "Dalek" key from the dictonary.
-8. Print tardis.
+6. Add the key/value pair "Companion"/"Human" to `tardis`.
+7. Print `tardis` (in two different ways).
+8. Using a `for` loop and `.keys()`, print the values of the `tardis`.
+9. Without using `.keys()` or `.values()`, use a `for` loop to print the values of the `tardis`.
+10. **Save the Doctor!** Remove the "Dalek" key from the dictonary.
+11. Print `tardis`.
+12. Find the number of keys in the `tardis`.
+13. Using `sorted` and a slice (`[:]`), print the `keys` of `tardis` in reverse alphabetical order.
 
-### Tuples
+## Tuples
 
 This will be short, because tuples are so much like lists.
 
@@ -51,7 +56,7 @@ This will be short, because tuples are so much like lists.
 4. Return the first element in "months"
 5. Return the last element in "months" in two or three different ways.
 
-### Sets
+## Sets
 
 1. Create a empty sets called "insects".
 2. One-at-a-time, add these elements to insects: "6 legs", "exoskeleton", "3-part bodies", "small", "lay eggs"
