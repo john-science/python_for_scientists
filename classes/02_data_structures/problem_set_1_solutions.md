@@ -210,4 +210,40 @@
     >>> spider
     set(["8 legs", "spin webs", "2-part bodies", "small", "lay eggs"])
 
+
+## Choose a Data Structure
+
+Knowning how to use a particular data structure is good, but that won't do you any good unless you know when to pick various data structures. In the problems below, pick one of the four data structures above to solve the problem as easily as possible.
+
+#### 1. Print the days of the week (`"Monday"` through `"Sunday"`) and the numbers `1` through `7` using a single `for` loop.
+
+    dows = {"Monday": 1, "Tuesday": 2, "Wednesday": 3, "Thursday": 4,
+            "Friday": 5, "Saturday": 6, "Sunday": 7}
+    
+    for dow, i in dows.iteritems():
+        print(dow " is day-of-week number " + str(i))
+
+#### 2. Print the names of the planets in alphabetical order: `"Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"`.
+
+    planets = ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"]
+    
+    for planet in planets:
+        print(planet)
+
+#### 3. Create a collection of the names of three science fiction auhors `"Ray Bradbury"`, `"Isaac Asimov"`, and `"Terry Pratchett"` such that it can never be altered.
+
+    authors = ("Ray Bradbury"`, `"Isaac Asimov"`, and `"Terry Pratchett")
+
+#### 4. Find all the unique letters in the phrase: `"the sweettoothed bookkeeper"`.
+
+    phrase = "the sweettoothed bookkeeper".replace(' ', '')
+    letters = set()
+    
+    for letter in phrase:
+        letters.add(letter)
+
+#### 5. For each month of the year, assign the number of that month (1 through 12) and the number of days in that month.
+
+
+
 [Back to Problem Set](problem_set_1_data_structures.md)
