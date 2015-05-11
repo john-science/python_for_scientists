@@ -1,10 +1,10 @@
 # Data Structures
 
-A "data structure" is a way to organize data and store it in a computer. In the first class we saw simple pieces of data we wanted to store as a basic `type`s: integers, floats, strings, and booleans. But what if we want to store several pieces of data together? We will want to be able to assign, store, and retrieve large amounts of data as easily as possible. Python has four standard data structures built in that you will find useful: lists, dictionaries, tuples, and sets.
+A "data structure" is a way to organize data and store it in a computer. In the first class we only saw individual `type`s of data: integers, floats, strings, and booleans. But if you're using a computer to solve a problem, chances are you have many pieces of data that are related to each other in some way. Python has four standard data structures to that you will find useful when organizing your data: lists, dictionaries, tuples, and sets.
 
 ####  lists
 
-This is the collection of data most commonly used in Python. Lists are what they seem: a list of values. Each value is numbered, starting with zero. You can remove values from a list or add values to the end. The elements of the list don't even need to be the same type:
+This is the most commonly-used way to collect your data in Python. Lists are what they seem: a sequental collection of values. Each value is numbered, starting with zero. You can retrieve these number values or modify them. The elements of the list don't even need to be the same type:
 
     new_list = []
     my_list = [1, 2, 3]
@@ -21,10 +21,10 @@ You can select elements from an array in almost arbitrary fashion:
     [22, 333]
     >>> my_list[-1]
     55555
-    >>> my_list[-2:]
+    >>> my_list[-2:]  # just like a string!
     [4444, 55555]
 
-You can also modify lists in a wide variety of convenient ways:
+You can also modify and interact with lists in a wide variety of convenient ways:
 
     >>> list1 = [1, 2, 3]
     >>> list2 = [4, 5, 6]
@@ -45,9 +45,13 @@ If you want to learn more about what kinds of functionality are built into Pytho
 
 ####  dictionaries
 
-Dictionaries in Python are similar to dictionaries in real life. They both have keys matched with a value. In Python, a dictionary has a set of "keys" (keys can be simple things like numbers and strings) and each key has a related "value". The value could be something simple, like an integer, or more complicated like a list or another dictionary. You can add, remove, and modify both keys and values in dictionaries.
+Dictionaries in Python are similar to dictionaries in real life. They both have keys matched with a value. A real world key is a word and the value is a definition. In Python, a dictionary has a set of "keys" (keys can be simple things like numbers and strings) and each key has a related "value". The value could be something simple, like an integer, or more complicated like a list or another dictionary. You can add, remove, and modify both keys and values in dictionaries.
 
-To create a dictionary you use curly brace (`{`, `}`) to define a collection as dictionary and a colon (`:`) to define a key/value pair:
+You can create an empty dictionary with just the curly braces:
+
+    d = {}
+
+And you use colons define a key/value pair:
 
     gdp = {'USA': 16244600, 'China': 8358400, 'Japan': 5960180, 'Ghana': 40711, 'Samoa': 681}
 
@@ -77,10 +81,6 @@ To retreive all the keys or values from a dictionary:
     ['USA', 'Germany', 'China', 'Samoa', 'Ghana']
     >>> gdp.values()
     [16244600, 8358400, 40711, 681, 3425956]
-
-You can create an empty dictionary with just the curly braces:
-
-    d = {}
 
 **NOTE**: It is important to know that when you retreive all of the keys or values from a dictionary in this way, they will not be ordered. Do not expect that you can predict what *order* these keys or values come out in.
 
@@ -112,7 +112,7 @@ But I find that I don't do this much, as now I have an empty tuple that I can't 
 
 ####  sets
 
-Imagine we want to know every country the students in the class are from. If we went through each student in the class, we would probably get a list with "United States" in it many times. But that's not quite what we want. We want a short list with each country just written once. Luckily, this kind of thing is common enough that it is built right into Python, in a data structure called "sets"
+Imagine we want to know every county that the students in this class were born in. If we went through each student and asked them where they were born, we would probably get the response "United States" several times. But that's not quite what we want. We want a short list with each country just written once. There is a standard Python data structure for this called a "set".
 
 First, let's create an empty set:
 
@@ -127,6 +127,9 @@ Now, let's add some elements to it:
     >>> tolkein.add('orc')
     >>> tolkein.add('orc')
     >>> tolkein.add('orc')
+
+And let's print the set:
+
     >>> tolkein
     set(['orc', 'goblin', 'troll', 'dragon'])
 
