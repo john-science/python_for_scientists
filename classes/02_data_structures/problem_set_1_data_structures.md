@@ -67,6 +67,17 @@ This will be short, because tuples are so much like lists.
 7. Add "not cuddly" to the spider set, and print.
 8. Remove the "not cuddly" from the spider set, and print.
 
+## Choose a Data Structure
+
+Knowning how to use a particular data structure is good, but that won't do you any good unless you know when to pick various data structures. In the problems below, pick one of the four data structures above to solve the problem as easily as possible.
+
+1. Print the days of the week (`"Monday"` through `"Sunday"`) and the numbers `1` through `7` using a single `for` loop.
+2. Print the names of the planets in alphabetical order: `"Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"`.
+3. Create a collection of the names of three science fiction auhors `"Ray Bradbury"`, `"Isaac Asimov"`, and `"Terry Pratchett"` such that it can never be altered.
+4. Find all the unique letters in the phrase: `"the sweettoothed bookkeeper"`.
+5. For each month of the year, assign the number of that month (1 through 12) and the number of days in that month.
+
+
 ## Solutions
 
  * [Data Structures - Solutions](problem_set_1_solutions.md)
