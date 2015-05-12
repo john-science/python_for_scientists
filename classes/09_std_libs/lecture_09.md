@@ -34,11 +34,17 @@ We will not be able to fully cover any of these libraries, but we will cover sev
 
 ## Further Reading
 
- * [Official Doc - Python 2 - datetime](https://docs.python.org/2/library/datetime.html?highlight=datetime#module-datetime)
- * [Official Doc - Python 3 - datetime](https://docs.python.org/3/library/datetime.html?highlight=datetime#module-datetime)
+ * [Official Docs - Python 2 - datetime](https://docs.python.org/2/library/datetime.html)
+ * [Official Docs - Python 3 - datetime](https://docs.python.org/3/library/datetime.html)
  * [effbot - datetime](http://www.effbot.org/librarybook/datetime.htm)
+ * [Official Docs - Python 2 - os](https://docs.python.org/2/library/os.html)
+ * [Official Docs - Python 3 - os](https://docs.python.org/3/library/os.html)
  * [effbot - os](http://www.effbot.org/librarybook/os.htm)
+ * [Official Docs - Python 2 - os.path](https://docs.python.org/2/library/os.path.html#module-os.path)
+ * [Official Docs - Python 3 - os.path](https://docs.python.org/3/library/os.path.html#module-os.path)
  * [effbot - os.path](http://www.effbot.org/librarybook/os-path.htm)
+ * [Official Docs - Python 2 - os](https://docs.python.org/2/library/sys.html)
+ * [Official Docs - Python 3 - os](https://docs.python.org/3/library/sys.html)
  * [effbot - sys](http://www.effbot.org/librarybook/sys.htm)
 
 
