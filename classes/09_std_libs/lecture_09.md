@@ -4,7 +4,7 @@
 
 Batteries Included. That's the Python motto. Python comes with a whole collection of [standard libraries](http://en.wikipedia.org/wiki/Standard_library). Standard libraries are packages of code that come included with Python to help you solve common problems. Why reinvent the wheel every time, if you know someone else has already solved it? Unlike the Python language itself, you have to use the `import` keyword to use a standard library.
 
-Now let's start looking at some of the most helpful ones for scientists and engineers.
+We will not be able to fully cover any of these libraries, but we will cover several useful tools in each library. For more information, look at the [https://doc.python.org](https://doc.python.org) for full documentation on the libraries. Note, there are different versions of the documentation for different verions of Python: [https://docs.python.org/2/](https://docs.python.org/2/) [https://docs.python.org/3/](https://docs.python.org/3/)
 
 ## datetime
 
@@ -34,6 +34,8 @@ Now let's start looking at some of the most helpful ones for scientists and engi
 
 ## Further Reading
 
+ * [Official Doc - Python 2 - datetime](https://docs.python.org/2/library/datetime.html?highlight=datetime#module-datetime)
+ * [Official Doc - Python 3 - datetime](https://docs.python.org/3/library/datetime.html?highlight=datetime#module-datetime)
  * [effbot - datetime](http://www.effbot.org/librarybook/datetime.htm)
  * [effbot - os](http://www.effbot.org/librarybook/os.htm)
  * [effbot - os.path](http://www.effbot.org/librarybook/os-path.htm)
