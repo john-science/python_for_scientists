@@ -54,6 +54,8 @@ To retreive a value from a dictionary, simply supply the related key:
     >>> gdp['Samoa']
     681
 
+Notice, that since we pull values out of the dictionary by using a single key, that means that all the keys in the dictionary have to be unique. Otherwise, Python wouldn't know which `'Samoa'` you were talking about.
+
 However, if that key doesn't exist, Python will throw an error:
 
     >>> gdp['Czechoslovakia']
