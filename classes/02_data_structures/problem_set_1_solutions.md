@@ -244,6 +244,20 @@ Knowning how to use a particular data structure is good, but that won't do you a
 
 #### 5. For each month of the year, assign the number of that month (1 through 12) and the number of days in that month.
 
+Notice I didn't say you needed to do any math. All you need to do is *assign* values. To me, it seems easiest to just create imbedded dictionaries.
+
+    months = {'Jan': {'month_num': 1, 'num_days': 31},
+              'Feb': {'month_num': 2, 'num_days': 28},
+              'Mar': {'month_num': 3, 'num_days': 31},
+              'Apr': {'month_num': 4, 'num_days': 30},
+              'May': {'month_num': 5, 'num_days': 31},
+              'Jun': {'month_num': 6, 'num_days': 30},
+              'Jul': {'month_num': 7, 'num_days': 31},
+              'Aug': {'month_num': 8, 'num_days': 31},
+              'Sep': {'month_num': 9, 'num_days': 30},
+              'Oct': {'month_num': 10, 'num_days': 31},
+              'Nov': {'month_num': 11, 'num_days': 30},
+              'Dec': {'month_num': 12, 'num_days': 31}}
 
 
 [Back to Problem Set](problem_set_1_data_structures.md)
