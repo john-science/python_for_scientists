@@ -1,6 +1,6 @@
 # Data Structures
 
-A "data structure" is a way to organize data and store it in a computer. In the first class we only saw the simplest data structure, a single primitive `type`: integers, floats, strings, and booleans. But if you're using a computer to solve a problem, chances are you have many pieces of data that are related to each other in some way. Python has four standard data structures that you will find useful when organizing your data: lists, dictionaries, tuples, and sets.
+A "data structure" is a way to organize data in a computer. In the first class we only saw the simplest data structure, a single primitive `type`: integers, floats, strings, and booleans. But if you're using a computer to solve a problem, chances are you have many pieces of data that are related to each other in some way. Python has four standard data structures that you will find useful when organizing your data: lists, dictionaries, tuples, and sets.
 
 ###  lists
 
