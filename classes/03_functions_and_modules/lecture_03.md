@@ -91,31 +91,6 @@ If we want to set the global `pi` variable inside a function, we need to access 
     >>> print(pi)
     3.1415926
 
-#### Documentation
-
-**Documentation**: Just the right thing to do and Python makes it dead simple.
-
-![docstrings](../../resources/glorious_docstrings.png)
-
-**Docstring**: the first unassigned string in a function (or class, method, program, etc.). Here is a nice example of a helpful docstring for the function `numop1`:
-
-    def numop1(x,y,multiplier=1.0,greetings="Thank you for your inquiry."):
-        """
-            Purpose: does a simple operation on two numbers.
-
-            Input: We expect x,y are numbers multiplier is also a number
-            (a float is preferred) and is optional.
-            It defaults to 1.0. You can also specify a small greeting as a string.
-
-            Output: return x + y times the multiplier
-        """
-        if greetings is not None:
-            print(greetings)
-            return (x + y)*multiplier
-
-If we copy the Python code for `numop1` into a file, say `super_happy_fun_nums.py`, we can go to the command line and type `pydoc -w super_happy_fun_nums` and you will create a nicely-formmated HTML file with all the documentation for the functions in that file:
-
-![docstrings](../../resources/docstring_screencap.png)
 
 ## Modules
 
@@ -243,6 +218,33 @@ If the module is imported, the code is not run:
     >>>
 
 The take-away message here is there are several ways to write, store, and execute Python code. You should choose among these based on how much you might want to reuse this code later. If you just want to use Python as a simple calculate: write your code in the interpreter and be done with it. If you might ever want to run the code again, put it into a text file with a `.py` extension. And if you understand your code well enough to break it into logical pieces that might be useful again one day, separate your code into functions, and call them with a `main` method.
+
+
+#### Documentation
+
+**Documentation**: Just the right thing to do and Python makes it dead simple.
+
+![docstrings](../../resources/glorious_docstrings.png)
+
+**Docstring**: the first unassigned string in a function (or class, method, program, etc.). Here is a nice example of a helpful docstring for the function `numop1`:
+
+    def numop1(x,y,multiplier=1.0,greetings="Thank you for your inquiry."):
+        """
+            Purpose: does a simple operation on two numbers.
+
+            Input: We expect x,y are numbers multiplier is also a number
+            (a float is preferred) and is optional.
+            It defaults to 1.0. You can also specify a small greeting as a string.
+
+            Output: return x + y times the multiplier
+        """
+        if greetings is not None:
+            print(greetings)
+            return (x + y)*multiplier
+
+If we copy the Python code for `numop1` into a file, say `super_happy_fun_nums.py`, we can go to the command line and type `pydoc -w super_happy_fun_nums` and you will create a nicely-formmated HTML file with all the documentation for the functions in that file:
+
+![docstrings](../../resources/docstring_screencap.png)
 
 
 ## Problem Sets
