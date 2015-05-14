@@ -296,14 +296,14 @@ As we saw last week, once you `import math`, you can do `help(math)` to learn wh
 
 The `math` library above is just the tip of the standard library iceberg. Python has all kinds of libraries built in to do various things:
 
- * datetime - tools for dealing with dates and times ([Python 2](https://docs.python.org/2/library/datetime.html)/[Python 3](https://docs.python.org/3/library/datetime.html))
- * gzip - tools for gzipping and un-gzipping files ([Python 2](https://docs.python.org/2/library/gzip.html)/[Python 3](https://docs.python.org/3/library/gzip.html))
- * random - tools for generating pseudo-random numbers ([Python 2](https://docs.python.org/2/library/random.html)/[Python 3](https://docs.python.org/3/library/random.html))
- * os - tools creating directories, checking if files exist, etc ([Python 2](https://docs.python.org/2/library/os.html)/[Python 3](https://docs.python.org/3/library/os.html))
- * sys - allows you to add commandline arguments to your Python programs ([Python 2](https://docs.python.org/2/library/sys.html)/[Python 3](https://docs.python.org/3/library/sys.html))
- * urllib2 - tools for dealing with HTTP communications over the internet ([Python 2](https://docs.python.org/2/library/urllib2.html)/[Python 3](https://docs.python.org/3/library/urllib2.html))
+ * datetime - tools for dealing with dates and times ([Python 2](https://docs.python.org/2/library/datetime.html) / [Python 3](https://docs.python.org/3/library/datetime.html))
+ * gzip - tools for gzipping and un-gzipping files ([Python 2](https://docs.python.org/2/library/gzip.html) / [Python 3](https://docs.python.org/3/library/gzip.html))
+ * random - tools for generating pseudo-random numbers ([Python 2](https://docs.python.org/2/library/random.html) / [Python 3](https://docs.python.org/3/library/random.html))
+ * os - tools creating directories, checking if files exist, etc ([Python 2](https://docs.python.org/2/library/os.html) / [Python 3](https://docs.python.org/3/library/os.html))
+ * sys - allows you to add commandline arguments to your Python programs ([Python 2](https://docs.python.org/2/library/sys.html) / [Python 3](https://docs.python.org/3/library/sys.html))
+ * urllib2 - tools for dealing with HTTP communications over the internet ([Python 2](https://docs.python.org/2/library/urllib2.html) / [Python 3](https://docs.python.org/3/library/urllib2.html))
 
-Compared to the languages that came before it, Python has just a huge number of standard libraries to help you out. For a full list check here: [Python 2](https://docs.python.org/2/library/) / [Python 3](https://docs.python.org/3/library/)
+For a full list of the Python standard libraries check here: [Python 2](https://docs.python.org/2/library/) / [Python 3](https://docs.python.org/3/library/)
 
 Try this one:
 
