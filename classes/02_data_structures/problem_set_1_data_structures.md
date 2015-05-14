@@ -75,7 +75,7 @@ Knowning how to use a particular data structure is good, but that won't do you a
 2. Print the names of the planets in alphabetical order: `"Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"`.
 3. Create a collection of the names of three science fiction auhors `"Ray Bradbury"`, `"Isaac Asimov"`, and `"Terry Pratchett"` such that it can never be altered.
 4. Find all the unique letters in the phrase: `"the sweettoothed bookkeeper"`.
-5. For each month of the year, assign the number of that month (1 through 12) and the number of days in that month.
+5. For each month of the year, match the number of days in the month to the number (1 through 12) of that month.
 
 
 ## Solutions
