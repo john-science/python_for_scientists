@@ -242,7 +242,7 @@ Knowning how to use a particular data structure is good, but that won't do you a
     for letter in phrase:
         letters.add(letter)
 
-#### 5. For each month of the year, assign the number of that month (1 through 12) to the number of days in that month.
+#### 5. For each month of the year, match the number of days in the month to the number (1 through 12) of that month.
 
 Notice I didn't say you needed to do any math. All you need to do is *assign* values. So just create a dictionary.
 
