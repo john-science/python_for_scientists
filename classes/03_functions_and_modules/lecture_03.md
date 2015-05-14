@@ -15,7 +15,9 @@ The structure of a function definition is:
         '''EXPLANATION OF WHAT THE FUNCTION DOES'''
         FUNCTION_BODY
 
-The `argX` above are function arguments, and they are required (the order is important). The `kwX` above are keywords, but they are optional (the order is unimportant; the valuess are defaults).
+The `arg1` above are function arguments, and if a function has arguments, then the user must give a value for those arguments when calling the function. And the order of arguments is important.
+
+The `kw1` above are keywords, but they are optional because a default value `v1` will be provided for each keyword. The order of the keywords isn't important.
 
 Function names can be almost anything, but they have a few restrictions:
 
@@ -23,7 +25,7 @@ Function names can be almost anything, but they have a few restrictions:
 - do not start with a number
 - are not the same name as a built-in function (like `print`)
 
-Notice also that every function should have a short 1 to 5 line comment block, describing what it does. This helps you remember anything tricky about the function when you come back to it next year. And it also helps speed along the process of reading your code for anyone else that works with it.
+Notice also that every function should have a short 1 to 5 line comment block, describing what it does. This helps you remember anything tricky about the function when you come back to it next year. And it also really speeds up reading your code, if anyone else should look at it.
 
 #### Example Functions
 
@@ -94,11 +96,39 @@ If we want to set the global `pi` variable inside a function, we need to access 
 
 ## Modules
 
-You can write all of your Python code in the interpreter. But when you quit the interpreter, all of your work lost. Frequently, this is perfectly okay. But another option is to write all of your Python code into a text file, and run that text file directly from the commandline. As your programs get longer, you may want to break the code into multiple files for easier maintenance. You can also have one handy function shared between multiple files, saving repetition.
+You can write all of your Python code in the interpreter. But when you quit the interpreter, all of your work is lost. Sometimes, this is perfectly okay. But another option is to write all of your Python code into a text file, and run that text file directly from the commandline. As your programs get longer, you may want to break the code into multiple files for easier maintenance. You can also have one handy function shared between multiple files, saving repetition.
 
 > Any file ending in .py is treated as a module by Python.
 
 A module is an organized unit of Python code. Every Python file has its own global variable `scope`, so you can name your variables and functions there whatever you want without conflicting with other modules.
+
+
+#### Documentation
+
+**Documentation**: Just the right thing to do and Python makes it dead simple.
+
+![docstrings](../../resources/glorious_docstrings.png)
+
+**Docstring**: the first unassigned string in a function (or class, method, program, etc.). Here is a nice example of a helpful docstring for the function `numop1`:
+
+    def numop1(x,y,multiplier=1.0,greetings="Thank you for your inquiry."):
+        """
+            Purpose: does a simple operation on two numbers.
+
+            Input: We expect x,y are numbers. multiplier is also a number
+            (a float is preferred) and is optional.
+            It defaults to 1.0. You can also specify a small greeting as a string.
+
+            Output: return x + y times the multiplier
+        """
+        if greetings is not None:
+            print(greetings)
+            return (x + y)*multiplier
+
+If we copy the Python code for `numop1` into a file, say `super_happy_fun_nums.py`, we can go to the command line and type `pydoc -w super_happy_fun_nums` and you will create a nicely-formmated HTML file with all the documentation for the functions in that file:
+
+![docstrings](../../resources/docstring_screencap.png)
+
 
 #### Imports
 
@@ -218,33 +248,6 @@ If the module is imported, the code is not run:
     >>>
 
 The take-away message here is there are several ways to write, store, and execute Python code. You should choose among these based on how much you might want to reuse this code later. If you just want to use Python as a simple calculate: write your code in the interpreter and be done with it. If you might ever want to run the code again, put it into a text file with a `.py` extension. And if you understand your code well enough to break it into logical pieces that might be useful again one day, separate your code into functions, and call them with a `main` method.
-
-
-#### Documentation
-
-**Documentation**: Just the right thing to do and Python makes it dead simple.
-
-![docstrings](../../resources/glorious_docstrings.png)
-
-**Docstring**: the first unassigned string in a function (or class, method, program, etc.). Here is a nice example of a helpful docstring for the function `numop1`:
-
-    def numop1(x,y,multiplier=1.0,greetings="Thank you for your inquiry."):
-        """
-            Purpose: does a simple operation on two numbers.
-
-            Input: We expect x,y are numbers multiplier is also a number
-            (a float is preferred) and is optional.
-            It defaults to 1.0. You can also specify a small greeting as a string.
-
-            Output: return x + y times the multiplier
-        """
-        if greetings is not None:
-            print(greetings)
-            return (x + y)*multiplier
-
-If we copy the Python code for `numop1` into a file, say `super_happy_fun_nums.py`, we can go to the command line and type `pydoc -w super_happy_fun_nums` and you will create a nicely-formmated HTML file with all the documentation for the functions in that file:
-
-![docstrings](../../resources/docstring_screencap.png)
 
 
 ## Problem Sets
