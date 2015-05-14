@@ -93,16 +93,6 @@ If we want to set the global `pi` variable inside a function, we need to access 
     >>> print(pi)
     3.1415926
 
-
-## Modules
-
-You can write all of your Python code in the interpreter. But when you quit the interpreter, all of your work is lost. Sometimes, this is perfectly okay. But another option is to write all of your Python code into a text file, and run that text file directly from the commandline. As your programs get longer, you may want to break the code into multiple files for easier maintenance. You can also have one handy function shared between multiple files, saving repetition.
-
-> Any file ending in .py is treated as a module by Python.
-
-A module is an organized unit of Python code. Every Python file has its own global variable `scope`, so you can name your variables and functions there whatever you want without conflicting with other modules.
-
-
 #### Documentation
 
 **Documentation**: Just the right thing to do and Python makes it dead simple.
@@ -129,6 +119,14 @@ If we copy the Python code for `numop1` into a file, say `super_happy_fun_nums.p
 
 ![docstrings](../../resources/docstring_screencap.png)
 
+
+## Modules
+
+You can write all of your Python code in the interpreter. But when you quit the interpreter, all of your work is lost. Sometimes, this is perfectly okay. But another option is to write all of your Python code into a text file, and run that text file directly from the commandline. As your programs get longer, you may want to break the code into multiple files for easier maintenance. You can also have one handy function shared between multiple files, saving repetition.
+
+> Any file ending in .py is treated as a module by Python.
+
+A module is an organized unit of Python code. Every Python file has its own global variable `scope`, so you can name your variables and functions there whatever you want without conflicting with other modules.
 
 #### Imports
 
