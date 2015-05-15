@@ -80,28 +80,15 @@ The [scope](https://en.wikipedia.org/wiki/Scope_%28computer_science%29) of a var
     >>> print(pi)
     1.0
 
-If we want to set the global `pi` variable inside a function, we need to access it using the `global` keyword:
-
-    >>> pi = 1.0
-    >>> def set_pi():
-            '''set and print the value of pi'''
-            global pi
-            pi = 3.1415926
-            print(pi)
-    >>> set_pi()
-    3.1415926
-    >>> print(pi)
-    3.1415926
-
-**PRO TIP**: If you find yourself using the `global` keyword, you have done something wrong. If you need a variable inside a function, pass it in as an argument. Using `global` will make your code harder to read and debug.
-
 #### Documentation
 
 **Documentation**: Just the right thing to do and Python makes it dead simple.
 
 ![docstrings](../../resources/glorious_docstrings.png)
 
-**Docstring**: the first unassigned string in a function (or class, method, program, etc.). Here is a nice example of a helpful docstring for the function `numop1`:
+**Docstring**: the first unassigned string in a function (or class, method, program, etc.).
+
+Here is a nice example of a helpful docstring for the function `numop1`:
 
     def numop1(x,y,multiplier=1.0,greetings="Thank you for your inquiry."):
         """
@@ -129,7 +116,7 @@ This will generate a nicely-formmated HTML file with all the documentation for t
 
 Let's take another look at the file we created above: `super_happy_fun_nums.py`.
 
-This is an example of a Python module. That is, instead of writing our Python code into the interpreter, we wrote it into a text file. There is a lot of benefit to this. Certainly, you *can* write all of your Python code in the interpreter. But when you quit the interpreter, all of your work is lost. Saving your Python code into a text file will also make writing longer programs *much* easier.
+This is an example of a Python module. That is, instead of writing our Python code into the interpreter, we wrote it into a text file. There is a lot of benefit to this. Certainly, you *can* write all of your Python code in the interpreter. But when you quit the interpreter, all of your work is lost. This way you will have your code available tomorrow, if you need it.
 
 > Any file ending in .py is treated as a module by Python.
 
