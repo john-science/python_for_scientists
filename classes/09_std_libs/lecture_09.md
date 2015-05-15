@@ -2,9 +2,9 @@
 
 ![Python](https://imgs.xkcd.com/comics/python.png)
 
-Batteries Included. That's the Python motto. Python comes with a whole collection of [standard libraries](http://en.wikipedia.org/wiki/Standard_library). Standard libraries are packages of code that come included with Python to help you solve common problems. Why reinvent the wheel every time, if you know someone else has already solved it? Unlike the Python language itself, you have to use the `import` keyword to use a standard library.
+Batteries Included. That's the Python motto. Python comes with a huge collection of [standard libraries](http://en.wikipedia.org/wiki/Standard_library). Standard libraries are packages of code that come with Python to help you solve common tasks. Why reinvent the wheel every time?
 
-We will not be able to fully cover any of these libraries, but we will cover several useful tools in each library. For more information, look at the [https://doc.python.org](https://doc.python.org) for full documentation on the libraries. Note, there are different versions of the documentation for different verions of Python: [https://docs.python.org/2/](https://docs.python.org/2/) [https://docs.python.org/3/](https://docs.python.org/3/)
+What follows is a selection of handy tools from Python's standard libraries. For a full list of the Python standard libraries check here: [Python 2](https://docs.python.org/2/library/) / [Python 3](https://docs.python.org/3/library/).
 
 ## datetime
 
