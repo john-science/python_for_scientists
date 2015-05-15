@@ -4,7 +4,7 @@
 
 #### Defining a Function
 
-A function is a handy way to encasuplate a piece of logic that needs to be performed repeatedly or made more portable.
+A function is a handy way to encasuplate a piece of logic that needs to be used again by your or your friends.
 
     def say_hi():
         print('Hi!')
@@ -17,15 +17,15 @@ The structure of a function definition is:
 
 The `arg1` above are function arguments, and if a function has arguments, then the user must give a value for those arguments when calling the function. And the order of arguments is important.
 
-The `kw1` above are keywords, but they are optional because a default value `v1` will be provided for each keyword. The order of the keywords isn't important.
+The `kw1` above are keywords, but they are optional because a default value `v1` will be provided for each keyword. Since keywords have names, the order of the keywords isn't important.
 
 Function names can be almost anything, but they have a few restrictions:
 
 - contain only numbers, letters, underscores
 - do not start with a number
-- are not the same name as a built-in function (like `print`)
+- are not the same name as a built-in function (like `print`, `list`, `exit`)
 
-Notice also that every function should have a short 1 to 5 line comment block, describing what it does. This helps you remember anything tricky about the function when you come back to it next year. And it also really speeds up reading your code, if anyone else should look at it.
+Notice also that every function should have a short 1-to-5 line comment block, describing what it does. This helps you remember anything tricky about the function when you come back to it next year. And it also really speeds up reading your code, if anyone else should look at it.
 
 #### Example Functions
 
@@ -90,7 +90,7 @@ The [scope](https://en.wikipedia.org/wiki/Scope_%28computer_science%29) of a var
 
 Here is a nice example of a helpful docstring for the function `numop1`:
 
-    def numop1(x,y,multiplier=1.0,greetings="Thank you for your inquiry."):
+    def numop1(x, y, multiplier=1.0, greetings="Thank you for your inquiry."):
         """
             Purpose: does a simple operation on two numbers.
 
@@ -116,7 +116,7 @@ This will generate a nicely-formmated HTML file with all the documentation for t
 
 Let's take another look at the file we created above: `super_happy_fun_nums.py`.
 
-This is an example of a Python module. That is, instead of writing our Python code into the interpreter, we wrote it into a text file. There is a lot of benefit to this. Certainly, you *can* write all of your Python code in the interpreter. But when you quit the interpreter, all of your work is lost. This way you will have your code available tomorrow, if you need it.
+This is an example of a Python module. That is, instead of writing our Python code into the interpreter, we placed it into a text file. Certainly, you *can* write all of your Python code in the interpreter. But when you quit the interpreter, all of your work is lost. This way you will have your code available tomorrow, if you need it.
 
 > Any file ending in .py is treated as a module by Python.
 
@@ -144,9 +144,9 @@ Now, let's import and use `numop1`:
     Yo
     15.0
 
-Let's recap. We wrote a Python function into a file with the `*.py` extension. That extension allowed the Python intepreter to know that we could import Python code from that file. We then used "from FILENAME import FUNCTION" to import the Python code in the intepreter and run it.
+Let's recap. We wrote a Python function into a file with the `*.py` extension. That extension allowed the Python intepreter to know that there was importable Python code to be found. We then used `"from FILENAME import THING"` to import the Python code into the intepreter and use it.
 
-The ability to store off Python code in a module and use that code with different values is huge. This is a big step towards making Python really useful for you in your every day work.
+The ability to store off Python code in a module and use that code with different values is huge. This is a big step towards making Python useful to you in your every day work.
 
 ## Executing Your First Python Program
 
@@ -154,16 +154,16 @@ A Python program consists of one (or more) modules that are executable from the 
 
     $ python super_happy_fun_nums.py
 
-If you try that line above, you will see that... nothing happens. Well, that's anti-climatic. After all, the function `numop1` above doesn't *do* anything until you pass it an argument. So what did you expect to happen?
+If you try that line above, you will see that... nothing happens. Well, that's anti-climatic. But, after all, the function `numop1` above doesn't *do* anything until you pass it an argument. So what did you expect to happen?
 
 #### main
 
-It turns out, to create turn a Python module into an executable program, you need a `main` function. To make a Python module a full program, you have to add two things to it. First, a `main` function:
+It turns out, to create turn a Python module into an executable program, you need a `main` function. To make a Python module a full program, you have to add two things. First, add a `main` function:
 
     def main():
         print('Hello World!')
 
-And second, you need to add these two lines, that tell Python you want to treat this file like an executable:
+Second, you need to add these two lines:
 
     if __name__ == '__main__':
         main()
@@ -193,14 +193,14 @@ If you add these things to `super_happy_fun_nums.py`, the file will look like th
     if __name__ == '__main__':
         main()
 
-**NOTE**: I left *two* blank lines between each function in the file. This is the standard. Since functions frequently have one blank line in them (here and there), it makes it easier for your eye to separate out one function from another.
+**NOTE**: I left the standard *two* blank lines between each function. Since functions frequently have single blank lines in them (here and there), this makes it easier for your eye to separate out one function from another.
 
 Okay, let's run our new script!
 
     $ python super_happy_fun_nums.py
     Hello, World!
 
-Awesome, we just made our first Python program. But... wait, what about `numop1`? Well, we didn't call that function in the `main` function, so we didn't use it. But it seems silly not to use it. So let's change the main method to:
+Awesome, we just made our first Python program! But... wait, what about `numop1`? Well, we didn't call that function in the `main` function, so we didn't use it. That seems silly. So let's change the main method to:
 
     def main():
         '''Just printing some silly tests'''
@@ -218,7 +218,7 @@ Let's run our program again:
     (4 + 4) * 4:
     32
 
-NOW we have a real program. It has a `main` function, so we can execute it from the commandline. It has a function in it, that we use in the `main` function. We have even commented our functions. This little file could serve as a blueprint for 90% of the Python work you do.
+NOW we have a real program. It has a `main` function, so we can execute it from the commandline. It has a function in it, that we use in the `main` function. We have even commented our functions. This little file could serve as a blueprint for a lot of the Python work you do.
 
 ## Importing From Your Module
 
@@ -243,7 +243,7 @@ So, there are several ways to import from a Python script in the interpreter.
 
 ## Importing In Your Module
 
-If you created another Python module and called it `testing_imports.py`, you could use all of the same imports as above, to import `numop1` from `super_happy_fun_nums` (as long as `testing_imports` and `super_happy_fun_nums` are still in the same folder):
+If you created another Python module and called it `testing_imports.py`, you could use all of the same imports as we did in the interpreter above, to import `numop1` from `super_happy_fun_nums` (as long as `testing_imports` and `super_happy_fun_nums` are still in the same folder):
 
     # our new testing_imports.py file
     
@@ -255,13 +255,11 @@ If you created another Python module and called it `testing_imports.py`, you cou
     if __name__ == '__main__':
         main()
 
-So now we can share code between different Python modules. That'll come in handy.
+Now we can share code between different Python modules. That'll come in handy.
 
 ## Import Python Standard Libraries
 
-The Python moto is "batteries included". That means Python comes with a whole galaxy of libraries (modules) written to do all kinds of things. We will cover some of these in more detail in a few weeks. But it's good to know they exist. And we might as well try using them.
-
-The following examples could be done in the Python interpretter, or in a Python module. And from here on out I encourage you to consider both options when working an example or problem from the problem sets.
+The Python moto is "batteries included". That means Python comes with all kinds of libraries (modules) built it to do a lot of things you'll want to do. We will cover some of these in more detail in a few weeks. But it's good to know they exist. And we might as well try using them.
 
 #### math
 
@@ -270,24 +268,24 @@ An obvious first library for a scientist or engineer to know about is the [math]
     >>> import math
     >>> math.sqrt(4.00)
     2.0
+    >>> math.sin(0.0)
+    0.0
     >>> math.trunc(3.14159265358979)
     3
     >>> math.floor(3.14159265358979)
     3.0
-    >>> math.sin(0.0)
-    0.0
 
-As we saw last week, once you `import math`, you can do `help(math)` to learn what tools are availble. And if you see `sqrt` and want to learn more, you can do `help(math.sqrt)`. Python wants to make it easy for you to learn its secrets, all you have to do is ask.
+Once you `import math`, you can do `help(math)` to learn what options are availble. Similarly, you can also do `help(math.sqrt)` to learn more about that. If you have a question, just ask Python.
 
 #### Just for Fun
 
-The `math` library above is just the tip of the standard library iceberg. Python has all kinds of libraries built in to do various things:
+The `math` library above is just the tip of the standard library iceberg. Python has all kinds of libraries built in:
 
  * datetime - tools for dealing with dates and times ([Python 2](https://docs.python.org/2/library/datetime.html) / [Python 3](https://docs.python.org/3/library/datetime.html))
  * gzip - tools for gzipping and un-gzipping files ([Python 2](https://docs.python.org/2/library/gzip.html) / [Python 3](https://docs.python.org/3/library/gzip.html))
  * random - tools for generating pseudo-random numbers ([Python 2](https://docs.python.org/2/library/random.html) / [Python 3](https://docs.python.org/3/library/random.html))
  * os - tools creating directories, checking if files exist, etc ([Python 2](https://docs.python.org/2/library/os.html) / [Python 3](https://docs.python.org/3/library/os.html))
- * sys - allows you to add commandline arguments to your Python programs ([Python 2](https://docs.python.org/2/library/sys.html) / [Python 3](https://docs.python.org/3/library/sys.html))
+ * sys - add commandline arguments to your programs ([Python 2](https://docs.python.org/2/library/sys.html) / [Python 3](https://docs.python.org/3/library/sys.html))
  * urllib2 - tools for dealing with HTTP communications over the internet ([Python 2](https://docs.python.org/2/library/urllib2.html) / [Python 3](https://docs.python.org/3/library/urllib2.html))
 
 For a full list of the Python standard libraries check here: [Python 2](https://docs.python.org/2/library/) / [Python 3](https://docs.python.org/3/library/)
@@ -298,13 +296,13 @@ Try this one:
 
 ## Wrap-Up
 
-Today we learned about three things that will really help us write real code that will be useful to us in our daily work.
+Today we learned about three things that will help us write real code that will be useful to us in our daily work.
 
-First, we learned about functions. They are a handy way to encapsulate code for later use. No need to keep typing everything over and over again.
+First, we learned about functions. They encapsulate code for later use.
 
 Second, we learned how to make a module out of Python code by placing it in a ".py" file. And we further saw how to turn a module into a program that can be executed on the commandline using the `main` function.
 
-Lastly, we learned about the `import` keyword. Which we can use to import our own modules or even some Python's wonderful standard libraries.
+Lastly, we learned about the `import` keyword. We can now share our own code between modules, and make use a ton of modules built right into Python.
 
 
 ## Problem Sets
