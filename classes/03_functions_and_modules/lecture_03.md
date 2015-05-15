@@ -307,7 +307,7 @@ Lastly, we learned about the `import` keyword. We can now share our own code bet
 
 ## Problem Sets
 
- * [Basic Functions](problem_set_1_functions_modules.md)
+ * [Functions and Modules](problem_set_1_functions_modules.md)
 
 ## Further Reading
 
