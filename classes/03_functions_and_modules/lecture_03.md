@@ -93,7 +93,7 @@ If we want to set the global `pi` variable inside a function, we need to access 
     >>> print(pi)
     3.1415926
 
-**PRO TIP**: If you find yourself using the `global` keyword, you have done something wrong. If you need a variable inside a function, pass it in as an argument. Using the `global` keyword will almost always make your code hard to read and debug.
+**PRO TIP**: If you find yourself using the `global` keyword, you have done something wrong. If you need a variable inside a function, pass it in as an argument. Using `global` will make your code harder to read and debug.
 
 #### Documentation
 
