@@ -122,16 +122,42 @@ It has `sin`, `cos`, `tan`, and of course `pi`
 
 It also has `asin`, `acos`, `atan`, and `sinh`, `cosh`, `tanh`, `asinh`, `acosh`, `atanh`.
 
-We can also do `sqrt` and arbitrary powers (`pow`):
+It can also do `sqrt` and arbitrary powers (`pow`):
 
     >>> from math import sqrt, pow
     >>> sqrt(4)
     2.0
     >>> 1.23*1.23
     1.5129
-    >>> pow(12, 3)
-    1728.0
+    >>> pow(2, 3)
+    8.0
     >>> pow(4, 4)
+    256.0
+
+It can also do various kinds of exponentials and logarithms:
+
+    >>> from math import exp, log, log10, e
+    >>> 
+    >>> exp(1)
+    2.718281828459045
+    >>> exp(2)
+    7.38905609893065
+    >>> log(1)
+    0.0
+    >>> log(10)
+    2.302585092994046
+    >>> log(100)
+    4.605170185988092
+    >>> log(1, e)
+    0.0
+    >>> log(10, e)
+    2.302585092994046
+    >>> log(100, e)
+    4.605170185988092
+    >>> log10(10)
+    1.0
+    >>> log10(25)
+    1.3979400086720377
 
 ## Random
 
