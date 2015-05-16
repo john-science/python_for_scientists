@@ -109,11 +109,7 @@ The `math` library has all kinds of things built in.
 
  * Coming Soon
 
-## itertools
-
- * Coming Soon
-
-## Copy
+## pprint
 
  * Coming Soon
 
@@ -124,14 +120,11 @@ The `math` library has all kinds of things built in.
 ## Further Reading
 
  * Official Docs - datetime: ([Python 2](https://docs.python.org/2/library/datetime.html) / [Python 3](https://docs.python.org/3/library/datetime.html))
- * Official Docs - strftime: ([Python 2](https://docs.python.org/2/library/datetime.html#strftime-and-strptime-behavior) / [Python 3](https://docs.python.org/3/library/datetime.html#strftime-and-strptime-behavior))
+ * Official Docs - datetime formatting: ([Python 2](https://docs.python.org/2/library/datetime.html#strftime-and-strptime-behavior) / [Python 3](https://docs.python.org/3/library/datetime.html#strftime-and-strptime-behavior))
  * [effbot - datetime](http://www.effbot.org/librarybook/datetime.htm)
- * Official Docs - os: ([Python 2](https://docs.python.org/2/library/os.html) / [Python 3](https://docs.python.org/3/library/os.html))
- * [effbot - os](http://www.effbot.org/librarybook/os.htm)
- * Official Docs - os.path: ([Python 2](https://docs.python.org/2/library/os.path.html#module-os.path) / [Python 3](https://docs.python.org/3/library/os.path.html#module-os.path))
- * [effbot - os.path](http://www.effbot.org/librarybook/os-path.htm)
- * Official Docs - sys: ([Python 2](https://docs.python.org/2/library/sys.html) / [Python 3](https://docs.python.org/3/library/sys.html))
- * [effbot - sys](http://www.effbot.org/librarybook/sys.htm)
+ * Official Docs - math: ([Python 2](https://docs.python.org/2/library/math.html) / [Python 3](https://docs.python.org/3/library/math.html))
+ * Official Docs - random: ([Python 2](https://docs.python.org/2/library/random.html) / [Python 3](https://docs.python.org/3/library/random.html))
+ * Official Docs - pprint: ([Python 2](https://docs.python.org/2/library/pprint.html) / [Python 3](https://docs.python.org/3/library/pprint.html))
 
 
 [Back to Syllabus](../../README.md)
