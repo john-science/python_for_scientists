@@ -161,11 +161,38 @@ It can also do various kinds of exponentials and logarithms:
 
 ![random](http://imgs.xkcd.com/comics/random_number.png)
 
- * Coming Soon
+There area  lot of different ways to generate pseudo-random numbers in Python. But here is a short introduction to some of the methods that will be the most useful to you.
 
-## pprint
+The most general and useful method is the basic `random`, which generates a `float` between zero and one:
+    
+    >>> from random import random
+    >>> random()
+    0.9719607738140819
+    >>> random()
+    0.8947058583583551
+    >>> random()
+    0.1309924455836774
 
- * Coming Soon
+Another really useful tool is `choice`, which will select a random item from a `list`:
+    
+    >>> from random import choice
+    >>> x = [1, 'think', 3, 4, 5]
+    >>> choice(x)
+    1
+    >>> choice(x)
+    5
+    >>> choice(x)
+    'think'
+    
+Similarly, `randint` generates a random integer between two bounds:
+    
+    >>> from random import randint
+    >>> randint(1, 99)
+    27
+    >>> randint(1, 99)
+    68
+    >>> randint(1, 99)
+    13
 
 ## Problem Sets
 
@@ -178,7 +205,6 @@ It can also do various kinds of exponentials and logarithms:
  * [effbot - datetime](http://www.effbot.org/librarybook/datetime.htm)
  * Official Docs - math: ([Python 2](https://docs.python.org/2/library/math.html) / [Python 3](https://docs.python.org/3/library/math.html))
  * Official Docs - random: ([Python 2](https://docs.python.org/2/library/random.html) / [Python 3](https://docs.python.org/3/library/random.html))
- * Official Docs - pprint: ([Python 2](https://docs.python.org/2/library/pprint.html) / [Python 3](https://docs.python.org/3/library/pprint.html))
 
 
 [Back to Syllabus](../../README.md)
