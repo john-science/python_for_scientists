@@ -270,10 +270,10 @@ An obvious first library for a scientist or engineer to know about is the [math]
     2.0
     >>> math.sin(0.0)
     0.0
-    >>> math.trunc(3.14159265358979)
-    3
-    >>> math.floor(3.14159265358979)
-    3.0
+    >>> math.log(1)
+    0.0
+    >>> math.pi
+    3.141592653589793
 
 Once you `import math`, you can do `help(math)` to learn what options are availble. Similarly, you can also do `help(math.sqrt)` to learn more about that. If you have a question, just ask Python.
 
