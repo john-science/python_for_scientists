@@ -101,7 +101,37 @@ There's actually one more Really useful thing we can do with these date formmati
 
 ## Math
 
-The `math` library has all kinds of things built in.
+The `math` library in Python has a lot of typical functions built in.
+
+It has `sin`, `cos`, `tan`, and of course `pi`
+
+    >>> from math import sin, cos, tan
+    >>> from math import pi
+    >>> sin(0)
+    0.0
+    >>> sin(pi)
+    0.0
+    >>> cos(0)
+    1.0
+    >>> cos(pi)
+    -1.0
+    >>> tan(0)
+    0.0
+    >>> tan(pi)
+    -0.0
+
+It also has `asin`, `acos`, `atan`, and `sinh`, `cosh`, `tanh`, `asinh`, `acosh`, `atanh`.
+
+We can also do `sqrt` and arbitrary powers (`pow`):
+
+    >>> from math import sqrt, pow
+    >>> sqrt(4)
+    2.0
+    >>> 1.23*1.23
+    1.5129
+    >>> pow(12, 3)
+    1728.0
+    >>> pow(4, 4)
 
 ## Random
 
