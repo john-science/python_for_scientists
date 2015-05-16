@@ -127,8 +127,6 @@ It can also do `sqrt` and arbitrary powers (`pow`):
     >>> from math import sqrt, pow
     >>> sqrt(4)
     2.0
-    >>> 1.23*1.23
-    1.5129
     >>> pow(2, 3)
     8.0
     >>> pow(4, 4)
