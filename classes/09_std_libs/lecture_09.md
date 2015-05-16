@@ -161,7 +161,9 @@ It can also do various kinds of exponentials and logarithms:
 
 ![random](http://imgs.xkcd.com/comics/random_number.png)
 
-There area  lot of different ways to generate pseudo-random numbers in Python. But here is a short introduction to some of the methods that will be the most useful to you.
+There area  lot of different ways to generate pseudo-random numbers in Python. But here is a short introduction to the three you can use to generate all the other functionality in the library.
+
+#### random
 
 The most general and useful method is the basic `random`, which generates a `float` between zero and one:
     
@@ -173,6 +175,8 @@ The most general and useful method is the basic `random`, which generates a `flo
     >>> random()
     0.1309924455836774
 
+#### choice
+
 Another really useful tool is `choice`, which will select a random item from a `list`:
     
     >>> from random import choice
@@ -183,7 +187,9 @@ Another really useful tool is `choice`, which will select a random item from a `
     5
     >>> choice(x)
     'think'
-    
+
+#### randint
+
 Similarly, `randint` generates a random integer between two bounds:
     
     >>> from random import randint
@@ -193,6 +199,40 @@ Similarly, `randint` generates a random integer between two bounds:
     68
     >>> randint(1, 99)
     13
+
+## timeit
+
+One of people's main complaints about Python as a language is that it isn't as fast as C or Fortran. But it can be particularly fast. You just have to *try* to optimize your code for speed. If you are tryingt to make a function faster, you will want to test it out and see if your new version is indeed faster than your old one. Python's `timeit` library is an easy way to time your code without having to change it. For instance:
+
+    >>> def build_counting_list(n):
+    ...     '''build a list of lists where the elements are:
+    ...     [1]
+    ...     [1, 2]
+    ...     [1, 2, 3]
+    ...     and so on.
+    ...     '''
+    ...     counting = []
+    ...     for i in xrange(1, n):
+    ...         counting.append(range(1, i + 1))
+    ...     return counting
+
+Now, to time that function, we run it 1 time:
+
+    >>> from timeit import timeit
+    >>> timeit(str(build_counting_list(4)), number=1)
+    5.0067901611328125e-06
+
+There are two things to understand about that last line. First off, we have to encapsulate our function call with `str()`, because `timeit` takes strings. And second of all, that `number=1` means we only do the thing we're timing once. If we want to get a more accurate count, we might run the process 10,000 times:
+
+    >>> timeit(str(build_counting_list(100)), number=10000)
+    0.5770218372344971
+
+That `timeit` takes strings is a little strange. But it also allows us to write our code directly into the `timeit` statement:
+
+    >>> timeit('range(100000)', number=1000)
+    1.1704330444335938
+
+And for timing short pieces of logic, that might be good enough.
 
 ## Problem Sets
 
@@ -205,6 +245,8 @@ Similarly, `randint` generates a random integer between two bounds:
  * [effbot - datetime](http://www.effbot.org/librarybook/datetime.htm)
  * Official Docs - math: ([Python 2](https://docs.python.org/2/library/math.html) / [Python 3](https://docs.python.org/3/library/math.html))
  * Official Docs - random: ([Python 2](https://docs.python.org/2/library/random.html) / [Python 3](https://docs.python.org/3/library/random.html))
+ * Official Docs - timeit: ([Python 2](https://docs.python.org/2/library/timeit.html) / [Python 3](https://docs.python.org/3/library/timeit.html))
+ * [Python Central - timeit](http://www.pythoncentral.io/time-a-python-function/)
 
 
 [Back to Syllabus](../../README.md)
