@@ -81,7 +81,95 @@ It sometimes happens that you have the full path to a file and you want to break
 
 ## sys
 
- * Coming Soon
+The `sys` library has a lot of great stuff in it, but what we are going to focus on is the ability to pass variables to your Python programs. Let's make a really simple example, where all you want your program to do is print squares from 1 to `n`:
+
+    def main():
+        '''simple test main function'''
+        n = 5
+        print_squares(n)
+        
+    
+    def print_squares(n):
+        '''print the squares of the numbers
+        from 1 to n'''
+        for i in range(1, n + 1):
+            print(i * i)
+
+
+    if __name__ == '__main__':
+        main()
+
+We will call the above module `print_squares.py`. And it works. We can run it by doing `python print_squares.py`, and it will print the numbers from 1 to 25. But if we want to change `n` to be 100, we have to go in and change the hard-coded number `n`. Not only does this take time, it means the script really isn't independent of the value of `n` you want to run right now. It would be nice if we could make the script a bit more general. Well, that's what the `sys` library is for.
+
+What we want is to have the script be run like:
+
+    python print_squares.py 7
+
+And that will print the squares from 1 to 49.
+
+This is pretty easy to do. It turns out that `sys.argv` is a list of all the command line arguments used to run a Python program. The modified program would look like this:
+
+    import sys
+
+    def main():
+        '''simple test main function'''
+        n = int(sys.argv[1])
+        print_squares(n)
+        
+    
+    def print_squares(n):
+        '''print the squares of the numbers
+        from 1 to n'''
+        for i in range(1, n + 1):
+            print(i * i)
+
+
+    if __name__ == '__main__':
+        main()
+
+That's all, we just change two lines, and now our program can take values from the command line. Easy. But let's learn more about `sys.argv` by writing a short module:
+
+    import sys
+    
+    def main():
+        print('sys.argv:')
+        print(sys.argv)
+        print('length sys.argv')
+        print('len(sys.argv))
+        print('One at a time:')
+        
+        for key, value in enumerate(sys.argv):
+            print(key, value)
+    
+    
+    if __name__ == '__main__':
+        main()
+
+If we save the short module above to a file called `test_sys_argv.py`, we can run it to learn more about how `sys.argv` works:
+
+    >>> python test_sys_argv.py
+    sys.argv:
+    ['test_sys_argv.py']
+    length sys.argv:
+    1
+    One at a time:
+    (0, 'test_sys_argv.py')
+
+Here we see that `sys.argv` includes the NAME of the Python program in the command line arguments, but it doesn't include the word `python`. Let's try adding a couple command line arguments:
+
+
+    >>> python test_sys_argv.py 124 Kakapo 1984
+    sys.argv:
+    ['test_sys_argv.py', '124', 'Kakapo', '1984']
+    length sys.argv:
+    4
+    One at a time:
+    (0, 'test_sys_argv.py')
+    (1, '124')
+    (2, 'Kakapo')
+    (3, '1984')
+
+Here we see a more interesting case with several command line arguments. Now we can see that command line arguments are space-separated. But it is important to notice that both `124` and `1984` were both parsed as *strings*, not numbers. That's why in `print_squares.py` we had to put an `int()` around the `sys.argv[1]`, in order to convert the number from the command line string.
 
 ## gzip
 
