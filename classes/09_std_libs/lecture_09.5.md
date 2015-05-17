@@ -230,7 +230,40 @@ Finally, let's zip all the files in a directory. This will use examples of `os` 
 
 ## gzip
 
- * Coming Soon
+The `*.zip` files we saw above are great, but if you are on a Linux or Mac computer you'll probably see `*.gz` files more often. The idea is the same, these are just two different ways to compress files. In general, `.zip` is more widely supported, but `.gz` has better compression.
+
+Since this is going to be a bit like `zipfile` above, we'll be brief.
+
+#### Reading a Compressed File
+
+If we wanted to read a single compressed GZIP file:
+
+    >>> import gzip
+    >>> f = gzip.open('your_text_file.txt.gz', 'rb')
+    >>> file_content = f.read()
+    >>> f.close()
+
+#### Create a GZIP
+
+If we wanted to write our own data to a GZIP, all we need to do is convert that content to a string and do:
+
+    >>> import gzip
+    >>> content = 'Your content here.'
+    >>> f = gzip.open('your_text_file.txt.gz', 'wb')
+    >>> f.write(content)
+    >>> f.close()
+
+#### GZIP Existing Files
+
+If the file already exists, and we just want GZIP it:
+
+    >>> import gzip
+    >>> fin = open('your_file.txt', 'rb')
+    >>> fout = gzip.open('your_file.txt.gz', 'wb')
+    >>> fout.writelines(fin)
+    >>> fout.close()
+    >>> fin.close()
+
 
 ## Problem Sets
 
