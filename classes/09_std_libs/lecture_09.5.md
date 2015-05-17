@@ -171,15 +171,15 @@ Here we see that `sys.argv` includes the NAME of the Python program in the comma
 
 Here we see a more interesting case with several command line arguments. Now we can see that command line arguments are space-separated. But it is important to notice that both `124` and `1984` were both parsed as *strings*, not numbers. That's why in `print_squares.py` we had to put an `int()` around the `sys.argv[1]`, in order to convert the number from the command line string.
 
+## glob
+
+ * Coming Soon
+
 ## zipfile
 
  * Coming Soon
 
 ## gzip
-
- * Coming Soon
-
-## cPickle
 
  * Coming Soon
 
@@ -195,9 +195,11 @@ Here we see a more interesting case with several command line arguments. Now we 
  * [effbot - os.path](http://www.effbot.org/librarybook/os-path.htm)
  * Official Docs - sys: ([Python 2](https://docs.python.org/2/library/sys.html) / [Python 3](https://docs.python.org/3/library/sys.html))
  * [effbot - sys](http://www.effbot.org/librarybook/sys.htm)
+ * Official Docs - glob: ([Python 2](https://docs.python.org/2/library/glob.html) / [Python 3](https://docs.python.org/3/library/glob.html))
+ * [Module of the Week - glob](http://pymotw.com/2/glob/)
+ * [Every Day Scripting - glob](https://everydayscripting.wordpress.com/2008/12/24/pythons-glob-module-is-really-cool/)
  * Official Docs - zipfile: ([Python 2](https://docs.python.org/2/library/zipfile.html) / [Python 3](https://docs.python.org/3/library/zipfile.html))
  * [effbot - zipfile](http://effbot.org/librarybook/zipfile.htm)
  * Official Docs - gzip: ([Python 2](https://docs.python.org/2/library/gzip.html) / [Python 3](https://docs.python.org/3/library/gzip.html))
- * Official Docs - cPickle: ([Python 2](https://docs.python.org/2/library/pickle.html#module-cPickle) / [Python 3](https://docs.python.org/2/library/pickle.html#module-cPickle))
 
 [Back to Syllabus](../../README.md)
