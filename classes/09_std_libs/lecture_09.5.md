@@ -173,11 +173,60 @@ Here we see a more interesting case with several command line arguments. Now we 
 
 ## glob
 
- * Coming Soon
+The `glob` module allows you to find all of the files (or directories) matching a certain filename regex, like: `*.jpg`, or `data_*.csv`. It is frequently helpful to have along with the `os` module above. Let's find all of the log files in a log directory:
+
+    >>> from glob import glob
+    >>> glob('/path/to/log_dir/*.log')
+    ['/path/to/log_dir/something_crazy.log', '/path/to/log_dir/something_else.log']
+
+Or you can just look for all `jpg` files in the current directory by doing:
+
+>>> from glob import glob
+>>> glob('*.jpg')
+['kakapo.jpg', 'blue_whale.jpg', 'dodo.jpg', 'black_rhino.jpg']
 
 ## zipfile
 
- * Coming Soon
+Sometimes we will want to read or write zip files from a Python script. A zip file is a single compressed file that can include one or more regular files. Zipping a file is done to save hard drive space and speed up file transfer.
+
+#### Listing Contents
+
+First, let's see how to list the regular files inside a zip file:
+
+    >>> from zipfile import ZipFile
+    >>> contents = ZipFile("path/to/example.zip", "r")
+    >>> for name in contents.namelist():
+    ...     print(name)
+    ...
+    file1.jpg
+    file2.csv
+    file3.txt
+
+#### Reading a Zip File
+
+Frequently, we will want to read the data from a zipfile. For this example, let's imagine our zip file only includes one other file, a CSV:
+
+    >>> from zipfile import ZipFile
+    >>> contents = ZipFile("path/to/example.zip", "r")
+    >>> print(contents.namelist())
+    [file1.csv]
+    >>> file1 = contents.namelist()[0]
+    >>> data = contents.read(file1)
+
+#### Zipping Files
+
+Finally, let's zip all the files in a directory. This will use examples of `os` and `glob` that we saw above:
+
+    >>> from glob import glob
+    >>> import os
+    >>> from zipfile import ZipFile, ZIP_DEFLATED
+    >>> 
+    >>> file = ZipFile("test.zip", "w")
+    >>> 
+    >>> for name in glob("inputs/*"):
+    >>>     file.write(name, os.path.basename(name), ZIP_DEFLATED)
+    ...
+    >>> file.close()
 
 ## gzip
 
