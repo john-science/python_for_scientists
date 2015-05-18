@@ -236,7 +236,7 @@ And for timing short pieces of logic, that might be good enough.
 
 ## Problem Sets
 
- * Coming Soon
+ * [Std Libs, Part 1](problem_set_1_batteries.md)
 
 ## Further Reading
 
