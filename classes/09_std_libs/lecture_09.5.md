@@ -267,7 +267,7 @@ If the file already exists, and we just want GZIP it:
 
 ## Problem Sets
 
- * Coming Soon
+ * [Standard Libraries, Part 2 - Problem Set](problem_set_2_batteries.md)
 
 ## Further Reading
 
