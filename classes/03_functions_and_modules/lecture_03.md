@@ -4,10 +4,15 @@
 
 #### Defining a Function
 
-A function is a handy way to encasuplate a piece of logic that needs to be used again by your or your friends.
+A function is a handy way to encasuplate a piece of logic that needs to be used again by you or your friends.
 
-    def say_hi():
-        print('Hi!')
+Here we use the `def` keyword to *define* a function named `say_hi`, that prints `Hi!` to the screen.
+
+    >>> def say_hi():
+    ...     print('Hi!')
+    ...
+    >>> say_hi()
+    Hi!
 
 The structure of a function definition is:
 
@@ -25,15 +30,15 @@ Function names can be almost anything, but they have a few restrictions:
 - do not start with a number
 - are not the same name as a built-in function (like `print`, `list`, `exit`)
 
-Notice also that every function should have a short 1-to-5 line comment block, describing what it does. This helps you remember anything tricky about the function when you come back to it next year. And it also really speeds up reading your code, if anyone else should look at it.
+Notice also that every function should have a short 1-to-5 line comment block describing what it does. This speeds up reading your code, for you and everyone else.
 
 #### Example Functions
 
 Let's look at some simple example functions. First, we'll create a trivial function to add a couple numbers:
 
     >>> def addnums(x, y):
-            '''Add two numbers'''
-            return x + y
+    ...     '''Add two numbers'''
+    ...     return x + y
 
 And now let's use the function:
 
@@ -116,7 +121,7 @@ This will generate a nicely-formmated HTML file with all the documentation for t
 
 Let's take another look at the file we created above: `super_happy_fun_nums.py`.
 
-This is an example of a Python module. That is, instead of writing our Python code into the interpreter, we placed it into a text file. Certainly, you *can* write all of your Python code in the interpreter. But when you quit the interpreter, all of your work is lost. This way you will have your code available tomorrow, if you need it.
+This is an example of a Python module. That is, instead of writing our Python code into the interpreter, we placed it into a text file. Certainly, you *can* write all of your Python code in the interpreter. But when you quit the interpreter, all of your work is lost.
 
 > Any file ending in .py is treated as a module by Python.
 
@@ -154,14 +159,14 @@ A Python program consists of one (or more) modules that are executable from the 
 
     $ python super_happy_fun_nums.py
 
-If you try that line above, you will see that... nothing happens. Well, that's anti-climatic. But, after all, the function `numop1` above doesn't *do* anything until you pass it an argument. So what did you expect to happen?
+If you try that line above, you will see that... nothing happens. Well, that's anti-climatic. But, after all, the function `numop1` above doesn't *do* anything until you pass it at least one number, which we didn't do. So what did you expect to happen?
 
 #### main
 
 It turns out, to create turn a Python module into an executable program, you need a `main` function. To make a Python module a full program, you have to add two things. First, add a `main` function:
 
     def main():
-        print('Hello World!')
+        print('Hello, World!')
 
 Second, you need to add these two lines:
 
@@ -172,7 +177,7 @@ If you add these things to `super_happy_fun_nums.py`, the file will look like th
 
     def main():
         '''Classic First Program'''
-        print('Hello World!')
+        print('Hello, World!')
 
 
     def numop1(x,y,multiplier=1.0,greetings="Thank you for your inquiry."):
@@ -218,7 +223,7 @@ Let's run our program again:
     (4 + 4) * 4:
     32
 
-NOW we have a real program. It has a `main` function, so we can execute it from the commandline. It has a function in it, that we use in the `main` function. We have even commented our functions. This little file could serve as a blueprint for a lot of the Python work you do.
+NOW we have a real program. It has a `main` function, so we can execute it from the commandline. It includes other functions that we use in the `main` function. We have even commented our functions. This little file could serve as a blueprint for a lot of the Python work you do.
 
 ## Importing From Your Module
 
