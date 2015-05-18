@@ -20,6 +20,6 @@
 
 ## Solutions
 
- * [Standard Libraries, Part 1 - Solutions](problem_set_1_batteries.md)
+ * [Standard Libraries, Part 1 - Solutions](problem_set_1_solutions.md)
 
 [Back to Lecture](lecture_09.md)
