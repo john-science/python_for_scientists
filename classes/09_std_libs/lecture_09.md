@@ -122,6 +122,18 @@ It has `sin`, `cos`, `tan`, and of course `pi`
 
 It also has `asin`, `acos`, `atan`, and `sinh`, `cosh`, `tanh`, `asinh`, `acosh`, `atanh`.
 
+All of the above work in radians. It might be helpful to know you can convert from degrees to radians using `math.radians`:
+
+    >>> from math import radians
+    >>> radians(0)
+    0.0
+    >>> radians(45)
+    0.78539816339744828
+    >>> radians(90)
+    1.5707963267948966
+    >>> radians(180)
+    3.1415926535897931
+
 It can also do `sqrt` and arbitrary powers (`pow`):
 
     >>> from math import sqrt, pow
