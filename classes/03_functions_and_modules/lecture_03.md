@@ -163,7 +163,7 @@ If you try that line above, you will see that... nothing happens. Well, that's a
 
 #### main
 
-It turns out, to create turn a Python module into an executable program, you need a `main` function. To make a Python module a full program, you have to add two things. First, add a `main` function:
+It turns out, to create turn a Python module into an executable program, you need to add two things. The first is a `main` function that does something:
 
     def main():
         print('Hello, World!')
@@ -173,7 +173,7 @@ Second, you need to add these two lines:
     if __name__ == '__main__':
         main()
 
-If you add these things to `super_happy_fun_nums.py`, the file will look like this:
+If you do the above, your file will now look like:
 
     def main():
         '''Classic First Program'''
@@ -198,7 +198,7 @@ If you add these things to `super_happy_fun_nums.py`, the file will look like th
     if __name__ == '__main__':
         main()
 
-**NOTE**: I left the standard *two* blank lines between each function. Since functions frequently have single blank lines in them (here and there), this makes it easier for your eye to separate out one function from another.
+**NOTE**: Within a function we might leave a single blank line here and there. But I put the standard *two* blank lines between functions. This just makes it easier to read the code.
 
 Okay, let's run our new script!
 
@@ -223,15 +223,15 @@ Let's run our program again:
     (4 + 4) * 4:
     32
 
-NOW we have a real program. It has a `main` function, so we can execute it from the commandline. It includes other functions that we use in the `main` function. We have even commented our functions. This little file could serve as a blueprint for a lot of the Python work you do.
+NOW we have a real program. It has a `main` function, so we can execute it from the commandline. It includes other functions that we use in `main`. We have even commented our functions. This little file could serve as a blueprint for a lot of the Python work you do from now on.
 
 ## Importing From Your Module
 
-Earlier we imported `numop1` in the Python interpreter by doing:
+Earlier, we imported `numop1` into the Python interpreter by doing:
 
     >>> from super_happy_fun_nums import numop1
 
-If we had more than one function in `super_happy_fun_nums.py`, we could import in one of a couple ways:
+If we had more than one function in `super_happy_fun_nums.py`, we could import both in one of a couple ways:
 
     >>> from super_happy_fun_nums import numop1, numop2
     >>> from super_happy_fun_nums import *
@@ -250,7 +250,7 @@ So, there are several ways to import from a Python script in the interpreter.
 
 If you created another Python module and called it `testing_imports.py`, you could use all of the same imports as we did in the interpreter above, to import `numop1` from `super_happy_fun_nums` (as long as `testing_imports` and `super_happy_fun_nums` are still in the same folder):
 
-    # our new testing_imports.py file
+    # this is the file: testing_imports.py
     
     from super_happy_fun_nums import numop1
     
@@ -264,11 +264,11 @@ Now we can share code between different Python modules. That'll come in handy.
 
 ## Import Python Standard Libraries
 
-The Python moto is "batteries included". That means Python comes with all kinds of libraries (modules) built it to do a lot of things you'll want to do. We will cover some of these in more detail in a few weeks. But it's good to know they exist. And we might as well try using them.
+The Python moto is "batteries included". That means Python comes with all kinds of libraries (modules) built it to do a lot of things you'll want to do. We will cover some of these in more detail in a few weeks. But for now it's just good to know they exist.
 
 #### math
 
-An obvious first library for a scientist or engineer to know about is the [math](https://docs.python.org/2/library/math.html) library:
+An obvious first library for a scientist / engineer to know about is the [math](https://docs.python.org/2/library/math.html) library:
 
     >>> import math
     >>> math.sqrt(4.00)
@@ -280,7 +280,7 @@ An obvious first library for a scientist or engineer to know about is the [math]
     >>> math.pi
     3.141592653589793
 
-Once you `import math`, you can do `help(math)` to learn what options are availble. Similarly, you can also do `help(math.sqrt)` to learn more about that. If you have a question, just ask Python.
+Once you `import math`, you can do `help(math)` to learn what options are availble. Similarly, you can also do `help(math.sqrt)` to learn more about something specific. If you have a question, just ask Python.
 
 #### Just for Fun
 
@@ -301,13 +301,11 @@ Try this one:
 
 ## Wrap-Up
 
-Today we learned about three things that will help us write real code that will be useful to us in our daily work.
+Today we learned about three things that will be useful in our daily work:
 
-First, we learned about functions. They encapsulate code for later use.
-
-Second, we learned how to make a module out of Python code by placing it in a ".py" file. And we further saw how to turn a module into a program that can be executed on the commandline using the `main` function.
-
-Lastly, we learned about the `import` keyword. We can now share our own code between modules, and make use a ton of modules built right into Python.
+1. **Functions**: a way to encapsulate code and save it for later.
+2. **Modules**: a way to save Python code into a ".py" file. Further, if you include a `main` function, you create an executable Python program.
+3. **Imports**: We can now share our code between modules, and make use of Python's built-in standard libraries.
 
 
 ## Problem Sets
