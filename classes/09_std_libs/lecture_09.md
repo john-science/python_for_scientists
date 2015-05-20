@@ -261,6 +261,7 @@ And for timing short pieces of logic, that might be good enough.
 ## Further Reading
 
  * Official Docs - datetime: ([Python 2](https://docs.python.org/2/library/datetime.html) / [Python 3](https://docs.python.org/3/library/datetime.html))
+ * [Module of the Week - datetime](http://pymotw.com/2/datetime/)
  * Official Docs - datetime formatting: ([Python 2](https://docs.python.org/2/library/datetime.html#strftime-and-strptime-behavior) / [Python 3](https://docs.python.org/3/library/datetime.html#strftime-and-strptime-behavior))
  * [effbot - datetime](http://www.effbot.org/librarybook/datetime.htm)
  * Official Docs - math: ([Python 2](https://docs.python.org/2/library/math.html) / [Python 3](https://docs.python.org/3/library/math.html))
