@@ -71,6 +71,14 @@ Now let's use a `for` loop and a `timedelta` to print out ever day of Ramadan (2
 
 If you do a `help(datetime.timedelta)`, you will find out that we can set up a `timedelta` in units of: days, seconds, or microseconds.
 
+#### datetime.now
+
+If you want to get the current date and time, use `.now()`:
+
+    >>> from datetime import datetime
+    >>> datetime.now()
+    datetime.datetime(2015, 3, 14, 9, 26, 53, 589792)
+
 #### datetime.strftime
 
 Now, that loop above is a pretty good start, but those print outs are a little ugly. I'd like it if they were formatted more like `June 17, 2015`. To do this, we use the `strftime` function:
