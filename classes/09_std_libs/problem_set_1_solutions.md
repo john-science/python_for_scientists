@@ -60,7 +60,7 @@
     Wednesday, July 23, 1969
     Thursday, July 24, 1969
 
-#### 4. `dow_dict` that takes a start date and an end date (as `datetime` objects) and returns a dictionary where the keys are `'Monday'` through `'Sunday'`, and the values are the count of week days between those dates (both inclusive). To test your function, given `datetime(2015, 3, 14)` and `datetime(2015, 3, 14)` it will return `'Saturday':1, 'Sunday: 1`.
+#### 4. `dow_dict` that takes a start date and an end date (as `datetime` objects) and returns a dictionary where the keys are `'Monday'` through `'Sunday'`, and the values are the count of week days between those dates (both inclusive). To test your function, given `datetime(2015, 3, 14)` and `datetime(2015, 3, 15)` it will return `'Saturday':1, 'Sunday: 1`.
 
 
 
