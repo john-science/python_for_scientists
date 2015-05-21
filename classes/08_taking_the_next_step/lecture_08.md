@@ -16,9 +16,9 @@ In this lecture we will introduce the methods and tools needed to write better c
 
 Imagine you are reading though someone else's code and you come across this function:
 
-    def F(n):
+    def F (n):
       if n==0:    return 0
-      elif n ==1:
+      elif n ==1 :
        return 1
       else:return F(n-1)+F(n- 2)
 
