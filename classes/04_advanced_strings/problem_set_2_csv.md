@@ -18,7 +18,7 @@ For the following problem, copy the following text into a file named `poker_winn
 
 Write a function that:
 
-1. `read_csv` that takes a file path and returns a dictionary named `winnings` where the keys are the names of the poker players (column 0), and each key is paired with a list of five integer values, according to how much each person one in each game.
+1. `read_poker_csv` that takes a file path and returns a dictionary named `winnings` where the keys are the names of the poker players (column 0), and each key is paired with a list of five integer values, according to how much each person one in each game.
 2. `find_players` that takes in a dictionary like `winnings` above and returns the names of all the poker players in a list.
 3. `find_total` that takes in a list of integers and returns the sum.
 4. `find_average` that takes in a list of integers and returns the average.
