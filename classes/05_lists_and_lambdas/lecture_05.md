@@ -2,7 +2,7 @@
 
 ## Lambdas
 
-The `lambda` keywork just creates unnamed function. Here we create a simple function that tests if a number is even, and a lambda statement that does the same thing:
+The `lambda` keyword just creates an unnamed function. Here we create a simple function that tests if a number is even, and a lambda statement that does the same thing:
 
     def check_is_even(n):
         return n % 2 == 0
@@ -13,7 +13,8 @@ These [anonymous functions](https://en.wikipedia.org/wiki/Anonymous_function) ca
 
 Here is another compare-and-contrast example between a regular function (`f`) and a lambda function (`g`):
 
-    >>> def f (x): return x**2
+    >>> def f (x):
+    ...     return x**2
     ... 
     >>> print f(8)
     64
