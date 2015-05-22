@@ -328,8 +328,9 @@ This is particularly handy if the CSV data will eventually be read into any kind
 
 ## Problem Sets
 
- * [Advanced Strings - Problem Set](problem_set_1_strings.py)
- * [Advanced Strings - Solutions](problem_set_1_solutions.py)
+ * [Problem Set 1 - Working with Strings](problem_set_1_strings.py)
+ * [Problem Set 1 - Solutions](problem_set_1_solutions.py)
+ * [Problem Set 2 - Working with CSVs](problem_set_2_csv.md)
 
 
 [Back to Syllabus](../../README.md)
