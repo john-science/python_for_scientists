@@ -1,9 +1,9 @@
 python_for_scientists
 =====================
 
-> Python for Scientists and Engineers
+> Python Open Courseware for Scientists and Engineers
 
-Software is the tool of the modern world. Software is so general a tool it is used in almost every field. That means that a person who has mastered a few languages can truly do what they want. For many scientists and engineers, software has become *the* tool and Python has become *the* language.
+Software is the tool of the modern world. Software is so general a tool it is used in almost every field. That means that a person who has mastered a few languages can truly do what they want. For many scientists and engineers, software has become *the* tool and Python has become *the* language. This class aims to create a totally free and open source resource for scientists and engineers to learn Python to help them in their daily work.
 
 ### What This Class is
 
