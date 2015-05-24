@@ -17,7 +17,7 @@ Write a function named:
 Write a function named:
 
 1. `cube` that takes a number and returns that number cubed (using the power function in `math`).
-2. `quadratic_formula` that takes in four numbers (`a`, `b`, `c`, and `x`) and returns a tuple of the two values returned by the [quadratic formula](https://en.wikipedia.org/wiki/Quadratic_formula).
+2. `quadratic_formula` that takes in four numbers (`a`, `b`, and `c`) and returns a tuple of the two values returned by the [quadratic formula](https://en.wikipedia.org/wiki/Quadratic_formula).
 3. `sine_degrees` that takes in a number in degrees and returns the sine of that number (remembering that the `math` library takes values in radians, not degrees.
 4. `sine_in_bits` that takes in a number `n` and prints out the sine function from 0 to 180 degrees in `n` steps. You will want to use your new function `sine_degrees` from above.
 5. `verify_tangent` that takes in a number (in radians) and prints the tangent of that number, and then prints the sine of that number divided by the cosine. This is just a check of the `math` library: tangent should be equal to the sine/cosine.
