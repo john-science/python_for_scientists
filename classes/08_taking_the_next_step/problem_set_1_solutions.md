@@ -1,10 +1,6 @@
 # PEP8 & Style
 
-All of the "problems" in this set are just examples of poorly formatted Python. Just reformat them, as best you can, to match the [PEP8 standards](https://www.python.org/dev/peps/pep-0008/). Some of the examples are not PEP8 formatting, but just examples of code that is bad far other reasons.
-
 ## Reformat the Code
-
-Just reformat the given code. If there are things here that you didn't know about, that's fine. You learned something. No one is grading you, who cares?
 
 ### One Statement Per Line - Solution (Reformatted Code)
 
