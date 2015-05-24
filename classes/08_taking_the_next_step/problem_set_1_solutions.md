@@ -213,4 +213,4 @@ Don't fight Python on this whitespace thing. You won't come out looking good.
         if i %% 7 == 0:
             cubes[i] = i * i * i
 
-[Back to Problem Set](problem_set_1_pep8)
+[Back to Problem Set](problem_set_1_pep8.md)
