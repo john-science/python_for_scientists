@@ -47,6 +47,6 @@ Create two instances of `Point` and write a function that finds the distance bet
 
 ## Solutions
 
- * [Basic OOP - Solutions](problem_set_1_try_it_out.md)
+ * [Basic OOP - Solutions](problem_set_1_solutions.md)
 
 [Back to Lecture](lecture_06.md)
