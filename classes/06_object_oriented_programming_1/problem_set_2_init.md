@@ -1,7 +1,5 @@
 # Be Careful When you init
 
-As usual, when doing the problems don't scroll down too far or you will see the answers.
-
 ## Describing the Problem
 
 When creating a new class, you can create potentially invalid states for your objects. For example:
@@ -50,14 +48,6 @@ Fix the problem with this object initialization:
         def print_full_name(self):
             print(' '.join([self.first_name, self.last_name]))
 
-## Solution 1
-
-    class Student(object):
-    
-        def __init__(self, first, last):
-            self.first_name = first
-            self.last_name = last
-
 # Problem 2
 
 Fix the problem with this object initialization:
@@ -67,21 +57,6 @@ Fix the problem with this object initialization:
         def __init__(self, first, last):
             self.first_name = first
             self.last_name = last
-        
-        def average_grade(self):
-            '''Salculate the average grade from the student's
-            list of grades. (This is the student's total grade.)
-            '''
-            return sum(self.grades) / len(self.grades)
-
-## Solution 2
-
-    class Student(object):
-    
-        def __init__(self, first, last, grades):
-            self.first_name = first
-            self.last_name = last
-            self.grades = grades  # or possibly self.grades = []
         
         def average_grade(self):
             '''Salculate the average grade from the student's
@@ -103,15 +78,6 @@ Create a valid `__init__` method for this class.
                   str(self.lat) + '/' + str(self.lon) + \
                   'degrees and at an elevation of : '  + \
                   str(self.elevation) + ' meters.')
-
-## Solution 3
-
-    class GPSLocation(object):
-    
-        def __init__(self, lat, lon, elevation):
-            self.lat = lat
-            self.lon = lon
-            self.elevation = elevation
 
 ## Problem 4
 
@@ -163,14 +129,6 @@ Create an initializing method for this class:
             
             return full_name_text + "  " + self.get_status()
 
-## Solution 4
 
-    class Species(object):
-    
-        def __init__(self, com, sci, status):
-            self.common_name = com
-            self.scientific_name = sci
-            self.status = int(status)
-
-
+[Problem Set 2 - Solutions](problem_set_2_solutions.md)
 [Back to Lecture](lecture_06.md)
