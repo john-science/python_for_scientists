@@ -123,6 +123,8 @@ Let's take another look at that `except` statement above. It is pretty vague. Wh
 
 In the final `except` statement, we can catch any type of `Exception` in case something unexpected happens. In this case it is handy to print the `Exception` and code itself, to provide more information.
 
+Here is a full list of Python's built-in Exceptions: [Python 2](https://docs.python.org/2/library/exceptions.html) / [Python 3](https://docs.python.org/3/library/exceptions.html).
+
 #### Creating your own exceptions
 
 One last thing we might want to do is create our own `Exception`. This will help us catch a specific kind of problem that we might face in our own code. For instance:
@@ -249,7 +251,7 @@ As you may have already noticed, this class is being stored and displayed using 
 ## Problem Sets
 
  * [PEP8 Examples](problem_set_1_pep8.md)
- * Exceptions  (Coming Soon)
+ * [Exceptions](problem_set_2_exceptions.md)
  * Try Out Git  (Coming Soon)
 
 ## Further Reading
@@ -259,5 +261,6 @@ As you may have already noticed, this class is being stored and displayed using 
  * [Comments - After Hours](http://www.afterhoursprogramming.com/tutorial/Python/Comments/)
  * [Exceptions - After Hours](http://www.afterhoursprogramming.com/tutorial/Python/Exceptions/)
  * [Exceptions - Python Documentation](https://docs.python.org/2/tutorial/errors.html)
+ * All Built-In Exceptions - [Python 2](https://docs.python.org/2/library/exceptions.html) / [Python 3](https://docs.python.org/3/library/exceptions.html)
 
 [Back to Syllabus](../../README.md)
