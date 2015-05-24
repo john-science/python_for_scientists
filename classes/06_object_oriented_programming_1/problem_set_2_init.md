@@ -129,6 +129,8 @@ Create an initializing method for this class:
             
             return full_name_text + "  " + self.get_status()
 
+## Solutions
+ * [Problem Set 2 - Solutions](problem_set_2_solutions.md)
 
-[Problem Set 2 - Solutions](problem_set_2_solutions.md)
+
 [Back to Lecture](lecture_06.md)
