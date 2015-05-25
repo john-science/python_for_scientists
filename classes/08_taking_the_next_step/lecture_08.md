@@ -106,7 +106,7 @@ This certainly fixes the problem. But if you call `fibonacci(6)`, the statement 
     except:
         print('fibonacci only accepts non-negative inputs')
 
-Enclosing the called to `fibonacci` with `try / except` means Python will print the given line to the screen and supress all of the ugly errors you would have seen. This is an extremely powerful tool to help you control practically any unexpected behaivor in Python.
+Enclosing the called to `fibonacci` with `try / except` means Python will print the given line to the screen and supress all of the ugly errors you would have seen. This is an extremely powerful tool to help you control practically any unexpected behaivor in Python. Notice here, we can both `raise` our own Exceptions, and use `try/except` to catch them. We will need to understand both directions to use Exceptions well.
 
 #### More kinds of exceptions
 
