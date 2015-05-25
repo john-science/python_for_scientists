@@ -79,6 +79,20 @@ It sometimes happens that you have the full path to a file and you want to break
     >>> os.path.dirname(file_path)
     '/home/username/python_class/class11_batteries'
 
+## glob
+
+The `glob` module allows you to find all of the files (or directories) matching a certain filename regex, like: `*.jpg`, or `data_*.csv`. It is frequently helpful to have along with the `os` module above. Let's find all of the log files in a log directory:
+
+    >>> from glob import glob
+    >>> glob('/path/to/log_dir/*.log')
+    ['/path/to/log_dir/something_crazy.log', '/path/to/log_dir/something_else.log']
+
+Or you can just look for all `jpg` files in the current directory by doing:
+
+>>> from glob import glob
+>>> glob('*.jpg')
+['kakapo.jpg', 'blue_whale.jpg', 'dodo.jpg', 'black_rhino.jpg']
+
 ## sys
 
 The `sys` library has a lot of great stuff in it, but what we are going to focus on is the ability to pass variables to your Python programs. Let's make a really simple example, where all you want your program to do is print squares from 1 to `n`:
@@ -170,20 +184,6 @@ Here we see that `sys.argv` includes the NAME of the Python program in the comma
     (3, '1984')
 
 Here we see a more interesting case with several command line arguments. Now we can see that command line arguments are space-separated. But it is important to notice that both `124` and `1984` were both parsed as *strings*, not numbers. That's why in `print_squares.py` we had to put an `int()` around the `sys.argv[1]`, in order to convert the number from the command line string.
-
-## glob
-
-The `glob` module allows you to find all of the files (or directories) matching a certain filename regex, like: `*.jpg`, or `data_*.csv`. It is frequently helpful to have along with the `os` module above. Let's find all of the log files in a log directory:
-
-    >>> from glob import glob
-    >>> glob('/path/to/log_dir/*.log')
-    ['/path/to/log_dir/something_crazy.log', '/path/to/log_dir/something_else.log']
-
-Or you can just look for all `jpg` files in the current directory by doing:
-
->>> from glob import glob
->>> glob('*.jpg')
-['kakapo.jpg', 'blue_whale.jpg', 'dodo.jpg', 'black_rhino.jpg']
 
 ## zipfile
 
