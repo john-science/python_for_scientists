@@ -22,7 +22,7 @@ Create two text files in your current directory: nasa_science.txt and nasa_futur
 
 ## sys
 
-1. Write a module that prints out the number of command line arguments entered by the user.
+1. Write a module that prints out the number of command line arguments entered after the program name.
 2. Write a module that takes a list of numbers from the user and averages them.
 
 ## zipfile
