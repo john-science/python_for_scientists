@@ -35,10 +35,10 @@ Before doing anything else, create three text files in your local directory: 1.t
 
 ## gzip
 
-Before doing anything else, create three text files in your local directory: 1.txt, 2.txt, and 3.txt.
+Before doing anything else, create a text file in your local directory: test.txt.
 
-1. Gzip all three of your text files into an archive named "gzip_test.gz".
-2. Un-gzip your "gzip_text.gz" archive.
+1. Gzip your text file into an archive named "test.txt.gz".
+2. Un-gzip your "test.txt.gz" archive.
 
 ## Solutions
 
