@@ -215,7 +215,7 @@ Frequently, we will want to read the data from a zipfile. For this example, let'
 
 #### Zipping Files
 
-Finally, let's zip all the files in a directory. This will use examples of `os` and `glob` that we saw above:
+Let's zip all the files in a directory. This will use examples of `os` and `glob` that we saw above:
 
     >>> from glob import glob
     >>> import os
@@ -227,6 +227,15 @@ Finally, let's zip all the files in a directory. This will use examples of `os` 
     >>>     file.write(name, os.path.basename(name), ZIP_DEFLATED)
     ...
     >>> file.close()
+
+#### Extracting from a Zipped File
+
+Finally, let's use the `extract` function to extract files from an unzipped directory:
+
+    >>> from zipfile import ZipFile
+    >>> z = ZipFile('test.zip')
+    >>> for f in z.namelist():
+    ...     z.extract(f)
 
 ## gzip
 
