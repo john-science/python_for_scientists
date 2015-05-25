@@ -89,9 +89,9 @@ The `glob` module allows you to find all of the files (or directories) matching 
 
 Or you can just look for all `jpg` files in the current directory by doing:
 
->>> from glob import glob
->>> glob('*.jpg')
-['kakapo.jpg', 'blue_whale.jpg', 'dodo.jpg', 'black_rhino.jpg']
+    >>> from glob import glob
+    >>> glob('*.jpg')
+    ['kakapo.jpg', 'blue_whale.jpg', 'dodo.jpg', 'black_rhino.jpg']
 
 ## sys
 
