@@ -29,7 +29,7 @@ For a full list of Python's built-in Exceptions, look at the public documentatio
         return zero if key is not found.'''
         return d[key]
 
-#### 4. This function calculates the ratio of two numbers. But there are a couple of issues. What if the denominator is zero? Also, what if the values given to the number aren't numbers?
+#### 4. This function calculates the ratio of two numbers. But there are a couple of issues. What if the denominator is zero? Also, what if the values given to the inputs aren't numbers?
 
     def calc_ratio(num, denom):
         '''Find the ratio of two numbers'''
