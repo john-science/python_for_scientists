@@ -80,7 +80,7 @@ See if you understand this short example:
     >>> ss = [s, "Argentine","American","Quarentine"]
     >>> for thestring in ss:
             if thestring.find("tine") != -1:
-                print "'" + str(thestring) + "' contains 'tine'."
+                print("'" + str(thestring) + "' contains 'tine'.")
     'My Funny Valentine' contains 'tine'.
     'Argentine' contains 'tine'.
     'Quarentine' contains 'tine'.
@@ -287,7 +287,7 @@ How you read the CSV file should depend on what you want to do with the data. So
     >>> f = open('radiation_dose.csv', 'r')
     >>> reader = csv.reader(f)
     >>> for row in reader:
-    ...     print row
+    ...     print(row)
     ... 
     ['source', 'dose (Sv)', 'dose (BED)']
     ['eating a banana', '1.0E-7', '1']
@@ -305,7 +305,7 @@ Another popular option is to read each line of the CSV file into a small diction
     >>> f = open('radiation_dose.csv', 'r')
     >>> dict_reader = csv.DictReader(f)
     >>> for row in dict_reader:
-    ...     print row
+    ...     print(row)
     ... 
     {'dose (Sv)': '1.0E-7', 'source': 'eating a banana', 'dose (BED)': '1'}
     {'dose (Sv)': '1.0e-6', 'source': 'arm x-ray', 'dose (BED)': '10'}
