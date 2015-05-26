@@ -2,7 +2,7 @@
 
 ## Lambdas
 
-The `lambda` keyword just creates an unnamed function. Here we create a simple function that tests if a number is even, and a lambda statement that does the same thing:
+The `lambda` keyword creates a function, but doesn't give it a name. Here we create a simple function that tests if a number is even, and a lambda statement that does the same thing:
 
     def check_is_even(n):
         return n % 2 == 0
