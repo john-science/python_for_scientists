@@ -16,7 +16,11 @@ Scientists from all walks of life find themselves using the NetCDF file format. 
 
 ## Further Reading
 
- * Coming Soon
+ * [Great GoogleCode Introduction](https://netcdf4-python.googlecode.com/svn/trunk/docs/netCDF4-module.html)
+ * [Read & Plot a NetCDF File](http://schubert.atmos.colostate.edu/~cslocum/netcdf_example.html) - Useful example, also plots using MatPlotLib
+ * [Tutorial Module](https://code.google.com/p/netcdf4-python/source/browse/trunk/examples/tutorial.py) - This is just a Python module that uses all the netCDF4 features.
+ * [Official GitHub Repo](https://github.com/Unidata/netcdf4-python)
+ * [Official UCAR Site](http://www.unidata.ucar.edu/software/netcdf/index.html)
 
 
 [Back to Syllabus](../../README.md)
