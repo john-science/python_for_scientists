@@ -15,12 +15,12 @@ Python has a nice variety of tools to do commonly-desired things to strings.
 
 ### `split` splits a string using another string
 
-    >>> "I want to take you to, funKY tOwn".split("u")
-    ['I want to take yo', ' to, f', 'nKY tOwn']
-    >>> "I want to take you to, funKY tOwn".split("you")
-    ['I want to take ', ' to, funKY tOwn']
+    >>> "bright copper kettles and warm woolen mittens".split(" ")
+    ['bright', 'copper', 'kettles', 'and', 'warm', 'woolen', 'mittens']
+    >>> "bright copper kettles and warm woolen mittens".split('tt')
+    ['bright copper ke', 'les and warm woolen mi', 'ens']
 
-### By default, `split` uses any white space (`' '`, `'/t'`,  or `'\n'`)
+#### By default, `split` uses any white space (`' '`, `'/t'`,  or `'\n'`)
 
     >>> "funKY tOwn".split()
     ['funKY', 'tOwn']
@@ -41,7 +41,7 @@ Notice that by default, `split` uses spaces to split the string.
     
 Notice `rstrip()` just strips the right side of the string, `lstrip()` just strips the left side, and `strip()` strips both.
 
-### `join` allows you to combine a list of strings into one:
+### `join` allows you to combine a list of strings into one string:
 
     >>> zen = ['Simple', 'is', 'better', 'than', 'complex.']
     >>> ' '.join(zen)
@@ -68,14 +68,6 @@ If the string exists, it returns the index of the first time the string is found
     >>> s.find("y")
     1
 
-But you can also ask it to find the second or third location of the substring:
-
-    >>> s.find('n', 2)
-    5
-    >>> s.find('n', 3)
-    5
-    >>> s.find('n', 4)
-
 If the substring is not found, it returns a `-1`:
 
     >>> s.find("z")
@@ -92,19 +84,6 @@ See if you understand this short example:
     'My Funny Valentine' contains 'tine'.
     'Argentine' contains 'tine'.
     'Quarentine' contains 'tine'.
-
-### `str` creates a string from another variable type
-
-Here are some easy examples:
-
-    >>> str(3)          # convert an integer to a string
-    '3'
-    >>> str(3.14)       # convert a float to a string
-    '3.14'
-    >>> str(True)       # convert a boolean to a string
-    'True'
-    >>> str([1, 2, 3])  # convert a list to a string
-    '[1, 2, 3]'
 
 ## Type Conversions
 
@@ -140,6 +119,19 @@ Notice that here Python equates `False` with `0` and `True` with `1` (or anythin
     0.0
     >>> float(True)
     1.0
+
+#### `str` creates a string from another variable type
+
+Here are some easy examples:
+
+    >>> str(3)          # convert an integer to a string
+    '3'
+    >>> str(3.14)       # convert a float to a string
+    '3.14'
+    >>> str(True)       # convert a boolean to a string
+    'True'
+    >>> str([1, 2, 3])  # convert a list to a string
+    '[1, 2, 3]'
 
 
 ## Reading and Writing Text Files
@@ -273,7 +265,7 @@ Well, we know how to read text files. And CSV files are just text files. So let'
     >>>     values = line.strip().split(',')
     >>>     print(values[0], float(values[1]), int(values[2]))
 
-Notice above the use of `strip()`. This strips all of the line endings and spaces from the end of the line. We do this because later on we want to find the integer value of the last column `int(values[2])`. When doing that we want to do `int('1')`, not `int('1\n')`.
+Notice above the use of `strip()`. This is because we want to find the integer value of that last column, so we want to do `int('1')`, not `int('1\n')`.
 
 Also notice that `split(',')` above to a long string of text and created a list of strings:
 
@@ -282,16 +274,14 @@ Also notice that `split(',')` above to a long string of text and created a list 
     'source,dose (Sv),dose (BED)'
     >>> line.strip().split(',')
     ['source', 'dose (Sv)', 'dose (BED)']
-    >>> line.strip().split('e')
-    ['source,dos', ' (Sv),dos', ' (BED)']
 
 ### Import the Standard CSV Library
 
-Of course, so many people have wanted to read CSV files with Python that there is a standard library for it: `import csv`. There are two major ways to use Python's standard `csv` library to read CSV files: you can read the data into a list of lists, or a list of dictinoaries. Both have their merits, so let's try them.
+Of course, so many people have wanted to read CSV files with Python that there is a standard library for it: `import csv`. There are two major ways to use Python's standard `csv` library to read CSV files: you can read the data into a list of lists, or a list of dictionaries. Both have their merits, so let's try them.
 
 #### Read as Lists
 
-How you read the CSV file should depend on what you want to do. Some times it might be easest just to read each line in the CSV file into an array of strings, for further manipulation:
+How you read the CSV file should depend on what you want to do with the data. Sometimes it might be easiest to treat each line in the CSV file as a list:
 
     >>> import csv
     >>> f = open('radiation_dose.csv', 'r')
@@ -305,7 +295,7 @@ How you read the CSV file should depend on what you want to do. Some times it mi
     ...
     >>> f.close()
 
-This is essentially the same as when we read the CSV file as a raw text file, except a lot of the stripping and splitting has been taken care of for us.
+This is essentially the same as when we read the CSV file as a raw text file, except the stripping and splitting has been done for us.
 
 #### Read as Dictionaries
 
@@ -323,7 +313,7 @@ Another popular option is to read each line of the CSV file into a small diction
     ... 
     >>> f.close()
 
-This is particularly handy if the CSV data will eventually be read into any kind of dictionary. But mostly this is just another way to do things, for convenience sake. Either of these two options in the `csv` library will work fine. Neither is particularly faster or smarter.
+This is particularly handy if the CSV data will eventually be read into any kind of dictionary.
 
 
 ## Problem Sets
