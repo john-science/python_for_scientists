@@ -1,8 +1,8 @@
-# Basic OOP - Try It Out
+# Basic OOP
 
-## Try it Out: Using Simple Classes
+## Using Classes
 
-### Problem 1 - Instantiating Objects
+#### Problem 1 - Instantiating Objects
 
 Instantiate (create an instance of) this class:
 
@@ -12,7 +12,7 @@ Instantiate (create an instance of) this class:
             self.pixels_x = num_pixels_x
             self.pixels_y = num_pixels_y
 
-### Problem 2 - Using Methods
+#### Problem 2 - Using Methods
 
 Instantiate this class and run use it's method to calculate the number of pixels in the final plot:
 
@@ -27,11 +27,11 @@ Instantiate this class and run use it's method to calculate the number of pixels
             the final plot'''
             return self.pixels_x * self.pixels_y
 
-### Problem 3 - Accessing Attributes
+#### Problem 3 - Accessing Attributes
 
 Print the `pixel_x` attribute from an instance of the `Plot` class above.
 
-### Problem 4 - Using Objects
+#### Problem 4 - Using Objects
 
 Create two instances of `Point` and write a function that finds the distance between them.
 
@@ -41,7 +41,13 @@ Create two instances of `Point` and write a function that finds the distance bet
           self.x = x
           self.y = y
 
-### Try it Out: Writing Simple Classes
+## Writing Classes
+
+#### Problem 1
+
+    * Coming Soon
+
+#### Problem 2
 
     * Coming Soon
 
