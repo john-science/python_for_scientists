@@ -14,7 +14,8 @@ NumPy is not built into the Python Standard libraries, but needs to be installed
 
 ## Further Reading
 
- * Coming Soon
+ * [Official NumPy Tutorial](http://wiki.scipy.org/Tentative_NumPy_Tutorial)
+ * [Intro PDF to NumPy and Scipy from UC SB](http://www.engr.ucsb.edu/~shell/che210d/numpy.pdf)
 
 
 [Back to Syllabus](../../README.md)
