@@ -36,9 +36,12 @@ Python Standard Libraries
  * [Batteries Included, Part 1](classes/09_std_libs/lecture_09.md)
  * [Batteries Included, Part 2](classes/09_std_libs/lecture_09.5.md)
 
-External Libraries for Scientists and Engineers:
+Special Topics - Libraries for Scientists and Engineers:
 
- * [NumPy](classes/10_numpy/lecture_10.md)
- * [matplotlib](classes/11_matplotlib/lecture_11.md)
- * [pandas](classes/12_pandas/lecture_12.md)
- * [netCDF4](classes/13_netcdf/lecture_13.md)
+ * [Math - NumPy](classes/10_numpy/lecture_10.md)
+ * [Scientific Computing (including Stats) - SciPy](classes/11_scipy/lecture_11.md)
+ * [Plotting - matplotlib](classes/12_matplotlib/lecture_12.md)
+ * [Data Analysis - pandas](classes/13_pandas/lecture_13.md)
+ * [NetCDF Files - netCDF4](classes/14_netcdf/lecture_14.md)
+ * [Databases - sqlite3](classes/15_sqlite3/lecture_15.md)
+ * [Geoprocessing - osgeo/shapefile/PyProj](classes/16_geoprocessing/lecture_16.md)
