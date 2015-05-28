@@ -252,6 +252,7 @@ As you may have already noticed, this class is being stored and displayed using 
 
  * [PEP8 Examples](problem_set_1_pep8.md)
  * [Exceptions](problem_set_2_exceptions.md)
+ * [Code Repositories](problem_set_3_code_repositories.md)
 
 ## Further Reading
 
