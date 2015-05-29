@@ -30,6 +30,20 @@ Do you see what happened? Python automatically typecast all of the elements in t
 
 ## NumPy Types
 
+Aside from just having it's own data structures, NumPy goes one step further and has it's own types:
+
+    >>> type(lst[0])
+    int
+    >>> type(a[0])
+    <type 'numpy.float64'>
+
+The NumPy library tries to default all of your numbers (integers, decimals, etc) to 64-bit versions. And there are NumPy alternatives to all the normal Python [primative types](https://en.wikipedia.org/wiki/Primitive_data_type):
+
+ * int --> int64 (thought int16 and int32 are available)
+ * float --> float64 (thought float16 and float32 are available)
+
+There are, of course, many other data types in NumPy. For a full list, look [here](http://docs.scipy.org/doc/numpy/user/basics.types.html)
+
  * Coming Soon
 
 ## NumPy array Operations
