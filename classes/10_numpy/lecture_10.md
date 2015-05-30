@@ -46,11 +46,38 @@ There are, of course, many other data types in NumPy. For a full list, look [her
 
 ## NumPy array Operations
 
+One major difference between lists and NumPy.arrays is that arrays don't just have to be one-dimensional like lists:
+
+    >>> b = a.reshape(2,2)
+    >>> b
+    array([[ 1. ,  2. ],
+           [ 3. ,  4.4]])
+
+And you can use `numpy.arange` to fill a `numpy.array` much like you used `range` to fill a list:
+
+    >>> count = range(5)
+    >>> count
+    [0, 1, 2, 3, 4]
+    >>> 
+    >>> from numpy import arange
+    >>> 
+    >>> c = arange(18)
+    >>> c
+    array([ 0,  1,  2,  3,  4,  5,  6,  7,  8,  9, 10, 11, 12, 13, 14, 15, 16, 17])
+
+And, of course, you can use `arange` and `reshape` together:
+
+    >>> d = arange(18).reshape(3,6)
+    >>> d
+    array([[ 0,  1,  2,  3,  4,  5],
+           [ 6,  7,  8,  9, 10, 11],
+           [12, 13, 14, 15, 16, 17]])
+
 Another difference you will see between Python lists and NumPy arrays is the helper methods:
 
-
-
- * Coming Soon
+ * Coming Soon: zeros
+ * Coming Soon: ones
+ * Coming Soon: ndim, etc
 
 ## NumPy Random Numbers
 
