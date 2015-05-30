@@ -12,7 +12,7 @@ You can find instructions for installing NumPy [here](http://docs.scipy.org/doc/
 
 ## The NumPy array
 
-So far in this class we have considered lists to be the data structure of choice in Python. Lists are amazingly flexible tools that allow us to do a lot of things. But that flexibility costs us some speed. Instead, we will use the NumPy [array](http://wiki.scipy.org/Tentative_NumPy_Tutorial#head-c5f4ceae0ab4b1313de41aba9104d0d7648e35cc):
+The `list` is the standard ordered-sequence data structure in Python. The Python `list` is an extremely flexible tool. But it turns out, that flexibility costs us some speed. NumPy introduces its own data structure, the  [array](http://wiki.scipy.org/Tentative_NumPy_Tutorial#head-c5f4ceae0ab4b1313de41aba9104d0d7648e35cc):
 
     >>> from numpy import array
 
@@ -30,7 +30,7 @@ Do you see what happened? Python automatically typecast all of the elements in t
 
 ## NumPy Types
 
-Aside from just having it's own data structures, NumPy goes one step further and has it's own types:
+As well as having it's own data structure, NumPy goes one step further and has it's own types:
 
     >>> type(lst[0])
     int
@@ -44,9 +44,11 @@ The NumPy library tries to default all of your numbers (integers, decimals, etc)
 
 There are, of course, many other data types in NumPy. For a full list, look [here](http://docs.scipy.org/doc/numpy/user/basics.types.html)
 
- * Coming Soon
-
 ## NumPy array Operations
+
+Another difference you will see between Python lists and NumPy arrays is the helper methods:
+
+
 
  * Coming Soon
 
