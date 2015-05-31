@@ -50,7 +50,20 @@ There are, of course, many other data types in NumPy. For a full list, look [her
 
 One major difference between lists and NumPy.arrays is that arrays don't just have to be one-dimensional like lists:
 
-    >>> b = a.reshape(2,2)
+    >>> from numpy import array
+    >>>
+    >>> array([[1, 2, 3], [7, 8, 9]])
+    array([[1, 2, 3],
+           [7, 8, 9]])
+    >>> 
+    >>> array([[1, 2, 3], [7, 8, 9]], dtype=float)
+    array([[ 1.,  2.,  3.],
+           [ 7.,  8.,  9.]])
+
+And if you start out with a 1D `array`, you can make a 2D `array` by using `reshape`:
+
+    >>> a = array([1, 2, 3, 4.5])
+    >>> b = a.reshape(2, 2)
     >>> b
     array([[ 1. ,  2. ],
            [ 3. ,  4.4]])
@@ -104,13 +117,33 @@ Frequently, you will want to initialize an `array` with all zero values to start
     array([[ 0.,  0.,  0.],
            [ 0.,  0.,  0.]])
 
+Similarly, you can use `ones` to initialize an array to all 1 values:
+
+    >>> from numpy import ones
+    >>> 
+    >>> ones(4)
+    array([ 1.,  1.,  1.,  1.])
+    >>> 
+    >>> ones((2, 5), dtype=int)
+    array([[1, 1, 1, 1, 1],
+           [1, 1, 1, 1, 1]])
 
 #### NumPy array Operations
 
-Another difference you will see between Python lists and NumPy arrays is the helper methods:
+Another difference you will see between Python lists and NumPy arrays is the helper methods.
 
- * Coming Soon: zeros
- * Coming Soon: ones
+You can use `ndim` and `shape` to get information about the dimensionality of the `array`:
+
+    >>> r = zeros((3, 2), dtype=float)
+    >>> r
+    array([[ 0.,  0.],
+           [ 0.,  0.],
+           [ 0.,  0.]])
+    >>> r.ndim
+    2
+    >>> r.shape
+    (3, 2)
+
  * Coming Soon: ndim, dtype, sqrt, etc...
 
 ## NumPy Random Numbers
