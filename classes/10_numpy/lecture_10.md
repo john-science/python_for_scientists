@@ -12,6 +12,8 @@ You can find instructions for installing NumPy [here](http://docs.scipy.org/doc/
 
 ## The NumPy array
 
+#### Lists vs Arrays
+
 The `list` is the standard ordered-sequence data structure in Python. The Python `list` is an extremely flexible tool. But it turns out, that flexibility costs us some speed. NumPy introduces its own data structure, the  [array](http://wiki.scipy.org/Tentative_NumPy_Tutorial#head-c5f4ceae0ab4b1313de41aba9104d0d7648e35cc):
 
     >>> from numpy import array
@@ -28,7 +30,7 @@ One of the first differences you will find is that, unlike lists, all of the ite
 
 Do you see what happened? Python automatically typecast all of the elements in the `array` to be of the same type. And since you would lose information going from 4.5 to 4, all of the elements in your `array` had to become decimals.
 
-## NumPy Types
+#### NumPy Types
 
 As well as having it's own data structure, NumPy goes one step further and has it's own types:
 
@@ -44,7 +46,7 @@ The NumPy library tries to default all of your numbers (integers, decimals, etc)
 
 There are, of course, many other data types in NumPy. For a full list, look [here](http://docs.scipy.org/doc/numpy/user/basics.types.html)
 
-## NumPy array Operations
+#### Creating Arrays
 
 One major difference between lists and NumPy.arrays is that arrays don't just have to be one-dimensional like lists:
 
@@ -73,11 +75,43 @@ And, of course, you can use `arange` and `reshape` together:
            [ 6,  7,  8,  9, 10, 11],
            [12, 13, 14, 15, 16, 17]])
 
+Of course, you can also create a multi-dimensional `array` right from the start:
+
+    >>> from numpy import array
+    >>> e = array([[0, 1, 2, 3], [4, 5, 6, 7]])
+    >>> e
+    array([[0, 1, 2, 3],
+           [4, 5, 6, 7]])
+
+And, unlike the standard Python libraries, NumPy will let you define the type of the array:
+
+    >>> from numpy import array
+    >>> f = array([[0, 1, 2, 3], [4, 5, 6, 7]], float)
+    >>> f
+    array([[ 0.,  1.,  2.,  3.],
+           [ 4.,  5.,  6.,  7.]])
+
+Frequently, you will want to initialize an `array` with all zero values to start:
+
+    >>> from numpy import zeros
+    >>>
+    >>> z = zeros(5, dtype=int)
+    >>> z
+    array([0, 0, 0, 0, 0])
+    >>> 
+    >>> y = zeros((2, 3), dtype=float)
+    >>> y
+    array([[ 0.,  0.,  0.],
+           [ 0.,  0.,  0.]])
+
+
+#### NumPy array Operations
+
 Another difference you will see between Python lists and NumPy arrays is the helper methods:
 
  * Coming Soon: zeros
  * Coming Soon: ones
- * Coming Soon: ndim, etc
+ * Coming Soon: ndim, dtype, sqrt, etc...
 
 ## NumPy Random Numbers
 
