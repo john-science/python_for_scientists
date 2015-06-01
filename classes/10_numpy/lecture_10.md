@@ -160,11 +160,13 @@ You can also get the type of the elements in the array using `.dtype`:
 
 You can `flatten` out a multiple-dimension
 
+#### flatten
+
  * Coming Soon: flatten, transpose, sqrt, ceil, floor, sum, prod, mean, std, sort, clip
 
-#### Converting to list
+#### tolist
 
-Now, if you want to convert a `numpy.array` to a standard Python `list`, you could try just using `list()`:
+If you want to convert a `numpy.array` to a standard Python `list`, you could try just using `list()`:
 
     >>> a = array([1, 4, 1, 5, 9])
     >>> a
@@ -172,7 +174,7 @@ Now, if you want to convert a `numpy.array` to a standard Python `list`, you cou
     >>> list(a)
     [1, 4, 1, 5, 9]
 
-But you would find this would fail for multidimensional `array`, and you will just get a list of arrays:
+But you would find this would fail on a multidimensional `array`, and you will just get a list of arrays:
 
     >>> m = array([[1, 2, 3], [7, 8, 9]])
     >>> m
@@ -181,7 +183,7 @@ But you would find this would fail for multidimensional `array`, and you will ju
     >>> list(m)
     [array([1, 2, 3]), array([7, 8, 9])]
 
-So, you can use the `tolist()` method:
+So, `numpy` provides the `tolist()` method, which will convert deep into the `array` structure:
 
     >>> m.tolist()
     [[1, 2, 3], [7, 8, 9]]
