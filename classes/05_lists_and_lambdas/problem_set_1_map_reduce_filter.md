@@ -36,6 +36,13 @@ Using only a single `filter` statement, solve the following puzzles:
 2. What integers less than 10,000 are both: the square of another integer and evenly divisible by 2?
 3. How many positive, even numbers less than 1,000,000 are evenly divisible by 99?
 
+#### Choose Your Own Adventure
+
+Use `map`, `reduce`, and/or `filter` to solve the following puzzles:
+
+1. Find all the numbers evenly divisible by 3, below 100.
+2. Calculate the sum of all the even numbers from 2 to 222.
+3. Calculate the sum of the first five powers of seven.
 
 ## Solutions
 
