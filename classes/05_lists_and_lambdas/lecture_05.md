@@ -26,9 +26,8 @@ Here is another compare-and-contrast example between a regular function (`f`) an
 As you can see, `f()` and `g()` do the same thing and can be used in similar ways.
 
  * **Note**: The lambda definition does not include a `return` statement -- it always contains a single expression which is then returned.
- * **Note**: You can put a lambda definition anywhere a function is expected, and you don't have to assign it to a variable at all. 
 
-Let us try to print the even numbers in the Fibonacci Sequence (the usual way):
+Let's print the even numbers in the Fibonacci Sequence (the usual way):
 
     fibonacci = [0, 1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89, 144, 233]
     
@@ -50,7 +49,7 @@ Now let's do the same thing, using a lambda funciton:
     
     print_some_numbers(fibonacci, is_even)
 
-Well, those approaches look pretty similar. But now let's say we want to print the odd numbers in the Fibonacci Sequence. We would have to write a whole new method `print_odd_numbers`. And if we wanted to print numbers divisible by 3, again we'd need to write a whole new function. But with the `print_some_numbers` method, all we have to do is define one new (short) lambda predicate function. This keeps us having to repeat ourselves. As you can imagine, if `print_some_numbers` was very long, you could save yourself a lot of typing and repitition.
+Well, those approaches look pretty similar. But what if we want to print the odd numbers in the Fibonacci Sequence? We would have to write a whole new method `print_odd_numbers`. And if we wanted to print numbers divisible by 3, again we'd need to write a whole new function. But with the `print_some_numbers` method, all we have to do is define one new (short) lambda predicate function. This keeps us having to repeat ourselves. If `print_some_numbers` was very long, you could save a lot of repitition.
 
     is_odd = lambda n: n % 2 == 1
     divisible_by_three = lambda n: n % 3 == 0
@@ -158,7 +157,9 @@ Of course, `map`, `filter`, and `reduce` work with more than just numbers:
 
 ## List Comprehensions
 
-If want to create a list from another list, there is another option than `map`. You can use a [list comprenhension](https://en.wikipedia.org/wiki/List_comprehension). In this example, we take a list of integers and create another list of their squares:
+If want to create a list from another list, `map` isn't the only option. You can use a [list comprenhension](https://en.wikipedia.org/wiki/List_comprehension).
+
+Here we take a list of integers and create a list of their squares using the list comprehension `[EXPRESSION for X in LIST]` syntax:
 
     >>> [i*i for i in range(5)]
     [0, 1, 4, 9, 16]
@@ -177,7 +178,7 @@ We can even make the predicate (`if` statement) more complex. Here we find all n
 
 ## Dictionary Comprehensions
 
-Lastly, in Python 2.6 and newer, we can use dictionary comprehensions. In this example we create a dictionary where the key is a letter and the value is the number of times that letter appears in the given string:
+Lastly, in Python 2.6 and newer, we can use dictionary comprehensions. Dictionary comprehensions look like list comprensions, but we use `dict()` instead of `[]`. In this example we create a dictionary where the key is a letter and the value is the number of times that letter appears in the given string:
 
     >>> word = 'droog'
     >>> dict((item, word.count(item)) for item in set(word))
