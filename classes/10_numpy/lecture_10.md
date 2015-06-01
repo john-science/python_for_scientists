@@ -162,7 +162,35 @@ You can `flatten` out a multiple-dimension
 
 #### flatten
 
- * Coming Soon: flatten, transpose, sqrt, ceil, floor, sum, prod, mean, std, sort, clip
+ * Coming Soon
+
+#### transpose
+
+ * Coming Soon
+
+#### sqrt
+
+ * Coming Soon
+
+#### ceil & floor
+
+ * Coming Soon
+
+#### sum & prod
+
+ * Coming Soon
+
+#### mean & std
+
+ * Coming Soon
+
+#### sort
+
+ * Coming Soon
+
+#### clip
+
+ * Coming Soon
 
 #### tolist
 
