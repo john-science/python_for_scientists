@@ -132,7 +132,9 @@ Similarly, you can use `ones` to initialize an array to all 1 values:
 
 Another difference you will see between Python lists and NumPy arrays is the helper methods.
 
-You can use `ndim` and `shape` to get information about the dimensionality of the `array`:
+#### ndim
+
+You can use `ndim` to determine how many dimensions your multi-dimensional `array` has:
 
     >>> r = zeros((3, 2), dtype=float)
     >>> r
@@ -141,14 +143,23 @@ You can use `ndim` and `shape` to get information about the dimensionality of th
            [ 0.,  0.]])
     >>> r.ndim
     2
+
+#### shape
+
+You can use `shape` get more information about the structure of your `array`:
+
     >>> r.shape
     (3, 2)
+
+#### dtype
 
 You can also get the type of the elements in the array using `.dtype`:
 
     >>> r.dtype
     dtype('float64')
-    
+
+You can `flatten` out a multiple-dimension
+
  * Coming Soon: flatten, transpose, sqrt, ceil, floor, sum, prod, mean, std, sort, clip
 
 #### Converting to list
