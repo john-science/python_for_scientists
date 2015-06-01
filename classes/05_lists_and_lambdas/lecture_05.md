@@ -187,7 +187,10 @@ Well, that string was pretty short, let's try a longer one:
 
     >>> sentence = 'The quick brown fox jumps over the lazy dog'
     >>> dict((item, sentence.count(item)) for item in set(sentence))
-    {' ': 8, 'T': 1, 'a': 1, 'c': 1, 'b': 1, 'e': 3, 'd': 1, 'g': 1, 'f': 1, 'i': 1, 'h': 2, 'k': 1, 'j': 1, 'm': 1, 'l': 1, 'o': 4, 'n': 1, 'q': 1, 'p': 1, 's': 1, 'r': 2, 'u': 2, 't': 1, 'w': 1, 'v': 1, 'y': 1, 'x': 1, 'z': 1}
+    {' ': 8, 'T': 1, 'a': 1, 'b': 1, 'c': 1, 'd': 1, 'e': 3, 'f': 1,
+     'g': 1, 'h': 2, 'i': 1, 'j': 1, 'k': 1, 'l': 1, 'm': 1, 'n': 1,
+     'o': 4, 'p': 1, 'q': 1, 'r': 2, 's': 1, 't': 1, 'u': 2, 'v': 1,
+     'w': 1, x': 1, 'y': 1, ''z': 1}
 
 This is a really easy tool to use. Let's create a dictionary where the keys are words in a list and the values are the length of those words:
 
