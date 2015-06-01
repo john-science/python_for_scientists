@@ -59,5 +59,19 @@
     # 3, or...
     filter(lambda n: (n % 3 == 0) and (n % 4 == 0) and (n % 5 == 0), range(1000))
 
+#### Choose Your Own Adventure
+
+    # 1. Find all the numbers evenly divisible by 3, below 100.
+    filter(lambda n: n % 3 == 0, range(100))
+    
+    # 2. Calculate the sum of all the even numbers from 2 to 222.
+    >>> reduce(lambda a, b: a + b, range(2, 223, 2))
+    12432
+    
+    # 3. Calculate the sum of the first five powers of seven.
+    >>> powers = map(lambda i: 7 ** i, range(1, 6))
+    >>> reduce(lambda a, b: a + b, powers)
+    19607
+
 
 [Back to Problem Set](problem_set_1_map_reduce_filter.md)
