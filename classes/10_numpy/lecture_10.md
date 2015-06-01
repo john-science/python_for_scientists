@@ -12,7 +12,7 @@ You can find instructions for installing NumPy [here](http://docs.scipy.org/doc/
 
 ## The NumPy array
 
-#### Lists vs Arrays
+### Lists vs Arrays
 
 The `list` is the standard ordered-sequence data structure in Python. The Python `list` is an extremely flexible tool. But it turns out, that flexibility costs us some speed. NumPy introduces its own data structure, the  [array](http://wiki.scipy.org/Tentative_NumPy_Tutorial#head-c5f4ceae0ab4b1313de41aba9104d0d7648e35cc):
 
@@ -30,7 +30,7 @@ One of the first differences you will find is that, unlike lists, all of the ite
 
 Do you see what happened? Python automatically typecast all of the elements in the `array` to be of the same type. And since you would lose information going from 4.5 to 4, all of the elements in your `array` had to become decimals.
 
-#### NumPy Types
+### NumPy Types
 
 As well as having it's own data structure, NumPy goes one step further and has it's own types:
 
@@ -46,7 +46,7 @@ The NumPy library tries to default all of your numbers (integers, decimals, etc)
 
 There are, of course, many other data types in NumPy. For a full list, look [here](http://docs.scipy.org/doc/numpy/user/basics.types.html)
 
-#### Creating Arrays
+### Creating Arrays
 
 One major difference between lists and NumPy.arrays is that arrays don't just have to be one-dimensional like lists:
 
@@ -128,7 +128,7 @@ Similarly, you can use `ones` to initialize an array to all 1 values:
     array([[1, 1, 1, 1, 1],
            [1, 1, 1, 1, 1]])
 
-#### NumPy array Operations
+### NumPy array Operations
 
 Another difference you will see between Python lists and NumPy arrays is the helper methods.
 
@@ -144,7 +144,36 @@ You can use `ndim` and `shape` to get information about the dimensionality of th
     >>> r.shape
     (3, 2)
 
- * Coming Soon: ndim, dtype, sqrt, etc...
+You can also get the type of the elements in the array using `.dtype`:
+
+    >>> r.dtype
+    dtype('float64')
+    
+ * Coming Soon: flatten, transpose, sqrt, ceil, floor, sum, prod, mean, std, sort, clip
+
+#### Converting to list
+
+Now, if you want to convert a `numpy.array` to a standard Python `list`, you could try just using `list()`:
+
+    >>> a = array([1, 4, 1, 5, 9])
+    >>> a
+    array([1, 4, 1, 5, 9])
+    >>> list(a)
+    [1, 4, 1, 5, 9]
+
+But you would find this would fail for multidimensional `array`, and you will just get a list of arrays:
+
+    >>> m = array([[1, 2, 3], [7, 8, 9]])
+    >>> m
+    array([[1, 2, 3],
+           [7, 8, 9]])
+    >>> list(m)
+    [array([1, 2, 3]), array([7, 8, 9])]
+
+So, you can use the `tolist()` method:
+
+    >>> m.tolist()
+    [[1, 2, 3], [7, 8, 9]]
 
 ## NumPy Random Numbers
 
