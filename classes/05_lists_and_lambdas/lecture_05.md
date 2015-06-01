@@ -1,6 +1,6 @@
 # Lists and Lambdas
 
-## Lambdas
+## Lambda
 
 The `lambda` keyword creates a function, but doesn't give it a name. Here we create a simple function that tests if a number is even, and a lambda statement that does the same thing:
 
@@ -16,14 +16,17 @@ Here is another compare-and-contrast example between a regular function (`f`) an
     >>> def f (x):
     ...     return x**2
     ... 
-    >>> print f(8)
+    >>> print(f(8))
     64
     >>> g = lambda x: x**2
     >>> 
-    >>> print g(8)
+    >>> print(g(8))
     64
 
-As you can see, `f()` and `g()` do exactly the same thing and can be used in similar ways. Note that the lambda definition does not include a `return` statement -- it always contains a single expression which is then returned. Also note that you can put a lambda definition anywhere a function is expected, and you don't have to assign it to a variable at all. 
+As you can see, `f()` and `g()` do the same thing and can be used in similar ways.
+
+ * **Note**: The lambda definition does not include a `return` statement -- it always contains a single expression which is then returned.
+ * **Note**: You can put a lambda definition anywhere a function is expected, and you don't have to assign it to a variable at all. 
 
 Let us try to print the even numbers in the Fibonacci Sequence (the usual way):
 
@@ -61,11 +64,11 @@ This is a major principle in Python:
 
 ## Map, Reduce, Filter
 
-In theory, scientists and engineers might want to do almost anything with a long list of data. In practice, most of what we do can be divided into a few general categories: apply a function to each member of a list, sum or reduce a whole list to one number, or select some elements from a list. Python has three handy tools built in to speed those processes up: `map`, `reduce`, and `filter`.
+In theory we could do anything with our data. But in practice, what we do with a `list` of data frequently falls into a few basic categories: apply a function to each member of a list, sum or reduce a whole list to one number, or select some elements from a list. Python has three handy tools built in to speed those processes up: `map`, `reduce`, and `filter`.
 
 ### Map
 
-Let's say we want to take a list of numbers and create another list, by applying some function to each member of the original list. That's a pretty generic goal, and can be accomplished using `map` along with a `lambda` function:
+Let's say we want to take a `list` of numbers and create another list, by applying some function to each member of the original list. That's a pretty generic goal, and can be accomplished using `map` along with a `lambda` function:
 
     >>> map(lambda n: n * n, range(5))
     [0, 1, 4, 9, 16]
@@ -82,19 +85,19 @@ One more example. Let's split a sentence into a list of words and create a final
 
     >>> sentence = 'It is raining cats and dogs'
     >>> words = sentence.split()
-    >>> print words
+    >>> words
     ['It', 'is', 'raining', 'cats', 'and', 'dogs']
     >>> 
     >>> lengths = map(lambda word: len(word), words)
-    >>> print lengths
+    >>> lengths
     [2, 2, 7, 4, 3, 4]
 
 Of course, we could even do this on a single line:
 
-    >>> print map(lambda w: len(w), 'It is raining cats and dogs'.split())
+    >>> map(lambda w: len(w), 'It is raining cats and dogs'.split())
     [2, 2, 7, 4, 3, 4]
 
-All of the above examples create `lambda` expresssions that only take one variable as input. But, `lambda` expressions can take multiple variables:
+All of the above examples create `lambda` expresssions only take one variable as input. But `lambda` expressions can take multiple variables:
 
     >>> f = lambda a, b, c: (a + b) / c
     >>> f(4, 8, 2)
@@ -133,8 +136,6 @@ This may seem like more work, but now we have a lot of flexibility to filter num
     >>> less_than_10 = lambda i: i < 10
     >>> filter_integers(less_than_10, 999999)
     [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
-
-These examples may seem overly simple, but the important idea is that code that is designed to smartly pass around lambda expressions can be optimally shorter and flexible.
 
 ### Reduce
 
@@ -176,13 +177,14 @@ We can even make the predicate (`if` statement) more complex. Here we find all n
 
 ## Dictionary Comprehensions
 
-Lastly, in Python 2.7 and newer there are even dictionary comprehensions. In this example we create a dictionary where the key is a letter and the value is the number of times that letter appears in the given string:
+Lastly, in Python 2.6 and newer, we can use dictionary comprehensions. In this example we create a dictionary where the key is a letter and the value is the number of times that letter appears in the given string:
 
-    >>> word = 'droog'  # a short example
+    >>> word = 'droog'
     >>> dict((item, word.count(item)) for item in set(word))
     {'o': 2, 'r': 1, 'd': 1, 'g': 1}
-    
-    >>> # a longer example
+
+Well, that string was pretty short, let's try a longer one:
+
     >>> sentence = 'The quick brown fox jumps over the lazy dog'
     >>> dict((item, sentence.count(item)) for item in set(sentence))
     {' ': 8, 'T': 1, 'a': 1, 'c': 1, 'b': 1, 'e': 3, 'd': 1, 'g': 1, 'f': 1, 'i': 1, 'h': 2, 'k': 1, 'j': 1, 'm': 1, 'l': 1, 'o': 4, 'n': 1, 'q': 1, 'p': 1, 's': 1, 'r': 2, 'u': 2, 't': 1, 'w': 1, 'v': 1, 'y': 1, 'x': 1, 'z': 1}
@@ -213,7 +215,13 @@ Rewriting the day-of-week example using the `zip` function:
     >>> days = zip(range(7), dow)
     >>> days
     [(0, 'Mon'), (1, 'Tue'), (2, 'Wed'), (3, 'Thu'), (4, 'Fri'), (5, 'Sat'), (6, 'Sun')]
-    >>> dict(tup for tup in days)
+    >>> dict(days)
+    {0: 'Mon', 1: 'Tue', 2: 'Wed', 3: 'Thu', 4: 'Fri', 5: 'Sat', 6: 'Sun'}
+
+Which we would usually just write in two lines:
+
+    >>> dow = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
+    >>> dict(zip(range(7), dow))
     {0: 'Mon', 1: 'Tue', 2: 'Wed', 3: 'Thu', 4: 'Fri', 5: 'Sat', 6: 'Sun'}
 
 ## Problem Sets
