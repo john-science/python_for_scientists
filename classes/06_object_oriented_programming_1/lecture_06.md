@@ -150,8 +150,8 @@ Written like this, these methods would still run. But using the `@staticmethod` 
 
 ## Problem Sets
 
- * [Lecture Part 2: Full Example](lecture_06_2_full_example.md)
- * [Simple Example Problems](problem_set_1_try_it_out.md)
+ * [Full Example: Using FTP](lecture_06_2_full_example.md)
+ * [Simple Classes](problem_set_1_try_it_out.md)
  * [init Problems](problem_set_2_init.md)
 
 ## Further Reading
