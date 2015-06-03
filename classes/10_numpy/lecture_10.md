@@ -296,6 +296,7 @@ So, `numpy` provides the `tolist()` method, which will convert deep into the `ar
  * [Why NumPy arrays instead of lists?](http://stackoverflow.com/questions/993984/why-numpy-instead-of-python-lists)
  * [Official NumPy Tutorial](http://wiki.scipy.org/Tentative_NumPy_Tutorial)
  * [Intro PDF to NumPy and Scipy from UC SB](http://www.engr.ucsb.edu/~shell/che210d/numpy.pdf)
+ * [Docs of Random Numbers in NumPy](http://docs.scipy.org/doc/numpy/reference/routines.random.html)
 
 
 [Back to Syllabus](../../README.md)
