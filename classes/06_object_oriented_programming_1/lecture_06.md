@@ -90,6 +90,10 @@ This brings us to an important piece of jargon: "instance attributes". The "inst
 
 This is not meant to be confusing, there are just two things to understand. First, the difference between an object, or an "instance" of a class. And second, the "attributes" are the values/data stored inside of an object.
 
+### Class Methods
+
+ * Coming Soon
+
 ### Static Methods
 
 Classes (and their objects) have more than just attributes. They also have methods. (Remember, any function inside a class is called a "method".) A typical method will make use of the instance attributes, like `def calculate_grade(self)` defined above. However, what if you want to include a method inside a class that is independent of the values of the object? These are called "static methods", and here are a couple examples:
