@@ -158,39 +158,110 @@ You can also get the type of the elements in the array using `.dtype`:
     >>> r.dtype
     dtype('float64')
 
-You can `flatten` out a multiple-dimension
-
 #### flatten
 
- * Coming Soon
+You can use `flatten` to convert a multi-dimensional `array` to a single dimension:
+
+    >>> a = array([[2,3,4],[7,8,9]])
+    >>> a
+    array([[2, 3, 4],
+           [7, 8, 9]])
+    >>> a.flatten()
+    array([2, 3, 4, 7, 8, 9])
 
 #### transpose
 
- * Coming Soon
+You can use `transpose` to flip the x and y directions in your `array`:
+
+    >>> a = array([[2, 3, 4], [7, 8, 9]])
+    >>> a
+    array([[2, 3, 4],
+           [7, 8, 9]])
+    >>> a.transpose()
+    array([[2, 7],
+           [3, 8],
+           [4, 9]])
 
 #### sqrt
 
- * Coming Soon
+There are even mathematical functions built into NumPy that will apply to all of the elements of an array, like `sqrt`:
+
+    >>> from numpy import sqrt
+    >>> a = array([1, 4, 9, 25, 144, 81])
+    >>> sqrt(a)
+    array([  1.,   2.,   3.,   5.,  12.,   9.])
 
 #### ceil & floor
 
- * Coming Soon
+You can use `ceil` and `floor` to round NumPy `float64`s up or down to the nearest integer:
+
+    >>> from numpy import ceil, floor
+    >>> 
+    >>> a = array([1.001, 2.49, 2.5, 3.5001, 9.9])
+    >>> a
+    array([ 1.001 ,  2.49  ,  2.5   ,  3.5001,  9.9   ])
+    >>> ceil(a)
+    array([  2.,   3.,   3.,   4.,  10.])
+    >>> floor(a)
+    array([ 1.,  2.,  2.,  3.,  9.])
 
 #### sum & prod
 
- * Coming Soon
+NumPy also includes the ability to make the sum and product of all the elements in an array:
 
-#### mean & std
+    >>> from numpy import sum, prod
+    >>> a = array([1, 2, 3, 4, 5, 6])
+    >>> sum(a)
+    21
+    >>> prod(a)
+    720
 
- * Coming Soon
+And since they are built into NumPy, `sum` and `prod` can handle multi-dimensional arrays:
+
+    >>> m = array([[1, 2, 3], [4, 5, 6]])
+    >>> m
+    array([[1, 2, 3],
+           [4, 5, 6]])
+    >>> sum(m)
+    21
+    >>> prod(m)
+    720
 
 #### sort
 
- * Coming Soon
+You can use `sort` to put the elements of a 1D array in order:
+
+    >>> from numpy import sort
+    >>> a = array([1, 2, 3, 4, 5, 4, 3, 2, 1])
+    >>> sort(a)
+    array([1, 1, 2, 2, 3, 3, 4, 4, 5])
+
+And if you apply `sort` to a multi-dimensional `array`, it will return each sub-array ordered:
+
+    >>> m = array([[9, 4, 2], [1, 0, -3]])
+    >>> m
+    array([[ 9,  4,  2],
+           [ 1,  0, -3]])
+    >>> sort(m)
+    array([[ 2,  4,  9],
+           [-3,  0,  1]])
 
 #### clip
 
- * Coming Soon
+You can use `clip` if you want to set the max and min value allowed in your array:
+
+    >>> from numpy import clip
+    >>> 
+    >>> a = array([1, 2, 3, 0, -32, 99, 999])
+    >>> 
+    >>> clip(a, 0, 10000)
+    array([  1,   2,   3,   0,   0,  99, 999])
+    >>> clip(a, -999, 1)
+    array([  1,   1,   1,   0, -32,   1,   1])
+
+You can see that any values above the max or below the min are converted to the `MAX` and `MIN` values you set in your clip statement:
+
+    >>> clip(lst, MIN, MAX)
 
 #### tolist
 
