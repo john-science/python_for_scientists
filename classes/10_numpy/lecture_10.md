@@ -289,6 +289,16 @@ So, `numpy` provides the `tolist()` method, which will convert deep into the `ar
 
 ## NumPy Random Numbers
 
+NumPy also has a lot of tools built in to help you generate [random numbers](https://en.wikipedia.org/wiki/Pseudorandom_number_generator). We will not cover the topic of random number distributions in detail, but you can find a full listing of the distributions supported by NumPy in the [documentation](http://docs.scipy.org/doc/numpy/reference/routines.random.html).
+
+#### Flat Distribution
+
+ * Coming Soon
+
+#### Normal Distribution
+
+![Normal Distribution](http://upload.wikimedia.org/wikipedia/commons/thumb/7/74/Normal_Distribution_PDF.svg/350px-Normal_Distribution_PDF.svg.png)
+
  * Coming Soon
 
 ## Further Reading
@@ -297,6 +307,7 @@ So, `numpy` provides the `tolist()` method, which will convert deep into the `ar
  * [Official NumPy Tutorial](http://wiki.scipy.org/Tentative_NumPy_Tutorial)
  * [Intro PDF to NumPy and Scipy from UC SB](http://www.engr.ucsb.edu/~shell/che210d/numpy.pdf)
  * [Docs of Random Numbers in NumPy](http://docs.scipy.org/doc/numpy/reference/routines.random.html)
+ * [What is a pseudo-random number?](https://en.wikipedia.org/wiki/Pseudorandom_number_generator)
 
 
 [Back to Syllabus](../../README.md)
