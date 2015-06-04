@@ -455,11 +455,11 @@ Use `permutation` if you don't want to alter the original `array`, but just crea
 
 The difference between `random.shuffle` and `random.permutation` is very similar to the difference we saw between `.sort()` and `sorted()` for lists. The first one alters the sequence "in place", and the second one doesn't alter the sequence, but creates an altered version of it.
 
-## That's It?
+## That's All for NumPy?
 
 Oh no.
 
-This class was meant to give you enough of an introduction that you will be able use NumPy when you need it. NumPy has a lot more tools built in to handle specific needs, like treating 2D arrays as matricies, Fourier transforms, polynomials, linear algebra, and statistics. The key take-homes here are that NumPy creates it's own data structures data types. Once you learn to deal with these, the rest of the NumPy library will become accessible to you.
+This class was meant to give enough of an introduction that you will be able use NumPy when you need it. NumPy has a lot more tools for specific needs: treating 2D arrays as matricies, Fourier transforms, polynomials, linear algebra, and statistics. The key take-homes here are that NumPy creates it's own data structures data types. Once you learn to deal with these, the rest of the NumPy library will become accessible to you.
 
 We will cover NumPy statistics in the SciPy class. For a full reference on what is available in Python, look at the [official documentation](http://docs.scipy.org/doc/numpy/reference/).
 
