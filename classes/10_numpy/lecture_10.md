@@ -289,15 +289,41 @@ So, `numpy` provides the `tolist()` method, which will convert deep into the `ar
 
 ## NumPy Random Numbers
 
-NumPy also has a lot of tools built in to help you generate [random numbers](https://en.wikipedia.org/wiki/Pseudorandom_number_generator). We will not cover the topic of random number distributions in detail, but you can find a full listing of the distributions supported by NumPy in the [documentation](http://docs.scipy.org/doc/numpy/reference/routines.random.html).
+NumPy also has a lot of tools built in to help you generate [random numbers](https://en.wikipedia.org/wiki/Pseudorandom_number_generator). We will not cover the topic of random number generation in detail, as it is a whole field onto itself. If this topic interests you, start your research [here](https://en.wikipedia.org/wiki/Random_number_generation).  There are many different distributions of random numbers, and though we will only cover two, there are many more supported by NumPy that you can read about in the [documentation](http://docs.scipy.org/doc/numpy/reference/routines.random.html).
 
-#### Flat Distribution
+### Flat Distribution
+
+When we say a distribution of random numbers is *flat*, we mean that the numbers generated are evenly distributed between the minimum and maximum. In NumPy, the default minimum is 0.0 and the default maximum is just less than 1.0, when generating random decimal values.
+
+#### rand
 
  * Coming Soon
 
-#### Normal Distribution
+#### randint
+
+ * Coming Soon
+
+#### choice
+
+ * Coming Soon
+
+### Normal Distribution
+
+When random numbers are generated with a [Normal Distribution](https://en.wikipedia.org/wiki/Normal_distribution), the average value is zero but the numbers can be decimals anywhere from infinity to negative infinity. In NumPy, the [standard deviation](https://en.wikipedia.org/wiki/Standard_deviation) of the normal distribution of random numbers is 1:
 
 ![Normal Distribution](http://upload.wikimedia.org/wikipedia/commons/thumb/7/74/Normal_Distribution_PDF.svg/350px-Normal_Distribution_PDF.svg.png)
+
+ * Coming Soon
+
+### Permutations
+
+ * Coming Soon
+
+#### Shuffle
+
+ * Coming Soon
+
+#### Permutation
 
  * Coming Soon
 
@@ -307,7 +333,10 @@ NumPy also has a lot of tools built in to help you generate [random numbers](htt
  * [Official NumPy Tutorial](http://wiki.scipy.org/Tentative_NumPy_Tutorial)
  * [Intro PDF to NumPy and Scipy from UC SB](http://www.engr.ucsb.edu/~shell/che210d/numpy.pdf)
  * [Docs of Random Numbers in NumPy](http://docs.scipy.org/doc/numpy/reference/routines.random.html)
+ * [Random Number Generation](https://en.wikipedia.org/wiki/Random_number_generation)
  * [What is a pseudo-random number?](https://en.wikipedia.org/wiki/Pseudorandom_number_generator)
+ * [What is a Normal Distribution?](https://en.wikipedia.org/wiki/Normal_distribution)
+ * [What is a Standard Deviation?](https://en.wikipedia.org/wiki/Standard_deviation)
 
 
 [Back to Syllabus](../../README.md)
