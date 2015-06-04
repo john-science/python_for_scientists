@@ -457,7 +457,11 @@ The difference between `random.shuffle` and `random.permutation` is very similar
 
 ## That's It?
 
-Oh no. There is a lot more functionality available in NumPy. But we will go into more detail about dealing with arrays in the problem sets. And we will talk more about NumPy statistics in the SciPy class. For a full reference on what is available in Python, look at the [official documentation](http://docs.scipy.org/doc/numpy/reference/).
+Oh no.
+
+This class was meant to give you enough of an introduction that you will be able use NumPy when you need it. NumPy has a lot more tools built in to handle specific needs, like treating 2D arrays as matricies, Fourier transforms, polynomials, linear algebra, and statistics. The key take-homes here are that NumPy creates it's own data structures data types. Once you learn to deal with these, the rest of the NumPy library will become accessible to you.
+
+We will cover NumPy statistics in the SciPy class. For a full reference on what is available in Python, look at the [official documentation](http://docs.scipy.org/doc/numpy/reference/).
 
 ## Problem Sets
 
