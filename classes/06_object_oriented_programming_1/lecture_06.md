@@ -88,15 +88,28 @@ In this case, the `__init__` method is called and four variables are set: `self.
 
 ### Class Methods
 
- * Coming Soon
+Now let's talk about those `Student` methods: functions inside of the class. Mostly, they look like regular functions, except they are indented to signify they are part of the `Student` class. Also, the first input is `self`:
+
+    class Student(object):
+        ...
+
+        def set_hw_grade(self, grade, week):
+            '''Set the grade for a specific homework'''
+            self.hw_grades[week] = grade
+
+The first parameter to this function is `self`, not because you need to pass a `self` variable in, but to signify that this method takes the attributes (`self.name`, `self.student_id`, `self.hw_grades`) from this instance of Student. To set the first homework grade to 99 percent, we would do this:
+
+    emmy = Student("Emmy Noether", 837195783)
+    emmy.set_hw_grade(99.0, 0)
+
+We see the `set_hw_grade` method actually only takes two inputs, not three. The `self` input is provided by doing the `emmy.`. Another thing we see is that by using a class method, we have access to all of the class attributes. In this case, that means we can modify the values in the `self.hw_grades` list.
 
 ### Static Methods
 
-Classes (and their objects) have more than just attributes. They also have methods. (Remember, any function inside a class is called a "method".) A typical method will make use of the instance attributes, like `def calculate_grade(self)` defined above. However, what if you want to include a method inside a class that is independent of the values of the object? These are called "static methods", and here are a couple examples:
+A class method is any function you include in a class and give the `self` parameter to. But what if you want to include a method in a class that is independent of the value of this particular object? These are called "static methods", and here are a couple examples:
 
     class Student(object):
-    
-        # rest of the class defined as before
+        ...
         
         @staticmethod
         def fail_student():
