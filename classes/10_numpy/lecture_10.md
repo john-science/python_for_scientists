@@ -134,7 +134,7 @@ Another difference you will see between Python lists and NumPy arrays is the hel
 
 #### ndim
 
-You can use `ndim` to determine how many dimensions your multi-dimensional `array` has:
+Use `.ndim` to determine how many dimensions your multi-dimensional `array` has:
 
     >>> r = zeros((3, 2), dtype=float)
     >>> r
@@ -144,23 +144,29 @@ You can use `ndim` to determine how many dimensions your multi-dimensional `arra
     >>> r.ndim
     2
 
+Of course, an `array` can have a lot of dimensions:
+
+    >>> threed = zeros((2, 2, 2), dtype=int)
+    >>> threed.ndim
+    3
+
 #### shape
 
-You can use `shape` get more information about the structure of your `array`:
+Use `.shape` get more information about the structure of your `array`:
 
     >>> r.shape
     (3, 2)
 
 #### dtype
 
-You can also get the type of the elements in the array using `.dtype`:
+Use `.dtype` to get the type of the elements in an `array`:
 
     >>> r.dtype
     dtype('float64')
 
 #### flatten
 
-You can use `flatten` to convert a multi-dimensional `array` to a single dimension:
+Use `flatten` to convert a multi-dimensional `array` to a single dimension:
 
     >>> a = array([[2,3,4],[7,8,9]])
     >>> a
@@ -171,7 +177,7 @@ You can use `flatten` to convert a multi-dimensional `array` to a single dimensi
 
 #### transpose
 
-You can use `transpose` to flip the x and y directions in your `array`:
+Use `transpose` to flip the x and y directions in your `array`:
 
     >>> a = array([[2, 3, 4], [7, 8, 9]])
     >>> a
@@ -193,7 +199,7 @@ There are even mathematical functions built into NumPy that will apply to all of
 
 #### ceil & floor
 
-You can use `ceil` and `floor` to round NumPy `float64`s up or down to the nearest integer:
+Use `ceil` and `floor` to round NumPy `float64`s up or down to the nearest integer:
 
     >>> from numpy import ceil, floor
     >>> 
@@ -229,7 +235,7 @@ And since they are built into NumPy, `sum` and `prod` can handle multi-dimension
 
 #### sort
 
-You can use `sort` to put the elements of a 1D array in order:
+Use `sort` to put the elements of a 1D array in order:
 
     >>> from numpy import sort
     >>> a = array([1, 2, 3, 4, 5, 4, 3, 2, 1])
@@ -248,7 +254,7 @@ And if you apply `sort` to a multi-dimensional `array`, it will return each sub-
 
 #### clip
 
-You can use `clip` if you want to set the max and min value allowed in your array:
+Use `clip` if you want to set the max and min value allowed in your array:
 
     >>> from numpy import clip
     >>> 
@@ -265,7 +271,7 @@ You can see that any values above the max or below the min are converted to the 
 
 #### tolist
 
-If you want to convert a `numpy.array` to a standard Python `list`, you could try just using `list()`:
+Convert a `numpy.array` to a standard Python `list` using `list()`:
 
     >>> a = array([1, 4, 1, 5, 9])
     >>> a
@@ -297,15 +303,73 @@ When we say a distribution of random numbers is *flat*, we mean that the numbers
 
 #### rand
 
- * Coming Soon
+Use `random.rand` to fill a NumPy `array` with random `float64` values between 0.0 and 1.0:
+
+    >>> from numpy import random
+    >>> 
+    >>> random.rand(1)
+    array([ 0.05895439])
+    >>> random.rand(1)
+    array([ 0.3581962])
+    >>> random.rand(2, 3)
+    array([[ 0.35675058,  0.51579755,  0.03851769],
+           [ 0.74684991,  0.55219055,  0.37000399]])
 
 #### randint
 
- * Coming Soon
+Use `random.randint` to fill a NumPy `array` with random `int64` values, where you can set the min and max integers, as well as the `array` dimensions.
+
+You can just provide a maximum integer (min defaults to zero, max is exclusive):
+
+    >>> from numpy import random
+    >>> random.randint(5)
+    0
+    >>> random.randint(5)
+    4
+    >>> random.randint(5)
+    3
+    >>> random.randint(5)
+    2
+
+Or you can provide a min and a max (min inclusive, max exclusive):
+
+    >>> random.randint(5, 10)
+    9
+    >>> random.randint(5, 10)
+    5
+    >>> random.randint(5, 10)
+    5
+    >>> random.randint(5, 10)
+    7
+
+Or you can create an entire array of random integers by providing the dimensions of the array as a third parameter:
+
+    >>> random.randint(1, 10, 3)
+    array([5, 2, 9])
+    >>> 
+    >>> random.randint(5, 10, (2, 3))
+    array([[5, 6, 9],
+           [8, 9, 6]])
+    >>> 
+    >>> random.randint(1, 10, (3, 5))
+    array([[5, 4, 7, 1, 4],
+           [6, 5, 5, 5, 4],
+           [6, 9, 8, 7, 1]])
 
 #### choice
 
- * Coming Soon
+You can use `random.choice` to select an element from a 1D `array`:
+
+    >>> from numpy import array, random
+    >>> a = array([1, 2, 3, 4, 5, 6, 7])
+    >>> random.choice(a)
+    5
+    >>> random.choice(a)
+    7
+    >>> random.choice(a)
+    1
+
+The `choice` function is part of a flat distribution, because each element in the list is equally likely to be selected.
 
 ### Normal Distribution
 
@@ -313,19 +377,92 @@ When random numbers are generated with a [Normal Distribution](https://en.wikipe
 
 ![Normal Distribution](http://upload.wikimedia.org/wikipedia/commons/thumb/7/74/Normal_Distribution_PDF.svg/350px-Normal_Distribution_PDF.svg.png)
 
- * Coming Soon
+Use `random.randn` to produce an `array` of `float64` values, with a Normal Distribution (centered around zero, with a standard deviation of 1):
+
+    >>> from numpy import random
+    >>> random.randn(4)
+    array([ 0.82712644, -1.15210992,  0.96319519, -0.16316335])
+    >>> random.randn(4)
+    array([-1.39618701, -1.01253218, -0.05627893, -0.78845925])
+
+And, of course, we can create higher-dimensional arrays:
+
+    >>> random.randn(2, 4)
+    array([[-0.1366172 , -0.41921541,  1.98640058, -0.75165991],
+           [ 1.69984245,  0.65345415, -1.90558238, -0.41176329]])
+    >>>
+    >>> random.randn(2, 2, 2)
+    array([[[ 0.16383478, -0.03612812],
+            [ 0.03078127,  0.54628765]],
+    
+           [[ 0.23479626,  1.0837927 ],
+            [-0.50655975, -0.6393057 ]]])
+
 
 ### Permutations
 
- * Coming Soon
+A common desire is to randomly order an existing sequence of values. NumPy provides two basic ways to do just that.
 
 #### Shuffle
 
- * Coming Soon
+Use `random.shuffle` if you want to randomly switch all the elements in a NumPy `array` in place:
+
+    >>> a = array([1, 2, 3, 4, 5])
+    >>> random.shuffle(a)
+    >>> a
+    array([4, 1, 5, 3, 2])
+    >>> random.shuffle(a)
+    >>> a
+    array([1, 3, 5, 2, 4])
+
+The caveat here is that this shuffling is not deep. For a multi-dimensional `array`, it will only shuffle the outermost arrays:
+
+    >>> m = array([[1, 2, 3], [4, 5, 6]])
+    >>> m
+    array([[1, 2, 3],
+           [4, 5, 6]])
+    >>> random.shuffle(m)
+    >>> m
+    array([[4, 5, 6],
+           [1, 2, 3]])
+    >>> m
+    array([[1, 2, 3],
+           [4, 5, 6]])
 
 #### Permutation
 
- * Coming Soon
+Use `permutation` if you don't want to alter the original `array`, but just create a randomized version of it:
+
+    >>> m = array([[1, 2, 3], [4, 5, 6]])
+    >>> a = array([1, 2, 3, 4, 5])
+    >>> 
+    >>> random.permutation(a)
+    array([3, 4, 1, 2, 5])
+    >>> random.permutation(a)
+    array([2, 4, 1, 3, 5])
+    >>> random.permutation(m)
+    array([[1, 2, 3],
+           [4, 5, 6]])
+    >>> random.permutation(m)
+    array([[4, 5, 6],
+           [1, 2, 3]])
+    >>> 
+    >>> a
+    array([1, 2, 3, 4, 5])
+    >>> m
+    array([[1, 2, 3],
+           [4, 5, 6]])
+
+The difference between `random.shuffle` and `random.permutation` is very similar to the difference we saw between `.sort()` and `sorted()` for lists. The first one alters the sequence "in place", and the second one doesn't alter the sequence, but creates an altered version of it.
+
+## That's It?
+
+Oh no. There is a lot more functionality available in NumPy. But we will go into more detail about dealing with arrays in the problem sets. And we will talk more about NumPy statistics in the SciPy class. For a full reference on what is available in Python, look at the [official documentation](http://docs.scipy.org/doc/numpy/reference/).
+
+## Problem Sets
+
+ * [Using NumPy Arrays](problem_set_1_arrays.md)
+ * [Generating Random Generators in NumPy](problem_set_2_random.md)
 
 ## Further Reading
 
