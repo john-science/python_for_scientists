@@ -44,7 +44,7 @@
     # 3. Change the shape of the array to be 100 x 100.
     >>> b = a.reshape(100, 100)
     
-    # 4. Use a `for` loop to set the first element of every row equal to the sum of all the values in that row.
+    # 4. Use a `for` loop to set the 1st element of every row equal to the sum of that row.
     >>> from numpy import sum
     >>> for row in range(100):
     ...     b[row][0] = sum(b[row])
