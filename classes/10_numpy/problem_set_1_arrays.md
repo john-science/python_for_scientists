@@ -2,8 +2,7 @@
 
 ## Problems
 
- * Coming Soon
- * Coming Soon: [masked arrays](http://docs.scipy.org/doc/numpy/reference/maskedarray.generic.html)
+These are just some basic array manipulation problems to get you used to working with NumPy arrays.
 
 #### Set 1
 
