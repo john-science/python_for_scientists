@@ -62,6 +62,55 @@
     >>> prod(c)
     1.0
 
+#### Set 3
+
+    # 1. Use `arange` to create an array of decimals from zero to 26. (HINT: dtype=float)
+    >>> from numpy import arange
+    >>> arange(27, dtype=float)
+
+    # 2. Reshape that array to be a 3 x 3 x 3 multi-dimensional array.
+    >>> a = arange(27, dtype=float).reshape(3, 3, 3)
+    >>> a
+    array([[[  0.,   1.,   2.],
+            [  3.,   4.,   5.],
+            [  6.,   7.,   8.]],
+    
+           [[  9.,  10.,  11.],
+            [ 12.,  13.,  14.],
+            [ 15.,  16.,  17.]],
+    
+           [[ 18.,  19.,  20.],
+            [ 21.,  22.,  23.],
+            [ 24.,  25.,  26.]]])
+    
+    # 3. Print the first and last element in the array, using three indexes.
+    >>> a[0][0][0]
+    0.0
+    >>> a[2][2][2]
+    26.0
+    
+    # 4. Using three `for` loops, divide every number by the `sum` of all 3 elements in its row.
+    >>> from numpy import sum
+    >>> for i in range(3):
+    ...     for j in range(3):
+    ...         total = sum(a[i][j])
+    ...         for k in range(3):
+    ...             a[i][j][k] /= total
+    
+    # 5. Calculate the `sum` of all the elements in the array.
+    >>> sum(sum(sum(a)))
+    9.0
+    
+    # 6. Create a new array, where every element is the square root of the old one.
+    >>> from numpy import sqrt
+    >>> s = sqrt(a)
+
+    # 7. Calculate the product of all the elements in your new array.
+    >>> from numpy import prod
+    >>> prod(s)
+    0.0
+    >>> # Why zero?
+    ... # Because a[0][0][0] and s[0][0][0] were both 0.0.
 
 
 [Back to Problem Set](problem_set_1_arrays.md)
