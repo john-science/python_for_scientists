@@ -3,9 +3,6 @@
 ## Problems
 
  * Coming Soon
- * Coming Soon: create various arrays, use sum, prod, sqrt, ceil, floor
- * Coming Soon: add, subtract, multiple, divide arrays
- * Coming Soon: [array iteration](http://docs.scipy.org/doc/numpy/reference/arrays.classes.html#array-iterators)
  * Coming Soon: [masked arrays](http://docs.scipy.org/doc/numpy/reference/maskedarray.generic.html)
 
 #### Set 1
@@ -34,6 +31,15 @@
 5. Calculate the `sum` of all the elements in the array.
 6. Create a new array, where every element is the square root of the old one.
 7. Calculate the product of all the elements in your new array.
+
+#### Set 4
+
+1. Use `numpy.ones` to create an array, `a`, which is five elements long.
+2. Use `arange` to create an array, `b`, which is the integers from 2 to 6 (five elements long).
+3. Use `arange` to create an array, `c`, which is the even integers 2 to 12. (HINT: With `range`, you could do: range(min, max, step).)
+4. Use `arange` to creat3 an array, `d`, which is the float values of the integers from 1 to 5.
+5. Create a new array: x = c + a - b.
+6. What is the value of d - x?
 
 ## Solutions
 
