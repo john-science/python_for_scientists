@@ -112,5 +112,26 @@
     >>> # Why zero?
     ... # Because a[0][0][0] and s[0][0][0] were both 0.0.
 
+#### Set 4
+
+    # 1. Use `numpy.ones` to create an array, `a`, which is five elements long.
+    >>> a = ones(5)
+    
+    # 2. Use `arange` to create an array, `b`, which is the integers from 2 to 6 (five elements long).
+    >>> b = arange(2, 7)
+    
+    # 3. Use `arange` to create an array, `c`, which is the even integers 2 to 12.
+    >>> c = arange(2, 12, 2)
+    
+    # 4. Use `arange` to create an array, `d`, which is the float values of the integers from 1 to 5.
+    >>> d = arange(1, 6, dtype=float)
+    
+    # 5. Create a new array: x = c + a - b.
+    >>> x = c + a - b
+
+    # 6. What is the value of d - x?
+    >>> d - x
+    array([ 0.,  0.,  0.,  0.,  0.])
+
 
 [Back to Problem Set](problem_set_1_arrays.md)
