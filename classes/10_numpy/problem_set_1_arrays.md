@@ -22,12 +22,22 @@
 2. Use a `while` loop and set every 101st element equal to 1.0. (0, 101, 202, 303, ...).
 3. Change the shape of the array to be 100 x 100.
 4. Use a `for` loop to set the first element of every row equal to the sum of all the values in that row.
-5. Create a new array from the first elements in each of your rows.
+5. Create a new array from the first elements in each of your rows. (HINT: You can make an array from a list.)
 6. Take the product of all the elements in your new array.
+
+#### Set 3
+
+1. Use `arange` to create an array of decimals from zero to 26. (HINT: dtype=float)
+2. Reshape that array to be a 3 x 3 x 3 multi-dimensional array.
+3. Print the first and last element in the array, using three indexes.
+4. Using three `for` loops, divide every number by the `sum` of all 3 elements in its row.
+5. Calculate the `sum` of all the elements in the array.
+6. Create a new array, where every element is the square root of the old one.
+7. Calculate the product of all the elements in your new array.
 
 ## Solutions
 
-* [CSV - Solutions](problem_set_1_solutions.md)
+* [NumPy Arrays - Solutions](problem_set_1_solutions.md)
 
 
 [Back to Lecture](lecture_10.md)
