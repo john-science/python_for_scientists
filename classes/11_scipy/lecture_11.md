@@ -2,6 +2,10 @@
 
 SciPy is an amazingly useful library for scientists and engineers of all kinds. In this class we will just be using the portions of SciPy that deal with statistics and data analysis.
 
+## Installing SciPy
+
+Like most of the libraries used in our "special topics" lectures, SciPy does not come standard with Python and will have to be installed. Please check the official [SciPy Stack Install Guide](http://www.scipy.org/install.html). For Linux and Mac, the installation is merely a single line of `apt-get`. For Windows, pre-built installers are provided.
+
 ## Selected Topics
 
  * Coming Soon
