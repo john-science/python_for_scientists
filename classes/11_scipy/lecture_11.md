@@ -6,9 +6,42 @@ SciPy is an amazingly useful library for scientists and engineers of all kinds. 
 
 Like most of the libraries used in our "special topics" lectures, SciPy does not come standard with Python and will have to be installed. Please check the official [SciPy Stack Install Guide](http://www.scipy.org/install.html). For Linux and Mac, the installation is merely a single line of `apt-get`. For Windows, pre-built installers are provided.
 
-## Selected Topics
+## Basic Statistics
+
+Interestingly, most of the functions found in this sub-section can also be found in NumPy. But that won't be true for most topics in this lecture.
+
+#### min, max, mean, median
 
  * Coming Soon
+
+#### std, var, cov, corrcoef
+
+ * Coming Soon
+
+## Distributions
+
+ * Coming Soon
+
+## Density Functions
+
+ * Coming Soon
+
+## Least-Square Fitting
+
+This is actually just a small piece of the optimization tools available in SciPy. But it is a common thing we might want to do, and serves as a good introduction to the SciPy optimization tools.
+
+ * Coming Soon
+
+## Root Finding
+
+Again, this is just a small piece of the optimization toolset in SciPy.
+
+ * Coming Soon
+
+## Interpolation
+
+ * Coming Soon
+
 
 ## Further Reading
 
