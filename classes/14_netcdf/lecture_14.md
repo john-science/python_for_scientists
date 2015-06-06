@@ -28,6 +28,7 @@ The `netCDF4` library does not come standard with Python, so you will have to in
  * [Tutorial Module](https://code.google.com/p/netcdf4-python/source/browse/trunk/examples/tutorial.py) - This is just a Python module that uses all the netCDF4 features.
  * [Official GitHub Repo](https://github.com/Unidata/netcdf4-python)
  * [Official UCAR NetCDF Site](http://www.unidata.ucar.edu/software/netcdf/index.html)
+ * [IOAPI-based one-man NetCDF Library](https://github.com/barronh/pseudonetcdf)
 
 
 [Back to Syllabus](../../README.md)
