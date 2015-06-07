@@ -8,8 +8,6 @@ Like most of the libraries used in our "special topics" lectures, SciPy does not
 
 ## Basic Stats
 
-### Mean and Median
-
 Interestingly, most of the functions found in this sub-section can also be found in NumPy. But that won't be true for the next sub-sections.
 
 Let us start with a 2D array of numbers:
@@ -61,27 +59,19 @@ The [covariance](https://en.wikipedia.org/wiki/Covariance) is a measure of how t
            [-0.0182468 ,  0.00071065,  0.00676715],
            [-0.173756  ,  0.00676715,  0.0644405 ]])
 
-## Distributions
+## Stats
 
- * Coming Soon
-
-## Density Functions
-
- * Coming Soon
-
-## Least-Square Fitting
-
-This is actually just a small piece of the optimization tools available in SciPy. But it is a common thing we might want to do, and serves as a good introduction to the SciPy optimization tools.
-
- * Coming Soon
-
-## Root Finding
-
-Again, this is just a small piece of the optimization toolset in SciPy.
-
- * Coming Soon
+ * Coming Soon: http://docs.scipy.org/doc/scipy/reference/tutorial/stats.html
 
 ## Interpolation
+
+ * Coming Soon: http://docs.scipy.org/doc/scipy/reference/tutorial/interpolate.html
+
+## Optimizations
+
+ * Coming Soon: http://docs.scipy.org/doc/scipy/reference/tutorial/optimize.html#least-square-fitting-leastsq
+
+#### Least-Square Fitting
 
  * Coming Soon
 
