@@ -163,6 +163,26 @@ Lastly, we can use `stats.sem` to calculate the [standard error of the mean](htt
 
 #### Histograms
 
+Whether for analysis or plotting, we frequently want to make a [histogram](https://en.wikipedia.org/wiki/Histogram) out of our data.
+
+Use `stats.histogram` to produce a histogram, by simply providing an array of data and the number of bins:
+
+    >>> stats.histogram(a, 3)
+    (array([ 2.,  5.,  1.]), 0.5, 1.4, 0)
+
+What has been returned is a tuple of four items:
+
+    (values in the 3 bins you asked for, start value, bin size, # of items not binned)
+
+That is, the `histogram` return has bins from: 0.5 -> 1.9 -> 4.3 -> 5.7
+
+And inside these bins we have the values: 2, 5, 1.
+
+Alternatively, you can use `stats.histogram2` to calculate how many items are in each bin, if you provide both the data *and* the location of the bins:
+
+    >>> stats.histogram2(a, range(10))
+    array([0, 2, 4, 1, 1, 0, 0, 0, 0, 0])
+
  * Coming Soon: histogram, histogram2, binnedstats
 
 #### Percentiles
