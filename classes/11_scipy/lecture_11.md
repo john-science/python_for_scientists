@@ -61,7 +61,37 @@ The [covariance](https://en.wikipedia.org/wiki/Covariance) is a measure of how t
 
 ## Stats
 
+The `scipy.stats` module has a great collection of different statistical functions and tools. However, this class can't really cover the topic of statistics in great detail. So instead of fully explaining all of the statistical terms presented, we will simply explain how to use the Python library and provide a basic link to a further explanation of the mathematical concept.
+
  * Coming Soon: http://docs.scipy.org/doc/scipy/reference/tutorial/stats.html
+
+#### Trimmed Stats
+
+ * Coming Soon: tmean, tvar, tstd, tmax, tmin, tsem
+
+#### Various Means
+
+ * Coming Soon: gmean, hmean, sem
+ * [geometric mean](https://en.wikipedia.org/wiki/Geometric_mean)
+ * [harmonic mean](https://en.wikipedia.org/wiki/Harmonic_mean)
+ * [standard error of the mean](https://en.wikipedia.org/wiki/Standard_error)
+
+#### Histograms
+
+ * Coming Soon: histogram, histogram2, binnedstats
+
+#### Percentiles
+
+ * Coming Soon: scoreatpercentile, percentileatscore
+
+#### Bayesian Statistics
+
+ * Coming Soon: bayes_mvs
+
+#### One-Way ANOVA
+
+ * Coming Soon: f_oneawy
+ * [ANOVA](https://en.wikipedia.org/wiki/Analysis_of_variance)
 
 ## Interpolation
 
@@ -73,13 +103,14 @@ The [covariance](https://en.wikipedia.org/wiki/Covariance) is a measure of how t
 
 #### Least-Square Fitting
 
- * Coming Soon
+ * Coming Soon: pg31 example http://math.jacobs-university.de/oliver/teaching/scipy-intro/scipy-intro.pdf
 
 
 ## Further Reading
 
  * [Official Tutorial](http://docs.scipy.org/doc/scipy/reference/tutorial/)
  * [Official Tutorial - Stats](http://docs.scipy.org/doc/scipy/reference/tutorial/stats.html)
+ * [Official Docs - Stats](http://docs.scipy.org/doc/scipy/reference/stats.html#module-scipy.stats)
  * [Official Tutorial - Interpolation](http://docs.scipy.org/doc/scipy/reference/tutorial/interpolate.html)
  * [Official Tutorial - Optimizations](http://docs.scipy.org/doc/scipy/reference/tutorial/optimize.html#least-square-fitting-leastsq)
  * [SciPy Statistics - Official Tutorial](http://docs.scipy.org/doc/scipy/reference/tutorial/stats.html)
