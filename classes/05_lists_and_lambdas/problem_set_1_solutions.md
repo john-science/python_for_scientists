@@ -17,7 +17,7 @@
     # 5. Multiple two numbers.
     mult = lambda a, b: a * b
     
-    # 6. Join a list of strings, by placing the space character between them.
+    # 6. Join two strings, by placing the space character between them.
     make_sentence = lambda r, s: r + ' ' + s
 
 #### Map - Solutions
@@ -28,7 +28,8 @@
     # 2. All positive numbers less than 1000 that are evenly divisible by 3.
     map(lambda i: 3 * i, range(1, 334))
     
-    # 3. Convert these temps from Fahrenheit to Celsuis: `temps = [-42.0, -10.9, 0.0, 20.7, 32.0, 42.0, 101, 273, 320]`
+    # 3. Convert these temps from Fahrenheit to Celsuis:
+    # `temps = [-42.0, -10.9, 0.0, 20.7, 32.0, 42.0, 101, 273, 320]`
     map(lambda f: (float(5) / 9) * (f - 32), temps)
     
     # 4. The square of all even, two-digit numbers.
@@ -36,7 +37,7 @@
 
 #### Reduce - Solutions
 
-    # 1. Find the product of all the odd, one-digit numbers.
+    # 1. Find the product of all the odd, two-digit numbers.
     reduce(lambda a, b: a * b, range(11, 100, 2))
     
     # 2. Find the sum of all three-digit numbers that are divisible by three.
