@@ -8,13 +8,13 @@ In Python we use the `class` keyword to create classes in a similar way we use t
 
 **Fun Fact**: when a "function" is part of a class, we call it a "method".
 
-Classes can help you organize your code. Find a core concept or idea (like a file, a plot, or a database) and make a class out of it. This will help you organize your code and your thoughts. Things that belong to your idea will become variables or methods inside of the class. And when thinking about larger amounts of code we will only have to think about the logic of one class at a time.
+Classes can help you organize your code. Find a core concept or idea (like a file, a plot, or a database) and make a class out of it. This will help you organize your code and your thoughts. Things that belong to your idea will become variables or methods inside of the class. This will help you keep everything else separate. When thinking about larger amounts of code, you will only have to think about one class at a time.
 
 ### Classes are Blueprints
 
 A class is a blueprint for an idea.
 
-First, some jargon. An "object" is a specific instance of a "class". For instance, if I have a "student" class, each "student" would have a few pieces of information attached to it: name, student id, grades, etc. But if I make a particular student named "beth", then we would say "beth is an object of the student class". Or we might say "an object is an instance of a class".
+First, some jargon. An "object" is a specific instance of a "class". For instance, if I have a "student" class, each "student" would have a few pieces of information attached to it: name, student id, grades, etc. But if you make a particular student named "beth", then we would say "beth is an object of the student class". Or we might say "an object is an instance of a class".
 
 Enough talk, let's look at an example:
 
@@ -53,9 +53,9 @@ Enough talk, let's look at an example:
             
             return final_grade
 
-The code above does not create an "object"; we didn't decide this `student` has a name of `beth` and a student id of `12-345-7890`. The code above just creates a blueprint for a student. The first line `class Student(object):` tells Python that we are going to start defining a class blueprint.
+The code above does not create an "object"; we didn't decide this `student` has a name of `beth` and a student id of `12345789`. The code above just creates a blueprint for a student. The first line `class Student(object):` tells Python that we are going to start defining a class blueprint.
 
-To create an object, we would do something like:
+To create a specific `Student` object, we would do something like:
 
     emmy = Student('Emmy Noether', 837195783)
 
@@ -63,7 +63,7 @@ Here we create an "object" from the `Student` class, and call it `emmy`. Notice 
 
 ### `self`
 
-Okay, what is with that `self` parameter used throughout the `Student` class? It is a reference to the "instance" of that class. For example, let's say we had all these "instances" of the `Student` class:
+What is with that `self` parameter used throughout the `Student` class? It is a reference to the "instance" of that class. For example, let's say we had all these "instances" of the `Student` class:
 
     emmy = Student("Emmy Noether", 837195783)
     al = Student("Albert Einstein", 986534568)
@@ -74,15 +74,26 @@ To help clear up why we use `self`, I have put that string variable `name = "Mar
 
     print(name)
 
-You've done this before. But let's say we want to retrieve the value of `name` inside the `al` object. Well, we would do:
+You've done that before. But let's say you want to retrieve the value of `name` inside the `al` object. You would do:
 
     print(al.name)
 
 When we do that, we make clear that we want the value of the `name` variable stored inside the `al` object; not the `emmy` object, and not the global `name = "Marie"`. Well, inside the class itself we also need a way to show we are talking about `al.name = "Albert Einstein"` and not any other `name` variable. To do this, we identify all values associated with the current instance of the class using the `self` keyword.
 
+Just to be clear, let's print all the names above:
+
+    >>> emmy.name
+    'Emmy Noether'
+    >>> al.name
+    'Albert Einstein'
+    >>> issac.name
+    'Issac Newton'
+    >>> name
+    'Marie'
+
 ### `__init__`
 
-Okay, what is the deal with that `__init__` in `Student`? When we create a new object by doing something like `emmy = Student("Emmy Noether", 837195783)`, the `__init__` is called, and the code inside is executed to create the initial form of the object.
+What is the deal with that `__init__` in `Student`? When we create a new object by doing something like `emmy = Student("Emmy Noether", 837195783)`, the `__init__` is called, and the code inside is executed to create the initial form of the object.
 
 In this case, the `__init__` method is called and four variables are set: `self.name`, `self.student_id`, `self.hw_grades`, and `self.test_grades`. Two variables are set to the values `"Emmy Noether"` and `837195783` and the other two are given default values. This is the purpose of the `__init__` method; to give the attributes of the object starting value.
 
@@ -130,9 +141,9 @@ A class method is any function you include in a class and give the `self` parame
             else:
                 return 'F'
 
-Notice that these two new methods defined inside `Student` don't have the `self` included in their argument lists. That's because they don't make use of any instance attributes (like `self.name`). Also notice that to tell Python about this fact, we have included the `@staticmethod` [decorator](http://thecodeship.com/patterns/guide-to-python-function-decorators/). This just stops Python from throwing an error when it doesn't see that `self` in the method's argument list.
+Notice that these two new methods defined inside `Student` don't have the `self` in their argument lists. That's because they don't make use of any instance attributes (like `self.name`). Also notice that to tell Python about this fact, we have included the `@staticmethod` [decorator](http://thecodeship.com/patterns/guide-to-python-function-decorators/). This just stops Python from throwing an error when it doesn't see that `self` in the method's argument list.
 
-So why use static methods? Why bother with the static method decorator?  Well, it's true, you could have just written these methods without worrying about that:
+Why use static methods? Well, it's true, you could have just written these methods without worrying about it:
 
     class Student(object):
     
@@ -159,12 +170,12 @@ Written like this, these methods would still run. But using the `@staticmethod` 
 
 ## Problem Sets
 
- * [Full Example: Using FTP](lecture_06_2_full_example.md)
  * [Simple Classes](problem_set_1_try_it_out.md)
  * [init Problems](problem_set_2_init.md)
 
 ## Further Reading
 
+ * [Full Example: Using FTP](lecture_06_2_full_example.md)
  * [Python Tutorial: OOP](http://www.python-course.eu/object_oriented_programming.php)
  * [Decorators](http://thecodeship.com/patterns/guide-to-python-function-decorators/)
 
