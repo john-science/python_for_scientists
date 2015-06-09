@@ -274,17 +274,11 @@ You might remember from trignometry, `sin(pi/2) = 1.0` and `sin(pi) = 0.0`. So w
  * quadratic
  * cubic
 
+#### For the More Curious
+
 Similar to `interp1d`, you can use `stats.grid_data` to fit a multi-dimensional data. For more on that look [here](http://docs.scipy.org/doc/scipy/reference/tutorial/interpolate.html#multivariate-data-interpolation-griddata).
 
-Another feature of the `interpolate` module you might find interesting is the ability to take fine-tune control of a [splite fit](http://docs.scipy.org/doc/scipy/reference/tutorial/interpolate.html#spline-interpolation) to your data.
-
-## Optimizations
-
-The `optimize` module is too big to cover here, but if you want more information, take a look at the official [tutorial](http://docs.scipy.org/doc/scipy/reference/tutorial/optimize.html).
-
-#### Least-Square Fitting
-
-In particular, there is a module for tutorial for least-square fitting on the [tutorial](http://docs.scipy.org/doc/scipy/reference/tutorial/optimize.html#least-square-fitting-leastsq).
+Another feature of the `interpolate` module you might find interesting is the ability to take fine-tune control of a [splite fit](http://docs.scipy.org/doc/scipy/reference/tutorial/interpolate.html#spline-interpolation).
 
 
 ## Further Reading
@@ -293,11 +287,10 @@ In particular, there is a module for tutorial for least-square fitting on the [t
  * [Official Tutorial - Stats](http://docs.scipy.org/doc/scipy/reference/tutorial/stats.html)
  * [Official Docs - Stats](http://docs.scipy.org/doc/scipy/reference/stats.html#module-scipy.stats)
  * [Official Tutorial - Interpolation](http://docs.scipy.org/doc/scipy/reference/tutorial/interpolate.html)
- * [Official Tutorial - Optimizations](http://docs.scipy.org/doc/scipy/reference/tutorial/optimize.html#least-square-fitting-leastsq)
  * [SciPy Statistics - Official Tutorial](http://docs.scipy.org/doc/scipy/reference/tutorial/stats.html)
- * [Least Squares Fitting](http://docs.scipy.org/doc/scipy/reference/tutorial/optimize.html#least-square-fitting-leastsq)
- * [Interpollation](http://docs.scipy.org/doc/scipy/reference/tutorial/interpolate.html)
  * [PDF Intro to NumPy and SciPy](http://www.engr.ucsb.edu/~shell/che210d/numpy.pdf)
  * [Sam's SciPy Intro](http://www.sam.math.ethz.ch/~raoulb/teaching/PythonTutorial/intro_scipy.html)
+ * [Official Tutorial - Optimizations](http://docs.scipy.org/doc/scipy/reference/tutorial/optimize.html)
+ * [Least Squares Fitting](http://docs.scipy.org/doc/scipy/reference/tutorial/optimize.html#least-square-fitting-leastsq)
 
 [Back to Syllabus](../../README.md)
