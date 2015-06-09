@@ -183,33 +183,108 @@ Alternatively, you can use `stats.histogram2` to calculate how many items are in
     >>> stats.histogram2(a, range(10))
     array([0, 2, 4, 1, 1, 0, 0, 0, 0, 0])
 
- * Coming Soon: histogram, histogram2, binnedstats
-
 #### Percentiles
 
- * Coming Soon: scoreatpercentile, percentileatscore
+If you want to know [percentile](https://en.wikipedia.org/wiki/Percentile) of a dataset a certain value would be at, you could use `stats.percentileofscore`:
+
+    >>> from numpy import array
+    >>> from scipy import stats
+    >>> 
+    >>> grades = array([50, 81, 55, 100, 64, 72, 68, 73])
+    >>> 
+    >>> stats.percentileofscore(grades, 60)
+    25.0
+    >>> stats.percentileofscore(grades, 70)
+    50.0
+    >>> stats.percentileofscore(grades, 80)
+    75.0
+    >>> stats.percentileofscore(grades, 90)
+
+Or you can go the opposite direction and ask what percentile a certain score would fit into with `stats.scoreatpercentile`:
+
+    >>> stats.scoreatpercentile(grades, 55)
+    71.400000000000006
+    >>> stats.scoreatpercentile(grades, 64)
+    72.480000000000004
+    >>> stats.scoreatpercentile(grades, 72)
+    73.319999999999993
 
 #### Bayesian Statistics
 
- * Coming Soon: bayes_mvs
+Use `stats.bayes_mvs` to calculate the [Bayesian confidence intervals](http://en.wikipedia.org/wiki/Credible_interval) for the important values in your data set:
+
+    >>> stats.bayes_mvs(grades)
+    ((70.375, (59.942906473297676, 80.807093526702317)),
+     (339.57500000000005, (120.69794896230246, 783.38757978857814)),
+     (17.534429743228785, (10.986261828406533, 27.98906178828755)))
+
+Each line above represents:
+
+    (center of the interval, (lower bound on the interval, upper bound of the interval))
+
+The three lines in order represent: the mean, variance, and standard deviation of your data set.
 
 #### One-Way ANOVA
 
 The simple one-way [ANOVA](https://en.wikipedia.org/wiki/Analysis_of_variance) is a basic hypothesis-testing tool, used throughout all the sciences.
 
- * Coming Soon: f_oneawy
+The Analysis of Variance (ANOVA) is a way to compare the similarity of data sets. In particular, an ANOVA tests the similarity of two or more data sets.
+
+Use `stats.f_oneway` on two or more data sets:
+
+    >>> x = scipy.mean(grades)
+    >>> stats.f_oneway(grades, array([x, x]))
+    (0.0, 1.0)
+
+Here we compare the `grades` data set with another data set that is made of up two elements: each of which is mean of `grades`. So, of course, these two data sets have the same mean, and we reject the [null hypothesis](https://en.wikipedia.org/wiki/Null_hypothesis) that there is no relation between the data sets. But what do those two number we returned mean?
+
+This is the best case result: `(0.0, 1.0)`. The first number is the [F-value](http://en.wikipedia.org/wiki/Analysis_of_variance#The_F-test) and the second number is the [p-value](http://en.wikipedia.org/wiki/Analysis_of_variance#The_F-test). The thing to remember is that you want your p-value to be 1.0. Worse case scenario, it will be 0.0. In fact, let's show what an example where the two data sets don't compare well at all:
+
+    >>> stats.f_oneway(grades, array([-99 * x, -99 * x]))
+    (373371.4201575499, 5.7626233819586514e-20)
+
+In this case, the null hypothesis is strongly supported since the p-value is almost zero and F-value is very large.
 
 ## Interpolation
 
- * Coming Soon: http://docs.scipy.org/doc/scipy/reference/tutorial/interpolate.html
+Use `stats.interp1d` if you have a 1D series of data points and you want to build an interpolating function:
+
+    >>> from numpy import sin, pi
+    >>> x = [float(i) for i in range(10)]
+    >>> y = [sin(i) for i in range(10)]
+    >>> 
+    >>> from scipy.interpolate import interp1d
+    >>> 
+    >>> f = interp1d(x, y)
+    >>> f2 = interp1d(x, y, kind='cubic')
+
+These `f` and `f2` that we created is a Python function that we can now use, like any other function:
+
+    >>> f([pi/2, pi, 2*pi])
+    array([ 0.88018607,  0.01398078, -0.01424018])
+    >>> f2([pi/2, pi, 2*pi])
+    array([  9.92889428e-01,   5.22304460e-04,   4.39283521e-05])
+
+You might remember from trignometry, `sin(pi/2) = 1.0` and `sin(pi) = 0.0`. So what we see is that adding `kind=cubic` to our `interp1d` made the interpolated function more accurate. There are several other `kind` option for how we might want to build the interpolated line:
+
+ * linear
+ * nearest
+ * zero
+ * slinear
+ * quadratic
+ * cubic
+
+Similar to `interp1d`, you can use `stats.grid_data` to fit a multi-dimensional data. For more on that look [here](http://docs.scipy.org/doc/scipy/reference/tutorial/interpolate.html#multivariate-data-interpolation-griddata).
+
+Another feature of the `interpolate` module you might find interesting is the ability to take fine-tune control of a [splite fit](http://docs.scipy.org/doc/scipy/reference/tutorial/interpolate.html#spline-interpolation) to your data.
 
 ## Optimizations
 
- * Coming Soon: http://docs.scipy.org/doc/scipy/reference/tutorial/optimize.html#least-square-fitting-leastsq
+The `optimize` module is too big to cover here, but if you want more information, take a look at the official [tutorial](http://docs.scipy.org/doc/scipy/reference/tutorial/optimize.html).
 
 #### Least-Square Fitting
 
- * Coming Soon: pg31 example http://math.jacobs-university.de/oliver/teaching/scipy-intro/scipy-intro.pdf
+In particular, there is a module for tutorial for least-square fitting on the [tutorial](http://docs.scipy.org/doc/scipy/reference/tutorial/optimize.html#least-square-fitting-leastsq).
 
 
 ## Further Reading
