@@ -9,7 +9,7 @@ In order to use `map`, `reduce`, and `filter` you're going to have to get used t
 3. Convert a Fahrenheit temperature to Celsius. (Hint: (5/9)(F - 32))
 4. Add two numbers.
 5. Multiple two numbers.
-6. Join a list of strings, by placing the space character between them.
+6. Join two strings, by placing the space character between them.
 
 #### Map
 
