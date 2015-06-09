@@ -280,6 +280,9 @@ Similar to `interp1d`, you can use `stats.grid_data` to fit a multi-dimensional 
 
 Another feature of the `interpolate` module you might find interesting is the ability to take fine-tune control of a [splite fit](http://docs.scipy.org/doc/scipy/reference/tutorial/interpolate.html#spline-interpolation).
 
+## Problem Sets
+
+ * [Stats with SciPy](problem_set_1_scipy.md)
 
 ## Further Reading
 
