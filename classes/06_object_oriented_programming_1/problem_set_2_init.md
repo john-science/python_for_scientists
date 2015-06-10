@@ -35,7 +35,7 @@ But it is still a problem that when we set up the `Rectangle` object using the `
         self.length_of_x_side = x
         self.length_of_y_side = y
 
-## Problem 1
+#### Problem 1
 
 Fix the problem with this object initialization:
     
@@ -48,7 +48,7 @@ Fix the problem with this object initialization:
         def print_full_name(self):
             print(' '.join([self.first_name, self.last_name]))
 
-# Problem 2
+#### Problem 2
 
 Fix the problem with this object initialization:
 
@@ -64,7 +64,7 @@ Fix the problem with this object initialization:
             '''
             return sum(self.grades) / len(self.grades)
 
-## Problem 3
+#### Problem 3
 
 Create a valid `__init__` method for this class.
 
@@ -79,7 +79,7 @@ Create a valid `__init__` method for this class.
                   'degrees and at an elevation of : '  + \
                   str(self.elevation) + ' meters.')
 
-## Problem 4
+#### Problem 4
 
 Create an initializing method for this class:
 
