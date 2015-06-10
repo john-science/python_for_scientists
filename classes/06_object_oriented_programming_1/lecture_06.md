@@ -168,6 +168,31 @@ Why use static methods? Well, it's true, you could have just written these metho
 
 Written like this, these methods would still run. But using the `@staticmethod` decorator has some performance improvements. Also, when you look at a method with the `@staticmethod` decorator on top, you instantly know a lot about it. It will help the next person who looks at your code read and understand what is going on.
 
+### Python is Built on Classes
+
+You don't have to go far to find examples of classes being used in Python. We've already seen tons of them: `int`, `float`, `list`, `dict`, `True`, `csv`, the list goes on.
+
+A lot of the features of a `list` start to look like a class immediately. You can create an object from the list class:
+
+    >>> lst = list((1,2,3))
+    >>> lst
+    [1, 2, 3]
+
+And after you create the `lst` object, you can call class methods on that object:
+
+    >>> lst.append(-9)
+    >>> lst
+    [1, 2, 3, -9]
+    >>> 
+    >>> lst.sort()
+    >>> lst
+    [-9, 1, 2, 3]
+    >>> 
+    >>> lst.count(1)
+    1
+
+And if you call `help(lst)` the documentation you see starts with `class list(object)` because nearly everything in Python is a class or an object. Object-oriented programming is so important in Python, it's hard to understand the language without it.
+
 ## Problem Sets
 
  * [Simple Classes](problem_set_1_try_it_out.md)
