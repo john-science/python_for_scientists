@@ -23,13 +23,22 @@ For this problem set, we will be using real data. We will analyze the height and
 
 ## Stats
 
- * Coming Soon
+1. How do the geometric mean and harmonic mean compare for `heights_female`?
+2. How do the geometric mean and harmonic mean compare for `weights_male`?
+3. Build a 10-bin histogram from the `bmi` list.
+4. Build a histogram for the `heights_female` and `heights_male` lists, starting at 1 meter and going to up to 2.6 meters in 0.2 meter increments.
 
 #### Percentiles
+
+If Angelina Jolie and Brad Pitt were in the `athletes` list above, here is what their lines would look like:
 
     {'Name': 'Angelina Jolie', 'Age': '40', 'Sex': 'F', 'Weight (kg)': '56.5', 'Sport': 'Acting', 'Height (cm)': '173'}
     {'Name': 'Brad Pitt', 'Age': '52', 'Sex': 'M', 'Weight (kg)': '78', 'Sport': 'Acting', 'Height (cm)': '180'}
 
+1. What percentile is Angelina Jolie's weight, compared to the `weights_female` list?
+2. What percentile is Brad Pitt's height, compared to the `heights_male` list?
+3. What percentile would Angelina and Brad fall into in `bmi_female` and `bmi_male` respectively?
+4. What percentile would YOU fall into, in your respective sex height, weight, and bmi? (No judgements!)
 
 ## Interpolation
 
