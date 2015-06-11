@@ -1,6 +1,6 @@
 # Plotting with matplotlib
 
-Matplotlib is a standard plotting library in Python. It is typically used for 2D and 3D data plots, not for gaming graphics. There are so many kinds of plots one might want to make, and so many diffferent ways to customize them, that not everything can be covered explicitly here. Instead, several common types of plots will be shown, as well as common customizations. After that, references will be given for the user to create the plots of their dreams.
+Matplotlib is a standard plotting library in Python. That is, people use it all the time to make 2D or 3D informational graphics. This is not a thorough guide to everything you can do with the library. But a quick introduction to the four major kinds of plots you (as a scientist/engineer) will want to make 99% of the time. The plots are easy to make, and easy to customize. Matplotlib also allows for a dizzying amount of customization, so you can create anything from quick-and-easy plots to publication-quality plots.
 
 ## Installing matplotlib
 
