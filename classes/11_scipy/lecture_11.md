@@ -280,6 +280,15 @@ Similar to `interp1d`, you can use `stats.grid_data` to fit a multi-dimensional 
 
 Another feature of the `interpolate` module you might find interesting is the ability to take fine-tune control of a [splite fit](http://docs.scipy.org/doc/scipy/reference/tutorial/interpolate.html#spline-interpolation).
 
+## Optimize
+
+Frequently, your data will not be spread evenly along a simple line curve, like in the `interp1d` example above. Your data will be a huge spread of points, with possibly multiple values at the same `x`. In this case, your curve fit can't pass through every point in your data, and you will want to use `scipy.optimize.curve_fit`:
+
+    from scipy.optimize import curve_fit
+    
+ * Coming Soon
+
+
 ## Problem Sets
 
  * [Stats with SciPy](problem_set_1_scipy.md)
