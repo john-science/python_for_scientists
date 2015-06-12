@@ -42,7 +42,7 @@ If Angelina Jolie and Brad Pitt were in the `athletes` list above, here is what 
 
 ## Interpolation
 
-First, let's do a simple linear interpolation between age and BMI for Olympic athletes. As we'll see, this won't work out, so we'll just use a small sample set to make this easier.
+Let's try and fit our data. First, we will try to interpolate between the age and the BMI of our Olympic athletes. As it happens, interpolation is meant for the situation where we have one X value for one Y value. Since we have many duplicate ages among our athletes, this is not a good fit. While taking a small sample of the data is fine for education, it is probably not what we would do with this data in real life.
 
 1. Use `dict` and `zip` to make a dictionary of the first 25 athletes in your `ages` and `bmi` lists. Name your dictionary `bmi_by_age`.
 2. Create a ordered list, named `age_keys` of the ages in `bmi_by_age`. (Use `sorted` and `.keys()`.)
@@ -53,7 +53,7 @@ First, let's do a simple linear interpolation between age and BMI for Olympic at
 
 ## Optimize
 
-The results above using the 1D interpolation were probably not inspiring. The reason is that 1D interpolations aren't really great for huge spreads of random data. For that, you want to use a more general curve-fitting method. So let's try that.
+Let's try to analyze all of our data points (athletes) in a slightly more realistic way. A good start would be to use a more general curve-fitting approach.
 
  * Coming Soon
 
