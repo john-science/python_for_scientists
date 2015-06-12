@@ -42,8 +42,20 @@ If Angelina Jolie and Brad Pitt were in the `athletes` list above, here is what 
 
 ## Interpolation
 
- * Coming Soon
+First, let's do a simple linear interpolation between age and BMI for Olympic athletes. As we'll see, this won't work out, so we'll just use a small sample set to make this easier.
 
+1. Use `dict` and `zip` to make a dictionary of the first 25 athletes in your `ages` and `bmi` lists. Name your dictionary `bmi_by_age`.
+2. Create a ordered list, named `age_keys` of the ages in `bmi_by_age`. (Use `sorted` and `.keys()`.)
+3. Create a list, named `bmi_values`, of the bmi values associate with each age in `age_keys`. (Use a `for` loop and your `age_keys` along with `bmi_by_age`.)
+4. Create a function `f_linear` that is an interpolation of `age_keys` and `bmi_values`. (Use `interp1d`.)
+5. Create a function `f_cubic` that is a cubic interpolation of `age_keys` and `bmi_values`. (Use `interp1d` along with `kind='cubic'`.)
+6. Try different ages in your `f_linear` and `f_cubic` functions. How well do they match each other? How well do they match the data? Do they make sense?
+
+## Optimize
+
+The results above using the 1D interpolation were probably not inspiring. The reason is that 1D interpolations aren't really great for huge spreads of random data. For that, you want to use a more general curve-fitting method. So let's try that.
+
+ * Coming Soon
 
 ## Solutions
 
