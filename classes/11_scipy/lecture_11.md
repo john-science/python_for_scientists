@@ -284,9 +284,32 @@ Another feature of the `interpolate` module you might find interesting is the ab
 
 Frequently, your data will not be spread evenly along a simple line curve, like in the `interp1d` example above. Your data will be a huge spread of points, with possibly multiple values at the same `x`. In this case, your curve fit can't pass through every point in your data, and you will want to use `scipy.optimize.curve_fit`:
 
-    from scipy.optimize import curve_fit
-    
- * Coming Soon
+First, let's create some sample data sets along the curve `y = A x^2 + b x + c`:
+
+    >>> x = range(10)
+    >>> >>> y = [2 * i * i + 3 for i in range(10)]
+
+Now, because we're working with NumPy and SciPy, we have to convert these to the `numpy.array` type:
+
+    >>> from numpy import array
+    >>> x = array(x)
+    >>> y = array(y)
+
+Okay, unlike `interp1d`, when we use `curve_fit` we have to provide a generic equation to fit to, in the form of a function:
+
+    >>> def quad(x, a, b, c):
+    ...     return a * x * x + b * x + c
+
+Now we can create the fit to our function:
+
+    >>> from scipy.optimize import curve_fit
+    >>> f = curve_fit(quad, x, y)
+    >>> f
+    (array([  2.00000000e+00,  -2.18691731e-12,   3.00000000e+00]), inf)
+
+Here f[0] is an array of the `a`, `b`, and `c` values that go into our quadratic function `quad` above. And, as we can see, the results are extremly close. The only difference is that b, instead of being `0.0`, is `-2.18691731e-12`. But, hey, if our scientific results come out accurate to one part in `1e-12`, we're probably pretty happy!
+
+So in the end, `curve_fit` is an extremely powerful tool that will let us fit an collection of data points with a function of our own creation. This takes slightly longer to use than `interp1d`, but is an extremely powerful tool.
 
 
 ## Problem Sets
