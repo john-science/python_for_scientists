@@ -55,7 +55,13 @@ Let's try and fit our data. First, we will try to interpolate between the age an
 
 Let's try to analyze all of our data points (athletes) in a slightly more realistic way. A good start would be to use a more general curve-fitting approach.
 
+Just to help you through the process, here is the data you're trying to fit:
+
+![Olympic Female Age vs BMI](../../resources/age_bmi_female_olympic.png)
+
  * Coming Soon
+
+
 
 ## Solutions
 
