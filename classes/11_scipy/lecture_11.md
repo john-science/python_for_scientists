@@ -265,7 +265,11 @@ These `f` and `f2` that we created is a Python function that we can now use, lik
     >>> f2([pi/2, pi, 2*pi])
     array([  9.92889428e-01,   5.22304460e-04,   4.39283521e-05])
 
-You might remember from trignometry, `sin(pi/2) = 1.0` and `sin(pi) = 0.0`. So what we see is that adding `kind=cubic` to our `interp1d` made the interpolated function more accurate. There are several other `kind` option for how we might want to build the interpolated line:
+You might remember from trignometry, `sin(pi/2) = 1.0` and `sin(pi) = 0.0`. So what we see is that adding `kind=cubic` to our `interp1d` made the interpolated function more accurate.
+
+![Interpolating Sine](../../resources/sin_two_fits.png)
+
+There are several other `kind` option for how we might want to build the interpolated line:
 
  * linear
  * nearest
@@ -308,6 +312,8 @@ Now we can create the fit to our function:
     (array([  2.00000000e+00,  -2.18691731e-12,   3.00000000e+00]), inf)
 
 Here f[0] is an array of the `a`, `b`, and `c` values that go into our quadratic function `quad` above. And, as we can see, the results are extremly close. The only difference is that b, instead of being `0.0`, is `-2.18691731e-12`. But, hey, if our scientific results come out accurate to one part in `1e-12`, we're probably pretty happy!
+
+![Quadratic Data Fit](../../resources/quad_2xx_plus_3.png)
 
 So in the end, `curve_fit` is an extremely powerful tool that will let us fit an collection of data points with a function of our own creation. This takes slightly longer to use than `interp1d`, but is an extremely powerful tool.
 
