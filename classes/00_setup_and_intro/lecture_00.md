@@ -115,6 +115,6 @@ Write code. If you really want to learn the material in this class, there's only
 
 As a starting point, there will be example problem sets at the end of each lecture. But don't stop there!
 
-At the beginning of the class, maybe all you can do is replace your calculator with the Python interpreter. As the class continues, you should be able to replace Excel with Python. But the trick is to start using what you learn every week and practice. It's a lot harder to forget something once you've used a dozen times.
+At the beginning of the class, maybe all you can do is replace your calculator with Python. As the class continues, you should be able to replace Excel with Python. But the trick is to start using what you learn every week at work/school. Practice. It's a lot harder to forget something once you've used a dozen times.
 
 [Back to Syllabus](../../README.md)
