@@ -315,6 +315,12 @@ Here f[0] is an array of the `a`, `b`, and `c` values that go into our quadratic
 
 ![Quadratic Data Fit](../../resources/quad_2xx_plus_3.png)
 
+You also have the option to give your `curve_fit` and intial guess, so it has a place to start. For instance, we might know that the y-intercept is `3`, but not really know the other two coefficients, so we'll guess `1.0` for them:
+
+    >>> f = curve_fit(quad, x, y, p0=[1.0, 1.0, 3.0])
+    >>> f
+    (array([  2.00000000e+00,  -2.18691731e-12,   3.00000000e+00]), inf)
+
 So in the end, `curve_fit` is an extremely powerful tool that will let us fit an collection of data points with a function of our own creation. This takes slightly longer to use than `interp1d`, but is an extremely powerful tool.
 
 
