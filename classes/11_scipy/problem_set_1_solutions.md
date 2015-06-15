@@ -65,16 +65,15 @@
 
 #### 7. Much like part 5, create two lists `bmi_female` and `bmi_male`, which include just the BMI values for the female and male atheletes respectively.
 
-    >>> weights = []
-    >>> weights_female = []
-    >>> weights_male = []
+    >>> bmi_female = []
+    >>> bmi_male = []
     >>> 
     >>> for athlete in athletes:
-    >>>     weights.append(int(athlete['Weight (kg)']))
-    >>>     if athlete['Sex'] == 'F':
-    >>>         weights_female.append(int(athlete['Weight (kg)']))
-    >>>     else:
-    >>>         weights_male.append(int(athlete['Weight (kg)']))
+    ...     bmi_val = float(athlete['Weight (kg)']) / ((float(athlete['Height (cm)']) / 100.0) ** 2)
+    ...     if athlete['Sex'] == 'F':
+    ...         bmi_female.append(bmi_val)
+    ...     else:
+    ...         bmi_male.append(bmi_val)
 
 ## Basic Stats
 
@@ -247,46 +246,60 @@ This question is just for you. It is interesting, but unless you want to compete
 
 #### 1. Use `dict` and `zip` to make a dictionary of the first 25 athletes in your `ages` and `bmi` lists. Name your dictionary `bmi_by_age`.
 
- * Coming Soon
+    >>> bmi_by_age = dict(zip(ages[:25], bmi[:25]))
 
 #### 2. Create a ordered list, named `age_keys` of the ages in `bmi_by_age`. (Use `sorted` and `.keys()`.)
 
- * Coming Soon
+    >>>> age_keys = sorted(bmi_by_age.keys())
 
 #### 3. Create a list, named `bmi_values`, of the bmi values associate with each age in `age_keys`. (Use a `for` loop and your `age_keys` along with `bmi_by_age`.)
 
- * Coming Soon
+    >>> bmi_values = []
+    >>> for age in age_keys:
+    ...     bmi_values.append(bmi_by_age[age])
 
 #### 4. Create a function `f_linear` that is an interpolation of `age_keys` and `bmi_values`. (Use `interp1d`.)
 
- * Coming Soon
+    >>> from scipy.interpolate import interp1d
+    >>> f_linear = interp1d(age_keys, bmi_values)
 
 #### 5. Create a function `f_cubic` that is a cubic interpolation of `age_keys` and `bmi_values`. (Use `interp1d` along with `kind='cubic'`.)
 
- * Coming Soon
+    >>> f_cubic = interp1d(age_keys, bmi_values, kind='cubic')
 
-#### 6. Try different ages in your `f_linear` and `f_cubic` functions. How well do they match each other? How well do they match the data? Do they make sense?
+#### 6. Try different ages in your `f_linear` and `f_cubic` functions.
 
- * Coming Soon
+    >>> f_linear([20, 22, 24, 26, 28])
+    array([ 23.78121284,  22.40587695,  19.96035302,  20.84398292,  24.44180209])
+    >>> f_cubic([20, 22, 24, 26, 28])
+    array([ 23.78121284,  22.40587695,  19.29999598,  20.99535975,  24.44180209])
 
+They actually turn out to be nearly identical fits to the data. In this case, using a cubic fit didn't really win us much. Then again, we were only using 25 data points, so we probably didn't expect much from these fits. The values they give seem a little random, you imagine if we fit more data points we would get better results.
 
 ## Optimize
 
 #### 1. Convert the following from lists to `numpy.array`: `ages_female`, `ages_male`, `bmi_female`, and `bmi_male`.
 
- * Coming Soon
+    >>> from numpy import array
+    >>> ages_female = array(ages_female)
+    >>> ages_male = array(ages_male)
+    >>> bmi_female = array(bmi_female)
+    >>> bmi_male = array(bmi_male)
 
 #### 2. Create a function named `linear` that takes `x`, `a`, and `b` and returns ax + b.
 
- * Coming Soon
+    >>> def linear(x, a, b):
+    ...     return x * a + b
 
 #### 3. Use `curve_fit` and your `linear` function to fit the data where female athletes ages are the x-value and female athletes BMI are the y-values.
 
- * Coming Soon
+    >>> from scipy.optimize import curve_fit
+    >>> f_female = curve_fit(linear, age_female, bmi_female)
 
 #### 4. Use `curve_fit` and your `linear` function to fit the data where male athletes ages are the x-value and male athletes BMI are the y-values.
 
- * Coming Soon
+    >>> from scipy.optimize import curve_fit
+    >>> f_male = curve_fit(linear, age_male, bmi_male)
 
 
 [Back to Problem Set](problem_set_1_scipy.md)
