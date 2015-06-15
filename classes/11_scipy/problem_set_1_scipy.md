@@ -59,7 +59,10 @@ Just to help you through the process, here is the data you're trying to fit:
 
 ![Olympic Female Age vs BMI](../../resources/age_bmi_female_olympic.png)
 
- * Coming Soon
+1. Convert the following from lists to `numpy.array`: `ages_female`, `ages_male`, `bmi_female`, and `bmi_male`.
+2. Create a function named `linear` that takes `x`, `a`, and `b` and returns ax + b.
+3. Use `curve_fit` and your `linear` function to fit the data where female athletes ages are the x-value and female athletes BMI are the y-values. Do you think your fitted function matches the plot above?
+4. Use `curve_fit` and your `linear` function to fit the data where male athletes ages are the x-value and male athletes BMI are the y-values. Do you think your fitted function seems reasonable? How could you test that?
 
 
 
