@@ -2,7 +2,7 @@
 
 ## Inheritance
 
-Inheritance is taking the abstractions we create with Objects one step further. Instead of just creating a class for `Rectangle` and a class for `Triangle`, we make the logical leap that both of these are polygons and so have things in common. So we create a `Polygon` class and have each inherit properties from `Polygon`.
+Inheritance is taking the abstractions we create with Objects one step further. Instead of just creating a class for `Rectangle` and a class for `Triangle`, we make the logical leap that both of these are polygons and have things in common. So we create a `Polygon` class and have each inherit properties from `Polygon`.
 
 Let's see some concrete examples:
 
@@ -50,7 +50,8 @@ Now if we create a `Triangle`, we can call both the methods in `Triangle` and th
     >>> tri.print_num_sides()
     3
 
-What we have done is created a connection between the ideas of a triangle and a rectangle by having them both "inherit" from the `Polygon` class. This also means that both method classes share the `print_num_sides` method, but we didn't have to write it twice.
+We have created a connection between the idea of a triangle/rectangle and the idea of a Polygon. We say that "Triangle inherits from Polygon".
+What we have done is created a connection between the ideas of a triangle and a rectangle by having them both "inherit" from the `Polygon` class. This also means that both classes share the `print_num_sides` method, but we didn't have to write it twice.
 
 So that is inheritance. It is adding another layer of abstraction to the ideas in our code. And from that layer of abstraction we can reason more generally about the functionality of the separate components  of software we are creating.
 
@@ -62,7 +63,7 @@ What we do when we define an [abstract class](https://en.wikipedia.org/wiki/Clas
 
 In the example above we can modify `Polygon` to become an abstract class:
 
-    from abc import ABCMeta,abstractmethod
+    from abc import ABCMeta, abstractmethod
 
     class Polygon(object):
         __metaclass__ = ABCMeta
@@ -120,9 +121,15 @@ In the language of OOP, we could describe the above classes in a few ways:
 
 The jargon itself is not as important as the relationship between these classes. Multiple inheritance is a powerful abstraction tool, giving us a huge amount of flexibilty to organize our thoughts and thus our code.
 
-## The Warning
+#### The Warning
 
 Be warned. The above example of `Square` seems reasonable enough. But using multiple inhertance is not risk free. You can create classes with subclasses of subclasses of subclasses of subclasses of subclasses of subclasses so deep that you can no longer keep the whole chain of inheritance easily in mind. At some level deep down the rabbit hole adding another layer of abstraction begins to add more complexity than it removes. At what point that happens is entirely up to you.
+
+## More Examples
+
+The two object-oriented programming classes have been quite short. There is not a lot of code to learn here, just a few new ideas. If you haven't seen OOP before, it might be useful to look at some more examples:
+
+ * [OOP Examples](lecture_07_examples.md)
 
 ## Problem Sets
 
