@@ -26,7 +26,7 @@ For this problem set, we will be using real data. We will analyze the height and
 1. How do the geometric mean and harmonic mean compare for `heights_female`?
 2. How do the geometric mean and harmonic mean compare for `weights_male`?
 3. Build a 10-bin histogram from the `bmi` list.
-4. Build a histogram for the `heights_female` and `heights_male` lists, starting at 100 cm and going to up to 260 cm in 20 cm increments.
+4. Build a histogram for the `heights_female` and `heights_male` lists, starting at 120 cm and going to up to 220 cm in 10 cm increments.
 
 #### Percentiles
 
