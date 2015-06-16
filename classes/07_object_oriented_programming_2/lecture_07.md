@@ -42,7 +42,13 @@ Let's see some concrete examples:
 
 There are a few things to notice here. First of all, the `Polygon` class is very simple. In the class signatures for `Triangle` and `Rectangle` we actually reference the `Polygon` class. Then in the `__init__` methods for each `Triangle` and `Rectangle` class we reference the `Polygon` `__init__` method, so that when we create a `Triangle` class, we are also initializing the attributes of a `Polygon` class, and including it's methods.
 
-Now if we create a `Triangle`, we can call both the methods in `Triangle` and those in `Polygon`:
+We can create an instance of `Polygon` by doing:
+
+    >>> p = Polygon(9)
+    >>> p.print_num_sides()
+    There are 9 sides.
+
+And if we create a `Triangle`, we can call both the methods in `Triangle` and those in `Polygon`:
 
     >>> tri = Triangle([3, 4, 5])
     >>> print(tri.get_area())
@@ -50,10 +56,7 @@ Now if we create a `Triangle`, we can call both the methods in `Triangle` and th
     >>> tri.print_num_sides()
     3
 
-We have created a connection between the idea of a triangle/rectangle and the idea of a Polygon. We say that "Triangle inherits from Polygon".
-What we have done is created a connection between the ideas of a triangle and a rectangle by having them both "inherit" from the `Polygon` class. This also means that both classes share the `print_num_sides` method, but we didn't have to write it twice.
-
-So that is inheritance. It is adding another layer of abstraction to the ideas in our code. And from that layer of abstraction we can reason more generally about the functionality of the separate components  of software we are creating.
+We have created a connection between the idea of a triangle and the idea of a polygon. We say that "Triangle inherits from Polygon". We have set up a conceptual connection such that everything in `Polygon` should appear in `Triangle`. We use this connection in code to help us think about the logic of our situation. The goal is to create relationships among the ideas that we can represent in the code.
 
 ## Abstract Classes
 
@@ -78,7 +81,16 @@ In the example above we can modify `Polygon` to become an abstract class:
         def get_area(self):
             pass
 
-Here we have imported the Python standard library `abc` to create an abstract class. We use the `__metaclass__ = ABCMeta` statement to define it as an abstract class. And every abstract method we mark with the `@abstractmethod` decorator. This marks the method as not being implemented. Every subclass of `Polygon` must now give an implementation of the `get_area` method, or Python will throw an error:
+Here we have imported the Python standard library `abc` to create an abstract class. We use the `__metaclass__ = ABCMeta` statement to define it as an abstract class. And every abstract method we mark with the `@abstractmethod` decorator. This marks the method as not being implemented.
+
+We cannot directly implement an abstract class:
+
+    >>> p = Polygon(3)
+    Traceback (most recent call last):
+      File "<stdin>", line 1, in <module>
+    TypeError: Can't instantiate abstract class Polygon with abstract methods get_area
+
+And in order to implement a subclass of `Polygon`, it must provide an implementation of the `get_area` method:
 
     >>> class Circle(Polygon)
     >>> def __init__(self):
@@ -87,7 +99,13 @@ Here we have imported the Python standard library `abc` to create an abstract cl
     >>> c = Circle()
     TypeError: Can't instantiate abstract class Circle with abstract methods get_area
 
-What we did by making `Polygon` abstract is create a more complete blueprint for `Triangle` and `Rectangle`, that includes the idea (if not the implementation) that every polygon has an area. This can be useful in organizing our thoughts on code. If at some point in the distant future we want to add a `Heptadecagon` class, we would have the abstract blueprint in `Polygon` to remind us we need to write a `get_area` method.
+But as long as the subclass implements all the abstract methods, we can create an instance of it just like we would any other class:
+
+    >>> t = Triangle([3.0, 4.0, 5.0])
+    >>> print(t.number_of_sides())
+    3
+
+What we did by making `Polygon` abstract is create a more complete blueprint for `Triangle` and `Rectangle`, that includes the idea (if not the implementation) that every polygon has an area. This can be useful in organizing our thoughts in code. If at some point in the distant future we want to add a `Heptadecagon` class, we would have the abstract blueprint in `Polygon` to remind us we need to write a `get_area` method.
 
 ## Multiple Inheritance
 
@@ -112,6 +130,12 @@ But this misses out on a key idea from basic geometry: squares are just a specia
             Rectangle.__init__(self, 4, [side, side])
 
 Not only does recognizing something basic about our system help organize our thoughts, it makes the code much shorter.
+
+We still create an instance of `Square` in the usual way:
+
+    >>> s = Square(7.0)
+    >>> print(s.number_of_sides)
+    4
 
 In the language of OOP, we could describe the above classes in a few ways:
 
