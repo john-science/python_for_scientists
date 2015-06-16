@@ -108,6 +108,8 @@ We can use `plot` to take make a line plot out of a series of points:
     plt.plot(x, y)
     plt.show()
 
+![Simple Line Plot](../../resources/line_plot_1.png)
+
 #### Line Style
 
  * Coming Soon
