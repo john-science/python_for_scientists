@@ -6,6 +6,16 @@ Matplotlib is a standard plotting library in Python. That is, people use it all 
 
 Like most of the libraries used in our "special topics" lectures, matplotlib does not come standard with Python and will have to be installed. Please check the official [SciPy Stack Install Guide](http://www.scipy.org/install.html). For Linux and Mac, the installation is merely a single line of `apt-get`. For Windows, pre-built installers are provided.
 
+## Outline
+
+ * [Scatter Plots](https://github.com/theJollySin/python_for_scientists/blob/master/classes/12_matplotlib/lecture_12.md#scatter-plots)
+ * [Line Plots](https://github.com/theJollySin/python_for_scientists/blob/master/classes/12_matplotlib/lecture_12.md#line-plots)
+ * [Bar Charts](https://github.com/theJollySin/python_for_scientists/blob/master/classes/12_matplotlib/lecture_12.md#bar-charts)
+ * [Histograms](https://github.com/theJollySin/python_for_scientists/blob/master/classes/12_matplotlib/lecture_12.md#histograms)
+ * [Multiple Plots](https://github.com/theJollySin/python_for_scientists/blob/master/classes/12_matplotlib/lecture_12.md#multiple-plots)
+ * [Error Bars](https://github.com/theJollySin/python_for_scientists/blob/master/classes/12_matplotlib/lecture_12.md#error-bars)
+ * [Common Customizations](https://github.com/theJollySin/python_for_scientists/blob/master/classes/12_matplotlib/lecture_12.md#common-customizations)
+
 ## Scatter Plots
 
 First, let's generate a few random data points:
