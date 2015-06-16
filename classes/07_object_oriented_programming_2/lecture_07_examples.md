@@ -45,6 +45,8 @@ Here is an example of how we might use the class:
     >>> print(tf.number_of_lines())
     12345
 
+The power of this class is that I've done all of the work of reading my text file into an array in one line (`tf = TextFile('my_file.txt')`). I can now access the line (`tf.lines`) and do whatever processing I need to do, and ignore all the details about how to read the file.
+
 Now, let's look at another class. This time we will be reading a CSV file.
 
     class CSVFile(object):
