@@ -100,7 +100,7 @@ Here is the simple scatter plot example above, using several customizations:
 
 ## Line Plots
 
-We can use `plot` to take make a line plot out of a series of points:
+You can use `plot` to take make a line plot out of a series of points:
 
     # mock up some data
     from numpy import arange, cos
@@ -175,6 +175,22 @@ And now let's pull it all together. We can make a line plot of chosen color, wid
 ## Bar Charts
 
  * Coming Soon
+
+You can use `bar` to create vertical bar chart:
+
+    plt.bar(x, y)
+
+Or `barh` to create a horizontal bar chart:
+
+    plt.barh(x, y)
+
+## Histograms
+
+ * Coming Soon
+
+You can `hist` to create a histogram:
+
+    plt.hist(x, 10)
 
 ## Pie Charts
 
