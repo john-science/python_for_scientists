@@ -36,6 +36,7 @@ We can change the color of the dots in several ways:
 
     # all the same
     plt.scatter(x, y, c='red')
+    
     # each different
     plt.scatter(x, y, c=np.random.rand(N))
 
@@ -47,6 +48,7 @@ Much like color, we can provide one value for all data points, or one value for 
 
     # all the same
     plt.scatter(x, y, s=100)
+    
     # each different
     plt.scatter(x, y, s=100 * np.random.rand(N))
 
@@ -58,6 +60,7 @@ Perhaps you want your dots to be partially transparent, to help see overlapping 
 
     # all the same
     plt.scatter(x, y, alpha=0.5)
+    
     # each different
     plt.scatter(x, y, alpha=np.random.rand(N))
 
@@ -74,6 +77,7 @@ Of course, if you want, you can change the color of your edges using the same te
 
     # all the same
     plt.scatter(x, y, edgecolors='b')
+    
     # each different
     plt.scatter(x, y, edgecolors=np.random.rand(N))
 
@@ -112,19 +116,61 @@ We can use `plot` to take make a line plot out of a series of points:
 
 #### Line Style
 
- * Coming Soon
+Your line can be a solid line, or several kinds of dashed lines:
+
+    # dashed line
+    plt.plot(x, y, linestyle='--')
+    
+    # dashed and dotted line
+    plt.plot(x, y, linestyle='-.')
+    
+    # solid line
+    plt.plot(x, y, linestyle='-')
+    
+    # dotted
+    plt.plot(x, y, linestyle=':')
 
 #### Line Width
 
- * Coming Soon
+You can also set the width of your line (in pixels):
+
+    # thin (default) line width
+    plt.plot(x, y, linewidth=1)
+    
+    # very thick line
+    plt.plot(x, y, linewidth=5)
 
 #### Line Color
 
- * Coming Soon
+You set line color using the same options you used to set scatter plot color, but now you can only provide one color, not many:
+
+    # red line
+    plt.plot(x, y, c='red')
+    
+    # blue line
+    plt.plot(x, y, c='b')
+    
+    # white line
+    plt.plot(x, y, c='white')
+    
+    # green line
+    plt.plot(x, y, c='g')
 
 #### Full Example
 
- * Coming Soon
+And now let's pull it all together. We can make a line plot of chosen color, width, and style:
+
+    # mock up some data
+    from numpy import arange, cos
+    x = arange(10)
+    y = cos(x)
+    
+    # make a line plot
+    import matplotlib.pyplot as plt
+    plt.plot(x, y, linestyle='-.', linewidth=10, c='red')
+    plt.show()
+
+![Fancish Line Plot](../../resources/line_plot_2.png)
 
 ## Bar Charts
 
