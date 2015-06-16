@@ -22,6 +22,8 @@ Now, we will use those as X and Y values on a scatter plot:
     plt.scatter(x, y)
     plt.show()
 
+![Simple Scatter Plot](../../resources/scatter1.png)
+
 That's it! Once you have the data, it's just three lines to create a scatter plot!
 
 #### Customizations
@@ -87,8 +89,10 @@ Here is the simple scatter plot example above, using several customizations:
 
     # plot the data
     import matplotlib.pyplot as plt
-    plt.scatter(x, y, c=x*y, s=random.rand(N), alpha=0.5, edgecolors='none')
+    plt.scatter(x, y, c=x*y, s=1000*random.rand(N), alpha=0.5, edgecolor='none')
     plt.show()
+
+![Customized Scatter Plot](../../resources/scatter2.png)
 
 ## Line Plots
 
