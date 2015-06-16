@@ -192,10 +192,6 @@ You can `hist` to create a histogram:
 
     plt.hist(x, 10)
 
-## Pie Charts
-
- * Coming Soon
-
 ## Multiple Plots
 
  * Coming Soon
