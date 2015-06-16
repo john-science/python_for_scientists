@@ -301,5 +301,7 @@ They actually turn out to be nearly identical fits to the data. In this case, us
     >>> from scipy.optimize import curve_fit
     >>> f_male = curve_fit(linear, age_male, bmi_male)
 
+![Female BMI Data and Fit](../../resources/age_bmi_female_olympic_fit.png)
+![Male BMI Data and Fit](../../resources/age_bmi_male_olympic_fit.png)
 
 [Back to Problem Set](problem_set_1_scipy.md)
