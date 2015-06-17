@@ -242,7 +242,38 @@ Use `width` to make the bars wider or thinner. You can set the width of them as 
 
 Use `log=True` if you want your bar chart to be logarithmic along the Y-axis. The default is `log=False`.
 
+#### Bottom: Stacked Bar Charts
+
+Use `bottom` to shift offset a set of bars up above the X-axis. This will allow you to plot multiple bars in a multiple bar chart:
+
+    >>> from numpy import array
+    >>> x = array([1, 2, 3, 4, 5])
+    >>> y1 = array([2, 3, 4, 6, 4])
+    >>> y2 = array([7, 5, 4, 6, 8])
+    >>> 
+    >>> from matplotlib import pyplot as plt
+    >>> plt.bar(x, y1, color='b')
+    >>> plt.bar(x, y2, color='r', bottom=y1)
+    >>> plt.show()
+
 #### Full Example
+
+Let's put it all together and make a stacked bar chart with custom colors and widths.
+
+    import numpy as np
+    N = 10
+    x = numpy.arange(N)
+    y1 = np.random.randint(1, 30, N)
+    y2 = np.random.randint(1, 10, N)
+    y3 = np.random.randint(1, 20, N)
+
+    from matplotlib import pyplot as plt
+    plt.bar(x, y1, color='r', edgecolor='none', width=0.9)
+    plt.bar(x, y2, color='g', edgecolor='none', width=0.9, bottom=y1)
+    plt.bar(x, y3, color='b', edgecolor='none', width=0.9, bottom=y1+y2)
+    plt.show()
+
+![Stack Bar Chart](../../resources/bar_plot_fancy_1.png)
 
 ## Histograms
 
