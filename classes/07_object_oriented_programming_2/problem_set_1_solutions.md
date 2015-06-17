@@ -89,10 +89,10 @@ To start this problem set off, we will define the following abstract class:
             return self.length * self.length
         
         @staticmethod
-        def diagonal_length(self):
+        def diagonal_length(length):
             '''returns the length of the diagonal
             of this square'''
-            return sqrt(2) * self.length
+            return sqrt(2) * length
 
 
 [Back to Problem Set](problem_set_1_interheritance.md)
