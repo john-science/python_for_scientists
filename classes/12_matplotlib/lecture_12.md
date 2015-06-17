@@ -184,15 +184,65 @@ And now let's pull it all together. We can make a line plot of chosen color, wid
 
 ## Bar Charts
 
- * Coming Soon
-
 You can use `bar` to create vertical bar chart:
 
-    plt.bar(x, y)
+    >>> import numpy as np
+    >>> N = 20
+    >>> x = np.arange(N)
+    >>> y = np.random.randint(1, 100, N)
+    >>> 
+    >>> from matplotlib import pyplot as plt
+    >>> plt.bar(x, y)
+    >>> plt.show()
+
+![Simple Vertical Bar Chart](../../resources/bar_plot_simple_1.png)
 
 Or `barh` to create a horizontal bar chart:
 
-    plt.barh(x, y)
+    >>> plt.bar(x, y)
+    >>> plt.show()
+
+![Simple Horizontal Bar Chart](../../resources/barh_plot_simple_1.png)
+
+#### Color and Alpha
+
+As before, you can use `color` and `alpha` keywords to set the color and transparency of your bars.
+
+#### Align
+
+Use the `align` keyword to orient your bars in relation to the values they represent. You have to options:
+
+    # align bars so left edge is on their values (default)
+    plt.bar(x, y, align='edge')
+    
+    # align bars so they are centers on their values
+    plt.bar(x, y, align='center')
+
+#### Edgecolor
+
+Use the `edgecolor` keyword to set the outline color of your bars.
+
+    # set no outline
+    plt.barh(x, y, edgecolor='none')
+    
+    # set outline color to blue
+    plt.barh(x, y, edgecolor='blue')
+
+#### Width
+
+Use `width` to make the bars wider or thinner. You can set the width of them as you want. But if your width is greater than the spacing of your bars, they will overlap.
+
+    # bars just barely touch
+    plt.bar(x, y, width=1.0)
+    
+    # bars are far apart
+    plt.bar(x, y, width=0.5)
+
+#### Log
+
+Use `log=True` if you want your bar chart to be logarithmic along the Y-axis. The default is `log=False`.
+
+#### Full Example
 
 ## Histograms
 
@@ -202,7 +252,11 @@ You can `hist` to create a histogram:
 
     plt.hist(x, 10)
 
-## Multiple Plots
+## Multiple Data Set - One Plot
+
+ * Coming Soon
+
+## Multiple Plots - One Image
 
  * Coming Soon
 
