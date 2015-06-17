@@ -277,11 +277,35 @@ Let's put it all together and make a stacked bar chart with custom colors and wi
 
 ## Histograms
 
- * Coming Soon
-
 You can `hist` to create a histogram:
 
+    # x is some array of values
     plt.hist(x, 10)
+
+#### alpha and edgecolor
+
+Use `alpha` and `edgecolor` just like you did for bar charts.
+
+#### facecolor
+
+Use `facecolor` as you would the `color` keyword for bar charts or scatter plots.
+
+#### normed
+
+Use `normed` to normalize your histogram so the vertical scale represents the probability of the data lying in each bin (`normed=1`).
+
+#### Full Example
+
+    import numpy as np
+    from matplotlib import pyplot as plt
+    mu = 100
+    sigma = 20
+    data = mu + sigma * np.random.randn(1000)
+    
+    plt.hist(data, 20, normed=1, facecolor='r', edgecolor='none')
+    plt.show()
+
+![Normalized Histogram](../../resources/histogram_plot_1.png)
 
 ## Multiple Data Set - One Plot
 
