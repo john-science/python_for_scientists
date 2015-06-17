@@ -307,11 +307,66 @@ Use `normed` to normalize your histogram so the vertical scale represents the pr
 
 ![Normalized Histogram](../../resources/histogram_plot_1.png)
 
-## Multiple Data Set - One Plot
+## Multiple Data Sets - One Plot
+
+For the most part, putting multiple datasets on the same plot is super easy; you just add more plots to `matplotlib.pyplot` before you `pyplot.show()`.
+
+    # x = some X-values
+    # y1 = some Y-values
+    # y2 = some other Y-values
+
+For scatter plots:
+
+    from matplotlib import pyplot as plt
+    plt.scatter(x, y1)
+    plt.scatter(x, y2)
+    plt.show()
+    
+For line plots, the same thing:
+
+    from matplotlib import pyplot as plt
+    plt.plot(x, y1)
+    plt.plot(x, y2)
+    plt.show()
+
+And this even gives us a nice option, we can overlay a scatter plot with a line plot, to show the relationship between our measurements:
+
+    from matplotlib import pyplot as plt
+    plt.scatter(x, y1)
+    plt.plot(x, y1)
+    plt.show()
+
+ * Coming Soon: a nice plot of this effect
+
+For bar charts, it is a little different; we need to place the bars side-by-side. This means we have to do a little math about the width of the bars:
+
+    # define data
+    import numpy as np
+    
+    N = 10
+    x = np.arange(N)
+    y1 = np.random.randint(5, 50, N)
+    y2 = np.random.randint(5, 25, N)
+    
+    # create plot
+    import matplotlib.pyplot as plt
+    
+    width = 0.4
+    plt.bar(x, y1, width)
+    plt.bar(x + width, y2, width)
+    plt.show()
+
+ * Coming Soon: a nice plot of this effect
+
+## Subplots - One Image
+
+Frequently, in a real-world analysis, we will want to show more than one plot at a time. We do this in matplotlib by making subplots on our image. There are two ways to accomplish this.
+
+First way, `plt.subplots(ncols=N1, nrows=N2)`:
 
  * Coming Soon
 
-## Multiple Plots - One Image
+Second way, `plt.subplot(N1, N2, N3)`:
 
  * Coming Soon
 
