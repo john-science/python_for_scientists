@@ -336,7 +336,7 @@ And this even gives us a nice option, we can overlay a scatter plot with a line 
     plt.plot(x, y1)
     plt.show()
 
- * Coming Soon: a nice plot of this effect
+![Line-and-Scatter Plot](../../resources/line_and_scatter_plot_1.png)
 
 For bar charts, it is a little different; we need to place the bars side-by-side. This means we have to do a little math about the width of the bars:
 
@@ -352,11 +352,11 @@ For bar charts, it is a little different; we need to place the bars side-by-side
     import matplotlib.pyplot as plt
     
     width = 0.4
-    plt.bar(x, y1, width)
-    plt.bar(x + width, y2, width)
+    plt.bar(x, y1, width, color='b')
+    plt.bar(x + width, y2, width, color='r')
     plt.show()
 
- * Coming Soon: a nice plot of this effect
+![Multi-Bar Plot](../../resources/multibar_plot_1.png)
 
 ## Subplots - One Image
 
