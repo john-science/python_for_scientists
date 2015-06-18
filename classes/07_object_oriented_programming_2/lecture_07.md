@@ -127,7 +127,7 @@ But this misses out on a key idea from basic geometry: squares are just a specia
     class Square(Rectangle):
     
         def __init__(self, side):
-            Rectangle.__init__(self, 4, [side, side])
+            Rectangle.__init__(self, [side, side])
 
 Not only does recognizing something basic about our system help organize our thoughts, it makes the code much shorter.
 
