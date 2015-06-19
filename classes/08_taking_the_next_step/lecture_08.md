@@ -244,6 +244,10 @@ The two most popular code repositories are Git and SVN. Both are good, and have 
 
 I have already written a short introduction to Git, it is on GitHub [here](https://gist.github.com/theJollySin/7a2ee80c05d073996d16).
 
+## Git-Game
+
+If you *really* want to get to know Git, try playing [git-game](https://github.com/git-game/git-game).
+
 ## GitHub
 
 As you may have already noticed, this class is being stored and displayed using [GitHub](https://help.github.com/articles/set-up-git/), which is just a nice web interface for a Git repository.
