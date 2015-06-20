@@ -364,15 +364,73 @@ Frequently, in a real-world analysis, we will want to show more than one plot at
 
 First way, `plt.subplots(ncols=N1, nrows=N2)`:
 
- * Coming Soon
+    # create random data points
+    from numpy import random
+    N = 100
+    x = random.rand(N)
+    y = random.rand(N)
 
-Second way, `plt.subplot(N1, N2, N3)`:
+    # plot the data on two side-by-side subplots
+    import matplotlib.pyplot as plt
+    fig, (col1, col2) = plt.subplots(ncols=2)
+    col1.plot(x, y)
+    col2.scatter(y, x)
+    plt.show()
 
- * Coming Soon
+![Simple 2-Column plot](../../resources/simple_2_column_plot_1.png)
+
+So, what did we do here? First, we mocked up some random data. Then we used `pyplot.subplots` to define that our image would have two columns of plots. Then we just added two plots to the image: one line and one scatter. And they are put in sequential order; the first plot added is the first column and the second plot goes into the second column.
+
+Second way, `plt.subplot(NROWS, NCOLS, NPLOT)`:
+
+    plt.subplot(1, 2, 1)
+    plt.plot(x, y)
+    plt.subplot(1, 2, 2)
+    plt.scatter(y, x)
+    plt.show()
+
+This will produce the exact same 2-column plot as before. The only difference is that we used multiple `subplot` statements, rather than a single `subplots` statement.
 
 ## Error Bars
 
- * Coming Soon
+Use `errorbar` to create a `plot`-like line plot, with error bars:
+
+    # mock up some data
+    from numpy import arange, cos
+    x = arange(10)
+    y = cos(x)
+    
+    # make a line plot
+    import matplotlib.pyplot as plt
+    plt.errorbar(x, y, xerr=0.2, yerr=0.4)
+    plt.show()
+
+Or, if you want error bars on your bar charts, use `xerr` and `yerr` parameters there as well:
+
+    plt.bar(x, y, xerr=0.2, yerr=0.4)
+
+#### Full Example
+
+Here is a complete plot of both types of ways to create plots with error bars. Also included, you'll notice, is a way to put error bars on a scatter plot, by setting `linestyle=none` on the `errorbar` plot:
+
+    # mock up some crazy data
+    from numpy import arange, cos, cosh, pi
+    x = arange(0.0, pi, pi/16)
+    y1 = cosh(x)
+    y2 = cos(x)
+    
+    # create scatter plot with error bars
+    from matplotlib import pyplot as plt
+    plt.subplot(1, 2, 1)
+    plt.errorbar(x, y1, yerr=arange(0.2, 1.2, 1.0/16), linestyle='none', ecolor='black')
+    plt.scatter(x, y1, alpha=0.75, c=arange(0.0, 1.0, 1.0/16.0), s=arange(0.0, 600, 600.0/16), edgecolor='none')
+    
+    # create bar chart with error bars
+    plt.subplot(1, 2, 2)
+    plt.bar(x, y2, width=(pi/16)*0.8, xerr=0.1, yerr=0.25, color='red', edgecolor='none', ecolor='black')
+    plt.show()
+
+![Subplots with Errorbars](../../resources/subplots_with_error_bars.png)
 
 ## Common Customizations
 
@@ -382,6 +440,7 @@ Second way, `plt.subplot(N1, N2, N3)`:
  * Coming Soon: Axis min, max, and Labels
  * Coming Soon: Title
  * Coming Soon: Save it to a file
+ * Coming Soon: Facecolor
 
 
 ## Further Reading
