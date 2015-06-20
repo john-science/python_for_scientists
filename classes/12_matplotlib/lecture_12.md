@@ -434,22 +434,87 @@ Here is a complete plot of both types of ways to create plots with error bars. A
 
 ## Common Customizations
 
- * Coming Soon
- * Coming Soon: Legend
- * Coming Soon: Grid
- * Coming Soon: Axis min, max, and Labels
- * Coming Soon: Title
- * Coming Soon: Save it to a file
- * Coming Soon: Facecolor
+The various plot types above are extremely useful for displaying all kinds of scientific data. But plots tend to have more than just raw data information. They can have legends, titles, axis labels, and more. So let's take a quick look at how you can add some of these common features to your plots.
 
+Use `.title()` to add a title to your plot:
+
+    plt.scatter(x, y)
+    plt.title('Mortality rate of base jumpers over time')
+    plt.show()
+
+Use `.xlabel()` and `.ylabel()` to add labels to the X and Y-axis independently:
+
+    plt.scatter(x, y)
+    plt.yaxis('Deaths')
+    plt.xaxis('year')
+    plt.show()
+
+Use `xlim(XMIN, XMAX)` and `ymin(YMIN, YMAX)` to manually set the range of the X or Y-axis:
+
+    plt.scatter(x, y)
+    plt.xlim(1985, 2015)
+    plt.ylim(1, 100)
+    plt.show()
+
+Use `.grid()` to add a little gridded pattern to the background of the plot:
+
+    plt.scatter(x, y)
+    plt.grid()
+    plt.show()
+
+Use `.legend()` to add a legend to your plot. To do this, make sure and add a `label=XXX` attribute to each of your data plots:
+
+    plt.scatter(x, y1, label='Deaths from Equipment Failure')
+    plt.scatter(x, y1, label='Total Deaths')
+    plt.legend()
+    plt.show()
+
+Use `.savefig(FILE_PATH)` to save your plot to a file:
+
+    plt.scatter(x, y)
+    plt.savefig('/path/to/my_file.png')
+
+#### Full Example
+
+Here is a heavily customized plot, using all of the above options:
+
+    # data taking from Google Ngram Viewer
+    from numpy import array
+    years = arange(1920, 2011, 5)
+    machine_age = array([5.0, 10, 110, 190, 130, 100, 73, 55, 43, 69, 35, 30, 25, 20, 21, 18, 20, 17, 10])
+    machine_age /= 1.0e6
+    space_age = array([0.0, 0, 0, 0, 0, 0, 0, 5, 52, 38, 43, 35, 30, 33, 28, 20, 19, 16, 8])
+    space_age /= 1.0e6
+    information_age = array([0.0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 8, 41, 43, 79, 131, 121, 98])
+    information_age /= 1.0e6
+    
+    # making customized triple-plot
+    from matplotlib import pyplot as plt
+    plt.plot(years, machine_age, c='green', linewidth=3, label='Machine Age')
+    plt.plot(years, space_age, c='red', linewidth=3, label='Space Age')
+    plt.plot(years, information_age, c='blue', linewidth=3, label='Information Age')
+    plt.grid()
+    plt.title('Relative Occurance of Terms in Books Over Time')
+    plt.xlabel('year')
+    plt.ylabel('Word Occurence (% of published works)')
+    plt.xlim(1920, 2008)
+    plt.ylim(0, 0.0002)
+    plt.legend()
+    plt.savefig('information_age.png')
+
+![Google Ngram Plot](../../resources/information_age.png)
+
+## Problem Set
+
+ * [Example Matplot Problems](problem_set_1_matplotlib.md)
 
 ## Further Reading
 
-Matplotlib is a powerful tool. But there are so many options for different ways to plot things remembering all of them would be a pain. So I cheat. [Here](http://matplotlib.org/gallery.html) is the cheat sheet: a wonderful collection of matplotlib examples.
+Matplotlib is a powerful tool. But there are so many plots and customization options that memorizing them all would be a huge waste of time. So I cheat. [Here](http://matplotlib.org/gallery.html) is the cheat sheet: a wonderful collection of matplotlib examples.
 
  * [matplotlib gallery](http://matplotlib.org/gallery.html)
  * [matplotlib color docs](http://matplotlib.org/api/colors_api.html)
  * [matplotlib color examples](http://matplotlib.org/examples/color/named_colors.html)
-
+ * [Google Ngram Viewer](https://books.google.com/ngrams/)
 
 [Back to Syllabus](../../README.md)
