@@ -40,5 +40,14 @@ osgeo is the Open Source GIS library.
 
  * Coming Soon
 
+## References
+
+ * Coming Soon
+
+#### References - ArcPy
+
+ * [Great List of References](http://gis.stackexchange.com/questions/53816/what-are-some-resources-for-learning-arcpy)
+ * [Nice Overview PDF](http://proceedings.esri.com/library/userconf/devsummit09/papers/pythonscriptingadvancedtechniques.pdf)
+ * [Official Docs](http://help.arcgis.com/en/arcgisdesktop/10.0/help/index.html#/A_quick_tour_of_ArcPy/000v00000001000000/)
 
 [Back to Syllabus](../../README.md)
