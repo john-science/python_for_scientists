@@ -504,7 +504,7 @@ Here is a heavily customized plot, using all of the above options:
 
 ![Google Ngram Plot](../../resources/information_age.png)
 
-## Note - Common Problem Running Matplotlib
+## Final Note - A Common Problem
 
 Sometime matplotlib will just refuse to work at all. It turns out, sometimes, you need to tell matplotlib about where you are or what you are doing. The relevant questions are things like:
 
@@ -513,7 +513,7 @@ Sometime matplotlib will just refuse to work at all. It turns out, sometimes, yo
  * Am I looking at the plots (`.show()`), or saving them to files (`.savefig()`)?
  * Am I creating PNG outputfiles, or PS, or what?
 
-All you need to do is set the "backend" for matplotlib, so it knows what you are doing. It's just two lines. If you run into this problem, you can find a full guide [here](http://matplotlib.org/faq/usage_faq.html#what-is-a-backend).
+All you need to do is set the "backend" for matplotlib, so it knows what you are doing. It's just two lines. Hopefully you don't run into this problem, but if you do, look at the full explanation and guide [here](http://matplotlib.org/faq/usage_faq.html#what-is-a-backend).
 
 ## Problem Set
 
