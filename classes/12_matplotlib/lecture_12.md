@@ -504,6 +504,17 @@ Here is a heavily customized plot, using all of the above options:
 
 ![Google Ngram Plot](../../resources/information_age.png)
 
+## Note - Common Problem Running Matplotlib
+
+Sometime matplotlib will just refuse to work at all. It turns out, sometimes, you need to tell matplotlib about where you are or what you are doing. The relevant questions are things like:
+
+ * Am I running matplotlib from the commandline?
+ * Am I running matplotlib from an automated script?
+ * Am I looking at the plots (`.show()`), or saving them to files (`.savefig()`)?
+ * Am I creating PNG outputfiles, or PS, or what?
+
+All you need to do is set the "backend" for matplotlib, so it knows what you are doing. It's just two lines. If you run into this problem, you can find a full guide [here](http://matplotlib.org/faq/usage_faq.html#what-is-a-backend).
+
 ## Problem Set
 
  * [Example Matplot Problems](problem_set_1_matplotlib.md)
@@ -516,5 +527,6 @@ Matplotlib is a powerful tool. But there are so many plots and customization opt
  * [matplotlib color docs](http://matplotlib.org/api/colors_api.html)
  * [matplotlib color examples](http://matplotlib.org/examples/color/named_colors.html)
  * [Google Ngram Viewer](https://books.google.com/ngrams/)
+ * [matplotlib backends](http://matplotlib.org/faq/usage_faq.html#what-is-a-backend)
 
 [Back to Syllabus](../../README.md)
