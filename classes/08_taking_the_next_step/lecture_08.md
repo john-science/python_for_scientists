@@ -99,14 +99,14 @@ We could fix the `fibonacci` function above by adding a raising a single `Except
         else:
             return fibonacci(n - 1) + fibonacci(n - 2)
 
-This certainly fixes the problem. But if you call `fibonacci(6)`, the statement `if n < 0` will be called 24 times. This is a lot of extra calculation that doesn't need to be done. Another option is that you can put a `try / except` around the function when you call it:
+This certainly fixes the problem. But if you call `fibonacci(6)`, the statement `if n < 0` will be called 24 times. This is a lot of extra calculation that doesn't need to be done. Another option is that you can put a `try / except` around the function where you call `fibonacci`:
 
     try:
         fibonacci(-333)
     except:
         print('fibonacci only accepts non-negative inputs')
 
-Enclosing the called to `fibonacci` with `try / except` means Python will print the given line to the screen and supress all of the ugly errors you would have seen. This is an extremely powerful tool to help you control practically any unexpected behaivor in Python. Notice here, we can both `raise` our own Exceptions, and use `try/except` to catch them. We will need to understand both directions to use Exceptions well.
+Enclosing the call to `fibonacci` with `try / except` means Python will print the given line to the screen and supress all of the ugly errors you would have seen. Exceptions are an extremely powerful tool to help you control practically any unexpected behaivor in Python. Notice, we can both `raise` our own Exceptions, and use `try/except` to catch them. We will need to understand both directions to use Exceptions well.
 
 #### More kinds of exceptions
 
@@ -211,7 +211,7 @@ Now, if someone were to call this script from the command line, they would see y
     All that is gold does not glitter,
     ...
 
-But what if you want to import this string from another script?  Well, this is suddenly much harder. To help other people import and use your code, you have to make your data globally accessible in the file:
+But what if you want to import this string from another script? Well, you can't. To help other people import and use your code, you have to make your data globally accessible in the file:
 
     glitter = '''All that is gold does not glitter...'''
     
@@ -236,9 +236,9 @@ It works the same with functions as it does with the `glitter` string above. The
 
 Software works best when it is shared. Software shared between multiple people, developed and improved by everyone becomes easier to understand, easier to use, easier to update, and better.
 
-The best way to share code is via a code repository. This is a central place where we can store code, save different versions, make updates, and track changes. If you're not using a code repository, your scripts and programs are just little text files on your computer, waiting to be forgotten.
+The best way to share code is via a code repository. This is a central place where we can store code, save different versions, make updates, and track changes. If you're not using a code repository, your scripts and programs are just little text files on your computer, waiting to be lost.
 
-The two most popular code repositories are Git and SVN. Both are good, and have their advantages. If you are comfortable with the command line, Git is easier to use. If you want to use your mouse, SVN is probably easier. If you have very small or very large projects, Git is probably the way to go.
+The two most popular code repositories are Git and SVN. Both are good and have their advantages. If you are comfortable with the command line, Git is easier to use. If you want to use your mouse, SVN is easier. If you have very small or very large projects, Git is probably the way to go.
 
 ## The Git Primer
 
