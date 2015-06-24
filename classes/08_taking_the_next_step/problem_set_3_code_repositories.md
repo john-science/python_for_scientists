@@ -33,6 +33,7 @@ Again, there are all kind of great resources online for learning to use Git. Ins
  * [Installing Git](https://git-scm.com/book/en/v1/Getting-Started-Installing-Git)
  * [Git Immersion](http://gitimmersion.com/)
  * [Git - The Simple Guide](http://rogerdudler.github.io/git-guide/)
+ * [Git-Game](https://github.com/git-game/git-game)
 
 
 [Back to Lecture](lecture_08.md)
