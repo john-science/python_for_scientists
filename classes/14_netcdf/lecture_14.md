@@ -8,9 +8,12 @@ In this class, we will use the [netCDF4](https://github.com/Unidata/netcdf4-pyth
 
 #### Installation
 
-The `netCDF4` library does not come standard with Python, so you will have to install it yourself. The standard installation procedure for installing `netCDF4` from source can be found at:
+The `netCDF4` library does not come standard with Python, so you will have to install it yourself. The standard installation procedure for installing the prerequisits from source can be found at:
 
  * [Linux Install Instructions](https://code.google.com/p/netcdf4-python/wiki/UbuntuInstall)
+
+And the links and download instructions for installing the Python library itself can be found at:
+
  * [Google Code Instructions](http://netcdf4-python.googlecode.com/svn/trunk/docs/netCDF4-module.html)
 
 ## Reading NetCDF
