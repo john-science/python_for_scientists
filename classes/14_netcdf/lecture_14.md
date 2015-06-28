@@ -24,6 +24,10 @@ And the links and download instructions for installing the Python library itself
 
  * Coming Soon
 
+## Problem Sets
+
+ * Coming Soon
+
 ## Further Reading
 
  * [Great GoogleCode Introduction](https://netcdf4-python.googlecode.com/svn/trunk/docs/netCDF4-module.html)
