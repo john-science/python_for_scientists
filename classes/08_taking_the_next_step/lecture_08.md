@@ -41,6 +41,8 @@ It has comments, so you immediately know exactly what it does. The regular 4-spa
 
 To make your code readable you have to be extremely consistent about your spaces, naming conventions, comments, etcetera. If you want to spend the time to develop all of your own conventions, and stick to them stoically, great. Good for you. The rest of the world will use the [PEP8 Style Guide](https://www.python.org/dev/peps/pep-0008/).
 
+If you have a lot of code that is not PEP8-compliant, there are tools out there to automatically reformat your Python code. One of my favorites is [AutoPEP8](https://pypi.python.org/pypi/autopep8).
+
 ## Comments
 
 > You are what you comment.
