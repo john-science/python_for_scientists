@@ -37,5 +37,13 @@ And the links and download instructions for installing the Python library itself
  * [Official UCAR NetCDF Site](http://www.unidata.ucar.edu/software/netcdf/index.html)
  * [IOAPI-based one-man NetCDF Library](https://github.com/barronh/pseudonetcdf)
 
+#### netCDF4 Examples
+
+ * [Official API Docs](http://unidata.github.io/netcdf4-python/)
+ * [Practical Reading & Plotting](http://schubert.atmos.colostate.edu/~cslocum/netcdf_example.html)
+ * [iPython Plotting Example](http://www.hydro.washington.edu/~jhamman/hydro-logic/blog/2013/10/12/plot-netcdf-data/)
+ * [Long, Thorough Example](https://code.google.com/p/netcdf4-python/source/browse/trunk/examples/tutorial.py?r=847)
+ * [Writing & NetCDF Convensions](http://salishsea-meopar-tools.readthedocs.org/en/latest/netcdf4/)
+
 
 [Back to Syllabus](../../README.md)
