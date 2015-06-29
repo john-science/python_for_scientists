@@ -113,8 +113,7 @@ The `math` library in Python has a lot of typical functions built in.
 
 It has `sin`, `cos`, `tan`, and of course `pi`
 
-    >>> from math import sin, cos, tan
-    >>> from math import pi
+    >>> from math import cos, pi, sin, tan
     >>> sin(0)
     0.0
     >>> sin(pi)
@@ -126,25 +125,25 @@ It has `sin`, `cos`, `tan`, and of course `pi`
     >>> tan(0)
     0.0
     >>> tan(pi)
-    -0.0
+    0.0
 
 It also has `asin`, `acos`, `atan`, and `sinh`, `cosh`, `tanh`, `asinh`, `acosh`, `atanh`.
 
 All of the above work in radians. It might be helpful to know you can convert from degrees to radians using `math.radians`:
 
-    >>> from math import radians
+    >>> from math import cos, radians
     >>> radians(0)
     0.0
-    >>> radians(45)
-    0.78539816339744828
     >>> radians(90)
     1.5707963267948966
     >>> radians(180)
     3.1415926535897931
+    >>> cos(radians(180))
+    -1.0
 
 It can also do `sqrt` and arbitrary powers (`pow`):
 
-    >>> from math import sqrt, pow
+    >>> from math import pow, sqrt
     >>> sqrt(4)
     2.0
     >>> pow(2, 3)
@@ -154,7 +153,7 @@ It can also do `sqrt` and arbitrary powers (`pow`):
 
 It can also do various kinds of exponentials and logarithms:
 
-    >>> from math import exp, log, log10, e
+    >>> from math import e, exp, log, log10
     >>> 
     >>> exp(1)
     2.718281828459045
@@ -195,6 +194,18 @@ The most general and useful method is the basic `random`, which generates a `flo
     >>> random()
     0.1309924455836774
 
+#### randint
+
+Similarly, `randint` generates a random integer between two bounds:
+    
+    >>> from random import randint
+    >>> randint(1, 99)
+    27
+    >>> randint(1, 99)
+    68
+    >>> randint(1, 99)
+    13
+
 #### choice
 
 Another really useful tool is `choice`, which will select a random item from a `list`:
@@ -208,21 +219,9 @@ Another really useful tool is `choice`, which will select a random item from a `
     >>> choice(x)
     'think'
 
-#### randint
-
-Similarly, `randint` generates a random integer between two bounds:
-    
-    >>> from random import randint
-    >>> randint(1, 99)
-    27
-    >>> randint(1, 99)
-    68
-    >>> randint(1, 99)
-    13
-
 ## timeit
 
-One of people's main complaints about Python as a language is that it isn't as fast as C or Fortran. But it can be particularly fast. You just have to *try* to optimize your code for speed. If you are tryingt to make a function faster, you will want to test it out and see if your new version is indeed faster than your old one. Python's `timeit` library is an easy way to time your code without having to change it. For instance:
+One of people's main complaints about Python as a language is that it isn't as fast as C or Fortran. But it can be fast. You just have to *try* to optimize your code for speed. If you are trying to make a function faster, you will want to test it out and see if your new version is indeed faster than your old one. Python's `timeit` library is an easy way to time your code without having to change it. For instance:
 
     >>> def build_counting_list(n):
     ...     '''build a list of lists where the elements are:
