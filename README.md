@@ -11,7 +11,7 @@ The purpose of this class is to provide a practical introduction to the Python l
 
 ### What This Class is Not
 
-This class is not meant to provide a thorough background in computer science. To get started on that, here are three of my favorite books: [SICP](http://amzn.com/0262510871), [Intro to Algorithms](http://amzn.com/0262033844), [Code Complete](http://amzn.com/0735619670).
+This class is not meant to provide a rigorous computer science background. To get started on that, here are three of my favorite books: [SICP](http://amzn.com/0262510871), [Intro to Algorithms](http://amzn.com/0262033844), [Code Complete](http://amzn.com/0735619670).
 
 ### Syllabus
 
