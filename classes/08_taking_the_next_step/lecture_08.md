@@ -186,6 +186,26 @@ We could do something more like this:
 
 The class version of the plot-making function is actually more code. But it will be easier to less messy and far easier to read.
 
+Another option is to make use of Python's keyword arguments:
+
+    class MySuperPlot(object):
+    
+        def __init__(self, x_data=None, y_data=None, x_title="Default Title",
+                     y_title="Default Title", x_pixels=640, y_pixels=800):
+            self.x_data = x_data
+            self.y_data = y_data
+            self.x_title = x_title
+            self.y_title = y_title
+            self.x_pixels = x_pixels
+            self.y_pixels = y_pixels
+        
+        def show_plot(self):
+            # making an amazing, beautiful plot
+    
+    plot = MySuperPlot(x_data=some_thing, y_data=something_else,
+                       x_title='Time (years)', y_title='Population')
+    plot.show_plot()
+
 #### Example: Another good time to use classes
 
 If you ever find that you have written a script with a lot of information saved in global variables, consider using a class. If you have more than, say, five global variables in your script it might be easier to place them inside your class.
