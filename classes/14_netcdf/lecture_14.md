@@ -36,6 +36,8 @@ And the links and download instructions for installing the Python library itself
  * [Official GitHub Repo](https://github.com/Unidata/netcdf4-python)
  * [Official UCAR NetCDF Site](http://www.unidata.ucar.edu/software/netcdf/index.html)
  * [IOAPI-based one-man NetCDF Library](https://github.com/barronh/pseudonetcdf)
+ * [NetCDF docs](http://www.unidata.ucar.edu/software/netcdf/docs/)
+ * [IOAPI requirements](https://www.cmascenter.org/ioapi/documentation/3.1/html/REQUIREMENTS.html)
 
 #### netCDF4 Examples
 
