@@ -1,6 +1,6 @@
 # NetCDF Files in Python
 
-Scientists from all walks of life find themselves using the NetCDF file format. It is an extremely flexible binary-formatted data file designed around storing arrays of data. For this reason, NetCDF files are particularly useful for modeling spatial data: meteorology, climotology, and geospatial mapping. Tools have been built to deal with NetCDF files in every popular programming language.
+The NetCDF file format is more and more common these days. NetCDF files are binary files with a lot of flexibility for describing dimensioned variables.
 
 ## The Library
 
@@ -16,11 +16,39 @@ And the links and download instructions for installing the Python library itself
 
  * [Google Code Instructions](http://netcdf4-python.googlecode.com/svn/trunk/docs/netCDF4-module.html)
 
-## Reading NetCDF
+## Reading & Writing NetCDF
 
  * Coming Soon
 
-## Writing NetCDF
+## Groups
+
+ * Coming Soon
+
+## Dimensions
+
+ * Coming Soon
+
+## Variables
+
+ * Coming Soon
+
+## Attributes
+
+ * Coming Soon
+
+## Dealing with Data
+
+ * Coming Soon
+
+## Dealing with Time Coordinates
+
+ * Coming Soon
+
+## Data Compression
+
+ * Coming Soon
+
+## IOAPI
 
  * Coming Soon
 
@@ -30,22 +58,15 @@ And the links and download instructions for installing the Python library itself
 
 ## Further Reading
 
+ * [Official API Docs](http://unidata.github.io/netcdf4-python/)
  * [Great GoogleCode Introduction](https://netcdf4-python.googlecode.com/svn/trunk/docs/netCDF4-module.html)
  * [Read & Plot a NetCDF File](http://schubert.atmos.colostate.edu/~cslocum/netcdf_example.html) - Useful example, also plots using MatPlotLib
  * [Tutorial Module](https://code.google.com/p/netcdf4-python/source/browse/trunk/examples/tutorial.py) - This is just a Python module that uses all the netCDF4 features.
- * [Official GitHub Repo](https://github.com/Unidata/netcdf4-python)
- * [Official UCAR NetCDF Site](http://www.unidata.ucar.edu/software/netcdf/index.html)
  * [IOAPI-based one-man NetCDF Library](https://github.com/barronh/pseudonetcdf)
  * [NetCDF docs](http://www.unidata.ucar.edu/software/netcdf/docs/)
  * [IOAPI requirements](https://www.cmascenter.org/ioapi/documentation/3.1/html/REQUIREMENTS.html)
-
-#### netCDF4 Examples
-
- * [Official API Docs](http://unidata.github.io/netcdf4-python/)
- * [Practical Reading & Plotting](http://schubert.atmos.colostate.edu/~cslocum/netcdf_example.html)
- * [iPython Plotting Example](http://www.hydro.washington.edu/~jhamman/hydro-logic/blog/2013/10/12/plot-netcdf-data/)
- * [Long, Thorough Example](https://code.google.com/p/netcdf4-python/source/browse/trunk/examples/tutorial.py?r=847)
- * [Writing & NetCDF Convensions](http://salishsea-meopar-tools.readthedocs.org/en/latest/netcdf4/)
+ * [Official GitHub Repo](https://github.com/Unidata/netcdf4-python)
+ * [Official UCAR NetCDF Site](http://www.unidata.ucar.edu/software/netcdf/index.html)
 
 
 [Back to Syllabus](../../README.md)
