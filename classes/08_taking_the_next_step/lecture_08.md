@@ -101,7 +101,7 @@ We could fix the `fibonacci` function above by adding a raising a single `Except
         else:
             return fibonacci(n - 1) + fibonacci(n - 2)
 
-This certainly fixes the problem. But if you call `fibonacci(6)`, the statement `if n < 0` will be called 24 times. This is a lot of extra calculation that doesn't need to be done. Another option is that you can put a `try / except` around the function where you call `fibonacci`:
+This certainly fixes the problem. But if you call `fibonacci(6)`, the statement `if n < 0` will be called 25 times. That is a lot of extra calculation that doesn't need to be done. Another option is that you can put a `try / except` where you call `fibonacci`:
 
     try:
         fibonacci(-333)
