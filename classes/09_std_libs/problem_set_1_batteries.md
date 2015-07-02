@@ -33,6 +33,8 @@ Write a function named:
 3. `monte_carlo_dice` that takes in an integer `n` and performs `single_die_roll` n times, and then returns the average of the results. Use your new function for n equals: 100, 1000, 10000, and 100000, and compare the results.
 4. `double_choice` that takes in a list and returns two non-equal items that were selected from that list. Be careful, what if the list only has one item?
 5. `random_split` that takes in a number `x` (greater than 10), and returns two randomly selected numbers, one from zero to `x/2` and one from `x/2` to `x`.
+6. `random_integer` that uses `random.random()` to produce a random integer between between a min and a max number (just like `random.randint`).
+7. `random_list_choice` that uses the `random_integer` above to randomly select an item from a list (just like `random.choice`).
 
 
 ## timeit
