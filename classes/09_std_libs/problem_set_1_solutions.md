@@ -233,6 +233,21 @@ Now, because these are random numbers, your average probably won't come out look
         
         return(num1, num2)
 
+#### 6. `random_integer` that uses `random.random()` to produce a random integer between between a min and a max number (just like `random.randint`).
+
+    from random import random
+
+    def random_integer(min, max):
+        '''creates a random integer between a
+        min and a max value'''
+        return min + int((max - min) * random())
+
+#### 7. `random_list_choice` that uses the `random_integer` above to randomly select an item from a list (just like `random.choice`).
+
+    def random_list_choice(lst):
+        '''randomly selects an item from a list'''
+        return lst[random_integer(0, len(lst))]
+
 ## timeit
 
 #### 1. Time each of the functions you above that you wrote for this problem set. Time them for several different numbers of trials (say, 10, 100, 10000, 100000), and then divide the resultant time by the number of trials. Which of the functions above are very fast? Which of the functions above can you make very slow by giving them different inputs?
