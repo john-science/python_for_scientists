@@ -7,7 +7,7 @@
 
     def pprint_date(d):
         '''Return a pretty-printed form of a given date'''
-        return d.strftime('%A, %B %d, %Y at %H:%m%p')
+        return d.strftime('%A, %B %d, %Y at %H:%M%p')
 
 #### 2. `days_diff` that takes two `datetime` objects and returns the number of days between them. Use this function to determine how many days you've been alive.
 
