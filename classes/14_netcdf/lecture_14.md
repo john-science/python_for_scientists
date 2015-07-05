@@ -154,7 +154,57 @@ Of course, this also works for variables:
 
 ## Dealing with Data
 
- * Coming Soon
+First, let's create a simple file:
+
+    >>> from netCDF4 import Dataset
+    >>> root = Dataset("mountain.nc", "w")
+    >>> x = root.createDimension("x", 100)
+    >>> y = root.createDimension("y", 100)
+    >>> elevation = root.createVariable("elevation", "f4", ("x", "y"))
+    >>> elevation.units = "m"
+    >>> len(elevation)
+    100
+    >>> len(elevation[0])
+    100
+
+#### Writing Data
+
+We can set a value into `elevation` like we would set the value of a list:
+
+    >>> elevation[0][0] = 432.1
+
+In this case, we want to fill all the values in the 100x100 numpy array. To do this, let's build turn our mountain into a triangular pyramid:
+
+    >>> f = lambda x, y: -51.2*sqrt((x-50)**2+(y-50)**2)+4386.5
+    >>> for row in xrange(100):
+    ...     elevation[row] = map(f, [row]*100, arange(100))
+    ... 
+
+Notice that in the first example we wrote a single value into the variable. But in the second example we wrote an entire row at a time. Again, this is much like how we right values to a list. But in this case, we need to use NumPy arrays.
+
+#### Reading Data
+
+We can use the same parallels to read from netCDF4 variables that we did to write to them. For instance, we can address a single data point in our variable like:
+    
+    >>> elevation[0][0]
+    766.11328
+    >>> elevation[50][50]
+    4386.5
+    >>> elevation[13][77]
+    2041.3387
+
+But we can also read entire rows, and even use the same slicing syntax we did with lists:
+
+    >>> elevation[0][:10]
+    array([  766.11328125,   802.13427734,   837.78222656,   873.04571533,
+             907.91308594,   942.37225342,   976.41088867,  1010.01623535,
+            1043.17529297,  1075.87463379], dtype=float32)
+    >>> elevation[50][45:55]
+    array([ 4130.5       ,  4181.70019531,  4232.89990234,  4284.10009766,
+            4335.29980469,  4386.5       ,  4335.29980469,  4284.10009766,
+            4232.89990234,  4181.70019531], dtype=float32)
+
+While the NumPy data structures used in netCDF4 are significantly faster, they were designed to make use of the syntax we already know from the standard Python lists for reading and writing data points. This makes netCDF4 easier to learn and will speed our our work.
 
 ## Dealing with Time Coordinates
 
