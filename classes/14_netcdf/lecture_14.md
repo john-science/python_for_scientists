@@ -111,7 +111,46 @@ It is also possible to create "scalar" variables, that have no dimensions and ar
 
 ## Attributes
 
- * Coming Soon
+Attributes are extra information you attach to a group or a variable. They can be strings, numbers, or sequences. Some really common examples are putting attributes on the root group:
+
+    >>> from netCDF4 import Dataset
+    >>> root = Dataset("test4.nc", "w", format="NETCDF4")
+    >>> root.description = "Called to work on the Moon"
+    >>> root.date_created = "June 21, 2001"
+    >>> root.author = "Dave Bowman"
+
+Also, variables frequently need attributes:
+
+    >>> h = root.createVariable("height", f4)
+    >>> h.units = "meters"
+    >>> h.whos = "It's your height."
+
+If you want to see what attributes a group or variable have, use `.ncattrs() :
+
+    >>> root.ncattrs()
+    [u'description', u'date_created', u'author']
+    >>>
+    >>> for attr_name in root.ncattrs():
+    ...     print(attr_name)
+    ...     print(getattr(root, attr_name))
+    ... 
+    description
+    Called to work on the Moon
+    date_created
+    June 21, 2001
+    author
+    Dave Bowman
+
+Of course, this also works for variables:
+
+    >>> h.ncattrs()
+    [u'units', u'whos']
+    >>> for attr_name in root.ncattrs():
+    ...     print(attr_name, getattr(root, attr_name))
+    ... 
+    (u'description', u'Called to work on the Moon')
+    (u'date_created', u'June 21, 2001')
+    (u'author', u'Dave Bowman')
 
 ## Dealing with Data
 
