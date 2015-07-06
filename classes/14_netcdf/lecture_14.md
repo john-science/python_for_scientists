@@ -48,8 +48,8 @@ All variables in NetCDF files are defined in terms of a set of dimensions. For i
 
     >>> time = root.createDimension("time", None)
     >>> lat = root.createDimension("lat", 321)
-    >>> lon = root.createDimension("lon", 290)
-    >>> layer = root.createDimension("layer", 18)
+    >>> lon = root.createDimension("lon", 291)
+    >>> layer = root.createDimension("layer", 11)
 
 Here we pass `createDimension` two things: the first is a string name for the dimension and the next is the length of the dimension. By putting `None` for the length of the `"time"` dimension, we are allowing the time dimension to be unlimited.
 
@@ -64,7 +64,7 @@ Much like for groups, to get an ordered dictionary of the dimensions, simply do:
 You can also ask for the length of a dimension, or if the dimension is unlimited:
 
     >>> len(layer)
-    18
+    11
     >>> layer.isunlimited()
     False
     >>> time.isunlimited()
@@ -156,8 +156,9 @@ Reading and writing data from/to NetCDF files is pretty easy. We will assume the
 
 The first thing we know is that `temp` is a 4D variable, where one of the dimensions is time. We will get to time in a moment. But first, let's create a 3D dataset to fill in the first time step:
 
-    >>> temps = 100.0 * random(18 * 321 * 290) + 70.0
-    >>> temps = temps.reshape(18, 321, 290)
+    >>> from numpy.random import random
+    >>> temps = 100.0 * random(11 * 321 * 291) + 70.0
+    >>> temps = temps.reshape(11, 321, 291)
 
 Now we can set the temperature values:
 
@@ -170,7 +171,7 @@ At this point, we could even address an individual data point directly:
 Or we could use the `list` slicing syntax to set several locations at once:
 
     >>> from numpy import arange
-    >>> temp[12][34][56:78] = 2.0 * arange(56, 78)
+    >>> temp[10][34][56:78] = 2.0 * arange(56, 78)
 
 It is important to note though that until you initialize all of the values of a variable, you can't set individual values:
 
@@ -207,7 +208,7 @@ While the NumPy data structures used in netCDF4 are significantly faster, they w
 
 Working with the time dimension could be a little unweidly because the units are frequnetly things like: "hours since midnight, January 1st, 1970.". To help with this, `netCDF4` comes with two tools to convert between `datetime` objects, and the integers representing the number of hours since some datetime: `date2num` and `num2date`.
 
-    from datetime import datetime, timedelta
+    >>> from datetime import datetime, timedelta
     >>> from netCDF4 import date2num, num2date
 
 First, let's create a list of `datetimes` for our time dimension and use `date2num` to load them into place:
@@ -233,7 +234,7 @@ By contrast, you can use `num2date` to convert these numbers back into something
      datetime.datetime(2015, 6, 28, 0, 0) datetime.datetime(2015, 6, 28, 12, 0)
      datetime.datetime(2015, 6, 29, 0, 0) datetime.datetime(2015, 6, 29, 12, 0)]
 
- * Coming Soon: using unlimited dimensions
+ * Coming Soon: handling unlimited dimensions
 
 ## Data Compression
 
