@@ -300,11 +300,13 @@ Since IOAPI requries NETCDF3_CLASSIC formatting, we also need to know about the 
  * [Great GoogleCode Introduction](https://netcdf4-python.googlecode.com/svn/trunk/docs/netCDF4-module.html)
  * [Read & Plot a NetCDF File](http://schubert.atmos.colostate.edu/~cslocum/netcdf_example.html) - Useful example, also plots using MatPlotLib
  * [Tutorial Module](https://code.google.com/p/netcdf4-python/source/browse/trunk/examples/tutorial.py) - This is just a Python module that uses all the netCDF4 features.
+ * [CF Conventions - Standard Names](http://cfconventions.org/Data/cf-standard-names/28/build/cf-standard-name-table.html)
  * [IOAPI-based one-man NetCDF Library](https://github.com/barronh/pseudonetcdf)
  * [NetCDF docs](http://www.unidata.ucar.edu/software/netcdf/docs/)
  * [IOAPI requirements](https://www.cmascenter.org/ioapi/documentation/3.1/html/REQUIREMENTS.html)
  * [Official GitHub Repo](https://github.com/Unidata/netcdf4-python)
  * [Official UCAR NetCDF Site](http://www.unidata.ucar.edu/software/netcdf/index.html)
+ * [IOAPI netCDF4 Example](https://dawes.sph.unc.edu/uncaqmlsvn/pyPASS/trunk/Utilities/ModelMetaData.py)
 
 
 [Back to Syllabus](../../README.md)
