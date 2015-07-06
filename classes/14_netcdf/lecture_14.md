@@ -98,7 +98,9 @@ It is also very common to create a variable for each dimension:
     >>> times = root.createVariable("time", "f8", ("time"))
     >>> layers = root.createVariable("layer", "i4", ("layer"))
     >>> latitudes = root.createVariable("latitude", "f4", ("lat"))
-    >>> longitudes = root.createVariable("longitude", "f4", ("lon"))
+    >>> longitudes = root.createVariable("longitude", "f4", ("lon"), least_significant_digit=3)
+
+Notice the use of the `least_significant_digit` keyword. We frequently don't need all the digits of precision that the 32-bit float `f4` provides. In this case we are saying that we only really need 3 decimal places of precision to be stored.
 
 It is also possible to create "scalar" variables, that have no dimensions and are just simple numbers. But these are not very common. Just leave off the dimensions:
 
@@ -114,8 +116,13 @@ Attributes are extra information you attach to a group or a variable. They can b
 
 Also, variables frequently need attributes:
 
-    >>> temp.units = 'Celcius'
+    >>> latitudes.units = "degrees north"
+    >>> longitudes.units = "degrees east"
+    >>> layers.units = "hPa"
     >>> rh.units = 'percent'
+    >>> temp.units = "F"
+    >>> times.units = "hours since 0001-01-01 00:00:00.0"
+    >>> times.calendar = "gregorian"
 
 If you want to see what attributes a group or variable have, use `.ncattrs() :
 
@@ -198,15 +205,53 @@ While the NumPy data structures used in netCDF4 are significantly faster, they w
 
 ## Dealing with Time Coordinates
 
- * Coming Soon
+Working with the time dimension could be a little unweidly because the units are frequnetly things like: "hours since midnight, January 1st, 1970.". To help with this, `netCDF4` comes with two tools to convert between `datetime` objects, and the integers representing the number of hours since some datetime: `date2num` and `num2date`.
+
+    from datetime import datetime, timedelta
+    >>> from netCDF4 import date2num, num2date
+
+First, let's create a list of `datetimes` for our time dimension and use `date2num` to load them into place:
+
+    >>> dates = [datetime(2015, 6, 21) + n*timedelta(hours=12) for n in range(temp.shape[0])]
+    >>> times[:] = date2num(dates,units=times.units,calendar=times.calendar)
+    >>> print(times[:])
+    [ 17658504.  17658516.  17658528.  17658540.  17658552.  17658564.
+      17658576.  17658588.  17658600.  17658612.  17658624.  17658636.
+      17658648.  17658660.  17658672.  17658684.  17658696.  17658708.]
+
+By contrast, you can use `num2date` to convert these numbers back into something more human-readable:
+
+    >>> dates = num2date(times[:],units=times.units,calendar=times.calendar)
+    >>> print(dates)
+    [datetime.datetime(2015, 6, 21, 0, 0) datetime.datetime(2015, 6, 21, 12, 0)
+     datetime.datetime(2015, 6, 22, 0, 0) datetime.datetime(2015, 6, 22, 12, 0)
+     datetime.datetime(2015, 6, 23, 0, 0) datetime.datetime(2015, 6, 23, 12, 0)
+     datetime.datetime(2015, 6, 24, 0, 0) datetime.datetime(2015, 6, 24, 12, 0)
+     datetime.datetime(2015, 6, 25, 0, 0) datetime.datetime(2015, 6, 25, 12, 0)
+     datetime.datetime(2015, 6, 26, 0, 0) datetime.datetime(2015, 6, 26, 12, 0)
+     datetime.datetime(2015, 6, 27, 0, 0) datetime.datetime(2015, 6, 27, 12, 0)
+     datetime.datetime(2015, 6, 28, 0, 0) datetime.datetime(2015, 6, 28, 12, 0)
+     datetime.datetime(2015, 6, 29, 0, 0) datetime.datetime(2015, 6, 29, 12, 0)]
+
+ * Coming Soon: using unlimited dimensions
 
 ## Data Compression
 
- * Coming Soon
+ * Coming Soon: compression inside NetCDF files.
 
 ## IOAPI
 
- * Coming Soon
+ * Coming Soon: examples of creating and reading IOAPI-formatted files
+
+IOAPI-formatted NetCDF files have a few restrictions:
+
+ * They require a TFLAG variable
+ * They must be formatted for NETCDF3_CLASSIC.
+
+NetCDF3 files have a few restrictions:
+
+ * They can only have one unlimited dimension.
+ * They do not support groups (only the root group is allowed).
 
 ## Problem Sets
 
