@@ -245,13 +245,50 @@ By contrast, you can use `num2date` to convert these numbers back into something
 
 IOAPI-formatted NetCDF files have a few restrictions:
 
- * They require a TFLAG variable
- * They must be formatted for NETCDF3_CLASSIC.
+ * must have a TFLAG variable
+ * must be formatted for NETCDF3_CLASSIC
+ * requires a certain set of global attributes
 
-NetCDF3 files have a few restrictions:
+IOAPI required attributes, found on [IOAPI Docs](https://www.cmascenter.org/ioapi/documentation/3.1/html/INCLUDE.html#fdesc):
 
- * They can only have one unlimited dimension.
- * They do not support groups (only the root group is allowed).
+ * **IOAPI_VERSION** version id string
+ * **EXEC_ID** value of environment variable EXECUTION_ID 
+ * **FTYPE** data structure type for the variables in this file
+ * **UPNAM** name of last program writing to this file
+ * **FILEDESC** text describing the file
+ * **HISTORY** text history of file and alterations
+ * **WDATE** last-update date
+ * **WTIME** last-update time
+ * **CDATE** file-creation date
+ * **CTIME** file-creation time
+ * **SDATE** file start date YYYYDDD
+ * **STIME** file start time HHMMSS
+ * **TSTEP** file time step HHMMSS
+ * **GDNAM** grid name
+ * **GDTYP** horizontal coordinate system type, using token values LATGRD3, etc., defined in [PARMS3.EXT](https://www.cmascenter.org/ioapi/documentation/3.1/html/INCLUDE.html#parms)
+ * **P_ALP** first map projection descriptive parameter
+ * **P_BET** second map projection descriptive parameter
+ * **P_GAM** third map projection descriptive parameter
+ * **XCENT** longitude for coordinate system origin (where X = 0)
+ * **YCENT** latitude for coordinate system origin (where Y = 0)
+ * **XORIG** X-coordinate for lower-left (southwest) corner of the grid
+ * **YORIG** Y-coordinate for lower-left (southwest) corner of the grid
+ * **XCELL** X-coordinate grid cell size
+ * **YCELL** Y-coordinate grid cell size
+ * **NCOLS** number of horizontal grid columns
+ * **NROWS** number of horizontal grid rows
+ * **NTHIK** boundary perimeter thickness (number of cells)
+ * **VGTYP** vertical coordinate type
+ * **VGTOP** model-top, for sigma coord types
+ * **NLAYS** number of vertical grid layers
+ * **VGLVLS** array of vertical coordinate grid level values
+ * **NVARS** number of variables
+ * **VAR-LIST** string representing list of variable names
+
+Since IOAPI requries NETCDF3_CLASSIC formatting, we also need to know about the NETCDF3_CLASSIC restrictions:
+
+ * can only have one unlimited dimension
+ * do not support groups (only the root group is allowed)
 
 ## Problem Sets
 
