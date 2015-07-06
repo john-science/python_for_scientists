@@ -265,7 +265,7 @@ IOAPI required attributes, found on [IOAPI Docs](https://www.cmascenter.org/ioap
  * **STIME** file start time HHMMSS
  * **TSTEP** file time step HHMMSS
  * **GDNAM** grid name
- * **GDTYP** horizontal coordinate system type, using token values LATGRD3, etc., defined in [PARMS3.EXT](https://www.cmascenter.org/ioapi/documentation/3.1/html/INCLUDE.html#parms)
+ * **GDTYP** horizontal coordinate system type, defined in [PARMS3.EXT](https://www.cmascenter.org/ioapi/documentation/3.1/html/INCLUDE.html#parms), 2 is LCC projection
  * **P_ALP** first map projection descriptive parameter
  * **P_BET** second map projection descriptive parameter
  * **P_GAM** third map projection descriptive parameter
@@ -297,12 +297,14 @@ Since IOAPI requries NETCDF3_CLASSIC formatting, we also need to know about the 
 ## Further Reading
 
  * [Official API Docs](http://unidata.github.io/netcdf4-python/)
+ * [Quick netCDF4 Intro](http://netcdf4-python.googlecode.com/svn/trunk/docs/netCDF4-module.html)
  * [Great GoogleCode Introduction](https://netcdf4-python.googlecode.com/svn/trunk/docs/netCDF4-module.html)
  * [Read & Plot a NetCDF File](http://schubert.atmos.colostate.edu/~cslocum/netcdf_example.html) - Useful example, also plots using MatPlotLib
  * [Tutorial Module](https://code.google.com/p/netcdf4-python/source/browse/trunk/examples/tutorial.py) - This is just a Python module that uses all the netCDF4 features.
  * [CF Conventions - Standard Names](http://cfconventions.org/Data/cf-standard-names/28/build/cf-standard-name-table.html)
  * [IOAPI-based one-man NetCDF Library](https://github.com/barronh/pseudonetcdf)
  * [NetCDF docs](http://www.unidata.ucar.edu/software/netcdf/docs/)
+ * [IOAPI User Manual](https://www.cmascenter.org/ioapi/documentation/3.1/html/AA.html)
  * [IOAPI requirements](https://www.cmascenter.org/ioapi/documentation/3.1/html/REQUIREMENTS.html)
  * [Official GitHub Repo](https://github.com/Unidata/netcdf4-python)
  * [Official UCAR NetCDF Site](http://www.unidata.ucar.edu/software/netcdf/index.html)
