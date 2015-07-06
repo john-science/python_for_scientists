@@ -21,17 +21,13 @@ And the links and download instructions for installing the Python library itself
 To read or write NetCDF files, use the `Dataset` constructor.
 
     >>> from netCDF4 import Dataset
-    >>> root = Dataset("test1.nc", "w", format="NETCDF4")
-    >>> print(root.data_model)
-    NETCDF4
+    >>> root = Dataset("write_test.nc", "w", format="NETCDF4")
     >>> root.close()
 
 The netCDF4 library supports four different NetCDF formats: `NETCDF3_CLASSIC`, `NETCDF3_64BIT`, `NETCDF4_CLASSIC`, and the default is `NETCDF4`. When reading a file, netCDF4 will attempt to auto-detect the file type.
 
     >>> from netCDF4 import Dataset
-    >>> data = Dataset("test2.nc", "r")
-    >>> print(data.data_model)
-    NETCDF3_CLASSIC
+    >>> data = Dataset("read_test.nc", "r")
     >>> data.close()
 
 ## Groups
@@ -41,11 +37,10 @@ Groups are a powerful new ability in NetCDF version 4. They are much akin to the
 Use `createGroup` to create a new group:
 
     >>> from netCDF4 import Dataset
-    >>> root = Dataset("test3.nc", "w", format="NETCDF4")
+    >>> root = Dataset("heat_map.nc", "w", format="NETCDF4")
     >>> test_grp = root.createGroup("testing_data")
     >>> print(root.groups)
     OrderedDict([('testing_data', <netCDF4.Group object at 0x1588e50>)])
-    >>> root.close()
 
 ## Dimensions
 
@@ -79,8 +74,8 @@ You can also ask for the length of a dimension, or if the dimension is unlimited
 
 Variables are where we hold the meat of the data in our NetCDF files. Variables have names, data types, and exist along the dimensions we described earlier. As the name suggests, we can keep adding data along an unlimited dimension will just grow the dimension of the file in that direction.
 
-    >>> temp = root.createVariable("temp", "f4", ("time","level","lat","lon"))
-    >>> rh = root.createVariable("rh", "f", ("time","level","lat","lon"))
+    >>> temp = root.createVariable("temp", "f4", ("time","layer","lat","lon"))
+    >>> rh = root.createVariable("rh", "f", ("time","layer","lat","lon"))
 
 Here we see `createVariable` takes three things: the variable name, its data type, and a tuple describing the dimensions of the variable. There are several data types supported by NetCDF files:
 
@@ -107,102 +102,97 @@ It is also very common to create a variable for each dimension:
 
 It is also possible to create "scalar" variables, that have no dimensions and are just simple numbers. But these are not very common. Just leave off the dimensions:
 
-    >>> energy = root.createVariable("energy", 'f4')
+    >>> num_fires = root.createVariable("num_fires", 'i')
 
 ## Attributes
 
 Attributes are extra information you attach to a group or a variable. They can be strings, numbers, or sequences. Some really common examples are putting attributes on the root group:
 
-    >>> from netCDF4 import Dataset
-    >>> root = Dataset("test4.nc", "w", format="NETCDF4")
-    >>> root.description = "Called to work on the Moon"
-    >>> root.date_created = "June 21, 2001"
-    >>> root.author = "Dave Bowman"
+    >>> root.description = "Heat map in California during the final days."
+    >>> root.apocolypse = 'Aliens invade, the oceans boil, Wierd Al breaks the 10 ten list again.'
+    >>> root.problem = 'Aliens start many wild fires, Smokey the Bear retires.'
 
 Also, variables frequently need attributes:
 
-    >>> h = root.createVariable("height", f4)
-    >>> h.units = "meters"
-    >>> h.whos = "It's your height."
+    >>> temp.units = 'Celcius'
+    >>> rh.units = 'percent'
 
 If you want to see what attributes a group or variable have, use `.ncattrs() :
 
     >>> root.ncattrs()
-    [u'description', u'date_created', u'author']
-    >>>
-    >>> for attr_name in root.ncattrs():
-    ...     print(attr_name)
-    ...     print(getattr(root, attr_name))
+    [u'description', u'apocolypes', u'problem']
+    >>> 
+    >>> for name in root.ncattrs():
+    ...     print(name)
+    ...     print(getattr(root, name))
     ... 
     description
-    Called to work on the Moon
-    date_created
-    June 21, 2001
-    author
-    Dave Bowman
+    Heat map in California during the final days.
+    apocolypes
+    Aliens invade, the oceans boil, Wierd Al breaks the 10 ten list again.
+    problem
+    Aliens start many wild fires, Smokey the Bear retires.
 
 Of course, this also works for variables:
 
-    >>> h.ncattrs()
-    [u'units', u'whos']
-    >>> for attr_name in root.ncattrs():
-    ...     print(attr_name, getattr(root, attr_name))
-    ... 
-    (u'description', u'Called to work on the Moon')
-    (u'date_created', u'June 21, 2001')
-    (u'author', u'Dave Bowman')
+    >>> temp.ncattrs()
+    [u'units']
+    >>> 
+    >>> temp.units
+    u'Celcius'
 
 ## Dealing with Data
 
-First, let's create a simple file:
-
-    >>> from netCDF4 import Dataset
-    >>> root = Dataset("mountain.nc", "w")
-    >>> x = root.createDimension("x", 100)
-    >>> y = root.createDimension("y", 100)
-    >>> elevation = root.createVariable("elevation", "f4", ("x", "y"))
-    >>> elevation.units = "m"
-    >>> len(elevation)
-    100
-    >>> len(elevation[0])
-    100
+Reading and writing data from/to NetCDF files is pretty easy. We will assume the `heat_map.nc` example above.
 
 #### Writing Data
 
-We can set a value into `elevation` like we would set the value of a list:
+The first thing we know is that `temp` is a 4D variable, where one of the dimensions is time. We will get to time in a moment. But first, let's create a 3D dataset to fill in the first time step:
 
-    >>> elevation[0][0] = 432.1
+    >>> temps = 100.0 * random(18 * 321 * 290) + 70.0
+    >>> temps = temps.reshape(18, 321, 290)
 
-In this case, we want to fill all the values in the 100x100 numpy array. To do this, let's build turn our mountain into a triangular pyramid:
+Now we can set the temperature values:
 
-    >>> f = lambda x, y: -51.2*sqrt((x-50)**2+(y-50)**2)+4386.5
-    >>> for row in xrange(100):
-    ...     elevation[row] = map(f, [row]*100, arange(100))
-    ... 
+    >>> temp = temps
 
-Notice that in the first example we wrote a single value into the variable. But in the second example we wrote an entire row at a time. Again, this is much like how we right values to a list. But in this case, we need to use NumPy arrays.
+At this point, we could even address an individual data point directly:
+
+    >>> temp[0][0][0] = -24.5
+
+Or we could use the `list` slicing syntax to set several locations at once:
+
+    >>> from numpy import arange
+    >>> temp[12][34][56:78] = 2.0 * arange(56, 78)
+
+It is important to note though that until you initialize all of the values of a variable, you can't set individual values:
+
+    >>> rh[0][0][0] = 123.4
+    Traceback (most recent call last):
+      File "<stdin>", line 1, in <module>
+      File "netCDF4.pyx", line 2778, in netCDF4.Variable.__getitem__ (netCDF4.c:34626)
+      File "netCDF4.pyx", line 3319, in netCDF4.Variable._get (netCDF4.c:41263)
+    IndexError
 
 #### Reading Data
 
-We can use the same parallels to read from netCDF4 variables that we did to write to them. For instance, we can address a single data point in our variable like:
-    
-    >>> elevation[0][0]
-    766.11328
-    >>> elevation[50][50]
-    4386.5
-    >>> elevation[13][77]
-    2041.3387
+Similarly, once a variable has values, we can read locations using the standard `list` syntax:
 
-But we can also read entire rows, and even use the same slicing syntax we did with lists:
+    >>> temp[0][0][0]
+    -24.5
+    >>> temp[0][50][50]
+    83.317664206502371
+    >>> temp[0][79][25:29]
+    array([ 141.61345365,  129.34104319,  121.31416574,   80.44523185])
 
-    >>> elevation[0][:10]
-    array([  766.11328125,   802.13427734,   837.78222656,   873.04571533,
-             907.91308594,   942.37225342,   976.41088867,  1010.01623535,
-            1043.17529297,  1075.87463379], dtype=float32)
-    >>> elevation[50][45:55]
-    array([ 4130.5       ,  4181.70019531,  4232.89990234,  4284.10009766,
-            4335.29980469,  4386.5       ,  4335.29980469,  4284.10009766,
-            4232.89990234,  4181.70019531], dtype=float32)
+Keep in mind that this won't work if the variable is totally unset:
+
+    >>> rh[0][0][0]
+    Traceback (most recent call last):
+      File "<stdin>", line 1, in <module>
+      File "netCDF4.pyx", line 2778, in netCDF4.Variable.__getitem__ (netCDF4.c:34626)
+      File "netCDF4.pyx", line 3319, in netCDF4.Variable._get (netCDF4.c:41263)
+    IndexError
 
 While the NumPy data structures used in netCDF4 are significantly faster, they were designed to make use of the syntax we already know from the standard Python lists for reading and writing data points. This makes netCDF4 easier to learn and will speed our our work.
 
