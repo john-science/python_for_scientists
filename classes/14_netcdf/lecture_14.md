@@ -47,9 +47,9 @@ Use `createGroup` to create a new group:
 All variables in NetCDF files are defined in terms of a set of dimensions. For instance, meteorological variables might be defined along four dimensions: latitude, longitude, altitude, and time. But surface elevation data might only have two dimensions: latitude and longitude. Obviously, before we create any variables, we need to define the dimensions in the file. Use `createDimension`:
 
     >>> time = root.createDimension("time", None)
+    >>> layer = root.createDimension("layer", 11)
     >>> lat = root.createDimension("lat", 321)
     >>> lon = root.createDimension("lon", 291)
-    >>> layer = root.createDimension("layer", 11)
 
 Here we pass `createDimension` two things: the first is a string name for the dimension and the next is the length of the dimension. By putting `None` for the length of the `"time"` dimension, we are allowing the time dimension to be unlimited.
 
@@ -75,7 +75,7 @@ You can also ask for the length of a dimension, or if the dimension is unlimited
 Variables are where we hold the meat of the data in our NetCDF files. Variables have names, data types, and exist along the dimensions we described earlier. As the name suggests, we can keep adding data along an unlimited dimension will just grow the dimension of the file in that direction.
 
     >>> temp = root.createVariable("temp", "f4", ("time","layer","lat","lon"))
-    >>> rh = root.createVariable("rh", "f", ("time","layer","lat","lon"))
+    >>> rh = root.createVariable("rh", "f", ("time","layer","lat","lon"), least_significant_digit=3)
 
 Here we see `createVariable` takes three things: the variable name, its data type, and a tuple describing the dimensions of the variable. There are several data types supported by NetCDF files:
 
@@ -93,14 +93,14 @@ Data Type | Technical Specifier | Shorthand Specifier
 64-bit unsigned integer | u8 | 
 single-character string | S1 | c
 
+Also notice the use of the `least_significant_digit` keyword. We frequently don't need all the digits of precision that the 32-bit float `f4` provides. In this case we are saying that we only really need 3 decimal places of precision to be stored.
+
 It is also very common to create a variable for each dimension:
 
     >>> times = root.createVariable("time", "f8", ("time"))
     >>> layers = root.createVariable("layer", "i4", ("layer"))
     >>> latitudes = root.createVariable("latitude", "f4", ("lat"))
-    >>> longitudes = root.createVariable("longitude", "f4", ("lon"), least_significant_digit=3)
-
-Notice the use of the `least_significant_digit` keyword. We frequently don't need all the digits of precision that the 32-bit float `f4` provides. In this case we are saying that we only really need 3 decimal places of precision to be stored.
+    >>> longitudes = root.createVariable("longitude", "f4", ("lon"))
 
 It is also possible to create "scalar" variables, that have no dimensions and are just simple numbers. But these are not very common. Just leave off the dimensions:
 
@@ -154,28 +154,23 @@ Reading and writing data from/to NetCDF files is pretty easy. We will assume the
 
 #### Writing Data
 
-The first thing we know is that `temp` is a 4D variable, where one of the dimensions is time. We will get to time in a moment. But first, let's create a 3D dataset to fill in the first time step:
+The first thing we know is that `temp` is a 4D variable, where one of the dimensions is time. So we will create a four-dimensional array, and store the values in `temp`:
 
     >>> from numpy.random import random
-    >>> temps = 100.0 * random(11 * 321 * 291) + 70.0
-    >>> temps = temps.reshape(11, 321, 291)
-
-Now we can set the temperature values:
-
-    >>> temp = temps
+    >>> temp[0:1,0:11,:,:] = 100.0 * random(size=(1, 11, 321, 291)) + 70.0
 
 At this point, we could even address an individual data point directly:
 
-    >>> temp[0][0][0] = -24.5
+    >>> temp[0][0][0][0] = -24.5
 
 Or we could use the `list` slicing syntax to set several locations at once:
 
     >>> from numpy import arange
-    >>> temp[10][34][56:78] = 2.0 * arange(56, 78)
+    >>> temp[0][10][34][56:78] = 2.0 * arange(56, 78)
 
 It is important to note though that until you initialize all of the values of a variable, you can't set individual values:
 
-    >>> rh[0][0][0] = 123.4
+    >>> rh[0][0][0][0] = 123.4
     Traceback (most recent call last):
       File "<stdin>", line 1, in <module>
       File "netCDF4.pyx", line 2778, in netCDF4.Variable.__getitem__ (netCDF4.c:34626)
@@ -186,16 +181,16 @@ It is important to note though that until you initialize all of the values of a 
 
 Similarly, once a variable has values, we can read locations using the standard `list` syntax:
 
-    >>> temp[0][0][0]
+    >>> temp[0][0][0][0]
     -24.5
-    >>> temp[0][50][50]
+    >>> temp[0][0][50][50]
     83.317664206502371
-    >>> temp[0][79][25:29]
+    >>> temp[0][0][79][25:29]
     array([ 141.61345365,  129.34104319,  121.31416574,   80.44523185])
 
 Keep in mind that this won't work if the variable is totally unset:
 
-    >>> rh[0][0][0]
+    >>> rh[0][0][0][0]
     Traceback (most recent call last):
       File "<stdin>", line 1, in <module>
       File "netCDF4.pyx", line 2778, in netCDF4.Variable.__getitem__ (netCDF4.c:34626)
@@ -234,7 +229,22 @@ By contrast, you can use `num2date` to convert these numbers back into something
      datetime.datetime(2015, 6, 28, 0, 0) datetime.datetime(2015, 6, 28, 12, 0)
      datetime.datetime(2015, 6, 29, 0, 0) datetime.datetime(2015, 6, 29, 12, 0)]
 
- * Coming Soon: handling unlimited dimensions
+Working with unlimited dimensions is actually pretty easy. For instance, if we printed out the `shape` of `temp` now, we would get:
+
+    >>> temp.shape
+    (1, 11, 321, 291)
+
+But the time dimension will automatically add up if we simply add more data:
+
+    >>> from numpy.random import random
+    >>> temp[0:5,0:11,:,:] = random(size=(5, 11, 321, 291))
+    >>> print('temp.shape after = ' + str(temp.shape))
+    (5, 11, 321, 291)
+
+So all we had to do above was add data into one of our variables and the time variable was automatically grown to match:
+
+    >>> print(len(time))
+    5
 
 ## Data Compression
 
