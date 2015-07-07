@@ -250,7 +250,12 @@ So all we had to do above was add data into one of our variables and the time va
 
 When creating a variable, you can opt to have the data in that variable compressed:
 
-    >>> pressure = root.createVariable("pressure", "f4", ("time", "layer", "lat", "lon"), zlib=True, least_significant_digit=3, complevel=9)
+    >>> pressure = root.createVariable("pressure",
+                                       "f4",
+                                       ("time", "layer", "lat", "lon"),
+                                       zlib=True,
+                                       least_significant_digit=3,
+                                       complevel=9)
 
 We did three things here to improve the compression of our variable. First and foremost, we set `zlib=True`, this is what defines `pressure` as a compressed variable. Second, we made sure to set `least_significant_digit` to the lowest tolerable level, reducing the number of decimal places we have to store and compressed. Lastly, we set the optional "compression level" parameter `complevel` to 9. The `complevel` parameter can go from 1 (fastest, but least compression) to 9 (slowest, but most compression).
 
