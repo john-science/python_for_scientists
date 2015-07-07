@@ -33,9 +33,8 @@ num_fires = root.createVariable("num_fires", 'i')
 print('\nvariables = ' + str(root.variables.keys()))
 
 # Adding global attributes
-root.description = "Heat map in California during the final days."
-root.apocolypse = 'Aliens invade, the oceans boil, Wierd Al breaks the 10 ten list again.'
-root.problem = 'Aliens start many wild fires, Smokey the Bear retires.'
+root.description = 'Heat map in California during the final days.'
+root.problem = "It's hot. So hot."
 
 # Adding variable attributes
 latitudes.units = "degrees north"
@@ -82,3 +81,14 @@ print('temp.shape before = ' + str(temp.shape))
 temp[0:5,0:11,:,:] = random(size=(5, 11, 321, 291))
 print('temp.shape after = ' + str(temp.shape))
 print('length of time = ' + str(len(time)))
+
+# create compressed variable
+pressure = root.createVariable("pressure",
+                               "f4",
+                               ("time", "layer", "lat", "lon"),
+                               zlib=True,
+                               least_significant_digit=3,
+                               complevel=9)
+
+# don't forget to close the file!
+root.close()
