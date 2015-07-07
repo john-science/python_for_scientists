@@ -245,7 +245,7 @@ So all we had to do above was add data into one of our variables and the time va
 
 ## Data Compression
 
-When creating a variable, you can opt to have the data in that variable compressed:
+When creating a variable, you can opt to have it compressed:
 
     >>> pressure = root.createVariable("pressure",
                                        "f4",
@@ -254,7 +254,7 @@ When creating a variable, you can opt to have the data in that variable compress
                                        least_significant_digit=3,
                                        complevel=9)
 
-We did three things here to improve the compression of our variable. First and foremost, we set `zlib=True`, this is what defines `pressure` as a compressed variable. Second, we made sure to set `least_significant_digit` to the lowest tolerable level, reducing the number of decimal places we have to store and compressed. Lastly, we set the optional "compression level" parameter `complevel` to 9. The `complevel` parameter can go from 1 (fastest, but least compression) to 9 (slowest, but most compression).
+We did three things to improve the compression of the variable. First and foremost, we set `zlib=True`, this is what defines `pressure` as a compressed variable. Second, we set `least_significant_digit` to our lowest tolerable level, reducing the number of decimal places we have to store and compress. Lastly, we set the optional "compression level" parameter `complevel` to 9. The `complevel` parameter can go from 1 (fastest, but least compression) to 9 (slowest, but most compression), 4 is the default.
 
 ## GRIDDED IOAPI Files
 
@@ -327,9 +327,9 @@ The `NETCDF3_CLASSIC` restrictions:
 
  * Coming Soon: examples of creating and reading IOAPI-formatted files
 
-## Example Code
+## Example Scripts
 
-If you want to try running the examples above, you might find it easier to download the entire lecture as a simple [Python script](https://raw.githubusercontent.com/theJollySin/python_for_scientists/master/classes/14_netcdf/working_netcdf4_example.py).
+ * The non-IOAPI portion of the lecture in one handy [Python script](https://raw.githubusercontent.com/theJollySin/python_for_scientists/master/classes/14_netcdf/working_netcdf4_example.py).
 
 ## Problem Sets
 
