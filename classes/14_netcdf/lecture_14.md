@@ -301,6 +301,10 @@ Since IOAPI requries NETCDF3_CLASSIC formatting, we also need to know about the 
  * can only have one unlimited dimension
  * do not support groups (only the root group is allowed)
 
+## Example Code
+
+If you want to try running the examples above, you might find it easier to download the entire lecture as a simple [Python script](https://raw.githubusercontent.com/theJollySin/python_for_scientists/master/classes/14_netcdf/working_netcdf4_example.py).
+
 ## Problem Sets
 
  * Coming Soon
