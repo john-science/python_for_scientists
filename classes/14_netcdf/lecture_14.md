@@ -110,9 +110,8 @@ It is also possible to create "scalar" variables, that have no dimensions and ar
 
 Attributes are extra information you attach to a group or a variable. They can be strings, numbers, or sequences. Some really common examples are putting attributes on the root group:
 
-    >>> root.description = "Heat map in California during the final days."
-    >>> root.apocolypse = 'Aliens invade, the oceans boil, Wierd Al breaks the 10 ten list again.'
-    >>> root.problem = 'Aliens start many wild fires, Smokey the Bear retires.'
+    >>> root.description = 'Heat map in California during the final days.'
+    >>> root.problem = "It's hot. So hot."
 
 Also, variables frequently need attributes:
 
@@ -127,7 +126,7 @@ Also, variables frequently need attributes:
 If you want to see what attributes a group or variable have, use `.ncattrs() :
 
     >>> root.ncattrs()
-    [u'description', u'apocolypes', u'problem']
+    [u'description', u'problem']
     >>> 
     >>> for name in root.ncattrs():
     ...     print(name)
@@ -135,10 +134,8 @@ If you want to see what attributes a group or variable have, use `.ncattrs() :
     ... 
     description
     Heat map in California during the final days.
-    apocolypes
-    Aliens invade, the oceans boil, Wierd Al breaks the 10 ten list again.
     problem
-    Aliens start many wild fires, Smokey the Bear retires.
+    It's hot. So hot.
 
 Of course, this also works for variables:
 
