@@ -265,6 +265,11 @@ IOAPI-formatted NetCDF files have a few restrictions:
  * must have a TFLAG variable
  * must be formatted for NETCDF3_CLASSIC
  * requires a certain set of global attributes
+ * [variables](https://www.cmascenter.org/ioapi/documentation/3.1/html/VBLE.html)
+  * names = 16 characters max
+  * must have "units" attribute = 16 characters max
+  * must have "var_desc" description attribute = 80 characters max
+ * layers count from 1 to the value of the `NLAYS3D` attribute
 
 IOAPI required attributes, found on [IOAPI Docs](https://www.cmascenter.org/ioapi/documentation/3.1/html/INCLUDE.html#fdesc):
 
