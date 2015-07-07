@@ -256,21 +256,27 @@ When creating a variable, you can opt to have the data in that variable compress
 
 We did three things here to improve the compression of our variable. First and foremost, we set `zlib=True`, this is what defines `pressure` as a compressed variable. Second, we made sure to set `least_significant_digit` to the lowest tolerable level, reducing the number of decimal places we have to store and compressed. Lastly, we set the optional "compression level" parameter `complevel` to 9. The `complevel` parameter can go from 1 (fastest, but least compression) to 9 (slowest, but most compression).
 
-## IOAPI
+## GRIDDED IOAPI Files
 
-#### The IOAPI Format
+Many programs that use NetCDF files will require them to be in the IOAPI format. These IOAPI-formatted NetCDF files will be read/written by `netCDF4` like any other NetCDF files, but will have several restrictions which define them. There are [8 different types](https://www.cmascenter.org/ioapi/documentation/3.1/html/VBLE.html) of IOAPI file currently supported, and for the sake of brevity, we will only discuss the [GRIDDED IOAPI](https://www.cmascenter.org/ioapi/documentation/3.1/html/DATATYPES.html#grdded) format used for representing 2D or 3D time-dependent variables.
 
-Many programs that use NetCDF file will require that they be IOAPI-formatted. The IOAPI format is a more restricted version of the general NetCDF format, so you can read and write IOAPI-formatted NetCDF files the same way as any other NetCDF file, but there are several restrictions you will have to follow.
+#### The GRIDDED IOAPI Format
 
 IOAPI/NetCDF restrictions:
 
  * must be formatted for NETCDF3_CLASSIC
- * must have a TFLAG variable
+ * must have six dimensions:
+  * TSTEP = Unlimited dimension
+  * DATE-TIME = Julian Day and Time (YYYYJJJJ, HHMMSS)
+  * LAY = number of vertical layers
+  * VAR = number of variables
+  * ROW = number of rows
+  * COL = number of columns
+ * must have a TFLAG variable to map DATE-TIMES to each variable's TSTEP (TSTEP, VAR, DATE-TIME)
  * [variables](https://www.cmascenter.org/ioapi/documentation/3.1/html/VBLE.html)
-  * names = 16 characters max
-  * must have "units" attribute = 16 characters max
-  * must have "var_desc" description attribute = 80 characters max
- * layers count from 1 to the value of the `NLAYS3D` attribute
+  * names = 16 characters (with trailing spaces)
+  * must have "units" attribute = 16 characters (with trailing spaces)
+  * must have "var_desc" description attribute = 80 characters (with trailing spaces)
  * requires a certain set of [global attributes](https://www.cmascenter.org/ioapi/documentation/3.1/html/INCLUDE.html#fdesc):
   * **IOAPI_VERSION** version id string
   * **EXEC_ID** value of environment variable EXECUTION_ID 
@@ -305,6 +311,12 @@ IOAPI/NetCDF restrictions:
   * **VGLVLS** array of vertical coordinate grid level values
   * **NVARS** number of variables
   * **VAR-LIST** string representing list of variable names
+
+I find these restrictions are generally enough to worry about. Are you really going to need to worry about the fact that you can't have more than 1024 variables in a file? But there are many more restrictions that define an IOAPI NetCDF file, GRIDDED or otherwise. You can find these in the [official documentation](https://www.cmascenter.org/ioapi/documentation/3.1/html/VBLE.html).
+
+GRIDDED IOAPI restrictions:
+
+ * global attribute `NTHIK` is ignored (`NTHIK = 0`)
 
 The `NETCDF3_CLASSIC` restrictions:
 
