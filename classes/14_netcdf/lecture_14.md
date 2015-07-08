@@ -382,8 +382,8 @@ And all of these attributes are easily accessible:
 
 ## Example Scripts
 
- * The non-IOAPI portion of the lecture in one handy [Python script](https://raw.githubusercontent.com/theJollySin/python_for_scientists/master/classes/14_netcdf/netcdf4_class_examples.py).
- * Example of making a copy of a GRIDDED IOAPI NetCDF file with a short [Python script](https://raw.githubusercontent.com/theJollySin/python_for_scientists/master/classes/14_netcdf/make_gridded_ioapi_template.py).
+ * The non-IOAPI portion of the lecture in one handy [Python script](netcdf4_class_examples.py).
+ * Example of making a copy of a GRIDDED IOAPI NetCDF file with a short [Python script](make_gridded_ioapi_template.py).
 
 ## Problem Sets
 
