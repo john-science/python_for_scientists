@@ -8,11 +8,11 @@ In this class, we will use the [netCDF4](https://github.com/Unidata/netcdf4-pyth
 
 #### Installation
 
-The `netCDF4` library does not come standard with Python, so you will have to install it yourself. The standard installation procedure for installing the prerequisits from source can be found at:
+The `netCDF4` library does not come standard with Python, so you will have to install it yourself. The standard installation procedure for installing the dependencies from source can be found at:
 
  * [Linux Install Instructions](https://code.google.com/p/netcdf4-python/wiki/UbuntuInstall)
 
-And the links and download instructions for installing the Python library itself can be found at:
+I found this link better for downloading and installing the Python library itself:
 
  * [Google Code Instructions](http://netcdf4-python.googlecode.com/svn/trunk/docs/netCDF4-module.html)
 
@@ -154,7 +154,7 @@ Of course, this also works for variables:
 
 ## Dealing with Data
 
-Reading and writing data from/to NetCDF files is pretty easy. We will assume the `heat_map.nc` example above.
+Reading and writing data to/from NetCDF files is pretty easy. 
 
 #### Writing Data
 
