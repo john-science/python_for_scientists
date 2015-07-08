@@ -323,32 +323,87 @@ The `NETCDF3_CLASSIC` restrictions:
  * can only have one unlimited dimension
  * do not support groups (only the root group is allowed)
 
-#### IOAPI Examples with netCDF4
+#### GRIDDED IOAPI Examples
 
- * Coming Soon: examples of creating and reading IOAPI-formatted files
+For the following examples, imagine we are reading a GRIDDED-type IOAPI NetCDF file called "small_test.ncf".
+
+Of course, all GRIDDED IOAPI files have the same dimensions:
+
+    >>> root.dimensions.keys()
+    [u'TSTEP', u'DATE-TIME', u'LAY', u'VAR', u'ROW', u'COL']
+
+But what dimensions does this file have?
+
+    >>> root.variables.keys()
+    [u'TFLAG', u'PM25']
+
+Well, `'PM25'` may have been a surprise, but we already knew the file had to contain a `TFLAG` variable:
+
+    >>> print(root.variables['TFLAG'])
+    <type 'netCDF4.Variable'>
+    int32 TFLAG(TSTEP, VAR, DATE-TIME)
+        units: <YYYYDDD,HHMMSS>
+        long_name: TFLAG           
+        var_desc: Timestep-valid flags:  (1) YYYYDDD or (2) HHMMSS                                
+    unlimited dimensions: TSTEP
+    current shape = (1, 1, 2)
+    >>> 
+    >>> print(root.variables['TFLAG'][:])
+    [[[2007335       0]]]
+
+And all IOAPI-formatted NetCDF files have to contain the same list of attributes:
+
+    >>> sorted(root.ncattrs())
+    [u'CDATE', u'CTIME', u'EXEC_ID', u'FILEDESC', u'FTYPE', u'GDNAM', u'GDTYP',
+     u'HISTORY', u'IOAPI_VERSION', u'NCOLS', u'NLAYS', u'NROWS', u'NTHIK',
+     u'NVARS', u'P_ALP', u'P_BET', u'P_GAM', u'SDATE', u'STIME', u'TSTEP',
+     u'UPNAM', u'VAR-LIST', u'VGLVLS', u'VGTOP', u'VGTYP', u'WDATE', u'WTIME',
+     u'XCELL', u'XCENT', u'XORIG', u'YCELL', u'YCENT', u'YORIG']
+
+And all of these attributes are easily accessible:
+
+    >>> root.IOAPI_VERSION
+    u'$Id: @(#) ioapi library version 3.0 $                                           '
+    >>> root.NVARS
+    1
+    >>> root.NLAYS
+    1
+    >>> root.NROWS
+    291
+    >>> root.NCOLS
+    321
 
 ## Example Scripts
 
  * The non-IOAPI portion of the lecture in one handy [Python script](https://raw.githubusercontent.com/theJollySin/python_for_scientists/master/classes/14_netcdf/netcdf4_class_examples.py).
+ * Example of making a copy of a GRIDDED IOAPI NetCDF file with a short [Python script](https://raw.githubusercontent.com/theJollySin/python_for_scientists/master/classes/14_netcdf/make_gridded_ioapi_template.py).
 
 ## Problem Sets
 
- * Coming Soon
+ * [Basic netCDF4 Operations](problem_set_1_netcdf4_operations.md)
 
 ## Further Reading
+
+netCDF4 resources:
 
  * [Official API Docs](http://unidata.github.io/netcdf4-python/)
  * [Quick netCDF4 Intro](http://netcdf4-python.googlecode.com/svn/trunk/docs/netCDF4-module.html)
  * [Great GoogleCode Introduction](https://netcdf4-python.googlecode.com/svn/trunk/docs/netCDF4-module.html)
  * [Read & Plot a NetCDF File](http://schubert.atmos.colostate.edu/~cslocum/netcdf_example.html) - Useful example, also plots using MatPlotLib
- * [Tutorial Module](https://code.google.com/p/netcdf4-python/source/browse/trunk/examples/tutorial.py) - This is just a Python module that uses all the netCDF4 features.
- * [CF Conventions - Standard Names](http://cfconventions.org/Data/cf-standard-names/28/build/cf-standard-name-table.html)
- * [IOAPI-based one-man NetCDF Library](https://github.com/barronh/pseudonetcdf)
+ * [netCDF4 Tutorial Module](https://code.google.com/p/netcdf4-python/source/browse/trunk/examples/tutorial.py) - This is just a Python module that uses all the netCDF4 features.
+ * [Official netCDF4 GitHub Repo](https://github.com/Unidata/netcdf4-python)
+
+General NetCDF resources:
+
  * [NetCDF docs](http://www.unidata.ucar.edu/software/netcdf/docs/)
+ * [Official UCAR NetCDF Site](http://www.unidata.ucar.edu/software/netcdf/index.html)
+
+IOAPI resources:
+
+ * [IOAPI-based one-man NetCDF Library](https://github.com/barronh/pseudonetcdf)
  * [IOAPI User Manual](https://www.cmascenter.org/ioapi/documentation/3.1/html/AA.html)
  * [IOAPI requirements](https://www.cmascenter.org/ioapi/documentation/3.1/html/REQUIREMENTS.html)
- * [Official GitHub Repo](https://github.com/Unidata/netcdf4-python)
- * [Official UCAR NetCDF Site](http://www.unidata.ucar.edu/software/netcdf/index.html)
+ * [CF Conventions - Standard Names](http://cfconventions.org/Data/cf-standard-names/28/build/cf-standard-name-table.html)
  * [IOAPI netCDF4 Example](https://dawes.sph.unc.edu/uncaqmlsvn/pyPASS/trunk/Utilities/ModelMetaData.py)
 
 
