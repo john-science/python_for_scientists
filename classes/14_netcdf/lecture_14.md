@@ -329,7 +329,7 @@ The `NETCDF3_CLASSIC` restrictions:
 
 ## Example Scripts
 
- * The non-IOAPI portion of the lecture in one handy [Python script](https://raw.githubusercontent.com/theJollySin/python_for_scientists/master/classes/14_netcdf/working_netcdf4_example.py).
+ * The non-IOAPI portion of the lecture in one handy [Python script](https://raw.githubusercontent.com/theJollySin/python_for_scientists/master/classes/14_netcdf/netcdf4_class_examples.py).
 
 ## Problem Sets
 
