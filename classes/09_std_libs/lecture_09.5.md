@@ -155,7 +155,7 @@ Here's another short module that doesn't do much but show you how `sys.argv` wor
         print('sys.argv:')
         print(sys.argv)
         print('length sys.argv')
-        print('len(sys.argv))
+        print(len(sys.argv))
         print('One at a time:')
         
         for key, value in enumerate(sys.argv):
@@ -218,6 +218,15 @@ Frequently, we will want to read the data from a zipfile. For this example, let'
     >>> file1 = contents.namelist()[0]
     >>> data = contents.read(file1)
 
+#### Extracting from a Zipped File
+
+Finally, let's use the `extract` function to extract files from an unzipped directory:
+
+    >>> from zipfile import ZipFile
+    >>> z = ZipFile('test.zip')
+    >>> for f in z.namelist():
+    ...     z.extract(f)
+
 #### Zipping Files
 
 In this example we zip all the files in a directory, using `os` and `glob` from above:
@@ -232,15 +241,6 @@ In this example we zip all the files in a directory, using `os` and `glob` from 
     >>>     file.write(file_path, os.path.basename(file_path), ZIP_DEFLATED)
     ...
     >>> file.close()
-
-#### Extracting from a Zipped File
-
-Finally, let's use the `extract` function to extract files from an unzipped directory:
-
-    >>> from zipfile import ZipFile
-    >>> z = ZipFile('test.zip')
-    >>> for f in z.namelist():
-    ...     z.extract(f)
 
 ## gzip
 
