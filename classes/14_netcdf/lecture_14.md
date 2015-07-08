@@ -30,6 +30,13 @@ The netCDF4 library supports four different NetCDF formats: `NETCDF3_CLASSIC`, `
     >>> data = Dataset("read_test.nc", "r")
     >>> data.close()
 
+Following the usual Python syntax, you can open an existing NetCDF file to write more date to it by using `r+`.
+
+    >>> from netCDF4 import Dataset
+    >>> data = Dataset("read_test.nc", "r+")
+    >>> # add more data
+    >>> data.close()
+
 ## Groups
 
 Groups are a powerful new ability in NetCDF version 4. They are much akin to the folder/directory structure in your computer. Each group can contain everything that a NetCDF file can contain (dimensions, variables, and attributes), but also other groups. Every NetCDF version 4 file starts out with one root group that basically contains the entire file.
