@@ -14,6 +14,6 @@
 
 ## Solutions
 
- * Coming Soon
+ * [Basic netCDF4 - Solutions](problem_set_1_solutions.md)
 
 [Back to Lecture](lecture_14.md)
