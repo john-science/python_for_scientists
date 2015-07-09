@@ -8,7 +8,6 @@ cases that are not checked: the units of all the variables, the
 NETCDF format of the files, etc.
 '''
 
-
 import sys
 from netCDF4 import Dataset
 
@@ -35,7 +34,7 @@ def average_two_similar_netcdfs(file1, file2, outfile):
 
     # verify that your dimensions all have the same length
     for dim in root.dimensions.keys():
-        if len(root.dimensions[key]) != len(root2.dimensions[key]):
+        if len(root.dimensions[dim]) != len(root2.dimensions[dim]):
             raise Exception('The dimension ' + dim + ' is not the same length in both files.')
 
     # verify that your two files have the same variables
