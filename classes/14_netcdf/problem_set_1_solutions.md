@@ -79,6 +79,15 @@
 
 ## IOAPI
 
- * Coming Soon
+    def extract_IOAPI_variable(file_path, var):
+        '''Extract the values of a variable in an IOAPI NetCDF file.
+        This will return a multi-dimensional array of
+        the NetCDF file variables.'''
+        root = Dataset(file_path, 'r', format='NETCDF3_CLASSIC')
+    
+        if var not in root.variables.keys():
+            raise Exception('The variable ' + str(variable) + ' does not exist.')
+    
+        return root.variables[var][:]
 
 [Back to Problem Set](problem_set_1_netcdf4_operations.md)
