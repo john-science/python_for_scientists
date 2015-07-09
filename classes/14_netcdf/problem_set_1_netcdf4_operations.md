@@ -49,7 +49,12 @@ Use the functions you've already created:
 
 ## IOAPI Files
 
- * Coming Soon
+Write a function called `extract_IOAPI_variable` that:
+
+1. Takes two inputs: one file path and one NetCDF variable name.
+2. Opens a IOAPI NetCDF file using `netCDF4.Dataset`.
+3. Checks that the variable exists in the file, and raises an `Exception` if it doesn't.
+4. Returns a multi-dimensional NumPy array of all the values of that variable in the file.
 
 ## Solutions
 
