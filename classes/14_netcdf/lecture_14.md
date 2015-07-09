@@ -384,8 +384,12 @@ And all of these attributes are easily accessible:
 
 ## Example Scripts
 
- * The non-IOAPI portion of the lecture in one handy [Python script](netcdf4_class_examples.py).
- * Example of making a copy of a GRIDDED IOAPI NetCDF file with a short [Python script](make_gridded_ioapi_template.py).
+Working with NetCDF files can take some time getting used to. So here are some short scripts to serve as examples of doing various small tasks.
+
+ * [Script](netcdf4_class_examples.py) version of the non-IOAPI portion of this lecture.
+ * [Script](average_two_netcdfs.py) that averages two very similar NetCDF files.
+ * [Script](make_gridded_ioapi_template.py) that will make a copy of a GRIDDED IOAPI NetCDF file with all empty data.
+ * [Script](extract_cell_from_3d_ioapi.py) that will extract the values at a single grid cell for a GRIDDED IOAPI NetCDF.
 
 ## Problem Sets
 
