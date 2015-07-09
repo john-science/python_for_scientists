@@ -113,6 +113,8 @@ It is also possible to create "scalar" variables, that have no dimensions and ar
 
     >>> num_fires = root.createVariable("num_fires", 'i')
 
+**FUN FACT**: Variables and Dimensions can not be deleted from a NetCDF file. This is not a bug in `netCDF4`, but a feature in the underlying C API. Your only option is to copy the file bit-by-bit, and just skip the variable in question.
+
 ## Attributes
 
 Attributes are extra information you attach to a group or a variable. They can be strings, numbers, or sequences. Some really common examples are putting attributes on the root group:
