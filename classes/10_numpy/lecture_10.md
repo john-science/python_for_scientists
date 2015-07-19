@@ -293,6 +293,40 @@ So, `numpy` provides the `tolist()` method, which will convert deep into the `ar
     >>> m.tolist()
     [[1, 2, 3], [7, 8, 9]]
 
+#### combining arrays
+
+There are two convenient methods to combine arrays in numpy, `concatenate` and `vstack`:
+
+    >>> import numpy as np
+    >>> from numpy import array
+    >>> 
+    >>> a = array([1,2,3,4,5])
+    >>> b = array([9,8,7,6,5])
+    >>> 
+    >>> np.concatenate((a, b))
+    array([1, 2, 3, 4, 5, 9, 8, 7, 6, 5])
+    >>> 
+    >>> np.vstack((a, b))
+    array([[1, 2, 3, 4, 5],
+           [9, 8, 7, 6, 5]])
+
+For one-dimensional arrays, these behave quite differently. But for multi-dimensional arrays, the differences disappear:
+
+    >>> c = array([[1,2,3], [4,5,6]])
+    >>> d = array([[5,6,7], [8,9,0]])
+    >>> 
+    >>> np.concatenate((c, d))
+    array([[1, 2, 3],
+           [4, 5, 6],
+           [5, 6, 7],
+           [8, 9, 0]])
+    >>> 
+    >>> np.vstack((c, d))
+    array([[1, 2, 3],
+           [4, 5, 6],
+           [5, 6, 7],
+           [8, 9, 0]])
+
 ## NumPy Random Numbers
 
 NumPy also has a lot of tools built in to help you generate [random numbers](https://en.wikipedia.org/wiki/Pseudorandom_number_generator). We will not cover the topic of random number generation in detail, as it is a whole field onto itself. If this topic interests you, start your research [here](https://en.wikipedia.org/wiki/Random_number_generation).  There are many different distributions of random numbers, and though we will only cover two, there are many more supported by NumPy that you can read about in the [documentation](http://docs.scipy.org/doc/numpy/reference/routines.random.html).
