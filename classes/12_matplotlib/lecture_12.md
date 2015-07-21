@@ -8,7 +8,7 @@ Like most of the libraries used in our "special topics" lectures, matplotlib doe
 
 #### Anaconda
 
-Consider installing [Anaconda](http://docs.continuum.io/anaconda/install.html) instead. Anaconda is Python packaged with over 100 tools and libraries that you will want (This includes NumPy and everything else we will use in this course.)
+Consider installing [Anaconda](http://docs.continuum.io/anaconda/install.html) instead. Anaconda is Python packaged with over 100 tools and libraries that you will want (This includes matplotlib and everything else we will use in this course.)
 
 ## Outline
 
