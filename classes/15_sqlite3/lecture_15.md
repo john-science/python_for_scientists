@@ -8,14 +8,9 @@ Most databases are [servers](https://en.wikipedia.org/wiki/Server_%28computing%2
 
 ## Creating a Database
 
-We will not covert the topic of databases in great detail, but like most databases, `sqlite3` is a relational database.
+We will not covert the topic of databases in great detail, but like most databases, `sqlite3` is a [relational database](https://en.wikipedia.org/wiki/Relational_database). That is, inside the database we have tables of data organized by rows and columns. And these tables can be organized inside schemas.
 
-![database diagram](https://cdn.tutsplus.com/net/authors/lalith-polepeddi/relational-databases-for-dummies-fig1.png)
-
-
-Blah, blah, blah, content...
-
- * Coming Soon
+ * Coming Soon: database diagram
 
 ## Reading a Database
 
