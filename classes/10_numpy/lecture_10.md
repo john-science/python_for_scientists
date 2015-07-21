@@ -52,7 +52,7 @@ There are, of course, many other data types in NumPy. For a full list, look [her
 
 ### Creating Arrays
 
-One major difference between lists and NumPy.arrays is that arrays don't just have to be one-dimensional like lists:
+One difference between lists and NumPy.arrays is that arrays don't just have to be one-dimensional:
 
     >>> from numpy import array
     >>>
@@ -64,7 +64,7 @@ One major difference between lists and NumPy.arrays is that arrays don't just ha
     array([[ 1.,  2.,  3.],
            [ 7.,  8.,  9.]])
 
-And if you start out with a 1D `array`, you can make a 2D `array` by using `reshape`:
+And if you start out with a 1D `array`, you can make a 2D `array` using `reshape`:
 
     >>> a = array([1, 2, 3, 4.5])
     >>> b = a.reshape(2, 2)
@@ -72,7 +72,9 @@ And if you start out with a 1D `array`, you can make a 2D `array` by using `resh
     array([[ 1. ,  2. ],
            [ 3. ,  4.4]])
 
-And you can use `numpy.arange` to fill a `numpy.array` much like you used `range` to fill a list:
+The `.reshape()` method is really pretty smart. It doesn't move any of the data around in memory, which would be quite slow. All it does is change how you access data. This is an extremely convenient feature that will almost always make your life easier.
+
+You can use `numpy.arange` to fill a `numpy.array` much like you used `range` to fill a Python-standard `list`:
 
     >>> count = range(5)
     >>> count
@@ -84,7 +86,7 @@ And you can use `numpy.arange` to fill a `numpy.array` much like you used `range
     >>> c
     array([ 0,  1,  2,  3,  4,  5,  6,  7,  8,  9, 10, 11, 12, 13, 14, 15, 16, 17])
 
-And, of course, you can use `arange` and `reshape` together:
+Here's a quick example using `arange` and `reshape` together:
 
     >>> d = arange(18).reshape(3,6)
     >>> d
@@ -92,7 +94,7 @@ And, of course, you can use `arange` and `reshape` together:
            [ 6,  7,  8,  9, 10, 11],
            [12, 13, 14, 15, 16, 17]])
 
-Of course, you can also create a multi-dimensional `array` right from the start:
+You can also create a multi-dimensional `array` right from the start:
 
     >>> from numpy import array
     >>> e = array([[0, 1, 2, 3], [4, 5, 6, 7]])
@@ -134,7 +136,7 @@ Similarly, you can use `ones` to initialize an array to all 1 values:
 
 ### NumPy array Operations
 
-Another difference you will see between Python lists and NumPy arrays is the helper methods.
+Another great feature of numpy arrays is the huge variety of helper methods.
 
 #### ndim
 
@@ -148,10 +150,10 @@ Use `.ndim` to determine how many dimensions your multi-dimensional `array` has:
     >>> r.ndim
     2
 
-Of course, an `array` can have a lot of dimensions:
+And another example:
 
-    >>> threed = zeros((2, 2, 2), dtype=int)
-    >>> threed.ndim
+    >>> cube = zeros((2, 2, 2), dtype=int)
+    >>> cube.ndim
     3
 
 #### shape
@@ -160,6 +162,9 @@ Use `.shape` get more information about the structure of your `array`:
 
     >>> r.shape
     (3, 2)
+    >>>
+    >>> cube.shape
+    (2, 2, 2)
 
 #### dtype
 
@@ -176,6 +181,7 @@ Use `flatten` to convert a multi-dimensional `array` to a single dimension:
     >>> a
     array([[2, 3, 4],
            [7, 8, 9]])
+    >>>
     >>> a.flatten()
     array([2, 3, 4, 7, 8, 9])
 
@@ -187,25 +193,29 @@ Use `transpose` to flip the x and y directions in your `array`:
     >>> a
     array([[2, 3, 4],
            [7, 8, 9]])
+    >>>
     >>> a.transpose()
     array([[2, 7],
            [3, 8],
            [4, 9]])
 
-Alternatively, you can just use `.T` to return the transpose of an `array`, without changing the original array in memory.
+Alternatively, you can just use the shorthand `.T` to do the same thing.
 
     >>> a = array([[2, 3, 4], [7, 8, 9]])
     >>> a.T
     array([[2, 7],
            [3, 8],
            [4, 9]])
+    >>>
     >>> a
     array([[2, 3, 4],
            [7, 8, 9]])
 
+Notice, neither of these change what is in the `a` spot in memory; they just return a totally new array.
+
 #### sqrt
 
-There are even mathematical functions built into NumPy that will apply to all of the elements of an array, like `sqrt`:
+There are even mathematical functions built into NumPy that will apply changes to all of the elements of an array, like `sqrt`:
 
     >>> from numpy import sqrt
     >>> a = array([1, 4, 9, 25, 144, 81])
@@ -221,8 +231,10 @@ Use `ceil` and `floor` to round NumPy `float64`s up or down to the nearest integ
     >>> a = array([1.001, 2.49, 2.5, 3.5001, 9.9])
     >>> a
     array([ 1.001 ,  2.49  ,  2.5   ,  3.5001,  9.9   ])
+    >>> 
     >>> ceil(a)
     array([  2.,   3.,   3.,   4.,  10.])
+    >>> 
     >>> floor(a)
     array([ 1.,  2.,  2.,  3.,  9.])
 
@@ -232,6 +244,7 @@ NumPy also includes the ability to make the sum and product of all the elements 
 
     >>> from numpy import sum, prod
     >>> a = array([1, 2, 3, 4, 5, 6])
+    >>> 
     >>> sum(a)
     21
     >>> prod(a)
