@@ -6,6 +6,10 @@
 
 Like most of the libraries used in our "special topics" lectures, Pandas does not come standard with Python and will have to be installed. Please check the official [SciPy Stack Install Guide](http://www.scipy.org/install.html). For Linux and Mac, the installation is merely a single line of `apt-get`. For Windows, pre-built installers are provided.
 
+#### Anaconda
+
+Consider installing [Anaconda](http://docs.continuum.io/anaconda/install.html) instead. Anaconda is Python packaged with over 100 tools and libraries that you will want (This includes NumPy and everything else we will use in this course.)
+
 ## Data Frames and Data Sets
 
  * Coming Soon
