@@ -1,6 +1,6 @@
 # NumPy
 
-NumPy is a really popular mathematics library for Python. Why do you care? Because many of the other libraries scientists and engineers care about are based on NumPy. In fact, several of the libraries we will cover in this class require NumPy to run: SciPy, matplotlib, pandas, and netCDF4.
+NumPy is the most popular mathematics library for Python. In fact, NumPy is so popular that is has spurred the development of hundreds of other scientific libraries in Python. Several of the libraries we will cover in this class require at least a basic understanding of NumPy: SciPy, matplotlib, pandas, and netCDF4. Without NumPy, Python wouldn't be nearly so popular, or useful, to scientists and engineers.
 
 #### Installation
 
@@ -9,6 +9,10 @@ NumPy is the first third-party library we have seen in this class. But it won't 
 You will need Python v2.4, v2.5, v2.6, v2.7 or v3.2 and newer to use NumPy and all of the other libraries that require it.
 
 You can find instructions for installing NumPy [here](http://docs.scipy.org/doc/numpy/user/install.html).
+
+#### Anaconda
+
+Consider installing [Anaconda](http://docs.continuum.io/anaconda/install.html) instead. Anaconda is Python packaged with over 100 tools and libraries that you will want (This includes NumPy and everything else we will use in this course.)
 
 ## The NumPy array
 
