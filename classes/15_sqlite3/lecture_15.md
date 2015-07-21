@@ -8,6 +8,13 @@ Most databases are [servers](https://en.wikipedia.org/wiki/Server_%28computing%2
 
 ## Creating a Database
 
+We will not covert the topic of databases in great detail, but like most databases, `sqlite3` is a relational database.
+
+![database diagram](https://cdn.tutsplus.com/net/authors/lalith-polepeddi/relational-databases-for-dummies-fig1.png)
+
+
+Blah, blah, blah, content...
+
  * Coming Soon
 
 ## Reading a Database
@@ -36,6 +43,10 @@ Most databases are [servers](https://en.wikipedia.org/wiki/Server_%28computing%2
 
 ## Further Reading
 
- * Coming Soon
+ * [Tutorials Point sqlite3 tutorial](http://www.tutorialspoint.com/sqlite/sqlite_python.htm)
+ * [Zet Code sqlite3 tutorial](http://zetcode.com/db/sqlitepythontutorial/)
+ * [Python Central sqlite3 tutorial](http://www.pythoncentral.io/introduction-to-sqlite-in-python/)
+ * [Relational Databases](https://en.wikipedia.org/wiki/Relational_database)
+ * [Database Schemas](https://www.informit.com/library/content.aspx?b=STY_Sql_24hours&seqNum=25)
 
 [Back to Syllabus](../../README.md)
