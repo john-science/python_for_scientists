@@ -188,6 +188,17 @@ Use `transpose` to flip the x and y directions in your `array`:
            [3, 8],
            [4, 9]])
 
+Alternatively, you can just use `.T` to return the transpose of an `array`, without changing the original array in memory.
+
+    >>> a = array([[2, 3, 4], [7, 8, 9]])
+    >>> a.T
+    array([[2, 7],
+           [3, 8],
+           [4, 9]])
+    >>> a
+    array([[2, 3, 4],
+           [7, 8, 9]])
+
 #### sqrt
 
 There are even mathematical functions built into NumPy that will apply to all of the elements of an array, like `sqrt`:
