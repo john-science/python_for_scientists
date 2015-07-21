@@ -325,21 +325,6 @@ So, `numpy` provides the `tolist()` method, which will convert deep into the `ar
 
 There are two convenient methods to combine arrays in numpy, `concatenate` and `vstack`:
 
-    >>> import numpy as np
-    >>> from numpy import array
-    >>> 
-    >>> a = array([1,2,3,4,5])
-    >>> b = array([9,8,7,6,5])
-    >>> 
-    >>> np.concatenate((a, b))
-    array([1, 2, 3, 4, 5, 9, 8, 7, 6, 5])
-    >>> 
-    >>> np.vstack((a, b))
-    array([[1, 2, 3, 4, 5],
-           [9, 8, 7, 6, 5]])
-
-For one-dimensional arrays, these behave quite differently. But for multi-dimensional arrays, the differences disappear:
-
     >>> c = array([[1,2,3], [4,5,6]])
     >>> d = array([[5,6,7], [8,9,0]])
     >>> 
@@ -355,9 +340,24 @@ For one-dimensional arrays, these behave quite differently. But for multi-dimens
            [5, 6, 7],
            [8, 9, 0]])
 
+The above 2D array example makes these seem very similar. But there is a difference, which is easiest to see in a 1D example:
+
+    >>> import numpy as np
+    >>> from numpy import array
+    >>> 
+    >>> a = array([1,2,3,4,5])
+    >>> b = array([9,8,7,6,5])
+    >>> 
+    >>> np.concatenate((a, b))
+    array([1, 2, 3, 4, 5, 9, 8, 7, 6, 5])
+    >>> 
+    >>> np.vstack((a, b))
+    array([[1, 2, 3, 4, 5],
+           [9, 8, 7, 6, 5]])
+
 ## NumPy Random Numbers
 
-NumPy also has a lot of tools built in to help you generate [random numbers](https://en.wikipedia.org/wiki/Pseudorandom_number_generator). We will not cover the topic of random number generation in detail, as it is a whole field onto itself. If this topic interests you, start your research [here](https://en.wikipedia.org/wiki/Random_number_generation).  There are many different distributions of random numbers, and though we will only cover two, there are many more supported by NumPy that you can read about in the [documentation](http://docs.scipy.org/doc/numpy/reference/routines.random.html).
+NumPy also has a lot of tools built in to help you generate [random numbers](https://en.wikipedia.org/wiki/Pseudorandom_number_generator). We will not cover the topic of random number generation in detail, as it is a whole field onto itself. If this topic interests you, start your research [here](https://en.wikipedia.org/wiki/Random_number_generation). There are many different distributions of random numbers, and though we will only cover two, there are many more supported by NumPy that you can read about in the [documentation](http://docs.scipy.org/doc/numpy/reference/routines.random.html).
 
 ### Flat Distribution
 
@@ -371,8 +371,8 @@ Use `random.rand` to fill a NumPy `array` with random `float64` values between 0
     >>> 
     >>> random.rand(1)
     array([ 0.05895439])
-    >>> random.rand(1)
-    array([ 0.3581962])
+    >>> random.rand(2)
+    array([ 0.3581962, 0.5377904])
     >>> random.rand(2, 3)
     array([[ 0.35675058,  0.51579755,  0.03851769],
            [ 0.74684991,  0.55219055,  0.37000399]])
@@ -420,7 +420,7 @@ Or you can create an entire array of random integers by providing the dimensions
 
 #### choice
 
-You can use `random.choice` to select an element from a 1D `array`:
+You can use `random.choice` to select an element from a 1D `array` (multidimensional arrays won't work):
 
     >>> from numpy import array, random
     >>> a = array([1, 2, 3, 4, 5, 6, 7])
@@ -442,8 +442,8 @@ When random numbers are generated with a [Normal Distribution](https://en.wikipe
 Use `random.randn` to produce an `array` of `float64` values, with a Normal Distribution (centered around zero, with a standard deviation of 1):
 
     >>> from numpy import random
-    >>> random.randn(4)
-    array([ 0.82712644, -1.15210992,  0.96319519, -0.16316335])
+    >>> random.randn(1)
+    array([ 0.82712644])
     >>> random.randn(4)
     array([-1.39618701, -1.01253218, -0.05627893, -0.78845925])
 
@@ -456,10 +456,8 @@ And, of course, we can create higher-dimensional arrays:
     >>> random.randn(2, 2, 2)
     array([[[ 0.16383478, -0.03612812],
             [ 0.03078127,  0.54628765]],
-    
            [[ 0.23479626,  1.0837927 ],
             [-0.50655975, -0.6393057 ]]])
-
 
 ### Permutations
 
@@ -521,9 +519,9 @@ The difference between `random.shuffle` and `random.permutation` is very similar
 
 Oh no.
 
-This class was meant to give enough of an introduction that you will be able use NumPy when you need it. NumPy has a lot more tools for specific needs: treating 2D arrays as matricies, Fourier transforms, polynomials, linear algebra, and statistics. The key take-homes here are that NumPy creates it's own data structures data types. Once you learn to deal with these, the rest of the NumPy library will become accessible to you.
+This class is meant to give enough of an introduction that you will be able use NumPy when you need it. NumPy has a lot more tools for specific needs: treating 2D arrays as matricies, Fourier transforms, polynomials, linear algebra, and statistics. But once you understand the numpy array and the numpy data types, these topics should be approachable to you.
 
-We will cover NumPy statistics in the SciPy class. For a full reference on what is available in Python, look at the [official documentation](http://docs.scipy.org/doc/numpy/reference/).
+We will cover NumPy statistics in the SciPy class. For a full reference on what is available in Python, look in the [official documentation](http://docs.scipy.org/doc/numpy/reference/).
 
 ## Problem Sets
 
