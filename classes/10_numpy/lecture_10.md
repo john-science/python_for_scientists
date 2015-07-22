@@ -70,7 +70,7 @@ And if you start out with a 1D `array`, you can make a 2D `array` using `reshape
     >>> b = a.reshape(2, 2)
     >>> b
     array([[ 1. ,  2. ],
-           [ 3. ,  4.4]])
+           [ 3. ,  4.5]])
 
 The `.reshape()` method is really pretty smart. It doesn't move any of the data around in memory, which would be quite slow. All it does is change how you access data. This is an extremely convenient feature that will almost always make your life easier.
 
@@ -133,6 +133,35 @@ Similarly, you can use `ones` to initialize an array to all 1 values:
     >>> ones((2, 5), dtype=int)
     array([[1, 1, 1, 1, 1],
            [1, 1, 1, 1, 1]])
+
+### Array Math
+
+One of the great things about numpy is that it makes operating on every element of an array super easy. For instance, if you want to add or subtract two arrays:
+
+    >>> from numpy import array
+    >>> a = array([1, 2, 3])
+    >>> b = array([-1, 2, 3])
+    >>> 
+    >>> a + b
+    array([0, 4, 6])
+    >>> 
+    >>> a - b
+    array([2, 0, 0])
+
+And you can do math an numpy arrays using just regular numbers:
+
+    >>> 2 * a
+    array([2, 4, 6])
+    >>> 
+    >>> a + 1
+    array([2, 3, 4])
+
+And you can combine the two:
+
+    >>> 2 * (a + b) - 4
+    array([-4,  4,  8])
+
+The ability to act on every element of a numpy array without writing a lot of loops is really useful. And a great convenience if you're going to be doing a lot of math.
 
 ### NumPy array Operations
 
