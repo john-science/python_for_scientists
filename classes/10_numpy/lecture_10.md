@@ -1,10 +1,10 @@
 # NumPy
 
-NumPy is the most popular mathematics library for Python. In fact, NumPy is so popular that is has spurred the development of hundreds of other scientific libraries in Python. Several of the libraries we will cover in this class require at least a basic understanding of NumPy: SciPy, matplotlib, pandas, and netCDF4. Without NumPy, Python wouldn't be nearly so popular, or useful, to scientists and engineers.
+NumPy is the most popular mathematics library for Python. NumPy takes a big step toward making Python as fast as other languages for serious mathematical computations. There are hundreds of scientific libraries in Python have just could not exist in Python without NumPy. Several of these libraries we will cover later in this sourse: SciPy, matplotlib, pandas, and netCDF4.
 
 #### Installation
 
-NumPy is the first third-party library we have seen in this class. But it won't be the last. There are a ton of amazing tools written for Python that you as a scientist/engineer/geek/whatever will want to use. But they don't come pre-packaged with Python. You will have to install them yourself. 
+NumPy is the first third-party library we will use in this class. But it won't be the last. There are a ton of amazing tools written for Python that you as a scientist/engineer/geek/whatever will want to use. But they don't come pre-packaged with Python. You will have to install them separately. 
 
 You will need Python v2.4, v2.5, v2.6, v2.7 or v3.2 and newer to use NumPy and all of the other libraries that require it.
 
@@ -18,7 +18,7 @@ Consider installing [Anaconda](http://docs.continuum.io/anaconda/install.html) i
 
 ### Lists vs Arrays
 
-The `list` is the standard ordered-sequence data structure in Python. The Python `list` is an extremely flexible tool. But it turns out, that flexibility costs us some speed. NumPy introduces its own data structure, the  [array](http://wiki.scipy.org/Tentative_NumPy_Tutorial#head-c5f4ceae0ab4b1313de41aba9104d0d7648e35cc):
+The `list` is the standard ordered-sequence data structure in Python. The Python `list` is an extremely flexible tool. But, it turns out, that flexibility costs speed. NumPy introduces its own data structure, the  [array](http://wiki.scipy.org/Tentative_NumPy_Tutorial#head-c5f4ceae0ab4b1313de41aba9104d0d7648e35cc):
 
     >>> from numpy import array
 
