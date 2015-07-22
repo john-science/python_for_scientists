@@ -75,23 +75,95 @@ Well, we wouldn't be much of an agency with only one agent, so let's create seve
                       VALUES(?,?,?)''', (i, code, name))
         i += 1
     
-    con.commit()
+    cursor.commit()
 
 Notice here that we made several `.execute()` statements before doing the `.commit()`.
 
- * Coming Soon: roleback
+#### Reverting Changings (ROLLBACK)
+
+Let's say we made a typo working with our database:
+
+    cursor.execute('''INSERT INTO agents(id, code_name, name)
+                   VALUES(?,?,?)''', (9, "009", "Evelyn Salt"))
+    con.commit()
+
+Luckily, we can revert our last `.commit()` using `.rollback()`:
+
+    con.rollback()
+
+Problem solved. It's like Evelyn Salt never existed.
 
 #### Updating Tables (UPDATE)
 
- * Coming Soon: Create status table, find one agent dead
+For this exercise, let's create another table that says the status of all of our agents:
 
-#### Selecting Data from a Table (SELECT)
+    cursor.execute('''
+    CREATE TABLE status(id INTEGER PRIMARY KEY, status TEXT)
+    ''')
+    con.commit()
 
- * Coming Soon: Find all living agents
+And fill is with data (all our agents are currently active).
 
-#### Deleting Tables (DELETE)
+    for i in xrange(1, 10):
+        cursor.execute('''INSERT INTO status(id, status)
+                      VALUES(?,?)''', (i, "Active"))
+    con.commit()
 
- * Coming Soon: create and license to kill delete table
+Now let's say one of our secret agents dies and we want to update their status, we would use the SQL keyword `UPDATE`:
+
+    cursor.execute('''UPDATE status SET status = ? WHERE id = ? ''',
+                   ("Deceased", 7))
+    con.commit()
+
+Notice here we also used the SQLite keyword `WHERE`. This fun little piece of syntax allows us add a conditional case so we can set or get just certain fields in our table.
+
+#### Deleting Data (DELETE)
+
+Let's say we notice a mistake in the database. In this case, we only have 8 agents but there is a ninth agent listed in the `status` database. Well, if enough time has passed, we won't be able to use `.rollback()`. But we can delete any database entry we want using the `DELETE` keyword.
+
+    cursor.execute("DELETE FROM status WHERE id=9")
+    con.commit()
+
+#### Querying Data (SELECT)
+
+Databases wouldn't be very helpful if we couldn't get information out of them. The most basic way to "query" data from a database is using the `SELECT` keyword. Let's use `SELECT` to "query" all of the active agent ids from the `status` table.
+
+    cursor.execute('SELECT FROM status WHERE status="Active"')
+    active_agent_ids = cursor.fetchall()
+
+There are a couple of things to notice here. First of all, we used `.fetchall()` instead of `.commit()`. This is because the command we are executing in the database is returning information. This is also the reason need to have `active_agent_ids`, we need a place to store our values.
+
+If we just wanted to get one value that the conditional criteria of our query, we could use `.fetchone()` instead of `.fetchall()`:
+
+    cursor.execute('SELECT FROM status WHERE status="Active"')
+    active_agent_id = cursor.fetchone()
+    print(active_agent_id)
+    # (1, "Active")
+
+#### Removing Tables (DROP)
+
+Sometimes we want to remove an entire table (not just a single entry like we did with `DELETE`). To remove an entire table, we use `DROP`.
+
+First, let's create a table to delete:
+
+    cursor.execute('''
+    CREATE TABLE home_addresses(id INTEGER PRIMARY KEY, address TEXT)
+    ''')
+    con.commit()
+
+And we can add a row to that table:
+
+    cursor.execute('''INSERT INTO home_addresses(id, address)
+                   VALUES(?,?)''',
+                   (3, 'Highclere Park\nNewbury, West Berkshire RG20\n9RN'))
+    con.commit()
+
+Well, we probably shouldn't save the home addresses of our secret agents. If someone gets ahold of this database, they'd all be in trouble. So let's `DROP` that whole table.
+
+    cursor.execute('''DROP TABLE home_addresses''')
+    con.commit()
+
+Done. Our agents don't exist.
 
 #### Joining Tables (JOIN)
 
@@ -114,5 +186,6 @@ Notice here that we made several `.execute()` statements before doing the `.comm
  * [Python Central sqlite3 tutorial](http://www.pythoncentral.io/introduction-to-sqlite-in-python/)
  * [Relational Databases](https://en.wikipedia.org/wiki/Relational_database)
  * [Database Schemas](https://www.informit.com/library/content.aspx?b=STY_Sql_24hours&seqNum=25)
+ * Coming Soon: good references for SQLite syntax
 
 [Back to Syllabus](../../README.md)
