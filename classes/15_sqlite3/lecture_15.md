@@ -37,7 +37,7 @@ For instance, if I wanted to create a table `agents` I might do:
 
     cursor = con.cursor()
     cursor.execute('''
-    CREATE TABLE agents(id INTEGER PRIMARY KEY, code_name TEXT, name TEXT)
+    CREATE TABLE agents(agentID INTEGER PRIMARY KEY, code_name TEXT, name TEXT)
     ''')
     con.commit()
 
@@ -47,7 +47,7 @@ You may also noticed something very strange here. What is all this "CREATE TABLE
 
 What the above SQLite code did is pretty simple, it created a new table with three columns:
 
- * id
+ * agentID
  * code_name
  * name
 
@@ -57,7 +57,7 @@ Note that it is usually a good idea to create a first column for each table that
 
 Right now the table is empty, so let's learn how to add values. Well, there's one agent we can add:
 
-    cursor.execute('''INSERT INTO agents(id, code_name, name)
+    cursor.execute('''INSERT INTO agents(agentID, code_name, name)
                    VALUES(?,?,?)''', (1, "007", "James Bond"))
     con.commit()
 
@@ -71,11 +71,11 @@ Well, we wouldn't be much of an agency with only one agent, so let's create seve
     
     i = 2
     for code, name in other_agents:
-        cursor.execute('''INSERT INTO agents(id, code_name, name)
+        cursor.execute('''INSERT INTO agents(agentID, code_name, name)
                       VALUES(?,?,?)''', (i, code, name))
         i += 1
     
-    cursor.commit()
+    con.commit()
 
 Notice here that we made several `.execute()` statements before doing the `.commit()`.
 
@@ -83,7 +83,7 @@ Notice here that we made several `.execute()` statements before doing the `.comm
 
 Let's say we made a typo working with our database:
 
-    cursor.execute('''INSERT INTO agents(id, code_name, name)
+    cursor.execute('''INSERT INTO agents(agentID, code_name, name)
                    VALUES(?,?,?)''', (9, "009", "Evelyn Salt"))
     con.commit()
 
@@ -98,20 +98,20 @@ Problem solved. It's like Evelyn Salt never existed.
 For this exercise, let's create another table that says the status of all of our agents:
 
     cursor.execute('''
-    CREATE TABLE status(id INTEGER PRIMARY KEY, status TEXT)
+    CREATE TABLE status(agentID INTEGER PRIMARY KEY, status TEXT)
     ''')
     con.commit()
 
 And fill is with data (all our agents are currently active).
 
     for i in xrange(1, 10):
-        cursor.execute('''INSERT INTO status(id, status)
+        cursor.execute('''INSERT INTO status(agentID, status)
                       VALUES(?,?)''', (i, "Active"))
     con.commit()
 
 Now let's say one of our secret agents dies and we want to update their status, we would use the SQL keyword `UPDATE`:
 
-    cursor.execute('''UPDATE status SET status = ? WHERE id = ? ''',
+    cursor.execute('''UPDATE status SET status = ? WHERE agentID = ? ''',
                    ("Deceased", 7))
     con.commit()
 
@@ -121,7 +121,7 @@ Notice here we also used the SQLite keyword `WHERE`. This fun little piece of sy
 
 Let's say we notice a mistake in the database. In this case, we only have 8 agents but there is a ninth agent listed in the `status` database. Well, if enough time has passed, we won't be able to use `.rollback()`. But we can delete any database entry we want using the `DELETE` keyword.
 
-    cursor.execute("DELETE FROM status WHERE id=9")
+    cursor.execute("DELETE FROM status WHERE agentID=9")
     con.commit()
 
 #### Querying Data (SELECT)
@@ -147,13 +147,13 @@ Sometimes we want to remove an entire table (not just a single entry like we did
 First, let's create a table to delete:
 
     cursor.execute('''
-    CREATE TABLE home_addresses(id INTEGER PRIMARY KEY, address TEXT)
+    CREATE TABLE home_addresses(agentID INTEGER PRIMARY KEY, address TEXT)
     ''')
     con.commit()
 
 And we can add a row to that table:
 
-    cursor.execute('''INSERT INTO home_addresses(id, address)
+    cursor.execute('''INSERT INTO home_addresses(agentID, address)
                    VALUES(?,?)''',
                    (3, 'Highclere Park\nNewbury, West Berkshire RG20\n9RN'))
     con.commit()
@@ -169,11 +169,15 @@ Done. Our agents don't exist.
 
  * Coming Soon
 
+![exploits of a mom](https://imgs.xkcd.com/comics/exploits_of_a_mom.png)
+
 ## Schemas & Permissions: Secret Agents Protect their Data
 
  * Coming Soon
 
-![exploits of a mom](https://imgs.xkcd.com/comics/exploits_of_a_mom.png)
+## Example Script
+
+ * [Script](secret_agent_lecture.py) form of this lecture
 
 ## Problem Sets
 
@@ -185,7 +189,7 @@ Done. Our agents don't exist.
  * [Zet Code sqlite3 tutorial](http://zetcode.com/db/sqlitepythontutorial/)
  * [Python Central sqlite3 tutorial](http://www.pythoncentral.io/introduction-to-sqlite-in-python/)
  * [Relational Databases](https://en.wikipedia.org/wiki/Relational_database)
+ * [SQLite Joins](http://zetcode.com/db/sqlite/joins/)
  * [Database Schemas](https://www.informit.com/library/content.aspx?b=STY_Sql_24hours&seqNum=25)
- * Coming Soon: good references for SQLite syntax
 
 [Back to Syllabus](../../README.md)
