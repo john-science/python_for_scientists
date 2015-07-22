@@ -10,26 +10,80 @@ Most databases are [servers](https://en.wikipedia.org/wiki/Server_%28computing%2
 
 We will not covert the topic of databases in great detail, but like most databases, `sqlite3` is a [relational database](https://en.wikipedia.org/wiki/Relational_database). That is, inside the database we have tables of data organized by rows and columns. And these tables can be organized inside schemas.
 
- * Coming Soon: database diagram
+![relational database model](https://upload.wikimedia.org/wikipedia/commons/thumb/d/da/Relational_Model.svg/543px-Relational_Model.svg.png)
 
 We will use the same command to open an existing database as we would use to create a new database:
 
     import sqlite3
-    conn = sqlite3.connect('secret_agents.db')
+    con = sqlite3.connect('secret_agents.db')
 
 The path given can be local or absolute, but make sure this folder is editable by Python.
 
-## Creating a Table
+And it is very important to close all database connections when you are done with them:
 
-From this point on, we will be leaving the realm of Python. That is, in order to alter a database we must write the SQL-like code that SQLite databases require. From this point on if we want to create, modify, or query information from a SQLite database, we will pass a string through our connection (`conn` above) containing SQL code to the database. This may seem inconvenient, since we just spent all this time learning Python. But if you want to deal with databases, you need to learn to talk on their level.
+    con.close()
 
- * Coming Soon: execute, commit, and roleback
+## Interacting with the Database
+
+Whether you want to create, modify, or retrieve information from a sqlite3 table, the process will always be the same:
+
+ * create a cursor
+ * execute SQLite code
+ * commit SQLite code
+
+#### Creating Tables (CREATE)
+
+For instance, if I wanted to create a table `agents` I might do:
+
+    cursor = con.cursor()
+    cursor.execute('''
+    CREATE TABLE agents(id INTEGER PRIMARY KEY, code_name TEXT, name TEXT)
+    ''')
+    con.commit()
+
+First notice that a cursor was created using `.cursor()`, we created SQLite code using `.execute()`, and we executed the code using `.commit()`.
+
+You may also noticed something very strange here. What is all this "CREATE TABLE ..." gobbly gook? That's not Python code! Correct, this is note Python code. When we interact with the database we do so with a variant of the popular SQL database langauge called SQLite. You may think it is unfair to through an entirely new programming language into the mix this far into the class. But there's nothing for it. If you want to deal with databases, you need to learn to talk to them on their level.
+
+What the above SQLite code did is pretty simple, it created a new table with three columns:
+
+ * id
+ * code_name
+ * name
+
+Note that it is usually a good idea to create a first column for each table that can serve as the "PRIMARY KEY". This will help you create relations between different tables, and data, later. Also notice that each column in the table has a type (INTEGER, FLOAT, TEXT, BOOL), and we can even mandate that some columns have unique values.
+
+#### Inserting Data (INSERT)
+
+Right now the table is empty, so let's learn how to add values. Well, there's one agent we can add:
+
+    cursor.execute('''INSERT INTO agents(id, code_name, name)
+                   VALUES(?,?,?)''', (1, "007", "James Bond"))
+    con.commit()
+
+Well, we wouldn't be much of an agency with only one agent, so let's create several `INSERT` statements and commit them all.
+
+    # Only one female agent? We're really not much of an agency.
+    other_agents = [("001", "Edward Donne"), ("002", "Bill Fairbanks"),
+                    ("003", "Jack Mason"), ("004", "Scarlett Papava"),
+                    ("005", "Stuart Thomas"), ("006", "Alec Trevelyan"),
+                    ("008", "Bill")]
+    
+    i = 2
+    for code, name in other_agents:
+        cursor.execute('''INSERT INTO agents(id, code_name, name)
+                      VALUES(?,?,?)''', (i, code, name))
+        i += 1
+    
+    con.commit()
+
+Notice here that we made several `.execute()` statements before doing the `.commit()`.
+
+
+
+ * Coming Soon: roleback
 
 ## Schemas & Permissions: Secret Agents Protect their Data
-
- * Coming Soon
-
-## Basic Queries
 
  * Coming Soon
 
