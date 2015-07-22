@@ -211,7 +211,7 @@ Alternatively, you can just use the shorthand `.T` to do the same thing.
     array([[2, 3, 4],
            [7, 8, 9]])
 
-Notice, neither of these change what is in the `a` spot in memory; they just return a totally new array.
+Notice that neither of these methods changes what is in the `a` place in memory; they return a totally new array.
 
 #### sqrt
 
@@ -229,12 +229,9 @@ Use `ceil` and `floor` to round NumPy `float64`s up or down to the nearest integ
     >>> from numpy import ceil, floor
     >>> 
     >>> a = array([1.001, 2.49, 2.5, 3.5001, 9.9])
-    >>> a
-    array([ 1.001 ,  2.49  ,  2.5   ,  3.5001,  9.9   ])
     >>> 
     >>> ceil(a)
     array([  2.,   3.,   3.,   4.,  10.])
-    >>> 
     >>> floor(a)
     array([ 1.,  2.,  2.,  3.,  9.])
 
@@ -293,13 +290,11 @@ Use `clip` if you want to set the max and min value allowed in your array:
     >>> clip(a, -999, 1)
     array([  1,   1,   1,   0, -32,   1,   1])
 
-You can see that any values above the max or below the min are converted to the `MAX` and `MIN` values you set in your clip statement:
-
-    >>> clip(lst, MIN, MAX)
+This simple goes through your array and converts any values below your `MIN` to the `MIN` and converts any values above your `MAX` to `MAX`.
 
 #### tolist
 
-Convert a `numpy.array` to a standard Python `list` using `list()`:
+You could convert a `numpy.array` to a standard Python `list` using `list()`:
 
     >>> a = array([1, 4, 1, 5, 9])
     >>> a
@@ -307,7 +302,7 @@ Convert a `numpy.array` to a standard Python `list` using `list()`:
     >>> list(a)
     [1, 4, 1, 5, 9]
 
-But you would find this would fail on a multidimensional `array`, and you will just get a list of arrays:
+But this might not behave like you expect for a multidimensional `array`. It just returns list of arrays:
 
     >>> m = array([[1, 2, 3], [7, 8, 9]])
     >>> m
@@ -323,7 +318,7 @@ So, `numpy` provides the `tolist()` method, which will convert deep into the `ar
 
 #### combining arrays
 
-There are two convenient methods to combine arrays in numpy, `concatenate` and `vstack`:
+There are two convenient methods for combining arrays in numpy, `concatenate` and `vstack`:
 
     >>> c = array([[1,2,3], [4,5,6]])
     >>> d = array([[5,6,7], [8,9,0]])
@@ -361,7 +356,7 @@ NumPy also has a lot of tools built in to help you generate [random numbers](htt
 
 ### Flat Distribution
 
-When we say a distribution of random numbers is *flat*, we mean that the numbers generated are evenly distributed between the minimum and maximum. In NumPy, the default minimum is 0.0 and the default maximum is just less than 1.0, when generating random decimal values.
+When we say a distribution of random numbers is *flat*, we mean that the numbers generated are evenly distributed between the minimum and maximum. In NumPy, the default minimum is 0.0 (inclusive) and the default maximum 1.0 (exclusive), when generating random decimals.
 
 #### rand
 
@@ -371,8 +366,8 @@ Use `random.rand` to fill a NumPy `array` with random `float64` values between 0
     >>> 
     >>> random.rand(1)
     array([ 0.05895439])
-    >>> random.rand(2)
-    array([ 0.3581962, 0.5377904])
+    >>> random.rand(3)
+    array([ 0.3581962, 0.5377904, 0.0094921])
     >>> random.rand(2, 3)
     array([[ 0.35675058,  0.51579755,  0.03851769],
            [ 0.74684991,  0.55219055,  0.37000399]])
@@ -445,9 +440,9 @@ Use `random.randn` to produce an `array` of `float64` values, with a Normal Dist
     >>> random.randn(1)
     array([ 0.82712644])
     >>> random.randn(4)
-    array([-1.39618701, -1.01253218, -0.05627893, -0.78845925])
+    array([-0.0518932 ,  1.02017916, -0.50273024,  0.63187314])
 
-And, of course, we can create higher-dimensional arrays:
+And, again, we can create higher-dimensional arrays:
 
     >>> random.randn(2, 4)
     array([[-0.1366172 , -0.41921541,  1.98640058, -0.75165991],
@@ -461,7 +456,7 @@ And, of course, we can create higher-dimensional arrays:
 
 ### Permutations
 
-A common desire is to randomly order an existing sequence of values. NumPy provides two basic ways to do just that.
+A common desire is to randomly order an existing sequence of values. NumPy provides two basic ways to do that.
 
 #### Shuffle
 
@@ -493,13 +488,14 @@ The caveat here is that this shuffling is not deep. For a multi-dimensional `arr
 
 Use `permutation` if you don't want to alter the original `array`, but just create a randomized version of it:
 
-    >>> m = array([[1, 2, 3], [4, 5, 6]])
     >>> a = array([1, 2, 3, 4, 5])
+    >>> m = array([[1, 2, 3], [4, 5, 6]])
     >>> 
     >>> random.permutation(a)
     array([3, 4, 1, 2, 5])
     >>> random.permutation(a)
     array([2, 4, 1, 3, 5])
+    >>> 
     >>> random.permutation(m)
     array([[1, 2, 3],
            [4, 5, 6]])
@@ -519,7 +515,7 @@ The difference between `random.shuffle` and `random.permutation` is very similar
 
 Oh no.
 
-This class is meant to give enough of an introduction that you will be able use NumPy when you need it. NumPy has a lot more tools for specific needs: treating 2D arrays as matricies, Fourier transforms, polynomials, linear algebra, and statistics. But once you understand the numpy array and the numpy data types, these topics should be approachable to you.
+This class is meant to give an introduction and foundation to NumPy, not cover all the deep corners of the library. NumPy has a lot more tools that you might find useful: treating 2D arrays as matricies, Fourier transforms, polynomials, linear algebra, and statistics. But as long as you take the time to understand the numpy array and the numpy data types, the rest of the library should be approachable to you.
 
 We will cover NumPy statistics in the SciPy class. For a full reference on what is available in Python, look in the [official documentation](http://docs.scipy.org/doc/numpy/reference/).
 
