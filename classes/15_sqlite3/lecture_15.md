@@ -1,4 +1,4 @@
-# Databases with SQLITE3
+# SQLite3 Databases
 
 First off, there are a lot of different kinds of databases: SQL, MySQL, Postgres, Mongo, etc.  And because each type of database needs a different interface, there are a lot of different libraries for dealing with databases in Python. Check [here](https://wiki.python.org/moin/DatabaseInterfaces) for a nice listing of the most popular database interfaces in Python.
 
@@ -79,23 +79,23 @@ Well, we wouldn't be much of an agency with only one agent, so let's create seve
 
 Notice here that we made several `.execute()` statements before doing the `.commit()`.
 
+ * Coming Soon: roleback
+
 #### Updating Tables (UPDATE)
 
- * Coming Soon
+ * Coming Soon: Create status table, find one agent dead
 
 #### Selecting Data from a Table (SELECT)
 
- * Coming Soon
+ * Coming Soon: Find all living agents
 
 #### Deleting Tables (DELETE)
 
- * Coming Soon
+ * Coming Soon: create and license to kill delete table
 
 #### Joining Tables (JOIN)
 
  * Coming Soon
-
- * Coming Soon: roleback
 
 ## Schemas & Permissions: Secret Agents Protect their Data
 
