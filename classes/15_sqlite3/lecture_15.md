@@ -79,15 +79,25 @@ Well, we wouldn't be much of an agency with only one agent, so let's create seve
 
 Notice here that we made several `.execute()` statements before doing the `.commit()`.
 
+#### Updating Tables (UPDATE)
 
+ * Coming Soon
+
+#### Selecting Data from a Table (SELECT)
+
+ * Coming Soon
+
+#### Deleting Tables (DELETE)
+
+ * Coming Soon
+
+#### Joining Tables (JOIN)
+
+ * Coming Soon
 
  * Coming Soon: roleback
 
 ## Schemas & Permissions: Secret Agents Protect their Data
-
- * Coming Soon
-
-#### Joins
 
  * Coming Soon
 
