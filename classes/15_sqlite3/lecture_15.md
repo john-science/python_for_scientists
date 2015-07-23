@@ -182,7 +182,8 @@ Which returns:
 
 The key there was that we asked for records where fields in two different tables matched: `agents.agentID = status.agentID`. This turns out to be such a powerful idea that it has it's own name, an **INNER JOIN**. And SQLite has a special keyword for this, `JOIN`, which we can use to re-write the query:
 
-    cursor.execute('SELECT code_name, name FROM agents JOIN status ON agents.agentID = status.agentID WHERE status.status="Active"')
+    cursor.execute('SELECT code_name, name FROM agents JOIN status ON ' +
+                   'agents.agentID = status.agentID WHERE status.status="Active"')
     active_agents = cursor.fetchall()
     print(active_agents)
 
