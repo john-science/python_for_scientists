@@ -89,6 +89,16 @@ def main():
     cursor.execute('DROP TABLE home_addresses')
     con.commit()
 
+    print("Let's get all the Active agents from the status table, along with their name from the agents table.")
+    cursor.execute('SELECT code_name, name FROM agents, status WHERE agents.agentID = status.agentID and status.status="Active"')
+    active_agents = cursor.fetchall()
+    print(active_agents)
+
+    print("\nLet's get all the Active agents from the status table, along with their name from the agents table using JOIN.")
+    cursor.execute('SELECT code_name, name FROM agents JOIN status ON agents.agentID = status.agentID WHERE status.status="Active"')
+    active_agents = cursor.fetchall()
+    print(active_agents)
+
     # close the database connection
     con.close()
 
