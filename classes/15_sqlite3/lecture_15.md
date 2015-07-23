@@ -8,7 +8,7 @@ Most databases are [servers](https://en.wikipedia.org/wiki/Server_%28computing%2
 
 ## Creating and Connecting to Databases
 
-We will not covert the topic of databases in great detail, but like most databases, `sqlite3` is a [relational database](https://en.wikipedia.org/wiki/Relational_database). That is, inside the database we have tables of data organized by rows and columns. And these tables can be organized inside schemas.
+We will not covert the topic of databases in great detail, but like most databases, `sqlite3` is a [relational database](https://en.wikipedia.org/wiki/Relational_database). That is, inside the database we have tables of data organized by rows (records) and columns (attributes).
 
 ![relational database model](https://upload.wikimedia.org/wikipedia/commons/thumb/d/da/Relational_Model.svg/543px-Relational_Model.svg.png)
 
@@ -191,7 +191,11 @@ There are several other kinds of joins worth learning about. An "Outer Join", fo
 
 ![exploits of a mom](https://imgs.xkcd.com/comics/exploits_of_a_mom.png)
 
-## Schemas & Permissions: Secret Agents Protect their Data
+## Review of the Python
+
+ * Coming Soon
+
+## Review of the SQL
 
  * Coming Soon
 
