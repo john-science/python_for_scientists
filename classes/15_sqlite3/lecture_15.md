@@ -167,7 +167,26 @@ Done. Our agents don't exist.
 
 #### Joining Tables (JOIN)
 
- * Coming Soon
+A [Join](https://en.wikipedia.org/wiki/Join_%28SQL%29) is just a special kind of query. For instance, earlier we got a list of all the agents who are currently active. That worked fine, but we didn't get agent names, just their IDs. That's inconvenient, but we could do a slightly more complicated `SELECT` query to get their names from the other table:
+
+    cursor.execute('SELECT code_name, name FROM agents, status WHERE ' + 
+                   'agents.agentID = status.agentID and status.status="Active"')
+    active_agents = cursor.fetchall()
+    print(active_agents)
+
+Which returns:
+
+    [(u'007', u'James Bond'), (u'001', u'Edward Donne'), (u'002', u'Bill Fairbanks'),
+     (u'003', u'Jack Mason'), (u'004', u'Scarlett Papava'),
+     (u'005', u'Stuart Thomas'), (u'008', u'Bill')]
+
+The key there was that we asked for records where fields in two different tables matched: `agents.agentID = status.agentID`. This turns out to be such a powerful idea that it has it's own name, an **INNER JOIN**. And SQLite has a special keyword for this, `JOIN`, which we can use to re-write the query:
+
+    cursor.execute('SELECT code_name, name FROM agents JOIN status ON agents.agentID = status.agentID WHERE status.status="Active"')
+    active_agents = cursor.fetchall()
+    print(active_agents)
+
+There are several other kinds of joins worth learning about. An "Outer Join", for instance, is one where records from one table are kept, even if they don't met the joining criteria. For a nice introduction to joins in the Python implementation of sqlite3, look [here](http://zetcode.com/db/sqlite/joins/).
 
 ![exploits of a mom](https://imgs.xkcd.com/comics/exploits_of_a_mom.png)
 
