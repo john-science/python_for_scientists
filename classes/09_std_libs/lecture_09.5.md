@@ -200,8 +200,8 @@ To list the files inside a zipped file:
 
     >>> from zipfile import ZipFile
     >>> contents = ZipFile("path/to/example.zip", "r")
-    >>> for name in contents.namelist():
-    ...     print(name)
+    >>> for file_name in contents.namelist():
+    ...     print(file_name)
     ...
     file1.jpg
     file2.csv
@@ -224,8 +224,8 @@ Finally, let's use the `extract` function to extract files from an unzipped dire
 
     >>> from zipfile import ZipFile
     >>> z = ZipFile('test.zip')
-    >>> for f in z.namelist():
-    ...     z.extract(f)
+    >>> for file_name in z.namelist():
+    ...     z.extract(file_name)
 
 #### Zipping Files
 
