@@ -229,7 +229,7 @@ For a nice overview of all the types of joins in sqlite3, check [here](http://ze
 
 ## Problem Sets
 
- * Coming Soon
+ * [Secret Agent Problem Set](problem_set_1_sqlite3.md)
 
 ## Further Reading
 
