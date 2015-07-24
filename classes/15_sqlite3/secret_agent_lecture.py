@@ -99,6 +99,23 @@ def main():
     active_agents = cursor.fetchall()
     print(active_agents)
 
+    print('\nCreating table for agent licenses')
+    cursor.execute('''
+    CREATE TABLE licenses(id INTEGER PRIMARY KEY, agentID INTEGER, license TEXT)
+    ''')
+    con.commit()
+
+    print(' - Giving our agents some license')
+    cursor.execute('INSERT into licenses(id, agentID, license) VALUES(1, 1, "License to Kill")')
+    cursor.execute('INSERT into licenses(id, agentID, license) VALUES(2, 4, "License to Kill")')
+    cursor.execute('INSERT into licenses(id, agentID, license) VALUES(3, 1, "License to Tango")')
+    con.commit()
+
+    print(' - Retrieve all of our agent licenses, along with the agent names.')
+    cursor.execute('SELECT code_name,name,license FROM agents LEFT JOIN licenses on agents.agentID = licenses.agentID')
+    licenses = cursor.fetchall()
+    print(licenses)
+
     # close the database connection
     con.close()
 
