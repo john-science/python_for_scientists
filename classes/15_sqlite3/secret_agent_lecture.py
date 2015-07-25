@@ -34,14 +34,6 @@ def main():
 
     con.commit()
 
-    print('Add Evelyn Salt to the database.')
-    cursor.execute('''INSERT INTO agents(agentID, code_name, name)
-                   VALUES(?,?,?)''', (9, "009", "Evelyn Salt"))
-    con.commit()
-
-    print(' - Whoops, Eveyln Salt is in the CIA, not MI6. Remove her.\n')
-    con.rollback()
-
     print('Create a new table for our agent status')
     cursor.execute('''
     CREATE TABLE status(agentID INTEGER PRIMARY KEY, status TEXT)
