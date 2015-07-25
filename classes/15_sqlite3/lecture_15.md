@@ -77,20 +77,6 @@ But we wouldn't be much of an agency with only one agent, so let's create severa
 
 Notice here that we made several `.execute()` statements before doing the `.commit()`.
 
-#### Reverting Changings (ROLLBACK)
-
-Let's say we added some bad data to our database:
-
-    cursor.execute('''INSERT INTO agents(agentID, code_name, name)
-                   VALUES(?,?,?)''', (9, "009", "Evelyn Salt"))
-    con.commit()
-
-Fortunately, we can revert our last `.commit()` using `.rollback()`:
-
-    con.rollback()
-
-Problem solved. It's like Evelyn Salt never existed.
-
 #### Updating Tables (UPDATE)
 
 For this exercise, let's create another table that lists the status of all of our agents:
