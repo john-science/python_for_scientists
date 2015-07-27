@@ -15,7 +15,7 @@ These are just some basic array manipulation problems to get you used to working
 #### Set 2
 
 1. Create a 1D NumPy array of 10,000 elements, all initially set to 0.0.
-2. Use a `while` loop and set every 101st element equal to 1.0. (0, 101, 202, 303, ...).
+2. Use a `while` loop and set every 101st element equal to `1.0`. (indices 0, 101, 202, 303, ...).
 3. Change the shape of the array to be 100 x 100.
 4. Use a `for` loop to set the first element of every row equal to the sum of all the values in that row.
 5. Create a new array from the first elements in each of your rows. (HINT: You can make an array from a list.)
