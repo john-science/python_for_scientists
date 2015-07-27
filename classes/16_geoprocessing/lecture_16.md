@@ -21,12 +21,14 @@ The first step to working with projections is getting a complete description of 
 Now let's import `Proj` from `pyproj` and use it to create two projections:.
 
     >>> from pyproj import Proj
-    >>> cal = pyproj.Proj('+proj=aea +lat_1=34 +lat_2=40.5 +lat_0=0 +lon_0=-120 ' +
+    >>>
+    >>> cal = Proj('+proj=aea +lat_1=34 +lat_2=40.5 +lat_0=0 +lon_0=-120 ' +
     >>> '+x_0=0 +y_0=-4000000 +ellps=GRS80 +datum=NAD83 +units=m +no_defs')
-    >>> pnw = pyproj.Proj('+proj=aea +lat_1=41 +lat_2=47 +lat_0=44 +lon_0=-120 ' +
+    >>>
+    >>> pnw = Proj('+proj=aea +lat_1=41 +lat_2=47 +lat_0=44 +lon_0=-120 ' +
     >>> '+x_0=0 +y_0=0 +ellps=GRS80 +datum=NAD83 +units=m +no_defs')
 
-The first projection you see is a NAD83, California projection found [here](http://spatialreference.org/ref/sr-org/10/) on [SpatialReference.org](http://spatialreference.org/). The funny string `'+proj=aea +lat_1=41 ...` is a special format used to define projections called the "Proj4 format". The SpatialReference.org website gives this format of the projection description, along with several other projection formats. The second projection is a NAD83 Pacifice Northwest projection found [here](http://spatialreference.org/ref/sr-org/7260/).
+The first projection you see is a [NAD83](https://en.wikipedia.org/wiki/North_American_Datum#North_American_Datum_of_1983)-[Albers](https://en.wikipedia.org/wiki/Albers_projection), California projection found [here](http://spatialreference.org/ref/sr-org/10/) on [SpatialReference.org](http://spatialreference.org/). The funny string `'+proj=aea +lat_1=41 ...` is a special format used to define projections called the "Proj4 format". The SpatialReference.org website gives this format of the projection description, along with several other projection formats. The second projection is also a NAD83-Albers Pacific Northwest projection found [here](http://spatialreference.org/ref/sr-org/7260/).
 
 The easiest thing we might want to do is convert lon/lat coordinates into our projection:
 
@@ -36,7 +38,9 @@ The easiest thing we might want to do is convert lon/lat coordinates into our pr
 
 We can also tranform our coordinates from one projection to another:
 
-    >>> lon2, lat2 = pyproj.transform(cal, pnw, lon1, lat1)
+    >>> from pyproj import transform
+    >>>
+    >>> lon2, lat2 = transform(cal, pnw, lon1, lat1)
     >>> (lon2, lat2)
     (-7221695.417565364, 5539510.56076528)
 
