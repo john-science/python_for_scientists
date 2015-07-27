@@ -35,7 +35,7 @@
     >>> 
     >>> a = zeros(10000)
 
-    # 2. Use a `while` loop and set every 101st element equal to 1.0. (0, 101, 202, 303, ...).
+    # 2. Use a `while` loop and set every 101st element equal to 1.0. (indices 0, 101, 202, 303, ...).
     >>> i = 0
     >>> while i <= a.size:
     ...     a[i] = 1.0
