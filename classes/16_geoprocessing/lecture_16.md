@@ -6,15 +6,50 @@
 
 This lecture uses three libraries that do not come standard with Python. To find instructions for installing these three links, try the following links:
 
+ * [Installing PyProj](https://github.com/jswhit/pyproj)
  * [Installing PyShp](https://code.google.com/p/pyshp/)
- * [Installing PyProj](https://pypi.python.org/pypi/pyproj/)
  * [Installing osgeo/GDAL](https://pypi.python.org/pypi/GDAL/)
+
+Please Note: Unlike other libraries we have installed thus far, these three geospatial libraries are not included in Anaconda.
 
 ## PyProj
 
-PyProj is the Python interface to PROJ.4 library. This library has a small, easy-to-learn API for converting points between different projections. A handy tool, and a basic requirement for most geoprocessing work.
+PyProj is the Python interface to PROJ.4 library. This library has a small, easy-to-learn API. While the pyproj.Geod class is useful for performing Geodetic and Great Circle computations, we are going to focus entirely on the pyproj.Proj class. This is a must-have tool for doing all calculations between projections.
 
- * Coming Soon
+The first step to working with projections is getting a complete description of your projection. The standard way to do that is to search around on [SpatialReference.org](http://spatialreference.org/) for your projection.
+
+Now let's import `Proj` from `pyproj` and use it to create two projections:.
+
+    >>> from pyproj import Proj
+    >>> cal = pyproj.Proj('+proj=aea +lat_1=34 +lat_2=40.5 +lat_0=0 +lon_0=-120 ' +
+    >>> '+x_0=0 +y_0=-4000000 +ellps=GRS80 +datum=NAD83 +units=m +no_defs')
+    >>> pnw = pyproj.Proj('+proj=aea +lat_1=41 +lat_2=47 +lat_0=44 +lon_0=-120 ' +
+    >>> '+x_0=0 +y_0=0 +ellps=GRS80 +datum=NAD83 +units=m +no_defs')
+
+The first projection you see is a NAD83, California projection found [here](http://spatialreference.org/ref/sr-org/10/) on [SpatialReference.org](http://spatialreference.org/). The funny string `'+proj=aea +lat_1=41 ...` is a special format used to define projections called the "Proj4 format". The SpatialReference.org website gives this format of the projection description, along with several other projection formats. The second projection is a NAD83 Pacifice Northwest projection found [here](http://spatialreference.org/ref/sr-org/7260/).
+
+The easiest thing we might want to do is convert lon/lat coordinates into our projection:
+
+    >>> lon1, lat1 = cal(122.4786, 37.8197)
+    >>> (lon1, lat1)
+    (-7881518.3767960835, 5602240.87313246)
+
+We can also tranform our coordinates from one projection to another:
+
+    >>> lon2, lat2 = pyproj.transform(cal, pnw, lon1, lat1)
+    >>> (lon2, lat2)
+    (-7221695.417565364, 5539510.56076528)
+
+And most of the functions in this API can be used on multiple coordinates at one time:
+
+    >>> lats_in = (37.1, 37.5, 37.8)
+    >>> lons_in = (122.4, 122.5, 122.6)
+    >>> lons_cal, lats_cal = cal(lons_in, lats_in)
+    >>>
+    >>> lons_cal
+    (-7959439.682108858, -7914511.693411917, -7880111.27346794)
+    >>> lats_cal
+    (5582820.697573803, 5588896.573758813, 5591436.156294066)
 
 ## shapefile
 
