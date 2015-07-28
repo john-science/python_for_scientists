@@ -1,8 +1,8 @@
 # Geoprocessing in Python
 
- * Coming Soon
+We are actually going to introduce three different libraries in this class. Because most geoprocessing work in Python will require some combination of these libraries. There is also a great [ArcPy](http://help.arcgis.com/en/arcgisdesktop/10.0/help/index.html#//000v00000001000000) library, but this is not free and requires paying for an ArcGIS license. Please be warned: Much knowledge about geographic data formats and geoprocessing is assumed in this lecture.
 
-## Installing matplotlib
+## Installing All Three Libraries
 
 This lecture uses three libraries that do not come standard with Python. To find instructions for installing these three links, try the following links:
 
@@ -57,7 +57,27 @@ And most of the functions in this API can be used on multiple coordinates at one
 
 ## shapefile
 
-Shapefile is the Python interface for Esri shapefiles.
+Shapefile is the Python interface for shapefiles. There is a great tutorial [here](https://github.com/GeospatialPython/pyshp).
+
+A [shapefile](https://en.wikipedia.org/wiki/Shapefile) is actually a combination of three or more files that work together. To load a shapefile:
+
+    >>> import shapefile
+    >>> sf = shapefile.Reader("shapefiles/blockgroups.shp")
+
+Shapefiles are filled with geometric shapes (points, lines, polygons, etc) that have geographic references attached. Use `.shapes()` to return a list of all shapes:
+
+    >>> shapes = sf.shapes()
+
+Or, if you know the file is large and you don't want to load all of the shapes into memory at once, use an iterator:
+
+    >>> for shape in sf.iterShapes():
+    ...     print shape
+
+You can also get the coordinate bound box of any shape in the file (lower-left and upper-right):
+
+    >>> bbox = shapes[3].bbox
+    >>> ['%.3f' % coord for coord in bbox]
+    ['-122.486', '37.787', '-122.446', '37.811']
 
  * Coming Soon
 
@@ -83,11 +103,12 @@ osgeo is the Open Source GIS library.
 
  * Coming Soon
 
-#### References - ArcPy
+#### References
 
  * [Quick PyProj Tutorial](http://jswhit.github.io/pyproj/)
  * [SpatialReference.org](http://spatialreference.org/) - Standard names for most projections
  * [Official Shapefile Guide](https://github.com/GeospatialPython/pyshp)
+ * [What is a Shapefile?](https://en.wikipedia.org/wiki/Shapefile)
  * [Great List of References](http://gis.stackexchange.com/questions/53816/what-are-some-resources-for-learning-arcpy)
  * [Nice Overview PDF](http://proceedings.esri.com/library/userconf/devsummit09/papers/pythonscriptingadvancedtechniques.pdf)
  * [Official Docs](http://help.arcgis.com/en/arcgisdesktop/10.0/help/index.html#/A_quick_tour_of_ArcPy/000v00000001000000/)
