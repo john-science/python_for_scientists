@@ -1,8 +1,8 @@
 # Statistics with SciPy
 
-SciPy is an amazingly useful library for scientists and engineers of all kinds. In this class, we will only cover the most popular topics that relate to statistics and data analysis.
+SciPy is an amazingly useful library for scientists and engineers of all kinds. In this lecture, we will only cover the the sections of the module that relate to statistics and data analysis.
 
-We do not intend to cover the topics of statistics or data analysis here. Such discussions will be very brief, but external links will be provided for explanation of the mathematical concepts.
+However, this lecture assumes a knowledge of basic statistics that would make the library useful.
 
 ## Installing SciPy
 
@@ -10,7 +10,7 @@ Like most of the libraries used in our "special topics" lectures, SciPy does not
 
 #### Anaconda
 
-Consider installing [Anaconda](http://docs.continuum.io/anaconda/install.html) instead. Anaconda is Python packaged with over 100 tools and libraries that you will want (This includes SciPy and everything else we will use in this course.)
+Consider installing [Anaconda](http://docs.continuum.io/anaconda/install.html) instead. Anaconda is Python packaged with over 100 libraries that you want (This includes SciPy and nearly everything else we will use in this course.)
 
 ## Basics
 
@@ -26,7 +26,7 @@ Let us start with a 2D array of numbers:
            [ 2.629 ,  2.6667],
            [ 3.451 ,  3.81  ]])
 
-And let's pretend this is a very large `array`.
+From here on out, let's pretend this array is very large.
 
 #### mean
 
@@ -44,7 +44,7 @@ The [median](https://en.wikipedia.org/wiki/Median) of a collection of numbers is
 
 #### The standard deviation
 
-If we pretend this very large array is a set of random variables, we might think think to apply the [normal distribution](https://en.wikipedia.org/wiki/Normal_distribution), and calculate the [standard deviation](https://en.wikipedia.org/wiki/Standard_deviation) from the mean:
+If we pretend this "very large" array is a set of random variables, we might think think to apply the [normal distribution](https://en.wikipedia.org/wiki/Normal_distribution), and calculate the [standard deviation](https://en.wikipedia.org/wiki/Standard_deviation) from the mean:
 
     >>> scipy.std(a)
     0.53997709956585715
@@ -71,9 +71,7 @@ The `scipy.stats` module has a great collection of different statistical functio
 
 #### Trimmed Stats
 
-The trimmed statistics functions below are the same as the basic functions above, but they allow you 
-
-The "trimmed" stastical functions are a covenience, meant to help you find basic stastical values with a slightly modified dataset. These functions are handy if you want to exclude obvious bad data points from a quick analysis.
+The trimmed statistics functions below are the same as the basic functions above, but they allow you to do statistical calculations on a slightly modified dataset. These functions are handy if you want to exclude obvious bad data points from a quick analysis.
 
 We calculate the trimmed mean by providing the array of data points, and a pair of min/max values to trim from:
 
@@ -128,6 +126,8 @@ And finally, the [variance](https://en.wikipedia.org/wiki/Variance) of the trimm
     0.53142576666666663
 
 #### Various Means
+
+There is a nice, short, reminder of the difference between these three types of means [here](http://economistatlarge.com/finance/applied-finance/differences-arithmetic-geometric-harmonic-means).
 
 We already saw that we can use `scipy` to create a [arithmetic mean](https://en.wikipedia.org/wiki/Arithmetic_mean):
 
