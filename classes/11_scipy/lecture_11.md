@@ -174,7 +174,7 @@ Use `stats.histogram` to produce a histogram, by simply providing an array of da
     >>> stats.histogram(a, 3)
     (array([ 2.,  5.,  1.]), 0.5, 1.4, 0)
 
-What has been returned is a tuple of four items:
+A tuple of four items was returned:
 
     (values in the 3 bins you asked for, start value, bin size, # of items not binned)
 
@@ -186,6 +186,8 @@ Alternatively, you can use `stats.histogram2` to calculate how many items are in
 
     >>> stats.histogram2(a, range(10))
     array([0, 2, 4, 1, 1, 0, 0, 0, 0, 0])
+
+If you have no prior opinion about how you want your histogram to look, use `stats.histogram`. However, if you want detailed control over your historgram, use `stats.histogram2`.
 
 #### Percentiles
 
@@ -207,11 +209,11 @@ If you want to know [percentile](https://en.wikipedia.org/wiki/Percentile) of a 
 Or you can go the opposite direction and ask what percentile a certain score would fit into with `stats.scoreatpercentile`:
 
     >>> stats.scoreatpercentile(grades, 55)
-    71.400000000000006
+    71.4
     >>> stats.scoreatpercentile(grades, 64)
-    72.480000000000004
+    72.48
     >>> stats.scoreatpercentile(grades, 72)
-    73.319999999999993
+    73.32
 
 #### Bayesian Statistics
 
@@ -242,7 +244,9 @@ Use `stats.f_oneway` on two or more data sets:
 
 Here we compare the `grades` data set with another data set that is made of up two elements: each of which is mean of `grades`. So, of course, these two data sets have the same mean, and we reject the [null hypothesis](https://en.wikipedia.org/wiki/Null_hypothesis) that there is no relation between the data sets. But what do those two number we returned mean?
 
-This is the best case result: `(0.0, 1.0)`. The first number is the [F-value](http://en.wikipedia.org/wiki/Analysis_of_variance#The_F-test) and the second number is the [p-value](http://en.wikipedia.org/wiki/Analysis_of_variance#The_F-test). The thing to remember is that you want your p-value to be 1.0. Worse case scenario, it will be 0.0. In fact, let's show what an example where the two data sets don't compare well at all:
+This is the best case result: `(0.0, 1.0)`. The first number is the [F-value](http://en.wikipedia.org/wiki/Analysis_of_variance#The_F-test) and the second number is the [p-value](http://en.wikipedia.org/wiki/Analysis_of_variance#The_F-test). The thing to remember is that you want your p-value to be 1.0. Worse case scenario, it will be 0.0.
+
+Now let's try an example where the two data sets don't compare well:
 
     >>> stats.f_oneway(grades, array([-99 * x, -99 * x]))
     (373371.4201575499, 5.7626233819586514e-20)
@@ -262,7 +266,7 @@ Use `stats.interp1d` if you have a 1D series of data points and you want to buil
     >>> f = interp1d(x, y)
     >>> f2 = interp1d(x, y, kind='cubic')
 
-These `f` and `f2` that we created is a Python function that we can now use, like any other function:
+Here we used `interp1d` to create the Python functions `f` and `f2` that we can now use, just like any other Python function:
 
     >>> f([pi/2, pi, 2*pi])
     array([ 0.88018607,  0.01398078, -0.01424018])
@@ -273,7 +277,7 @@ You might remember from trignometry, `sin(pi/2) = 1.0` and `sin(pi) = 0.0`. So w
 
 ![Interpolating Sine](../../resources/sin_two_fits.png)
 
-There are several other `kind` option for how we might want to build the interpolated line:
+There are several other `kind` options to help us build an interpolated line:
 
  * linear
  * nearest
