@@ -79,6 +79,20 @@ You can also get the coordinate bound box of any shape in the file (lower-left a
     >>> ['%.3f' % coord for coord in bbox]
     ['-122.486', '37.787', '-122.446', '37.811']
 
+The `points` attribute contains a list of (x, y) tuples for each point in the shape:
+
+    >>> len(shapes[3].points)
+    173
+    >>> # Get the 8th point of the fourth shape
+    >>> shapes[3].points[7]
+    ['-122.471', '37.787']
+
+#### Reading Record Information
+
+ * Coming Soon
+
+#### Writing Shapefiles
+
  * Coming Soon
 
 ## osgeo
