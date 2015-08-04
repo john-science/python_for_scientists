@@ -55,5 +55,6 @@
     plt.grid()
     plt.show()
 
+![Problem 1 Solution 3](../../resources/matplotlib_ps_3.png)
 
 [Back to Problem Set](problem_set_1_matplotlib.md)
