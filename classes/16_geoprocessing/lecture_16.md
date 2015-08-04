@@ -132,16 +132,13 @@ osgeo is the Open Source GIS library.
 
 ## References
 
- * Coming Soon
-
-#### References
-
- * [Quick PyProj Tutorial](http://jswhit.github.io/pyproj/)
  * [SpatialReference.org](http://spatialreference.org/) - Standard names for most projections
- * [Official Shapefile Guide](https://github.com/GeospatialPython/pyshp)
- * [What is a Shapefile?](https://en.wikipedia.org/wiki/Shapefile)
- * [Great List of References](http://gis.stackexchange.com/questions/53816/what-are-some-resources-for-learning-arcpy)
- * [Nice Overview PDF](http://proceedings.esri.com/library/userconf/devsummit09/papers/pythonscriptingadvancedtechniques.pdf)
- * [Official Docs](http://help.arcgis.com/en/arcgisdesktop/10.0/help/index.html#/A_quick_tour_of_ArcPy/000v00000001000000/)
+ * [PyProj - Quick Tutorial](http://jswhit.github.io/pyproj/)
+ * [Shapefile - Official Guide](https://github.com/GeospatialPython/pyshp)
+ * [Shapefile - Definition on Wikipedia](https://en.wikipedia.org/wiki/Shapefile)
+ * [OGR - Cookbook](https://pcjericks.github.io/py-gdalogr-cookbook/)
+ * [OGR - Free Geoprocessing Mini Course](http://www.gis.usu.edu/~chrisg/python/2009/)
+ * [ArcPy - Great List of References](http://gis.stackexchange.com/questions/53816/what-are-some-resources-for-learning-arcpy)
+ * [ArcPy - Official Docs](http://help.arcgis.com/en/arcgisdesktop/10.0/help/index.html#/A_quick_tour_of_ArcPy/000v00000001000000/)
 
 [Back to Syllabus](../../README.md)
