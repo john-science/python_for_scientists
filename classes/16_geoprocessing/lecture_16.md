@@ -59,6 +59,8 @@ And most of the functions in this API can be used on multiple coordinates at one
 
 Shapefile is the Python interface for shapefiles. There is a great tutorial [here](https://github.com/GeospatialPython/pyshp).
 
+#### Reading Shapefiles
+
 A [shapefile](https://en.wikipedia.org/wiki/Shapefile) is actually a combination of three or more files that work together. To load a shapefile:
 
     >>> import shapefile
@@ -87,9 +89,24 @@ The `points` attribute contains a list of (x, y) tuples for each point in the sh
     >>> shapes[3].points[7]
     ['-122.471', '37.787']
 
-#### Reading Record Information
+There are fields of data associated with each geometric object in a shapefile. To get a general listing of what fields this shapefile possesses, use `.fields`:
 
- * Coming Soon
+    >>> fields = sf.fields
+    >>> fields
+    [["POP90_SQMI", "N", 10, 1], ["MALES", "N", 9, 0], ["FEMALES", "N", 9, 0]]
+
+Where here each field is defined by four quantities:
+
+ 1. Field Name
+ 2. Field Type
+ 3. Field Length
+ 4. Decimal Length
+
+And much like calling all of the geometric objects in a shapefile, you can call just the data records:
+
+    >>> records = sf.records
+    >>> records[0]
+    [1000, 499, 501]
 
 #### Writing Shapefiles
 
