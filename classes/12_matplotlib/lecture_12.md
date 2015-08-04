@@ -1,6 +1,8 @@
 # Plotting with matplotlib
 
-Matplotlib is a standard plotting library in Python. That is, people use it all the time to make 2D or 3D informational graphics. This is not a thorough guide to everything you can do with the library. But a quick introduction to the four major kinds of plots you (as a scientist/engineer) will want to make 99% of the time. The plots are easy to make, and easy to customize. Matplotlib also allows for a dizzying amount of customization, so you can create anything from quick-and-easy plots to publication-quality plots.
+Matplotlib is a standard plotting library in Python. That is, people use it all the time to make 2D or 3D informational graphics. This lecture will not be a through guide to matplotlib, because that would take far too long. Instead, this introduction will show you how to make four major types of plots that you (as a scientist/engineer) will want to know how to make. The plots are easy to make and easy to customize.
+
+Matplotlib allows for a dizzying amount of customization, so you can create anything from quick-and-easy plots to publication-quality plots.
 
 ## Installing matplotlib
 
@@ -22,7 +24,7 @@ Consider installing [Anaconda](http://docs.continuum.io/anaconda/install.html) i
 
 ## Scatter Plots
 
-First, let's generate a few random data points:
+First, let's generate a few random numpy arrays:
 
     from numpy import random
     
