@@ -10,7 +10,7 @@ Like most of the libraries used in our "special topics" lectures, SciPy does not
 
 #### Anaconda
 
-Consider installing [Anaconda](http://docs.continuum.io/anaconda/install.html) instead. Anaconda is Python packaged with over 100 libraries that you want (This includes SciPy and nearly everything else we will use in this course.)
+Consider installing [Anaconda](http://docs.continuum.io/anaconda/install.html) instead. Anaconda is Python packaged with hundreds of libraries that you want (This includes SciPy and nearly everything else we will use in this course.)
 
 ## Basics
 
