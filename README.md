@@ -41,7 +41,7 @@ Special Topics - Libraries for Scientists and Engineers:
  * [Math - NumPy](classes/10_numpy/lecture_10.md)
  * [Statistics - SciPy](classes/11_scipy/lecture_11.md)
  * [Plotting - matplotlib](classes/12_matplotlib/lecture_12.md)
+ * [Databases - sqlite3](classes/15_sqlite3/lecture_15.md)
  * [Data Analysis - pandas](classes/13_pandas/lecture_13.md)
  * [NetCDF Files - netCDF4](classes/14_netcdf/lecture_14.md)
- * [Databases - sqlite3](classes/15_sqlite3/lecture_15.md)
  * [Geoprocessing - osgeo/shapefile/PyProj](classes/16_geoprocessing/lecture_16.md)
