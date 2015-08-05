@@ -10,7 +10,7 @@ Like most of the libraries used in our "special topics" lectures, matplotlib doe
 
 #### Anaconda
 
-Consider installing [Anaconda](http://docs.continuum.io/anaconda/install.html) instead. Anaconda is Python packaged with over 100 tools and libraries that you will want (This includes matplotlib and everything else we will use in this course.)
+Consider installing [Anaconda](http://docs.continuum.io/anaconda/install.html) instead. Anaconda is Python packaged with hundreds of tools and libraries that you will want (This includes matplotlib and everything else we will use in this course.)
 
 ## Outline
 
@@ -205,7 +205,7 @@ You can use `bar` to create vertical bar chart:
 
 Or `barh` to create a horizontal bar chart:
 
-    >>> plt.bar(x, y)
+    >>> plt.barh(x, y)
     >>> plt.show()
 
 ![Simple Horizontal Bar Chart](../../resources/barh_plot_simple_1.png)
