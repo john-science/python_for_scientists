@@ -12,7 +12,7 @@ You can find instructions for installing NumPy [here](http://docs.scipy.org/doc/
 
 #### Anaconda
 
-Consider installing [Anaconda](http://docs.continuum.io/anaconda/install.html) instead. Anaconda is Python packaged with over 100 tools and libraries that you will want (This includes NumPy and everything else we will use in this course.)
+Consider installing [Anaconda](http://docs.continuum.io/anaconda/install.html) instead. Anaconda is Python packaged with hundreds of tools and libraries that you will want (This includes NumPy and everything else we will use in this course.)
 
 ## The NumPy array
 
