@@ -16,6 +16,10 @@ I found this link better for downloading and installing the Python library itsel
 
  * [Google Code Instructions](http://netcdf4-python.googlecode.com/svn/trunk/docs/netCDF4-module.html)
 
+#### Anaconda
+
+Consider installing [Anaconda](http://docs.continuum.io/anaconda/install.html) instead. Anaconda is Python packaged with hundreds of tools and libraries that you will want (This includes NetCDF4 and nearly everything else we will use in this course.)
+
 ## Reading & Writing NetCDF
 
 To read or write NetCDF files, use the `Dataset` constructor.
