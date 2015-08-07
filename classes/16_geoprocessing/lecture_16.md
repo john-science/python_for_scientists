@@ -114,23 +114,25 @@ To create a shapefile, use the `Writer` class:
 
     >>> w = shapefile.Writer()
 
+When you add a geometric object to a shapefile, it can have one of several types:
+
+ * shapefile.POINT = 1
+ * shapefile.POLYLINE = 3
+ * shapefile.POLYGON = 5
+ * shapefile.MULTIPOINT = 8
+ * shapefile.POINTZ = 11
+ * shapefile.POLYLINEZ = 13
+ * shapefile.POLYGONZ = 15
+ * shapefile.MULTIPOINTZ = 18
+ * shapefile.POINTM = 21
+ * shapefile.POLYLINEM = 23
+ * shapefile.POLYGONM = 25
+ * shapefile.MULTIPOINTM = 28
+ * shapefile.MULTIPATCH = 31
+
+Adding data..
+
  * Coming Soon
-
-
-    shapefile.POINT = 1
-    shapefile.POLYLINE = 3
-    shapefile.POLYGON = 5
-    shapefile.MULTIPOINT = 8
-    shapefile.POINTZ = 11
-    shapefile.POLYLINEZ = 13
-    shapefile.POLYGONZ = 15
-    shapefile.MULTIPOINTZ = 18
-    shapefile.POINTM = 21
-    shapefile.POLYLINEM = 23
-    shapefile.POLYGONM = 25
-    shapefile.MULTIPOINTM = 28
-    shapefile.MULTIPATCH = 31
-
 
 ## osgeo
 
