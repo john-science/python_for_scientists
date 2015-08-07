@@ -110,7 +110,27 @@ And much like calling all of the geometric objects in a shapefile, you can call 
 
 #### Writing Shapefiles
 
+To create a shapefile, use the `Writer` class:
+
+    >>> w = shapefile.Writer()
+
  * Coming Soon
+
+
+    shapefile.POINT = 1
+    shapefile.POLYLINE = 3
+    shapefile.POLYGON = 5
+    shapefile.MULTIPOINT = 8
+    shapefile.POINTZ = 11
+    shapefile.POLYLINEZ = 13
+    shapefile.POLYGONZ = 15
+    shapefile.MULTIPOINTZ = 18
+    shapefile.POINTM = 21
+    shapefile.POLYLINEM = 23
+    shapefile.POLYGONM = 25
+    shapefile.MULTIPOINTM = 28
+    shapefile.MULTIPATCH = 31
+
 
 ## osgeo
 
