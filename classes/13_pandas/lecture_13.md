@@ -39,13 +39,13 @@ Or trying this as well:
 So we look at what the column headers do look like and find some craziness:
 
     >>> df.columns
-    Index([u'first_name', u'LAST_NAME', u'gender', u'Age'], dtype='object')
+    Index([u'first_name', u'LAST_NAME', u'gender', u'Age', u'Hair_COLOR', u'eye_Color'], dtype='object')
     
 Luckily, there's an easy fix:
 
     >>> df.columns = [x.upper() for x in df.columns]
     >>> df.columns
-    ['FIRST_NAME', 'LAST_NAME', 'GENDER', 'AGE']
+    ['FIRST_NAME', 'LAST_NAME', 'GENDER', 'AGE', 'HAIR_COLOR', 'EYE_COLOR']
     
     >>> df['FIRST_NAME']
     * PUT RESULT OF PRINTED DATAFRAME
