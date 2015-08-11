@@ -20,7 +20,36 @@ Consider installing [Anaconda](http://docs.continuum.io/anaconda/install.html) i
 
 ## Slicing a Data Set
 
- * Coming Soon
+#### Via columns
+
+**Tip: access columns identified by column names in all caps.**
+
+**Why? If a column header is read in from a file rather than defined explicitly by the user, there's no telling what kind of case is used.**
+
+Trying this should fail if the cases don't match perfectly:
+
+    >>> df['FIRST_NAME']
+    KeyError: u'no item named FIRST_NAME'
+    
+Or trying this as well:
+    
+    >>> df.loc[:,'FIRST_NAME']
+    KeyError: 'the label [FIRST_NAME] is not in the [columns]'
+ 
+So we look at what the column headers do look like and find some craziness:
+
+    >>> df.columns
+    Index([u'first_name', u'LAST_NAME', u'gender', u'Age'], dtype='object')
+    
+Luckily, there's an easy fix (I would recommend making this a habit for all dataframes:
+
+    >>> df.columns = [x.upper() for x in df.columns]
+    >>> df.columns
+    ['FIRST_NAME', 'LAST_NAME', 'GENDER', 'AGE']
+    >>> df['FIRST_NAME']
+    * PUT RESULT OF PRINTED DATAFRAME
+    >>> df.loc[:,'FIRST_NAME']
+    * PUT RESULT OF PRINTED DATAFRAME
 
 ## Handling Missing Data
 
