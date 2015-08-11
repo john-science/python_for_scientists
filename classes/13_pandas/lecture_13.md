@@ -41,13 +41,15 @@ So we look at what the column headers do look like and find some craziness:
     >>> df.columns
     Index([u'first_name', u'LAST_NAME', u'gender', u'Age'], dtype='object')
     
-Luckily, there's an easy fix (I would recommend making this a habit for all dataframes:
+Luckily, there's an easy fix:
 
     >>> df.columns = [x.upper() for x in df.columns]
     >>> df.columns
     ['FIRST_NAME', 'LAST_NAME', 'GENDER', 'AGE']
+    
     >>> df['FIRST_NAME']
     * PUT RESULT OF PRINTED DATAFRAME
+    
     >>> df.loc[:,'FIRST_NAME']
     * PUT RESULT OF PRINTED DATAFRAME
 
