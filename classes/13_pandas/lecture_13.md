@@ -20,8 +20,6 @@ Consider installing [Anaconda](http://docs.continuum.io/anaconda/install.html) i
 
 ## Slicing a Data Set
 
-#### Via columns
-
 **Tip: access columns identified by column names in all caps.**
 
 **Why? If a column header is read in from a file rather than defined explicitly by the user, there's no telling what kind of case is used.**
