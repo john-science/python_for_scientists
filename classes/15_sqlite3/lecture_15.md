@@ -1,21 +1,19 @@
 # SQLite3 Databases
 
-There are a lot of different kinds of databases: SQL, MySQL, Postgres, Mongo, etc. And each different type of database has it's own Python library. Today we are going to discuss`sqlite3` because it is the only database library that comes standard with Python. It is particularly well suited for smaller databases. If you're interested, you can look [here](https://wiki.python.org/moin/DatabaseInterfaces) for a listing of the most popular database interfaces in Python.
+There are a lot of different kinds of databases: SQL, MySQL, Postgres, Mongo, etc. And each different type of database has it's own Python library. Today we are going to discuss`sqlite3` because it comes standard with Python. It is particularly well suited for smaller databases. If you're interested, you can look [here](https://wiki.python.org/moin/DatabaseInterfaces) for a listing of the most popular database interfaces in Python.
 
-Most databases are [servers](https://en.wikipedia.org/wiki/Server_%28computing%29) or [services](https://en.wikipedia.org/wiki/Windows_service) that are run on your computer. But one of the major features of `sqlite3` is that there is no server/service, the entire database is held inside one lightweight files. This is particularly handy for smaller databases and for databases you want to included in an application.
+Most databases are [servers](https://en.wikipedia.org/wiki/Server_%28computing%29) or [services](https://en.wikipedia.org/wiki/Windows_service) that are run on your computer. But one of the major features of `sqlite3` is that there is no server/service, the entire database is held inside one lightweight file. This is particularly handy for smaller databases and for databases you want to package with an application.
 
 ## Creating and Connecting to Databases
 
-There are many books and entire courses covering the topic of databases. But we will not cover it in detail here. It is important to know that `sqlite3` is a [relational database](https://en.wikipedia.org/wiki/Relational_database). That is, inside the database we have tables of data organized by rows (records) and columns (attributes).
+There are many books and entire courses covering the topic of databases. So it is important to know this is just a light introduction. SQLite` is a [relational database](https://en.wikipedia.org/wiki/Relational_database). That is, inside the database we have tables of data organized by rows (records) and columns (attributes).
 
 ![secret agent database model](../../resources/secret_agent_db.png)
 
-We will use the same command to open an existing database as we would use to create a new database:
+We will use the same command to open an existing database that we would use to create a new database:
 
     import sqlite3
     con = sqlite3.connect('secret_agents.db')
-
-(The path given can be local or absolute.)
 
 At the end of your work, it is important to close your database connection:
 
@@ -23,7 +21,7 @@ At the end of your work, it is important to close your database connection:
 
 ## Interacting with the Database
 
-Whether you want to create, modify, or retrieve information from a sqlite3 table, the process will always be the same:
+Whether you want to create, modify, or retrieve information from a `sqlite3` table, the process will always be the same:
 
  * create a cursor
  * execute SQLite code
@@ -39,7 +37,7 @@ For instance, if I wanted to create a table `agents` I might do:
     ''')
     con.commit()
 
-First notice that a cursor was created using `.cursor()`, we created SQLite code using `.execute()`, and we executed the code using `.commit()`.
+First notice that a cursor was created using `.cursor()`, we created SQLite code using `.execute()`, and we ran the code against the database using `.commit()`.
 
 You may also noticed something very strange here. What is all this "CREATE TABLE ..." gobbly gook? That's not Python code! Good observation; that is not Python code. When we interact with the database, we do so with a variant of the popular SQL database langauge called SQLite. It might seem unfair that now you have to learn a whole new programming language. But there's nothing for it. If you want to deal with databases, you need to learn to talk to them on their level.
 
