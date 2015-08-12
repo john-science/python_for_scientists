@@ -6,7 +6,7 @@ Most databases are [servers](https://en.wikipedia.org/wiki/Server_%28computing%2
 
 ## Creating and Connecting to Databases
 
-There are many books and entire courses covering the topic of databases. So it is important to know this is just a light introduction. SQLite` is a [relational database](https://en.wikipedia.org/wiki/Relational_database). That is, inside the database we have tables of data organized by rows (records) and columns (attributes).
+There are many books and entire courses covering the topic of databases. So it is important to know this is just a light introduction. SQLite is a [relational database](https://en.wikipedia.org/wiki/Relational_database). That is, inside the database we have tables of data organized by rows (records) and columns (attributes).
 
 ![secret agent database model](../../resources/secret_agent_db.png)
 
