@@ -1,6 +1,6 @@
 # NetCDF Files in Python
 
-The NetCDF file format is more and more common these days. NetCDF files are binary files with a lot of flexibility for describing dimensioned variables.
+The NetCDF file format is increasingly more common. NetCDF files are binary files with a lot of flexibility for describing dimensioned variables.
 
 ## The Library
 
@@ -34,7 +34,7 @@ The netCDF4 library supports four different NetCDF formats: `NETCDF3_CLASSIC`, `
     >>> data = Dataset("read_test.nc", "r")
     >>> data.close()
 
-Following the usual Python syntax, you can open an existing NetCDF file to write more date to it by using `r+`.
+You can open an existing NetCDF file to write more date to it by using `r+`.
 
     >>> from netCDF4 import Dataset
     >>> data = Dataset("read_test.nc", "r+")
@@ -53,9 +53,11 @@ Use `createGroup` to create a new group:
     >>> print(root.groups)
     OrderedDict([('testing_data', <netCDF4.Group object at 0x1588e50>)])
 
+I have not seen a lot of people using groups in the wild, and so I will not focus on them in this lecture. But you should know they exist.
+
 ## Dimensions
 
-All variables in NetCDF files are defined in terms of a set of dimensions. For instance, meteorological variables might be defined along four dimensions: latitude, longitude, altitude, and time. But surface elevation data might only have two dimensions: latitude and longitude. Obviously, before we create any variables, we need to define the dimensions in the file. Use `createDimension`:
+All variables in NetCDF files are defined in terms of a set of dimensions. For instance, meteorological variables might be defined along four dimensions: latitude, longitude, altitude, and time. But surface elevation data might only have two dimensions: latitude and longitude. Obviously, before we create any variables, we need to define the dimensions in the file:
 
     >>> time = root.createDimension("time", None)
     >>> layer = root.createDimension("layer", 11)
@@ -64,7 +66,7 @@ All variables in NetCDF files are defined in terms of a set of dimensions. For i
 
 Here we pass `createDimension` two things: the first is a string name for the dimension and the next is the length of the dimension. By putting `None` for the length of the `"time"` dimension, we are allowing the time dimension to be unlimited.
 
-Much like for groups, to get an ordered dictionary of the dimensions, simply do:
+To get an ordered dictionary of the dimensions, simply do:
 
     >>> print(root.dimensions)
     OrderedDict([('time', <netCDF4.Dimension object at 0x15b5910>),
@@ -83,7 +85,7 @@ You can also ask for the length of a dimension, or if the dimension is unlimited
 
 ## Variables
 
-Variables are where we hold the meat of the data in our NetCDF files. Variables have names, data types, and exist along the dimensions we described earlier. As the name suggests, we can keep adding data along an unlimited dimension will just grow the dimension of the file in that direction.
+Variables are where we hold the meat of the data in our NetCDF files. Variables have names, data types, and exist along the dimensions we described earlier. As the name suggests, adding data along an unlimited dimension will just grow the dimension of the file in that direction.
 
     >>> temp = root.createVariable("temp", "f4", ("time","layer","lat","lon"))
     >>> rh = root.createVariable("rh", "f", ("time","layer","lat","lon"), least_significant_digit=3)
@@ -117,7 +119,7 @@ It is also possible to create "scalar" variables, that have no dimensions and ar
 
     >>> num_fires = root.createVariable("num_fires", 'i')
 
-**FUN FACT**: Variables and Dimensions can not be deleted from a NetCDF file. This is not a bug in `netCDF4`, but a feature in the underlying C API. Your only option is to copy the file bit-by-bit, and just skip the variable in question.
+**FUN FACT**: Variables and Dimensions can not be deleted from a NetCDF file. This is not a bug in `netCDF4`, but a feature in the underlying C API. Your only option is to copy the file bit-by-bit, and just skip the variable/dimension in question.
 
 ## Attributes
 
@@ -196,9 +198,9 @@ Similarly, once a variable has values, we can read locations using the standard 
     >>> temp[0][0][50][50]
     83.317664206502371
     >>> temp[0][0][79][25:29]
-    array([ 141.61345365,  129.34104319,  121.31416574,   80.44523185])
+    array([141.61345365, 129.34104319, 121.31416574, 80.44523185])
 
-Keep in mind that this won't work if the variable is totally unset:
+Keep in mind that this won't work if the variable is unset:
 
     >>> rh[0][0][0][0]
     Traceback (most recent call last):
@@ -207,7 +209,7 @@ Keep in mind that this won't work if the variable is totally unset:
       File "netCDF4.pyx", line 3319, in netCDF4.Variable._get (netCDF4.c:41263)
     IndexError
 
-While the NumPy data structures used in netCDF4 are significantly faster, they were designed to make use of the syntax we already know from the standard Python lists for reading and writing data points. This makes netCDF4 easier to learn and will speed our our work.
+The NumPy data structures used in netCDF4 are faster and designed to make use of the standard Python syntax for reading and writing data elements in lists. This makes netCDF4 easier to learn and will speed your work.
 
 ## Dealing with Time Coordinates
 
@@ -239,26 +241,26 @@ By contrast, you can use `num2date` to convert these numbers back into something
      datetime.datetime(2015, 6, 28, 0, 0) datetime.datetime(2015, 6, 28, 12, 0)
      datetime.datetime(2015, 6, 29, 0, 0) datetime.datetime(2015, 6, 29, 12, 0)]
 
-Working with unlimited dimensions is actually pretty easy. For instance, if we printed out the `shape` of `temp` now, we would get:
+Working with unlimited dimensions is actually pretty easy. For instance, if we print the `shape` of `temp`, we would get:
 
     >>> temp.shape
     (1, 11, 321, 291)
 
-But the time dimension will automatically add up if we simply add more data:
+But the time dimension will automatically extend if we simply add more data:
 
     >>> from numpy.random import random
     >>> temp[0:5,0:11,:,:] = random(size=(5, 11, 321, 291))
-    >>> print('temp.shape after = ' + str(temp.shape))
+    >>> print(temp.shape)
     (5, 11, 321, 291)
 
-So all we had to do above was add data into one of our variables and the time variable was automatically grown to match:
+All we had to do above was add data into one of our variables and the time variable was automatically grown to match:
 
     >>> print(len(time))
     5
 
 ## Data Compression
 
-When creating a variable, you can opt to have it compressed:
+When creating a variable, you can opt to have it compressed inside the NetCDF file:
 
     >>> pressure = root.createVariable("pressure",
                                        "f4",
