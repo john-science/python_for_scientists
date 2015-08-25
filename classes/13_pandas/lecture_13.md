@@ -122,13 +122,31 @@ Series can also be extracted from multi-dimensional data structures like datafra
 
 #### From a dictionary of arrays
 
-    d = dict( ("x"+str(k+1), np.random.randn(5)) for k in range(5) )
-    df = pd.DataFrame(d)
+    In [6]: d = dict( ("x"+str(k+1), np.random.randn(7)) for k in range(5) )  # 7 rows by 5 columns
+    In [7]: df = pd.DataFrame(d)
+    Out[7]: 
+             x1        x2        x3        x4        x5
+    0 -1.517961  1.275236 -0.186226 -0.331491  2.396869
+    1  3.468361 -1.397977 -0.883015 -0.078715  0.743549
+    2  1.286010 -1.446566 -0.643641  0.717790  0.747485
+    3  0.252657 -0.247126  0.090866  1.435567 -0.495681
+    4  0.903237 -0.413400 -0.754602  0.597491 -0.198482
+    5 -0.274422 -0.315801  1.312623  3.297479  1.335182
+    6 -0.875649  2.542598  0.051351  0.252638  1.541355
 
 #### From a numpy ndarray
 
-    d = np.random.rand(7,5)  # 7 rows by 5 columns
-    df = pd.DataFrame(d)
+    In [8]: d = np.random.rand(7,5)  # 7 rows by 5 columns
+    In [9]: df = pd.DataFrame(d)
+    Out[9]: 
+              0         1         2         3         4
+    0  0.966545  0.387958  0.175133  0.194291  0.224350
+    1  0.571877  0.382613  0.646535  0.836982  0.643568
+    2  0.941696  0.806954  0.006444  0.267016  0.545472
+    3  0.378179  0.105150  0.194698  0.052711  0.025345
+    4  0.259918  0.765968  0.012413  0.107861  0.369962
+    5  0.794492  0.524574  0.800396  0.918925  0.047937
+    6  0.115055  0.458574  0.847663  0.442791  0.537918
 
 ## Reshaping a Data Set
 
