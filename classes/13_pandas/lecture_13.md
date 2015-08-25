@@ -20,6 +20,12 @@ Lastly, many pandas functions are based off of other popular Python utilities (n
 
 ## iPython
 
+When importing pandas into the Python interpreter for on-the-fly programming and debugging, I would recommend using iPython over the standard Python interpreter. It is basically a more advanced version with additional features.
+ * Tab auto-completion (on class names, functions, methods, variables)
+ * More explicit and colour-highlighted error messages
+ * Better history management
+ * Basic UNIX shell integration (you can run simple shell commands such as cp, ls, rm, cp, etc. directly from the iPython command line)
+
 ## Reading Files
 
 Before getting into how to build dataframes and other data structures in pandas, let's cover reading in pre-existing data. This will likely be the most common way of getting data into the pandas data structure for manipulation using pandas. In other words, you're less likely to build pandas data structues from scratch, as there are other more useful Python tools to accomplish that.
