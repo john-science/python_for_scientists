@@ -26,7 +26,7 @@ When importing pandas into the Python interpreter for on-the-fly programming and
  * Better history management
  * Basic UNIX shell integration (you can run simple shell commands such as cp, ls, rm, cp, etc. directly from the iPython command line)
 
-After installing iPython, invoke it using the command "ipython"
+After installing iPython, invoke it using the command `ipython`.
 
     >>>> ipython
     Python 2.6.6 (r266:84292, Jan 22 2014, 09:42:36)
