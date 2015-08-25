@@ -12,6 +12,20 @@ Consider installing [Anaconda](http://docs.continuum.io/anaconda/install.html) i
 
 ## Reading Files
 
+Before getting into how to build databases and other data structures in pandas, let's cover reading in pre-existing data. This will likely be the most common way of getting data into the pandas data structure for manipulation using pandas. In other words, you're less likely to build pandas data structues from scratch, as there are other more useful Python tools to accomplish that.
+
+#### read_csv (comma separated values)
+
+#### read_fwf (fixed width format)
+
+#### read_table (general delimited text file)
+
+#### read_pickle
+
+#### Other data formats
+
+For more information on reading in other data formats (Excel spreadsheets, SQL databases, etc.), you can refer to the pandas manual:
+
 http://pandas.pydata.org/pandas-docs/stable/api.html#flat-file
 
 ## Data Frames and Data Sets
