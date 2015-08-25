@@ -319,16 +319,21 @@ So does `df.loc[:,cols]` --> we'll go into more detail about this method later.
 
 Other alternate methods are `df.loc[:5,:]` and `df.loc[5:,:]`
     
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
+#### By row and column
+
+The `loc` function is my preferred tool for row and column-wise slicing of dataframes. The format for using `loc` is `df.loc[row_indexer, column_indexer]`. Below is a simple example for combining row and column slicing.
+
+    In [6]: df.loc[3:8,['FIRST_NAME','AGE','EYE_COLOR']]
+    Out[6]: 
+    FIRST_NAME  AGE EYE_COLOR
+    3       Mary   42      blue
+    4     Robert   37     brown
+    5     Thomas   60      blue
+    6    Natalie   21     green
+    7     Brenda   18     brown
+    8    Michael   58     brown
+
+We'll cover more of the `loc` function when we discuss query-like selection of data.
 
 ## Handling Missing Data
 
