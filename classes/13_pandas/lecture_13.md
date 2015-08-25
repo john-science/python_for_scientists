@@ -99,6 +99,8 @@ Luckily, there's an easy fix:
     Out[8]: 
     ['FIRST_NAME', 'LAST_NAME', 'GENDER', 'AGE', 'HAIR_COLOR', 'EYE_COLOR']
     
+Now when we try to look up the first names:
+
     In [9]: df['FIRST_NAME']
     Out[9]: 
     0     Jennifer
@@ -116,6 +118,8 @@ Luckily, there's an easy fix:
     12       Molly
     13       Jaime
     Name: FIRST_NAME, dtype: object
+    
+Or the second way:
     
     In [10]: df.loc[:,'FIRST_NAME']
     Out[10]: 
