@@ -287,7 +287,7 @@ Now that we've gotten the columns taken care of, we can go into how to select da
     12      Molly    Bryant
     13      Jaime  Anderson
     
-Using `df['FIRST_NAME','LAST_NAME']]` accomplishes the same thing.
+Using `df[['FIRST_NAME','LAST_NAME']]` accomplishes the same thing.
 
 So does `df.loc[:,cols]` --> we'll go into more detail about this method later.
     
