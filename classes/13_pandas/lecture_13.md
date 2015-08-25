@@ -271,7 +271,7 @@ Now that we've gotten the columns taken care of, we can go into how to select da
     In [4]: cols = ['FIRST_NAME','LAST_NAME']
     In [5]: df[col]
     Out[5]: 
-    FIRST_NAME LAST_NAME
+       FIRST_NAME LAST_NAME
     0    Jennifer     Jones
     1       Jaime   Roberts
     2     Michael   Johnson
@@ -297,7 +297,7 @@ So does `df.loc[:,cols]` --> we'll go into more detail about this method later.
 
     In [10]: df[:5]
     Out[10]: 
-    FIRST_NAME LAST_NAME GENDER  AGE HAIR_COLOR EYE_COLOR
+      FIRST_NAME LAST_NAME GENDER  AGE HAIR_COLOR EYE_COLOR
     0   Jennifer     Jones      F   27      black     brown
     1      Jaime   Roberts      M   32      brown     hazel
     2    Michael   Johnson      M   55        red     green
@@ -306,7 +306,7 @@ So does `df.loc[:,cols]` --> we'll go into more detail about this method later.
     
     In [11]: df[5:]
     Out[11]: 
-    FIRST_NAME LAST_NAME GENDER  AGE HAIR_COLOR EYE_COLOR
+       FIRST_NAME LAST_NAME GENDER  AGE HAIR_COLOR EYE_COLOR
     5      Thomas     Moore      M   60      brown      blue
     6     Natalie    Potter      F   21      brown     green
     7      Brenda     Jones      F   18     blonde     brown
@@ -325,7 +325,7 @@ The `loc` function is my preferred tool for row and column-wise slicing of dataf
 
     In [6]: df.loc[3:8,['FIRST_NAME','AGE','EYE_COLOR']]
     Out[6]: 
-    FIRST_NAME  AGE EYE_COLOR
+      FIRST_NAME  AGE EYE_COLOR
     3       Mary   42      blue
     4     Robert   37     brown
     5     Thomas   60      blue
@@ -371,7 +371,7 @@ It's also good for getting unique combinations of a subset of data.
 
     In [12]: df[['EYE_COLOR','HAIR_COLOR']].drop_duplicates()
     Out[12]: 
-    EYE_COLOR HAIR_COLOR
+       EYE_COLOR HAIR_COLOR
     0      brown      black
     1      hazel      brown
     2      green        red
