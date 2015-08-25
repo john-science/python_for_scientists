@@ -75,6 +75,26 @@ For more information on reading in other data formats (Excel spreadsheets, SQL d
 
 http://pandas.pydata.org/pandas-docs/stable/api.html
 
+## Series
+
+Though the focus of this course will mainly be on pandas dataframes, knowing a bit about pandas series is useful. Series are simply one-dimensional arrays of data with axis labels (indices). Series can be created from scratch using a dictionary or a list.
+
+    In [1]: d = {'a':'A','b':'B','c':'C'}
+    In [2]: pd.Series(d)
+    Out[2]: 
+    a    A
+    b    B
+    c    C
+    dtype: object
+    
+    In [3]: l = ['A','B','C']
+    In [4]: pd.Series(l)
+    Out[4]: 
+    0    A
+    1    B
+    2    C
+    dtype: object
+
 ## Data Frames and Data Sets
 
  * Coming Soon
