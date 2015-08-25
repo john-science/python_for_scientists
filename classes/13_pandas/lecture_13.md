@@ -120,7 +120,15 @@ Series can also be extracted from multi-dimensional data structures like datafra
 
 ## Data Frames and Data Sets
 
- * Coming Soon
+#### From a dictionary of arrays
+
+    d = dict( ("x"+str(k+1), np.random.randn(5)) for k in range(5) )
+    df = pd.DataFrame(d)
+
+#### From a numpy ndarray
+
+    d = np.random.rand(7,5)  # 7 rows by 5 columns
+    df = pd.DataFrame(d)
 
 ## Reshaping a Data Set
 
