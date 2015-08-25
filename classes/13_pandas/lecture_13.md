@@ -20,7 +20,7 @@ Before getting into how to build databases and other data structures in pandas, 
 
 #### read_table (general delimited text file)
 
-#### read_pickle
+#### read_pickle (preserved pandas data structure)
 
 #### Other data formats
 
