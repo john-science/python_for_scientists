@@ -26,6 +26,24 @@ When importing pandas into the Python interpreter for on-the-fly programming and
  * Better history management
  * Basic UNIX shell integration (you can run simple shell commands such as cp, ls, rm, cp, etc. directly from the iPython command line)
 
+After installing iPython, invoke it using the command "ipython"
+
+    >>>> ipython
+    Python 2.6.6 (r266:84292, Jan 22 2014, 09:42:36)
+    Type "copyright", "credits" or "license" for more information.
+    
+    IPython 0.13.2 -- An enhanced Interactive Python.
+    ?         -> Introduction and overview of IPython's features.
+    %quickref -> Quick reference.
+    help      -> Python's own help system.
+    object?   -> Details about 'object', use 'object??' for extra details.
+
+## Importing pandas
+
+Like importing other Python libraries, importing pandas is quite simple.
+
+    In [1]: import pandas as pd
+
 ## Reading Files
 
 Before getting into how to build dataframes and other data structures in pandas, let's cover reading in pre-existing data. This will likely be the most common way of getting data into the pandas data structure for manipulation using pandas. In other words, you're less likely to build pandas data structues from scratch, as there are other more useful Python tools to accomplish that.
@@ -60,30 +78,62 @@ http://pandas.pydata.org/pandas-docs/stable/api.html#flat-file
 
 Trying this should fail if the cases don't match perfectly:
 
-    >>> df['FIRST_NAME']
+    In [4]: df['FIRST_NAME']
     KeyError: u'no item named FIRST_NAME'
     
 Or trying this as well:
-    
-    >>> df.loc[:,'FIRST_NAME']
+
+    In [5]: df.loc[:,'FIRST_NAME']
     KeyError: 'the label [FIRST_NAME] is not in the [columns]'
  
 So we look at what the column headers do look like and find some craziness:
 
-    >>> df.columns
+    In [6]: df.columns
+    Out[6]:
     Index([u'first_name', u'LAST_NAME', u'gender', u'Age', u'Hair_COLOR', u'eye_Color'], dtype='object')
     
 Luckily, there's an easy fix:
 
-    >>> df.columns = [x.upper() for x in df.columns]
-    >>> df.columns
+    In [7]: df.columns = [x.upper() for x in df.columns]
+    In [8]: df.columns
+    Out[8]: 
     ['FIRST_NAME', 'LAST_NAME', 'GENDER', 'AGE', 'HAIR_COLOR', 'EYE_COLOR']
     
-    >>> df['FIRST_NAME']
-    * PUT RESULT OF PRINTED DATAFRAME
+    In [9]: df['FIRST_NAME']
+    Out[9]: 
+    0     Jennifer
+    1        Jaime
+    2      Michael
+    3         Mary
+    4       Robert
+    5       Thomas
+    6      Natalie
+    7       Brenda
+    8      Michael
+    9     Jennifer
+    10     Michael
+    11     Jessica
+    12       Molly
+    13       Jaime
+    Name: FIRST_NAME, dtype: object
     
-    >>> df.loc[:,'FIRST_NAME']
-    * PUT RESULT OF PRINTED DATAFRAME
+    In [10]: df.loc[:,'FIRST_NAME']
+    Out[10]: 
+    0     Jennifer
+    1        Jaime
+    2      Michael
+    3         Mary
+    4       Robert
+    5       Thomas
+    6      Natalie
+    7       Brenda
+    8      Michael
+    9     Jennifer
+    10     Michael
+    11     Jessica
+    12       Molly
+    13       Jaime
+    Name: FIRST_NAME, dtype: object
 
 ## Handling Missing Data
 
