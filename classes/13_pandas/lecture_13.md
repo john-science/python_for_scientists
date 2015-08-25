@@ -10,6 +10,12 @@ Like most of the libraries used in our "special topics" lectures, Pandas does no
 
 Consider installing [Anaconda](http://docs.continuum.io/anaconda/install.html) instead. Anaconda is Python packaged with over 100 tools and libraries that you will want (This includes Pandas and everything else we will use in this course.)
 
+## Intro to pandas
+
+#### Why use pandas?
+
+pandas is a powerful tool for handling data structures and performing data analysis. It can accomplish the same tasks you would typically do in Microsoft Excel (sort, filter, pivot, etc.), but unlike Excel, pandas can be used in Python programs to streamline repeitive tasks and allow reusability of code. Additionally, it can perform the same tasks that you would typically do in a database (like SQL), but it does so in Python memory (no need to establish and connect to a database!).
+
 ## Reading Files
 
 Before getting into how to build databases and other data structures in pandas, let's cover reading in pre-existing data. This will likely be the most common way of getting data into the pandas data structure for manipulation using pandas. In other words, you're less likely to build pandas data structues from scratch, as there are other more useful Python tools to accomplish that.
