@@ -48,13 +48,11 @@ Like importing other Python libraries, importing pandas is quite simple.
 
 Before getting into how to build dataframes and other data structures in pandas, let's cover reading in pre-existing data. This will likely be the most common way of getting data into the pandas data structure for manipulation using pandas. In other words, you're less likely to build pandas data structues from scratch, as there are other more useful Python tools to accomplish that.
 
-#### read_csv (comma separated values)
-
-#### read_fwf (fixed width format)
-
-#### read_table (general delimited text file)
-
-#### read_pickle (preserved pandas data structure)
+Common types:
+ * read_csv (comma separated values)
+ * read_fwf (fixed width format)
+ * read_table (general delimited text file)
+ * read_pickle (preserved pandas data structure)
 
 #### Other data formats
 
