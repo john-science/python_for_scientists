@@ -79,6 +79,8 @@ http://pandas.pydata.org/pandas-docs/stable/api.html#input-output
 
 Though the focus of this course will mainly be on pandas dataframes, knowing a bit about pandas series is useful. Series are simply one-dimensional arrays of data with axis labels (indices). Series can be created from scratch using a dictionary or a list.
 
+**From a dictionary**
+
     In [1]: d = {'a':'A','b':'B','c':'C'}
     In [2]: pd.Series(d)
     Out[2]: 
@@ -86,6 +88,8 @@ Though the focus of this course will mainly be on pandas dataframes, knowing a b
     b    B
     c    C
     dtype: object
+    
+**From a list**
     
     In [3]: l = ['A','B','C']
     In [4]: pd.Series(l)
