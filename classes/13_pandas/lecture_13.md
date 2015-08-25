@@ -73,7 +73,7 @@ In most cases, all you need to provide as an argument is the filepath. Each type
 
 For more information on reading in other data formats (Excel spreadsheets, SQL databases, etc.), you can refer to the pandas manual:
 
-http://pandas.pydata.org/pandas-docs/stable/api.html
+http://pandas.pydata.org/pandas-docs/stable/api.html#input-output
 
 ## Series
 
