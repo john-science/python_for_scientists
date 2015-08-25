@@ -206,9 +206,9 @@ Again, you're less likely to build pandas dataframes from scratch and will more 
 
 ## Slicing a Data Set
 
-**Tip: access columns identified by column names in all caps.**
+#### Why we want column names in all caps
 
-**Why? If a column header is read in from a file rather than defined explicitly by the user, there's no telling what kind of case is used.**
+**If a column header is read in from a file rather than defined explicitly by the user, there's no telling what kind of case is used.**
 
 Trying this should fail if the cases don't match perfectly:
 
