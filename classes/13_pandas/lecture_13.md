@@ -335,9 +335,22 @@ The `loc` function is my preferred tool for row and column-wise slicing of dataf
 
 We'll cover more of the `loc` function when we discuss query-like selection of data.
 
+## Returning a view versus a copy
+
+The previous slice can be accomplished the following way:
+
+    df[3:8][['FIRST_NAME','AGE','EYE_COLOR']]
+    
+This is called chained indexing. In the example above, the rows are sliced first, then the columns. While it does not pose a problem when selecting subsets of a dataframe, it becomes problematic when you want to set the values of this subset (e.g. replacing erroneous data). This has something to do with how pandas performs operations and the order in which they are performed. That being said, the preferred way of combination indexing is the `loc` function, whether it's actually used to set values in a dataframe subset or used simply to view the subset of data.
+
+More information about the dangers of chained indexing can be found in the pandas manual:
+http://pandas.pydata.org/pandas-docs/stable/indexing.html#returning-a-view-versus-a-copy
+
+## Querying Data
+
 ## Handling Missing Data
 
- * Coming Soon
+## More Dataframe Operations
 
 ## Writing Files
 
