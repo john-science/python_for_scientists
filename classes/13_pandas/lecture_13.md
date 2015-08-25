@@ -346,7 +346,28 @@ This is called chained indexing. In the example above, the rows are sliced first
 More information about the dangers of chained indexing can be found in the pandas manual:
 http://pandas.pydata.org/pandas-docs/stable/indexing.html#returning-a-view-versus-a-copy
 
+## Useful Dataframe Tools
+
+#### Dropping columns
+
+    df = df.drop(['HAIR_COLOR','EYE_COLOR'], axis=1)
+    df.drop(['HAIR_COLOR','EYE_COLOR'], axis=1, inplace=True)  # alternate way
+    
+#### Resetting indices
+
+This becomes useful when you've saved a subset of a dataframe and wish to sequentially reassign the indices.
+
+    df_males = df_males.reset_index(drop=True)
+    df_males.reset_index(drop=True, inplace=True)  # alternate way
+
 ## Querying Data
+
+
+
+
+
+
+
 
 ## Handling Missing Data
 
