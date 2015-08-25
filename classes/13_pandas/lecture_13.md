@@ -385,6 +385,15 @@ It's also good for getting unique combinations of a subset of data.
 
 Notice the missing indices? That's how you know some rows were dropped, which were duplicates. If the subset is to be saved for later use, it would be a good idea to reset the indices again.
 
+Alternately, you can do the same with a single column of data (that is, it can only be performed on series).
+
+    In [13]: df['HAIR_COLOR'].unique()
+    Out[13]: array(['black', 'brown', 'red', 'blonde'], dtype=object)
+
+    In [14]: df['HAIR_COLOR'].unique().tolist()
+    Out[14]: ['black', 'brown', 'red', 'blonde']
+
+
 
 
 
@@ -392,9 +401,31 @@ Notice the missing indices? That's how you know some rows were dropped, which we
 
 ## Querying Data
 
-## Handling Missing Data
+#### Revisting Map and Apply
+
+#### Null Data
+
+#### Isin
+
+#### Complex Queries
+
+
+
 
 ## More Dataframe Operations
+
+#### Merge
+
+#### Groupby
+
+#### Sort
+
+#### Append
+
+#### Concat
+
+
+
 
 ## Writing Files
 
