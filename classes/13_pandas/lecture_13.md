@@ -57,13 +57,13 @@ Common types:
 In most cases, all you need to provide as an argument is the filepath. Each type has its own variety of optional arguments, and touch briefly on a few useful ones.
 
   * header (int): If not given, pandas will use row 0 as the header line and the start of the data. This is useful if your file has a header/comment block and the data starts several lines down. If your file has no header, set header=None to avoid having the first line used at the header.
+  
+  * names (list): Use if you would like to define the column names upon importing the data. This should be used with the explicit option header=None.
  
- * names (list): Use if you would like to define the column names upon importing the data. This should be used with the explicit option header=None.
- 
- * dtype (dict): If not given, pandas will infer the data types when importing data. This option is useful if you want to force certain data types at the import stage (note that typecasting can be done after the data has been imported into pandas as well).
+  * dtype (dict): If not given, pandas will infer the data types when importing data. This option is useful if you want to force certain data types at the import stage (note that typecasting can be done after the data has been imported into pandas as well).
    ex. dtype={'x':np.float64, 'y':np.int32, 'z':np.float64}
 
- * usecols: 
+  * usecols
 
 #### Other data formats
 
