@@ -264,6 +264,8 @@ Or the second way:
     13       Jaime
     Name: FIRST_NAME, dtype: object
     
+Now that we've gotten the columns taken care of, we can go into how to select data in a dataframe.
+
 #### By column only
 
     In [4]: cols = ['FIRST_NAME','LAST_NAME']
@@ -286,6 +288,8 @@ Or the second way:
     13      Jaime  Anderson
     
 Using `df['FIRST_NAME','LAST_NAME']]` accomplishes the same thing.
+
+So does `df.loc[:,cols]` --> we'll go into more detail about this method later.
     
 #### By row only
 
@@ -312,7 +316,8 @@ Using `df['FIRST_NAME','LAST_NAME']]` accomplishes the same thing.
     11    Jessica    Rabbit      F   19      black      blue
     12      Molly    Bryant      F   21      brown      blue
     13      Jaime  Anderson      F   46      brown     green
-    
+
+Other alternate methods are `df.loc[:5,:]` and `df.loc[5:,:]`
     
     
     
