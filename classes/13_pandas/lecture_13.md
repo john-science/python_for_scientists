@@ -54,7 +54,7 @@ Common types:
  * read_table (general delimited text file)
  * read_pickle (preserved pandas data structure)
 
-In most cases, all you need to provide as an argument is the filepath. Each type has its own variety of optional arguments, and touch briefly on a few useful ones.
+In most cases, all you need to provide as an argument is the filepath. Each type has its own variety of optional arguments, and we'll touch briefly on a few useful ones.
 
   * header (int): If not given, pandas will use row 0 as the header line and the start of the data. This is useful if your file has a header/comment block and the data starts several lines down. If your file has no header, set header=None to avoid having the first line used at the header.
   
