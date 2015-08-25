@@ -199,14 +199,9 @@ Or the second way:
 
  * Coming Soon
 
-## Time-Series Data
-
- * Coming Soon
-
 ## Writing Files
 
  * Coming Soon
-
 
 ## Further Reading
 
