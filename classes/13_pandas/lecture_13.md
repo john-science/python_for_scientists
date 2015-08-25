@@ -48,7 +48,8 @@ Like importing other Python libraries, importing pandas is quite simple.
 
 Before getting into how to build dataframes and other data structures in pandas, let's cover reading in pre-existing data. This will likely be the most common way of getting data into the pandas data structure for manipulation using pandas. In other words, you're less likely to build pandas data structues from scratch, as there are other more useful Python tools to accomplish that.
 
-Common types:
+#### Common types
+
  * read_csv (comma separated values)
  * read_fwf (fixed width format)
  * read_table (general delimited text file)
@@ -63,8 +64,12 @@ In most cases, all you need to provide as an argument is the filepath. Each type
   * dtype (dict): If not given, pandas will infer the data types when importing data. This option is useful if you want to force certain data types at the import stage (note that typecasting can be done after the data has been imported into pandas as well).
    ex. dtype={'x':np.float64, 'y':np.int32, 'z':np.float64}
 
-  * usecols
-
+  * usecols (list): Import only certain columns. Saves time and space!
+ 
+  * nrows (int): Number of rows of file to read. Useful for reading pieces of large files.
+  
+  * skiprows (list or integer): Line numbers to skip (0-indexed) or number of lines to skip (int) at the start of the file
+  
 #### Other data formats
 
 For more information on reading in other data formats (Excel spreadsheets, SQL databases, etc.), you can refer to the pandas manual:
