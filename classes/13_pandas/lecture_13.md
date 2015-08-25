@@ -10,6 +10,10 @@ Like most of the libraries used in our "special topics" lectures, Pandas does no
 
 Consider installing [Anaconda](http://docs.continuum.io/anaconda/install.html) instead. Anaconda is Python packaged with over 100 tools and libraries that you will want (This includes Pandas and everything else we will use in this course.)
 
+## Reading Files/Databases
+
+http://pandas.pydata.org/pandas-docs/stable/api.html#flat-file
+
 ## Data Frames and Data Sets
 
  * Coming Soon
