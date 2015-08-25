@@ -18,6 +18,8 @@ Additionally, it can perform the same tasks that you would typically do in a dat
 
 Lastly, many pandas functions are based off of other popular Python utilities (numpy, scipy, etc.).
 
+## iPython
+
 ## Reading Files
 
 Before getting into how to build dataframes and other data structures in pandas, let's cover reading in pre-existing data. This will likely be the most common way of getting data into the pandas data structure for manipulation using pandas. In other words, you're less likely to build pandas data structues from scratch, as there are other more useful Python tools to accomplish that.
