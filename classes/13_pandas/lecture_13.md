@@ -287,11 +287,31 @@ Or the second way:
     
 Using `df['FIRST_NAME','LAST_NAME']]` accomplishes the same thing.
     
+#### By row only
+
+**Like list slicing**
+
+    In [10]: df[:5]
+    Out[10]: 
+    FIRST_NAME LAST_NAME GENDER  AGE HAIR_COLOR EYE_COLOR
+    0   Jennifer     Jones      F   27      black     brown
+    1      Jaime   Roberts      M   32      brown     hazel
+    2    Michael   Johnson      M   55        red     green
+    3       Mary     Adams      F   42     blonde      blue
+    4     Robert  Phillips      M   37     blonde     brown 
     
-    
-    
-    
-    
+    In [11]: df[5:]
+    Out[11]: 
+    FIRST_NAME LAST_NAME GENDER  AGE HAIR_COLOR EYE_COLOR
+    5      Thomas     Moore      M   60      brown      blue
+    6     Natalie    Potter      F   21      brown     green
+    7      Brenda     Jones      F   18     blonde     brown
+    8     Michael     Smith      M   58      brown     brown
+    9    Jennifer     Smith      F   36      black     brown
+    10    Michael     Smith      M   37      black     hazel
+    11    Jessica    Rabbit      F   19      black      blue
+    12      Molly    Bryant      F   21      brown      blue
+    13      Jaime  Anderson      F   46      brown     green
     
     
     
