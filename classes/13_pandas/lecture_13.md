@@ -94,6 +94,29 @@ Though the focus of this course will mainly be on pandas dataframes, knowing a b
     1    B
     2    C
     dtype: object
+    
+Series can also be extracted from multi-dimensional datas tructures like dataframes.
+
+    In [5]: df.LAST_NAME
+    Out[5]: 
+    0        Jones
+    1      Roberts
+    2      Johnson
+    3        Adams
+    4     Phillips
+    5        Moore
+    6       Potter
+    7        Jones
+    8        Smith
+    9        Smith
+    10       Smith
+    11      Rabbit
+    12      Bryant
+    13    Anderson
+    Name: LAST_NAME, dtype: object
+
+    In [6]: type(df.LAST_NAME)
+    Out[6]: pandas.core.series.Series
 
 ## Data Frames and Data Sets
 
