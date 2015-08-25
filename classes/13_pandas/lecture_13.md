@@ -357,17 +357,40 @@ http://pandas.pydata.org/pandas-docs/stable/indexing.html#returning-a-view-versu
 
 This becomes useful when you've saved a subset of a dataframe and wish to sequentially reassign the indices.
 
-    df_males = df_males.reset_index(drop=True)
-    df_males.reset_index(drop=True, inplace=True)  # alternate way
+    df = df.reset_index(drop=True)
+    df.reset_index(drop=True, inplace=True)  # alternate way
+    
+#### Dropping duplicate entries
+
+This becomes useful when you're dealing with data that you know should have unique entries.
+
+    df = df.drop_duplicates()
+    df.drop_duplicates(inplace=True)
+
+It's also good for getting unique combinations of a subset of data.
+
+    In [12]: df[['EYE_COLOR','HAIR_COLOR']].drop_duplicates()
+    Out[12]: 
+    EYE_COLOR HAIR_COLOR
+    0      brown      black
+    1      hazel      brown
+    2      green        red
+    3       blue     blonde
+    4      brown     blonde
+    5       blue      brown
+    6      green      brown
+    8      brown      brown
+    10     hazel      black
+    11      blue      black
+
+Notice the missing indices? That's how you know some rows were dropped, which were duplicates. If the subset is to be saved for later use, it would be a good idea to reset the indices again.
+
+
+
+
+
 
 ## Querying Data
-
-
-
-
-
-
-
 
 ## Handling Missing Data
 
