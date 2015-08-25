@@ -199,7 +199,7 @@ Again, you're less likely to build pandas dataframes from scratch and will more 
 
 #### First, why we want column names in all caps
 
-**If a column header is read in from a file rather than defined explicitly by the user, there's no telling what kind of case is used.**
+If a column header is read in from a file rather than defined explicitly by the user, there's no telling what kind of case is used.
 
 Trying this should fail if the cases don't match perfectly:
 
