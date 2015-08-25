@@ -61,8 +61,7 @@ In most cases, all you need to provide as an argument is the filepath. Each type
   
   * names (list): Use if you would like to define the column names upon importing the data. This should be used with the explicit option header=None.
  
-  * dtype (dict): If not given, pandas will infer the data types when importing data. This option is useful if you want to force certain data types at the import stage (note that typecasting can be done after the data has been imported into pandas as well).
-   ex. dtype={'x':np.float64, 'y':np.int32, 'z':np.float64}
+  * dtype (dict): If not given, pandas will infer the data types when importing data. This option is useful if you want to force certain data types at the import stage (note that typecasting can be done after the data has been imported into pandas as well). Ex. dtype={'x':np.float64, 'y':np.int32, 'z':np.float64}
 
   * usecols (list): Import only certain columns. Saves time and space!
  
