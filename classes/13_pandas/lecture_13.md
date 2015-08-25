@@ -120,6 +120,33 @@ Series can also be extracted from multi-dimensional data structures like datafra
 
 ## Data Frames and Data Sets
 
+Dataframes are the multi-dimensional version of the pandas series. However, a dataframe can be one-dimension (one row, one column, or both) so long as the data is imported as a dataframe.
+
+**Data imported as a series**
+
+    In [4]: l = ['A','B','C']
+    
+    In [5]: pd.Series(l)
+    Out[5]: 
+    0    A
+    1    B
+    2    C
+    dtype: object
+
+**Data imported as a dataframe**
+
+    In [6]: pd.DataFrame(l)
+
+    Out[6]: 
+       0
+    0  A
+    1  B
+    2  C
+
+Notice the column header `0` above the column of data? Other than that, importing one-dimensional data as a dataframe is pretty much the same as importing it as a series. Feel free to rename that column of data. However, importing the data as a dataframe opens the door for other practices, like appending the data column-wise or row-wise to another dataframe, or using it as a table for performing merges (pandas equivalent to an SQL join).
+
+Again, you're less likely to build pandas dataframes from scratch and will more likely import existing data using one of the `read_` functions. But for those itching to build their own dataframes, there are a few ways to do so.
+
 #### From a dictionary of arrays
 
     In [6]: d = dict( ("x"+str(k+1), np.random.randn(7)) for k in range(5) )  # 7 rows by 5 columns
@@ -147,6 +174,27 @@ Series can also be extracted from multi-dimensional data structures like datafra
     4  0.259918  0.765968  0.012413  0.107861  0.369962
     5  0.794492  0.524574  0.800396  0.918925  0.047937
     6  0.115055  0.458574  0.847663  0.442791  0.537918
+    
+#### From a dict of series
+
+    In [1]: l1 = ['a','b','c']  # list 1
+    In [2]: l2 = ['X','Y','Z']  # list 2
+    In [3]: l3 = [1,2,3]        # list 3
+    In [4]: l4 = [6,5,4]        # list 4
+    In [5]: d = {'l1':pd.Series(l1), 'l2':pd.Series(l2), 'l3':pd.Series(l3), 'l4':pd.Series(l4)}  # dictionary of series
+    In [6]: pd.DataFrame(d)
+    Out[6]: 
+      l1 l2  l3  l4
+    0  a  X   1   6
+    1  b  Y   2   5
+    2  c  Z   3   4
+    
+**Of course the data can be comprised of other data types, not just random floats. I would recommend dusting off your numpy and dictionary/list skills learned in previous lessons and build your own arrays/series of varying data types.**
+
+
+
+
+
 
 ## Reshaping a Data Set
 
