@@ -201,7 +201,16 @@ Or the second way:
 
 ## Writing Files
 
- * Coming Soon
+#### Common data formats
+
+ * to_csv (comma separated values)
+ * to_pickle (preserved pandas data structure)
+
+#### Other data formats
+
+Again, for more information on writing to other data formats, consult the pandas manual:
+
+http://pandas.pydata.org/pandas-docs/stable/api.html#serialization-io-conversion
 
 ## Further Reading
 
