@@ -95,7 +95,7 @@ Though the focus of this course will mainly be on pandas dataframes, knowing a b
     2    C
     dtype: object
     
-Series can also be extracted from multi-dimensional datas tructures like dataframes.
+Series can also be extracted from multi-dimensional data structures like dataframes.
 
     In [5]: df.LAST_NAME
     Out[5]: 
