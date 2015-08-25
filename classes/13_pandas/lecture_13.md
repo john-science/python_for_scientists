@@ -10,7 +10,7 @@ Like most of the libraries used in our "special topics" lectures, Pandas does no
 
 Consider installing [Anaconda](http://docs.continuum.io/anaconda/install.html) instead. Anaconda is Python packaged with over 100 tools and libraries that you will want (This includes Pandas and everything else we will use in this course.)
 
-## Reading Files/Databases
+## Reading Files
 
 http://pandas.pydata.org/pandas-docs/stable/api.html#flat-file
 
@@ -63,7 +63,7 @@ Luckily, there's an easy fix:
 
  * Coming Soon
 
-## Reading & Writing Files
+## Writing Files
 
  * Coming Soon
 
