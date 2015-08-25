@@ -14,7 +14,11 @@ Consider installing [Anaconda](http://docs.continuum.io/anaconda/install.html) i
 
 #### Why use pandas?
 
-pandas is a powerful tool for handling data structures and performing data analysis. It can accomplish the same tasks you would typically do in Microsoft Excel (sort, filter, pivot, etc.), but unlike Excel, pandas can be used in Python programs to streamline repeitive tasks and allow reusability of code. Additionally, it can perform the same tasks that you would typically do in a database (like SQL), but it does so in Python memory (no need to establish and connect to a database!).
+pandas is a powerful tool for handling data structures and performing data analysis. It can accomplish the same tasks you would typically do in Microsoft Excel (sort, filter, pivot, etc.), but unlike Excel, pandas can be used in Python programs to streamline repeitive tasks and allow reusability of code.
+
+Additionally, it can perform the same tasks that you would typically do in a database (like SQL), but it does so in Python memory (no need to establish and connect to a database!).
+
+Lastly, many pandas functions are based off of other popular Python utilities (numpy, scipy, etc.).
 
 ## Reading Files
 
