@@ -195,18 +195,9 @@ Again, you're less likely to build pandas dataframes from scratch and will more 
     
 **Of course the data can be comprised of other data types, not just random floats. I would recommend dusting off your numpy and dictionary/list skills learned in previous lessons and build your own arrays/series of varying data types.**
 
-
-
-
-
-
-## Reshaping a Data Set
-
- * Coming Soon
-
 ## Slicing a Data Set
 
-#### Why we want column names in all caps
+#### First, why we want column names in all caps
 
 **If a column header is read in from a file rather than defined explicitly by the user, there's no telling what kind of case is used.**
 
@@ -272,6 +263,47 @@ Or the second way:
     12       Molly
     13       Jaime
     Name: FIRST_NAME, dtype: object
+    
+#### By column only
+
+    In [4]: cols = ['FIRST_NAME','LAST_NAME']
+    In [5]: df[col]
+    Out[5]: 
+    FIRST_NAME LAST_NAME
+    0    Jennifer     Jones
+    1       Jaime   Roberts
+    2     Michael   Johnson
+    3        Mary     Adams
+    4      Robert  Phillips
+    5      Thomas     Moore
+    6     Natalie    Potter
+    7      Brenda     Jones
+    8     Michael     Smith
+    9    Jennifer     Smith
+    10    Michael     Smith
+    11    Jessica    Rabbit
+    12      Molly    Bryant
+    13      Jaime  Anderson
+    
+Using `df['FIRST_NAME','LAST_NAME']]` accomplishes the same thing.
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
 
 ## Handling Missing Data
 
