@@ -25,7 +25,12 @@
 
 #### Simple Queries
 
-10.
-11.
+10. df[df.LAST_NAME=='Smith']
+    df.loc[df.LAST_NAME=='Smith', :]
+
+11. df.loc[df.HAIR_COLOR!='black',:]
+    df.loc[~(df.HAIR_COLOR=='black'), :]
+    df[df.HAIR_COLOR!='black']
+    df[~(df.HAIR_COLOR=='black')]
 
 #### Complex Queries
