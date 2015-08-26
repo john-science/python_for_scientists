@@ -639,10 +639,52 @@ A similar statement could be built as a string using a block of code that knows 
 
 #### Groupby
 
-    In [67]: df['RAND_INT'] = np.random.randint(1,10, size=len(df))
+`groupby` is a useful tool for aggregating data according to specified fields and subsequently applying some sort of function. Some examples include:
 
-    In [68]: df
-    Out[68]: 
+ * Grouping a company purchase log by item category (men's, women's, home furnishings, etc.) and region, then applying `sum` to the sale prices. Could be used to report volume of sales by region and item category.
+
+ * Grouping a client list by clothing size and gender, then applying `min` and/or `max` to age to get the age range of clients (men and women) for each clothing size. Could be used to illustrate trends in clothing size with varying age, and to compare the trends for men and women.
+
+An example is provided for the dataframe of clients used throughout this course:
+
+    In [103]: df.groupby(['LAST_NAME','EYE_COLOR'], as_index=False)['EYE_COLOR'].count()
+    Out[103]: 
+    LAST_NAME  EYE_COLOR
+    Adams      blue         1
+    Anderson   green        1
+    Bryant     blue         1
+    Johnson    green        1
+    Jones      brown        2
+    Moore      blue         1
+    Phillips   brown        1
+    Potter     green        1
+    Rabbit     blue         1
+    Roberts    hazel        1
+    Smith      brown        2
+               hazel        1
+    dtype: int64
+    
+    In [104]: df.groupby(['FIRST_NAME','HAIR_COLOR'], as_index=False)['HAIR_COLOR'].count()
+    Out[104]: 
+    FIRST_NAME  HAIR_COLOR
+    Brenda      blonde        1
+    Jaime       brunette      2
+    Jennifer    black         2
+    Jessica     black         1
+    Mary        blonde        1
+    Michael     black         1
+                brunette      1
+                red           1
+    Molly       brunette      1
+    Natalie     brunette      1
+    Robert      blonde        1
+    Thomas      brunette      1
+    dtype: int64
+
+    In [105]: df['RAND_INT'] = np.random.randint(1,10, size=len(df))
+
+    In [106]: df
+    Out[106]: 
        FIRST_NAME LAST_NAME GENDER  AGE HAIR_COLOR EYE_COLOR  RAND_INT
     0    Jennifer     Jones      F   27      black     brown         8
     1       Jaime   Roberts      M   32      brown     hazel         5
@@ -659,14 +701,27 @@ A similar statement could be built as a string using a block of code that knows 
     12      Molly    Bryant      F   21      brown      blue         7
     13      Jaime  Anderson      F   46      brown     green         8
 
+    In [107]: df.groupby(['LAST_NAME','GENDER'], as_index=False)['RAND_INT'].sum()
+    Out[107]: 
+       LAST_NAME GENDER  RAND_INT
+    0      Adams      F         9
+    1   Anderson      F         9
+    2     Bryant      F         2
+    3    Johnson      M         3
+    4      Jones      F         8
+    5      Moore      M         5
+    6   Phillips      M         6
+    7     Potter      F         5
+    8     Rabbit      F         7
+    9    Roberts      M         9
+    10     Smith      F         2
+    11     Smith      M         5
+
 #### Sort
 
 #### Append
 
 #### Concat
-
-
-
 
 ## Writing Files
 
