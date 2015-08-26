@@ -834,9 +834,39 @@ Notice the out of sequence indices?
 
 #### Concat
 
+Use `concat` to combine multiple dataframes in one swift movement.
+
+    In [15]: DFs = []
+    In [16]: DFs.append(df[10:])
+    In [17]: DFs.append(df[5:10])
+    In [18]: DFs.append(df[0:5])
+    
+    In [19]: len(DFs)
+    Out[19]: 3
+    
+    In [20]: pd.concat(DFs)
+    Out[20]: 
+       FIRST_NAME LAST_NAME GENDER  AGE HAIR_COLOR EYE_COLOR  RAND_INT
+    10    Michael     Smith      M   37      black     hazel         4
+    11    Jessica    Rabbit      F   19      black      blue         7
+    12      Molly    Bryant      F   21   brunette      blue         2
+    13      Jaime  Anderson      F   46   brunette     green         9
+    5      Thomas     Moore      M   60   brunette      blue         5
+    6     Natalie    Potter      F   21   brunette     green         5
+    7      Brenda     Jones      F   18     blonde     brown         6
+    8     Michael     Smith      M   58   brunette     brown         1
+    9    Jennifer     Smith      F   36      black     brown         2
+    0    Jennifer     Jones      F   27      black     brown         2
+    1       Jaime   Roberts      M   32   brunette     hazel         9
+    2     Michael   Johnson      M   55        red     green         3
+    3        Mary     Adams      F   42     blonde      blue         9
+    4      Robert  Phillips      M   37     blonde     brown         6
+    
 ## Writing Files
 
 #### Common data formats
+
+Much like the `read_` functions, the `to_` functions are simple to use in that you only really need to provide the output filepath as an argument. Other options include whether indices will be written to the output file, choice of delimter, etc.
 
  * to_csv (comma separated values)
  * to_pickle (preserved pandas data structure)
