@@ -439,6 +439,41 @@ It can also be performed by column:
     3        Mary       NaN      F   42     blonde       NaN
     11    Jessica       NaN      F   19      black      blue
 
+#### Simple Queries
+
+Performing simple queries involves setting a single condition on which to mask the dataframe. This could invovle testing for a single value or a range, so long as only one condition is applied.
+
+    In [16]: df.AGE>50
+    Out[16]: 
+    0     False
+    1     False
+    2      True
+    3     False
+    4     False
+    5      True
+    6     False
+    7     False
+    8      True
+    9     False
+    10    False
+    11    False
+    12    False
+    13    False
+    Name: AGE, dtype: bool
+    
+    In [17]: df[df.AGE>50]
+    Out[17]: 
+      FIRST_NAME LAST_NAME GENDER  AGE HAIR_COLOR EYE_COLOR
+    2    Michael   Johnson      M   55        red     green
+    5     Thomas     Moore      M   60      brown      blue
+    8    Michael     Smith    NaN   58      brown     brown
+    
+    In [18]: df[df.LAST_NAME=="Jones"]
+    Out[18]: 
+      FIRST_NAME LAST_NAME GENDER  AGE HAIR_COLOR EYE_COLOR
+    0   Jennifer     Jones      F   27      black     brown
+    7     Brenda     Jones      F  NaN        NaN     brown
+
 #### Isin
 
 Have certain values you want to search for? This is were you'll want `isin` handy.
@@ -472,7 +507,6 @@ Alternately, you can get the inverse with `~`.
     Out[9]: ['hazel', 'green', nan]
     
 #### Complex Queries
-
 
 
 
