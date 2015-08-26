@@ -1,0 +1,14 @@
+# Data Analysis with Pandas - Problem Set
+
+#### Reading in Data
+
+1. df1 = pd.read_csv("client_list.csv")
+2. df2 = pd.read_csv("client_list.table", sep=';')
+3. df3 = pd.read_fwf("client_list.txt")
+4. pd.read_csv("client_list.csv", skiprows=3, header=None)
+
+5. df = pd.read_csv("client_list.csv")
+   df.columns = [x.upper() for x in df.columns]
+   
+6. pd.read_csv("client_list_practice.csv", usecols=["FIRST_NAME","AGE","EYE_COLOR"])
+
