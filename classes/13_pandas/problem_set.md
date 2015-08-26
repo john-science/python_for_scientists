@@ -1,1 +1,14 @@
+# Data Analysis with Pandas - Problem Set
 
+**I would strongly recommend doing these problems in iPython or in the standard Python interpreter.**
+
+#### Reading in Data
+
+1. Read in the comma-separated file "client_list.csv". Assign as variable `df1`.
+2. Read in the delimted file "client_list.table". Assign as variable as `df2`.
+3. Read in the fixed-width file "client_list.txt". Assign as variable `df3`
+4. Read in the comma-separated file "client_list.csv", skip the first 3 rows, and ignore the header. Do not assign to variable (just return a view).
+5. Read in the comma-separated file "client_list.csv". Set the column headers in all caps. Assign as variable `df`.
+6. Read in the comma-separated file "client_list_practice.csv" and only extract the columns ["FIRST_NAME","AGE","EYE_COLOR"]. Do not assign to a variable.
+
+#### 
