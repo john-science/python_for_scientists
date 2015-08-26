@@ -592,7 +592,7 @@ And for an example of row and column-wise selection, we turn to `loc` again to r
 
     In [9]: df.loc[df.apply(lambda row: row['FIRST_NAME'][0], axis=1)=='M', ['FIRST_NAME','GENDER','AGE']]
     Out[9]: 
-    FIRST_NAME GENDER  AGE
+       FIRST_NAME GENDER  AGE
     2     Michael      M   55
     3        Mary      F   42
     8     Michael      M   58
