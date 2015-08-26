@@ -535,10 +535,31 @@ Be sure to separate conditions with parentheses.
     7     Brenda     Jones      F   18     blonde     brown
     8    Michael     Smith      M   58      brown     brown
     
-#### Revisting Map and Apply
+I think you get the picture. Subsetting pandas dataframes can be as simple or as complex as you want or need it to be. Just be aware of how you're setting your conditions. If anything were to go wrong with a subsetting procedure, it will likely be rooted in how you set the conditions rather than the use of the pandas dataframe slicing methods itself.
+    
+#### Revisting Apply
 
+Occasionally, you'll need to search data using conditions that aren't as clear cut as searching for a particular value. This requires manipulating the data first before setting the condition. In the example below, we search for clients whose first name begins with "M".
 
+    In [8]: df[df.apply(lambda row: row['FIRST_NAME'][0], axis=1)=='M']
+    Out[8]: 
+       FIRST_NAME LAST_NAME GENDER  AGE HAIR_COLOR EYE_COLOR
+    2     Michael   Johnson      M   55        red     green
+    3        Mary     Adams      F   42     blonde      blue
+    8     Michael     Smith      M   58      brown     brown
+    10    Michael     Smith      M   37      black     hazel
+    12      Molly    Bryant      F   21      brown      blue
 
+And for an example of row and column-wise selection, we turn to `loc` again to return the same subset of people, but returning only certain columns:
+
+    In [9]: df.loc[df.apply(lambda row: row['FIRST_NAME'][0], axis=1)=='M', ['FIRST_NAME','GENDER','AGE']]
+    Out[9]: 
+    FIRST_NAME GENDER  AGE
+    2     Michael      M   55
+    3        Mary      F   42
+    8     Michael      M   58
+    10    Michael      M   37
+    12      Molly      F   21
 
 #### Building Complex Queries With Eval
 
