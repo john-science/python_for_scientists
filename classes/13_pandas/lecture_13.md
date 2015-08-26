@@ -785,7 +785,52 @@ An example is provided for the dataframe of clients used throughout this course:
 
 #### Sort
 
+This function requires little explanation. All you need is a list of columns on which to sort the dataframe by (in order of priority).
+
+    In [117]: df.sort(['LAST_NAME','FIRST_NAME','AGE'])
+    Out[117]: 
+        FIRST_NAME LAST_NAME GENDER  AGE HAIR_COLOR EYE_COLOR  RAND_INT
+    3        Mary     Adams      F   42     blonde      blue         9
+    13      Jaime  Anderson      F   46   brunette     green         9
+    12      Molly    Bryant      F   21   brunette      blue         2
+    2     Michael   Johnson      M   55        red     green         3
+    7      Brenda     Jones      F   18     blonde     brown         6
+    0    Jennifer     Jones      F   27      black     brown         2
+    5      Thomas     Moore      M   60   brunette      blue         5
+    4      Robert  Phillips      M   37     blonde     brown         6
+    6     Natalie    Potter      F   21   brunette     green         5
+    11    Jessica    Rabbit      F   19      black      blue         7
+    1       Jaime   Roberts      M   32   brunette     hazel         9
+    9    Jennifer     Smith      F   36      black     brown         2
+    10    Michael     Smith      M   37      black     hazel         4
+    8     Michael     Smith      M   58   brunette     brown         1
+
 #### Append
+
+`append` can be used to append one dataframe to the end of another dataframe.
+
+    In [12]: df1 = df[:8]
+    In [13]: df2 = df[8:]
+    In [14]: df_appended = df2.append(df1)
+    In [15]: df_appended
+    Out[15]: 
+       FIRST_NAME LAST_NAME GENDER  AGE HAIR_COLOR EYE_COLOR  RAND_INT
+    8     Michael     Smith      M   58   brunette     brown         1
+    9    Jennifer     Smith      F   36      black     brown         2
+    10    Michael     Smith      M   37      black     hazel         4
+    11    Jessica    Rabbit      F   19      black      blue         7
+    12      Molly    Bryant      F   21   brunette      blue         2
+    13      Jaime  Anderson      F   46   brunette     green         9
+    0    Jennifer     Jones      F   27      black     brown         2
+    1       Jaime   Roberts      M   32   brunette     hazel         9
+    2     Michael   Johnson      M   55        red     green         3
+    3        Mary     Adams      F   42     blonde      blue         9
+    4      Robert  Phillips      M   37     blonde     brown         6
+    5      Thomas     Moore      M   60   brunette      blue         5
+    6     Natalie    Potter      F   21   brunette     green         5
+    7      Brenda     Jones      F   18     blonde     brown         6
+
+Notice the out of sequence indices?
 
 #### Concat
 
