@@ -637,6 +637,72 @@ A similar statement could be built as a string using a block of code that knows 
 
 #### Merge
 
+`merge` is the pandas equivalent to a SQL join. Like SQL joins, a `merge` can be 'left', 'right', 'inner', or 'outer'
+
+Here is a simple example of a `merge`:
+
+    In [108]: genders = pd.DataFrame({'GENDER':['M','F'],'GENDER_LONG':['male','female']})
+
+    In [109]: genders
+    Out[109]: 
+      GENDER GENDER_LONG
+    0      M        male
+    1      F      female
+
+    In [110]: pd.merge(left=df, right=genders, how='left', on=['GENDER'])
+    Out[110]: 
+       FIRST_NAME LAST_NAME GENDER  AGE HAIR_COLOR EYE_COLOR  RAND_INT GENDER_LONG
+    0    Jennifer     Jones      F   27      black     brown         2      female
+    1       Jaime   Roberts      M   32   brunette     hazel         9        male
+    2     Michael   Johnson      M   55        red     green         3        male
+    3        Mary     Adams      F   42     blonde      blue         9      female
+    4      Robert  Phillips      M   37     blonde     brown         6        male
+    5      Thomas     Moore      M   60   brunette      blue         5        male
+    6     Natalie    Potter      F   21   brunette     green         5      female
+    7      Brenda     Jones      F   18     blonde     brown         6      female
+    8     Michael     Smith      M   58   brunette     brown         1        male
+    9    Jennifer     Smith      F   36      black     brown         2      female
+    10    Michael     Smith      M   37      black     hazel         4        male
+    11    Jessica    Rabbit      F   19      black      blue         7      female
+    12      Molly    Bryant      F   21   brunette      blue         2      female
+    13      Jaime  Anderson      F   46   brunette     green         9      female
+    
+Beware of how you use `merge`, paying special attention to unintentional one-to-many relationships.
+
+    In [111]: genders = pd.DataFrame({'GENDER':['M','M','F'],'GENDER_LONG':['male','man','female']})
+    In [111]: genders
+    Out[111]: 
+    GENDER GENDER_LONG
+    0      M        male
+    1      M         man
+    2      F      female
+    
+    In [112]: pd.merge(right=df, left=genders, how='left', on=['GENDER'])
+    Out[112]: 
+       GENDER GENDER_LONG FIRST_NAME LAST_NAME  AGE HAIR_COLOR EYE_COLOR  RAND_INT
+    0       M        male      Jaime   Roberts   32   brunette     hazel         9
+    1       M        male    Michael   Johnson   55        red     green         3
+    2       M        male     Robert  Phillips   37     blonde     brown         6
+    3       M        male     Thomas     Moore   60   brunette      blue         5
+    4       M        male    Michael     Smith   58   brunette     brown         1
+    5       M        male    Michael     Smith   37      black     hazel         4
+    6       M         man      Jaime   Roberts   32   brunette     hazel         9
+    7       M         man    Michael   Johnson   55        red     green         3
+    8       M         man     Robert  Phillips   37     blonde     brown         6
+    9       M         man     Thomas     Moore   60   brunette      blue         5
+    10      M         man    Michael     Smith   58   brunette     brown         1
+    11      M         man    Michael     Smith   37      black     hazel         4
+    12      F      female   Jennifer     Jones   27      black     brown         2
+    13      F      female       Mary     Adams   42     blonde      blue         9
+    14      F      female    Natalie    Potter   21   brunette     green         5
+    15      F      female     Brenda     Jones   18     blonde     brown         6
+    16      F      female   Jennifer     Smith   36      black     brown         2
+    17      F      female    Jessica    Rabbit   19      black      blue         7
+    18      F      female      Molly    Bryant   21   brunette      blue         2
+    19      F      female      Jaime  Anderson   46   brunette     green         9
+    
+ Notice how the dataframe went from 14 entries to 19?
+    
 #### Groupby
 
 `groupby` is a useful tool for aggregating data according to specified fields and subsequently applying some sort of function. Some examples include:
