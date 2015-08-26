@@ -15,4 +15,12 @@
 
 7. Slice rows 5 through 11 of `df`. Can you provide two ways of doing this?
 8. Return only the columns ['LAST_NAME','AGE','HAIR_COLOR'] for `df`. Can you provide two ways of doing this?
+9. Combine problems 7 and 8: return rows 5 though 11 and columns  ['LAST_NAME','AGE','HAIR_COLOR'] for `df`. Can you provide two ways of doing this?
 
+#### Simple Queries
+
+10.
+11
+12.
+
+#### Complex Queries
