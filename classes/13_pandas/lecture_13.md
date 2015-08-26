@@ -563,9 +563,38 @@ And for an example of row and column-wise selection, we turn to `loc` again to r
 
 #### Building Complex Queries With Eval
 
+While querying dataframes in the manner explained above is useful, it has its limitations. That is, defining such queries, whether in a standalone Python script or on-the-fly in the Python interpreter, can be time consuming to write if dealing with very complex queries. Given how data is accessed from a dataframe, control structures (like `for`, `if`, and `while` loops) cannot be used to aid in building such complex queries without pairing it with the `eval` function.
 
+For example, in a Python script or in the Python interpreter, if we wanted to chain a series of conditional statements to apply to a dataframe and return a subset of data, we'd have to type out each conditional statement (don't forget the parentheses and `AND`/`OR` operators) and nest inside the dataframe object.
 
+However, if we use `eval`, we can first build the complex query as a continuous string, then apply the `eval` function to the string before nesting it inside of the dataframe object.
 
+Let's revist the previous complex query.
+
+**Blondes under age 40 or brunettes over age 50**    
+
+    In [33]: df[((df.HAIR_COLOR=='blonde') & (df.AGE<40)) | ((df.HAIR_COLOR=='brown') & (df.AGE>50))]
+    
+Notice that the conditional statement consists of the following code:
+
+    ((df.HAIR_COLOR=='blonde') & (df.AGE<40)) | ((df.HAIR_COLOR=='brown') & (df.AGE>50))
+    
+A similar statement could be built as a string using a block of code that knows when to insert `|` for `OR`, `&` for `AND`, equality/inequality symbols, test values (let's say from user-defined inputs), whitespace, and enclose individual statements within parentheses. The result should be a string representing the same complex query. The difference is that constructing it could be automated using a block of code and that Python will not yet recognize it as a suitable input for querying a dataframe.
+
+    In [22]: myQuery = "((df.HAIR_COLOR=='blonde') & (df.AGE<40)) | ((df.HAIR_COLOR=='brown') & (df.AGE>50))"
+
+    In [23]: df[myQuery]
+    ---------------------------------------------------------------------------
+    KeyError: "((df.HAIR_COLOR=='blonde') & (df.AGE<40)) | ((df.HAIR_COLOR=='brown') & (df.AGE>50))"    
+    
+    In [24]: df[eval(myQuery)]
+    Out[24]: 
+      FIRST_NAME LAST_NAME GENDER  AGE HAIR_COLOR EYE_COLOR
+    4     Robert  Phillips      M   37     blonde     brown
+    5     Thomas     Moore      M   60      brown      blue
+    7     Brenda     Jones      F   18     blonde     brown
+    8    Michael     Smith      M   58      brown     brown
+    
 ## More Dataframe Operations
 
 #### Merge
