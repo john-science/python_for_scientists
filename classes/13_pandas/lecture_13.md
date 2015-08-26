@@ -393,21 +393,93 @@ Alternately, you can do the same with a single column of data (that is, it can o
     In [14]: df['HAIR_COLOR'].unique().tolist()
     Out[14]: ['black', 'brown', 'red', 'blonde']
 
-
-
-
-
-
-
 ## Querying Data
+
+Having the ability to query data and extract subsets of data with ease is one of the many things that makes pandas so powerful. We will cover some basic skills and functions for subsetting pandas dataframes.
 
 #### Null Data
 
+Sometimes you'll need to identify null values in your data.
+
+    In [3]: df
+    Out[3]: 
+       FIRST_NAME LAST_NAME GENDER  AGE HAIR_COLOR EYE_COLOR
+    0    Jennifer     Jones      F   27      black     brown
+    1       Jaime   Roberts      M   32      brown     hazel
+    2     Michael   Johnson      M   55        red     green
+    3        Mary       NaN      F   42     blonde       NaN
+    4         NaN  Phillips      M   37        NaN     brown
+    5      Thomas     Moore      M   60      brown      blue
+    6     Natalie    Potter      F  NaN      brown     green
+    7      Brenda     Jones      F  NaN        NaN     brown
+    8     Michael     Smith    NaN   58      brown     brown
+    9    Jennifer     Smith      F   36      black     brown
+    10    Michael     Smith      M   37      black     hazel
+    11    Jessica       NaN      F   19      black      blue
+    12      Molly    Bryant      F   21      brown      blue
+    13      Jaime  Anderson      F   46      brown     green
+    
+To find all rows with any null values:
+
+    In [4]: df[pd.isnull(df).any(axis=1)]
+    Out[4]: 
+       FIRST_NAME LAST_NAME GENDER  AGE HAIR_COLOR EYE_COLOR
+    3        Mary       NaN      F   42     blonde       NaN
+    4         NaN  Phillips      M   37        NaN     brown
+    6     Natalie    Potter      F  NaN      brown     green
+    7      Brenda     Jones      F  NaN        NaN     brown
+    8     Michael     Smith    NaN   58      brown     brown
+    11    Jessica       NaN      F   19      black      blue
+    
+It can also be performed by column:
+
+    In [5]: df[df.LAST_NAME.isnull()]
+    Out[5]: 
+       FIRST_NAME LAST_NAME GENDER  AGE HAIR_COLOR EYE_COLOR
+    3        Mary       NaN      F   42     blonde       NaN
+    11    Jessica       NaN      F   19      black      blue
+
 #### Isin
 
+Have certain values you want to search for? This is were you'll want `isin` handy.
+
+    In [6]: vals = ['brown','blue']
+    In [7]: df.loc[df.EYE_COLOR.isin(vals)]
+    Out[7]: 
+       FIRST_NAME LAST_NAME GENDER  AGE HAIR_COLOR EYE_COLOR
+    0    Jennifer     Jones      F   27      black     brown
+    4         NaN  Phillips      M   37        NaN     brown
+    5      Thomas     Moore      M   60      brown      blue
+    7      Brenda     Jones      F  NaN        NaN     brown
+    8     Michael     Smith    NaN   58      brown     brown
+    9    Jennifer     Smith      F   36      black     brown
+    11    Jessica       NaN      F   19      black      blue
+    12      Molly    Bryant      F   21      brown      blue
+
+Alternately, you can get the inverse with `~`.
+
+    In [8]: df.loc[~df.EYE_COLOR.isin(vals)]
+    Out[8]: 
+       FIRST_NAME LAST_NAME GENDER  AGE HAIR_COLOR EYE_COLOR
+    1       Jaime   Roberts      M   32      brown     hazel
+    2     Michael   Johnson      M   55        red     green
+    3        Mary       NaN      F   42     blonde       NaN
+    6     Natalie    Potter      F  NaN      brown     green
+    10    Michael     Smith      M   37      black     hazel
+    13      Jaime  Anderson      F   46      brown     green
+    
+    In [9]: df.loc[~df.EYE_COLOR.isin(vals)].EYE_COLOR.unique().tolist()
+    Out[9]: ['hazel', 'green', nan]
+    
 #### Complex Queries
 
+
+
+
 #### Revisting Map and Apply
+
+
+
 
 #### Building Complex Queries With Eval
 
