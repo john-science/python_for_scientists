@@ -401,13 +401,13 @@ Alternately, you can do the same with a single column of data (that is, it can o
 
 ## Querying Data
 
-#### Revisting Map and Apply
-
 #### Null Data
 
 #### Isin
 
 #### Complex Queries
+
+#### Revisting Map and Apply
 
 #### Building Complex Queries With Eval
 
