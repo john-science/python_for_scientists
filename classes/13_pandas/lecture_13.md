@@ -601,6 +601,26 @@ A similar statement could be built as a string using a block of code that knows 
 
 #### Groupby
 
+    In [67]: df['RAND_INT'] = np.random.randint(1,10, size=len(df))
+
+    In [68]: df
+    Out[68]: 
+       FIRST_NAME LAST_NAME GENDER  AGE HAIR_COLOR EYE_COLOR  RAND_INT
+    0    Jennifer     Jones      F   27      black     brown         8
+    1       Jaime   Roberts      M   32      brown     hazel         5
+    2     Michael   Johnson      M   55        red     green         6
+    3        Mary     Adams      F   42     blonde      blue         9
+    4      Robert  Phillips      M   37     blonde     brown         6
+    5      Thomas     Moore      M   60      brown      blue         2
+    6     Natalie    Potter      F   21      brown     green         7
+    7      Brenda     Jones      F   18     blonde     brown         6
+    8     Michael     Smith      M   58      brown     brown         2
+    9    Jennifer     Smith      F   36      black     brown         1
+    10    Michael     Smith      M   37      black     hazel         1
+    11    Jessica    Rabbit      F   19      black      blue         4
+    12      Molly    Bryant      F   21      brown      blue         7
+    13      Jaime  Anderson      F   46      brown     green         8
+
 #### Sort
 
 #### Append
