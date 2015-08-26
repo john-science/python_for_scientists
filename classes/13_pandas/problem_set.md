@@ -11,4 +11,8 @@
 5. Read in the comma-separated file "client_list.csv". Set the column headers in all caps. Assign as variable `df`.
 6. Read in the comma-separated file "client_list_practice.csv" and only extract the columns ["FIRST_NAME","AGE","EYE_COLOR"]. Do not assign to a variable.
 
-#### 
+#### Slicing a Data Set
+
+7. Slice rows 5 through 11 of `df`. Can you provide two ways of doing this?
+8. Return only the columns ['LAST_NAME','AGE','HAIR_COLOR'] for `df`. Can you provide two ways of doing this?
+
