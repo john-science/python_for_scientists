@@ -12,3 +12,10 @@
    
 6. pd.read_csv("client_list_practice.csv", usecols=["FIRST_NAME","AGE","EYE_COLOR"])
 
+#### Slicing a Data Set
+
+7. df[4:11]
+   df.loc[4:11, :]
+
+8. df[['LAST_NAME','AGE','HAIR_COLOR']]
+   df.loc[:, ['LAST_NAME','AGE','HAIR_COLOR']]
