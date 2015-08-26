@@ -508,7 +508,23 @@ Alternately, you can get the inverse with `~`.
     
 #### Complex Queries
 
+Of course, stopping at simple queries would not be enough. Sometimes, multiple conditions will need to be tested.
 
+Like using conditional statements in other Python practices, knowledge of how to use boolean logic/operators (`AND`, `OR`, `NOT`) and equality/inequality symbols (`==`, `!=`, `>`, `<`, `>=`, `<=`) is needed.
+
+Be sure to separate conditions with parentheses.
+
+**Men age 30 and over**
+
+    In [23]: df[(df.AGE>=30) & (df.GENDER=='M')]
+    Out[23]: 
+       FIRST_NAME LAST_NAME GENDER  AGE HAIR_COLOR EYE_COLOR
+    1       Jaime   Roberts      M   32      brown     hazel
+    2     Michael   Johnson      M   55        red     green
+    4         NaN  Phillips      M   37        NaN     brown
+    5      Thomas     Moore      M   60      brown      blue
+    10    Michael     Smith      M   37      black     hazel
+    
 
 #### Revisting Map and Apply
 
