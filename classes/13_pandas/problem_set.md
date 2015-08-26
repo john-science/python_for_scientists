@@ -19,8 +19,7 @@
 
 #### Simple Queries
 
-10.
-11
-12.
+10. Find the subset of `df` where the client's last name is "Smith".
+11. Find the subset of `df` where the client's hair color is not black.
 
 #### Complex Queries
