@@ -526,7 +526,7 @@ Setting values in a dataframe, whether it's for a single cell (unique row and co
 
     In [74]: df
     Out[74]: 
-    FIRST_NAME LAST_NAME GENDER  AGE HAIR_COLOR EYE_COLOR
+       FIRST_NAME LAST_NAME GENDER  AGE HAIR_COLOR EYE_COLOR
     0    Jennifer     Jones      F   27      black     brown
     1       Jaime   Roberts      M   32   brunette     hazel
     2     Michael   Johnson      M   55        red     green
