@@ -1,7 +1,7 @@
 CUSTOMER_ID,FIRST_NAME,LAST_NAME,GENDER,AGE
 001,Jennifer,Jones,F,27
 002,Jaime,Roberts,M,32
-003,Michael,Johnson,M
+003,Michael,Johnson,M,55
 004,Mary,Adams,F,42
 005,Robert,Phillips,M,37
 006,Thomas,Moore,M,60
