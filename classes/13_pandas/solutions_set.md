@@ -15,7 +15,17 @@
 #### Slicing a Data Set
 
 7. df[4:11]
-   df.loc[4:11, :]
+   df.loc[4:10, :]
 
 8. df[['LAST_NAME','AGE','HAIR_COLOR']]
    df.loc[:, ['LAST_NAME','AGE','HAIR_COLOR']]
+
+9. df[4:11][['LAST_NAME','AGE','HAIR_COLOR']]
+   df.loc[4:10, ['LAST_NAME','AGE','HAIR_COLOR']]
+
+#### Simple Queries
+
+10.
+11.
+
+#### Complex Queries
