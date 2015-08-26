@@ -505,6 +505,44 @@ Alternately, you can get the inverse with `~`.
     
     In [9]: df.loc[~df.EYE_COLOR.isin(vals)].EYE_COLOR.unique().tolist()
     Out[9]: ['hazel', 'green', nan]
+
+#### Setting Values
+
+Setting values in a dataframe, whether it's for a single cell (unique row and column location) or a series of entries, is simple so long as the correct slicing method is used. Remember the difference between returning a view and a copy of a dataframe? For setting any values in a dataframe, it's best to stick to the `loc` method.
+
+**Let's call people with brown hair "brunettes" instead**
+
+    In [72]: df.loc[df.HAIR_COLOR=='brown', 'HAIR_COLOR']
+    Out[72]: 
+    1     brown
+    5     brown
+    6     brown
+    8     brown
+    12    brown
+    13    brown
+    Name: HAIR_COLOR, dtype: object
+    
+    In [73]: df.loc[df.HAIR_COLOR=='brown', 'HAIR_COLOR'] = "brunette"
+
+    In [74]: df
+    Out[74]: 
+    FIRST_NAME LAST_NAME GENDER  AGE HAIR_COLOR EYE_COLOR
+    0    Jennifer     Jones      F   27      black     brown
+    1       Jaime   Roberts      M   32   brunette     hazel
+    2     Michael   Johnson      M   55        red     green
+    3        Mary     Adams      F   42     blonde      blue
+    4      Robert  Phillips      M   37     blonde     brown
+    5      Thomas     Moore      M   60   brunette      blue
+    6     Natalie    Potter      F   21   brunette     green
+    7      Brenda     Jones      F   18     blonde     brown
+    8     Michael     Smith      M   58   brunette     brown
+    9    Jennifer     Smith      F   36      black     brown
+    10    Michael     Smith      M   37      black     hazel
+    11    Jessica    Rabbit      F   19      black      blue
+    12      Molly    Bryant      F   21   brunette      blue
+    13      Jaime  Anderson      F   46   brunette     green
+
+The same can be done with setting values for null entries, but remember to use the correct slicing method.
     
 #### Complex Queries
 
