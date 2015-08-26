@@ -524,8 +524,17 @@ Be sure to separate conditions with parentheses.
     4         NaN  Phillips      M   37        NaN     brown
     5      Thomas     Moore      M   60      brown      blue
     10    Michael     Smith      M   37      black     hazel
-    
 
+**Blondes under age 40 or brunettes over age 50**    
+
+    In [33]: df[((df.HAIR_COLOR=='blonde') & (df.AGE<40)) | ((df.HAIR_COLOR=='brown') & (df.AGE>50))]
+    Out[33]: 
+      FIRST_NAME LAST_NAME GENDER  AGE HAIR_COLOR EYE_COLOR
+    4     Robert  Phillips      M   37     blonde     brown
+    5     Thomas     Moore      M   60      brown      blue
+    7     Brenda     Jones      F   18     blonde     brown
+    8    Michael     Smith      M   58      brown     brown
+    
 #### Revisting Map and Apply
 
 
