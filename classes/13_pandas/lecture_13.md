@@ -6,25 +6,24 @@ Like most of the libraries used in our "special topics" lectures, pandas does no
 
 #### Anaconda
 
-Consider installing [Anaconda](http://docs.continuum.io/anaconda/install.html) instead. Anaconda is Python packaged with over 100 tools and libraries that you will want (This includes Pandas and everything else we will use in this course.)
+Consider installing [Anaconda](http://docs.continuum.io/anaconda/install.html) instead. Anaconda is Python packaged with hundreds of libraries that you will want (including Pandas and almost everything else we will use in this course.)
 
 ## Intro to pandas
 
 #### Why use pandas?
 
-pandas is a powerful tool for handling data structures and performing data analysis. It can accomplish the same tasks you would typically do in Microsoft Excel (sort, filter, pivot, etc.), but unlike Excel, pandas can be used in Python programs to streamline repetitive tasks and allow reusability of code.
-
-Additionally, it can perform the same tasks that you would typically do in a database, like SQL (queries, joins, etc.), but it does so in Python memory (no need to establish and connect to a database!).
+pandas is a powerful tool for handling data and performing data analysis. It can accomplish the same tasks you would typically do in Microsoft Excel (sort, filter, pivot, etc.), but unlike Excel, pandas can be used in Python programs to streamline repetitive tasks and allow reusability of code. Additionally, it can perform the same tasks that you would typically do in a database, like SQL (queries, joins, etc.), but it does so in Python memory (no need to establish and connect to a database!).
 
 Lastly, many pandas functions are based off of other popular Python utilities (numpy, scipy, etc.).
 
 ## iPython
 
-When importing pandas into the Python interpreter for on-the-fly programming and debugging, I would recommend using iPython over the standard Python interpreter. It is basically a more advanced version with additional features.
- * Tab auto-completion (on class names, functions, methods, variables)
+When importing pandas into the Python interpreter for on-the-fly programming and debugging, consider using iPython. It has several features not available in the standard Python interpreter:
+
+ * Tab auto-completion (on class names, functions, methods, and variables)
  * More explicit and colour-highlighted error messages
  * Better history management
- * Basic UNIX shell integration (you can run simple shell commands such as cp, ls, rm, cp, etc. directly from the iPython command line)
+ * Basic UNIX shell integration (you can run simple shell commands: cp, ls, rm, cp, etc.)
 
 After installing iPython, invoke it using the command `ipython`.
 
@@ -40,44 +39,44 @@ After installing iPython, invoke it using the command `ipython`.
 
 ## Importing pandas
 
-Like importing other Python libraries, importing pandas is quite simple.
+There is convention of types to help save you typing when using pandas:
 
     In [1]: import pandas as pd
 
 ## Reading Files
 
-Before getting into how to build dataframes and other data structures in pandas, let's cover reading in pre-existing data. This will likely be the most common way of getting data into the pandas data structure for manipulation using pandas. In other words, you're less likely to build pandas data structues from scratch, as there are other more useful Python tools to accomplish that.
+A good place to start is reading pre-existing data with pandas. You may find that this is more common than building a pandas data structure from scratch.
 
 #### Common data formats
 
- * read_csv (comma separated values)
- * read_fwf (fixed width format)
- * read_table (general delimited text file)
- * read_pickle (preserved pandas data structure)
+There are four methods to read in different types of data:
 
-In most cases, all you need to provide as an argument is the filepath. Each type has its own variety of optional arguments, and we'll touch briefly on a few useful ones.
+ * read_csv - comma separated values
+ * read_fwf - fixed width format
+ * read_table - general delimited text file
+ * read_pickle - preserved pandas data structure
 
-  * header (int): If not given, pandas will use row 0 as the header line and the start of the data. This is useful if your file has a header/comment block and the data starts several lines down. If your file has no header, set `header=None` to avoid having the first line used at the header.
+Each of these methods can be passed a file path (string), and they will run. But the also a variety of optional arguments:
+
+  * **header (int)**: If not given, pandas will use row 0 as the header line and the start of the data. This is useful if your file has a header/comment block and the data starts several lines down. If your file has no header, set `header=None` to avoid having the first line used at the header.
   
-  * names (list): Use if you would like to define the column names upon importing the data. This should be used with the explicit option `header=None`.
+  * **names (list)**: Use if you would like to define the column names upon importing the data. This should be used with the explicit option `header=None`.
  
-  * dtype (dict): If not given, pandas will infer the data types when importing data. This option is useful if you want to force certain data types at the import stage (note that typecasting can be done after the data has been imported into pandas as well). Ex. `dtype={'x':np.float64, 'y':np.int32, 'z':np.float64}`
+  * **dtype (dict)**: If not given, pandas will infer the data types when importing data. This option is useful if you want to force certain data types at the import stage, for example: `dtype={'x': np.float64, 'y': np.int32, 'z': np.float64}`.  (Note that pandas allows typecasting after importing into pandas as well).
 
-  * usecols (list): Import only certain columns. Saves time and space!
+  * **usecols (list)**: Import only certain columns. Saves time and space!
  
-  * nrows (int): Number of rows of file to read. Useful for reading pieces of large files.
+  * **nrows (int)**: Number of rows of file to read. Useful for reading pieces of large files.
   
-  * skiprows (list or integer): List of line numbers to skip (0-indexed) or number of lines to skip (int) at the start of the file.
+  * **skiprows (list or integer)**: List of line numbers to skip (0-indexed) or number of lines to skip (int) at the start of the file.
   
 #### Other data formats
 
-For more information on reading in other data formats (Excel spreadsheets, SQL databases, etc.), you can refer to the pandas manual:
-
-http://pandas.pydata.org/pandas-docs/stable/api.html#input-output
+For more information on reading in other data formats (Excel spreadsheets, SQL databases, etc.), refer to the [pandas manual](http://pandas.pydata.org/pandas-docs/stable/api.html#input-output).
 
 ## Series
 
-Though the focus of this course will mainly be on pandas dataframes, knowing a bit about pandas series is useful. Series are simply one-dimensional arrays of data with axis labels (indices). Series can be created from scratch using a dictionary or a list.
+Though the focus of this lecture will mainly be on pandas `DataFrame`, knowing a bit about pandas `Series` is useful. Series are simply one-dimensional arrays of data with axis labels (indices). Series can be created from scratch using a dictionary or a list.
 
 **From a dictionary**
 
@@ -124,13 +123,13 @@ Series can also be extracted from multi-dimensional data structures like datafra
 
 ## Data Frames and Data Sets
 
-Dataframes are the multi-dimensional version of the pandas series. However, a dataframe can be one-dimension (one row, one column, or both) so long as the data is imported as a dataframe.
+DataFrames are like Series, but they can be multi-dimensional version of the pandas Series. Let's convert a Series into a DataFrame and look at the difference:
 
 **Data imported as a series**
 
-    In [4]: l = ['A','B','C']
+    In [4]: one = ['A','B','C']
     
-    In [5]: pd.Series(l)
+    In [5]: pd.Series(one)
     Out[5]: 
     0    A
     1    B
@@ -139,7 +138,7 @@ Dataframes are the multi-dimensional version of the pandas series. However, a da
 
 **Data imported as a dataframe**
 
-    In [6]: pd.DataFrame(l)
+    In [6]: pd.DataFrame(one)
 
     Out[6]: 
        0
@@ -147,7 +146,7 @@ Dataframes are the multi-dimensional version of the pandas series. However, a da
     1  B
     2  C
 
-Notice the column header `0` above the column of data? Other than that, importing one-dimensional data as a dataframe is pretty much the same as importing it as a series. Feel free to rename that column of data. However, importing the data as a dataframe opens the door for other practices, like appending the data column-wise or row-wise to another dataframe, or using it as a table for performing merges (pandas equivalent to an SQL join).
+Notice the column header `0` above the column of data? Other than that, importing one-dimensional data as a dataframe is pretty much the same as importing it as a series. Feel free to rename that column of data. However, importing the data as a dataframe opens the door for other options, like appending the data column-wise or row-wise to another dataframe, or using it as a table for performing merges (pandas equivalent to an SQL join).
 
 Again, you're less likely to build pandas dataframes from scratch and will more likely import existing data using one of the `read_` functions. But for those itching to build their own dataframes, there are a few ways to do so.
 
@@ -193,7 +192,7 @@ Again, you're less likely to build pandas dataframes from scratch and will more 
     1  b  Y   2   5
     2  c  Z   3   4
     
-**Of course the data can be comprised of other data types, not just random floats. I would recommend dusting off your numpy and dictionary/list skills learned in previous lessons and build your own arrays/series of varying data types.**
+Of course, the data can be comprised of other data types, not just `float`. I would recommend dusting off your numpy and dictionary/list skills learned in previous lessons and build your own arrays/series of varying data types.
 
 ## Slicing a Data Set
 
@@ -293,7 +292,7 @@ So does `df.loc[:,cols]` --> we'll go into more detail about this method later.
     
 #### By row only
 
-**Like list slicing**
+Slicing by row looks a lot like list slicing:
 
     In [10]: df[:5]
     Out[10]: 
@@ -341,14 +340,15 @@ The previous slice can be accomplished the following way:
 
     df[3:8][['FIRST_NAME','AGE','EYE_COLOR']]
     
-This is called chained indexing. In the example above, the rows are sliced first, then the columns. While it does not pose a problem when selecting subsets of a dataframe, it becomes problematic when you want to set the values of this subset (e.g. replacing erroneous data). This has something to do with how pandas performs operations and the order in which they are performed. That being said, the preferred way of combination indexing is the `loc` function, whether it's actually used to set values in a dataframe subset or used simply to view the subset of data.
+This is called chained indexing. In the example above, the rows are sliced first, then the columns. While it does not pose a problem when selecting subsets of a dataframe, it becomes problematic when you want to set the values of this subset (e.g. replacing erroneous data). That being said, the preferred way of combination indexing is the `loc` function, whether it's actually used to set values in a dataframe subset or used simply to view the subset of data.
 
-More information about the dangers of chained indexing can be found in the pandas manual:
-http://pandas.pydata.org/pandas-docs/stable/indexing.html#returning-a-view-versus-a-copy
+More information about the dangers of chained indexing can be found in the [pandas manual](http://pandas.pydata.org/pandas-docs/stable/indexing.html#returning-a-view-versus-a-copy).
 
 ## Useful Dataframe Tools
 
 #### Dropping columns
+
+There are two ways to drop data from a dataframe, one if you want the data returned and the other if not:
 
     df = df.drop(['HAIR_COLOR','EYE_COLOR'], axis=1)
     df.drop(['HAIR_COLOR','EYE_COLOR'], axis=1, inplace=True)  # alternate way
@@ -362,7 +362,7 @@ This becomes useful when you've saved a subset of a dataframe and wish to sequen
     
 #### Dropping duplicate entries
 
-This becomes useful when you're dealing with data that you know should have unique entries.
+This is useful when you're dealing with data that should have unique entries.
 
     df = df.drop_duplicates()
     df.drop_duplicates(inplace=True)
