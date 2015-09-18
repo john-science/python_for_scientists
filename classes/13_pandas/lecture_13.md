@@ -51,10 +51,10 @@ A good place to start is reading pre-existing data with pandas. You may find tha
 
 There are four methods to read in different types of data:
 
- * read_csv - comma separated values
- * read_fwf - fixed width format
- * read_table - general delimited text file
- * read_pickle - preserved pandas data structure
+ * `read_csv` - comma separated values
+ * `read_fwf` - fixed width format
+ * `read_table` - general delimited text file
+ * `read_pickle` - preserved pandas data structure
 
 Each of these methods can be passed a file path (string), and they will run. But the also a variety of optional arguments:
 
@@ -184,7 +184,7 @@ Again, you're less likely to build pandas dataframes from scratch and will more 
     In [2]: l2 = ['X','Y','Z']  # list 2
     In [3]: l3 = [1,2,3]        # list 3
     In [4]: l4 = [6,5,4]        # list 4
-    In [5]: d = {'l1':pd.Series(l1), 'l2':pd.Series(l2), 'l3':pd.Series(l3), 'l4':pd.Series(l4)}  # dictionary of series
+    In [5]: d = {'l1':pd.Series(l1), 'l2':pd.Series(l2), 'l3':pd.Series(l3), 'l4':pd.Series(l4)}
     In [6]: pd.DataFrame(d)
     Out[6]: 
       l1 l2  l3  l4
@@ -443,7 +443,7 @@ It can also be performed by column:
 
 Performing simple queries involves setting a single condition on which to mask the dataframe. This could invovle testing for a single value or a range, so long as only one condition is applied.
 
-    In [16]: df.AGE>50
+    In [16]: df.AGE > 50
     Out[16]: 
     0     False
     1     False
@@ -461,24 +461,24 @@ Performing simple queries involves setting a single condition on which to mask t
     13    False
     Name: AGE, dtype: bool
     
-    In [17]: df[df.AGE>50]
+    In [17]: df[df.AGE > 50]
     Out[17]: 
       FIRST_NAME LAST_NAME GENDER  AGE HAIR_COLOR EYE_COLOR
     2    Michael   Johnson      M   55        red     green
     5     Thomas     Moore      M   60      brown      blue
     8    Michael     Smith    NaN   58      brown     brown
     
-    In [18]: df[df.LAST_NAME=="Jones"]
+    In [18]: df[df.LAST_NAME == "Jones"]
     Out[18]: 
       FIRST_NAME LAST_NAME GENDER  AGE HAIR_COLOR EYE_COLOR
     0   Jennifer     Jones      F   27      black     brown
     7     Brenda     Jones      F  NaN        NaN     brown
 
-#### Isin
+#### isin
 
 Have certain values you want to search for? This is were you'll want `isin` handy.
 
-    In [6]: vals = ['brown','blue']
+    In [6]: vals = ['brown', 'blue']
     In [7]: df.loc[df.EYE_COLOR.isin(vals)]
     Out[7]: 
        FIRST_NAME LAST_NAME GENDER  AGE HAIR_COLOR EYE_COLOR
@@ -512,7 +512,7 @@ Setting values in a dataframe, whether it's for a single cell (unique row and co
 
 **Let's call people with brown hair "brunettes" instead**
 
-    In [72]: df.loc[df.HAIR_COLOR=='brown', 'HAIR_COLOR']
+    In [72]: df.loc[df.HAIR_COLOR == 'brown', 'HAIR_COLOR']
     Out[72]: 
     1     brown
     5     brown
@@ -522,7 +522,7 @@ Setting values in a dataframe, whether it's for a single cell (unique row and co
     13    brown
     Name: HAIR_COLOR, dtype: object
     
-    In [73]: df.loc[df.HAIR_COLOR=='brown', 'HAIR_COLOR'] = "brunette"
+    In [73]: df.loc[df.HAIR_COLOR == 'brown', 'HAIR_COLOR'] = "brunette"
 
     In [74]: df
     Out[74]: 
@@ -546,15 +546,11 @@ The same can be done with setting values for null entries, but remember to use t
     
 #### Complex Queries
 
-Of course, stopping at simple queries would not be enough. Sometimes, multiple conditions will need to be tested.
+Sometimes you will want more than one predicate in your query logic. Here it is important to remember your boolean logic.
 
-Like using conditional statements in other Python practices, knowledge of how to use boolean logic/operators (`AND`, `OR`, `NOT`) and equality/inequality symbols (`==`, `!=`, `>`, `<`, `>=`, `<=`) is needed.
+Find men age 30 and over:
 
-Be sure to separate conditions with parentheses.
-
-**Men age 30 and over**
-
-    In [23]: df[(df.AGE>=30) & (df.GENDER=='M')]
+    In [23]: df[(df.AGE >= 30) & (df.GENDER == 'M')]
     Out[23]: 
        FIRST_NAME LAST_NAME GENDER  AGE HAIR_COLOR EYE_COLOR
     1       Jaime   Roberts      M   32      brown     hazel
@@ -563,9 +559,9 @@ Be sure to separate conditions with parentheses.
     5      Thomas     Moore      M   60      brown      blue
     10    Michael     Smith      M   37      black     hazel
 
-**Blondes under age 40 or brunettes over age 50**    
+For blondes under age 40 or brunettes over age 50:
 
-    In [33]: df[((df.HAIR_COLOR=='blonde') & (df.AGE<40)) | ((df.HAIR_COLOR=='brown') & (df.AGE>50))]
+    In [33]: df[((df.HAIR_COLOR == 'blonde') & (df.AGE < 40)) | ((df.HAIR_COLOR == 'brown') & (df.AGE > 50))]
     Out[33]: 
       FIRST_NAME LAST_NAME GENDER  AGE HAIR_COLOR EYE_COLOR
     4     Robert  Phillips      M   37     blonde     brown
@@ -573,13 +569,13 @@ Be sure to separate conditions with parentheses.
     7     Brenda     Jones      F   18     blonde     brown
     8    Michael     Smith      M   58      brown     brown
     
-I think you get the picture. Subsetting pandas dataframes can be as simple or as complex as you want or need it to be. Just be aware of how you're setting your conditions. If anything were to go wrong with a subsetting procedure, it will likely be rooted in how you set the conditions rather than the use of the pandas dataframe slicing methods itself.
+Subsetting pandas dataframes can be as simple or as complex as you need it to be. More complicated selection queries may take longer on very large data sets. But even complex queries will boil down to understand [Python's basic boolean syntax](../../classes/01_basic_syntax/lecture_01.md).
     
-#### Revisting Apply
+#### Apply a Lambda Function to a Query
 
-Occasionally, you'll need to search data using conditions that aren't as clear cut as searching for a particular value. This requires manipulating the data first before setting the condition. In the example below, we search for clients whose first name begins with "M".
+If the conditions you want to select data by become sufficiently complicated, you might want to use a function that returns `True`/`False` for each record. To do this, you will typically use `.apply()` with a lambda function. For example, let's find all the clients whose first name begins with "M":
 
-    In [8]: df[df.apply(lambda row: row['FIRST_NAME'][0], axis=1)=='M']
+    In [8]: df[df.apply(lambda row: row['FIRST_NAME'][0], axis=1) == 'M']
     Out[8]: 
        FIRST_NAME LAST_NAME GENDER  AGE HAIR_COLOR EYE_COLOR
     2     Michael   Johnson      M   55        red     green
@@ -588,9 +584,9 @@ Occasionally, you'll need to search data using conditions that aren't as clear c
     10    Michael     Smith      M   37      black     hazel
     12      Molly    Bryant      F   21      brown      blue
 
-And for an example of row and column-wise selection, we turn to `loc` again to return the same subset of people, but returning only certain columns:
+For very large datasets, returning all of the columns might be unnecessarily large amounts of information. To return just certain columns, it will be easier to use `loc`. Let's find those same clients but with fewer columns:
 
-    In [9]: df.loc[df.apply(lambda row: row['FIRST_NAME'][0], axis=1)=='M', ['FIRST_NAME','GENDER','AGE']]
+    In [9]: df.loc[df.apply(lambda row: row['FIRST_NAME'][0], axis=1) == 'M', ['FIRST_NAME', 'GENDER', 'AGE']]
     Out[9]: 
        FIRST_NAME GENDER  AGE
     2     Michael      M   55
@@ -601,47 +597,43 @@ And for an example of row and column-wise selection, we turn to `loc` again to r
 
 #### Building Complex Queries With Eval
 
-While querying dataframes in the manner explained above is useful, it has its limitations. That is, defining such queries, whether in a standalone Python script or on-the-fly in the Python interpreter, can be time consuming to write if dealing with very complex queries. Given how data is accessed from a dataframe, control structures (like `for`, `if`, and `while` loops) cannot be used to aid in building such complex queries without pairing it with the `eval` function.
+An option when writing very long queries is to save the query to a string and then use the `eval` function. This might be helpful when trying to perform a similar query in many places, so you can pass the query conditions around.
 
-For example, in a Python script or in the Python interpreter, if we wanted to chain a series of conditional statements to apply to a dataframe and return a subset of data, we'd have to type out each conditional statement (don't forget the parentheses and `AND`/`OR` operators) and nest inside the dataframe object.
+First, let's look at our previous query (finding blondes under age 40 or brunettes over age 50):
 
-However, if we use `eval`, we can first build the complex query as a continuous string, then apply the `eval` function to the string before nesting it inside of the dataframe object.
+    In [33]: df[((df.HAIR_COLOR == 'blonde') & (df.AGE < 40)) | ((df.HAIR_COLOR == 'brown') & (df.AGE > 50))]
 
-Let's revist the previous complex query.
+Now, we can save that query to a string:
 
-**Blondes under age 40 or brunettes over age 50**    
+    In [22]: my_query = "((df.HAIR_COLOR == 'blonde') & (df.AGE < 40)) | ((df.HAIR_COLOR == 'brown') & (df.AGE > 50))"
 
-    In [33]: df[((df.HAIR_COLOR=='blonde') & (df.AGE<40)) | ((df.HAIR_COLOR=='brown') & (df.AGE>50))]
-    
-Notice that the conditional statement consists of the following code:
+But you can't run this query directly:
 
-    ((df.HAIR_COLOR=='blonde') & (df.AGE<40)) | ((df.HAIR_COLOR=='brown') & (df.AGE>50))
-    
-A similar statement could be built as a string using a block of code that knows when to insert `|` for `OR`, `&` for `AND`, equality/inequality symbols, test values (let's say from user-defined inputs), whitespace, and enclose individual statements within parentheses. The result should be a string representing the same complex query. The difference is that constructing it could be automated using a block of code and that Python will not yet recognize it as a suitable input for querying a dataframe.
-
-    In [22]: myQuery = "((df.HAIR_COLOR=='blonde') & (df.AGE<40)) | ((df.HAIR_COLOR=='brown') & (df.AGE>50))"
-
-    In [23]: df[myQuery]
+    In [23]: df[my_query]
     ---------------------------------------------------------------------------
-    KeyError: "((df.HAIR_COLOR=='blonde') & (df.AGE<40)) | ((df.HAIR_COLOR=='brown') & (df.AGE>50))"    
-    
-    In [24]: df[eval(myQuery)]
+    KeyError: "((df.HAIR_COLOR == 'blonde') & (df.AGE < 40)) | ((df.HAIR_COLOR == 'brown') & (df.AGE > 50))"    
+
+First you have to use `eval` to convert the text to Python code:
+
+    In [24]: df[eval(my_query)]
     Out[24]: 
       FIRST_NAME LAST_NAME GENDER  AGE HAIR_COLOR EYE_COLOR
     4     Robert  Phillips      M   37     blonde     brown
     5     Thomas     Moore      M   60      brown      blue
     7     Brenda     Jones      F   18     blonde     brown
     8    Michael     Smith      M   58      brown     brown
-    
+
+It is fun to note that `eval` is the same logic that Python uses to convert the text you write into executable Python code.
+
 ## More Dataframe Operations
 
 #### Merge
 
-`merge` is the pandas equivalent to a SQL join. Like SQL joins, a `merge` can be 'left', 'right', 'inner', or 'outer'
+`merge` is the pandas equivalent to a SQL join. Like SQL joins, a `merge` can be 'left', 'right', 'inner', or 'outer'.
 
 Here is a simple example of a `merge`:
 
-    In [108]: genders = pd.DataFrame({'GENDER':['M','F'],'GENDER_LONG':['male','female']})
+    In [108]: genders = pd.DataFrame({'GENDER': ['M', 'F'], 'GENDER_LONG': ['male', 'female']})
 
     In [109]: genders
     Out[109]: 
@@ -669,7 +661,7 @@ Here is a simple example of a `merge`:
     
 Beware of how you use `merge`, paying special attention to unintentional one-to-many relationships.
 
-    In [111]: genders = pd.DataFrame({'GENDER':['M','M','F'],'GENDER_LONG':['male','man','female']})
+    In [111]: genders = pd.DataFrame({'GENDER': ['M', 'M', 'F'], 'GENDER_LONG': ['male', 'man', 'female']})
     In [111]: genders
     Out[111]: 
     GENDER GENDER_LONG
@@ -701,19 +693,19 @@ Beware of how you use `merge`, paying special attention to unintentional one-to-
     18      F      female      Molly    Bryant   21   brunette      blue         2
     19      F      female      Jaime  Anderson   46   brunette     green         9
     
- Notice how the dataframe went from 14 entries to 19?
+Notice that our (accidental) one-to-many relationship during the `merge` lead to 19 final records instead of 13. We have no duplicated all of the male records.
     
 #### Groupby
 
-`groupby` is a useful tool for aggregating data according to specified fields and subsequently applying some sort of function. Some examples include:
+`groupby` is a useful tool for aggregating data by field and then applying a function. Some examples include:
 
  * Grouping a company purchase log by item category (men's, women's, home furnishings, etc.) and region, then applying `sum` to the sale prices. Could be used to report volume of sales by region and item category.
 
- * Grouping a client list by clothing size and gender, then applying `min` and/or `max` to age to get the age range of clients (men and women) for each clothing size. Could be used to illustrate trends in clothing size with varying age, and to compare the trends for men and women.
+ * Grouping a client list by clothing size and gender, then applying `min`/`max` to age to get the age range of clients (men and women) for each clothing size. Could be used to illustrate trends in clothing size with varying age, and to compare the trends for men and women.
 
-An example is provided for the dataframe of clients used throughout this course:
+Let's group our client list by last name and then count the number of people with each eye color:
 
-    In [103]: df.groupby(['LAST_NAME','EYE_COLOR'], as_index=False)['EYE_COLOR'].count()
+    In [103]: df.groupby(['LAST_NAME', 'EYE_COLOR'], as_index=False)['EYE_COLOR'].count()
     Out[103]: 
     LAST_NAME  EYE_COLOR
     Adams      blue         1
@@ -729,8 +721,10 @@ An example is provided for the dataframe of clients used throughout this course:
     Smith      brown        2
                hazel        1
     dtype: int64
+
+Or let's group all of our clients by first name and count how many have the same hair color:
     
-    In [104]: df.groupby(['FIRST_NAME','HAIR_COLOR'], as_index=False)['HAIR_COLOR'].count()
+    In [104]: df.groupby(['FIRST_NAME', 'HAIR_COLOR'], as_index=False)['HAIR_COLOR'].count()
     Out[104]: 
     FIRST_NAME  HAIR_COLOR
     Brenda      blonde        1
@@ -747,8 +741,9 @@ An example is provided for the dataframe of clients used throughout this course:
     Thomas      brunette      1
     dtype: int64
 
-    In [105]: df['RAND_INT'] = np.random.randint(1,10, size=len(df))
+And just as one final exercise, let's add a "random integer" field to our data frame:
 
+    In [105]: df['RAND_INT'] = np.random.randint(1, 10, size=len(df))
     In [106]: df
     Out[106]: 
        FIRST_NAME LAST_NAME GENDER  AGE HAIR_COLOR EYE_COLOR  RAND_INT
@@ -767,7 +762,9 @@ An example is provided for the dataframe of clients used throughout this course:
     12      Molly    Bryant      F   21      brown      blue         7
     13      Jaime  Anderson      F   46      brown     green         8
 
-    In [107]: df.groupby(['LAST_NAME','GENDER'], as_index=False)['RAND_INT'].sum()
+Now we can group our data by last name and gender and sum the random integers in each group:
+
+    In [107]: df.groupby(['LAST_NAME', 'GENDER'], as_index=False)['RAND_INT'].sum()
     Out[107]: 
        LAST_NAME GENDER  RAND_INT
     0      Adams      F         9
@@ -785,9 +782,9 @@ An example is provided for the dataframe of clients used throughout this course:
 
 #### Sort
 
-This function requires little explanation. All you need is a list of columns on which to sort the dataframe by (in order of priority).
+You can imagine sorting a data frame based on a single column. But the pandas `DataFrame.sort()` method takes a list of columns and will sort your data frame using the list as an order of priority. Sorting is actually very easy to do:
 
-    In [117]: df.sort(['LAST_NAME','FIRST_NAME','AGE'])
+    In [117]: df.sort(['LAST_NAME', 'FIRST_NAME', 'AGE'])
     Out[117]: 
         FIRST_NAME LAST_NAME GENDER  AGE HAIR_COLOR EYE_COLOR  RAND_INT
     3        Mary     Adams      F   42     blonde      blue         9
@@ -805,9 +802,9 @@ This function requires little explanation. All you need is a list of columns on 
     10    Michael     Smith      M   37      black     hazel         4
     8     Michael     Smith      M   58   brunette     brown         1
 
-#### Append
+#### append
 
-`append` can be used to append one dataframe to the end of another dataframe.
+Use `append` to add one data frame onto the end of another:
 
     In [12]: df1 = df[:8]
     In [13]: df2 = df[8:]
@@ -830,11 +827,11 @@ This function requires little explanation. All you need is a list of columns on 
     6     Natalie    Potter      F   21   brunette     green         5
     7      Brenda     Jones      F   18     blonde     brown         6
 
-Notice the out of sequence indices?
+Notice the order is preserved in append, which you can tell by looking at the indices above.
 
-#### Concat
+#### concat
 
-Use `concat` to combine multiple dataframes in one swift movement.
+Use `concat` to do similar combining as with `append`, but you can do many data frames at the same time:
 
     In [15]: DFs = []
     In [16]: DFs.append(df[10:])
@@ -866,16 +863,14 @@ Use `concat` to combine multiple dataframes in one swift movement.
 
 #### Common data formats
 
-Much like the `read_` functions, the `to_` functions are simple to use in that you only really need to provide the output filepath as an argument. Other options include whether indices will be written to the output file, choice of delimter, etc.
+Writing data to an output file is as easy as reading a file in Pandas. Instead of using `read_` functions, use `to_` functions. A similar set of optional parameters are available, but the main two functions you'll probably want are:
 
- * to_csv (comma separated values)
- * to_pickle (preserved pandas data structure)
+ * `to_csv` - comma separated values
+ * `to_pickle` - preserved pandas data structure
 
 #### Other data formats
 
-Again, for more information on writing to other data formats, consult the pandas manual:
-
-http://pandas.pydata.org/pandas-docs/stable/api.html#serialization-io-conversion
+For more information on writing to other data formats, consult the [pandas manual](http://pandas.pydata.org/pandas-docs/stable/api.html#serialization-io-conversion).
 
 ## Further Reading
 
