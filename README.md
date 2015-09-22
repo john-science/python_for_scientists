@@ -45,4 +45,4 @@ Special Topics
  * [Data Analysis - pandas](classes/13_pandas/lecture_13.md)
  * [NetCDF Files - netCDF4](classes/14_netcdf/lecture_14.md)
  * [Geoprocessing - osgeo/shapefile/PyProj](classes/16_geoprocessing/lecture_16.md)
- * [Testing Code - unittest/setuptools](classes/17_testing_projects/lecture_17.md)
+ * [Testing Projects - unittest/setuptools](classes/17_testing_projects/lecture_17.md)
