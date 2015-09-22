@@ -19,7 +19,7 @@ Setup and Introduction
 
  * [Introduction](classes/00_setup_and_intro/lecture_00.md)
 
-Learning the Python Language:
+Learning the Python Language
 
  * [Variables](classes/01_basic_syntax/lecture_01.md)
  * [Control Structures](classes/01_control_statements/lecture_01.5.md)
@@ -36,7 +36,7 @@ Python Standard Libraries
  * [Batteries Included, Part 1](classes/09_std_libs/lecture_09.md)
  * [Batteries Included, Part 2](classes/09_std_libs/lecture_09.5.md)
 
-Special Topics - Libraries for Scientists and Engineers:
+Special Topics
 
  * [Math - NumPy](classes/10_numpy/lecture_10.md)
  * [Statistics - SciPy](classes/11_scipy/lecture_11.md)
@@ -45,3 +45,4 @@ Special Topics - Libraries for Scientists and Engineers:
  * [Data Analysis - pandas](classes/13_pandas/lecture_13.md)
  * [NetCDF Files - netCDF4](classes/14_netcdf/lecture_14.md)
  * [Geoprocessing - osgeo/shapefile/PyProj](classes/16_geoprocessing/lecture_16.md)
+ * [Testing Code - unittest/setuptools](classes/17_testing_projects/lecture_17.md)
