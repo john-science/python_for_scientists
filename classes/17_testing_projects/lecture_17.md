@@ -1,6 +1,6 @@
 # Testing Python Projects
 
-First, a quick note: this lecture is not for single Python scripts. It's not even for small programs with one or two modules. This lecture is for Python projects that have gotten big enough to have several modules and get distributed to several people.
+This lecture is not for single Python scripts. It's not even for small programs with one or two modules. This lecture is for Python projects that have gotten big enough to have several modules and get distributed to several people.
 
 #### Installation
 
