@@ -64,7 +64,7 @@ First, let's write a really simple module `cube.py`:
         '''
         return x**3
 
-Now, let's write the module `test_cube_unittest.py`:
+Now, let's write the module `test_cube.py`:
 
     import unittest
     from cube import cube
@@ -104,15 +104,15 @@ Also notice the `assertEqual` that will throw an error, if the two items are not
 
 #### Running the Simple Example
 
-Now, since the `test_cube_unittest.py` has a `main` function at the bottom of it, we can run the test on the command line using `-v` to see the results:
+Now, since the `test_cube.py` has a `main` function at the bottom of it, we can run the test on the command line using `-v` to see the results:
 
-    > python test_um_unittest.py
+    > python test_cube.py
     ..
     ----------------------------------------------------------------------
     Ran 2 tests in 0.000s
      
     OK
-    > python test_cube_unittest.py -v
+    > python test_cube.py -v
     test_number_4 (__main__.TestCube) ... ok
     test_negative_one (__main__.TestCube) ... ok
      
@@ -166,11 +166,99 @@ super_math/
 |   |-- cube.py
 |-- tests/
 |   |-- __init__.py
-|   |-- test_cube_unittest.py
+|   |-- test_cube.py
+
+(Quick Note: Since we are moving `test_cube.py` into a new directory, the import line at the top should now read: `from super_math.cube import cube`.)
+
+And in setup.py modules we will put (don't worry about this just now):
+
+    import os
+    import sys
+    import unittest
+    from setuptools import setup, find_packages
+    from setuptools.command.test import test
+    
+    class DiscoverTest(test):
+    
+        def finalize_options(self):
+            test.finalize_options(self)
+            self.test_args = []
+            self.test_suite = True
+    
+        def run_tests(self):
+            # get setup.py directory and then tests directory
+            setup_file = sys.modules['__main__'].__file__
+            setup_dir = os.path.abspath(os.path.dirname(setup_file))
+            test_dir = os.path.join(setup_dir, 'tests')
+    
+            # use the default shared TestLoader instance
+            test_loader = unittest.defaultTestLoader
+    
+            # use the basic test runner that outputs to sys.stderr
+            test_runner = unittest.TextTestRunner()
+    
+            # automatically discover all tests
+            # NOTE: only works for python 2.7 and later
+            test_suite = test_loader.discover(test_dir)
+    
+            # run the test suite
+            test_runner.run(test_suite)
+    
+    setup(
+        name='super_math2',
+        version='0.0.1',
+        description="A Simple setuptools Test",
+        cmdclass={'test': DiscoverTest}
+    )
+
+Now, all you really need is the `setup` function in that script. The `DiscoverTest` is my own personal convenience (found on [this]() StackOverflow post), so that you can run all of your unit tests simply by typing this on the command line:
+
+    python setup.py test
+
+And, if your tests pass, you will get something like this:
+
+    $ python setup.py test
+    running test
+    running egg_info
+    writing super_math.egg-info/PKG-INFO
+    writing top-level names to super_math.egg-info/top_level.txt
+    writing dependency_links to super_math.egg-info/dependency_links.txt
+    reading manifest file 'super_math.egg-info/SOURCES.txt'
+    writing manifest file 'super_math.egg-info/SOURCES.txt'
+    running build_ext
+    ..
+    ----------------------------------------------------------------------
+    Ran 2 tests in 0.000s
+    
+    OK
+
+If there are errors, you will get more information about the tests that ran. The `DiscoverTest` class hides the results of passing tests.
+
+### Installing with SetupTools
+
+We saw that we can use `python setup.py test` to test our code using `setuptools`. But now that we have a working `setup.py`, we can do so much more.
+
+We can build our project:
+
+    python setup.py build
+
+We can clean a previous build:
+
+    python setup.py clean
+
+We can build a source distribution (tar ball, zip file, exe, etc..):
+
+    python setup.py sdist
+
+We can install our project to the local Python on our computer:
+
+    python setup.py install
+
+And [a lot more](http://pythonhosted.org/an_example_pypi_project/setuptools.html#using-setup-py).
 
 ### The Cookie Cutter
 
-At this point you would be entirely justified if you feel like building a project with all these new tools sounds like a pain. But really, once you've done it once it's always the same after that. In fact, so many people have done this SO many times, that there are a ton of template Python projects out there you can just copy/paste when you start a new project.
+At this point, go ahead and feel justified if you feel like building a Python project just got too complicated. All these libraries and tools and files. Luckily, after you do this once it becomes simple boilerplate. More luckily, so many people have written that boilerplate, that you can just download Python project templates online.
 
 My favorite Python project template is Audreyr's [Cookie Cutter](https://github.com/audreyr/cookiecutter-pypackage) over on [GitHub](https://www.github.com).
 
@@ -182,31 +270,15 @@ The Cookie Cutter has all kinds of useful tools built-in and laid out, ready for
  * TOX - to make keeping track of your VirtualEnv and running your tests
  * GIT - for your code repository
 
-And if you don't want to use all these tools, you can just delete a couple of files from the template, easy.
-
-### Two Kinds of Builds
-
-It is an over-simplification, but your project might be one of two things: a library to be imported by other Python code, or a stand-alone program. Let's take a look at some differences and see some examples:
-
-#### Library Builds
-
- * Coming Soon
-
-#### Stand-Alone Program Builds
-
- * Coming Soon
-
-## Documentation
-
- * doc strings
- * [doctest](http://pythontesting.net/framework/doctest/doctest-introduction/#example)
- * Sphinx
-
- * Coming Soon
+And if you don't want to use all these tools, you can just delete a couple of files from the template. Easy.
 
 ## Why Bother?
 
- * Coming Soon
+Why bother with testing? If you're asking that, you're not the first person. The truth is, some people spend too much time worrying about the whole testing and build process.
+
+The truth is also that every software company in the world builds tests into their code. As projects get bigger, both in the number of lines and the number of developers, it becomes impossible that everyone will be able to keep every part of the project in mind at all times. And who would want to?
+
+In the end, well-tested code tends to be less buggy and bugs get found sooner.
 
 ## Further Reading
 
