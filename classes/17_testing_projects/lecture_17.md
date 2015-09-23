@@ -1,10 +1,10 @@
 # Testing Python Projects
 
-This lecture is not for single Python scripts. It's not even for small programs with one or two modules. This lecture is for Python projects that have gotten big enough to have several modules and get distributed to several people.
+This lecture does not apply to stand-alone Python scripts. It's not even for small programs with one or two modules. This lecture is for Python projects that have gotten big enough to have several modules and be distributed to several people.
 
 #### Installation
 
-There are many libraries for testing and building Python projects. To keep this lecture from becoming its own course, we will select some of the most standard tools and ignore the rest.
+There are many libraries for testing and building Python projects. To keep this lecture from becoming its own course, we only show examples for the most standard tools (Python v2.7 or v3.2 or newer).
 
 ## Unit Tests
 
@@ -14,7 +14,7 @@ A [developer's mantra](http://c2.com/cgi/wiki?MakeItWorkMakeItRightMakeItFast):
     Make it right.
     Make it fast.
 
-Today we'll talk about that second thing: let's make sure our code is *right*. By *right* we mean producing the desired outputs. And the only way to know if your code is "right" is to test it.
+Today we'll talk about that second thing: let's make sure our code is *right* (producing the desired outputs). And the only way to know if your code is *right* is to test it.
 
 #### Different Types of Software Tests
 
@@ -24,7 +24,7 @@ Without getting too pedantic, there are generally three kinds of [software testi
  * [Integration Tests](https://en.wikipedia.org/wiki/Integration_testing) - Testing the connections between different pieces of your code.
  * [System Tests](https://en.wikipedia.org/wiki/System_testing) - Full end-to-end testing of your software as whole.
 
-As your project gets larger, the items lower on this list become more important. But everything starts with unit testing. If you don't know if and how the smallest pieces of your code is working, larger-scale tests will be less useful.
+As your project gets larger, the items lower on this list become more important. But everything starts with unit tests.
 
 #### Why Unit Test?
 
@@ -32,7 +32,7 @@ Unit Tests will answer several questions, that become more important as the size
 
  * Does every single function or method produce the results I want for typical inputs?
  * What about for edge cases?
- * Every time I make a change to the code, how can I check that I didn't break something else?
+ * When I make a change to the code, how can I be sure I didn't break something elsewhere in the code?
 
 A logical follow-up question will be:
 
@@ -62,7 +62,7 @@ To use `unittest`, we'll first need a simple module (`cube.py`):
         '''
         return x**3
 
-Now, let's write the module `test_cube.py`:
+Now, let's write the module `cube_test.py`:
 
     import unittest
     from cube import cube
@@ -83,7 +83,7 @@ Now, let's write the module `test_cube.py`:
 
 Notice `setUp()` can be used to load any information you want into the `TestCube` class. This can be handy if you need a more complex input for your function/method. You can instantiate a class from another part of your project, mock up a lot of fake data, or even create a temporary database for testing.
 
-Also notice that `assertEqual`, it is the meat of the test. It will throw an error if if arguments are not equal. There are [many other](https://docs.python.org/2/library/unittest.html#unittest.TestCase) assert methods built-into `TestCase`:
+Also notice `assertEqual` is the meat of the test. It will throw an error if if arguments are not equal. There are several [other assert methods](https://docs.python.org/2/library/unittest.html#unittest.TestCase) built-into `TestCase`:
 
 | Method | Checks that |
 | ------ | ----------- |
@@ -102,9 +102,9 @@ Also notice that `assertEqual`, it is the meat of the test. It will throw an err
 
 #### Running the Simple Example
 
-Now, since the `test_cube.py` has a `main` function at the bottom of it, we can run the test on the command line:
+Now, since the `cube_test.py` has a `main` function at the bottom of it, we can run the test on the command line:
 
-    > python test_cube.py
+    > python cube_test.py
     ..
     ----------------------------------------------------------------------
     Ran 2 tests in 0.000s
@@ -112,7 +112,7 @@ Now, since the `test_cube.py` has a `main` function at the bottom of it, we can 
 To get more detailed output, we can use the `-v` flag:
 
     OK
-    > python test_cube.py -v
+    > python cube_test.py -v
     test_number_4 (__main__.TestCube) ... ok
     test_negative_one (__main__.TestCube) ... ok
      
@@ -168,11 +168,11 @@ First, we will need to layout our project something like this:
     |   |-- cube.py
     |-- test/
     |   |-- __init__.py
-    |   |-- test_cube.py
+    |   |-- cube_test.py
 
-(Quick Note: Since we are moving `test_cube.py` into a new directory, the import line at the top should now read: `from super_math.cube import cube`.)
+(Quick Note: Since we are moving `cube_test.py` into a new directory, the import line at the top should now read: `from super_math.cube import cube`.)
 
-Our setup.py will look like:
+Our `setup.py` will look like:
 
     from setuptools import setup
     
@@ -204,8 +204,6 @@ And, if your tests pass, you will get something like this:
     
     OK
 
-If there are errors, you will get a lot more information about the tests that ran. The `DiscoverTest` class hides the results of passing tests.
-
 ### Installing with SetupTools
 
 We saw that we can use `python setup.py test` to test our code using `setuptools`. But now that we have a working `setup.py`, we can perform a lot of different build steps.
@@ -230,14 +228,14 @@ And [a lot more](http://pythonhosted.org/an_example_pypi_project/setuptools.html
 
 ### The Cookie Cutter
 
-At this point, go ahead and feel justified if you feel like creating a Python project just got too complicated. All these libraries and tools and config files... Luckily, after you do this once it becomes easy boilerplate. More luckily, so many people have written that boilerplate that you can just download Python project templates online.
+At this point, go ahead and feel justified if you feel like creating a Python project just got too complicated. All these libraries and tools and config files... Luckily, after you do this once it becomes easy boilerplate. More luckily, so many people have written that boilerplate that you can find many Python project templates online.
 
-My favorite Python project template is Audreyr's [Cookie Cutter](https://github.com/audreyr/cookiecutter-pypackage) over on [GitHub](https://www.github.com).
+My favorite Python project template is Audreyr's [Cookie Cutter](https://github.com/audreyr/cookiecutter-pypackage) on [GitHub](https://www.github.com).
 
 The Cookie Cutter has all kinds of useful tools built-in and laid out, ready for you to use:
 
  * [setuptools](http://pythonhosted.org/setuptools/) - for building and installation
- * [Sphinx](http://sphinx-doc.org/) - for nice, HTML code documenation
+ * [Sphinx](http://sphinx-doc.org/) - for attractive HTML code documenation
  * [VirtualEnv](http://virtualenv.readthedocs.org/en/latest/) - to keep your project separate from the rest of your computer
  * [TOX](http://tox.readthedocs.org/en/latest/) - to make keeping track of your VirtualEnv and running your tests
  * [GIT](http://www.git-scm.com/doc) - for your code repository
@@ -246,25 +244,25 @@ And if you don't want to use any these tools, you can just delete a couple of fi
 
 ## Why Bother?
 
-If you're asking why bother, you're not the first person. The truth is, some people spend too much time worrying about the whole testing and building processes.
+If you're asking why bother, you're not the first person. The truth is, some people spend too much time worrying about the testing and building processes.
 
-The truth is also that every software company in the world tests their code. As projects get bigger (both in lines of code and in number of developers) it becomes impossible that everyone will be able to keep every part of the project in their minds at all times. People are busy.
+The truth is also that every software company in the world tests their code. As projects get bigger, not every single person committing code to the project will understand every function/class in the project.
 
-Well-tested code tends to be less buggy. And its bugs tend to get found faster.
+Well-tested code tends to be less buggy. And the tests can save people time.
 
 ## Real-World Examples
 
-GitHub is a great place to look for example Python projects. There are thousands using the tools in this lecture. For two simple examples of using `unittest` along with `setuptools`, take a look at two of my other projects here on GitHub:
+GitHub is a great place to look for example Python projects. There are thousands of projects using the tools in this lecture. For two simple example Python projects using `unittest` along with `setuptools`, take a look at two of my other projects on GitHub:
 
  * [mazelib](https://github.com/theJollySin/mazelib) - A Python algorithm library for creating and solving mazes.
- * [pytextgame](https://github.com/theJollySin/pytextgame) - A cross-platform text game engine.
+ * [pytextgame](https://github.com/theJollySin/pytextgame) - A cross-platform text-game engine.
 
 ## Further Reading
 
  * [Open Sourcing a Python Project the Right Way](http://www.jeffknupp.com/blog/2013/08/16/open-sourcing-a-python-project-the-right-way/) - A great reference for all facets of building a modern Python project.
- * [Audreyr's Cookie Cutter](https://github.com/audreyr/cookiecutter-pypackage)
+ * [Audreyr's Cookie Cutter](https://github.com/audreyr/cookiecutter-pypackage) - Great boilerplate for a Python project.
  * [Testing Your Code](http://docs.python-guide.org/en/latest/writing/tests/) - From the wonderful people over at Hitchhiker's Guide to Python
- * [PyTesting.net](http://pythontesting.net/)
+ * [PyTesting.net](http://pythontesting.net/) - People who really care about this topic.
  * [setuptools installs requires vs requirements](https://packaging.python.org/en/latest/requirements/) - An easy place to get confused, explained.
 
 
