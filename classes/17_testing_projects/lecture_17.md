@@ -166,7 +166,7 @@ First, we will need to layout our project something like this:
     |-- super_math/
     |   |-- __init__.py
     |   |-- cube.py
-    |-- tests/
+    |-- test/
     |   |-- __init__.py
     |   |-- test_cube.py
 
