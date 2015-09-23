@@ -179,12 +179,6 @@ Our setup.py will look like:
     setup(name='super_math',
         version='0.1',
         description='A simple test of unittest.',
-        classifiers=['Development Status :: 3 - Alpha',
-                     'Topic :: Software Development :: Libraries :: Python Modules',
-                     'License :: OSI Approved :: GNU General Public License v3 (GPLv3)',
-                     'Programming Language :: Python :: 2.7',
-                     'Natural Language :: English',
-                     'Topic :: Software Development :: Libraries :: Python Modules'],
         packages=['super_math'],
         test_suite="test",
         zip_safe=False)
