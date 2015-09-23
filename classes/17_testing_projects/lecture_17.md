@@ -174,46 +174,22 @@ First, we will need to layout our project something like this:
 
 Our setup.py will look like:
 
-    import os
-    import sys
-    import unittest
-    from setuptools import setup, find_packages
-    from setuptools.command.test import test
+    from setuptools import setup
     
-    class DiscoverTest(test):
-    
-        def finalize_options(self):
-            test.finalize_options(self)
-            self.test_args = []
-            self.test_suite = True
-    
-        def run_tests(self):
-            # get setup.py directory and then tests directory
-            setup_file = sys.modules['__main__'].__file__
-            setup_dir = os.path.abspath(os.path.dirname(setup_file))
-            test_dir = os.path.join(setup_dir, 'tests')
-    
-            # use the default shared TestLoader instance
-            test_loader = unittest.defaultTestLoader
-    
-            # use the basic test runner that outputs to sys.stderr
-            test_runner = unittest.TextTestRunner()
-    
-            # automatically discover all tests
-            # NOTE: only works for python 2.7 and later
-            test_suite = test_loader.discover(test_dir)
-    
-            # run the test suite
-            test_runner.run(test_suite)
-    
-    setup(
-        name='super_math2',
-        version='0.0.1',
-        description="A Simple setuptools Test",
-        cmdclass={'test': DiscoverTest}
-    )
+    setup(name='super_math',
+        version='0.1',
+        description='A simple test of unittest.',
+        classifiers=['Development Status :: 3 - Alpha',
+                     'Topic :: Software Development :: Libraries :: Python Modules',
+                     'License :: OSI Approved :: GNU General Public License v3 (GPLv3)',
+                     'Programming Language :: Python :: 2.7',
+                     'Natural Language :: English',
+                     'Topic :: Software Development :: Libraries :: Python Modules'],
+        packages=['super_math'],
+        test_suite="test",
+        zip_safe=False)
 
-Now, all you really need is the `setup` function in that script. The `DiscoverTest` is my own personal convenience (found on [this]() StackOverflow post) used to run all of your unit tests simply by typing this on the command line:
+You can now run these tests on the command line by doing:
 
     python setup.py test
 
@@ -281,6 +257,13 @@ If you're asking why bother, you're not the first person. The truth is, some peo
 The truth is also that every software company in the world tests their code. As projects get bigger (both in lines of code and in number of developers) it becomes impossible that everyone will be able to keep every part of the project in their minds at all times. People are busy.
 
 Well-tested code tends to be less buggy. And its bugs tend to get found faster.
+
+## Real-World Examples
+
+GitHub is a great place to look for example Python projects. There are thousands using the tools in this lecture. For two simple examples of using `unittest` along with `setuptools`, take a look at two of my other projects here on GitHub:
+
+ * [mazelib](https://github.com/theJollySin/mazelib) - A Python algorithm library for creating and solving mazes.
+ * [pytextgame](https://github.com/theJollySin/pytextgame) - A cross-platform text game engine.
 
 ## Further Reading
 
