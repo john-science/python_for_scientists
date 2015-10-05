@@ -313,7 +313,7 @@ Use `normed` to normalize your histogram so the vertical scale represents the pr
 
 ![Normalized Histogram](../../resources/histogram_plot_1.png)
 
-## Multiple Data Sets - One Plot
+## Multiple Plots
 
 For the most part, putting multiple datasets on the same plot is super easy; you just add more plots to `matplotlib.pyplot` before you `pyplot.show()`.
 
