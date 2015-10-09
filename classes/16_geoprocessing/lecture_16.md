@@ -104,7 +104,7 @@ Where here each field is defined by four quantities:
 
 And much like calling all of the geometric objects in a shapefile, you can call just the data records:
 
-    >>> records = sf.records
+    >>> records = sf.records()
     >>> records[0]
     [1000, 499, 501]
 
