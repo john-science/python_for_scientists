@@ -12,20 +12,20 @@ Consider installing [Anaconda](http://docs.continuum.io/anaconda/install.html) i
 
 #### Why use pandas?
 
-pandas is a powerful tool for handling data and performing data analysis. It can accomplish the same tasks you would typically do in Microsoft Excel (sort, filter, pivot, etc.), but unlike Excel, pandas can be used in Python programs to streamline repetitive tasks and allow reusability of code. Additionally, it can perform the same tasks that you would typically do in a database, like SQL (queries, joins, etc.), but it does so in Python memory (no need to establish and connect to a database!).
-
-Lastly, many pandas functions are based off of other popular Python utilities (numpy, scipy, etc.).
+Pandas is a powerful tool for handling data and performing data analysis. It has a ton of pre-made tools designed to make importing data to your code easier. Your data will be loaded into a "data frame", which is a lot like an in-memory table in Excel or a database. Once your data is in a data frame, you can easily reorganize it or use it in table-like calculations.
 
 ## iPython
 
-When importing pandas into the Python interpreter for on-the-fly programming and debugging, consider using iPython. It has several features not available in the standard Python interpreter:
+Up until this lecture, we have written all of our Python code in the interpretter or into a plain text module. Today let's try using [ipython](http://ipython.org/), which is a Python development environment designed specifically for scientists and engineers. It has several features not supported by the standard Python interpreter:
 
- * Tab auto-completion (on class names, functions, methods, and variables)
+ * Tab auto-completion
  * More explicit and colour-highlighted error messages
  * Better history management
- * Basic UNIX shell integration (you can run simple shell commands: cp, ls, rm, cp, etc.)
+ * Basic UNIX/LINUX shell integration
 
-After installing iPython, invoke it using the command `ipython`.
+For a quick introduction to installing and using iPython, look [here](http://cs231n.github.io/ipython-tutorial/).
+
+After installing iPython, you can invoke it on the command line using: `ipython`.
 
     >>>> ipython
     Python 2.6.6 (r266:84292, Jan 22 2014, 09:42:36)
@@ -37,9 +37,11 @@ After installing iPython, invoke it using the command `ipython`.
     help      -> Python's own help system.
     object?   -> Details about 'object', use 'object??' for extra details.
 
+If you want a GUI interface to ipython, type `ipython notebook`. This will open a particuarly friendly local Python working environment through your default web browser.
+
 ## Importing pandas
 
-There is convention of types to help save you typing when using pandas:
+There is an un-official convention when importing `pandas`:
 
     In [1]: import pandas as pd
 
@@ -47,28 +49,23 @@ There is convention of types to help save you typing when using pandas:
 
 A good place to start is reading pre-existing data with pandas. You may find that this is more common than building a pandas data structure from scratch.
 
-#### Common data formats
+#### Simple Data Formats
 
-There are four methods to read in different types of data:
+The four most common Pandas data import methods are:
 
  * `read_csv` - comma separated values
  * `read_fwf` - fixed width format
  * `read_table` - general delimited text file
  * `read_pickle` - preserved pandas data structure
 
-Each of these methods can be passed a file path (string), and they will run. But the also a variety of optional arguments:
+Each of these methods takes a file path, and a variety of optional arguments:
 
-  * **header (int)**: If not given, pandas will use row 0 as the header line and the start of the data. This is useful if your file has a header/comment block and the data starts several lines down. If your file has no header, set `header=None` to avoid having the first line used at the header.
-  
-  * **names (list)**: Use if you would like to define the column names upon importing the data. This should be used with the explicit option `header=None`.
- 
-  * **dtype (dict)**: If not given, pandas will infer the data types when importing data. This option is useful if you want to force certain data types at the import stage, for example: `dtype={'x': np.float64, 'y': np.int32, 'z': np.float64}`.  (Note that pandas allows typecasting after importing into pandas as well).
-
-  * **usecols (list)**: Import only certain columns. Saves time and space!
- 
-  * **nrows (int)**: Number of rows of file to read. Useful for reading pieces of large files.
-  
-  * **skiprows (list or integer)**: List of line numbers to skip (0-indexed) or number of lines to skip (int) at the start of the file.
+  * **header (int)**: The default value is `0` assuming your text file has a single header row. But if your file has a large header or comment block at the top, you can set this value higher. Of set `header=None` if don't have a header at all.
+  * **names (list)**: You can use this to manually define the column names as you import.
+  * **dtype (dict)**: If not given, pandas will infer the data types when importing data. This option is useful if you want to force certain data types at the import stage, for example: `dtype={'x': np.float64, 'y': np.int32, 'z': np.float64}`. (You can still typecast your data after the import, if you don't know what to expect a priori.
+  * **usecols (list)**: Save time and space by only importing the columns you need.
+  * **nrows (int)**: Only read the first N rows.
+  * **skiprows (list or integer)**: List of line numbers to skip or number of lines to skip at the start of the file.
   
 #### Other data formats
 
@@ -76,11 +73,11 @@ For more information on reading in other data formats (Excel spreadsheets, SQL d
 
 ## Series
 
-Though the focus of this lecture will mainly be on pandas `DataFrame`, knowing a bit about pandas `Series` is useful. Series are simply one-dimensional arrays of data with axis labels (indices). Series can be created from scratch using a dictionary or a list.
+Though the focus of this lecture will mainly be on pandas `DataFrame`, knowing a bit about pandas `Series` is useful. A `Series` is a one-dimensional array of data with labels (indices). A `Series` can be created using a dictionary or a list.
 
 **From a dictionary**
 
-    In [1]: d = {'a':'A','b':'B','c':'C'}
+    In [1]: d = {'a': 'A', 'b': 'B', 'c': 'C'}
     In [2]: pd.Series(d)
     Out[2]: 
     a    A
@@ -90,7 +87,7 @@ Though the focus of this lecture will mainly be on pandas `DataFrame`, knowing a
     
 **From a list**
     
-    In [3]: l = ['A','B','C']
+    In [3]: l = ['A', 'B', 'C']
     In [4]: pd.Series(l)
     Out[4]: 
     0    A
@@ -98,7 +95,7 @@ Though the focus of this lecture will mainly be on pandas `DataFrame`, knowing a
     2    C
     dtype: object
     
-Series can also be extracted from multi-dimensional data structures like dataframes.
+A `Series` can also be extracted from multi-dimensional data structures like dataframes.
 
     In [5]: df.LAST_NAME
     Out[5]: 
@@ -123,11 +120,9 @@ Series can also be extracted from multi-dimensional data structures like datafra
 
 ## Data Frames and Data Sets
 
-DataFrames are like Series, but they can be multi-dimensional version of the pandas Series. Let's convert a Series into a DataFrame and look at the difference:
+A `DataFrame` is like a `Series`, but it can be multi-dimensional. Let's convert a `Series` into a `DataFrame` and look at the difference. First, we will import data as a `Series`:
 
-**Data imported as a series**
-
-    In [4]: one = ['A','B','C']
+    In [4]: one = ['A', 'B', 'C']
     
     In [5]: pd.Series(one)
     Out[5]: 
@@ -136,7 +131,7 @@ DataFrames are like Series, but they can be multi-dimensional version of the pan
     2    C
     dtype: object
 
-**Data imported as a dataframe**
+Now we will import it as a `DataFrame`:
 
     In [6]: pd.DataFrame(one)
 
@@ -146,13 +141,13 @@ DataFrames are like Series, but they can be multi-dimensional version of the pan
     1  B
     2  C
 
-Notice the column header `0` above the column of data? Other than that, importing one-dimensional data as a dataframe is pretty much the same as importing it as a series. Feel free to rename that column of data. However, importing the data as a dataframe opens the door for other options, like appending the data column-wise or row-wise to another dataframe, or using it as a table for performing merges (pandas equivalent to an SQL join).
+Notice the column header `0` above the column of data? Other than that, importing one-dimensional data as a dataframe is pretty much the same as importing it as a series. Feel free to rename that column of data. However, importing the data as a dataframe opens the door for other options, like appending the data column-wise or row-wise to another dataframe, or using it as a table for performing merges (the `pandas` equivalent to an SQL join).
 
-Again, you're less likely to build pandas dataframes from scratch and will more likely import existing data using one of the `read_` functions. But for those itching to build their own dataframes, there are a few ways to do so.
+In reality, you're less likely to build pandas dataframes from scratch and will more likely import existing data using one of the `read_***` functions. Let's try some of those.
 
-#### From a dictionary of arrays
+#### DataFrame from a dictionary of arrays
 
-    In [6]: d = dict( ("x"+str(k+1), np.random.randn(7)) for k in range(5) )  # 7 rows by 5 columns
+    In [6]: d = dict(("x"+str(k+1), np.random.randn(7)) for k in range(5))  # 7 rows by 5 columns
     In [7]: df = pd.DataFrame(d)
     Out[7]: 
              x1        x2        x3        x4        x5
@@ -164,9 +159,9 @@ Again, you're less likely to build pandas dataframes from scratch and will more 
     5 -0.274422 -0.315801  1.312623  3.297479  1.335182
     6 -0.875649  2.542598  0.051351  0.252638  1.541355
 
-#### From a numpy ndarray
+#### DataFrame from a numpy ndarray
 
-    In [8]: d = np.random.rand(7,5)  # 7 rows by 5 columns
+    In [8]: d = np.random.rand(7, 5)  # 7 rows by 5 columns
     In [9]: df = pd.DataFrame(d)
     Out[9]: 
               0         1         2         3         4
@@ -178,96 +173,59 @@ Again, you're less likely to build pandas dataframes from scratch and will more 
     5  0.794492  0.524574  0.800396  0.918925  0.047937
     6  0.115055  0.458574  0.847663  0.442791  0.537918
     
-#### From a dict of series
+#### DataFrame from a dict of series objects
 
-    In [1]: l1 = ['a','b','c']  # list 1
-    In [2]: l2 = ['X','Y','Z']  # list 2
-    In [3]: l3 = [1,2,3]        # list 3
-    In [4]: l4 = [6,5,4]        # list 4
-    In [5]: d = {'l1':pd.Series(l1), 'l2':pd.Series(l2), 'l3':pd.Series(l3), 'l4':pd.Series(l4)}
+    In [1]: l1 = ['a', 'b', 'c']  # list 1
+    In [2]: l2 = ['X', 'Y', 'Z']  # list 2
+    In [3]: l3 = [1, 2, 3]        # list 3
+    In [4]: l4 = [6, 5, 4]        # list 4
+    In [5]: d = {'l1': pd.Series(l1), 'l2': pd.Series(l2), 'l3': pd.Series(l3), 'l4': pd.Series(l4)}
     In [6]: pd.DataFrame(d)
     Out[6]: 
       l1 l2  l3  l4
     0  a  X   1   6
     1  b  Y   2   5
     2  c  Z   3   4
-    
-Of course, the data can be comprised of other data types, not just `float`. I would recommend dusting off your numpy and dictionary/list skills learned in previous lessons and build your own arrays/series of varying data types.
 
 ## Slicing a Data Set
 
-#### First, why we want column names in all caps
+#### Column Names in All Caps
 
-If a column header is read in from a file rather than defined explicitly by the user, there's no telling what kind of case is used.
+It is a common convention in Pandas to convert column headers to all caps. This is because data in the real world is messy and you don't want to lose any time just because a column was labeled inconsistently.
 
-Trying this should fail if the cases don't match perfectly:
+The easy way to capitalize a string is to use `.upper()`:
 
-    In [4]: df['FIRST_NAME']
-    KeyError: u'no item named FIRST_NAME'
-    
-Or trying this as well:
+    In [1]: 'First_Name'.upper()
+    Out[1]: 'FIRST_NAME'
 
-    In [5]: df.loc[:,'FIRST_NAME']
-    KeyError: 'the label [FIRST_NAME] is not in the [columns]'
- 
-So we look at what the column headers do look like and find some craziness:
+But if you suspect your data source of being poorly organized you might want to slugify:
 
-    In [6]: df.columns
-    Out[6]:
-    Index([u'first_name', u'LAST_NAME', u'gender', u'Age', u'Hair_COLOR', u'eye_Color'], dtype='object')
-    
-Luckily, there's an easy fix:
+    In [2]: def slugify(s):
+                valid = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ_'
+                return ''.join([c for c in s.lower().replace(' ', '_') if c in valid])
 
-    In [7]: df.columns = [x.upper() for x in df.columns]
-    In [8]: df.columns
-    Out[8]: 
+    In [3]: slugify('MY Profit!!!')
+    Out[3]: 'my_profit'
+
+To use these, we modify the data frame's `.columns` attribute:
+
+    In [4]: df.columns = [col.upper() for col in df.columns]
+    In [5]: df.columns
+    Out[5]: 
     ['FIRST_NAME', 'LAST_NAME', 'GENDER', 'AGE', 'HAIR_COLOR', 'EYE_COLOR']
-    
-Now when we try to look up the first names:
 
-    In [9]: df['FIRST_NAME']
-    Out[9]: 
-    0     Jennifer
-    1        Jaime
-    2      Michael
-    3         Mary
-    4       Robert
-    5       Thomas
-    6      Natalie
-    7       Brenda
-    8      Michael
-    9     Jennifer
-    10     Michael
-    11     Jessica
-    12       Molly
-    13       Jaime
-    Name: FIRST_NAME, dtype: object
-    
-Or the second way:
-    
-    In [10]: df.loc[:,'FIRST_NAME']
-    Out[10]: 
-    0     Jennifer
-    1        Jaime
-    2      Michael
-    3         Mary
-    4       Robert
-    5       Thomas
-    6      Natalie
-    7       Brenda
-    8      Michael
-    9     Jennifer
-    10     Michael
-    11     Jessica
-    12       Molly
-    13       Jaime
-    Name: FIRST_NAME, dtype: object
-    
-Now that we've gotten the columns taken care of, we can go into how to select data in a dataframe.
+Or, if need be:
 
-#### By column only
+    In [6]: df.columns = [slugify(col) for col in df.columns]
+    In [7]: df.columns
+    Out[7]: 
+    ['FIRST_NAME', 'LAST_NAME', 'GENDER', 'AGE', 'HAIR_COLOR', 'EYE_COLOR']
 
-    In [4]: cols = ['FIRST_NAME','LAST_NAME']
+#### Select Data by Column
+
+Now that we know our column names, we can start selecting data from our `DataFrame` object. First, let's select by column:
+
+    In [4]: cols = ['FIRST_NAME', 'LAST_NAME']
     In [5]: df[col]
     Out[5]: 
        FIRST_NAME LAST_NAME
@@ -286,13 +244,13 @@ Now that we've gotten the columns taken care of, we can go into how to select da
     12      Molly    Bryant
     13      Jaime  Anderson
     
-Using `df[['FIRST_NAME','LAST_NAME']]` accomplishes the same thing.
+Alternatively, we could do: `df[['FIRST_NAME','LAST_NAME']]`, which accomplishes the same thing.
 
-So does `df.loc[:,cols]` --> we'll go into more detail about this method later.
+We could also do `df.loc[:,cols]`, but we'll go into more detail about this later.
     
-#### By row only
+#### Select Data by Row
 
-Slicing by row looks a lot like list slicing:
+Selecting dataframe data by row looks a lot like slicing a standard Python list:
 
     In [10]: df[:5]
     Out[10]: 
@@ -316,9 +274,7 @@ Slicing by row looks a lot like list slicing:
     12      Molly    Bryant      F   21      brown      blue
     13      Jaime  Anderson      F   46      brown     green
 
-Other alternate methods are `df.loc[:5,:]` and `df.loc[5:,:]`
-    
-#### By row and column
+#### Select Data by Row and Column
 
 The `loc` function is my preferred tool for row and column-wise slicing of dataframes. The format for using `loc` is `df.loc[row_indexer, column_indexer]`. Below is a simple example for combining row and column slicing.
 
