@@ -191,23 +191,23 @@ In reality, you're less likely to build pandas dataframes from scratch and will 
 
 #### Column Names in All Caps
 
-It is a common convention in Pandas to convert column headers to all caps. This is because data in the real world is messy and you don't want to lose any time just because a column was labeled inconsistently.
+It is common in Pandas to convert column headers to all caps. This is because data in the real world is messy and inconsistently labeled columns headers can cost you time.
 
 The easy way to capitalize a string is to use `.upper()`:
 
     In [1]: 'First_Name'.upper()
     Out[1]: 'FIRST_NAME'
 
-But if you suspect your data source of being poorly organized you might want to slugify:
+But if your input file has column headers with lots of punctuation or other craziness, you might need to clean them up more thoroughly:
 
     In [2]: def slugify(s):
-                valid = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ_'
+                valid = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ_0123456789'
                 return ''.join([c for c in s.lower().replace(' ', '_') if c in valid])
 
     In [3]: slugify('MY Profit!!!')
     Out[3]: 'my_profit'
 
-To use these, we modify the data frame's `.columns` attribute:
+The column names are kept in the data frame's `.columns` attribute:
 
     In [4]: df.columns = [col.upper() for col in df.columns]
     In [5]: df.columns
@@ -288,42 +288,40 @@ The `loc` function is my preferred tool for row and column-wise slicing of dataf
     7     Brenda   18     brown
     8    Michael   58     brown
 
-We'll cover more of the `loc` function when we discuss query-like selection of data.
+We'll cover more of the `loc` function when we discuss query-like data selecting.
 
-## Returning a view versus a copy
+## Returning a View Versus a Copy
 
-The previous slice can be accomplished the following way:
+The previous `loc` slice can also be accomplished by:
 
     df[3:8][['FIRST_NAME','AGE','EYE_COLOR']]
     
-This is called chained indexing. In the example above, the rows are sliced first, then the columns. While it does not pose a problem when selecting subsets of a dataframe, it becomes problematic when you want to set the values of this subset (e.g. replacing erroneous data). That being said, the preferred way of combination indexing is the `loc` function, whether it's actually used to set values in a dataframe subset or used simply to view the subset of data.
-
-More information about the dangers of chained indexing can be found in the [pandas manual](http://pandas.pydata.org/pandas-docs/stable/indexing.html#returning-a-view-versus-a-copy).
+This is called *chained indexing*: the rows are sliced first, then the columns. This works for data selection, but if you then wanted to set values in this subset, it wouldn't alter the original DataFrame. As such, the `loc` function is typically a better option. For more information about the dangers of chain indexing, see the [pandas manual](http://pandas.pydata.org/pandas-docs/stable/indexing.html#returning-a-view-versus-a-copy).
 
 ## Useful Dataframe Tools
 
 #### Dropping columns
 
-There are two ways to drop data from a dataframe, one if you want the data returned and the other if not:
+There are two ways to drop data from a dataframe. In one you want the remaining data returned separately `(inplace=False)` and in the other you don't `(inplace=True)`:
 
-    df = df.drop(['HAIR_COLOR','EYE_COLOR'], axis=1)
-    df.drop(['HAIR_COLOR','EYE_COLOR'], axis=1, inplace=True)  # alternate way
+    df = df.drop(['HAIR_COLOR','EYE_COLOR'], axis=1)           # return new
+    df.drop(['HAIR_COLOR','EYE_COLOR'], axis=1, inplace=True)  # no return (in place)
     
 #### Resetting indices
 
-This becomes useful when you've saved a subset of a dataframe and wish to sequentially reassign the indices.
+If you saved a subset of a dataframe frequently and want to reset the indecies so they are sequential again:
 
-    df = df.reset_index(drop=True)
-    df.reset_index(drop=True, inplace=True)  # alternate way
+    df = df.reset_index(drop=True)           # return new
+    df.reset_index(drop=True, inplace=True)  # no return (in place)
     
 #### Dropping duplicate entries
 
-This is useful when you're dealing with data that should have unique entries.
+If you want to ensure unique entries in your data set:
 
-    df = df.drop_duplicates()
-    df.drop_duplicates(inplace=True)
+    df = df.drop_duplicates()         # return new
+    df.drop_duplicates(inplace=True)  # no return (in place)
 
-It's also good for getting unique combinations of a subset of data.
+Or if you just want to find all the unique combinations in your data set:
 
     In [12]: df[['EYE_COLOR','HAIR_COLOR']].drop_duplicates()
     Out[12]: 
@@ -339,9 +337,9 @@ It's also good for getting unique combinations of a subset of data.
     10     hazel      black
     11      blue      black
 
-Notice the missing indices? That's how you know some rows were dropped, which were duplicates. If the subset is to be saved for later use, it would be a good idea to reset the indices again.
+Notice the missing indices? That's how you know some rows were dropped, which were duplicates. You may want to reset the indicies.
 
-Alternately, you can do the same with a single column of data (that is, it can only be performed on series).
+You can also do all of the above on a single column of a dataframe:
 
     In [13]: df['HAIR_COLOR'].unique()
     Out[13]: array(['black', 'brown', 'red', 'blonde'], dtype=object)
@@ -351,11 +349,11 @@ Alternately, you can do the same with a single column of data (that is, it can o
 
 ## Querying Data
 
-Having the ability to query data and extract subsets of data with ease is one of the many things that makes pandas so powerful. We will cover some basic skills and functions for subsetting pandas dataframes.
+Pandas makes querying your data, much like you might in a databse, easy. Below is a basic introduction to query commands for querying data from a `pandas` dataframe.
 
 #### Null Data
 
-Sometimes you'll need to identify null values in your data.
+Here is an example dataframe:
 
     In [3]: df
     Out[3]: 
@@ -375,7 +373,7 @@ Sometimes you'll need to identify null values in your data.
     12      Molly    Bryant      F   21      brown      blue
     13      Jaime  Anderson      F   46      brown     green
     
-To find all rows with any null values:
+To find all rows with any null values do:
 
     In [4]: df[pd.isnull(df).any(axis=1)]
     Out[4]: 
@@ -387,7 +385,7 @@ To find all rows with any null values:
     8     Michael     Smith    NaN   58      brown     brown
     11    Jessica       NaN      F   19      black      blue
     
-It can also be performed by column:
+Or you can query for null values in a particular column:
 
     In [5]: df[df.LAST_NAME.isnull()]
     Out[5]: 
@@ -397,7 +395,7 @@ It can also be performed by column:
 
 #### Simple Queries
 
-Performing simple queries involves setting a single condition on which to mask the dataframe. This could invovle testing for a single value or a range, so long as only one condition is applied.
+Performing a single query starts by creating a mask on your dataframe. The mask sets a True/False value for each row/column, based on some predicate you create. For instance, here is a simple predicate:
 
     In [16]: df.AGE > 50
     Out[16]: 
@@ -416,14 +414,18 @@ Performing simple queries involves setting a single condition on which to mask t
     12    False
     13    False
     Name: AGE, dtype: bool
-    
+
+And now you can use the resultant mask in your dataset:
+
     In [17]: df[df.AGE > 50]
     Out[17]: 
       FIRST_NAME LAST_NAME GENDER  AGE HAIR_COLOR EYE_COLOR
     2    Michael   Johnson      M   55        red     green
     5     Thomas     Moore      M   60      brown      blue
     8    Michael     Smith    NaN   58      brown     brown
-    
+
+Or here's another simply query:
+
     In [18]: df[df.LAST_NAME == "Jones"]
     Out[18]: 
       FIRST_NAME LAST_NAME GENDER  AGE HAIR_COLOR EYE_COLOR
@@ -432,7 +434,7 @@ Performing simple queries involves setting a single condition on which to mask t
 
 #### isin
 
-Have certain values you want to search for? This is were you'll want `isin` handy.
+Sometimes you will want a column to be one of a collection of values. You can use `isin` for this, in much the way you used `in` with Python list:
 
     In [6]: vals = ['brown', 'blue']
     In [7]: df.loc[df.EYE_COLOR.isin(vals)]
