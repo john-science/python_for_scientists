@@ -349,7 +349,7 @@ You can also do all of the above on a single column of a dataframe:
 
 ## Querying Data
 
-Pandas makes querying your data, much like you might in a databse, easy. Below is a basic introduction to query commands for querying data from a `pandas` dataframe.
+Pandas allows you to query a DataFrame, much like you might query a database. Below are some basic queries.
 
 #### Null Data
 
@@ -395,7 +395,7 @@ Or you can query for null values in a particular column:
 
 #### Simple Queries
 
-Performing a single query starts by creating a mask on your dataframe. The mask sets a True/False value for each row/column, based on some predicate you create. For instance, here is a simple predicate:
+A query starts with creating a mask on your dataframe. The mask sets a True/False value for each row/column, based on some predicate. Here is a simple example predicate:
 
     In [16]: df.AGE > 50
     Out[16]: 
@@ -415,7 +415,7 @@ Performing a single query starts by creating a mask on your dataframe. The mask 
     13    False
     Name: AGE, dtype: bool
 
-And now you can use the resultant mask in your dataset:
+You can use this as a mask in your dataset:
 
     In [17]: df[df.AGE > 50]
     Out[17]: 
@@ -424,7 +424,7 @@ And now you can use the resultant mask in your dataset:
     5     Thomas     Moore      M   60      brown      blue
     8    Michael     Smith    NaN   58      brown     brown
 
-Or here's another simply query:
+Here's another smiple query based on a predicate/mask:
 
     In [18]: df[df.LAST_NAME == "Jones"]
     Out[18]: 
@@ -434,7 +434,7 @@ Or here's another simply query:
 
 #### isin
 
-Sometimes you will want a column to be one of a collection of values. You can use `isin` for this, in much the way you used `in` with Python list:
+Sometimes you will want a column to be one of a collection of values. You can use `isin` for this, in much the way you used `in` with Python lists:
 
     In [6]: vals = ['brown', 'blue']
     In [7]: df.loc[df.EYE_COLOR.isin(vals)]
@@ -449,7 +449,7 @@ Sometimes you will want a column to be one of a collection of values. You can us
     11    Jessica       NaN      F   19      black      blue
     12      Molly    Bryant      F   21      brown      blue
 
-Alternately, you can get the inverse with `~`.
+Alternately, you can get the inverse selection with `~`.
 
     In [8]: df.loc[~df.EYE_COLOR.isin(vals)]
     Out[8]: 
@@ -466,9 +466,9 @@ Alternately, you can get the inverse with `~`.
 
 #### Setting Values
 
-Setting values in a dataframe, whether it's for a single cell (unique row and column location) or a series of entries, is simple so long as the correct slicing method is used. Remember the difference between returning a view and a copy of a dataframe? For setting any values in a dataframe, it's best to stick to the `loc` method.
+To set values in a DataFrame, we will use the `.loc()` method, for the same reasons that it was easy to pull/slice data from a DataFrame using `.loc()`.
 
-**Let's call people with brown hair "brunettes" instead**
+As before, we could find all the people with brown hair by doing:
 
     In [72]: df.loc[df.HAIR_COLOR == 'brown', 'HAIR_COLOR']
     Out[72]: 
@@ -480,8 +480,9 @@ Setting values in a dataframe, whether it's for a single cell (unique row and co
     13    brown
     Name: HAIR_COLOR, dtype: object
     
-    In [73]: df.loc[df.HAIR_COLOR == 'brown', 'HAIR_COLOR'] = "brunette"
+But, we probably want to change "brown" to "brunette":
 
+    In [73]: df.loc[df.HAIR_COLOR == 'brown', 'HAIR_COLOR'] = "brunette"
     In [74]: df
     Out[74]: 
        FIRST_NAME LAST_NAME GENDER  AGE HAIR_COLOR EYE_COLOR
@@ -499,16 +500,14 @@ Setting values in a dataframe, whether it's for a single cell (unique row and co
     11    Jessica    Rabbit      F   19      black      blue
     12      Molly    Bryant      F   21   brunette      blue
     13      Jaime  Anderson      F   46   brunette     green
-
-The same can be done with setting values for null entries, but remember to use the correct slicing method.
     
 #### Complex Queries
 
-Sometimes you will want more than one predicate in your query logic. Here it is important to remember your boolean logic.
+If you want more than one predicate in your query, you can string them using the normal boolean logic operators.
 
-Find men age 30 and over:
+If we want to identify male people over 30:
 
-    In [23]: df[(df.AGE >= 30) & (df.GENDER == 'M')]
+    In [23]: df[(df.AGE >= 30) and (df.GENDER == 'M')]
     Out[23]: 
        FIRST_NAME LAST_NAME GENDER  AGE HAIR_COLOR EYE_COLOR
     1       Jaime   Roberts      M   32      brown     hazel
@@ -517,7 +516,7 @@ Find men age 30 and over:
     5      Thomas     Moore      M   60      brown      blue
     10    Michael     Smith      M   37      black     hazel
 
-For blondes under age 40 or brunettes over age 50:
+Or perhaps we want blondes under the age of 40 or brunettes over the age of 50:
 
     In [33]: df[((df.HAIR_COLOR == 'blonde') & (df.AGE < 40)) | ((df.HAIR_COLOR == 'brown') & (df.AGE > 50))]
     Out[33]: 
@@ -526,12 +525,12 @@ For blondes under age 40 or brunettes over age 50:
     5     Thomas     Moore      M   60      brown      blue
     7     Brenda     Jones      F   18     blonde     brown
     8    Michael     Smith      M   58      brown     brown
-    
-Subsetting pandas dataframes can be as simple or as complex as you need it to be. More complicated selection queries may take longer on very large data sets. But even complex queries will boil down to understand [Python's basic boolean syntax](../../classes/01_basic_syntax/lecture_01.md).
+
+Queries can be as complex as you need. But remember that more complicated queries my take more time. If the above logic was hard to follow, consider going back and reviewing [Python's boolean syntax](../../classes/01_basic_syntax/lecture_01.md).
     
 #### Apply a Lambda Function to a Query
 
-If the conditions you want to select data by become sufficiently complicated, you might want to use a function that returns `True`/`False` for each record. To do this, you will typically use `.apply()` with a lambda function. For example, let's find all the clients whose first name begins with "M":
+If you query predicates become sufficiently complicated, you might want to replace them with a function that returns `True`/`False` for each record. To do this, use `.apply()` with a lambda function. For example, let's select all the clients whose first name begins with "M":
 
     In [8]: df[df.apply(lambda row: row['FIRST_NAME'][0], axis=1) == 'M']
     Out[8]: 
@@ -542,7 +541,7 @@ If the conditions you want to select data by become sufficiently complicated, yo
     10    Michael     Smith      M   37      black     hazel
     12      Molly    Bryant      F   21      brown      blue
 
-For very large datasets, returning all of the columns might be unnecessarily large amounts of information. To return just certain columns, it will be easier to use `loc`. Let's find those same clients but with fewer columns:
+As your dataframes grow, you may find the amount of data selected by a query is quite large. A handy way to speed up your code could be to reduce the number of columns returned. This can be done by passing `loc` a list of column names. For instance, let's do the same query as above, but with only a few columns:
 
     In [9]: df.loc[df.apply(lambda row: row['FIRST_NAME'][0], axis=1) == 'M', ['FIRST_NAME', 'GENDER', 'AGE']]
     Out[9]: 
@@ -555,9 +554,7 @@ For very large datasets, returning all of the columns might be unnecessarily lar
 
 #### Building Complex Queries With Eval
 
-An option when writing very long queries is to save the query to a string and then use the `eval` function. This might be helpful when trying to perform a similar query in many places, so you can pass the query conditions around.
-
-First, let's look at our previous query (finding blondes under age 40 or brunettes over age 50):
+In some circumstances, you might need to build or pass around a query outside of your current code. In this case, it is typical to see people save the query predicate(s) as a string and use the standard Python `eval` function. Let's look at one of our longer queries again (finding blondes under 40 or brunettes over 50):
 
     In [33]: df[((df.HAIR_COLOR == 'blonde') & (df.AGE < 40)) | ((df.HAIR_COLOR == 'brown') & (df.AGE > 50))]
 
