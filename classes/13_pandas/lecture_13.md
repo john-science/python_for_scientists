@@ -302,21 +302,21 @@ This is called *chained indexing*: the rows are sliced first, then the columns. 
 
 #### Dropping columns
 
-There are two ways to drop data from a dataframe. In one you want the remaining data returned separately `(inplace=False)` and in the other you don't `(inplace=True)`:
+There are two ways to drop data from a dataframe. Either you want the remaining data returned separately `(inplace=False)` or you don't `(inplace=True)`:
 
     df = df.drop(['HAIR_COLOR','EYE_COLOR'], axis=1)           # return new
     df.drop(['HAIR_COLOR','EYE_COLOR'], axis=1, inplace=True)  # no return (in place)
     
 #### Resetting indices
 
-If you saved a subset of a dataframe frequently and want to reset the indecies so they are sequential again:
+If you have saved a subset of a dataframe and want to reset the indecies so they are sequential again:
 
     df = df.reset_index(drop=True)           # return new
     df.reset_index(drop=True, inplace=True)  # no return (in place)
     
 #### Dropping duplicate entries
 
-If you want to ensure unique entries in your data set:
+If you want to ensure the entries in your data set are unique:
 
     df = df.drop_duplicates()         # return new
     df.drop_duplicates(inplace=True)  # no return (in place)
@@ -337,7 +337,7 @@ Or if you just want to find all the unique combinations in your data set:
     10     hazel      black
     11      blue      black
 
-Notice the missing indices? That's how you know some rows were dropped, which were duplicates. You may want to reset the indicies.
+Notice the missing indices? That's how you know some (duplicate) rows were dropped. You may want to reset the indicies.
 
 You can also do all of the above on a single column of a dataframe:
 
