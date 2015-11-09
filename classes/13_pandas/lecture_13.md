@@ -828,6 +828,10 @@ Writing your DataFrame object to a common format file is similar to reading file
 
 For more information on writing to other data formats, consult the [pandas manual](http://pandas.pydata.org/pandas-docs/stable/api.html#serialization-io-conversion).
 
+## Problem Sets
+
+ * [Pandas for Data Analysis](problem_set_1_pandas.md)
+
 ## Further Reading
 
  * [Installing Pandas](http://pandas.pydata.org/pandas-docs/stable/install.html)
