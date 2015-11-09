@@ -578,18 +578,17 @@ First you have to use `eval` to convert the text to Python code:
     7     Brenda     Jones      F   18     blonde     brown
     8    Michael     Smith      M   58      brown     brown
 
-It is fun to note that `eval` is the same logic that Python uses to convert the text you write into executable Python code.
+When the Python interpretter converts the text you write into executable bytecode, it uses the exact same tools that are available to you through `eval`.
 
 ## More Dataframe Operations
 
 #### Merge
 
-`merge` is the pandas equivalent to a SQL join. Like SQL joins, a `merge` can be 'left', 'right', 'inner', or 'outer'.
+`merge` is the pandas equivalent to a SQL join. Like SQL joins, a `merge` can be "left", "right", "inner", or "outer".
 
 Here is a simple example of a `merge`:
 
     In [108]: genders = pd.DataFrame({'GENDER': ['M', 'F'], 'GENDER_LONG': ['male', 'female']})
-
     In [109]: genders
     Out[109]: 
       GENDER GENDER_LONG
@@ -614,7 +613,7 @@ Here is a simple example of a `merge`:
     12      Molly    Bryant      F   21   brunette      blue         2      female
     13      Jaime  Anderson      F   46   brunette     green         9      female
     
-Beware of how you use `merge`, paying special attention to unintentional one-to-many relationships.
+When using `merge`, you can create one-to-many relationships:
 
     In [111]: genders = pd.DataFrame({'GENDER': ['M', 'M', 'F'], 'GENDER_LONG': ['male', 'man', 'female']})
     In [111]: genders
@@ -647,16 +646,16 @@ Beware of how you use `merge`, paying special attention to unintentional one-to-
     17      F      female    Jessica    Rabbit   19      black      blue         7
     18      F      female      Molly    Bryant   21   brunette      blue         2
     19      F      female      Jaime  Anderson   46   brunette     green         9
-    
-Notice that our (accidental) one-to-many relationship during the `merge` lead to 19 final records instead of 13. We have no duplicated all of the male records.
+
+The above one-to-many relationship could be what you want. But this is a common failure mode to watch out for during a `merge`. In the case above, we ended up with 19 final records instead of the original 13. It is not hard to imagine a case where these extra 6 records were not intentional or desired. It's just something to think about when merging.
     
 #### Groupby
 
-`groupby` is a useful tool for aggregating data by field and then applying a function. Some examples include:
+The `groupby` allows you to aggregate a DataFrame object by field and then, possibly, map the results with some function. Here are some example use cases:
 
- * Grouping a company purchase log by item category (men's, women's, home furnishings, etc.) and region, then applying `sum` to the sale prices. Could be used to report volume of sales by region and item category.
+ * A big box company groups it's purchase log by item category (men's, women's, home furnishings, etc.) and region, then applying `sum` to the sale prices. This would create a break down of sales volume by region and category.
 
- * Grouping a client list by clothing size and gender, then applying `min`/`max` to age to get the age range of clients (men and women) for each clothing size. Could be used to illustrate trends in clothing size with varying age, and to compare the trends for men and women.
+ * A forum website groups its members by age and topics of interest. They they apply `min`/`max` to the age for each topic. This gives the website creates some ideas of trendy topics for different age groups.
 
 Let's group our client list by last name and then count the number of people with each eye color:
 
