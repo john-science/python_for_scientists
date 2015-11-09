@@ -1,4 +1,4 @@
-# Data Analysis with Pandas - Problem Set
+# Data Analysis with Pandas - Solutions
 
 
 #### Reading in Data
