@@ -45,3 +45,9 @@
 
 20. Save `detailed_sales` as a csv file named "df_out.csv" with no indices.
 21. Save `detailed_sales` to a pickle file named "df_out.p"
+
+## Solutions
+
+ * [Solutions](problem_set_1_solutions.md)
+
+[Back to Lecture](lecture_13.md)
