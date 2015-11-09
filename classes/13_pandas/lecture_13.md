@@ -653,9 +653,9 @@ The above one-to-many relationship could be what you want. But this is a common 
 
 The `groupby` allows you to aggregate a DataFrame object by field and then, possibly, map the results with some function. Here are some example use cases:
 
- * A big box company groups it's purchase log by item category (men's, women's, home furnishings, etc.) and region, then applying `sum` to the sale prices. This would create a break down of sales volume by region and category.
+ * A big box company groups it's purchase log by item category (men's clothing, women's clothing, home furnishings, etc.) and region, then applys `sum` to the sale prices. This creates a break down of sales volume by region and category.
 
- * A forum website groups its members by age and topics of interest. They they apply `min`/`max` to the age for each topic. This gives the website creates some ideas of trendy topics for different age groups.
+ * A forum website groups its members by age and topics of interest. They they apply `min`/`max` to the age for each topic. This gives the website creators some idea of trendy topics for different age groups.
 
 Let's group our client list by last name and then count the number of people with each eye color:
 
@@ -676,7 +676,7 @@ Let's group our client list by last name and then count the number of people wit
                hazel        1
     dtype: int64
 
-Or let's group all of our clients by first name and count how many have the same hair color:
+Or let's group all of our clients by first name and count how many have the same hair color (yes, some of these examples are a little contrived):
     
     In [104]: df.groupby(['FIRST_NAME', 'HAIR_COLOR'], as_index=False)['HAIR_COLOR'].count()
     Out[104]: 
@@ -736,7 +736,7 @@ Now we can group our data by last name and gender and sum the random integers in
 
 #### Sort
 
-You can imagine sorting a data frame based on a single column. But the pandas `DataFrame.sort()` method takes a list of columns and will sort your data frame using the list as an order of priority. Sorting is actually very easy to do:
+The pandas `DataFrame.sort()` allows you to sort a DataFrame object by one or more columns. In the case of multiple columns, the order you provide them will be the order of priority for sorting. For instance:
 
     In [117]: df.sort(['LAST_NAME', 'FIRST_NAME', 'AGE'])
     Out[117]: 
@@ -756,9 +756,11 @@ You can imagine sorting a data frame based on a single column. But the pandas `D
     10    Michael     Smith      M   37      black     hazel         4
     8     Michael     Smith      M   58   brunette     brown         1
 
+Notice the order of priority in the sorting here. The three Smiths are last alphabetically for last names. But the two Michael Smiths come after Jennifer Smith, because of their first name. And finally, one Michael Smith comes after the other due to their ages.
+
 #### append
 
-Use `append` to add one data frame onto the end of another:
+You can use `append` to add one DataFrame object onto the end of another:
 
     In [12]: df1 = df[:8]
     In [13]: df2 = df[8:]
@@ -781,11 +783,11 @@ Use `append` to add one data frame onto the end of another:
     6     Natalie    Potter      F   21   brunette     green         5
     7      Brenda     Jones      F   18     blonde     brown         6
 
-Notice the order is preserved in append, which you can tell by looking at the indices above.
+Notice the order is preserved in append, based on which DataFrame object is being appended to.
 
 #### concat
 
-Use `concat` to do similar combining as with `append`, but you can do many data frames at the same time:
+You can use `concat` to append two or more DataFrame objects:
 
     In [15]: DFs = []
     In [16]: DFs.append(df[10:])
@@ -815,14 +817,14 @@ Use `concat` to do similar combining as with `append`, but you can do many data 
     
 ## Writing Files
 
-#### Common data formats
+#### Common Data Formats
 
-Writing data to an output file is as easy as reading a file in Pandas. Instead of using `read_` functions, use `to_` functions. A similar set of optional parameters are available, but the main two functions you'll probably want are:
+Writing your DataFrame object to a common format file is similar to reading files in Pandas. Instead of using `read_` functions, use `to_` functions (a similar set of optional parameters are available). Two functions you'll likely want are:
 
  * `to_csv` - comma separated values
  * `to_pickle` - preserved pandas data structure
 
-#### Other data formats
+#### Other Data Formats
 
 For more information on writing to other data formats, consult the [pandas manual](http://pandas.pydata.org/pandas-docs/stable/api.html#serialization-io-conversion).
 
