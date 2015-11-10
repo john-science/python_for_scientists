@@ -695,7 +695,7 @@ Or let's group all of our clients by first name and count how many have the same
     Thomas      brunette      1
     dtype: int64
 
-And just as one final exercise, let's add a "random integer" field to our data frame:
+And just as one final exercise, let's insert a "random integer" field to our data frame:
 
     In [105]: df['RAND_INT'] = np.random.randint(1, 10, size=len(df))
     In [106]: df
