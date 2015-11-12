@@ -1,4 +1,6 @@
-# Lists and Lambdas
+# Lambdas and Fast Loops
+
+The goal of this lecture is to show you `map`, `filter`, and `reduce`. But before you can use these great tools, you will have to understand a couple of things first: `lambda` and `yield`.
 
 ## Lambda
 
@@ -61,6 +63,103 @@ This is a major principle in Python:
 
 > DRY = Don't Repeat Yourself
 
+## Yield
+
+#### What is an Iterator?
+
+The [yield](http://pythontips.com/2013/09/29/the-python-yield-keyword-explained/) keyword in Python is used to create [iterators](https://en.wikipedia.org/wiki/Iterator) for looping. Before jumping into using these tools, let's take a look at a stupid example of why we want them. In Python v2.x we will define a function:
+
+    def sum_odd_even(N):
+        total = 0
+        for i in range(N):
+            if i % 2 == 0:
+                total += i
+            else:
+                total -= i
+        return total
+
+    >>> sum_odd_even(1000)  # took way less than a second
+    -500
+    >>> sum_odd_even(10000)  # took way less than a second
+    -5000
+    >>> sum_odd_even(1000000)  # took way ~1 second
+    -500000
+    >>> sum_odd_even(10000000)  # took so long I gave up and quit
+
+We could write the above function much smarter, but let's ignore that for now. The important thing is that when I did the final `sum_odd_even(10000000)` it took over 10 seconds and I got bored and gave up. Now, that is partly because we are adding 10 million numbers, but part of the problem is that when I saw `range(10000000)` I am creating a 10-million item list. This takes ~10MB of memory. Imagine if the list was 10 billion. You'd run out of RAM!
+
+Wouldn't it be nice if we could save all that memory and make this (stupid) loop faster? Well, it turns out you can, by using `xrange` instead of `range`:
+
+    def sum_odd_even(N):
+        total = 0
+        for i in xrange(N):
+            if i % 2 == 0:
+                total += i
+            else:
+                total -= i
+        return total
+
+    >>> sum_odd_even(1000)  # took way less than a second
+    -500
+    >>> sum_odd_even(10000)  # took way less than a second
+    -5000
+    >>> sum_odd_even(1000000)  # took way less than 1 second
+    -500000
+    >>> sum_odd_even(10000000)  # took way ~1 second
+    -5000000
+
+That little `x` sure seems to be pretty magical. What's the difference? Well, hopefully by now you've gotten used to looking for help with the interpretter:
+
+    >>> type(range(10))
+    <type 'list'>
+    >>> type(xrange(10))
+    <type 'xrange'>
+    >>> help(xrange)
+
+    class xrange(object)
+     |  xrange([start,] stop[, step]) -> xrange object
+     |  
+     |  Like range(), but instead of returning a list, returns an object that
+     |  generates the numbers in the range on demand.  For looping, this is 
+     |  slightly faster than range() and more memory efficient.
+
+What `xrange()` does, is produce only one number at a time. So, instead of having to keep the entire list `range(1000000000)` in memory, we just get the first item of the list returned to us, then the second, then the third, and so on. A function that returns a sequence that you only get one item of at a time is called an [iterator](https://en.wikipedia.org/wiki/Iterator#Python).
+
+**Python 2 vs 3:** This is a major difference between Python v2.x and Python v3.x. In Python v2, `range()` returns a list, but there is no `xrange` in Python v3 because in Python v3 `range` returns an iterator instead of a list.
+
+#### Using Yield
+
+That `xrange` in Python v2 sure is great, but what if we want to create our own iterators? That's where `yield` comes in. You use `yield` inside of a loop to return a sequence of values from a function (or method). This is something like `return` in normal functions, but `return` only provides a value once. Let's try to replace our stupid function above with one that uses an iterator:
+
+def sum_odd_even_iterator(N):
+    i = 0
+    while i < N:
+        if i % 2 == 0:
+            yield i
+        else:
+            yield -i
+        i += 1
+
+    def sum_odd_even(N):
+        total = 0
+        for i in sum_odd_even_iterator(N):
+            total += i
+        return total
+
+#### Python v3 Concerns
+
+But wait, you say, all of that is great but sometimes you use `range` because you want an actual list. Not to worry, you can always convert an iterator to a list:
+
+    >>> range(5)        # Python v3.x
+    range(5)
+    >>> list(range(5))  # Python v3.x
+    [0, 1, 2, 3, 4]
+    
+    >>> sum_odd_even_iterator(10)
+    <generator object sum_odd_even_iterator at 0x7f5680143410>
+    >>> list(sum_odd_even_iterator(10))
+    [0, -1, 2, -3, 4, -5, 6, -7, 8, -9]
+
 ## Map, Reduce, Filter
 
 In theory we could do anything with our data. But in practice, what we do with a `list` of data frequently falls into a few basic categories: apply a function to each member of a list, sum or reduce a whole list to one number, or select some elements from a list. Python has three handy tools built in to speed those processes up: `map`, `reduce`, and `filter`.
@@ -104,6 +203,18 @@ All of the above examples create `lambda` expresssions only take one variable as
     >>> f(1, 98, 3)
     33
 
+#### Python v3
+
+This is one place where Python v2 and v3 differ. In Python v2, `map` returns a list:
+
+    >>> map(lambda a: a, [1, 2, 3])
+    [1, 2, 3]
+
+But in Python v3.x, `map` returns an iterator:
+
+    >>> map(lambda a: a, [1, 2, 3])
+    <generator object map at 0x7f5680143410>
+
 ### Filter
 
 You will want to use a `filter` whenever you need to take a subset of a long list of data points. As a simple example, let's find all the even numbers under 21:
@@ -136,6 +247,18 @@ This may seem like more work, but now we have a lot of flexibility to filter num
     >>> filter_integers(less_than_10, 999999)
     [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
 
+#### Python v3
+
+This is another place where Python v2 and v3 differ. In Python v2, `filter` returns a list:
+
+    >>> filter(lambda a: a > 3, range(5))
+    [4]
+
+But in Python v3.x, `filter` returns an iterator:
+
+    >>> filter(lambda a: a > 3, range(5))
+    <generator object map at 0x7f5680143410>
+
 ### Reduce
 
 Reduce is special, in that it takes a list and creates a single element. For instance, if we wanted to sum the integers below 1337:
@@ -154,6 +277,10 @@ Of course, `map`, `filter`, and `reduce` work with more than just numbers:
     >>> make_sentence = lambda a,b: a + ' ' + b
     >>> reduce(make_sentence, words, '')
     ' Time is an illusion. Lunchtime doubly so.'
+
+#### Python v3
+
+Note that the `reduce` function doesn't exist in Python v3. [Guido](https://en.wikipedia.org/wiki/Guido_van_Rossum) suggests you just [use a normal loop](http://www.artima.com/weblogs/viewpost.jsp?thread=98196) instead.
 
 ## List Comprehensions
 
@@ -175,6 +302,10 @@ We can even make the predicate (`if` statement) more complex. Here we find all n
 
     >>> [i for i in xrange(100) if i > 30 and i % 21 == 0]
     [42, 63, 84]
+
+#### Python v3
+
+Please note, that in Python v2.x list comprehensions return lists, but in Python v3.x they return iterators.
 
 ## Dictionary Comprehensions
 
@@ -227,6 +358,10 @@ Which we would usually just write in two lines:
     >>> dow = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
     >>> dict(zip(range(7), dow))
     {0: 'Mon', 1: 'Tue', 2: 'Wed', 3: 'Thu', 4: 'Fri', 5: 'Sat', 6: 'Sun'}
+
+#### Python v3
+
+Again, in Python v2.x dictionary comprehensions return lists, but in Python v3.x they return iterators.
 
 ## Problem Sets
 
