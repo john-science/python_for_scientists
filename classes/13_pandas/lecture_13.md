@@ -12,7 +12,7 @@ Consider installing [Anaconda](http://docs.continuum.io/anaconda/install.html) i
 
 #### Why use pandas?
 
-Pandas is a powerful tool for handling data and performing data analysis. It has a ton of pre-made tools designed to make importing data to your code easier. Your data will be loaded into a "data frame", which is a lot like an in-memory table in Excel or a database. Once your data is in a data frame, you can easily reorganize it or use it in table-like calculations.
+Pandas is a powerful tool for handling data and performing data analysis. It has a ton of pre-made tools designed to make importing data to your code easier. Once imported, your data will be loaded into a `DataFrame`, which is a lot like a table in a database (or Excel). DataFrame objects can be munged, sliced, diced, queried, and joined with other DataFrame objects. Pandas is designed to expedite the human side of opening up datasets and dealing with what you find.
 
 ## iPython
 
