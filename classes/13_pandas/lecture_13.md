@@ -1,31 +1,28 @@
-# Data Analysis with Pandas
+# Data Analysis with Pandas and iPython
 
 ## Installation
 
-Like most of the libraries used in our "special topics" lectures, pandas does not come standard with Python and will have to be installed. Please check the official [SciPy Stack Install Guide](http://www.scipy.org/install.html). For Linux and Mac, the installation is merely a single line of `apt-get`. For Windows, pre-built installers are provided.
+Like most of the libraries used in our "special topics" lectures, `pandas` and `iPython` do not come standard with Python and will have to be installed. Please check the official [SciPy Stack Install Guide](http://www.scipy.org/install.html). For Linux and Mac, the installation is merely a single line of `apt-get`. For Windows, pre-built installers are provided.
 
 #### Anaconda
 
-Consider installing [Anaconda](http://docs.continuum.io/anaconda/install.html) instead. Anaconda is Python packaged with hundreds of libraries that you will want (including Pandas and almost everything else we will use in this course.)
-
-## Intro to pandas
-
-#### Why use pandas?
-
-Pandas is a powerful tool for handling data and performing data analysis. It has a ton of pre-made tools designed to make importing data to your code easier. Once imported, your data will be loaded into a `DataFrame`, which is a lot like a table in a database (or Excel). DataFrame objects can be munged, sliced, diced, queried, and joined with other DataFrame objects. Pandas is designed to expedite the human side of opening up datasets and dealing with what you find.
+Consider installing [Anaconda](http://docs.continuum.io/anaconda/install.html) instead. Anaconda is Python packaged with hundreds of libraries that you will want (including `pandas`, `iPython` and almost everything else we will use in this course.)
 
 ## iPython
 
-Up until this lecture, we have written all of our Python code in the interpretter or into a plain text module. Today let's try using [ipython](http://ipython.org/), which is a Python development environment designed specifically for scientists and engineers. It has several features not supported by the standard Python interpreter:
+Up until this lecture, we have written all of our Python code in the interpretter or into a plain text file. Today we will write our code in [ipython](http://ipython.org/). After installation, you don't need to know anything new to use iPython; you can just write Python code directly in iPython like you would in the interpretter. But iPython gives you a lot of added functionality:
 
+ * You can go back and edit previous lines, like in a text editor.
  * Tab auto-completion
  * More explicit and colour-highlighted error messages
  * Better history management
  * Basic UNIX/LINUX shell integration
+ * Tools for debugging code.
+ * Helpful `%` syntax to expedite plotting and timing.
 
 For a quick introduction to installing and using iPython, look [here](http://cs231n.github.io/ipython-tutorial/).
 
-After installing iPython, you can invoke it on the command line using: `ipython`.
+After installation, you can invoke iPython on the command line using: `ipython`.
 
     >>>> ipython
     Python 2.6.6 (r266:84292, Jan 22 2014, 09:42:36)
@@ -37,9 +34,13 @@ After installing iPython, you can invoke it on the command line using: `ipython`
     help      -> Python's own help system.
     object?   -> Details about 'object', use 'object??' for extra details.
 
-If you want a GUI interface to ipython, type `ipython notebook`. This will open a particuarly friendly local Python working environment through your default web browser.
+If you want a GUI interface, type `ipython notebook`. This will open a user-friendly local Python working environment through your default web browser.
 
-## Importing pandas
+Why introduce `iPython` now? It turns out that `iPython` and `pandas` are the platform on which a LOT of people do data science. I have met several good scientists and engineers who handle all of their data analysis using these two tools (along with various libraries built on the SciPy stack). Whether this is the best approach or not, I leave to you. But it is a solid endorsement for the power of these two tools together.
+
+## pandas
+
+Pandas is a powerful library for handling data and performing data analysis. It has a ton of pre-made tools designed to make importing data easier. Once imported, your data will be loaded into a `DataFrame` object, which is a lot like a table in a database (or Excel). `DataFrame` objects can be munged, sliced, diced, queried, and joined with other DataFrame objects. Pandas is designed to expedite the human side of opening up datasets and dealing with what you find.
 
 There is an un-official convention when importing `pandas`:
 
