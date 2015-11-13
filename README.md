@@ -42,6 +42,6 @@ Special Topics
  * [Statistics - SciPy](classes/11_scipy/lecture_11.md)
  * [Plotting - matplotlib](classes/12_matplotlib/lecture_12.md)
  * [Databases - sqlite3](classes/15_sqlite3/lecture_15.md)
- * [Data Analysis - pandas](classes/13_pandas/lecture_13.md)
+ * [Data Analysis - pandas and iPython](classes/13_pandas/lecture_13.md)
  * [NetCDF Files - netCDF4](classes/14_netcdf/lecture_14.md)
  * [Testing Projects - unittest/setuptools](classes/17_testing_projects/lecture_17.md)
