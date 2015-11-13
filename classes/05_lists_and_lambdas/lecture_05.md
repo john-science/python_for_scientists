@@ -1,4 +1,4 @@
-# Lambdas and Fast Loops
+# Lambda and Looping Faster
 
 The goal of this lecture is to show you `map`, `filter`, and `reduce`. But before you can use these great tools, you will have to understand a couple of things first: `lambda` and `yield`.
 
