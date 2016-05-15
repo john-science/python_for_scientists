@@ -116,6 +116,74 @@ SQL database applications are called [relational databases](https://en.wikipedia
     Update (Modify) | UPDATE
     Delete (Destroy) | DELETE
 
+## MySQL Queries
+
+All SQL-like queries have a basic structure, like the word-order in a spoken language. In SQL, the verb always comes first.
+
+For instance, if I wanted to say:
+
+    "Give me everything from the fish table"
+
+I would translate that into the MySQL query:
+
+    SELECT * FROM fish;
+
+Let's look at the grammar of this sentence:
+
+* SELECT - query the database, to retrieve information
+* * - get everything from the table(s) of interest
+* FROM - point to the table(s) of interest
+* "fish" - the name of the table
+* ; - signifies the end of a SQL statement (sentence)
+
+Note that `SELECT` could be written `select` and `FROM` could be written `from`. The ALL CAPS is not mandatory, but it is a standard among people who write a lot of SQL to make it easier to read which words in a SQL statement are part of the SQL language and which are just names of tables or columns.
+
+### Query Quantifiers
+
+There are several other helpful quantifiers to go along with your `SELECT` statements.
+
+#### asterisk (*)
+
+In the above query, we used the `*` symbol to say we wanted "all the columns" from that table. But there were three other major options:
+
+    SELECT ALL FROM fish;  # same as `*`
+    SELECT DISTINCT FROM fish;  # sort the results set into unique values
+    SELECT DISTINCTROW FROM fish;  # make sure the entire column is unique
+
+#### WHERE
+
+`WHERE` is used to limit the results of a search using a predicate (logical test). `WHERE` statements belong after the table name:
+
+    SELECT * FROM fish WHERE id='5';
+
+In our `fish` table, this would return a single record:
+
+    +----+------+-------+
+    | ID | NAME | PRICE |
+    +----+------+-------+
+    |  5 | bass |  6.75 |
+    +----+------+-------+
+
+#### GROUP BY
+
+TODO
+
+#### HAVING
+
+TODO
+
+#### ORDER BY
+
+TODO
+
+#### LIMIT
+
+TODO
+
+#### INTO OUTFILE
+
+TODO
+
 ## Example Script
 
  * TODO form of this lecture
