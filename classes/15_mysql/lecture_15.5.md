@@ -299,6 +299,35 @@ The clause `INTO OUTFILE` is particularly useful for people working in MySQL wit
 
     SELECT * FROM fish ORDER BY id DESC LIMIT 1,5 INTO OUTFILE 'fishes.txt';
 
+## Passing a Query to MySQL
+
+Again, to query a MySQL database in Python, you will need to set up a connection and then a cursor:
+
+    import MySQLdb
+    con = MySQLdb.connect(host='localhost', user='my_user_name', passwd='my_secret', db='menu')
+    cursor = con.cursor()
+
+#### A Simple SELECT Query
+
+To execute a basic "get all" query through Python, we would do:
+
+    command = cursor.execute('SELECT * FROM fish;')
+
+The `command` object holds all of the results in memory (RAM), until you want them. The basic way to access them is to access them all at one time:
+
+    results = command.fetchall()
+
+What is a returned in the `results` object is a `tuple` of rows where each row is a `tuple` of the column values:
+
+    >>> print(results)
+    ((1L, 'tuna', Decimal('7.50')), (2L, 'bass', Decimal('6.75'), ...)
+
+Since the `results` object is just a `tuple`, you could loop over the rows when processing the data. Or, you could just grab one row at a time using `fetchone()`:
+
+    >>> command = cursor.execute('SELECT * FROM fish;')
+    >>> print(command.fetchone())
+    (1L, 'tuna', Decimal('7.50'))
+
 ## Example Script
 
  * TODO form of this lecture
