@@ -315,7 +315,7 @@ To execute a basic "get all" query through Python, we would do:
 
 The `command` object holds all of the results in memory (RAM), until you want them. The basic way to access them is to access them all at one time:
 
-    results = command.fetchall()
+    results = cursor.fetchall()
 
 What is a returned in the `results` object is a `tuple` of rows where each row is a `tuple` of the column values:
 
@@ -325,8 +325,21 @@ What is a returned in the `results` object is a `tuple` of rows where each row i
 Since the `results` object is just a `tuple`, you could loop over the rows when processing the data. Or, you could just grab one row at a time using `fetchone()`:
 
     >>> command = cursor.execute('SELECT * FROM fish;')
-    >>> print(command.fetchone())
+    >>> print(cursor.fetchone())
     (1L, 'tuna', Decimal('7.50'))
+
+## Looking at Your Database
+
+The SQL statement for listing the tables in a database is:
+
+    SHOW TABLES in menu;
+
+In our case, we already connected to a specific database (using `MySQLdb.connect`), so we can be less specific:
+
+    >>> command = cursor.execute('SHOW TABLES;')
+    >>> results = cursor.fetchall()
+    >>> print(results)
+    (1, 'catfish', Decimal('8.50'))
 
 ## Example Script
 
