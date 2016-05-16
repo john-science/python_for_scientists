@@ -152,7 +152,7 @@ In the above query, we used the `*` symbol to say we wanted "all the columns" fr
 
 #### WHERE
 
-`WHERE` is used to limit the results of a search using a predicate (logical test). `WHERE` statements belong after the table name:
+The word `WHERE` is used to limit the results of a search using a predicate (logical test). `WHERE` statements belong after the table name:
 
     SELECT * FROM fish WHERE id='5';
 
@@ -166,23 +166,138 @@ In our `fish` table, this would return a single record:
 
 #### GROUP BY
 
-TODO
+The word `GROUP BY` allows you to group the results by one of three parameters:
+
+* `col_name` - The name of one of the table columns
+* `expr` - A regular expression
+* `position` - A position in the table
+
+You can also have MySQL return the grouped result in `ASC`cending or `DESC`ending order. And you can create a final line at the end that summarizes the previous lines using `WITH ROLLUP`. All of these together give us a generic `GROUP BY` statement that looks like:
+
+    GROUP BY (col_name | expr | position) (ASC | DESC) (WITH ROLLUP)
+
+For instance, we could select the different types of fish available in our table by:
+
+    SELECT * FROM fish GROUP BY name;
+
+And it will return something like:
+
+    +----+----------------+-------+
+    | ID | NAME           | PRICE |
+    +----+----------------+-------+
+    |  5 | bass           |  6.75 |
+    |  1 | catfish        |  8.50 |
+    |  6 | haddock        |  6.50 |
+    |  7 | salmon         |  9.50 |
+    |  8 | trout          |  6.00 |
+    |  3 | tuna           |  8.00 |
+    | 10 | yellowfin tuna | 12.00 |
+    +----+----------------+-------+
+
+Or we could ask how many different copies of each fish we have on our menu using `count(*)` as a meta-column:
+
+    SELECT name,count(*) FROM fish GROUP BY name;
+
+And we would get something much like:
+
+    +----------------+----------+
+    | name           | count(*) |
+    +----------------+----------+
+    | bass           |        1 |
+    | catfish        |        3 |
+    | haddock        |        1 |
+    | salmon         |        1 |
+    | trout          |        1 |
+    | tuna           |        3 |
+    | yellowfin tuna |        2 |
+    +----------------+----------+
 
 #### HAVING
 
-TODO
+The word `HAVING` can be used exactly like `WHERE`, but that is considered poor programming. You use `HAVING` on aggregate variables (like `sum()` and `count()`, which we will talk about later. For now:
+
+    SELECT * FROM fish GROUP BY name HAVING id>'3';
+
+This should return:
+
+    +----+----------------+-------+
+    | ID | NAME           | PRICE |
+    +----+----------------+-------+
+    |  5 | bass           |  6.75 |
+    |  6 | haddock        |  6.50 |
+    |  7 | salmon         |  9.50 |
+    |  8 | trout          |  6.00 |
+    | 10 | yellowfin tuna | 12.00 |
+    +----+----------------+-------+
 
 #### ORDER BY
 
-TODO
+The clause `ORDER BY` sorts the results of a query, taking almost the same options as `GROUP BY`:
+
+    ORDER BY (col_name | expr | position) (ASC | DESC)
+
+For instance:
+
+    SELECT * FROM fish ORDER BY id DESC;
+
+The query would return:
+
+    +----+----------------+-------+
+    | ID | NAME           | PRICE |
+    +----+----------------+-------+
+    | 12 | tuna           |  7.50 |
+    | 11 | yellowfin tuna | 13.00 |
+    | 10 | yellowfin tuna | 12.00 |
+    |  9 | tuna           |  7.50 |
+    |  8 | trout          |  6.00 |
+    |  7 | salmon         |  9.50 |
+    |  6 | haddock        |  6.50 |
+    |  5 | bass           |  6.75 |
+    |  4 | catfish        |  5.00 |
+    |  3 | tuna           |  8.00 |
+    |  2 | catfish        |  8.50 |
+    |  1 | catfish        |  8.50 |
+    +----+----------------+-------+
 
 #### LIMIT
 
-TODO
+The clause `LIMIT` can be used to retrieve only a set amount of records. For instance:
+
+    SELECT * FROM fish ORDER BY id DESC LIMIT 1;
+
+The query would return:
+
+    +----+----------------+-------+
+    | ID | NAME           | PRICE |
+    +----+----------------+-------+
+    | 12 | tuna           |  7.50 |
+    +----+----------------+-------+
+
+However, you can set an upper and lower number of records that you want by using a range of numbers:
+
+    SELECT * FROM fish ORDER BY id DESC LIMIT 1,3;
+
+The query would return:
+
+    +----+----------------+-------+
+    | ID | NAME           | PRICE |
+    +----+----------------+-------+
+    | 12 | tuna           |  7.50 |
+    | 11 | yellowfin tuna | 13.00 |
+    | 10 | yellowfin tuna | 12.00 |
+    +----+----------------+-------+
+
+#### LIMIT vs HAVING
+
+The major difference to pick `HAVING` vs `LIMIT` is performance. Use `HAVING` in most situations in which you are concerned with speed. The idea is that `HAVING` reduces the amount of data SQL is worried about *before* much of the query logic takes place, and `LIMIT` lets all the logic unfold before limiting the number of results.
+
+The only time it will improve performance to use `LIMIT` is when the results returned by your query are very sizable indeed, but you definitely have ample resouces to deal with the large query and results.
 
 #### INTO OUTFILE
 
-TODO
+The clause `INTO OUTFILE` is particularly useful for people working in MySQL without Python. But even if you are working with a MySQL database through the Python `MySQLdb` library, this might be a quick-and-dirty way to write your query results to a file. It works like you might guess:
+
+    SELECT * FROM fish ORDER BY id DESC LIMIT 1,5 INTO OUTFILE 'fishes.txt';
 
 ## Example Script
 
