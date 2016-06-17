@@ -196,7 +196,7 @@ Notice that `len` of a dictionary only returns the number of keys, it doesn't sa
 You can also test to see if something is in each of these data structures using the keyword `in` (which is somewhat different outside a `for` loop:
 
     # list
-    >>> 2 in my_list
+    >>> 22 in my_list
     True
     
     # dict
