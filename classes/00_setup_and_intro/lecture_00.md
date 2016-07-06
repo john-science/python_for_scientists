@@ -4,6 +4,8 @@
 
 Python should be easy to install on basically all home computers and laptops. There are many different versions and flavors of Python. This class will be built around Python v2.7, but you will probably be fine using anything above Python v2.5.
 
+#### Basic Python
+
 The installation procedure depends on what operating system you have installed. [The Hitchhiker's Guide to Python](http://docs.python-guide.org/en/latest/) has a great description of how to install for the three major operating systems.
 
  * [Windows](http://docs.python-guide.org/en/latest/starting/install/win/)
@@ -11,6 +13,10 @@ The installation procedure depends on what operating system you have installed. 
  * [Linux](http://docs.python-guide.org/en/latest/starting/install/linux/)
 
 (NOTE: The above guide also explains how to install SetupTools, Pip, and VirtualEnv. While these are great tools worth learning, and I highly encourage it, they are not yet necessary for this course.)
+
+#### Anaconda
+
+Consider installing [Anaconda](http://docs.continuum.io/anaconda/install.html) instead. Anaconda is Python packaged with hundreds of tools and libraries that you will want. If you have any choice, I recommend installing Anaconda for this class.
 
 ## What is Python?
 
@@ -30,9 +36,9 @@ There are several layers of languages in the above pyramid. If you've ever worke
 
 #### Interpretted
 
-If you've ever written Fortran or C code, you will remember having to "compile" your code. This is the process of taking your text file and turning it into an executable that can be run as a program. This final executable is a series of commands that the computer will understand when executed.
+If you've ever written Fortran or C code, you will remember having to "compile" your code. This is the process of taking your text file and turning it into an executable that can be run as a program.
 
-Alternately, if you've ever run a program on a Windows computer, you will know about *.exe programs. You double click on them, and the program opens. But if you try to open them in a text editor, they are meaningless garbage. That's because these programs are written in terms your computer can understand, and not in anything human-readable.
+Alternately, if you've ever run a Windows program, you will know about *.exe programs. You double click on them, and the program runs. But if you try to open them in a text editor, they are meaningless garbage. That's because these programs are written in terms your computer can understand, and not in anything human-readable.
 
 But you don't have to compile Python code. The Python programming language comes with an interpreter that will read directly from your text file on the fly and execute commands as it finds them. This means you never have to compile. It also means you can type commands into the Python interpreter and they will be executed as you go:
 
@@ -95,10 +101,6 @@ Python is smart enough to figure out what type your variables are, without you t
     year = 1936
     gold_medals = ["long jump", "100m sprint", "long jump", "200m sprint", "4x100m sprint relay"]
 
-#### Batteries Included
-
-That's the Python motto. The author of the first version of Python, [Guido von Rossom](http://en.wikipedia.org/wiki/Benevolent_dictator_for_life), has started a culture in the Python community that code should be easy to use. To that end, Python comes with a large collection of [standard libraries](https://en.wikipedia.org/wiki/Standard_library). Python comes with a wide range of tools to do the sorts of things that people frequently want to do with a computer programming language: complex math, random numbers, calendars, dates and times, dealing with *.zip files, communicating over the internet with HTTP, reading CSV files, you name it.
-
 ## Why Python?
 
 > You'll never find a programming language that frees you from the burden of clarifying your ideas.
@@ -106,6 +108,10 @@ That's the Python motto. The author of the first version of Python, [Guido von R
 ![the well](http://imgs.xkcd.com/comics/well_2.png)
 
 Every programming language has syntax; rules you have to learn. But Python has a lot of traction right now with scientists and engineers. Python's rules are easier to learn than most, which lets you focus on what really matters. And after a few years of traction, there are a lot of libraries and tools written in Python just for scientists and engineers. That's what Python brings to the table: a load of handy tools designed right for you.
+
+#### Batteries Included
+
+That's the Python motto. The author of the first version of Python, [Guido von Rossom](http://en.wikipedia.org/wiki/Benevolent_dictator_for_life), has started a culture in the Python community that code should be easy to use. To that end, Python comes with a large collection of [standard libraries](https://en.wikipedia.org/wiki/Standard_library). Python comes with a wide range of tools to do the sorts of things that people frequently want to do with a computer programming language: complex math, random numbers, calendars, dates and times, dealing with *.zip files, communicating over the internet with HTTP, reading CSV files, you name it.
 
 ## How to make the most of this class
 
@@ -115,6 +121,15 @@ Write code. If you really want to learn the material in this class, there's only
 
 As a starting point, there will be example problem sets at the end of each lecture. But don't stop there!
 
-At the beginning of the class, maybe all you can do is replace your calculator with Python. As the class continues, you should be able to replace Excel with Python. But the trick is to start using what you learn every week at work/school. Practice. It's a lot harder to forget something once you've used a dozen times.
+At the beginning of the class, maybe all you can do is replace your calculator with Python. As the class continues, you should be able to replace Excel with Python. But the trick is to start using what you learn every week at work, school, or home. Practice. It's a lot harder to forget something once you've used it a dozen times.
+
+#### Help Improve the Class
+
+Is a lecture unclear? Did you find a grammatical mistake? Do you have an idea to help improve the class?
+
+This class is totally open, which means it's free. It also means it's up to you to help me make this class better. To make it easier and quicker for other people to spin-up on Python and start working.
+
+I'd love your help.
+
 
 [Back to Syllabus](../../README.md)
