@@ -18,88 +18,93 @@ The installation procedure depends on what operating system you have installed. 
 
 Consider installing [Anaconda](http://docs.continuum.io/anaconda/install.html) instead. Anaconda is Python packaged with hundreds of tools and libraries that you will want. If you have any choice, I recommend installing Anaconda for this class.
 
-## What is Python?
+## How to Run Python Code
 
-Python is a [high-level](https://en.wikipedia.org/wiki/High-level_programming_language), [interpretted](https://en.wikipedia.org/wiki/Interpreted_language), [dynamically-typed](https://en.wikipedia.org/wiki/Dynamic_programming_language) computer programming language whose apparent goal is to make code as easy to write as possible. The Python programming language is [free](http://www.howtogeek.com/howto/31717/what-do-the-phrases-free-speech-vs.-free-beer-really-mean/) and [open-source](https://en.wikipedia.org/wiki/Open_source#Computer_software).
+For the beginning student, there are three major ways to execute Python code: the interpreter, as a script/program, and using and iPython notebook. Throughout the class, you will be free to pick whichever of these methods you want. But each method has its own benefits you will want to know about, so you can pick the tool that best fits your needs.
 
-### Comparing Python to other languages
+### The Python Interpreter
 
-To understand Python it is probably best to consider how Python differs from other programming languages. This is a good chance to explain those esoteric terms I used above.
+Perhaps the easiest way to execute Python code is to use the Python interpreter. Most languages are not designed to be run in an interpreter, and so this is a major selling point for the language for many people.
 
-#### High-Level
+To start the Python interpreter, go to the "Command Prompt" in Windows, or the "Terminal" in Mac OS, Linux, or Unix. From here on out I will call this the "command line". Now type `python`, easy:
 
-A **low-level** language is one designed directly for a computer's hardware. It is not human readable, and defines the exact calculations to be performed by the computer to the smallest detail. A **high-level** language is meant to abstract away the inner workings of a computer and make code easily readable by humans.
+![The Interpreter: starting](../../resources/terminal_1_command_line.png)
 
-![high-level language diagram](../../resources/high_lvl_langs.png)
+The Python interpreter should start right up, and you will see a prompt (`>>>`) to enter Python code:
 
-There are several layers of languages in the above pyramid. If you've ever worked with C or Fortran, those languages are somewhere in the middle. They are human readable, but deal with the specifics of a computer's hardware all the time (pointers, allocating and freeing memory, stack overflows). The most high-level language in the world would look just like you are reading English. And the lowest-level language in the world would be a series of incomprehsible zeros and ones.
+![The Interpreter: Begins](../../resources/terminal_2_python.png)
 
-#### Interpretted
+You can now enter any valid Python code at the prompt, by typing:
 
-If you've ever written Fortran or C code, you will remember having to "compile" your code. This is the process of taking your text file and turning it into an executable that can be run as a program.
+![The Interpreter: Simply Code Example](../../resources/terminal_3_example.png)
 
-Alternately, if you've ever run a Windows program, you will know about *.exe programs. You double click on them, and the program runs. But if you try to open them in a text editor, they are meaningless garbage. That's because these programs are written in terms your computer can understand, and not in anything human-readable.
+Finally, to exit out of the interpreter, type `exit()`:
 
-But you don't have to compile Python code. The Python programming language comes with an interpreter that will read directly from your text file on the fly and execute commands as it finds them. This means you never have to compile. It also means you can type commands into the Python interpreter and they will be executed as you go:
+![The Interpreter: Exiting](../../resources/terminal_4_exit.png)
 
-    john@antineutrino:~$ python
-    Python 2.6.6 (r266:84292, Jan 22 2014, 09:42:36) 
-    [GCC 4.4.7 20120313 (Red Hat 4.4.7-4)] on linux2
-    Type "help", "copyright", "credits" or "license" for more information.
-    >>> def fib(n):
-    >>>     a, b = 0, 1
-    >>>     while a < n:
-    >>>         print(a, end=' ')
-    >>>         a, b = b, a+b
-    >>>     print()
-    >>> fib(1000)
-    0 1 1 2 3 5 8 13 21 34 55 89 144 233 377 610 987
+So, that's the interpreter. It's free, easy to use, comes standard with Python, and will be nearly exactly the same no matter what computer you are on.
 
-You can try out the Python interpreter online, by going to [PythonAnywhere](https://www.pythonanywhere.com/try-ipython/) or [REPL](http://repl.it/languages/Python3).
+**PRO TIP**: If you really want to learn Python, I recommend using the Python interpreter instead of a calculator from day one. It will help you get used to the language basics. And after a little while you'll realize how much more powerful Python is than any calculator you've ever had.
 
-Of course, you can still write Python scripts, or "modules", as text files and execute those from the command line, a bit like they were executables or programs (but more like Shell scripts if you ever used Linux):
+### Python Scripts/Programs
 
-    john@antineutrino:~$ python my_awesome_script.py
+The Python interpreter above has a serious limitation. Once you close the Python intepreter you lose all your work. What if you write some code that you want to use again tomorrow? You will want to save your work. That is where Python scripts come into play.
 
-Long story short, unlike in Fortran, you will no longer have this excuse:
+To execute Python code as a script or a program, we first need to create a plain text file and give it the extension ".py". The classic example is I create a plain text file and add the text:
 
-![compiling](http://imgs.xkcd.com/comics/compiling.png)
+    print("Hello, world!")
 
-#### Dynamically Typed
+And then I save the file with the name "hello_world.py":
 
-In most programming languages, when you define a variable `x`, you have to tell the computer what "[type](https://en.wikipedia.org/wiki/Data_type)" that variable will be: integer, decimal, letter, string, array, list of strings, table, plot, whatever. But the Python interpreter is designed to figure out what the type of the variable is on its own, from context.
+![Python Programs: hello world code](../../resources/program_2_enter_text.png)
 
-If you have seen another programming language before, you may find that you have less to type in Python. Here's a comparison with some other languages you might have seen:
+Now I can run the program from my command line by type `python hello_world.py`:
 
-**In Java**:
+![Python Programs: hello world printed](../../resources/program_3_execute.png)
 
-    int three = 3;
-    int six = 2 * three;
+And that's it! You can now write Python code and save it off for later use. This is how Python is typically written, from the smallest script to the most complex program.
 
-**In C**:
+**NOTE**: Some people call them Python "scripts" and other people call them Python "programs". Broadly speaking, if the script gets complicated enough, you start to call it a program. Though it is not an important distinction.
 
-    int three = 3;
-    int six = 2 * three;
+**NOTE**: If you're coming from a language like Fortran or C, you'll notice we didn't need to compile our code. Because of this, we call Python an [interpreted language](https://en.wikipedia.org/wiki/Interpreted_language), and it is a design choice meant to make the language easier to use.
 
-**In Fortran**:
+### iPython Notebook
 
-    integer three,six
-    three = 3
-    six = 2 * three
+The last way that you might want to run Python code in this class is by using [iPython Notebooks](http://ipython.org/ipython-doc/stable/notebook/index.html). This is a solution really designed for the daily work of scientists and engineers, and you will probably find highly convenient. However, iPython doesn't come installed standard with Python, you have to [download and install](http://jupyter.readthedocs.io/en/latest/install.html) it separately. I recommend installing [Anaconda](http://docs.continuum.io/anaconda/install.html), as it comes packaged with iPython.
 
-**In Python**:
+iPython Notebooks are a flexible and easy-to-use Python interface for your web browser, designed more for daily work or experimenting than for huge programs. All of the code you write in iPython is saved on your local machine, not online.
 
-    three = 3
-    six = 2 * three
+To start a notebook, go to the command line and type `ipython notebook`:
 
-Python is smart enough to figure out what type your variables are, without you telling it. For instance, Python can tell what all of these variables are, just like you can:
+![iPython: start](../../resources/ipython_0_start.png)
 
-    name = "Jesse Owens"
-    height = 180
-    height = 180.5
-    weight = 75.5
-    year = 1936
-    gold_medals = ["long jump", "100m sprint", "long jump", "200m sprint", "4x100m sprint relay"]
+After a couple seconds your default web browser will open up and you will see a list of contents of your local directory:
+
+![iPython: directory](../../resources/ipython_1_blank_start.png)
+
+Click "new" in the top-right corner and create a new Notebook. This will give you an empty notebook to start working in. You will be able to enter any valid Python code you want:
+
+![iPython: enter code](../../resources/ipython_2_basic_python.png)
+
+Once you have entered your Python code you hit shift-and-enter to execute your code. You will see a new cell to pop up to continue your work:
+
+![iPython: execute code](../../resources/ipython_3_running_code.png)
+
+If you want to save your work, touch the "Untitled" at the top of the page and you can give your iPython notebook a new file name:
+
+![iPython: notebook naming](../../resources/ipython_4_give_it_a_name.png)
+
+If you close the tab in your web browser, or look at the first tab that was opened, you should see your new notebook file, with the extension `.ipynb`:
+
+![iPython: file saved](../../resources/ipython_5_file_saved.png)
+
+That's all you need to know to get started with iPython in this class. But that's all there is to know about iPython. It has a lot of handy built-in features and tools to make your life easier. Like the ability to display tables and plots right in the notebook:
+
+![iPython: fancy plotting example](../../resources/ipython_6_plotting.png)
+
+iPython is an ideal choice if you want to just to some quick data analysis or plotting. It is also a particularly friendly environment for a student to learn the language.
+
+**NOTE**: iPython notebooks have recently changed their name to "Jupyter Notebooks". It was just a name changed, so do let it confuse you.
 
 ## Why Python?
 
