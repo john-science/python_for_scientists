@@ -2,39 +2,39 @@
 
 ## How to install Python?
 
-Python should be easy to install on basically all home computers and laptops. There are many different versions and flavors of Python. This class will be built around Python v2.7, but you will probably be fine using anything above Python v2.5.
+Python should be easy to install on basically all desktops and laptops. There are many different versions and flavors of Python. This class will be built around Python v2.7, but you will probably be fine using anything above Python v2.5.
 
 #### Basic Python
 
-The installation procedure depends on what operating system you have installed. [The Hitchhiker's Guide to Python](http://docs.python-guide.org/en/latest/) has a great description of how to install for the three major operating systems.
+The installation procedure depends on what operating system you have installed. [The Hitchhiker's Guide to Python](http://docs.python-guide.org/en/latest/) has a great description of how to install for the three major operating systems:
 
  * [Windows](http://docs.python-guide.org/en/latest/starting/install/win/)
  * [Mac OS X](http://docs.python-guide.org/en/latest/starting/install/osx/)
  * [Linux](http://docs.python-guide.org/en/latest/starting/install/linux/)
 
-(NOTE: The above guide also explains how to install SetupTools, Pip, and VirtualEnv. While these are great tools worth learning, and I highly encourage it, they are not yet necessary for this course.)
+**NOTE**: The above guide also explains how to install SetupTools, Pip, and VirtualEnv. While these are great tools worth learning, and I highly encourage it, they are not yet necessary for this course.)
 
 #### Anaconda
 
-Consider installing [Anaconda](http://docs.continuum.io/anaconda/install.html) instead. Anaconda is Python packaged with hundreds of tools and libraries that you will want. If you have any choice, I recommend installing Anaconda for this class.
+Consider installing [Anaconda](http://docs.continuum.io/anaconda/install.html) instead. Anaconda is Python packaged with hundreds of tools and libraries that you will want. I strongly recommend installing Anaconda for this class.
 
 ## How to Run Python Code
 
-For the beginning student, there are three major ways to execute Python code: the interpreter, as a script/program, and using and iPython notebook. Throughout the class, you will be free to pick whichever of these methods you want. But each method has its own benefits you will want to know about, so you can pick the tool that best fits your needs.
+For the beginning student, there are three major ways to execute Python code: the interpreter, as a script/program, and using and iPython notebook. In this class, you will be free to use whichever of these you want. But you should know about the strengths and weaknesses of each, so you can chose wisely.
 
 ### The Python Interpreter
 
-Perhaps the easiest way to execute Python code is to use the Python interpreter. Most languages are not designed to be run in an interpreter, and so this is a major selling point for the language for many people.
+Perhaps the easiest way to execute Python code is to use the Python interpreter. This is not an optional available in most languages.
 
-To start the Python interpreter, go to the "Command Prompt" in Windows, or the "Terminal" in Mac OS, Linux, or Unix. From here on out I will call this the "command line". Now type `python`, easy:
+To start the Python interpreter, go to the "Command Prompt" in Windows, or the "Terminal" in Mac OS, Linux, or Unix. From here on out I will call this the "command line". Now the easy part, type `python`:
 
 ![The Interpreter: starting](../../resources/terminal_1_command_line.png)
 
-The Python interpreter should start right up, and you will see a prompt (`>>>`) to enter Python code:
+The Python interpreter should start right up, and you should see a prompt (`>>>`) to start entering Python code:
 
 ![The Interpreter: Begins](../../resources/terminal_2_python.png)
 
-You can now enter any valid Python code at the prompt, by typing:
+You can now enter valid Python code at the prompt:
 
 ![The Interpreter: Simply Code Example](../../resources/terminal_3_example.png)
 
@@ -42,23 +42,23 @@ Finally, to exit out of the interpreter, type `exit()`:
 
 ![The Interpreter: Exiting](../../resources/terminal_4_exit.png)
 
-So, that's the interpreter. It's free, easy to use, comes standard with Python, and will be nearly exactly the same no matter what computer you are on.
+So, that's the interpreter. It's free, easy to use, comes standard with Python, and will be nearly exactly the same on all computers.
 
-**PRO TIP**: If you really want to learn Python, I recommend using the Python interpreter instead of a calculator from day one. It will help you get used to the language basics. And after a little while you'll realize how much more powerful Python is than any calculator you've ever had.
+**PRO TIP**: If you really want to learn Python, I recommend using the Python interpreter instead of a calculator, starting now. It will help you get used to the language basics. And it is vastly more powerful than any calculator.
 
 ### Python Scripts/Programs
 
-The Python interpreter above has a serious limitation. Once you close the Python intepreter you lose all your work. What if you write some code that you want to use again tomorrow? You will want to save your work. That is where Python scripts come into play.
+The Python interpreter has a serious limitation. Once you close the Python intepreter you lose all your work. What if you write some code that you want to use again tomorrow? You will want to save your work. That is where Python scripts come into play.
 
-To execute Python code as a script or a program, we first need to create a plain text file and give it the extension ".py". The classic example is I create a plain text file and add the text:
+To execute Python code as a script or a program, we first need to create a plain text file and give it the extension ".py". The classic example is to print "Hello, World!" to the screen. To do so, I create a plain text file and add the text:
 
     print("Hello, world!")
 
-And then I save the file with the name "hello_world.py":
+And I save the file with the name "hello_world.py":
 
 ![Python Programs: hello world code](../../resources/program_2_enter_text.png)
 
-Now I can run the program from my command line by type `python hello_world.py`:
+Now I can run the program from my command line by typing `python hello_world.py`:
 
 ![Python Programs: hello world printed](../../resources/program_3_execute.png)
 
