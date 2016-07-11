@@ -62,17 +62,17 @@ Now I can run the program from my command line by typing `python hello_world.py`
 
 ![Python Programs: hello world printed](../../resources/program_3_execute.png)
 
-And that's it! You can now write Python code and save it off for later use. This is how Python is typically written, from the smallest script to the most complex program.
+And that's it! You can now write Python code and save it off for later use. This is how Python is typically written; from the smallest script to the most complex program.
 
-**NOTE**: Some people call them Python "scripts" and other people call them Python "programs". Broadly speaking, if the script gets complicated enough, you start to call it a program. Though it is not an important distinction.
+**NOTE**: Some people call them Python "scripts" and other people call them Python "programs". Broadly speaking, if the script gets complicated enough, you start to call it a program. Don't worry about it though. These are not important distinctions.
 
-**NOTE**: If you're coming from a language like Fortran or C, you'll notice we didn't need to compile our code. Because of this, we call Python an [interpreted language](https://en.wikipedia.org/wiki/Interpreted_language), and it is a design choice meant to make the language easier to use.
+**NOTE**: If you're coming from a language like Fortran or C, you'll notice we didn't need to compile our code. Because of this, we call Python an [interpreted language](https://en.wikipedia.org/wiki/Interpreted_language). It was a design choice meant to make the language easier to use.
 
 ### iPython Notebook
 
-The last way that you might want to run Python code in this class is by using [iPython Notebooks](http://ipython.org/ipython-doc/stable/notebook/index.html). This is a solution really designed for the daily work of scientists and engineers, and you will probably find highly convenient. However, iPython doesn't come installed standard with Python, you have to [download and install](http://jupyter.readthedocs.io/en/latest/install.html) it separately. I recommend installing [Anaconda](http://docs.continuum.io/anaconda/install.html), as it comes packaged with iPython.
+The last way that you might want to run Python code in this class is by using [iPython Notebooks](http://ipython.org/ipython-doc/stable/notebook/index.html). This is a solution really designed for the daily work of scientists and engineers, and you will probably find it highly convenient. However, iPython doesn't come installed standard with Python, you will have to [download and install](http://jupyter.readthedocs.io/en/latest/install.html) it separately. I recommend installing [Anaconda](http://docs.continuum.io/anaconda/install.html), as it comes packaged with iPython.
 
-iPython Notebooks are a flexible and easy-to-use Python interface for your web browser, designed more for daily work or experimenting than for huge programs. All of the code you write in iPython is saved on your local machine, not online.
+iPython Notebooks are a flexible and easy-to-use Python interface for your web browser, designed more for our daily work: data exploration, statistics, quick plots and tables. It is not ideally suited for large programs with many components. All of the code you write in iPython is saved on your local machine, like in a standard Python script.
 
 To start a notebook, go to the command line and type `ipython notebook`:
 
@@ -82,15 +82,15 @@ After a couple seconds your default web browser will open up and you will see a 
 
 ![iPython: directory](../../resources/ipython_1_blank_start.png)
 
-Click "new" in the top-right corner and create a new Notebook. This will give you an empty notebook to start working in. You will be able to enter any valid Python code you want:
+Click "new" in the top-right corner and create a "notebook". This will give you an empty notebook to start working in. Any valid Python code can be entered in these cells:
 
 ![iPython: enter code](../../resources/ipython_2_basic_python.png)
 
-Once you have entered your Python code you hit shift-and-enter to execute your code. You will see a new cell to pop up to continue your work:
+Once you have entered your code you hit shift-and-enter to execute it. You will see a new cell to pop up below to continue your work:
 
 ![iPython: execute code](../../resources/ipython_3_running_code.png)
 
-If you want to save your work, touch the "Untitled" at the top of the page and you can give your iPython notebook a new file name:
+If label your work, touch the "Untitled" at the top of the page and you can give your iPython notebook a new file name:
 
 ![iPython: notebook naming](../../resources/ipython_4_give_it_a_name.png)
 
@@ -98,13 +98,13 @@ If you close the tab in your web browser, or look at the first tab that was open
 
 ![iPython: file saved](../../resources/ipython_5_file_saved.png)
 
-That's all you need to know to get started with iPython. But that's all there is to know about iPython. It has a lot of handy built-in tools to make your life easier. Like the ability to display tables and plots right in the notebook:
+That's all you need to know to get started with iPython! But that's not all there is to know about iPython. It has a lot of handy tools to make your life easier. A popular tool is the ability to display tables and plots right in the notebook:
 
 ![iPython: fancy plotting example](../../resources/ipython_6_plotting.png)
 
-iPython is an ideal choice if you want to just to some quick data analysis or plotting. It is also a friendly environment for a student to learn the language.
+iPython is an ideal choice if you just want to do some quick data analysis or plotting. It is also a friendly environment for a student to learn the language.
 
-**NOTE**: iPython notebooks have changed their name recently to "Jupyter Notebooks". It was just a name change, so don't let it confuse you.
+**NOTE**: iPython notebooks have changed their name recently to "Jupyter Notebooks". This was just a name change, so don't let it confuse you.
 
 ## Why Python?
 
