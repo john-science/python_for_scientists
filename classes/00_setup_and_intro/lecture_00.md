@@ -98,13 +98,13 @@ If you close the tab in your web browser, or look at the first tab that was open
 
 ![iPython: file saved](../../resources/ipython_5_file_saved.png)
 
-That's all you need to know to get started with iPython in this class. But that's all there is to know about iPython. It has a lot of handy built-in features and tools to make your life easier. Like the ability to display tables and plots right in the notebook:
+That's all you need to know to get started with iPython. But that's all there is to know about iPython. It has a lot of handy built-in tools to make your life easier. Like the ability to display tables and plots right in the notebook:
 
 ![iPython: fancy plotting example](../../resources/ipython_6_plotting.png)
 
-iPython is an ideal choice if you want to just to some quick data analysis or plotting. It is also a particularly friendly environment for a student to learn the language.
+iPython is an ideal choice if you want to just to some quick data analysis or plotting. It is also a friendly environment for a student to learn the language.
 
-**NOTE**: iPython notebooks have recently changed their name to "Jupyter Notebooks". It was just a name changed, so do let it confuse you.
+**NOTE**: iPython notebooks have changed their name recently to "Jupyter Notebooks". It was just a name change, so don't let it confuse you.
 
 ## Why Python?
 
