@@ -1,16 +1,16 @@
-# Data Analysis with Pandas and iPython
+# Data Analysis with Pandas and Jupyter Notebooks
 
 ## Installation
 
-Like most of the libraries used in our "special topics" lectures, `pandas` and `iPython` do not come standard with Python and will have to be installed. Please check the official [SciPy Stack Install Guide](http://www.scipy.org/install.html). For Linux and Mac, the installation is merely a single line of `apt-get`. For Windows, pre-built installers are provided.
+Like most of the libraries used in our "special topics" lectures, `pandas` and `Jupyter` do not come standard with Python and will have to be installed. Please check the official [SciPy Stack Install Guide](http://www.scipy.org/install.html). For Linux and Mac, the installation is merely a single line of `apt-get`. For Windows, pre-built installers are provided.
 
 #### Anaconda
 
-Consider installing [Anaconda](http://docs.continuum.io/anaconda/install.html) instead. Anaconda is Python packaged with hundreds of libraries that you will want (including `pandas`, `iPython` and almost everything else we will use in this course.)
+Consider installing [Anaconda](http://docs.continuum.io/anaconda/install.html) instead. Anaconda is Python packaged with hundreds of libraries that you will want (including `pandas`, `Jupyter notebooks` and almost everything else we will use in this course.)
 
-## iPython
+## Jupyter Notebooks
 
-Up until this lecture, we have written all of our Python code in the interpretter or into a plain text file. Today we will write our code in [ipython](http://ipython.org/). After installation, you don't need to know anything new to use iPython; you can just write Python code directly in iPython like you would in the interpretter. But iPython gives you a lot of added functionality:
+Up until this lecture, we have written all of our Python code in the interpretter or into a plain text file. Today we will write our code in [Jupyter Notebooks](http://ipython.org/ipython-doc/stable/notebook/index.html). After installation, you don't need to know anything new to use Jupyter; you can just write Python code directly in Jupyter like you would in the interpretter. But Jupyter notebooks give you a lot of added functionality:
 
  * You can go back and edit previous lines, like in a text editor.
  * Tab auto-completion
@@ -20,23 +20,15 @@ Up until this lecture, we have written all of our Python code in the interprette
  * Tools for debugging code.
  * Helpful `%` syntax to expedite plotting and timing.
 
-For a quick introduction to installing and using iPython, look [here](http://cs231n.github.io/ipython-tutorial/).
+For a quick introduction to installing and using Jupyter Notebooks, look back at the [course introdution](../00_setup_and_intro/lecture_00.md#jupyter-notebooks).
 
-After installation, you can invoke iPython on the command line using: `ipython`.
+After installation, you can invoke Jupyter on the command line by typing: `jupyter notebook`. Then click "new" in the top-right corner and create a "notebook". This will give you an empty notebook to start working. Valid Python code can be entered in these cells:
 
-    >>>> ipython
-    Python 2.6.6 (r266:84292, Jan 22 2014, 09:42:36)
-    Type "copyright", "credits" or "license" for more information.
-    
-    IPython 0.13.2 -- An enhanced Interactive Python.
-    ?         -> Introduction and overview of IPython's features.
-    %quickref -> Quick reference.
-    help      -> Python's own help system.
-    object?   -> Details about 'object', use 'object??' for extra details.
+![Jupyter: enter code](../../resources/ipython_2_basic_python.png)
 
-If you want a GUI interface, type `ipython notebook`. This will open a user-friendly local Python working environment through your default web browser.
+Hit shift-and-enter to execute the code in your current cell. You will see a new cell to pop up below to continue your work:
 
-Why introduce `iPython` now? It turns out that `iPython` and `pandas` are the platform on which a LOT of people do data science. I have met several good scientists and engineers who handle all of their data analysis using these two tools (along with various libraries built on the SciPy stack). Whether this is the best approach or not, I leave to you. But it is a solid endorsement for the power of these two tools together.
+Why mention Jupter notebooks now? It turns out `Jupyter` and `pandas` are a really flexible and powerful combination. Lots of good scientists and engineers handle all of their data analysis starting with these two tools. Whether this is the best approach or not, I leave to you. But it is such a common paradigm we should at least try it for one lecture.
 
 ## pandas
 
