@@ -134,9 +134,14 @@ Start using Python daily. Make a GitHub account and start a silly Python project
 
 #### Help Improve the Class
 
-Is a lecture unclear? Did you find a grammatical mistake? Do you have an idea to help improve a lecture?
+If you find this class useful, the best way you can repay me is to help me make it better. Help make it easier for people to spin up on Python and get working.
 
-If you find this class at all useful, the best way you can repay me is to help me make it better. Help make it easier for people to spin up on Python and get working.
+Example things I am interested in:
+
+* Is a lecture unclear?
+* Is there a grammatical error?
+* Did you find a great reference for the "further reading" section?
+* Do you have an idea to improve a lecture?
 
 
 [Back to Syllabus](../../README.md)
