@@ -1,6 +1,6 @@
 # Data Analysis with Pandas - Problem Set
 
-**I would strongly recommend doing these problems in iPython or in the standard Python interpreter.**
+**I recommend doing these problems in a Jupyter notebook.**
 
 
 #### Reading in Data
