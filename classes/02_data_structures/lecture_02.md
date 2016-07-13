@@ -230,6 +230,7 @@ If you want to learn more about what kinds of functionality are built into Pytho
  * [An Informal Introduction - Lists](https://docs.python.org/2/tutorial/introduction.html#lists)
  * [Python Tutorial: Sets](http://www.python-course.eu/sets_frozensets.php)
  * [Python Tutorial: Lists, Tuples, and Slicing](http://www.python-course.eu/sequential_data_types.php)
+ * [i-Programmer: Dictionaries](http://www.i-programmer.info/programming/python/3990-the-python-dictionary.html)
 
 
 [Back to Syllabus](../../README.md)
