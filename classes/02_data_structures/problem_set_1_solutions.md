@@ -46,7 +46,7 @@
 
     firsts = ''
     for name in weasleys:
-        first += name[0]
+        firsts += name[0]
     
     print(firsts)
     
@@ -200,14 +200,14 @@
     
 #### 7. Add "not cuddly" to the spider set, and print.
 
-    >>> spider.add("not cuddly")
-    >>> spider
+    >>> spiders.add("not cuddly")
+    >>> spiders
     set(["8 legs", "spin webs", "2-part bodies", "small", "lay eggs", "not cuddly"])
     
-#### 8. Remove the "not cuddly" from the spider set, and print.
+#### 8. Remove the "not cuddly" from the spiders set, and print.
 
-    >>> spider.remove("not cuddly")
-    >>> spider
+    >>> spiders.remove("not cuddly")
+    >>> spiders
     set(["8 legs", "spin webs", "2-part bodies", "small", "lay eggs"])
 
 
@@ -221,7 +221,7 @@ Knowning how to use a particular data structure is good, but that won't do you a
             "Friday": 5, "Saturday": 6, "Sunday": 7}
     
     for dow, i in dows.iteritems():
-        print(dow " is day-of-week number " + str(i))
+        print(dow + " is day-of-week number " + str(i))
 
 #### 2. Print the names of the planets in alphabetical order: `"Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"`.
 
