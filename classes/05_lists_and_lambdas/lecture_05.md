@@ -131,14 +131,14 @@ What `xrange()` does, is produce only one number at a time. So, instead of havin
 
 That `xrange` in Python v2 sure is great, but what if we want to create our own iterators? That's where `yield` comes in. You use `yield` inside of a loop to return a sequence of values from a function (or method). This is something like `return` in normal functions, but `return` only provides a value once. Let's try to replace our stupid function above with one that uses an iterator:
 
-def sum_odd_even_iterator(N):
-    i = 0
-    while i < N:
-        if i % 2 == 0:
-            yield i
-        else:
-            yield -i
-        i += 1
+    def sum_odd_even_iterator(N):
+        i = 0
+        while i < N:
+            if i % 2 == 0:
+                yield i
+            else:
+                yield -i
+            i += 1
 
     def sum_odd_even(N):
         total = 0
