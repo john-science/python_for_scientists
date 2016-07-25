@@ -183,6 +183,23 @@ The above (integers, floats, booleans, and strings) are different `types` of var
 
 There are a lot of implementation details here, but that is a useful picture to have in your mind: one byte of memory can be used to hold any of several different `types` of variables.
 
+As you are learning and exploring the Python language, you might find it interesting to use the `type` command to learn about a variable:
+
+    >>> i = 42
+    >>> type(i)
+    <type 'int'>
+    >>>
+    >>> pi = 3.14159265358979
+    >>> type(pi)
+    <type 'float'>
+    >>>
+    >>> s = 'Hello, World!'
+    >>> type(s)
+    <type 'str'>
+    >>>
+    >>> type(True)
+    <type 'bool'>
+
 ## Problem Sets
 
  * [Practice with Variables](problem_set_1_variables.md)
