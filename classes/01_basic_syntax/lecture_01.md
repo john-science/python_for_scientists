@@ -54,6 +54,12 @@ The Python interpreter can act like a calculator:
     >>> 9 / 7
     1
 
+NOTE: If you are running Python 2.x you will see the above behavior for division. But if you are running Python 3.x you will see that division always returns a float, and never an integer:
+
+    >>> # In Python 3.x
+    >>> 9 / 7
+    1.2857142857142858
+
 But you can also do algebra (math with variables):
 
     >>> x = 20
