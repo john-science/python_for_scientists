@@ -175,10 +175,14 @@ Slicing strings with one and two colons in Python gives the developer (you) a lo
 
 Another really powerful string tool in Python is `find`. Try out these examples and see if you can determine how `find` works and what it does:
 
-alpha = 'abcdefghijklmnop'
-alpha.find('d')
-alpha.find('jk')
-alpha.find('x')
-alpha[alpha.find('fg')::2]
+    alpha = 'abcdefghijklmnop'
+    alpha.find('d')
+    alpha.find('jk')
+    alpha.find('x')
+    alpha[alpha.find('fg')::2]
+
+## Solutions
+
+ * Most homeworks have solutions. But this homework is easier than most, and more exploratory. So no solutions will be provided.
 
 [Back to Lecture 1](lecture_01.md)
