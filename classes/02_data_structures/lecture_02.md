@@ -37,9 +37,21 @@ You can also modify and interact with lists in a wide variety of convenient ways
     >>> list2
     [6, 5, 4]
 
+It turns out that if you want to add items to a list, `.append()` is the fastest way. And if you want to remove elements from a list `.pop()` is the fastest way. Though `.pop()` only removes the last element from the list, so it is not always helpful:
+
+    >>> blue_box = ['S', 'I', 'D', 'R', 'A', 'T']
+    >>> blue_box.pop()
+    'T'
+    >>> blue_box.pop()
+    'A'
+    >>> blue_box.pop()
+    'R'
+    >>> print(blue_box)
+    ['S', 'I', 'D']
+
 ###  dictionaries
 
-Dictionaries in Python are similar to dictionaries in real life. They both have keys matched with a value. A real world key is a word and the value is a definition. In Python, a dictionary has a set of "keys" (keys can be simple things like numbers and strings) and each key has a related "value". The value could be something simple, like an integer, or more complicated like a list or another dictionary. You can add, remove, and modify both keys and values in dictionaries.
+Dictionaries in Python are similar to dictionaries in real life. They both have keys matched with a value. A real world key is a word and the value is a definition. In Python, a dictionary has a set of "keys" (keys can be simple things like numbers and strings) and each key has a related "value". The value could be almost anything. You can add, remove, and modify both keys and values in dictionaries.
 
 You can create an empty dictionary with just the curly braces:
 
@@ -71,7 +83,7 @@ You can also delete an element from a dictionary:
 
     del gdp['Japan']
 
-To retreive all the keys or values from a dictionary:
+To retreive all the keys or values from a dictionary (Python 2.x):
 
     >>> gdp.keys()
     ['USA', 'Germany', 'China', 'Samoa', 'Ghana']
@@ -108,49 +120,50 @@ But I find that I don't do this much, as now I have an empty tuple that I can't 
 
 ###  sets
 
-Imagine we want to know every county that the students in this class were born in. If we went through each student and asked them where they were born, we would probably get the response "United States" several times. But that's not quite what we want. We want a short list with each country just written once. There is a standard Python data structure for this called a "set".
+Imagine we want to know every country that the students in this class were born in. If we went through each student and asked them where they were born, we would probably get the response "United States" several times. But that's not quite what we want. We want a short list with each country just written once. There is a standard Python data structure for this called a "set".
 
 First, let's create an empty set:
 
-    >>> tolkein = set()
+    >>> class1 = set()
 
 Now, let's add some elements to it:
 
-    >>> tolkein.add('orc')
-    >>> tolkein.add('goblin')
-    >>> tolkein.add('troll')
-    >>> tolkein.add('dragon')
-    >>> tolkein.add('orc')
-    >>> tolkein.add('orc')
-    >>> tolkein.add('orc')
+    >>> class1.add('United States')
+    >>> class1.add('China')
+    >>> class1.add('United States')
+    >>> class1.add('Japan')
+    >>> class1.add('France')
+    >>> class1.add('China')
+    >>> class1.add('United States')
+    >>> class1.add('Columbia')
 
 And let's print the set:
 
-    >>> tolkein
-    set(['orc', 'goblin', 'troll', 'dragon'])
+    >>> class1
+    set(['Japan', 'United States', 'China', 'Columbia', 'France'])
 
 And we can remove an element from a set:
 
-    >>> tolkein.remove('dragon')
-    >>> tolkein
-    set(['orc', 'goblin', 'troll'])
+    >>> class1.remove('Japan')
+    >>> class1
+    set(['United States', 'China', 'Columbia', 'France'])
 
 The picture to have in your mind, is that [sets](http://en.wikipedia.org/wiki/Set_%28abstract_data_type%29) are like [Venn diagrams](https://en.wikipedia.org/wiki/Venn_diagram). Two different sets might overlap a little or a lot. And we can consider their [union](https://en.wikipedia.org/wiki/Union_%28set_theory%29), [intersection](https://en.wikipedia.org/wiki/Intersection_%28set_theory%29), or if one is a [subset](http://en.wikipedia.org/wiki/Subset) of another. All of these general ideas about sets can be computed inside Python:
 
-    >>> tolk2 = set(['elf', 'dwarf'])
-    >>> tolkein.union(tolk2)
-    set(['orc', 'goblin', 'troll', 'elf', 'dwarf'])
-    >>> elf = set(['elf'])
-    >>> elf.issubset(tolk2)  # determine if one set is a subset of another
+    >>> class2 = set(['Icleand', 'United States'])
+    >>> class1.union(class2)
+    set(['United States', 'China', 'Columbia', 'France', 'Iceland'])
+    >>> johanna = set(['Icleand'])
+    >>> johanna.issubset(class2)  # determine if one set is a subset of another
     True
-    >>> tolk2.issuperset(elf)  # determine if one set is a superset of another
+    >>> class2.issuperset(johanna)  # determine if one set is a superset of another
     True
-    >>> elf.intersection(tolk2)  # find the intersection of two sets
-    set(['elf'])
+    >>> johanna.intersection(class2)  # find the intersection of two sets
+    set(['Icleand'])
 
 ### Helper Methods
 
-Each of the data structures above have methods built in to help you do things you'll commonly want to do. We can actually use some of these helper methods to draw a strong parallel between the structures.
+Each of the data structures above have methods built in to help you do things you'll frequently want to do. We can actually use some of these helper methods to draw a strong parallel between the structures.
 
 #### Looping
 
@@ -170,8 +183,8 @@ We can use `for` with `in` to loop through any of the four data structures above
         print(day)
     
     # set
-    for creature in tolkein:
-        print(creature)
+    for country in class1:
+        print(class1)
 
 #### Length
 
@@ -187,7 +200,7 @@ You can find the number of items in each data structure in the same way:
     len(dow)
     
     # set
-    len(tolkein)
+    len(class1)
 
 Notice that `len` of a dictionary only returns the number of keys, it doesn't say anything about the number of values in the dictionary. It is the same for all four data structures, actually. If you have a list of lists, using `len` will only tell you the number of outermost elements. Make some lists of lists, or lists of sets, and try this out.
 
@@ -208,7 +221,7 @@ You can also test to see if something is in each of these data structures using 
     True
     
     # set
-    >>> 'troll' in tolkein
+    >>> 'Columbia' in class1
     True
 
 #### For More Info
@@ -218,7 +231,7 @@ If you want to learn more about what kinds of functionality are built into Pytho
     >>> help(my_list)
     >>> help(gdp)
     >>> help(dow)
-    >>> help(tolkein)
+    >>> help(class1)
 
 ## Problem Sets
 
