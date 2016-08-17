@@ -89,7 +89,7 @@
     
     print(sum)
     
-    # answer: 1429
+    # answer: 7142142
 
 #### 12. Using `for` or `while` and/or an `if` statement, print the numbers `10` through `1`, then the string `"Blast off!"`.
 
