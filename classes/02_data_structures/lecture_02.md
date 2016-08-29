@@ -184,7 +184,7 @@ We can use `for` with `in` to loop through any of the four data structures above
     
     # set
     for country in class1:
-        print(class1)
+        print(country)
 
 #### Length
 
