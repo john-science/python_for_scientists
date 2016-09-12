@@ -17,10 +17,12 @@ Python has a nice variety of tools to do commonly-desired things to strings.
 
     >>> "bright copper kettles and warm woolen mittens".split(" ")
     ['bright', 'copper', 'kettles', 'and', 'warm', 'woolen', 'mittens']
+    >>> "bright,copper,kettles,and,warm,woolen,mittens".split(",")
+    ['bright', 'copper', 'kettles', 'and', 'warm', 'woolen', 'mittens']
     >>> "bright copper kettles and warm woolen mittens".split('tt')
     ['bright copper ke', 'les and warm woolen mi', 'ens']
 
-#### By default, `split` uses any white space (`' '`, `'/t'`,  or `'\n'`)
+#### By default, `split` uses any white space (`' '`, `'\t'`,  or `'\n'`)
 
     >>> "funKY tOwn".split()
     ['funKY', 'tOwn']
@@ -133,6 +135,16 @@ Here are some easy examples:
     >>> str([1, 2, 3])  # convert a list to a string
     '[1, 2, 3]'
 
+### And all of these can be used on strings
+
+    >>> int("3")          # convert an string to a integer
+    3
+    >>> float("3.14")     # convert a string to a float
+    3.14
+    >>> bool("True")     # convert a string to a boolean
+    True
+    >>> bool("False")     # convert a string to a boolean
+    False
 
 ## Reading and Writing Text Files
 
@@ -140,7 +152,7 @@ Python has a really great interface for reading and writing text files. Everythi
 
 To read an existing text file, we might do:
 
-    f = open('ray_bradbury.txt', 'r')
+    f = open('/full/path/to/ray_bradbury.txt', 'r')
 
 To write text to a new file we might do:
 
@@ -254,14 +266,14 @@ First, let's paste the following data into `radiation_dose.csv` (or try writing 
 
 Well, we know how to read text files. And CSV files are just text files. So let's try reading the file like any other text file:
 
-    >>> fin = open('radiation_dose.csv`, 'r')
+    >>> fin = open('radiation_dose.csv', 'r')
     >>> lines = fin.readlines()
     >>> fin.close()
     >>> 
     >>> header = lines[0].strip().split(',')
     >>> header
     ['source', 'dose (Sv)', 'dose (BED)']
-    >>> for line in lines:
+    >>> for line in lines[1:]:
     >>>     values = line.strip().split(',')
     >>>     print(values[0], float(values[1]), int(values[2]))
 
