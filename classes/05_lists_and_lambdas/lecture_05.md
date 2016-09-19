@@ -86,9 +86,9 @@ The [yield](http://pythontips.com/2013/09/29/the-python-yield-keyword-explained/
     -500000
     >>> sum_odd_even(10000000)  # took so long I gave up and quit
 
-We could write the above function much smarter, but let's ignore that for now. The important thing is that when I did the final `sum_odd_even(10000000)` it took over 10 seconds and I got bored and gave up. Now, that is partly because we are adding 10 million numbers, but part of the problem is that when I saw `range(10000000)` I am creating a 10-million item list. This takes ~10MB of memory. Imagine if the list was 10 billion. You'd run out of RAM!
+We could write the above function much smarter, but let's ignore that for now. The important thing is that when I did the final `sum_odd_even(10000000)` it took over 10 seconds and I got bored and gave up. Now, that is partly because we are adding 10 million numbers, but part of the problem is that when I saw `range(10000000)` I am creating a 10-million item list. This takes ~10MB of memory. Imagine if the list was 10 billion. You'd (probably) run out of memory.
 
-Wouldn't it be nice if we could save all that memory and make this (stupid) loop faster? Well, it turns out you can, by using `xrange` instead of `range`:
+Wouldn't it be nice if we could save all that memory and make this (stupid) loop faster? Well, it turns out you can, by using `xrange` instead of `range` (Python 2.x):
 
     def sum_odd_even(N):
         total = 0
@@ -99,13 +99,13 @@ Wouldn't it be nice if we could save all that memory and make this (stupid) loop
                 total -= i
         return total
 
-    >>> sum_odd_even(1000)  # took way less than a second
+    >>> sum_odd_even(1000)  # took less than a second
     -500
-    >>> sum_odd_even(10000)  # took way less than a second
+    >>> sum_odd_even(10000)  # took less than a second
     -5000
-    >>> sum_odd_even(1000000)  # took way less than 1 second
+    >>> sum_odd_even(1000000)  # took less than 1 second
     -500000
-    >>> sum_odd_even(10000000)  # took way ~1 second
+    >>> sum_odd_even(10000000)  # took less than 1 second
     -5000000
 
 That little `x` sure seems to be pretty magical. What's the difference? Well, hopefully by now you've gotten used to looking for help with the interpretter:
@@ -123,7 +123,7 @@ That little `x` sure seems to be pretty magical. What's the difference? Well, ho
      |  generates the numbers in the range on demand.  For looping, this is 
      |  slightly faster than range() and more memory efficient.
 
-What `xrange()` does, is produce only one number at a time. So, instead of having to keep the entire list `range(1000000000)` in memory, we just get the first item of the list returned to us, then the second, then the third, and so on. A function that returns a sequence that you only get one item of at a time is called an [iterator](https://en.wikipedia.org/wiki/Iterator#Python).
+What `xrange()` does is produce only one number at a time. So, instead of having to keep the entire list `range(1000000000)` in memory, we just get the first item of the list returned to us, then the second, then the third, and so on. A function that returns a sequence that you only get one item of at a time is called an [iterator](https://en.wikipedia.org/wiki/Iterator#Python).
 
 **Python 2 vs 3:** This is a major difference between Python v2.x and Python v3.x. In Python v2, `range()` returns a list, but there is no `xrange` in Python v3 because in Python v3 `range` returns an iterator instead of a list.
 
