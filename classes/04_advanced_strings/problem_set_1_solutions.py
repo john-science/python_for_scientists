@@ -32,7 +32,7 @@ def main():
     letter_count_dict = count_letters(lines)
     
     # print the result
-    print_letter_dict(letter_count_dic)
+    print_letter_dict(letter_count_dict)
 
 
 def write_quote_2_file(filename, text):
