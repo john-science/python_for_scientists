@@ -123,8 +123,8 @@ Or, if you want to cheat, use the built-in Python function:
             line = [player]
             for game in range(5):
                 line.append(str(winnings[player][game]))
-            line.append(str(averages[game]))
-            line.append(str(totals[game]))
+            line.append(str(averages[player]))
+            line.append(str(totals[player]))
             f.write(','.join(line) + '\n')
 
         # don't forget to clsoe the file
