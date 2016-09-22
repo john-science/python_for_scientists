@@ -1,6 +1,6 @@
 # Dealing with CSV Files
 
-One day seven people sat down and played five games of power.
+One day seven people sat down and played five games of poker.
 
 For the following problem, copy the following text into a file named `poker_winnings.csv`:
 
