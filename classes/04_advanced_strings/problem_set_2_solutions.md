@@ -70,7 +70,7 @@ Or, if you want to cheat, use the built-in Python function:
 
 **HINT***: I had to put float around either the numerator or the denominator so that the answer could be a float. If I forgot to do this, the answer would always be an integer and thus a little bit wrong.
 
-#### 5. `find_totals` that takes in a dictionary like `winnings` above and uses `find_total` to return a dictionary where the keys are the names of the power players and the values are the total amount each player won/lost after all five games.
+#### 5. `find_totals` that takes in a dictionary like `winnings` above and uses `find_total` to return a dictionary where the keys are the names of the poker players and the values are the total amount each player won/lost after all five games.
 
     def find_totals(winnings):
         '''create a dictionary of the total winnings of each player'''
@@ -80,7 +80,7 @@ Or, if you want to cheat, use the built-in Python function:
         
         return totals
 
-#### 6. `find_averages` that takes in a dictionary like `winnings` above and uses `find_average` to return a dictionary where the keys are the names of the power players and the values are the average amount each player won/lost during all five games.
+#### 6. `find_averages` that takes in a dictionary like `winnings` above and uses `find_average` to return a dictionary where the keys are the names of the poker players and the values are the average amount each player won/lost during all five games.
 
     def find_avearges(winnings):
         '''create a dictionary of the averages winnings,
