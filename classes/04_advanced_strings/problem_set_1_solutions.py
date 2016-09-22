@@ -7,7 +7,7 @@ FILENAME = 'fat_kakapo.txt'
 DOUGLAS_ADAMS_QUOTE = '''The kakapo is an extremely fat bird.
 A good-sized adult will weigh about six or seven pounds,
 and its wings are just about good for waggling a bit
-if it thinks it's about to trip over something — but flying is out of the question.
+if it thinks it's about to trip over something - but flying is out of the question.
 Sadly, however, it seems that not only has the kakapo forgotten how to fly,
 but it has forgotten that it has forgotten how to fly.
 Apparently a seriously worried kakapo will sometimes run up a tree and jump out of it,
