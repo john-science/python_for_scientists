@@ -22,8 +22,8 @@ Write a function that:
 2. `find_players` that takes in a dictionary like `winnings` above and returns the names of all the poker players in a list.
 3. `find_total` that takes in a list of integers and returns the sum.
 4. `find_average` that takes in a list of integers and returns the average.
-5. `find_totals` that takes in a dictionary like `winnings` above and uses `find_total` to return a dictionary where the keys are the names of the power players and the values are the total amount each player won/lost after all five games.
-6. `find_averages` that takes in a dictionary like `winnings` above and uses `find_average` to return a dictionary where the keys are the names of the power players and the values are the average amount each player won/lost during all five games.
+5. `find_totals` that takes in a dictionary like `winnings` above and uses `find_total` to return a dictionary where the keys are the names of the poker players and the values are the total amount each player won/lost after all five games.
+6. `find_averages` that takes in a dictionary like `winnings` above and uses `find_average` to return a dictionary where the keys are the names of the poker players and the values are the average amount each player won/lost during all five games.
 7. `game_totals` that takes in a dictionary like `winnings` above and produces a list of five integers, that represent the sum total of all winnings/losses added together for each game. (Obviously, we expect the winnings for each game to add to zero.)
 8. `write_new_winnings` that takes in a dictionry like `winnings` above and a string for the filepath of the new output file. This function will then call `find_averages` and `find_totals` to get the averages and totals. Then it will write a new CSV file that looks much like the original one, but with two new columns: one for each player's average winnings, and one for each player's total winnings.
 
