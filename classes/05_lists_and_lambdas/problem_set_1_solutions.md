@@ -55,10 +55,8 @@
     from math import sqrt
     filter(lambda n: (sqrt(n) % 1 == 0) and (n % 2 == 0), range(10000))
     
-    # 3. What numbers less than 1,000 are evenly divisible by 2, 3, 4, and 5?
-    filter(lambda n: (n % 2 == 0) and (n % 3 == 0) and (n % 4 == 0) and (n % 5 == 0), range(1000))
-    # 3, or...
-    filter(lambda n: (n % 3 == 0) and (n % 4 == 0) and (n % 5 == 0), range(1000))
+    # 3. How many positive, even numbers less than 1,000,000 are evenly divisible by 99?
+    len(filter(lambda i: i % 99 == 0, range(1000000)))  # answer: 10102
 
 #### Choose Your Own Adventure
 
