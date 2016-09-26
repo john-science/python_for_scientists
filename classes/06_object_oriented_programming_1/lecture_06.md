@@ -49,7 +49,7 @@ Enough talk, let's look at an example:
             Tests and homeworks are each worth 50%.'''
             average_hw_grade = sum(self.hw_grades) / len(self.hw_grades)
             average_test_grade = sum(self.test_grades) / len(self.test_grades)
-            final_grade = (average_hw_grade + average_homework_grade) / 2.0
+            final_grade = (average_hw_grade + average_hw_grade) / 2.0
             
             return final_grade
 
