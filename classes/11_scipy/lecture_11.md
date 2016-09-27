@@ -293,27 +293,40 @@ If you have no prior opinion about how you want your histogram to look, use `sta
 
 If you want to know [percentile](https://en.wikipedia.org/wiki/Percentile) of a dataset a certain value would be at, you could use `stats.percentileofscore`:
 
-    >>> from numpy import array
+    >>> from numpy as np
     >>> from scipy import stats
     >>> 
-    >>> grades = array([50, 81, 55, 100, 64, 72, 68, 73])
+    >>> >>> grades = np.random.normal(75, 9, 100)
+    >>> grades
+    array([ 95.36245368,  86.87214208,  81.74413728,  13.64507406, ...
     >>> 
     >>> stats.percentileofscore(grades, 60)
-    25.0
+    5.0
     >>> stats.percentileofscore(grades, 70)
-    50.0
+    22.0
     >>> stats.percentileofscore(grades, 80)
-    75.0
+    78.0
     >>> stats.percentileofscore(grades, 90)
+    95.0
 
 Or you can go the opposite direction and ask what percentile a certain score would fit into with `stats.scoreatpercentile`:
 
     >>> stats.scoreatpercentile(grades, 55)
-    71.4
+    75.735603964484469
     >>> stats.scoreatpercentile(grades, 64)
-    72.48
+    76.736086980756582
     >>> stats.scoreatpercentile(grades, 72)
-    73.32
+    78.737830341206873
+
+Finally, we can plot a histogram of the 100 grades above, and use the percentiles as the horizontal axis to see how the grade distribution in the class looks:
+
+    >>> plt.hist(grades, 12)
+    >>> grade_breaks = np.array([0,50,60,70,80,90,100])
+    >>> plt.xticks((len(grades)-1) * grade_breaks/100., map(str, grade_breaks))
+    >>> plt.show()
+
+![Percentile Histogram Plot](../../resources/percentile_histogram_v2.png)
+
 
 #### Bayesian Statistics
 
