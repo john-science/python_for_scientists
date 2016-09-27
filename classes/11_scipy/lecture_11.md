@@ -10,64 +10,181 @@ Like most of the libraries used in our "special topics" lectures, SciPy does not
 
 #### Anaconda
 
-Consider installing [Anaconda](http://docs.continuum.io/anaconda/install.html) instead. Anaconda is Python packaged with hundreds of libraries that you want (This includes SciPy and nearly everything else we will use in this course.)
+Consider installing [Anaconda](http://docs.continuum.io/anaconda/install.html) instead. Anaconda is Python packaged with hundreds of libraries that you want (This includes NumPy and SciPy, as will nearly everything else we will use in this course.)
 
 ## Basics
 
-Interestingly, most of the functions found in this sub-section can also be found in NumPy. But that won't be true for the next sub-sections.
+There are as many ways to skin a cat as there are horrible people that skin cats. To that end, we will show a few different ways to do calculate most of the statistics we will show in this lecture.
 
-Let us start with a 2D array of numbers:
+To start out with, we will cover how you find the most basic information about your data.
+
+Let us start by creating a couple of arrays of random numbers:
 
     >>> import scipy
-    >>> from numpy import array
-    >>> a = array([3.19, 2.222, 2.629, 2.6667, 3.451, 3.81])
-    >>> a = a.reshape(3,2)
-    array([[ 3.19  ,  2.222 ],
-           [ 2.629 ,  2.6667],
-           [ 3.451 ,  3.81  ]])
+    >>> from numpy as np
+    >>>
+    >>> a_1d = np.random.uniform(low=0.0, high=10.0, size=(10,))
+    >>> a_1d
+    array([ 8.51338365,  7.04382363,  1.65352188,  2.97530282,  3.51448975,
+            7.16790676,  3.27344898,  5.08118521,  7.17176604,  1.4555186 ])
+    >>>
+    >>> a_2d = np.random.uniform(low=0.0, high=10.0, size=(10, 10))
+    >>> a_2d
+    array([[ 8.86044547,  0.96993282,  2.50820612,  6.43874818,  0.38372758,
+             7.5504052 ,  5.16605308,  7.09470322,  7.3208908 ,  6.40286995],
+           [ 1.03869881,  3.69789616,  8.25003011,  7.09123556,  7.24557107,
+             3.421289  ,  1.75147573,  4.44611637,  3.6072885 ,  1.3549589 ],
+           [ 2.24196273,  7.53124841,  2.24682351,  8.1094773 ,  4.21279148,
+             5.31604956,  0.29495096,  4.03260432,  0.39602501,  6.21026426],
+           [ 3.86478679,  0.67428859,  5.39376417,  5.43997519,  1.8908046 ,
+             2.71272474,  4.97857334,  2.44707458,  2.37087979,  7.1046976 ],
+           [ 9.82027839,  8.06491482,  7.00413185,  9.97562942,  6.21787024,
+             3.63986336,  3.29937155,  5.877333  ,  8.30773465,  0.44619107],
+           [ 4.42067555,  4.97924259,  4.2428068 ,  7.86184298,  7.703883  ,
+             8.6419594 ,  9.3671621 ,  2.10597327,  4.87948808,  5.08219803],
+           [ 6.31323362,  0.8070407 ,  4.1273418 ,  3.42594116,  8.67331681,
+             2.0544611 ,  9.7863428 ,  9.21156874,  7.72887749,  2.47045892],
+           [ 7.17440072,  1.14765749,  6.46715747,  0.59357661,  3.07154304,
+             7.87346556,  1.07334616,  0.07030953,  7.73467392,  9.10477275],
+           [ 0.62143024,  9.87702138,  7.13771575,  5.34427576,  4.39352405,
+             7.70144278,  3.15188499,  0.26411161,  0.46309563,  3.88264578],
+           [ 9.91623583,  4.97173415,  0.33536802,  4.9834094 ,  1.89327326,
+             8.55740353,  5.22012591,  5.59103939,  8.4829855 ,  9.20030633]])
 
-From here on out, let's pretend this array is very large.
+For the purposes of this lecture, we can imagine that this array is very, very large. And working with the data could be quite slow and time-consuming.
+
+#### min & max values
+
+From the Python standard library:
+
+    >>> min(a_1d)
+    1.4555186026909372
+
+But that function fails on 2D arrays. Luckily, NumPy has you covered:
+
+    >>> np.min(a_1d)
+    1.4555186026909372
+    >>> np.max(a_1d)
+    8.5133836528870681
+
 
 #### mean
 
-The [arithmetic mean](https://en.wikipedia.org/wiki/Arithmetic_mean) is the simple average of a collection of numbers:
+The [arithmetic mean](https://en.wikipedia.org/wiki/Arithmetic_mean) is the simple average of a collection of numbers.
 
-    >>> scipy.mean(a)
-    2.9947833333333338
+First, let us write a simple python function to take the average of a 1D array:
+
+    def average_1d(a):
+        ''' Find the average of a 1D array or list '''
+        length = len(a)
+        if length == 0:
+            return None
+
+        total = 0.0
+        for value in a:
+            total += value
+
+        return total / length
+
+    >>> average_1d(a_1d)
+    4.7850347335808161
+
+Okay, that works for our 1D array, how would we have to change that function to work for a 2D array? What about a 3D array?
+
+The problem becomes that we might need to write many functions like the one above to take the average of arrays/lists of an arbitrarily-large number of dimensions. BUT NumPy has this feature built right in:
+
+    >>> np.mean(a_1d)
+    4.785034733580817
+    >>> np.mean(a_2d)
+    4.9490737540614615
+
+As SciPy leverages the NumPy library to provide the same interface:
+
+    >>> scipy.mean(a_1d)
+    4.785034733580817
+    >>> scipy.mean(a_2d)
+    4.9490737540614615
 
 #### median
 
-The [median](https://en.wikipedia.org/wiki/Median) of a collection of numbers is simply the middle number if the collection is ordered:
+The [median](https://en.wikipedia.org/wiki/Median) of a collection of items is simply the middle item if the collection is ordered. Further, if there are an even number of items, the median is usually taken to be the average of a middle two.
 
-    >>> scipy.median(a)
-    2.92835
+We could write this very quickly in Python for 1D arrays:
+
+    def median_1d(a):
+        ''' Find the median value in a 1D array '''
+        s = sorted(a)
+        mid = length // 2  # integer division
+
+        if len(s) % 2 == 1:
+            return s[mid]
+        else:
+            return (s[mid] + s[mid - 1]) / 2.0
+
+    >>> median_1d(a_1d)
+    4.2978374820694523
+
+How would we write a similar function to work on 2D arrays? Could we write a function that could handle arrays of any length?
+
+Luckily, NumPy makes this a lot easier:
+
+    >>> np.median(a_1d)
+    4.2978374820694523
+    >>> np.median(a_2d)
+    4.9813259983175247
+
+As does SciPy:
+
+    >>> scipy.median(a_1d)
+    4.2978374820694523
+    >>> scipy.median(a_2d)
+    4.9813259983175247
 
 #### The standard deviation
 
-If we pretend this "very large" array is a set of random variables, we might think think to apply the [normal distribution](https://en.wikipedia.org/wiki/Normal_distribution), and calculate the [standard deviation](https://en.wikipedia.org/wiki/Standard_deviation) from the mean:
+If we have a large set of random data we might think think to apply the [normal distribution](https://en.wikipedia.org/wiki/Normal_distribution), and calculate the [standard deviation](https://en.wikipedia.org/wiki/Standard_deviation) from the mean:
 
-    >>> scipy.std(a)
-    0.53997709956585715
+    >>> def standard_deviation_1d(a):
+    ...     ''' The Standard Deviation is the sum of squares
+    ...         of the difference of a set of number from its mean '''
+    ...     n = len(a)
+    ...     if n < 2:
+    ...         raise ValueError('variance requires at least two data points')
+    ...     mean = average_1d(a)
+    ...     sum_squares = sum((x - mean)**2 for x in a)
+    ...     return (sum_squares / n)**0.5
+    ... 
+    >>> 
+    >>> standard_deviation_1d(a_1d)
+    2.4193251025103226
 
-#### variance
+Okay, now how are you going to modify that to handle 2D data? How about 3D?
 
-The [variance](https://en.wikipedia.org/wiki/Variance) is a measure of how spread out a set of numbers are:
-    
-    >>> scipy.var(a)
-    0.29157526805555556
+Not only will using the NumPy version be easier, it will also be *much* faster:
 
-#### The covariance
+    >>> np.std(a_1d)
+    2.4193251025103222
+    >>> np.std(a_2d)
+    2.9163306158037896
 
-The [covariance](https://en.wikipedia.org/wiki/Covariance) is a measure of how two random variables change together:
+Or you can use the, identical, SciPy version:
 
-    >>> scipy.cov(a)
-    array([[ 0.468512  , -0.0182468 , -0.173756  ],
-           [-0.0182468 ,  0.00071065,  0.00676715],
-           [-0.173756  ,  0.00676715,  0.0644405 ]])
+    >>> scipy.std(a_1d)
+    2.4193251025103222
+    >>> scipy.std(a_2d)
+    2.9163306158037896
 
 ## Stats
 
 The `scipy.stats` module has a great collection of different statistical functions and tools. For a complete listing of what is in this module, check the [documentation](http://docs.scipy.org/doc/scipy/reference/tutorial/stats.html).
+
+Let us mock up some data:
+
+    >>> a = np.array([3.19, 2.222, 2.629, 2.6667, 3.451, 3.81])
+    >>> a = a.reshape(3,2)
+    array([[ 3.19  ,  2.222 ],
+           [ 2.629 ,  2.6667],
+           [ 3.451 ,  3.81  ]])
 
 #### Trimmed Stats
 
