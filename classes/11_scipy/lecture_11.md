@@ -255,36 +255,37 @@ You can also find the [standard deviation](https://en.wikipedia.org/wiki/Standar
 
 The `scipy.stats` module has a great collection of different statistical functions and tools. For a complete listing of what is in this module, check the [documentation](http://docs.scipy.org/doc/scipy/reference/tutorial/stats.html).
 
-Let us mock up some data:
-
-    >>> a = np.array([3.19, 2.222, 2.629, 2.6667, 3.451, 3.81])
-    >>> a = a.reshape(3,2)
-    array([[ 3.19  ,  2.222 ],
-           [ 2.629 ,  2.6667],
-           [ 3.451 ,  3.81  ]])
-
-
 #### Histograms
 
 Whether for analysis or plotting, we frequently want to make a [histogram](https://en.wikipedia.org/wiki/Histogram) out of our data.
 
 Use `stats.histogram` to produce a histogram, by simply providing an array of data and the number of bins:
 
-    >>> stats.histogram(a, 3)
-    (array([ 2.,  5.,  1.]), 0.5, 1.4, 0)
+    >>> plt.hist(a_1d, 5)
+    (array([ 2.,  3.,  1.,  1.,  3.]), array([ 1.4555186 ,  2.86709161,  4.27866462,  5.69023763,  7.10181064,
+        8.51338365]), <a list of 5 Patch objects>)
 
 A tuple of four items was returned:
 
-    (values in the 3 bins you asked for, start value, bin size, # of items not binned)
+    (values in the 5 bins you asked for, and the start points of each bins)
 
-That is, the `histogram` return has bins from: 0.5 -> 1.9 -> 4.3 -> 5.7
+That is, the `histogram` return has bins from: 1.4555186 -> 2.86709161 ->  4.27866462 ->  5.69023763 ->  7.10181064 ->
+        8.51338365
 
-And inside these bins we have the values: 2, 5, 1.
+And inside these bins we have the values: 2, 3, 1, 1, 3.
+
+We can also plot the histogram quite easily using matplotlib:
+
+    >>> import matplotlib.pyplot as plt
+    >>> plt.hist(a_1d, 5)
+    >>> plt.show()
+
+![Simple Histogram Plot](../../resources/simple_histogram_v1.png)
 
 Alternatively, you can use `stats.histogram2` to calculate how many items are in each bin, if you provide both the data *and* the location of the bins:
 
-    >>> stats.histogram2(a, range(10))
-    array([0, 2, 4, 1, 1, 0, 0, 0, 0, 0])
+    >>> stats.histogram2(a_1d, range(10))
+    array([0, 2, 1, 2, 0, 1, 0, 3, 1, 0])
 
 If you have no prior opinion about how you want your histogram to look, use `stats.histogram`. However, if you want detailed control over your historgram, use `stats.histogram2`.
 
