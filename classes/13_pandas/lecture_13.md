@@ -1,8 +1,10 @@
 # Data Analysis with Pandas and Jupyter Notebooks
 
+Several of the scientists I know and most of the data scientists I know use Pandas paired with Jupyter Notebooks for all their data analysis. Separately they are great tools, but together they create an amazingly expressive, friendly environment for analyzing data extremely quickly. Working soley with these two tools is such a common paradigm we need to least try it for at least one lecture. 
+
 ## Installation
 
-Like most of the libraries used in our "special topics" lectures, `pandas` and `Jupyter` do not come standard with Python and will have to be installed. Please check the official [SciPy Stack Install Guide](http://www.scipy.org/install.html). For Linux and Mac, the installation is merely a single line of `apt-get`. For Windows, pre-built installers are provided.
+Like most of the libraries used in our "special topics" lectures, `pandas` and `Jupyter` do not come standard with Python and will have to be installed separately. Please check the official [SciPy Stack Install Guide](http://www.scipy.org/install.html). For Linux and Mac, the installation is merely a single line of `apt-get`. For Windows, pre-built installers are provided.
 
 #### Anaconda
 
@@ -10,7 +12,7 @@ Consider installing [Anaconda](http://docs.continuum.io/anaconda/install.html) i
 
 ## Jupyter Notebooks
 
-Up until this lecture, we have written all of our Python code in the interpretter or into a plain text file. Today we will write our code in [Jupyter Notebooks](http://ipython.org/ipython-doc/stable/notebook/index.html). After installation, you don't need to know anything new to use Jupyter; you can just write Python code directly in Jupyter like you would in the interpretter. But Jupyter notebooks give you a lot of added functionality:
+When working through this lecture and the related homework, I recommend using [Jupyter Notebooks](http://ipython.org/ipython-doc/stable/notebook/index.html). The real topic of the lecture is the `pandas` library. But Pandas and Jupyter together create a wonderfully interactive platform for analyzing data. Jupyter notebooks give you a lot of added functionality:
 
  * You can go back and edit previous lines, like in a text editor.
  * Tab auto-completion
@@ -20,19 +22,19 @@ Up until this lecture, we have written all of our Python code in the interprette
  * Tools for debugging code.
  * Helpful `%` syntax to expedite plotting and timing.
 
-For a quick introduction to installing and using Jupyter Notebooks, look back at the [course introdution](../00_setup_and_intro/lecture_00.md#jupyter-notebooks).
+For a quick refresher on installing and using Jupyter Notebooks, look back at the [course introdution](../00_setup_and_intro/lecture_00.md#jupyter-notebooks).
 
 After installation, you can invoke Jupyter on the command line by typing: `jupyter notebook`. Then click "new" in the top-right corner and create a "notebook". This will give you an empty notebook to start working. Valid Python code can be entered in these cells:
 
 ![Jupyter: enter code](../../resources/ipython_2_basic_python.png)
 
-Hit shift-and-enter to execute the code in your current cell. You will see a new cell to pop up below to continue your work:
-
-Why mention Jupter notebooks now? It turns out `Jupyter` and `pandas` are a really flexible and powerful combination. Lots of good scientists and engineers handle all of their data analysis starting with these two tools. Whether this is the best approach or not, I leave to you. But it is such a common paradigm we should at least try it for one lecture.
+Hit shift-and-enter to execute the code in your current cell. You will see a new cell to pop up below to continue your work.
 
 ## pandas
 
-Pandas is a powerful library for handling data and performing data analysis. It has a ton of pre-made tools designed to make importing data easier. Once imported, your data will be loaded into a `DataFrame` object, which is a lot like a table in a database (or Excel). `DataFrame` objects can be munged, sliced, diced, queried, and joined with other DataFrame objects. Pandas is designed to expedite the human side of opening up datasets and dealing with what you find.
+Pandas is a powerful library for handling data and performing data analysis. It has a ton of pre-made tools designed to make importing data easier. Once imported, your data will be loaded into a `Series` or `DataFrame` object, which are a lot like a table in a database (or Excel). These objects can be munged, sliced, diced, queried, and joined with other similar objects.
+
+The goal of `pandas` appears to be to expedite the human side of opening datasets and dealing with what you find.
 
 There is an un-official convention when importing `pandas`:
 
