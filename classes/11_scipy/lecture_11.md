@@ -343,29 +343,6 @@ Each line above represents:
 
 The three lines in order represent: the mean, variance, and standard deviation of your data set.
 
-#### One-Way ANOVA
-
-The simple one-way [ANOVA](https://en.wikipedia.org/wiki/Analysis_of_variance) is a basic hypothesis-testing tool, used throughout all the sciences.
-
-The Analysis of Variance (ANOVA) is a way to compare the similarity of data sets. In particular, an ANOVA tests the similarity of two or more data sets.
-
-Use `stats.f_oneway` on two or more data sets:
-
-    >>> x = scipy.mean(grades)
-    >>> stats.f_oneway(grades, array([x, x]))
-    (0.0, 1.0)
-
-Here we compare the `grades` data set with another data set that is made of up two elements: each of which is mean of `grades`. So, of course, these two data sets have the same mean, and we reject the [null hypothesis](https://en.wikipedia.org/wiki/Null_hypothesis) that there is no relation between the data sets. But what do those two number we returned mean?
-
-This is the best case result: `(0.0, 1.0)`. The first number is the [F-value](http://en.wikipedia.org/wiki/Analysis_of_variance#The_F-test) and the second number is the [p-value](http://en.wikipedia.org/wiki/Analysis_of_variance#The_F-test). The thing to remember is that you want your p-value to be 1.0. Worse case scenario, it will be 0.0.
-
-Now let's try an example where the two data sets don't compare well:
-
-    >>> stats.f_oneway(grades, array([-99 * x, -99 * x]))
-    (373371.4201575499, 5.7626233819586514e-20)
-
-In this case, the null hypothesis is strongly supported since the p-value is almost zero and F-value is very large.
-
 ## Interpolation
 
 Use `stats.interp1d` if you have a 1D series of data points and you want to build an interpolating function:
