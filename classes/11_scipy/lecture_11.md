@@ -183,6 +183,74 @@ Or you can use the, identical, SciPy version:
     >>> scipy.std(a_2d)
     2.9163306158037896
 
+#### Trimmed Stats
+
+Frequently, you will have real-world data with obviously bad values. Perhaps you will have population data with negative numbers, or fractional values over 1.0. It happens a lot, and we frequently spend time cleaning out the bad data. A nice short-cut is to calculate your statistics directly, using upper and lower limits of acceptable values.
+
+Let us try to add upper and lower limits to our our `average_1d` function above:
+
+    def trimmed_average_1d(a, min=-np.inf, max=np.inf):
+        ''' Find the average of a 1D array or list '''
+        if len(a) == 0:
+            return None
+
+        count = 0.0
+        total = 0.0
+        for value in a:
+            if value < min or value > max:
+                continue
+            total += value
+            count += 1.0
+
+        return total / count
+
+    >>> trimmed_average_1d(a_1d, 0.9)
+    4.7850347335808161
+    >>> trimmed_average_1d(a_1d, 0.9, 99)
+    4.7850347335808161
+    >>> trimmed_average_1d(a_1d, 5, 10)
+    6.995613059282161
+
+We haven't seen `np.inf` before. Can you guess what it is? ([Here](http://docs.scipy.org/doc/numpy/reference/generated/numpy.isinf.html) is a clue, if you can't.)
+
+Again, how would you modify this to work for 2D arrays? What if we want the limits to be exclusive?
+
+The above function isn't very fast. Enter the Scipy `stats` module. It has a *lot* of similar variants on basic statistics:
+
+    >>> from scipy import stats
+    >>>
+    >>> stats.tmean(a_1d, (2, 5))
+    3.2544138523761146
+    >>> stats.tmean(a_2d, (2, 5))
+    3.5770768713821144
+
+The `SciPy.stats` library even allows you to set whether or not you want your limits to be inclusive or exclusive:
+
+    >>> stats.tmean(a_1d, (2, a_1d[0]))
+    5.5926633566923929
+    >>> stats.tmean(a_1d, (2, a_1d[0]), (False, False))
+    5.1754176000931551
+
+And, of course, this will also work with multi-dimensional arrays:
+
+    >>> stats.tmean(a_2d, (2, a_2d[0][0]))
+    5.5236309063898084
+    >>> stats.tmean(a_2d, (2, a_2d[0][0]), (False, False))
+    5.4759621268813028
+
+You can also find the [standard deviation](https://en.wikipedia.org/wiki/Standard_deviation) of a trimmed dataset:
+
+    >>> stats.tstd(a_1d)
+    2.5501925747843224
+    >>> stats.tstd(a_1d, (2, 5))
+    0.27009699716883712
+    >>>
+    >>> stats.tstd(a_2d)
+    2.9310225506809933
+    >>> stats.tstd(a_2d, (2, 5))
+    0.96050820677662707
+
+
 ## Stats
 
 The `scipy.stats` module has a great collection of different statistical functions and tools. For a complete listing of what is in this module, check the [documentation](http://docs.scipy.org/doc/scipy/reference/tutorial/stats.html).
@@ -194,62 +262,6 @@ Let us mock up some data:
     array([[ 3.19  ,  2.222 ],
            [ 2.629 ,  2.6667],
            [ 3.451 ,  3.81  ]])
-
-#### Trimmed Stats
-
-The trimmed statistics functions below are the same as the basic functions above, but they allow you to do statistical calculations on a slightly modified dataset. These functions are handy if you want to exclude obvious bad data points from a quick analysis.
-
-We calculate the trimmed mean by providing the array of data points, and a pair of min/max values to trim from:
-
-    >>> from numpy import array
-    >>> from scipy import stats
-    >>> 
-    >>> a = array([1.2, 2.1, 3.2, 4.0, 2.6, 1.8, 2.241, 2.316])
-    >>> 
-    >>> stats.tmean(a, (2, 5))
-    2.7428333333333335
-
-By default, if a value is actually *at* one of your limits, it is still included in the average. But you can manually set if your min/max limits are inclusive:
-
-    >>> stats.tmean(a, (1.2, 3))
-    2.0428333333333337
-    >>> stats.tmean(a, (1.2, 3), (False, False))
-    2.2114000000000003
-
-This will also work with multi-dimensional arrays:
-
-    >>> m = array([[1.2, 2.1, 3.2, 4.0], [2.6, 1.8, 2.241, 2.316]])
-    >>> m
-    array([[ 1.2  ,  2.1  ,  3.2  ,  4.   ],
-           [ 2.6  ,  1.8  ,  2.241,  2.316]])
-    >>> 
-    >>> stats.tmean(m, (1.2, 3))
-    2.0428333333333337
-    >>> stats.tmean(m, (1.2, 3), (False, False))
-    2.2114000000000003
-
-You can also find the [standard error of the mean](https://en.wikipedia.org/wiki/Standard_error) of a trimmed dataset:
-
-    >>> stats.tsem(a, (1, 2))
-    0.29999999999999999
-    >>> stats.tsem(a, (1, 3))
-    0.19974390548344095
-    >>> stats.tsem(a, (-99, 3))
-    0.19974390548344095
-
-You can also find the [standard deviation](https://en.wikipedia.org/wiki/Standard_deviation) of a trimmed dataset:
-
-    >>> stats.tstd(a, (1, 3))
-    0.48927064766514117
-    >>> stats.tstd(a, (1, 6))
-    0.85807765840694339
-
-And finally, the [variance](https://en.wikipedia.org/wiki/Variance) of the trimmed dataset:
-
-    >>> stats.tvar(a, (-9000, 2))
-    0.18000000000000005
-    >>> stats.tvar(a, (2, 9000))
-    0.53142576666666663
 
 
 #### Histograms
