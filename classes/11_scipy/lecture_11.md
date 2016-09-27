@@ -328,21 +328,6 @@ Finally, we can plot a histogram of the 100 grades above, and use the percentile
 ![Percentile Histogram Plot](../../resources/percentile_histogram_v2.png)
 
 
-#### Bayesian Statistics
-
-Use `stats.bayes_mvs` to calculate the [Bayesian confidence intervals](http://en.wikipedia.org/wiki/Credible_interval) for the important values in your data set:
-
-    >>> stats.bayes_mvs(grades)
-    ((70.375, (59.942906473297676, 80.807093526702317)),
-     (339.57500000000005, (120.69794896230246, 783.38757978857814)),
-     (17.534429743228785, (10.986261828406533, 27.98906178828755)))
-
-Each line above represents:
-
-    (center of the interval, (lower bound on the interval, upper bound of the interval))
-
-The three lines in order represent: the mean, variance, and standard deviation of your data set.
-
 ## Interpolation
 
 Use `stats.interp1d` if you have a 1D series of data points and you want to build an interpolating function:
@@ -407,7 +392,7 @@ Now we can create the fit to our function:
     >>> from scipy.optimize import curve_fit
     >>> f = curve_fit(quad, x, y)
     >>> f
-    (array([  2.00000000e+00,  -2.18691731e-12,   3.00000000e+00]), inf)
+    (array([  2.0,  -2.18691731e-12,   3.0]), inf)
 
 Here f[0] is an array of the `a`, `b`, and `c` values that go into our quadratic function `quad` above. And, as we can see, the results are extremly close. The only difference is that b, instead of being `0.0`, is `-2.18691731e-12`. But, hey, if our scientific results come out accurate to one part in `1e-12`, we're probably pretty happy!
 
@@ -417,7 +402,7 @@ You also have the option to give your `curve_fit` and intial guess, so it has a 
 
     >>> f = curve_fit(quad, x, y, p0=[1.0, 1.0, 3.0])
     >>> f
-    (array([  2.00000000e+00,  -2.18691731e-12,   3.00000000e+00]), inf)
+    (array([  2.0,  -2.18691731e-12,   3.0]), inf)
 
 So in the end, `curve_fit` is an extremely powerful tool that will let us fit an collection of data points with a function of our own creation. This takes slightly longer to use than `interp1d`, but is an extremely powerful tool.
 
@@ -428,6 +413,7 @@ So in the end, `curve_fit` is an extremely powerful tool that will let us fit an
 
 ## Further Reading
 
+ * [Least Squares Fitting](http://docs.scipy.org/doc/scipy/reference/tutorial/optimize.html#least-square-fitting-leastsq)
  * [Official Tutorial](http://docs.scipy.org/doc/scipy/reference/tutorial/)
  * [Official Tutorial - Stats](http://docs.scipy.org/doc/scipy/reference/tutorial/stats.html)
  * [Official Docs - Stats](http://docs.scipy.org/doc/scipy/reference/stats.html#module-scipy.stats)
@@ -436,6 +422,5 @@ So in the end, `curve_fit` is an extremely powerful tool that will let us fit an
  * [PDF Intro to NumPy and SciPy](http://www.engr.ucsb.edu/~shell/che210d/numpy.pdf)
  * [Sam's SciPy Intro](http://www.sam.math.ethz.ch/~raoulb/teaching/PythonTutorial/intro_scipy.html)
  * [Official Tutorial - Optimizations](http://docs.scipy.org/doc/scipy/reference/tutorial/optimize.html)
- * [Least Squares Fitting](http://docs.scipy.org/doc/scipy/reference/tutorial/optimize.html#least-square-fitting-leastsq)
 
 [Back to Syllabus](../../README.md)
