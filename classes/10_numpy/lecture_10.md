@@ -1,6 +1,6 @@
 # NumPy
 
-NumPy is the most popular mathematics library for Python. NumPy takes a big step toward making Python as fast as other languages for serious mathematical computations. There are hundreds of scientific libraries in Python have just could not exist in Python without NumPy. Several of these libraries we will cover later in this sourse: SciPy, matplotlib, pandas, and netCDF4.
+NumPy is the most popular mathematics library for Python. NumPy takes a big step toward making Python as fast as other languages for serious mathematical computations. There are hundreds of scientific libraries in Python that just could not exist without NumPy. Several of these libraries we will cover in this sourse: SciPy, matplotlib, pandas, and netCDF4.
 
 #### Installation
 
@@ -74,6 +74,11 @@ And if you start out with a 1D `array`, you can make a 2D `array` using `reshape
 
 The `.reshape()` method is really pretty smart. It doesn't move any of the data around in memory, which would be quite slow. All it does is change how you access data. This is an extremely convenient feature that will almost always make your life easier.
 
+What do you think will happen if you run this code?
+
+    >>> a = array([1, 2, 3, 4.5])
+    >>> c = a.reshape(3, 3)
+
 You can use `numpy.arange` to fill a `numpy.array` much like you used `range` to fill a Python-standard `list`:
 
     >>> count = range(5)
@@ -85,6 +90,15 @@ You can use `numpy.arange` to fill a `numpy.array` much like you used `range` to
     >>> c = arange(18)
     >>> c
     array([ 0,  1,  2,  3,  4,  5,  6,  7,  8,  9, 10, 11, 12, 13, 14, 15, 16, 17])
+
+The `numpy.arange` function can work like it does above, or it can take three paramters: `min`, `max`, and `step`:
+
+    >>> arange(2, 15, 4)
+    array([ 2,  6, 10, 14])
+
+What do you think the following code will produce?
+
+    >>> arange(2, 15)
 
 Here's a quick example using `arange` and `reshape` together:
 
@@ -105,20 +119,20 @@ You can also create a multi-dimensional `array` right from the start:
 And, unlike the standard Python libraries, NumPy will let you define the type of the array:
 
     >>> from numpy import array
-    >>> f = array([[0, 1, 2, 3], [4, 5, 6, 7]], float)
+    >>> f = array([[0, 1, 2, 3], [4, 5, 6, 7]], np.float32)
     >>> f
     array([[ 0.,  1.,  2.,  3.],
            [ 4.,  5.,  6.,  7.]])
 
-Frequently, you will want to initialize an `array` with all zero values to start:
+Frequently, you will want to initialize an `np.array` with all zero values:
 
     >>> from numpy import zeros
     >>>
-    >>> z = zeros(5, dtype=int)
+    >>> z = zeros(5, dtype=np.int64)
     >>> z
     array([0, 0, 0, 0, 0])
     >>> 
-    >>> y = zeros((2, 3), dtype=float)
+    >>> y = zeros((2, 3), dtype=np.float32)
     >>> y
     array([[ 0.,  0.,  0.],
            [ 0.,  0.,  0.]])
@@ -130,7 +144,7 @@ Similarly, you can use `ones` to initialize an array to all 1 values:
     >>> ones(4)
     array([ 1.,  1.,  1.,  1.])
     >>> 
-    >>> ones((2, 5), dtype=int)
+    >>> ones((2, 5), dtype=np.int64)
     array([[1, 1, 1, 1, 1],
            [1, 1, 1, 1, 1]])
 
@@ -161,7 +175,11 @@ And you can combine the two:
     >>> 2 * (a + b) - 4
     array([-4,  4,  8])
 
-The ability to act on every element of a numpy array without writing a lot of loops is really useful. And a great convenience if you're going to be doing a lot of math.
+This functionality saves a lot of tedious code writing. And the resulting operations are usually much faster than they would be written using Python lists.
+
+What would you expect this to produce?
+
+    >>> 2 * (1 - a + b)
 
 ### NumPy array Operations
 
@@ -169,9 +187,9 @@ Another great feature of numpy arrays is the huge variety of helper methods.
 
 #### ndim
 
-Use `.ndim` to determine how many dimensions your multi-dimensional `array` has:
+Use `.ndim` to determine how many dimensions your multi-dimensional `np.array` has:
 
-    >>> r = zeros((3, 2), dtype=float)
+    >>> r = zeros((3, 2), dtype=np.float64)
     >>> r
     array([[ 0.,  0.],
            [ 0.,  0.],
@@ -181,19 +199,24 @@ Use `.ndim` to determine how many dimensions your multi-dimensional `array` has:
 
 And another example:
 
-    >>> cube = zeros((2, 2, 2), dtype=int)
+    >>> cube = zeros((2, 2, 2), dtype=np.float64)
     >>> cube.ndim
     3
 
 #### shape
 
-Use `.shape` get more information about the structure of your `array`:
+Use `.shape` get more information about the structure of your `np.array`:
 
     >>> r.shape
     (3, 2)
     >>>
     >>> cube.shape
     (2, 2, 2)
+
+Most frequently, I use `.shape` to get just one of the dimensions of the `np.array`:
+
+    >>> r.shape[0]
+    3
 
 #### dtype
 
@@ -213,6 +236,8 @@ Use `flatten` to convert a multi-dimensional `array` to a single dimension:
     >>>
     >>> a.flatten()
     array([2, 3, 4, 7, 8, 9])
+
+Remember, this is quite fast because the data is not being move around, it is only changing out we access it.
 
 #### transpose
 
@@ -244,7 +269,7 @@ Notice that neither of these methods changes what is in the `a` place in memory;
 
 #### sqrt
 
-There are even mathematical functions built into NumPy that will apply changes to all of the elements of an array, like `sqrt`:
+NumPy even has mathematical functions designed to act on entire arrays. A lot of them, like `sqrt`:
 
     >>> from numpy import sqrt
     >>> a = array([1, 4, 9, 25, 144, 81])
@@ -253,7 +278,7 @@ There are even mathematical functions built into NumPy that will apply changes t
 
 #### ceil & floor
 
-Use `ceil` and `floor` to round NumPy `float64`s up or down to the nearest integer:
+Use `ceil` and `floor` to round NumPy `np.float64`s up or down to the nearest integer:
 
     >>> from numpy import ceil, floor
     >>> 
@@ -263,6 +288,11 @@ Use `ceil` and `floor` to round NumPy `float64`s up or down to the nearest integ
     array([  2.,   3.,   3.,   4.,  10.])
     >>> floor(a)
     array([ 1.,  2.,  2.,  3.,  9.])
+
+What would you expect this to return?
+
+    >>> x = array([3.912, 15.8999, 35.98989])
+    >>> floor(sqrt(x))
 
 #### sum & prod
 
@@ -378,6 +408,8 @@ The above 2D array example makes these seem very similar. But there is a differe
     >>> np.vstack((a, b))
     array([[1, 2, 3, 4, 5],
            [9, 8, 7, 6, 5]])
+
+What do you suppose would happen if you tried to `np.concatenate` or `np.vstack` 2D arrays?
 
 ## NumPy Random Numbers
 
@@ -540,13 +572,13 @@ Use `permutation` if you don't want to alter the original `array`, but just crea
 
 The difference between `random.shuffle` and `random.permutation` is very similar to the difference we saw between `.sort()` and `sorted()` for lists. The first one alters the sequence "in place", and the second one doesn't alter the sequence, but creates an altered version of it.
 
-## That's All for NumPy?
+## Is that all for NumPy?
 
 Oh no.
 
-This class is meant to give an introduction and foundation to NumPy, not cover all the deep corners of the library. NumPy has a lot more tools that you might find useful: treating 2D arrays as matricies, Fourier transforms, polynomials, linear algebra, and statistics. But as long as you take the time to understand the numpy array and the numpy data types, the rest of the library should be approachable to you.
+This class is meant to give an introduction and foundation to NumPy, not cover all the deep corners of the library. NumPy has a lot more tools that you might find useful: treating 2D arrays as matricies, Fourier transforms, polynomials, linear algebra, and statistics. But as long as you take the time to understand the numpy array and the numpy data types, the rest of the library should be approachable.
 
-We will cover NumPy statistics in the SciPy class. For a full reference on what is available in Python, look in the [official documentation](http://docs.scipy.org/doc/numpy/reference/).
+We will cover NumPy statistics in the SciPy class. For a full reference on what is available in NumPy, look in the [official documentation](http://docs.scipy.org/doc/numpy/reference/).
 
 ## Problem Sets
 
