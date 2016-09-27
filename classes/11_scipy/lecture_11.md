@@ -151,17 +151,19 @@ As does SciPy:
 
 If we have a large set of random data we might think think to apply the [normal distribution](https://en.wikipedia.org/wiki/Normal_distribution), and calculate the [standard deviation](https://en.wikipedia.org/wiki/Standard_deviation) from the mean:
 
-    >>> def standard_deviation_1d(a):
-    ...     ''' The Standard Deviation is the sum of squares
-    ...         of the difference of a set of number from its mean '''
-    ...     n = len(a)
-    ...     if n < 2:
-    ...         raise ValueError('variance requires at least two data points')
-    ...     mean = average_1d(a)
-    ...     sum_squares = sum((x - mean)**2 for x in a)
-    ...     return (sum_squares / n)**0.5
-    ... 
-    >>> 
+    def standard_deviation_1d(a):
+        ''' The Standard Deviation is the sum of squares
+            of the difference of a set of number from its mean '''
+        n = len(a)
+        if n < 2:
+            raise ValueError('variance requires at least two data points')
+
+        mean = average_1d(a)
+        sum_squares = sum((x - mean)**2 for x in a)
+      
+        return (sum_squares / n)**0.5
+
+
     >>> standard_deviation_1d(a_1d)
     2.4193251025103226
 
@@ -249,45 +251,6 @@ And finally, the [variance](https://en.wikipedia.org/wiki/Variance) of the trimm
     >>> stats.tvar(a, (2, 9000))
     0.53142576666666663
 
-#### Various Means
-
-There is a nice, short, reminder of the difference between these three types of means [here](http://economistatlarge.com/finance/applied-finance/differences-arithmetic-geometric-harmonic-means).
-
-We already saw that we can use `scipy` to create a [arithmetic mean](https://en.wikipedia.org/wiki/Arithmetic_mean):
-
-    >>> scipy.mean(a)
-    2.4321250000000001
-    >>> scipy.mean(m)
-    2.4321250000000001
-
-But we can also use `scipy.stats` to calculate a [geometric mean](https://en.wikipedia.org/wiki/Geometric_mean):
-
-    >>> stats.gmean(a)
-    2.3001417284768615
-
-And if we ask for the geometric mean of a multi-dimensional array, we will get an array in return (with the geometeric mean of each column:
-
-    >>> stats.gmean(m)
-    array([ 1.76635217,  1.94422221,  2.67790963,  3.04368198])
-
-If we want, we can collapse this further by finding the geometric mean of that array:
-
-    >>> stats.gmean(stats.gmean(m))
-    2.3001417284768615
-
-Similarly, you can use `stats.hmean` to calculte the [harmonic mean](https://en.wikipedia.org/wiki/Harmonic_mean):
-
-    >>> stats.hmean(a)
-    2.1679023922542315
-    >>> stats.hmean(m)
-    array([ 1.64210526,  1.93846154,  2.63598603,  2.93350222])
-    >>> stats.hmean(stats.hmean(m))
-    2.1679023922542311
-
-Lastly, we can use `stats.sem` to calculate the [standard error of the mean](https://en.wikipedia.org/wiki/Standard_error) (referring to the arithmetic mean):
-
-    >>> stats.sem(a)
-    0.30337626552211178
 
 #### Histograms
 
