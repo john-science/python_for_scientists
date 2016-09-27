@@ -59,6 +59,8 @@ From the Python standard library:
 
     >>> min(a_1d)
     1.4555186026909372
+    >>> max(a_1d)
+    8.5133836528870681
 
 But that function fails on 2D arrays. Luckily, NumPy has you covered:
 
@@ -66,6 +68,11 @@ But that function fails on 2D arrays. Luckily, NumPy has you covered:
     1.4555186026909372
     >>> np.max(a_1d)
     8.5133836528870681
+    >>>
+    >>> np.min(a_2d)
+    0.070309529399658066
+    >>> np.max(a_2d)
+    9.9756294183753127
 
 
 #### mean
