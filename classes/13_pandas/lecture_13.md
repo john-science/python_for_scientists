@@ -104,18 +104,21 @@ Pandas also has a constructor to create a `Series` by given the data and the ind
 You can slice a `Series` object, much like you would a list or `np.array`:
 
     In [7]: x[:3]
+    Out [7]:
     a    0
     b    1
     c    2
     dtype: int64
 
     In [8]: x[2:]
+    Out [8]:
     c    2
     d    3
     e    4
     dtype: int64
 
     In [9]: x[::2]
+    Out [9]:
     a    0
     c    2
     e    4
@@ -124,6 +127,7 @@ You can slice a `Series` object, much like you would a list or `np.array`:
 But `Series` are also indexed, so unlike NumPy arrays, you can get elements by their index:
 
     In [10]: x[['b','c']]
+    Out [10]:
     b    1
     c    2
 
