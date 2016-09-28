@@ -135,6 +135,23 @@ What do you think this will return?
 
     In [11]: x[['a','d','c']][1:]
 
+**Working with NumPy**
+
+A `Series` will also work well with all NumPy functions, returning another `Series`:
+
+    In [12]: np.mean(x)
+    Out [12]:
+    2.0
+    In [13]: np.std(x)
+    Out [13]:
+    1.4142135623730951
+
+You can even convert a `Series` to an index-less NumPy array using `.values`:
+
+    In [14]: x.values
+    Out [14]:
+    array([0, 1, 2, 3, 4])
+
 
 **From a DataFrame**
 
