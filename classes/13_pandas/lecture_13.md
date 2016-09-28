@@ -181,7 +181,7 @@ A `Series` can also be extracted from multi-dimensional data structures like dat
 What's a `DataFrame`? Well, let's talk about that.
 
 
-## Data Frames and Data Sets
+## Data Frames
 
 A `DataFrame` is like a `Series`, but it can be multi-dimensional. Let's convert a `Series` into a `DataFrame` and look at the difference. First, we will import data as a `Series`:
 
@@ -250,7 +250,7 @@ In reality, you're less likely to build pandas dataframes from scratch and will 
     1  b  Y   2   5
     2  c  Z   3   4
 
-## Slicing a Data Set
+## Slicing a DataFrame
 
 #### Column Names in All Caps
 
@@ -379,12 +379,12 @@ If you have saved a subset of a dataframe and want to reset the indecies so they
     
 #### Dropping duplicate entries
 
-If you want to ensure the entries in your data set are unique:
+If you want to ensure the entries in your DataFrame are unique:
 
     df = df.drop_duplicates()         # return new
     df.drop_duplicates(inplace=True)  # no return (in place)
 
-Or if you just want to find all the unique combinations in your data set:
+Or if you just want to find all the unique combinations in your DataFrame:
 
     In [12]: df[['EYE_COLOR','HAIR_COLOR']].drop_duplicates()
     Out[12]: 
