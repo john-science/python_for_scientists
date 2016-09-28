@@ -210,6 +210,8 @@ In reality, you're less likely to build pandas dataframes from scratch and will 
 
 #### DataFrame from a dictionary of arrays
 
+First, we will fill a dictionary with rnadom numbers. There will be 7 keys (`x1`, `x2`, ...) and the values will be a list of 5 randomly-generated normal numbers. Then, we will convert this dictionary into a `DataFrame`.
+
     In [6]: d = dict(("x"+str(k+1), np.random.randn(7)) for k in range(5))  # 7 rows by 5 columns
     In [7]: df = pd.DataFrame(d)
     Out[7]: 
@@ -223,6 +225,8 @@ In reality, you're less likely to build pandas dataframes from scratch and will 
     6 -0.875649  2.542598  0.051351  0.252638  1.541355
 
 #### DataFrame from a numpy ndarray
+
+We can also convert a `np.array` to a `DataFrame`. In the example below we convert a 7x5 `np.array` to `DataFrame`:
 
     In [8]: d = np.random.rand(7, 5)  # 7 rows by 5 columns
     In [9]: df = pd.DataFrame(d)
@@ -238,14 +242,16 @@ In reality, you're less likely to build pandas dataframes from scratch and will 
     
 #### DataFrame from a dict of series objects
 
-    In [1]: l1 = ['a', 'b', 'c']  # list 1
-    In [2]: l2 = ['X', 'Y', 'Z']  # list 2
-    In [3]: l3 = [1, 2, 3]        # list 3
-    In [4]: l4 = [6, 5, 4]        # list 4
-    In [5]: d = {'l1': pd.Series(l1), 'l2': pd.Series(l2), 'l3': pd.Series(l3), 'l4': pd.Series(l4)}
+We might also want to create a `DataFrame` from a collection of `Series` objects. Typically, this will be done with a dictionary, so you can label the columns:
+
+    In [1]: r = pd.Series(['a', 'b', 'c'])
+    In [2]: s = pd.Series(['X', 'Y', 'Z'])
+    In [3]: t = pd.Series([1, 2, 3])
+    In [4]: u = pd.Series([6, 5, 4])
+    In [5]: d = {'r': r, 's': s, 't': t, 'u': u}
     In [6]: pd.DataFrame(d)
     Out[6]: 
-      l1 l2  l3  l4
+       r  s   t   u
     0  a  X   1   6
     1  b  Y   2   5
     2  c  Z   3   4
@@ -265,10 +271,10 @@ But if your input file has column headers with lots of punctuation or other craz
 
     In [2]: def slugify(s):
                 valid = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ_0123456789'
-                return ''.join([c for c in s.lower().replace(' ', '_') if c in valid])
+                return ''.join([c for c in s.upper().replace(' ', '_') if c in valid])
 
     In [3]: slugify('MY Profit!!!')
-    Out[3]: 'my_profit'
+    Out[3]: 'MY_PROFIT'
 
 The column names are kept in the data frame's `.columns` attribute:
 
