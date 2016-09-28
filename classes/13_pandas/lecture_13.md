@@ -68,7 +68,9 @@ For more information on reading in other data formats (Excel spreadsheets, SQL d
 
 ## Series
 
-Though the focus of this lecture will mainly be on pandas `DataFrame`, knowing a bit about pandas `Series` is useful. A `Series` is a one-dimensional array of data with labels (indices). A `Series` can be created using a dictionary or a list.
+Though the focus of this lecture will mainly be on pandas `DataFrame`, knowing a bit about pandas `Series` is useful. A `Series` is a one-dimensional array of labeled data.
+
+There are a lot of ways to create a `Series`.
 
 **From a dictionary**
 
@@ -89,7 +91,49 @@ Though the focus of this lecture will mainly be on pandas `DataFrame`, knowing a
     1    B
     2    C
     dtype: object
-    
+
+**From the constructor**
+
+Pandas also has a constructor to create a `Series` by given the data and the indexes directly:
+
+    In [5]: import numpy as np
+    In [6]: x = pd.Series(np.arange(5), index=('a','b','c','d','e'))
+
+**Using the Series**
+
+You can slice a `Series` object, much like you would a list or `np.array`:
+
+    In [7]: x[:3]
+    a    0
+    b    1
+    c    2
+    dtype: int64
+
+    In [8]: x[2:]
+    c    2
+    d    3
+    e    4
+    dtype: int64
+
+    In [9]: x[::2]
+    a    0
+    c    2
+    e    4
+    dtype: int64
+
+But `Series` are also indexed, so unlike NumPy arrays, you can get elements by their index:
+
+    In [10]: x[['b','c']]
+    b    1
+    c    2
+
+What do you think this will return?
+
+    In [11]: x[['a','d','c']][1:]
+
+
+**From a DataFrame**
+
 A `Series` can also be extracted from multi-dimensional data structures like dataframes.
 
     In [5]: df.LAST_NAME
@@ -112,6 +156,9 @@ A `Series` can also be extracted from multi-dimensional data structures like dat
 
     In [6]: type(df.LAST_NAME)
     Out[6]: pandas.core.series.Series
+
+What's a `DataFrame`? Well, let's talk about that.
+
 
 ## Data Frames and Data Sets
 
