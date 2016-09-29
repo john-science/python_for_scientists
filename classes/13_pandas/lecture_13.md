@@ -153,37 +153,9 @@ You can even convert a `Series` to an index-less NumPy array using `.values`:
     array([0, 1, 2, 3, 4])
 
 
-**From a DataFrame**
-
-A `Series` can also be extracted from multi-dimensional data structures like dataframes.
-
-    In [5]: df.LAST_NAME
-    Out[5]: 
-    0        Jones
-    1      Roberts
-    2      Johnson
-    3        Adams
-    4     Phillips
-    5        Moore
-    6       Potter
-    7        Jones
-    8        Smith
-    9        Smith
-    10       Smith
-    11      Rabbit
-    12      Bryant
-    13    Anderson
-    Name: LAST_NAME, dtype: object
-
-    In [6]: type(df.LAST_NAME)
-    Out[6]: pandas.core.series.Series
-
-What's a `DataFrame`? Well, let's talk about that.
-
-
 ## Data Frames
 
-A `DataFrame` is like a `Series`, but it can be multi-dimensional. Let's convert a `Series` into a `DataFrame` and look at the difference. First, we will import data as a `Series`:
+A `DataFrame` is like a `Series`, but it can be multi-dimensional. Let's convert a `Series` into a `DataFrame` and look at the difference. First, we will ingest data as a `Series`:
 
     In [4]: one = ['A', 'B', 'C']
     
@@ -194,7 +166,7 @@ A `DataFrame` is like a `Series`, but it can be multi-dimensional. Let's convert
     2    C
     dtype: object
 
-Now we will import it as a `DataFrame`:
+And then convert it to a `DataFrame`:
 
     In [6]: pd.DataFrame(one)
 
@@ -204,13 +176,13 @@ Now we will import it as a `DataFrame`:
     1  B
     2  C
 
-Notice the column header `0` above the column of data? Other than that, importing one-dimensional data as a dataframe is pretty much the same as importing it as a series. Feel free to rename that column of data. However, importing the data as a dataframe opens the door for other options, like appending the data column-wise or row-wise to another dataframe, or using it as a table for performing merges (the `pandas` equivalent to an SQL join).
+Notice the column header `0` above the column of data? Other than that, creating a one-dimensional data as a dataframe is pretty much the same as creating as a series. Feel free to rename that column of data. However, importing the data as a dataframe opens the door for other options, like appending the data column-wise or row-wise to another dataframe, or using it as a table for performing merges (the `pandas` equivalent to an SQL join).
 
-In reality, you're less likely to build pandas dataframes from scratch and will more likely import existing data using one of the `read_***` functions. Let's try some of those.
+In reality, you're less likely to build pandas dataframes from scratch and will more likely create them using one of the `read_***` functions. Let's try some of those.
 
 #### DataFrame from a dictionary of arrays
 
-First, we will fill a dictionary with rnadom numbers. There will be 7 keys (`x1`, `x2`, ...) and the values will be a list of 5 randomly-generated normal numbers. Then, we will convert this dictionary into a `DataFrame`.
+First, we will fill a dictionary with random numbers. There will be 7 keys (`x1`, `x2`, ...) and the values will be a list of 5 randomly-generated normal numbers. Then, we will convert this dictionary into a `DataFrame`.
 
     In [6]: d = dict(("x"+str(k+1), np.random.randn(7)) for k in range(5))  # 7 rows by 5 columns
     In [7]: df = pd.DataFrame(d)
@@ -224,7 +196,7 @@ First, we will fill a dictionary with rnadom numbers. There will be 7 keys (`x1`
     5 -0.274422 -0.315801  1.312623  3.297479  1.335182
     6 -0.875649  2.542598  0.051351  0.252638  1.541355
 
-#### DataFrame from a numpy ndarray
+#### DataFrame from a NumPy array
 
 We can also convert a `np.array` to a `DataFrame`. In the example below we convert a 7x5 `np.array` to `DataFrame`:
 
@@ -373,7 +345,7 @@ This is called *chained indexing*: the rows are sliced first, then the columns. 
 
 There are two ways to drop data from a dataframe. Either you want the remaining data returned separately `(inplace=False)` or you don't `(inplace=True)`:
 
-    df = df.drop(['HAIR_COLOR','EYE_COLOR'], axis=1)           # return new
+    df = df.drop(['HAIR_COLOR','EYE_COLOR'], axis=1)           # return new DataFrame
     df.drop(['HAIR_COLOR','EYE_COLOR'], axis=1, inplace=True)  # no return (in place)
     
 #### Resetting indices
@@ -464,7 +436,7 @@ Or you can query for null values in a particular column:
 
 #### Simple Queries
 
-A query starts with creating a mask on your dataframe. The mask sets a True/False value for each row/column, based on some predicate. Here is a simple example predicate:
+A query starts with creating a mask on your `DataFrame`. The mask sets a True/False value for each row/column, based on some predicate. Here is a simple example predicate:
 
     In [16]: df.AGE > 50
     Out[16]: 
