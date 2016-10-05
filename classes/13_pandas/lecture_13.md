@@ -343,26 +343,26 @@ This is called *chained indexing*: the rows are sliced first, then the columns. 
 
 #### Dropping columns
 
-There are two ways to drop data from a dataframe. Either you want the remaining data returned separately `(inplace=False)` or you don't `(inplace=True)`:
+There are two ways to drop data from a `DataFrame`. Either you want the remaining data returned separately `(inplace=False)` or you don't `(inplace=True)`:
 
     df = df.drop(['HAIR_COLOR','EYE_COLOR'], axis=1)           # return new DataFrame
     df.drop(['HAIR_COLOR','EYE_COLOR'], axis=1, inplace=True)  # no return (in place)
     
 #### Resetting indices
 
-If you have saved a subset of a dataframe and want to reset the indecies so they are sequential again:
+If you have saved a subset of a `DataFrame` and want to reset the indecies so they are sequential again:
 
     df = df.reset_index(drop=True)           # return new
     df.reset_index(drop=True, inplace=True)  # no return (in place)
     
 #### Dropping duplicate entries
 
-If you want to ensure the entries in your DataFrame are unique:
+If you want to ensure the entries in your `DataFrame` are unique:
 
     df = df.drop_duplicates()         # return new
     df.drop_duplicates(inplace=True)  # no return (in place)
 
-Or if you just want to find all the unique combinations in your DataFrame:
+Or if you just want to find all the unique combinations in your `DataFrame`:
 
     In [12]: df[['EYE_COLOR','HAIR_COLOR']].drop_duplicates()
     Out[12]: 
@@ -394,7 +394,7 @@ Pandas allows you to query a DataFrame, much like you might query a database. Be
 
 #### Null Data
 
-Here is an example dataframe:
+To look at how to deal with Null data in Pandas, we will start with this example `DataFrame`:
 
     In [3]: df
     Out[3]: 
@@ -465,7 +465,7 @@ You can use this as a mask in your dataset:
     5     Thomas     Moore      M   60      brown      blue
     8    Michael     Smith    NaN   58      brown     brown
 
-Here's another smiple query based on a predicate/mask:
+Here's another simple query based on a predicate/mask:
 
     In [18]: df[df.LAST_NAME == "Jones"]
     Out[18]: 
@@ -544,7 +544,7 @@ But, we probably want to change "brown" to "brunette":
     
 #### Complex Queries
 
-If you want more than one predicate in your query, you can string them using the normal boolean logic operators.
+If you want more than one predicate in your query, you can string them using the normal boolean operators.
 
 If we want to identify male people over 30:
 
@@ -557,7 +557,7 @@ If we want to identify male people over 30:
     5      Thomas     Moore      M   60      brown      blue
     10    Michael     Smith      M   37      black     hazel
 
-Or perhaps we want blondes under the age of 40 or brunettes over the age of 50:
+Or perhaps we want to identify blondes under the age of 40 or brunettes over the age of 50:
 
     In [33]: df[((df.HAIR_COLOR == 'blonde') & (df.AGE < 40)) | ((df.HAIR_COLOR == 'brown') & (df.AGE > 50))]
     Out[33]: 
@@ -571,7 +571,7 @@ Queries can be as complex as you need. But remember that more complicated querie
     
 #### Apply a Lambda Function to a Query
 
-If you query predicates become sufficiently complicated, you might want to replace them with a function that returns `True`/`False` for each record. To do this, use `.apply()` with a lambda function. For example, let's select all the clients whose first name begins with "M":
+If your query predicates become sufficiently complicated, you might want to replace them with a function that returns `True`/`False` for each record. To do this, use `.apply()` with a lambda function. For example, let's select all the clients whose first name begins with "M":
 
     In [8]: df[df.apply(lambda row: row['FIRST_NAME'][0], axis=1) == 'M']
     Out[8]: 
@@ -797,7 +797,7 @@ The pandas `DataFrame.sort()` allows you to sort a DataFrame object by one or mo
     10    Michael     Smith      M   37      black     hazel         4
     8     Michael     Smith      M   58   brunette     brown         1
 
-Notice the order of priority in the sorting here. The three Smiths are last alphabetically for last names. But the two Michael Smiths come after Jennifer Smith, because of their first name. And finally, one Michael Smith comes after the other due to their ages.
+Notice the order of priority in the sorting. The three Smiths are last alphabetically for last names. But the two Michael Smiths come after Jennifer Smith, because of their first name. And finally, one Michael Smith comes after the other due to their ages.
 
 #### append
 
