@@ -4,9 +4,9 @@ All the material in this course so far was just too define "the rules" of Python
 
 ## Writting Better Code
 
-The most important thing is that your code works. Obviously. But some software is better than others. Good code creates *less* work for you, not *more*.
+The most important thing is that your code works. Obviously. But some software is better than others. Good code creates *less* work for people, not *more*.
 
-**Good code is easy to use, easy to understand, and easy to modify.**
+> Good code is easy to use, easy to understand, and easy to modify.
 
 In this lecture we will introduce the methods and tools needed to write better code.
 
@@ -29,7 +29,7 @@ What does it do? This method has a subtle bug, can you find it?
 Here is the exact same function, but following the [PEP8 Style Guide](https://www.python.org/dev/peps/pep-0008/):
 
     def fibonacci(n):
-        '''Returns the n-th term in the Fibonacci Sequence'''
+        ''' Returns the n-th term in the Fibonacci Sequence '''
         if n == 0:
             return 0
         elif n == 1:
@@ -47,7 +47,7 @@ If you have a lot of code that is not PEP8-compliant, there are tools out there 
 
 > You are what you comment.
 
-If someone else has to look at your code, and there are no comments, you are wasting their time. They might spend minutes or hours trying to figure out a detail they could have understood in a second if there were a comment.
+If someone else has to look at your code, and there are no comments, you are wasting their time. They might spend minutes or even hours trying to figure out a detail they could have understood in a split-second from a comment.
 
 Code that isn't commented well is destined to be thrown away. But first people might get angry with you.
 
@@ -90,7 +90,7 @@ In the case above, `TypeError` subclasses `Error` which subclasses `Exception`.
 We could fix the `fibonacci` function above by adding a raising a single `Exception`:
 
     def fibonacci(n):
-        '''Returns the n-th term in the Fibonacci Sequence'''
+        ''' Returns the n-th term in the Fibonacci Sequence '''
         if n < 0:
             raise Exception('fibonacci only accepts non-negative inputs')
         
@@ -125,7 +125,7 @@ Let's take another look at that `except` statement above. It is pretty vague. Wh
 
 In the final `except` statement, we can catch any type of `Exception` in case something unexpected happens. In this case it is handy to print the `Exception` and code itself, to provide more information.
 
-Here is a full list of Python's built-in Exceptions: [Python 2](https://docs.python.org/2/library/exceptions.html) / [Python 3](https://docs.python.org/3/library/exceptions.html).
+Here is a full list of Python's built-in Exceptions: [Python 2](https://docs.python.org/2/library/exceptions.html) / [Python 3](https://docs.python.org/3/library/exceptions.html). I refer back to this list a lot.
 
 #### Creating your own exceptions
 
