@@ -178,7 +178,7 @@ And then convert it to a `DataFrame`:
 
 Notice the column header `0` above the column of data? Other than that, creating a one-dimensional data as a dataframe is pretty much the same as creating as a series. Feel free to rename that column of data. However, importing the data as a dataframe opens the door for other options, like appending the data column-wise or row-wise to another dataframe, or using it as a table for performing merges (the `pandas` equivalent to an SQL join).
 
-In reality, you're less likely to build pandas dataframes from scratch and will more likely create them using one of the `read_***` functions. Let's try some of those.
+Let's look at some other ways you might want to create a `DataFrame`.
 
 #### DataFrame from a dictionary of arrays
 
@@ -264,7 +264,27 @@ Or, if need be:
 
 #### Select Data by Column
 
-Now that we know our column names, we can start selecting data from our `DataFrame` object. First, let's select by column:
+Now that we know our column names, we can start selecting data from our `DataFrame` object. First, let's select by a single column by name:
+
+    In [3]: df['FIRST_NAME']
+    Out[3]: 
+       FIRST_NAME
+    0    Jennifer
+    1       Jaime
+    2     Michael
+    3        Mary
+    4      Robert
+    5      Thomas
+    6     Natalie
+    7      Brenda
+    8     Michael
+    9    Jennifer
+    10    Michael
+    11    Jessica
+    12      Molly
+    13      Jaime
+
+Now let's select multiple columns by name:
 
     In [4]: cols = ['FIRST_NAME', 'LAST_NAME']
     In [5]: df[col]
@@ -317,7 +337,7 @@ Selecting dataframe data by row looks a lot like slicing a standard Python list:
 
 #### Select Data by Row and Column
 
-The `loc` function is my preferred tool for row and column-wise slicing of dataframes. The format for using `loc` is `df.loc[row_indexer, column_indexer]`. Below is a simple example for combining row and column slicing.
+The `loc` function is my preferred tool for row and column-wise slicing of dataframes. The format for using `loc` is `df.loc[row_indexer, column_indexer]`. Below we slice the `DataFrame` by row and by column to select just the data we want:
 
     In [6]: df.loc[3:8,['FIRST_NAME','AGE','EYE_COLOR']]
     Out[6]: 
@@ -330,6 +350,7 @@ The `loc` function is my preferred tool for row and column-wise slicing of dataf
     8    Michael   58     brown
 
 We'll cover more of the `loc` function when we discuss query-like data selecting.
+
 
 ## Returning a View Versus a Copy
 
