@@ -219,6 +219,20 @@ Another really useful tool is `choice`, which will select a random item from a `
     >>> choice(x)
     'think'
 
+#### shuffle
+
+Another tool that is helpful, particularly for statistical studies, is the ability to randomly change the order of the elements of a list with `shuffle`:
+
+    >>> from random import shuffle
+    >>> lst = ['a', 'b', 'c', 'd', 'e']
+    >>> shuffle(lst)
+    >>> lst
+    ['b', 'e', 'a', 'c', 'd']
+    >>> shuffle(lst)
+    >>> lst
+    ['d', 'a', 'e', 'b', 'c']
+
+
 ## timeit
 
 One of people's main complaints about Python as a language is that it isn't as fast as C or Fortran. But it can be fast. You just have to *try* to optimize your code for speed. If you are trying to make a function faster, you will want to test it out and see if your new version is indeed faster than your old one. Python's `timeit` library is an easy way to time your code without having to change it. For instance:
