@@ -366,7 +366,7 @@ This is called *chained indexing*: the rows are sliced first, then the columns. 
 
 There are two ways to drop data from a `DataFrame`. Either you want the remaining data returned separately `(inplace=False)` or you don't `(inplace=True)`:
 
-    df = df.drop(['HAIR_COLOR','EYE_COLOR'], axis=1)           # return new DataFrame
+    df2 = df.drop(['HAIR_COLOR','EYE_COLOR'], axis=1)           # return new DataFrame
     df.drop(['HAIR_COLOR','EYE_COLOR'], axis=1, inplace=True)  # no return (in place)
     
 #### Resetting indices
@@ -380,7 +380,7 @@ If you have saved a subset of a `DataFrame` and want to reset the indecies so th
 
 If you want to ensure the entries in your `DataFrame` are unique:
 
-    df = df.drop_duplicates()         # return new
+    df2 = df.drop_duplicates()         # return new
     df.drop_duplicates(inplace=True)  # no return (in place)
 
 Or if you just want to find all the unique combinations in your `DataFrame`:
@@ -411,7 +411,7 @@ You can also do all of the above on a single column of a dataframe:
 
 ## Querying Data
 
-Pandas allows you to query a DataFrame, much like you might query a database. Below are some basic queries.
+Pandas allows you to query a `DataFrame`, much like you might query a database. Below are some basic queries.
 
 #### Null Data
 
@@ -455,6 +455,8 @@ Or you can query for null values in a particular column:
     3        Mary       NaN      F   42     blonde       NaN
     11    Jessica       NaN      F   19      black      blue
 
+Pandas uses the "Not a Number" (`NaN`) Python code to represent data that is missing. This is probably good to know, though I've never had any problems confusing the two. Pandas makes dealing with missing data pretty seamless.
+
 #### Simple Queries
 
 A query starts with creating a mask on your `DataFrame`. The mask sets a True/False value for each row/column, based on some predicate. Here is a simple example predicate:
@@ -486,7 +488,9 @@ You can use this as a mask in your dataset:
     5     Thomas     Moore      M   60      brown      blue
     8    Michael     Smith    NaN   58      brown     brown
 
-Here's another simple query based on a predicate/mask:
+So, in database terms, we've done a selection query (looking for people older than 50). All selection queries in Pandas work the same way: by using a mask.
+
+Here's another simple query based on a predicate/mask query:
 
     In [18]: df[df.LAST_NAME == "Jones"]
     Out[18]: 
@@ -528,7 +532,7 @@ Alternately, you can get the inverse selection with `~`.
 
 #### Setting Values
 
-To set values in a DataFrame, we will use the `.loc()` method, for the same reasons that it was easy to pull/slice data from a DataFrame using `.loc()`.
+To set values in a `DataFrame`, we will use the `.loc()` method, for the same reasons that it was easy to pull/slice data from a DataFrame using `.loc()`.
 
 As before, we could find all the people with brown hair by doing:
 
@@ -542,7 +546,7 @@ As before, we could find all the people with brown hair by doing:
     13    brown
     Name: HAIR_COLOR, dtype: object
     
-But, we probably want to change "brown" to "brunette":
+But, let's say we want to change any label that says "brown" to "brunette":
 
     In [73]: df.loc[df.HAIR_COLOR == 'brown', 'HAIR_COLOR'] = "brunette"
     In [74]: df
@@ -648,7 +652,7 @@ When the Python interpretter converts the text you write into executable bytecod
 
 `merge` is the pandas equivalent to a SQL join. Like SQL joins, a `merge` can be "left", "right", "inner", or "outer".
 
-Here is a simple example of a `merge`:
+First, we need some data to merge into our client `DataFrame` above:
 
     In [108]: genders = pd.DataFrame({'GENDER': ['M', 'F'], 'GENDER_LONG': ['male', 'female']})
     In [109]: genders
@@ -656,6 +660,8 @@ Here is a simple example of a `merge`:
       GENDER GENDER_LONG
     0      M        male
     1      F      female
+
+Okay, and here we `merge` the client `DataFrame` with our new `genders` `DataFrame` to add information to the former:
 
     In [110]: pd.merge(left=df, right=genders, how='left', on=['GENDER'])
     Out[110]: 
