@@ -72,6 +72,7 @@
         while current <= end:
             dow = current.strftime('%A')
             dows[dow] += 1
+            current += timedelta(days=1)
         
         return dows
 
