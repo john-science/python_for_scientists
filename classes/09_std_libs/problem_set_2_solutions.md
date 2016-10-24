@@ -33,7 +33,7 @@
 
 #### 8. Remove the `delete_me` directory.
 
-    >>> os.remove('delete_me')
+    >>> os.rmdir('delete_me')
 
 
 ## glob
