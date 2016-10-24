@@ -37,17 +37,23 @@ And I could get the full path to where I am in the directory tree:
     >>> os.getcwd()
     '/home/thejollysin/python_class/class11_batteries_included_2/learning_os'
 
-If I want to delete that `learning_os` directory, I would back out using `chdir` and do a `remove`:
+If I want to delete that `learning_os` directory, I would back out using `chdir` and do a `rmdir`:
 
     >>> os.chdir('../')
-    >>> os.remove('learning_os')
+    >>> os.rmdir('learning_os')
+
+**NOTE**: You can use `os.remove()` to remove a file. The `rmdir` command is just for folders/directories.
+
+If you want to move a file or folder, the `os` library considers this to be the same as renaming it:
+
+    >>> os.rename('class11_batteries_included_2', 'class11_batteries_included_3')
 
 Same thing for the `class11_batteries_included_2` directory and the Python class directory:
 
     >>> os.chdir('../')
-    >>> os.remove('class11_batteries_included_2')
+    >>> os.rmdir('class11_batteries_included_3')
     >>> os.chdir('../')
-    >>> os.remove('python_class')
+    >>> os.rmdir('python_class')
 
 If you are familiar with basic computer admin, you will also find other useful tools in the `os` package. You can get and set environment variables (`getenv` & `putenv`), you can create and remove softlinks between files and folder (`link` & `unlink`), and a lot more.
 
