@@ -330,7 +330,7 @@ Finally, we can plot a histogram of the 100 grades above, and use the percentile
 
 ## Interpolation
 
-Use `stats.interp1d` if you have a 1D series of data points and you want to build an interpolating function:
+Use `stats.interp1d` if you have a 1D series of data points and you want to build a spline interpolating function:
 
     >>> from numpy import sin, pi
     >>> x = [float(i) for i in range(10)]
@@ -352,7 +352,7 @@ You might remember from trignometry, `sin(pi/2) = 1.0` and `sin(pi) = 0.0`. So w
 
 ![Interpolating Sine](../../resources/sin_two_fits.png)
 
-There are several other `kind` options to help us build an interpolated line:
+There are several other `kind` options to help us build spline interpolatations:
 
  * linear
  * nearest
