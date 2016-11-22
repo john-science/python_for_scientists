@@ -8,27 +8,26 @@ Most databases are [servers](https://en.wikipedia.org/wiki/Server_%28computing%2
 
 ## Creating a Database
 
-To start off with, we want to create a database and probably a table with some data in it. To make things easier, the first time through we will do this by directly signing into your MySQL Server from the command line (not using Python). But first, let's save this text off into a plain text file called `menu.sql`:
+To start off with, we want to create a database and probably a table with some data in it. To make things easier, the first time through we will do this by directly signing into your MySQL Server from the command line (not using Python). But first, let's save this text off into a plain text file called `secret_agents_mysql.sql`:
 
-    CREATE DATABASE `menu`;
-    USE menu;
+    CREATE DATABASE `secret_agents`;
+    USE secret_agents;
 
-    DROP TABLE IF EXISTS `fish`;
+    DROP TABLE IF EXISTS `agents`;
     SET @saved_cs_client     = @@character_set_client;
     SET character_set_client = utf8;
 
-    CREATE TABLE `fish` (
-        `ID` int(11) NOT NULL auto_increment,
-        `NAME` varchar(30) NOT NULL default '',
-        `PRICE` decimal(5,2) NOT NULL default '0.00',
-        PRIMARY KEY (`ID`)
+    CREATE TABLE `agents` (
+        `agentID` int(11) NOT NULL auto_increment,
+        `code_name` varchar(3) NOT NULL default '007',
+        `name` varchar(30) NOT NULL default 'James Bond',
+        PRIMARY KEY (`agentID`)
     ) ENGINE=MyISAM AUTO_INCREMENT=27 DEFAULT
     CHARSET=latin1;
     SET character_set_client = @saved_cs_client;
 
-    LOCK TABLES `fish` WRITE;
-    INSERT INTO `fish` VALUES
-    (1,'catfish','8.50'),(2,'catfish','8.50'),(3,'tuna','8.00'),(4,'catfish','5.00'),(5,'bass','6.75'),(6,'haddock','6.50'),(7,'salmon','9.50'),(8,'trout','6.00'),(9,'tuna','7.50'),(10,'yellowfin tuna','12.00'),(11,'yellowfin tuna','13.00'),(12,'tuna','7.50');
+    LOCK TABLES `agents` WRITE;
+    INSERT INTO `agents` VALUES (1,'001','Edward Donne');
     UNLOCK TABLES;
 
 Now we log into the MySQL Server:
@@ -37,7 +36,7 @@ Now we log into the MySQL Server:
 
 And execute our script:
 
-    source menu.sql
+    source secret_agents_mysql.sql
 
 Before we exit out of the the MySQL command line interface and start using Python, try looking around a bit and seeing what is on your Server:
 
@@ -46,41 +45,37 @@ Before we exit out of the the MySQL command line interface and start using Pytho
     | Database           |
     +--------------------+
     | information_schema |
-    | menu               |
+    | secret_agents      |
     | mysql              |
     | performance_schema |
     +--------------------+
-    5 rows in set (0.01 sec)
+    5 rows in set (0.00 sec)
+
+    mysql> USE secret_agents;
 
     mysql> SHOW TABLES;
-    +----------------+
-    | Tables_in_menu |
-    +----------------+
-    | fish           |
-    +----------------+
+    +-------------------------+
+    | Tables_in_secret_agents |
+    +-------------------------+
+    | agents                  |
+    +-------------------------+
     1 row in set (0.01 sec)
 
-    mysql> SELECT * from fish LIMIT 1;
-    +----+---------+-------+
-    | ID | NAME    | PRICE |
-    +----+---------+-------+
-    |  1 | catfish |  8.50 |
-    +----+---------+-------+
+    mysql> SELECT * from agents;
+    +---------+-----------+--------------+
+    | agentID | code_name | name         |
+    +---------+-----------+--------------+
+    |       1 | 001       | Edward Donne |
+    +---------+-----------+--------------+
     1 row in set (0.00 sec)
 
-    mysql> SELECT NAME,count(*) from fish GROUP BY NAME;
-    +----------------+----------+
-    | NAME           | count(*) |
-    +----------------+----------+
-    | bass           |        1 |
-    | catfish        |        3 |
-    | haddock        |        1 |
-    | salmon         |        1 |
-    | trout          |        1 |
-    | tuna           |        3 |
-    | yellowfin tuna |        2 |
-    +----------------+----------+
-    7 rows in set (0.00 sec)
+    mysql> SELECT code_name,name from agents LIMIT 1;
+    +-----------+--------------+
+    | code_name | name         |
+    +-----------+--------------+
+    | 001       | Edward Donne |
+    +-----------+--------------+
+    1 row in set (0.00 sec)
 
 When you're done looking around, exit the MySQL command line. From here on out, we will be working in the Python interpreter (or in Python scripts).
 
