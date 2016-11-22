@@ -8,6 +8,8 @@ Most databases are [servers](https://en.wikipedia.org/wiki/Server_%28computing%2
 
 ## Creating a Database
 
+> TODO: Remove this section and create DB from Python.
+
 To start off with, we want to create a database and probably a table with some data in it. To make things easier, the first time through we will do this by directly signing into your MySQL Server from the command line (not using Python). But first, let's save this text off into a plain text file called `secret_agents_mysql.sql`:
 
     CREATE DATABASE `secret_agents`;
@@ -79,37 +81,41 @@ Before we exit out of the the MySQL command line interface and start using Pytho
 
 When you're done looking around, exit the MySQL command line. From here on out, we will be working in the Python interpreter (or in Python scripts).
 
-## Connecting to Databases
 
-To create a connection to our new `menu` database, we need to use our credentials:
+## Connecting to Database Servers
+
+There are many books and entire courses covering the topic of databases. It is very important to understand that this is just a light introduction. The purpose of this lecture is not to teach database theory, it is only to explain how to use a single Python database library.
+
+MySQL is a [relational database](https://en.wikipedia.org/wiki/Relational_database). Broadly speaking, that means the data is arranged into tables by rows (records) and columns (attributes).
+
+![secret agent database model](../../resources/secret_agent_db.png)
+
+In MySQL, to create a connection to our new `menu` database, we need to use our credentials:
 
     import MySQLdb
-    con = MySQLdb.connect(host='localhost', user='my_user_name', passwd='my_secret', db='menu')
+    con = MySQLdb.connect(host='localhost', user='my_user_name', passwd='my_secret')
 
 Note that you don't actually need to write `host=` or `user=`, these four items are always in the same order. For now, we will write them explicitly, until they become more familiar.
 
-The "connection" above allows us to talk to a particular database on a particular MySQL Server, but to execute any commands against that server, we will need a cursor:
-
-    cursor = con.cursor()
-
-There are several ways to interact with the database through this cursor, but most of them will require a final execution step:
-
-    cursor.execute()
-
-Finally, when we are done with our database, we need to remember to close the connection:
+At the end of your work, it is important to close your database connection:
 
     con.close()
 
-## CRUD
+## Interacting with the Database
 
-SQL database applications are called [relational databases](https://en.wikipedia.org/wiki/Relational_database) because they store data in tables and use the four basic functions to deal with the data in their persistent storage:
+Whether you want to create, modify, or retrieve information from a `MySQL` table, the process will always be the same:
 
-    Operation | SQL
-    :--- | :---
-    Create | INSERT
-    Read (Retrieve) | SELECT
-    Update (Modify) | UPDATE
-    Delete (Destroy) | DELETE
+ * create a cursor
+ * execute MySQL code
+ * commit MySQL code
+
+## Creating Databases
+
+> TODO
+
+### Creating Tables (CREATE)
+
+> TODO
 
 ## MySQL Queries
 
