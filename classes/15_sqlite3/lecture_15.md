@@ -6,11 +6,13 @@ Most databases are [servers](https://en.wikipedia.org/wiki/Server_%28computing%2
 
 ## Creating and Connecting to Databases
 
-There are many books and entire courses covering the topic of databases. So it is important to know this is just a light introduction. SQLite is a [relational database](https://en.wikipedia.org/wiki/Relational_database). That is, inside the database we have tables of data organized by rows (records) and columns (attributes).
+There are many books and entire courses covering the topic of databases. It is very important to understand that this is just a light introduction. The purpose of this lecture is not to teach database theory, it is only to explain how to use a single Python database library.
+
+SQLite is a [relational database](https://en.wikipedia.org/wiki/Relational_database). Broadly speaking, that means the data is arranged into tables by rows (records) and columns (attributes).
 
 ![secret agent database model](../../resources/secret_agent_db.png)
 
-We will use the same command to open an existing database that we would use to create a new database:
+In SQLite, we will use the same command to open an existing database that we would to create a new database:
 
     import sqlite3
     con = sqlite3.connect('secret_agents.db')
@@ -27,9 +29,9 @@ Whether you want to create, modify, or retrieve information from a `sqlite3` tab
  * execute SQLite code
  * commit SQLite code
 
-#### Creating Tables (CREATE)
+### Creating Tables (CREATE)
 
-For instance, if I wanted to create a table `agents` I might do:
+For instance, if I wanted to create the `agents` table above I might do:
 
     cursor = con.cursor()
     cursor.execute('''
@@ -39,7 +41,7 @@ For instance, if I wanted to create a table `agents` I might do:
 
 First notice that a cursor was created using `.cursor()`, we created SQLite code using `.execute()`, and we ran the code against the database using `.commit()`.
 
-You may also noticed something very strange here. What is all this "CREATE TABLE ..." gobbly gook? That's not Python code! Good observation; that is not Python code. When we interact with the database, we do so with a variant of the popular SQL database langauge called SQLite. It might seem unfair that now you have to learn a whole new programming language. But there's nothing for it. If you want to deal with databases, you need to learn to talk to them on their level.
+You may also noticed something very strange. What is all this `"CREATE TABLE ..."` gobbly gook? That's not Python code! Good observation; that is not Python code. When we interact with the database, we do so with a variant of the popular SQL database langauge called SQLite. It might seem unfair that now you have to learn a whole new programming language. But there's nothing for it. If you want to deal with databases, you need to learn to talk to them on their own level.
 
 What the above SQLite code did is pretty simple, it created a new table (using `CREATE TABLE` with three columns:
 
@@ -49,7 +51,7 @@ What the above SQLite code did is pretty simple, it created a new table (using `
 
 These columns all have types (`INTEGER`, `FLOAT`, `TEXT`, `BOOL`). And one of them is defined as the `PRIMARY KEY`. A key is a unique identifier in a table. You *can* have a table without a key column, but it's good practice to include them unless you have a very good reason not to.
 
-#### Inserting Data (INSERT)
+### Inserting Data (INSERT)
 
 Right now the table is empty, so let's add values using `INSERT`. There's obviously one agent we can add:
 
@@ -75,9 +77,9 @@ But we wouldn't be much of an agency with only one agent, so let's create severa
 
 Notice here that we made several `.execute()` statements before doing the `.commit()`.
 
-#### Updating Tables (UPDATE)
+### Updating Tables (UPDATE)
 
-For this exercise, let's create another table that lists the status of all of our agents:
+For this exercise, let's create another table that lists the status of all of our agents (see the diagram above):
 
     cursor.execute('''
     CREATE TABLE status(agentID INTEGER PRIMARY KEY, status TEXT)
@@ -99,21 +101,21 @@ Now let's say one of our secret agents dies and we want to update their status. 
 
 Notice here we also used the SQLite keyword `WHERE`. This fun little piece of syntax allows us add a conditional case so we can set (or get) just certain fields in our table.
 
-#### Deleting Data (DELETE)
+### Deleting Data (DELETE)
 
 Let's say we notice a mistake in the database. In this case, we only have 8 agents but there is a ninth agent listed in the `status` database. Well, if enough time has passed, we won't be able to use `.rollback()`. But we can delete any database entry we want using the `DELETE` keyword.
 
     cursor.execute("DELETE FROM status WHERE agentID=9")
     con.commit()
 
-#### Querying Data (SELECT)
+### Querying Data (SELECT)
 
 Databases wouldn't be very helpful if we couldn't get information out of them. The most basic way to "query" data from a database is using the `SELECT` keyword. Let's use `SELECT` to "query" all of the active agent ids from the `status` table.
 
     cursor.execute('SELECT FROM status WHERE status="Active"')
     active_agent_ids = cursor.fetchall()
 
-There are a couple of things to notice here. First of all, we used `.fetchall()` instead of `.commit()`. This is because the command we are executing in the database is returning information. The values return are always in the form of tuples, where each column is an item in the tuple. In this case, `active_agent_ids` is a list of tuples.
+There are a couple of things to notice here. First of all, we used `.fetchall()` instead of `.commit()`. This is because the command we are executing in the database is returning information. The values returned are always in the form of tuples, where each column is an item in the tuple. In this case, `active_agent_ids` is a list of tuples.
 
 If we just wanted to get one value that met the conditional criteria of our query, we could use `.fetchone()` instead of `.fetchall()`:
 
@@ -122,7 +124,7 @@ If we just wanted to get one value that met the conditional criteria of our quer
     print(active_agent_id)
     # (1, "Active")
 
-#### Removing Tables (DROP)
+### Removing Tables (DROP)
 
 Sometimes we want to remove an entire table (not just a single entry like we did with `DELETE`). To do so, use `DROP`.
 
@@ -147,9 +149,17 @@ Well, we probably shouldn't save the home addresses of our secret agents. If som
 
 Done. Our agents don't exist.
 
-#### Joining Tables (JOIN)
+![exploits of a mom](https://imgs.xkcd.com/comics/exploits_of_a_mom.png)
 
-A [Join](https://en.wikipedia.org/wiki/Join_%28SQL%29) is a special kind of query. For instance, earlier we got a list of all the agents who are currently active. That worked fine, but we didn't get agent names, just their IDs. That's inconvenient, but we could do a slightly more complicated `SELECT` query to get their names from the other table:
+### Joining Tables (JOIN)
+
+A [Join](https://en.wikipedia.org/wiki/Join_%28SQL%29) is a special kind of query. As the name suggests, a join query returns a combination of two tables. As you can imagine, there are a lot of ways you might want to combine two tables of data. You probably want to match at least one column in both tables, and then based on this match, return some set of columns from both tables.
+
+The SQL language defines three types of joins: inner, cross, and outer.
+
+#### Inner Join (JOIN)
+
+Earlier, we created a list of all the agents who are currently active. That query worked fine, but it only returned the agent IDs, not there names. That's inconvenient, but we could do a slightly more complicated `SELECT` query to get their names from the other table:
 
     cursor.execute('SELECT code_name, name FROM agents, status WHERE ' + 
                    'agents.agentID = status.agentID and status.status="Active"')
@@ -162,14 +172,47 @@ Which returns:
      (u'003', u'Jack Mason'), (u'004', u'Scarlett Papava'),
      (u'005', u'Stuart Thomas'), (u'008', u'Bill')]
 
-(Notice the use of `and` to make more complicated conditional statements.) The key to the above query was that we asked for records where fields in two different tables matched: `agents.agentID = status.agentID`. This turns out to be such a powerful idea that it has it's own name, an **INNER JOIN**. And SQLite has a special keyword for this, `JOIN`, which we can use to re-write the query:
+Perfect, now we see all seven active agents. But notice the use of the `and` keyword above, it allowed us to make a much more complicated query. The key is that it allowed us to query two different tables, and match a single column in each using: `agents.agentID = status.agentID`. These kinds of queries are so common, that SQL / SQLite3 defines a special keyword to help you write them faster: `JOIN`. Using our new keyword, we would write the above query as:
 
     cursor.execute('SELECT code_name, name FROM agents JOIN status ON ' +
                    'agents.agentID = status.agentID WHERE status.status="Active"')
     active_agents = cursor.fetchall()
     print(active_agents)
 
-There are several other kinds of joins worth learning about. An "Outer Join", for instance, is one where records from one table are kept, even if they don't met the joining criteria
+We could have written `INNER JOIN` here, instead of just `JOIN`. But, as it happens, the inner join is the most common type of join, so it is the default in SQLite3.
+
+#### Cross Join (CROSS JOIN)
+
+The `CROSS JOIN` is the least-common join, but probably the easiest to understand. It creates a combination of every record in the left table with every record in the right table. For instance, if we wanted to combine the agents and status tables, we could do:
+
+    cursor.execute('SELECT code_name, status FROM agents CROSS JOIN status')
+    big_mess = cursor.fetchall()
+    print(big_mess)
+
+This would return:
+
+    [(u'007', u'Active'), (u'007', u'Active'), (u'007', u'Active'), (u'007', u'Active'),
+     (u'007', u'Active'), (u'007', u'Active'), (u'007', u'Deceased'), (u'007', u'Active'),
+     (u'001', u'Active'), (u'001', u'Active'), (u'001', u'Active'), (u'001', u'Active'),
+     (u'001', u'Active'), (u'001', u'Active'), (u'001', u'Deceased'), (u'001', u'Active'),
+     (u'002', u'Active'), (u'002', u'Active'), (u'002', u'Active'), (u'002', u'Active'),
+     (u'002', u'Active'), (u'002', u'Active'), (u'002', u'Deceased'), (u'002', u'Active'),
+     (u'003', u'Active'), (u'003', u'Active'), (u'003', u'Active'), (u'003', u'Active'),
+     (u'003', u'Active'), (u'003', u'Active'), (u'003', u'Deceased'), (u'003', u'Active'),
+     (u'004', u'Active'), (u'004', u'Active'), (u'004', u'Active'), (u'004', u'Active'),
+     (u'004', u'Active'), (u'004', u'Active'), (u'004', u'Deceased'), (u'004', u'Active'),
+     (u'005', u'Active'), (u'005', u'Active'), (u'005', u'Active'), (u'005', u'Active'),
+     (u'005', u'Active'), (u'005', u'Active'), (u'005', u'Deceased'), (u'005', u'Active'),
+     (u'006', u'Active'), (u'006', u'Active'), (u'006', u'Active'), (u'006', u'Active'),
+     (u'006', u'Active'), (u'006', u'Active'), (u'006', u'Deceased'), (u'006', u'Active'),
+     (u'008', u'Active'), (u'008', u'Active'), (u'008', u'Active'), (u'008', u'Active'),
+     (u'008', u'Active'), (u'008', u'Active'), (u'008', u'Deceased'), (u'008', u'Active')]
+
+Of course, in this case, the result of the cross join is not very meaningful. As you can imagine, if both left and right tables get large, the `CROSS JOIN` can produce absurdly large outputs. BUT, it is one of the standard tools of SQL. Maybe you'll find a good use for it one day.
+
+#### Outer Join (OUTER JOIN)
+
+Finally, we have the `OUTER JOIN`. The SQL language, actually defines three types of `OUTER JOIN`: `LEFT`, `RIGHT`, and `FULL`, but SQLite only supports the `LEFT` variety. In any case, a "LEFT" `OUTER JOIN` in SQLite3 is one where the records from two tables are matched, but all the records in the left table are kept, even if they found no match in the right table.
 
 In order to test this out, let's make a new table to keep the licenses of our agents:
 
@@ -185,7 +228,7 @@ And let's add some data to the table:
     cursor.execute('INSERT into licenses(id, agentID, license) VALUES(3, 1, "License to Tango")')
     cursor.commit()
 
-Okay, now let's peform a `LEFT JOIN` to pull out all of the licenses for our agents, along with the agent names.
+Now let's peform a `LEFT JOIN` to pull out all of the licenses for our agents, along with the agent names.
 
     print(' - Retrieve all of our agent licenses, along with the agent names.')
     cursor.execute('SELECT code_name,name,license FROM agents LEFT JOIN' +
@@ -201,11 +244,9 @@ And we get back a full listing of our agent licenses:
      ('005', 'Stuart Thomas', None), ('006', 'Alec Trevelyan', None),
      ('008', 'Bill', None), ('009', 'Evelyn Salt', None)]
 
-We really need to get more of our agents up-to-date on their licensing.
+We really need to get more of our agents up-to-date on their licenses.
 
 For a nice overview of all the types of joins in sqlite3, check [here](http://zetcode.com/db/sqlite/joins/).
-
-![exploits of a mom](https://imgs.xkcd.com/comics/exploits_of_a_mom.png)
 
 ## Example Script
 
