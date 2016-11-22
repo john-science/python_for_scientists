@@ -17,6 +17,10 @@ In SQLite, we will use the same command to open an existing database that we wou
     import sqlite3
     con = sqlite3.connect('secret_agents.db')
 
+To run almost any code against your database, you will need to create a cursor:
+
+    cursor = con.cursor()
+
 At the end of your work, it is important to close your database connection:
 
     con.close()
@@ -25,6 +29,7 @@ At the end of your work, it is important to close your database connection:
 
 Whether you want to create, modify, or retrieve information from a `sqlite3` table, the process will always be the same:
 
+ * connect to the database
  * create a cursor
  * execute SQLite code
  * commit SQLite code
