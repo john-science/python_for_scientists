@@ -250,7 +250,7 @@ For a nice overview of all the types of joins in sqlite3, check [here](http://ze
 
 ## Example Script
 
- * [Script](secret_agent_lecture.py) form of this lecture
+ * [Script](secret_agent_lecture_sqlite3.py) form of this lecture
 
 ## Problem Sets
 
