@@ -54,7 +54,7 @@ What the above SQLite code did is pretty simple, it created a new table (using `
  * code_name
  * name
 
-These columns all have types (`INTEGER`, `FLOAT`, `TEXT`, `BOOL`). And one of them is defined as the `PRIMARY KEY`. A key is a unique identifier in a table. You *can* have a table without a key column, but it's good practice to include them unless you have a very good reason not to.
+These columns all have types `INTEGER`, `FLOAT`, `TEXT`, and `BOOL`. Though there are other possibilities, like `DATETIME`, `TIMESTAMP`, `INT`, and many [more](http://mysql-python.sourceforge.net/MySQLdb-1.2.2/public/MySQLdb.constants.FIELD_TYPE-module.html). And one of them is defined as the `PRIMARY KEY`. A key is a unique identifier in a table. You *can* have a table without a key column, but it's good practice to include them unless you have a very good reason not to.
 
 ### Inserting Data (INSERT)
 
