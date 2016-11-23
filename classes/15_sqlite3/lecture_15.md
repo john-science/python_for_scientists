@@ -271,6 +271,66 @@ We really need to get more of our agents up-to-date on their licenses.
 
 For a nice overview of all the types of joins in sqlite3, check [here](http://zetcode.com/db/sqlite/joins/).
 
+
+### GROUP BY
+
+The word `GROUP BY` allows you to group the results by one of three parameters:
+
+* `col_name` - The name of one of the table columns
+* `expr` - A regular expression
+* `position` - A position in the table
+
+You can also have SQLite return the grouped result in `ASC`cending or `DESC`ending order. And you can create a final line at the end that summarizes the previous lines using `WITH ROLLUP`. All of these together give us a generic `GROUP BY` statement that looks like:
+
+    GROUP BY (col_name | expr | position) (ASC | DESC) (WITH ROLLUP)
+
+For instance, we could select the different types of fish available in our table by:
+
+    cursor.execute('SELECT * FROM licenses GROUP BY license')
+    cursor.fetchall()
+
+And it will return something like:
+
+    [(1, 1, "License to Kill"),
+     (3, 1, "License to Tango")]
+
+Notice that though there are two rows with "License to Kill" in our `licenses` table, only one is returned by the `GROUP BY` query.
+
+
+### ORDER BY
+
+The clause `ORDER BY` sorts the results of a query, taking almost the same options as `GROUP BY`:
+
+    ORDER BY (col_name | expr | position) (ASC | DESC)
+
+For instance:
+
+    cursor.execute("SELECT * from agents ORDER BY name ASC")
+    cursor.fetchall()
+
+The query would return:
+
+    [(7, "006", "Alec Trevelyan"),
+     (8, "008", "Bill"),
+     (3, "002", "Bill Fairbanks"),
+     (1, "001", "Edward Donne"),
+     (4, "003", "Jack Mason"),
+     (2, "007", "James Bond"),
+     (5, "004", "Scarlett Papava"),
+     (6, "005", "Stuart Thomas")]
+
+
+### INTO OUTFILE
+
+Obviously, if you are working in a Python program, you can query whatever data you want from your tables and write it to a text file. That being said, SQL comes with a special key phrase to dump a table of data into a simple CSV file: `INTO OUTFILE`. Inside your Python scripts, this probably won't get much use, except for testing and debugging, but we might as well see it in action:
+
+The clause `INTO OUTFILE` is particularly useful for people working in SQLite without Python. But even if you are working with a SQLite database through the Python `sqlite3` library, this might be a quick-and-dirty way to write your query results to a file. It works like you might guess:
+
+    cursor.execute("""
+    SELECT * FROM agents ORDER BY id DESC LIMIT 1,5 INTO OUTFILE '/full/path/to/example_agents_file.txt';
+    """)
+    cursor.commit()
+
 ## Example Script
 
  * [Script](secret_agent_lecture_sqlite3.py) form of this lecture
