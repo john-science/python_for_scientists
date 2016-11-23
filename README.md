@@ -42,6 +42,6 @@ Special Topics
  * [Plotting - matplotlib](classes/12_matplotlib/lecture_12.md)
  * [Statistics - SciPy](classes/11_scipy/lecture_11.md)
  * [Data Analysis - pandas and Jupyter](classes/13_pandas/lecture_13.md)
- * Databases - [sqlite3](classes/15_dbs/lecture_15_sqlite.md) - [MySQL](classes/15_dbs/lecture_15_mysql.md) - [postgres](classes/15_dbs/lecture_15_postgres.md)
+ * Databases - [MySQL](classes/15_dbs/lecture_15_mysql.md) - [postgres](classes/15_dbs/lecture_15_postgres.md) - [sqlite3](classes/15_dbs/lecture_15_sqlite.md)
  * [NetCDF Files - netCDF4](classes/14_netcdf/lecture_14.md)
  * [Testing Projects - unittest/setuptools](classes/17_testing_projects/lecture_17.md)
