@@ -117,6 +117,8 @@ Now let's say one of our secret agents dies and we want to update their status. 
     cursor.execute('''UPDATE status SET status = ? WHERE agentID = ? ''',
                    ("Deceased", 7))
 
+#### The Conditional Clause (WHERE)
+
 Notice here we also used the MySQL keyword `WHERE`. This fun little piece of syntax allows us add a conditional case so we can set (or get) just certain fields in our table.
 
 ### Deleting Data (DELETE)
@@ -129,16 +131,32 @@ Let's say we notice a mistake in the database. In this case, we only have 8 agen
 
 Databases wouldn't be very helpful if we couldn't get information out of them. The most basic way to "query" data from a database is using the `SELECT` keyword. Let's use `SELECT` to "query" all of the active agent ids from the `status` table.
 
-    cursor.execute('SELECT FROM status WHERE status="Active"')
+    cursor.execute('SELECT agentID,status FROM status WHERE status="Active"')
     active_agent_ids = cursor.fetchall()
 
 There are a couple of things to notice here. First of all, we used `.fetchall()`, because the command we are executing in the database is returning information. The values returned are always in the form of tuples, where each column is an item in the tuple. In this case, `active_agent_ids` is a list of tuples.
 
 If we just wanted to get one value that met the conditional criteria of our query, we could use `.fetchone()` instead of `.fetchall()`:
 
-    cursor.execute('SELECT FROM status WHERE status="Active"')
+    cursor.execute('SELECT agentID,status FROM status WHERE status="Active"')
     active_agent_id = cursor.fetchone()
     print(active_agent_id)
+    # (1, "Active")
+
+#### The Asterisk (*)
+
+Above, we listed all of the columns we wanted to pull from the table explicitly by saying `SELECT agentID,status FROM`.  But it is frequently the case that we will want to pull *all* the columns from a table, so there is a special syntactic sugar for that. The following two queries are exactly the same:
+
+    cursor.execute('SELECT agentID,status FROM status WHERE status="Active"')
+    cursor.execute('SELECT * FROM status WHERE status="Active"')
+
+#### Reduce Number of Rows Returned (LIMIT)
+
+In the above `SELECT` queries, we are returning every row in the table that matches our `WHERE` clause. This is fine here, because we only have 8 agents. But imagine if you are pulling data from a table with millions of rows. And maybe you just want to take a look at an example row to examine the data format. It would be nice to have the power to just pull a couple of rows. To do so, we use the `LIMIT` keyword:
+
+    cursor.execute('SELECT * FROM status WHERE status="Active" LIMIT 1')
+    active_agent_ids = cursor.fetchall()
+    print(active_agent_ids)
     # (1, "Active")
 
 ### Removing Tables (DROP)
@@ -174,31 +192,119 @@ A [Join](https://en.wikipedia.org/wiki/Join_%28SQL%29) is a special kind of quer
 
 The SQL language defines three types of joins: inner, cross, and outer.
 
-#### Inner Join (JOIN)
+#### Inner Join (INNER JOIN)
 
-TODO
+Earlier, we created a list of all the agents who are currently active. That query worked fine, but it only returned the agent IDs, not there names. That's inconvenient, but we could do a slightly more complicated `SELECT` query to get their names from the other table:
+
+    cursor.execute('SELECT code_name, name FROM agents, status WHERE ' + 
+                   'agents.agentID = status.agentID and status.status="Active"')
+    active_agents = cursor.fetchall()
+    print(active_agents)
+
+Which returns:
+
+    [(u'007', u'James Bond'), (u'001', u'Edward Donne'), (u'002', u'Bill Fairbanks'),
+     (u'003', u'Jack Mason'), (u'004', u'Scarlett Papava'),
+     (u'005', u'Stuart Thomas'), (u'008', u'Bill')]
+
+Perfect, now we see all seven active agents. But notice the use of the `and` keyword above, it allowed us to make a much more complicated query. The key is that it allowed us to query two different tables, and match a single column in each using: `agents.agentID = status.agentID`. These kinds of queries are so common, that SQL / MySQL defines a special keyword to help you write them faster: `JOIN`. Using our new keyword, we would write the above query as:
+
+    cursor.execute('SELECT code_name, name FROM agents JOIN status ON ' +
+                   'agents.agentID = status.agentID WHERE status.status="Active"')
+    active_agents = cursor.fetchall()
+    print(active_agents)
+
+The above join is called an "inner join", and would typically be written as `INNER JOIN` in SQL. But the MySQL default join is `INNER`, so that keyword can be left off.
 
 #### Cross Join (CROSS JOIN)
 
-TODO
+
+The `CROSS JOIN` is the least-common join, but probably the easiest to understand. It creates a combination of every record in the left table with every record in the right table. For instance, if we wanted to combine the agents and status tables, we could do:
+
+    cursor.execute('SELECT code_name, status FROM agents CROSS JOIN status')
+    big_mess = cursor.fetchall()
+    print(big_mess)
+
+This would return:
+
+    [(u'007', u'Active'), (u'007', u'Active'), (u'007', u'Active'), (u'007', u'Active'),
+     (u'007', u'Active'), (u'007', u'Active'), (u'007', u'Deceased'), (u'007', u'Active'),
+     (u'001', u'Active'), (u'001', u'Active'), (u'001', u'Active'), (u'001', u'Active'),
+     (u'001', u'Active'), (u'001', u'Active'), (u'001', u'Deceased'), (u'001', u'Active'),
+     (u'002', u'Active'), (u'002', u'Active'), (u'002', u'Active'), (u'002', u'Active'),
+     (u'002', u'Active'), (u'002', u'Active'), (u'002', u'Deceased'), (u'002', u'Active'),
+     (u'003', u'Active'), (u'003', u'Active'), (u'003', u'Active'), (u'003', u'Active'),
+     (u'003', u'Active'), (u'003', u'Active'), (u'003', u'Deceased'), (u'003', u'Active'),
+     (u'004', u'Active'), (u'004', u'Active'), (u'004', u'Active'), (u'004', u'Active'),
+     (u'004', u'Active'), (u'004', u'Active'), (u'004', u'Deceased'), (u'004', u'Active'),
+     (u'005', u'Active'), (u'005', u'Active'), (u'005', u'Active'), (u'005', u'Active'),
+     (u'005', u'Active'), (u'005', u'Active'), (u'005', u'Deceased'), (u'005', u'Active'),
+     (u'006', u'Active'), (u'006', u'Active'), (u'006', u'Active'), (u'006', u'Active'),
+     (u'006', u'Active'), (u'006', u'Active'), (u'006', u'Deceased'), (u'006', u'Active'),
+     (u'008', u'Active'), (u'008', u'Active'), (u'008', u'Active'), (u'008', u'Active'),
+     (u'008', u'Active'), (u'008', u'Active'), (u'008', u'Deceased'), (u'008', u'Active')]
+
+Of course, in this case, the result of the cross join is not very meaningful. As you can imagine, if both left and right tables get large, the `CROSS JOIN` can produce absurdly large outputs. BUT, it is one of the standard tools of SQL. Maybe you'll find a good use for it one day.
 
 #### Left Outer Join (LEFT OUTER JOIN)
 
-TODO
+Finally, we have the `OUTER JOIN`. The SQL language, actually defines three types of `OUTER JOIN`: `LEFT`, `RIGHT`, and `FULL`, but MySQL only supports the `LEFT` and `RIGHT` varieties. In any case, a "LEFT" `OUTER JOIN` in MySQL is one where the records from two tables are matched, but all the records in the left table are kept, even if they found no match in the right table.
+
+In order to test this out, let's make a new table to keep the licenses of our agents:
+
+    cursor.execute('''
+    CREATE TABLE `licenses` (`id` int(11) NOT NULL auto_increment,
+                             `agentID` int(11) NOT NULL default 1,
+                             `license` varchar(90) NOT NULL default '',
+                           PRIMARY KEY (`id`));
+    ''')
+
+And let's add some data to the table:
+
+    cursor.execute('INSERT into licenses(id, agentID, license) VALUES(1, 1, "License to Kill")')
+    cursor.execute('INSERT into licenses(id, agentID, license) VALUES(2, 4, "License to Kill")')
+    cursor.execute('INSERT into licenses(id, agentID, license) VALUES(3, 1, "License to Tango")')
+
+Now let's peform a `LEFT JOIN` to pull out all of the licenses for our agents, along with the agent names.
+
+    print(' - Retrieve all of our agent licenses, along with the agent names.')
+    cursor.execute('SELECT code_name,name,license FROM agents LEFT JOIN' +
+                   'licenses on agents.agentID = licenses.agentID')
+    licenses = cursor.fetchall()
+    print(licenses)
+
+And we get back a full listing of our agent licenses:
+
+    [('007', 'James Bond', 'License to Kill'), ('007', 'James Bond', 'License to Tango'),
+     ('001', 'Edward Donne', NULL), ('002', 'Bill Fairbanks', NULL),
+     ('003', 'Jack Mason', 'License to Kill'), ('004', 'Scarlett Papava', NULL),
+     ('005', 'Stuart Thomas', NULL), ('006', 'Alec Trevelyan', NULL),
+     ('008', 'Bill', NULL), ('009', 'Evelyn Salt', NULL)]
+
+We really need to get more of our agents up-to-date on their licenses.
+
+For a nice overview of all the types of joins in MySQL, check [here](https://www.tutorialspoint.com/mysql/mysql-using-joins.htm).
 
 #### Right Outer Join (RIGHT OUTER JOIN)
 
-TODO
+The above `JOIN` query returned all of our agents, and their licenses. And that might be what we want. However, we might also have just wanted to return only the non-`NULL` licenses from the right table, along with the agents names and code names. For this, we could do a *very* similar query, but using a `RIGHT JOIN`.
 
-#### asterisk (*)
+    print(' - Retrieve all of our non-NULL agent licenses, along with the agent names.')
+    cursor.execute('SELECT code_name,name,license FROM agents RIGHT JOIN' +
+                   'licenses on agents.agentID = licenses.agentID')
+    licenses = cursor.fetchall()
+    print(licenses)
 
-In the above query, we used the `*` symbol to say we wanted "all the columns" from that table. But there were three other major options:
+And this would return something a little more useful:
 
-    SELECT ALL FROM fish;  # same as `*`
-    SELECT DISTINCT FROM fish;  # sort the results set into unique values
-    SELECT DISTINCTROW FROM fish;  # make sure the entire column is unique
+    [('007', 'James Bond', 'License to Kill'),
+     ('007', 'James Bond', 'License to Tango'),
+     ('003', 'Jack Mason', 'License to Kill')]
 
-#### GROUP BY
+Of course, we could have gotten the same result using a `LEFT JOIN` by switching the order of the tables. But it is good to have options.
+
+
+### GROUP BY
 
 The word `GROUP BY` allows you to group the results by one of three parameters:
 
@@ -212,59 +318,16 @@ You can also have MySQL return the grouped result in `ASC`cending or `DESC`endin
 
 For instance, we could select the different types of fish available in our table by:
 
-    SELECT * FROM fish GROUP BY name;
+    cursor.execute('SELECT * FROM licenses GROUP BY license')
 
 And it will return something like:
 
-    +----+----------------+-------+
-    | ID | NAME           | PRICE |
-    +----+----------------+-------+
-    |  5 | bass           |  6.75 |
-    |  1 | catfish        |  8.50 |
-    |  6 | haddock        |  6.50 |
-    |  7 | salmon         |  9.50 |
-    |  8 | trout          |  6.00 |
-    |  3 | tuna           |  8.00 |
-    | 10 | yellowfin tuna | 12.00 |
-    +----+----------------+-------+
+    [(1, 1, "License to Kill"),
+     (3, 1, "License to Tango")]
 
-Or we could ask how many different copies of each fish we have on our menu using `count(*)` as a meta-column:
+Notice that though there are two rows with "License to Kill" in our `licenses` table, only one is returned by the `GROUP BY` query.
 
-    SELECT name,count(*) FROM fish GROUP BY name;
-
-And we would get something much like:
-
-    +----------------+----------+
-    | name           | count(*) |
-    +----------------+----------+
-    | bass           |        1 |
-    | catfish        |        3 |
-    | haddock        |        1 |
-    | salmon         |        1 |
-    | trout          |        1 |
-    | tuna           |        3 |
-    | yellowfin tuna |        2 |
-    +----------------+----------+
-
-#### HAVING
-
-The word `HAVING` can be used exactly like `WHERE`, but that is considered poor programming. You use `HAVING` on aggregate variables (like `sum()` and `count()`, which we will talk about later. For now:
-
-    SELECT * FROM fish GROUP BY name HAVING id>'3';
-
-This should return:
-
-    +----+----------------+-------+
-    | ID | NAME           | PRICE |
-    +----+----------------+-------+
-    |  5 | bass           |  6.75 |
-    |  6 | haddock        |  6.50 |
-    |  7 | salmon         |  9.50 |
-    |  8 | trout          |  6.00 |
-    | 10 | yellowfin tuna | 12.00 |
-    +----+----------------+-------+
-
-#### ORDER BY
+### ORDER BY
 
 The clause `ORDER BY` sorts the results of a query, taking almost the same options as `GROUP BY`:
 
@@ -272,74 +335,32 @@ The clause `ORDER BY` sorts the results of a query, taking almost the same optio
 
 For instance:
 
-    SELECT * FROM fish ORDER BY id DESC;
+    cursor.execute("SELECT * from agents ORDER BY name ASC")
 
 The query would return:
 
-    +----+----------------+-------+
-    | ID | NAME           | PRICE |
-    +----+----------------+-------+
-    | 12 | tuna           |  7.50 |
-    | 11 | yellowfin tuna | 13.00 |
-    | 10 | yellowfin tuna | 12.00 |
-    |  9 | tuna           |  7.50 |
-    |  8 | trout          |  6.00 |
-    |  7 | salmon         |  9.50 |
-    |  6 | haddock        |  6.50 |
-    |  5 | bass           |  6.75 |
-    |  4 | catfish        |  5.00 |
-    |  3 | tuna           |  8.00 |
-    |  2 | catfish        |  8.50 |
-    |  1 | catfish        |  8.50 |
-    +----+----------------+-------+
+    [(7, "006", "Alec Trevelyan"),
+     (8, "008", "Bill"),
+     (3, "002", "Bill Fairbanks"),
+     (1, "001", "Edward Donne"),
+     (4, "003", "Jack Mason"),
+     (2, "007", "James Bond"),
+     (5, "004", "Scarlett Papava"),
+     (6, "005", "Stuart Thomas")]
 
-#### LIMIT
+### INTO OUTFILE
 
-The clause `LIMIT` can be used to retrieve only a set amount of records. For instance:
-
-    SELECT * FROM fish ORDER BY id DESC LIMIT 1;
-
-The query would return:
-
-    +----+----------------+-------+
-    | ID | NAME           | PRICE |
-    +----+----------------+-------+
-    | 12 | tuna           |  7.50 |
-    +----+----------------+-------+
-
-However, you can set an upper and lower number of records that you want by using a range of numbers:
-
-    SELECT * FROM fish ORDER BY id DESC LIMIT 1,3;
-
-The query would return:
-
-    +----+----------------+-------+
-    | ID | NAME           | PRICE |
-    +----+----------------+-------+
-    | 12 | tuna           |  7.50 |
-    | 11 | yellowfin tuna | 13.00 |
-    | 10 | yellowfin tuna | 12.00 |
-    +----+----------------+-------+
-
-#### LIMIT vs HAVING
-
-The major difference to pick `HAVING` vs `LIMIT` is performance. Use `HAVING` in most situations in which you are concerned with speed. The idea is that `HAVING` reduces the amount of data SQL is worried about *before* much of the query logic takes place, and `LIMIT` lets all the logic unfold before limiting the number of results.
-
-The only time it will improve performance to use `LIMIT` is when the results returned by your query are very sizable indeed, but you definitely have ample resouces to deal with the large query and results.
-
-#### INTO OUTFILE
+Obviously, if you are working in a Python program, you can query whatever data you want from your tables and write it to a text file. That being said, SQL comes with a special key phrase to dump a table of data into a simple CSV file: `INTO OUTFILE`. Inside your Python scripts, this probably won't get much use, except for testing and debugging, but we might as well see it in action:
 
 The clause `INTO OUTFILE` is particularly useful for people working in MySQL without Python. But even if you are working with a MySQL database through the Python `MySQLdb` library, this might be a quick-and-dirty way to write your query results to a file. It works like you might guess:
 
-    SELECT * FROM fish ORDER BY id DESC LIMIT 1,5 INTO OUTFILE 'fishes.txt';
-
-## Example Script
-
- * TODO form of this lecture
+    cursor.execute("""
+    SELECT * FROM agents ORDER BY id DESC LIMIT 1,5 INTO OUTFILE '/full/path/to/example_agents_file.txt';
+    """)
 
 ## Problem Sets
 
- * TODO
+ * [Secret Agent Problem Set](problem_set_1_sqlite3.md)
 
 ## Further Reading
 
