@@ -8,6 +8,7 @@ def main():
 
     print('Creating a table for all of our secret agents.')
     cursor = con.cursor()
+    cursor.execute('''DROP TABLE IF EXISTS agents''')
     cursor.execute('''
     CREATE TABLE agents(agentID INTEGER PRIMARY KEY, code_name TEXT, name TEXT)
     ''')
@@ -35,6 +36,7 @@ def main():
     con.commit()
 
     print('Create a new table for our agent status')
+    cursor.execute('''DROP TABLE IF EXISTS status''')
     cursor.execute('''
     CREATE TABLE status(agentID INTEGER PRIMARY KEY, status TEXT)
     ''')
@@ -66,6 +68,7 @@ def main():
     print(active_agent_id)
 
     print('\nCreate a table for the home addresses of all of our agents.')
+    cursor.execute('''DROP TABLE IF EXISTS home_addresses''')
     cursor.execute('''
     CREATE TABLE home_addresses(agentID INTEGER PRIMARY KEY, address TEXT)
     ''')
@@ -92,6 +95,7 @@ def main():
     print(active_agents)
 
     print('\nCreating table for agent licenses')
+    cursor.execute('''DROP TABLE IF EXISTS licenses''')
     cursor.execute('''
     CREATE TABLE licenses(id INTEGER PRIMARY KEY, agentID INTEGER, license TEXT)
     ''')
@@ -108,7 +112,18 @@ def main():
     licenses = cursor.fetchall()
     print(licenses)
 
+    print(' - Retrieve all the possible licenses we have given to agents; grouped together.')
+    cursor.execute('SELECT * FROM licenses GROUP BY license')
+    licenses = cursor.fetchall()
+    print(licenses)
+
+    print(' - Retrieve all agents, sorted by their names.')
+    cursor.execute("SELECT * from agents ORDER BY name ASC")
+    agents = cursor.fetchall()
+    print(agents)
+
     # close the database connection
+    print('')
     con.close()
 
 
