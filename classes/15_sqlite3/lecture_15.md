@@ -104,7 +104,7 @@ Now let's say one of our secret agents dies and we want to update their status. 
                    ("Deceased", 7))
     con.commit()
 
-#### WHERE
+#### The Conditional Clause (WHERE)
 
 Notice here we also used the SQL keyword `WHERE`. This fun little piece of syntax allows us add a conditional case so we can set (or get) just certain fields in our table.
 
