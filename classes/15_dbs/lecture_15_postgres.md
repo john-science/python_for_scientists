@@ -358,6 +358,7 @@ The query would return:
 
  * [PostgreSQL for Python](http://zetcode.com/db/postgresqlpythontutorial/)
  * [PostgreSQL vs MySQL vs SQLite](http://hyperpolyglot.org/db)
+ * [Connecting to Various Kinds of Postgres Servers](https://www.a2hosting.com/kb/developer-corner/postgresql/connecting-to-postgresql-using-python)
 
 [Back to Syllabus](../../README.md)
 
