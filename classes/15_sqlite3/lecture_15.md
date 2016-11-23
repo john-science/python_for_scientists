@@ -104,7 +104,9 @@ Now let's say one of our secret agents dies and we want to update their status. 
                    ("Deceased", 7))
     con.commit()
 
-Notice here we also used the SQLite keyword `WHERE`. This fun little piece of syntax allows us add a conditional case so we can set (or get) just certain fields in our table.
+#### WHERE
+
+Notice here we also used the SQL keyword `WHERE`. This fun little piece of syntax allows us add a conditional case so we can set (or get) just certain fields in our table.
 
 ### Deleting Data (DELETE)
 
@@ -117,17 +119,33 @@ Let's say we notice a mistake in the database. In this case, we only have 8 agen
 
 Databases wouldn't be very helpful if we couldn't get information out of them. The most basic way to "query" data from a database is using the `SELECT` keyword. Let's use `SELECT` to "query" all of the active agent ids from the `status` table.
 
-    cursor.execute('SELECT FROM status WHERE status="Active"')
+    cursor.execute('SELECT agentID,status FROM status WHERE status="Active"')
     active_agent_ids = cursor.fetchall()
 
 There are a couple of things to notice here. First of all, we used `.fetchall()` instead of `.commit()`. This is because the command we are executing in the database is returning information. The values returned are always in the form of tuples, where each column is an item in the tuple. In this case, `active_agent_ids` is a list of tuples.
 
 If we just wanted to get one value that met the conditional criteria of our query, we could use `.fetchone()` instead of `.fetchall()`:
 
-    cursor.execute('SELECT FROM status WHERE status="Active"')
+    cursor.execute('SELECT agentID,status FROM status WHERE status="Active"')
     active_agent_id = cursor.fetchone()
     print(active_agent_id)
-    # (1, "Active")
+    # 1
+
+#### The Asterisk (*)
+
+Above, we listed all of the columns we wanted to pull from the table explicitly by saying `SELECT agentID,status FROM`.  But it is frequently the case that we will want to pull *all* the columns from a table, so there is a special syntactic sugar for that. The following two queries are exactly the same:
+
+    cursor.execute('SELECT agentID,status FROM status WHERE status="Active"')
+    cursor.execute('SELECT * FROM status WHERE status="Active"')
+
+#### Reduce Number of Rows Returned (LIMIT)
+
+In the above `SELECT` queries, we are returning every row in the table that matches our `WHERE` clause. This is fine here, because we only have 8 agents. But imagine if you are pulling data from a table with millions of rows. And maybe you just want to take a look at an example row to examine the data format. It would be nice to have the power to just pull a couple of rows. To do so, we use the `LIMIT` keyword:
+
+    cursor.execute('SELECT * FROM status WHERE status="Active" LIMIT 1')
+    active_agent_ids = cursor.fetchall()
+    print(active_agent_ids)
+    # (1, "Active")    
 
 ### Removing Tables (DROP)
 
