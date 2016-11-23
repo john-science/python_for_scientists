@@ -360,7 +360,7 @@ The clause `INTO OUTFILE` is particularly useful for people working in MySQL wit
 
 ## Problem Sets
 
- * [Secret Agent Problem Set](problem_set_1_sqlite3.md)
+ * [Secret Agent Problem Set](problem_set_1.md)
 
 ## Further Reading
 
