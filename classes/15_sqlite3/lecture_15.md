@@ -46,7 +46,7 @@ For instance, if I wanted to create the `agents` table above I might do:
 
 First notice that a cursor was created using `.cursor()`, we created SQLite code using `.execute()`, and we ran the code against the database using `.commit()`.
 
-You may also noticed something very strange. What is all this `"CREATE TABLE ..."` gobbly gook? That's not Python code! Good observation; that is not Python code. When we interact with the database, we do so with a variant of the popular SQL database langauge called SQLite. It might seem unfair that now you have to learn a whole new programming language. But there's nothing for it. If you want to deal with databases, you need to learn to talk to them on their own level.
+You may also noticed something very strange. What is all this `CREATE TABLE` gobbly gook? That's not Python code! Good observation; that is not Python code. When we interact with the database, we do so with a variant of the popular SQL database langauge called SQLite. It might seem unfair that now you have to learn a whole new programming language. But there's nothing for it. If you want to deal with databases, you need to learn to talk to them on their own level.
 
 What the above SQLite code did is pretty simple, it created a new table (using `CREATE TABLE` with three columns:
 
