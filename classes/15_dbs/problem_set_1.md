@@ -40,6 +40,8 @@ Our secret agents are notoriously competitive. They always arguing about who's t
 
 ## Solutions
 
+ * Solutoins - MySQL
+ * Solutions - PostgreSQL
  * [Solutions - SQLite](problem_set_1_solutions_sqlite.py)
 
 Back to Lecture - [MySQL](lecture_15_mysql.md) - [PostgreSQL](lecture_15_postgres.md) - [SQLite](lecture_15_sqlite.md)
