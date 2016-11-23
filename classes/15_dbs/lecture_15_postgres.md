@@ -4,7 +4,7 @@ There are a lot of different kinds of databases: SQL, MySQL, Postgres, Mongo, et
 
 Most databases are [servers](https://en.wikipedia.org/wiki/Server_%28computing%29) or [services](https://en.wikipedia.org/wiki/Windows_service) that are run on your computer. And that is no different for PostgreSQL, look [here](http://initd.org/psycopg/docs/install.html) for instructions on installing and starting a PostgreSQL server on your computer. You will also need to install the `postgresql` library. If you are using Anaconda, this should be as easy as:
 
-    conda install postgresql
+    conda install python-pdb
 
 
 ## Creating and Connecting to Databases
@@ -17,8 +17,8 @@ PostgreSQL is a [relational database](https://en.wikipedia.org/wiki/Relational_d
 
 In PostgreSQL, to create a connection to our database server, we need to use our credentials:
 
-    import psycopg2
-    con = psycopg2.connect(host='localhost', user='my_user_name', passwd='my_secret')
+    import pdb
+    con = pdb.connect(host='localhost', user='my_user_name', passwd='my_secret')
 
 Note that you don't actually need to write `host=` or `user=`, these items are always in the same order. For now, we will write them explicitly, until they become more familiar.
 
