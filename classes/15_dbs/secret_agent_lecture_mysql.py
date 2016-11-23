@@ -4,7 +4,7 @@ import MySQLdb
 
 def main():
     print('\nCreate the MI6 secret agent database.\n')
-    con = MySQLdb.connect(host='127.0.0.1', user='mmb', passwd='tigerthermos', db='secret_agents', port=53322)
+    con = MySQLdb.connect(host='localhost', user='user_name', passwd='pass', db='secret_agents')
 
     print('Creating a table for all of our secret agents.')
     cursor = con.cursor()
