@@ -6,83 +6,8 @@ Most databases are [servers](https://en.wikipedia.org/wiki/Server_%28computing%2
 
     conda install mysql-python
 
-## Creating a Database
 
-> TODO: Remove this section and create DB from Python.
-
-To start off with, we want to create a database and probably a table with some data in it. To make things easier, the first time through we will do this by directly signing into your MySQL Server from the command line (not using Python). But first, let's save this text off into a plain text file called `secret_agents_mysql.sql`:
-
-    CREATE DATABASE `secret_agents`;
-    USE secret_agents;
-
-    DROP TABLE IF EXISTS `agents`;
-    SET @saved_cs_client     = @@character_set_client;
-    SET character_set_client = utf8;
-
-    CREATE TABLE `agents` (
-        `agentID` int(11) NOT NULL auto_increment,
-        `code_name` varchar(3) NOT NULL default '007',
-        `name` varchar(30) NOT NULL default 'James Bond',
-        PRIMARY KEY (`agentID`)
-    ) ENGINE=MyISAM AUTO_INCREMENT=27 DEFAULT
-    CHARSET=latin1;
-    SET character_set_client = @saved_cs_client;
-
-    LOCK TABLES `agents` WRITE;
-    INSERT INTO `agents` VALUES (1,'001','Edward Donne');
-    UNLOCK TABLES;
-
-Now we log into the MySQL Server:
-
-    $ mysql -u my_user_name -p
-
-And execute our script:
-
-    source secret_agents_mysql.sql
-
-Before we exit out of the the MySQL command line interface and start using Python, try looking around a bit and seeing what is on your Server:
-
-    mysql> SHOW DATABASES;
-    +--------------------+
-    | Database           |
-    +--------------------+
-    | information_schema |
-    | secret_agents      |
-    | mysql              |
-    | performance_schema |
-    +--------------------+
-    5 rows in set (0.00 sec)
-
-    mysql> USE secret_agents;
-
-    mysql> SHOW TABLES;
-    +-------------------------+
-    | Tables_in_secret_agents |
-    +-------------------------+
-    | agents                  |
-    +-------------------------+
-    1 row in set (0.01 sec)
-
-    mysql> SELECT * from agents;
-    +---------+-----------+--------------+
-    | agentID | code_name | name         |
-    +---------+-----------+--------------+
-    |       1 | 001       | Edward Donne |
-    +---------+-----------+--------------+
-    1 row in set (0.00 sec)
-
-    mysql> SELECT code_name,name from agents LIMIT 1;
-    +-----------+--------------+
-    | code_name | name         |
-    +-----------+--------------+
-    | 001       | Edward Donne |
-    +-----------+--------------+
-    1 row in set (0.00 sec)
-
-When you're done looking around, exit the MySQL command line. From here on out, we will be working in the Python interpreter (or in Python scripts).
-
-
-## Connecting to Database Servers
+## Creating and Connecting to Databases
 
 There are many books and entire courses covering the topic of databases. It is very important to understand that this is just a light introduction. The purpose of this lecture is not to teach database theory, it is only to explain how to use a single Python database library.
 
@@ -90,14 +15,18 @@ MySQL is a [relational database](https://en.wikipedia.org/wiki/Relational_databa
 
 ![secret agent database model](../../resources/secret_agent_db.png)
 
-In MySQL, to create a connection to our new `menu` database, we need to use our credentials:
+In MySQL, to create a connection to our database server, we need to use our credentials:
 
     import MySQLdb
     con = MySQLdb.connect(host='localhost', user='my_user_name', passwd='my_secret')
 
-Note that you don't actually need to write `host=` or `user=`, these four items are always in the same order. For now, we will write them explicitly, until they become more familiar.
+Note that you don't actually need to write `host=` or `user=`, these items are always in the same order. For now, we will write them explicitly, until they become more familiar.
 
-At the end of your work, it is important to close your database connection:
+To run almost any code against your database, you will need to create a cursor:
+
+    cursor = con.cursor()
+
+At the end of your work, it is important to close your database server connection:
 
     con.close()
 
@@ -105,43 +34,161 @@ At the end of your work, it is important to close your database connection:
 
 Whether you want to create, modify, or retrieve information from a `MySQL` table, the process will always be the same:
 
+ * connect to the database
  * create a cursor
- * execute MySQL code
- * commit MySQL code
+ * execute MySQLdb code
 
-## Creating Databases
+### Creating Databases (CREATE DATABASE)
 
-> TODO
+We want to create the database shown in the diagram above. To do that, we need to create our database connection, create a cursor, and run our first query against the database:
 
-### Creating Tables (CREATE)
+    import MySQLdb
+    con = MySQLdb.connect(host='localhost', user='my_user_name', passwd='my_secret')
+    cursor = con.cursor()
+    cursor.execute('CREATE DATABASE `secret_agents`;')
+    cursor.execute('USE secret_agents';)
 
-> TODO
+The `CREATE` command is clear, but the `USE` command is not so obvious. We can `CREATE` as many databases as we want, but in order to go inside that database and interact with it, we need to execute a `USE` command first. And later, if we want to interact with a different database, we will execute another `USE` command.
 
-## MySQL Queries
+### Creating Tables (CREATE TABLE)
 
-All SQL-like queries have a basic structure, like the word-order in a spoken language. In SQL, the verb always comes first.
+For instance, if I wanted to create the `agents` table above I might do:
 
-For instance, if I wanted to say:
+    cursor = con.cursor()
+    cursor.execute('''CREATE TABLE `agents` (
+                        `agentID` int(11) NOT NULL auto_increment,
+                        `code_name` varchar(3) NOT NULL default '007',
+                        `name` varchar(30) NOT NULL default 'James Bond',
+                        PRIMARY KEY (`agentID`))
+                   ''')
 
-    "Give me everything from the fish table"
+First notice that a cursor was created using `.cursor()`, we created SQLite code using `.execute()`, and we ran the code against the database using `.commit()`.
 
-I would translate that into the MySQL query:
+You may also noticed something very strange. What is all this `CREATE TABLE` gobbly gook? That's not Python code! Good observation; that is not Python code. When we interact with the database, we do so with a variant of the popular SQL database langauge called MySQLdb. It might seem unfair that now you have to learn a whole new programming language. But there's nothing for it. If you want to deal with databases, you need to learn to talk to them on their own level.
 
-    SELECT * FROM fish;
+What the above MySQLdb code did is pretty simple, it created a new table (using `CREATE TABLE` with three columns:
 
-Let's look at the grammar of this sentence:
+ * agentID
+ * code_name
+ * name
 
-* SELECT - query the database, to retrieve information
-* * - get everything from the table(s) of interest
-* FROM - point to the table(s) of interest
-* "fish" - the name of the table
-* ; - signifies the end of a SQL statement (sentence)
+These columns all have types `INT` and `VARCHAR`. Though there are other possibilities, like `DATETIME`, `TIMESTAMP`, `INT`, and many [more](http://mysql-python.sourceforge.net/MySQLdb-1.2.2/public/MySQLdb.constants.FIELD_TYPE-module.html). And one of them is defined as the `PRIMARY KEY`. A key is a unique identifier in a table. You *can* have a table without a key column, but it's good practice to include them unless you have a very good reason not to.
 
-Note that `SELECT` could be written `select` and `FROM` could be written `from`. The ALL CAPS is not mandatory, but it is a standard among people who write a lot of SQL to make it easier to read which words in a SQL statement are part of the SQL language and which are just names of tables or columns.
+### Inserting Data (INSERT)
 
-### Query Quantifiers
+Right now the table is empty, so let's add values using `INSERT`. There's obviously one agent we can add:
 
-There are several other helpful quantifiers to go along with your `SELECT` statements.
+    cursor.execute('''INSERT INTO agents(agentID, code_name, name)
+                   VALUES(?,?,?)''', (1, "007", "James Bond"))
+    con.commit()
+
+But we wouldn't be much of an agency with only one agent, so let's create several `INSERT` statements and commit them all:
+
+    # Only one female agent? We're really not much of an agency.
+    other_agents = [("001", "Edward Donne"), ("002", "Bill Fairbanks"),
+                    ("003", "Jack Mason"), ("004", "Scarlett Papava"),
+                    ("005", "Stuart Thomas"), ("006", "Alec Trevelyan"),
+                    ("008", "Bill")]
+
+    cursor.executemany('''INSERT INTO agents(agentID, code_name, name)
+                       VALUES(?,?,?)''', other_agents)
+
+Notice here that we made several `.execute()` statements at once by passing a list as a secondary argument to `.executemany()`.
+
+
+### Updating Tables (UPDATE)
+
+For this exercise, let's create another table that lists the status of all of our agents (see the diagram above):
+
+    cursor.execute('''CREATE TABLE `status` (
+                        `agentID` int(11) NOT NULL auto_increment,
+                        `status` varchar(30) NOT NULL default 'Inactive',
+                        PRIMARY KEY (`agentID`))
+                   ''')
+
+And fill it with data (all our agents are currently active).
+
+    for i in xrange(1, 10):
+        cursor.execute('''INSERT INTO status(agentID, status)
+                      VALUES(?,?)''', (i, "Active"))
+
+Now let's say one of our secret agents dies and we want to update their status. We would do so using the SQL keyword `UPDATE`:
+
+    cursor.execute('''UPDATE status SET status = ? WHERE agentID = ? ''',
+                   ("Deceased", 7))
+
+Notice here we also used the MySQL keyword `WHERE`. This fun little piece of syntax allows us add a conditional case so we can set (or get) just certain fields in our table.
+
+### Deleting Data (DELETE)
+
+Let's say we notice a mistake in the database. In this case, we only have 8 agents but there is a ninth agent listed in the `status` database. Well, if enough time has passed, we won't be able to use `.rollback()`. But we can delete any database entry we want using the `DELETE` keyword.
+
+    cursor.execute("DELETE FROM status WHERE agentID=9")
+
+### Querying Data (SELECT)
+
+Databases wouldn't be very helpful if we couldn't get information out of them. The most basic way to "query" data from a database is using the `SELECT` keyword. Let's use `SELECT` to "query" all of the active agent ids from the `status` table.
+
+    cursor.execute('SELECT FROM status WHERE status="Active"')
+    active_agent_ids = cursor.fetchall()
+
+There are a couple of things to notice here. First of all, we used `.fetchall()`, because the command we are executing in the database is returning information. The values returned are always in the form of tuples, where each column is an item in the tuple. In this case, `active_agent_ids` is a list of tuples.
+
+If we just wanted to get one value that met the conditional criteria of our query, we could use `.fetchone()` instead of `.fetchall()`:
+
+    cursor.execute('SELECT FROM status WHERE status="Active"')
+    active_agent_id = cursor.fetchone()
+    print(active_agent_id)
+    # (1, "Active")
+
+### Removing Tables (DROP)
+
+Sometimes we want to remove an entire table (not just a single entry like we did with `DELETE`). To do so, use `DROP`.
+
+First, let's create a table to delete:
+
+    cursor.execute('''CREATE TABLE `home_addresses` (
+                        `agentID` int(11) NOT NULL auto_increment,
+                        `address` varchar(90) NOT NULL default '',
+                        PRIMARY KEY (`agentID`))
+                   ''')
+
+And we can add a row to that table:
+
+    cursor.execute('''INSERT INTO home_addresses(agentID, address)
+                   VALUES(?,?)''',
+                   (3, 'Highclere Park\nNewbury, West Berkshire RG20\n9RN'))
+
+Well, we probably shouldn't save the home addresses of our secret agents. If someone gets ahold of this database, they'd all be in trouble. So let's `DROP` that whole table.
+
+    cursor.execute('''DROP TABLE home_addresses''')
+
+Done. Our agents don't exist.
+
+![exploits of a mom](https://imgs.xkcd.com/comics/exploits_of_a_mom.png)
+
+
+### Joining Tables (JOIN)
+
+A [Join](https://en.wikipedia.org/wiki/Join_%28SQL%29) is a special kind of query. As the name suggests, a join query returns a combination of two tables. As you can imagine, there are a lot of ways you might want to combine two tables of data. You probably want to match at least one column in both tables, and then based on this match, return some set of columns from both tables.
+
+The SQL language defines three types of joins: inner, cross, and outer.
+
+#### Inner Join (JOIN)
+
+TODO
+
+#### Cross Join (CROSS JOIN)
+
+TODO
+
+#### Left Outer Join (LEFT OUTER JOIN)
+
+TODO
+
+#### Right Outer Join (RIGHT OUTER JOIN)
+
+TODO
 
 #### asterisk (*)
 
@@ -150,20 +197,6 @@ In the above query, we used the `*` symbol to say we wanted "all the columns" fr
     SELECT ALL FROM fish;  # same as `*`
     SELECT DISTINCT FROM fish;  # sort the results set into unique values
     SELECT DISTINCTROW FROM fish;  # make sure the entire column is unique
-
-#### WHERE
-
-The word `WHERE` is used to limit the results of a search using a predicate (logical test). `WHERE` statements belong after the table name:
-
-    SELECT * FROM fish WHERE id='5';
-
-In our `fish` table, this would return a single record:
-
-    +----+------+-------+
-    | ID | NAME | PRICE |
-    +----+------+-------+
-    |  5 | bass |  6.75 |
-    +----+------+-------+
 
 #### GROUP BY
 
@@ -300,48 +333,6 @@ The clause `INTO OUTFILE` is particularly useful for people working in MySQL wit
 
     SELECT * FROM fish ORDER BY id DESC LIMIT 1,5 INTO OUTFILE 'fishes.txt';
 
-## Passing a Query to MySQL
-
-Again, to query a MySQL database in Python, you will need to set up a connection and then a cursor:
-
-    import MySQLdb
-    con = MySQLdb.connect(host='localhost', user='my_user_name', passwd='my_secret', db='menu')
-    cursor = con.cursor()
-
-#### A Simple SELECT Query
-
-To execute a basic "get all" query through Python, we would do:
-
-    command = cursor.execute('SELECT * FROM fish;')
-
-The `command` object holds all of the results in memory (RAM), until you want them. The basic way to access them is to access them all at one time:
-
-    results = cursor.fetchall()
-
-What is a returned in the `results` object is a `tuple` of rows where each row is a `tuple` of the column values:
-
-    >>> print(results)
-    ((1L, 'tuna', Decimal('7.50')), (2L, 'bass', Decimal('6.75'), ...)
-
-Since the `results` object is just a `tuple`, you could loop over the rows when processing the data. Or, you could just grab one row at a time using `fetchone()`:
-
-    >>> command = cursor.execute('SELECT * FROM fish;')
-    >>> print(cursor.fetchone())
-    (1L, 'tuna', Decimal('7.50'))
-
-## Looking at Your Database
-
-The SQL statement for listing the tables in a database is:
-
-    SHOW TABLES in menu;
-
-In our case, we already connected to a specific database (using `MySQLdb.connect`), so we can be less specific:
-
-    >>> command = cursor.execute('SHOW TABLES;')
-    >>> results = cursor.fetchall()
-    >>> print(results)
-    (1, 'catfish', Decimal('8.50'))
-
 ## Example Script
 
  * TODO form of this lecture
@@ -352,7 +343,7 @@ In our case, we already connected to a specific database (using `MySQLdb.connect
 
 ## Further Reading
 
- * TODO
+ * [The MySQL Language](https://www.tutorialspoint.com/mysql/index.htm)
 
 [Back to Syllabus](../../README.md)
 
