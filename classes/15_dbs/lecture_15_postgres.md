@@ -349,15 +349,6 @@ The query would return:
      (5, "004", "Scarlett Papava"),
      (6, "005", "Stuart Thomas")]
 
-### INTO OUTFILE
-
-Obviously, if you are working in a Python program, you can query whatever data you want from your tables and write it to a text file. That being said, SQL comes with a special key phrase to dump a table of data into a simple CSV file: `INTO OUTFILE`. Inside your Python scripts, this probably won't get much use, except for testing and debugging, but we might as well see it in action:
-
-The clause `INTO OUTFILE` is particularly useful for people working in PostgreSQL without Python. But even if you are working with a PostgreSQL database through the Python `PostgreSQL` library, this might be a quick-and-dirty way to write your query results to a file. It works like you might guess:
-
-    cursor.execute("""
-    SELECT * FROM agents ORDER BY id DESC LIMIT 1,5 INTO OUTFILE '/full/path/to/example_agents_file.txt';
-    """)
 
 ## Problem Sets
 
@@ -366,6 +357,7 @@ The clause `INTO OUTFILE` is particularly useful for people working in PostgreSQ
 ## Further Reading
 
  * [PostgreSQL for Python](http://zetcode.com/db/postgresqlpythontutorial/)
+ * [PostgreSQL vs MySQL vs SQLite](http://hyperpolyglot.org/db)
 
 [Back to Syllabus](../../README.md)
 
