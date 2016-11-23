@@ -365,6 +365,7 @@ The clause `INTO OUTFILE` is particularly useful for people working in MySQL wit
 ## Further Reading
 
  * [The MySQL Language](https://www.tutorialspoint.com/mysql/index.htm)
+ * [PostgreSQL vs MySQL vs SQLite](http://hyperpolyglot.org/db)
 
 [Back to Syllabus](../../README.md)
 
