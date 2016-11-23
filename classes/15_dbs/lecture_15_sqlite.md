@@ -320,17 +320,6 @@ The query would return:
      (6, "005", "Stuart Thomas")]
 
 
-### INTO OUTFILE
-
-Obviously, if you are working in a Python program, you can query whatever data you want from your tables and write it to a text file. That being said, SQL comes with a special key phrase to dump a table of data into a simple CSV file: `INTO OUTFILE`. Inside your Python scripts, this probably won't get much use, except for testing and debugging, but we might as well see it in action:
-
-The clause `INTO OUTFILE` is particularly useful for people working in SQLite without Python. But even if you are working with a SQLite database through the Python `sqlite3` library, this might be a quick-and-dirty way to write your query results to a file. It works like you might guess:
-
-    cursor.execute("""
-    SELECT * FROM agents ORDER BY id DESC LIMIT 1,5 INTO OUTFILE '/full/path/to/example_agents_file.txt';
-    """)
-    cursor.commit()
-
 ## Example Script
 
  * [Script](secret_agent_lecture_sqlite3.py) form of this lecture
@@ -347,6 +336,7 @@ The clause `INTO OUTFILE` is particularly useful for people working in SQLite wi
  * [Relational Databases](https://en.wikipedia.org/wiki/Relational_database)
  * [SQLite Joins](http://zetcode.com/db/sqlite/joins/)
  * [Database Schemas](https://www.informit.com/library/content.aspx?b=STY_Sql_24hours&seqNum=25)
+ * [PostgreSQL vs MySQL vs SQLite](http://hyperpolyglot.org/db)
 
 [Back to Syllabus](../../README.md)
 
