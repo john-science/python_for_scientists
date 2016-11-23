@@ -62,7 +62,7 @@ For instance, if I wanted to create the `agents` table above I might do:
                         PRIMARY KEY (`agentID`))
                    ''')
 
-First notice that a cursor was created using `.cursor()`, we created SQLite code using `.execute()`, and we ran the code against the database using `.commit()`.
+First notice that a cursor was created using `.cursor()`, we ran the MySQL code against the database using `.execute()`.
 
 You may also noticed something very strange. What is all this `CREATE TABLE` gobbly gook? That's not Python code! Good observation; that is not Python code. When we interact with the database, we do so with a variant of the popular SQL database langauge called MySQLdb. It might seem unfair that now you have to learn a whole new programming language. But there's nothing for it. If you want to deal with databases, you need to learn to talk to them on their own level.
 
@@ -79,10 +79,9 @@ These columns all have types `INT` and `VARCHAR`. Though there are other possibi
 Right now the table is empty, so let's add values using `INSERT`. There's obviously one agent we can add:
 
     cursor.execute('''INSERT INTO agents(agentID, code_name, name)
-                   VALUES(?,?,?)''', (1, "007", "James Bond"))
-    con.commit()
+                   VALUES(%s, %s, %s)''', (1, "007", "James Bond"))
 
-But we wouldn't be much of an agency with only one agent, so let's create several `INSERT` statements and commit them all:
+But we wouldn't be much of an agency with only one agent, so let's run several `INSERT` statements at the same time:
 
     # Only one female agent? We're really not much of an agency.
     other_agents = [("001", "Edward Donne"), ("002", "Bill Fairbanks"),
@@ -91,7 +90,7 @@ But we wouldn't be much of an agency with only one agent, so let's create severa
                     ("008", "Bill")]
 
     cursor.executemany('''INSERT INTO agents(agentID, code_name, name)
-                       VALUES(?,?,?)''', other_agents)
+                       VALUES(%s, %s, %s)''', other_agents)
 
 Notice here that we made several `.execute()` statements at once by passing a list as a secondary argument to `.executemany()`.
 
@@ -110,11 +109,11 @@ And fill it with data (all our agents are currently active).
 
     for i in xrange(1, 10):
         cursor.execute('''INSERT INTO status(agentID, status)
-                      VALUES(?,?)''', (i, "Active"))
+                      VALUES(%s, %s)''', (i, "Active"))
 
 Now let's say one of our secret agents dies and we want to update their status. We would do so using the SQL keyword `UPDATE`:
 
-    cursor.execute('''UPDATE status SET status = ? WHERE agentID = ? ''',
+    cursor.execute('''UPDATE status SET status = %s WHERE agentID = %s ''',
                    ("Deceased", 7))
 
 #### The Conditional Clause (WHERE)
@@ -174,7 +173,7 @@ First, let's create a table to delete:
 And we can add a row to that table:
 
     cursor.execute('''INSERT INTO home_addresses(agentID, address)
-                   VALUES(?,?)''',
+                   VALUES(%s, %s)''',
                    (3, 'Highclere Park\nNewbury, West Berkshire RG20\n9RN'))
 
 Well, we probably shouldn't save the home addresses of our secret agents. If someone gets ahold of this database, they'd all be in trouble. So let's `DROP` that whole table.
