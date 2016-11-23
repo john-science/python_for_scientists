@@ -4,7 +4,7 @@ There are a lot of different kinds of databases: SQL, MySQL, Postgres, Mongo, et
 
 Most databases are [servers](https://en.wikipedia.org/wiki/Server_%28computing%29) or [services](https://en.wikipedia.org/wiki/Windows_service) that are run on your computer. And that is no different for PostgreSQL, look [here](http://initd.org/psycopg/docs/install.html) for instructions on installing and starting a PostgreSQL server on your computer. You will also need to install the `postgresql` library. If you are using Anaconda, this should be as easy as:
 
-    conda install -c mcrot pygresql=4.1.1 
+    conda install pygresql
 
 
 ## Creating and Connecting to Databases
@@ -42,11 +42,10 @@ Whether you want to create, modify, or retrieve information from a `PostgreSQL` 
 
 We want to create the database shown in the diagram above. To do that, we need to create our database connection, create a cursor, and run our first query against the database:
 
-    import psycopg2
-    con = psycopg2.connect(host='localhost', user='my_user_name', passwd='my_secret')
-    cursor = con.cursor()
-    cursor.execute('CREATE DATABASE `secret_agents`;')
-    cursor.execute('USE secret_agents';)
+    import pg
+    con = pg.connect(dbname='secret_agents', port='5432')
+    con.query('CREATE DATABASE `secret_agents`;')
+    con.query('USE secret_agents';)
     con.close()
 
 The `CREATE` command is clear, but the `USE` command is not so obvious. We can `CREATE` as many databases as we want, but in order to go inside that database and interact with it, we need to execute a `USE` command first. And later, if we want to interact with a different database, we will execute another `USE` command.
@@ -55,15 +54,14 @@ The `CREATE` command is clear, but the `USE` command is not so obvious. We can `
 
 For instance, if I wanted to create the `agents` table above I might do:
 
-    cursor = con.cursor()
-    cursor.execute('''CREATE TABLE `agents` (
-                        `agentID` int(11) NOT NULL auto_increment,
-                        `code_name` varchar(3) NOT NULL default '007',
-                        `name` varchar(30) NOT NULL default 'James Bond',
-                        PRIMARY KEY (`agentID`))
-                   ''')
+    con.query('''CREATE TABLE `agents` (
+                  `agentID` int(11) NOT NULL auto_increment,
+                  `code_name` varchar(3) NOT NULL default '007',
+                  `name` varchar(30) NOT NULL default 'James Bond',
+                  PRIMARY KEY (`agentID`))
+               ''')
 
-First notice that a cursor was created using `.cursor()`, we created PostgreSQL code using `.execute()`, and we ran the code against the database using `.commit()`.
+All code execute against the PostgreSQL database will be executed using the `.query()` method on the PostgreSQL connection object.
 
 You may also noticed something very strange. What is all this `CREATE TABLE` gobbly gook? That's not Python code! Good observation; that is not Python code. When we interact with the database, we do so with a variant of the popular SQL database langauge called PostgreSQL. It might seem unfair that now you have to learn a whole new programming language. But there's nothing for it. If you want to deal with databases, you need to learn to talk to them on their own level.
 
@@ -79,9 +77,8 @@ These columns all have types `INT` and `VARCHAR`. Though there are other possibi
 
 Right now the table is empty, so let's add values using `INSERT`. There's obviously one agent we can add:
 
-    cursor.execute('''INSERT INTO agents(agentID, code_name, name)
-                   VALUES(?,?,?)''', (1, "007", "James Bond"))
-    con.commit()
+    con.query('''INSERT INTO agents(agentID, code_name, name)
+              VALUES('%s', '%s', '%s')''' % (1, "007", "James Bond"))
 
 But we wouldn't be much of an agency with only one agent, so let's create several `INSERT` statements and commit them all:
 
@@ -91,10 +88,9 @@ But we wouldn't be much of an agency with only one agent, so let's create severa
                     ("005", "Stuart Thomas"), ("006", "Alec Trevelyan"),
                     ("008", "Bill")]
 
-    cursor.executemany('''INSERT INTO agents(agentID, code_name, name)
-                       VALUES(?,?,?)''', other_agents)
-
-Notice here that we made several `.execute()` statements at once by passing a list as a secondary argument to `.executemany()`.
+    for other_agent in other_agents:
+        con.query('''INSERT INTO agents(agentID, code_name, name)
+                  VALUES('%s', '%s', '%s')''' % other_agent)
 
 
 ### Updating Tables (UPDATE)
