@@ -98,7 +98,8 @@
     ...             a[i][j][k] /= total
     
     # 5. Calculate the `sum` of all the elements in the array.
-    >>> sum(sum(sum(a)))
+    >>> from numpy import sum
+    >>> sum(a)
     9.0
     
     # 6. Create a new array, where every element is the square root of the old one.
