@@ -370,6 +370,7 @@ Again, in Python v2.x dictionary comprehensions return lists, but in Python v3.x
 
 ## Further Reading
 
+ * [Origins of Python's Functional Features](http://python-history.blogspot.com/2009/04/origins-of-pythons-functional-features.html) - Post by Guido van Rossum
  * [Dictionary Comprehensions and Zip](http://www.bogotobogo.com/python/python_dictionary_comprehension_with_zip_from_list.php)
  * [Python Tutorial: Map, Reduce, Filter](http://www.python-course.eu/lambda.php)
  * [Python Tutorial: List Comprehension](http://www.python-course.eu/list_comprehension.php)
