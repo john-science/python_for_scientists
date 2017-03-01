@@ -287,3 +287,5 @@ The query would return:
 [Back to Syllabus](../../README.md)
 
     con.close()
+
+![XKCD Query Comic](https://imgs.xkcd.com/comics/query.png)
