@@ -311,7 +311,7 @@ This is essentially the same as when we read the CSV file as a raw text file, ex
 
 #### Read as Dictionaries
 
-Another popular option is to read each line of the CSV file into a small dictionary of values, with the column headers as keys and the row split into values:
+Another popular option is to read each line of the CSV file into a dictionary, with the column headers as keys and the row split into values:
 
     >>> import csv
     >>> f = open('radiation_dose.csv', 'r')
@@ -325,7 +325,7 @@ Another popular option is to read each line of the CSV file into a small diction
     ... 
     >>> f.close()
 
-This is particularly handy if the CSV data will eventually be read into any kind of dictionary.
+This approach is particularly handy if the CSV data will eventually be read into any kind of dictionary.
 
 
 ## Problem Sets
