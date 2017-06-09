@@ -336,6 +336,12 @@ And if you apply `sort` to a multi-dimensional `array`, it will return each sub-
     array([[ 2,  4,  9],
            [-3,  0,  1]])
 
+A related function is `argsort`, which instead returns the indices of the sorted elements:
+
+    >>> x = np.array([2, 1, 4, 3, 5])
+    >>> np.argsort(x)
+    [1 0 3 2 4]
+
 #### clip
 
 Use `clip` if you want to set the max and min value allowed in your array:
