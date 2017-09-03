@@ -133,7 +133,7 @@ But `Series` are also indexed, so unlike NumPy arrays, you can get elements by t
 
 What do you think this will return?
 
-    In [11]: x[['a','d','c']][1:]
+    In [11]: x['a':'c']
 
 **Working with NumPy**
 
@@ -216,17 +216,41 @@ We can also convert a `np.array` to a `DataFrame`. In the example below we conve
 
 We might also want to create a `DataFrame` from a collection of `Series` objects. Typically, this will be done with a dictionary, so you can label the columns:
 
-    In [1]: r = pd.Series(['a', 'b', 'c'])
-    In [2]: s = pd.Series(['X', 'Y', 'Z'])
-    In [3]: t = pd.Series([1, 2, 3])
-    In [4]: u = pd.Series([6, 5, 4])
-    In [5]: d = {'r': r, 's': s, 't': t, 'u': u}
-    In [6]: pd.DataFrame(d)
-    Out[6]: 
-       r  s   t   u
-    0  a  X   1   6
-    1  b  Y   2   5
-    2  c  Z   3   4
+    In [1]: area = pd.Series({'California': 423967, 'Texas': 695662,
+                              'New York': 141297, 'Florida': 170312,
+                              'Illinois': 149995})
+    In [2]: population = pd.Series({'California': 38332521,
+                                    'Texas': 26448193,
+                                    'New York': 19651127,
+                                    'Florida': 19552860,
+                                    'Illinois': 12882135})
+    In [3]: states = pd.DataFrame({'population': population,
+                                   'area': area})
+    In [4]: states
+    Out [4]:                          area  population
+                        California  423967    38332521
+                        Florida     170312    19552860
+                        Illinois    149995    12882135
+                        New York    141297    19651127
+                        Texas       695662    26448193
+
+To get the data as a 2D NumPy area:
+
+    In [5]: states.values
+    Out [5]:            array([[  4.23967000e+05,   3.83325210e+07,   9.04139261e+01],
+                               [  1.70312000e+05,   1.95528600e+07,   1.14806121e+02],
+                               [  1.49995000e+05,   1.28821350e+07,   8.58837628e+01],
+                               [  1.41297000e+05,   1.96511270e+07,   1.39076746e+02],
+                               [  6.95662000e+05,   2.64481930e+07,   3.80187404e+01]])
+
+Or, to get the transpose of your data:
+
+    In [6]: states.T
+    Out [6]:                  California       Florida      Illinois      New York         Texas
+               area         4.239670e+05  1.703120e+05  1.499950e+05  1.412970e+05  6.956620e+05
+               population   3.833252e+07  1.955286e+07  1.288214e+07  1.965113e+07  2.644819e+07
+               pop_density  9.041393e+01  1.148061e+02  8.588376e+01  1.390767e+02  3.801874e+01
+
 
 ## Slicing a DataFrame
 
@@ -456,6 +480,42 @@ Or you can query for null values in a particular column:
     11    Jessica       NaN      F   19      black      blue
 
 Pandas uses the "Not a Number" (`NaN`) Python code to represent data that is missing. This is probably good to know, though I've never had any problems confusing the two. Pandas makes dealing with missing data pretty seamless.
+
+You can fill in invalid data using `.fillna()`:
+
+    In [6]: df.fillna("X")
+    Out[6]: 
+       FIRST_NAME LAST_NAME GENDER  AGE HAIR_COLOR EYE_COLOR
+    0    Jennifer     Jones      F   27      black     brown
+    1       Jaime   Roberts      M   32      brown     hazel
+    2     Michael   Johnson      M   55        red     green
+    3        Mary         X      F   42     blonde         X
+    4           X  Phillips      M   37          X     brown
+    5      Thomas     Moore      M   60      brown      blue
+    6     Natalie    Potter      F    X      brown     green
+    7      Brenda     Jones      F    X          X     brown
+    8     Michael     Smith      X   58      brown     brown
+    9    Jennifer     Smith      F   36      black     brown
+    10    Michael     Smith      M   37      black     hazel
+    11    Jessica         X      F   19      black      blue
+    12      Molly    Bryant      F   21      brown      blue
+    13      Jaime  Anderson      F   46      brown     green
+
+Or you can drop all entries that have invalid data:
+
+    In [7]: df.dropna()
+    Out[7]: 
+       FIRST_NAME LAST_NAME GENDER  AGE HAIR_COLOR EYE_COLOR
+    0    Jennifer     Jones      F   27      black     brown
+    1       Jaime   Roberts      M   32      brown     hazel
+    2     Michael   Johnson      M   55        red     green
+    4      Thomas     Moore      M   60      brown      blue
+    4    Jennifer     Smith      F   36      black     brown
+    5     Michael     Smith      M   37      black     hazel
+    6       Molly    Bryant      F   21      brown      blue
+    7       Jaime  Anderson      F   46      brown     green
+
+Notice that both of the above built-in methods to deal with invalid data return a new DataFrame, they do not edit the original.
 
 #### Simple Queries
 
@@ -905,6 +965,6 @@ For more information on writing to other data formats, consult the [pandas manua
  * [Installing Pandas](http://pandas.pydata.org/pandas-docs/stable/install.html)
  * [Official Panadas Tutorials](http://pandas.pydata.org/pandas-docs/stable/tutorials.html)
  * [Python & Pandas Top 10](http://manishamde.github.io/blog/2013/03/07/pandas-and-python-top-10/)
-
+ * [Python Data Science Handbook](https://jakevdp.github.io/PythonDataScienceHandbook/03.00-introduction-to-pandas.html) - Pandas chapter
 
 [Back to Syllabus](../../README.md)
