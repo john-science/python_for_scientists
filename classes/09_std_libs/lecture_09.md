@@ -245,7 +245,7 @@ One of people's main complaints about Python as a language is that it isn't as f
     ...     and so on.
     ...     '''
     ...     counting = []
-    ...     for i in xrange(1, n):
+    ...     for i in range(1, n):
     ...         counting.append(range(1, i + 1))
     ...     return counting
 
@@ -273,13 +273,13 @@ And for timing short pieces of logic, that might be good enough.
 
 ## Further Reading
 
- * Official Docs - datetime: ([Python 2](https://docs.python.org/2/library/datetime.html) / [Python 3](https://docs.python.org/3/library/datetime.html))
+ * [Official Docs - datetime](https://docs.python.org/3/library/datetime.html)
  * [Module of the Week - datetime](http://pymotw.com/2/datetime/)
- * Official Docs - datetime formatting: ([Python 2](https://docs.python.org/2/library/datetime.html#strftime-and-strptime-behavior) / [Python 3](https://docs.python.org/3/library/datetime.html#strftime-and-strptime-behavior))
+ * [Official Docs - datetime formatting](https://docs.python.org/3/library/datetime.html#strftime-and-strptime-behavior)
  * [effbot - datetime](http://www.effbot.org/librarybook/datetime.htm)
- * Official Docs - math: ([Python 2](https://docs.python.org/2/library/math.html) / [Python 3](https://docs.python.org/3/library/math.html))
- * Official Docs - random: ([Python 2](https://docs.python.org/2/library/random.html) / [Python 3](https://docs.python.org/3/library/random.html))
- * Official Docs - timeit: ([Python 2](https://docs.python.org/2/library/timeit.html) / [Python 3](https://docs.python.org/3/library/timeit.html))
+ * [Official Docs - math](https://docs.python.org/3/library/math.html)
+ * [Official Docs - random](https://docs.python.org/3/library/random.html)
+ * [Official Docs - timeit](https://docs.python.org/3/library/timeit.html)
  * [Python Central - timeit](http://www.pythoncentral.io/time-a-python-function/)
 
 
