@@ -57,7 +57,7 @@ The single-line comment is the `#`:
 
     # beginning of the line comment
     result = 1  # end of the line comment
-    for i in xrange(2, N+1):
+    for i in range(2, N+1):
         result *= i
 
 But there are also multi-line comments as we saw in the [Functions and Modules](classes/03_functions_and_modules/lecture_03.md) lecture:
