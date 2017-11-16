@@ -35,7 +35,7 @@ def main():
     con.query('''CREATE TABLE status(agentID INTEGER PRIMARY KEY, status TEXT)''')
 
     print(' - Add all agents to the status table as "Active".')
-    for i in xrange(1, 10):
+    for i in range(1, 10):
         con.query('''INSERT INTO status(agentID, status)
                   VALUES('%s', '%s')''' % (i, "Active"))
 
