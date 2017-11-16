@@ -6,9 +6,12 @@ NumPy is the most popular mathematics library for Python. NumPy takes a big step
 
 NumPy is the first third-party library we will use in this class. But it won't be the last. There are a ton of amazing tools written for Python that you as a scientist/engineer/geek/whatever will want to use. But they don't come pre-packaged with Python. You will have to install them separately. 
 
-You will need Python v2.4, v2.5, v2.6, v2.7 or v3.2 and newer to use NumPy and all of the other libraries that require it.
+You will want Python v3.3 and newer to use NumPy and all of the other libraries that require it.
 
 You can find instructions for installing NumPy [here](http://docs.scipy.org/doc/numpy/user/install.html).
+
+> **Please Note** The NumPy group [has said](https://github.com/numpy/numpy/blob/master/doc/neps/dropping-python2.7-proposal.rst) they will be dropping support for Python 2.X on Jan 1, 2020.  Since this library is the basis of nearly all science and engineering work in Python it will be very important that you move to Python 3.X at some point.
+
 
 #### Anaconda
 
