@@ -35,17 +35,6 @@
     # 4. The square of all even, two-digit numbers.
     map(lambda e: e * e, range(10, 100, 2))
 
-#### Reduce - Solutions
-
-    # 1. Find the product of all the odd, two-digit numbers.
-    reduce(lambda a, b: a * b, range(11, 100, 2))
-    
-    # 2. Find the sum of all three-digit numbers that are divisible by three.
-    reduce(lambda a, b: a + b, range(102, 1000, 3))
-    
-    # 3. Turn the list `tst = ['This', 'is', 'a', 'test.']` into a single string.
-    reduce(lambda r, s: r + ' ' + s, tst)
-
 #### Filter - Solutions
 
     # 1. What positive, odd numbers less than 1000 are evenly divisible by 7 and 13?
@@ -64,12 +53,12 @@
     filter(lambda n: n % 3 == 0, range(100))
     
     # 2. Calculate the sum of all the even numbers from 2 to 222.
-    >>> reduce(lambda a, b: a + b, range(2, 223, 2))
+    >>> sum(lambda a, b: a + b, range(2, 223, 2))
     12432
     
     # 3. Calculate the sum of the first five powers of seven.
     >>> powers = map(lambda i: 7 ** i, range(1, 6))
-    >>> reduce(lambda a, b: a + b, powers)
+    >>> sum(lambda a, b: a + b, powers)
     19607
 
 
