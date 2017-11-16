@@ -21,11 +21,11 @@
 
 In general, sorting a list of items is a classic, but difficult computational tast. However, it has been studied so thoroughly, that there are two methods built right into Python to do this for you:
 
-    lst = [7, 4, 3, 1, 8, 4, 333, -1234]
+    lst = [-1234, 7, 4, 3, 1, 8, 4, 333]
     lst.sort()
     print(lst)
     
-    lst = [7, 4, 3, 1, 8, 4, 333, -1234]
+    lst = [-1234, 7, 4, 3, 1, 8, 4, 333]
     sorted(lst)
 
 So, what is the difference between `sort` and `sorted` above?
