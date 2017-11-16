@@ -301,9 +301,9 @@ Create a Python module called:
     
     
     def main():
-        six = range(1, 7)
-        evens = range(2, 13, 2)
-        thirds = range(3, 13, 3)
+        six = list(range(1, 7))
+        evens = list(range(2, 13, 2))
+        thirds = list(range(3, 13, 3))
         
         six_set = list_to_set(six)
         evens_set = list_to_set(evens)
