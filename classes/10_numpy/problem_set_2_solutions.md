@@ -11,7 +11,7 @@
 
     # 2. Use a `for` loop to create 100,000 `random.randint` numbers less than 10. Add 1.0 to each element of `counts` that your random integer matches.
     >>> from numpy import random
-    >>> for i in xrange(100000):
+    >>> for i in range(100000):
     ...     counts[random.randint(10)] += 1.0
     ... 
     >>> counts
@@ -34,7 +34,7 @@
     ...     of 10 values; the more equal they are, the
     ...     more "flat" the randint distribution is.'''
     ...     counts = zeros(10)
-    ...     for i in xrange(num_trials):
+    ...     for i in range(num_trials):
     ...         counts[random.randint(10)] += 1.0
     ...     return counts / num_trials
     ... 
@@ -59,7 +59,7 @@
 
     # 2. Use a `for` loop to create 100,000 random decimals between zero and one (use `rand`). For each number you generate, multiple it by 10 and convert it to an integer using `int()`. Then add your number to the `counts` bin, as we did in part 2 of set 2.
     >>> counts = zeros(10)
-    >>> for i in xrange(100000):
+    >>> for i in range(100000):
     ...     counts[int(10.0 * random.rand())] += 1.0
     ... 
     >>> counts
@@ -77,7 +77,7 @@
     >>> from numpy import zeros, random
     >>> def test_rand_10_bins(num_trials):
     ...     counts = zeros(10)
-    ...     for i in xrange(num_trials):
+    ...     for i in range(num_trials):
     ...         counts[int(10.0 * random.rand())] += 1.0
     ...     return counts / num_trials
     ... 
@@ -95,7 +95,7 @@
     >>> counts = zeros(10)
 
     # 2. Use a `for` loop to create 100,000 random decimals using `randn`. Take the absolute value (`abs`) of each of your numbers, then convert it to an integer using `int`. If your number is less than 10, add 1.0 to the appropriate element in your `counts` array, as in Sets 1 and 2 above.
-    >>> for i in xrange(100000):
+    >>> for i in range(100000):
     ...     n = abs(random.randn())
     ...     if n < 10:
     ...         counts[int(n)] += 1.0
