@@ -93,7 +93,7 @@ For this exercise, let's create another table that lists the status of all of ou
 
 And fill it with data (all our agents are currently active).
 
-    for i in xrange(1, 10):
+    for i in range(1, 10):
         cursor.execute('''INSERT INTO status(agentID, status)
                       VALUES(?,?)''', (i, "Active"))
     con.commit()
