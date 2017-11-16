@@ -42,24 +42,6 @@ Reformat this code to meet PEP8 standards:
     else:
         print('default_value')
 
-### Iterative Loops
-
-    for i in range(100000):
-        some_crazy_function(i)
-
-### Reading Text Files
-
-Imagine you are reading a very simple (2 column) CSV file that is several million lines long. And you want to load that data (somehow specially, let's ignore the details) into a big database.
-
-    f = open('/path/to/my_file.csv', 'r')
-    d = {}
-    
-    for line in f.readlines():
-        line_list = line.strip().split(',')
-        if d.has_key(line_list[0]):
-            d[line_list[0]] += float(line_list[1])
-        else:
-            d[line_list[0]] = float(line_list[1])
 
 ### Importing
 
