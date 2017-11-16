@@ -72,10 +72,10 @@ def main():
 
     print("\nThe World's Greatest Secret Agent, part 2: Counting")
     mission_count = {}
-    for i in xrange(1, 9):
+    for i in range(1, 9):
         mission_count[i] = missions_by_agent.count(i)
     print('\tAgent\tMission Count')
-    for i in xrange(1, 9):
+    for i in range(1, 9):
         print('\t' + str(i) + '\t' + str(mission_count[i]))
 
     print("\nThe World's Greatest Secret Agent, part 3: Names")
