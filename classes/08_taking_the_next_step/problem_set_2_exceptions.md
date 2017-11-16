@@ -2,10 +2,7 @@
 
 All of the functions have a failure mode that you need to fix by adding at least one Exception.
 
-For a full list of Python's built-in Exceptions, look at the public documentation:
-
- * [Python 2](https://docs.python.org/2/library/exceptions.html)
- * [Python 3](https://docs.python.org/3/library/exceptions.html)
+For a full list of Python's built-in Exceptions, look at the [public documentation](https://docs.python.org/3/library/exceptions.html).
 
 #### 1. This function returns the fraction of two numbers. But what happens when the denominator is zero?
 
