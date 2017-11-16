@@ -2,7 +2,7 @@
 
 #### Lambda
 
-In order to use `map`, `reduce`, and `filter` you're going to have to get used to `lambda` functions.  Create lambda functions to do the following things:
+In order to use `map` and `filter` you're going to have to get used to `lambda` functions.  Create lambda functions to do the following things:
 
 1. Find the square of a number.
 2. Find the cube of a number.
@@ -20,14 +20,6 @@ Using only a single line `map` statement, create a list of the following items:
 3. Convert these temps from Fahrenheit to Celsuis: `temps = [-42.0, -10.9, 0.0, 20.7, 32.0, 42.0, 101, 273, 320]`
 4. The square of all even, two-digit numbers.
 
-#### Reduce
-
-Use only a single `reduce` statement to perform the following calculations:
-
-1. Find the product of all the odd, two-digit numbers.
-2. Find the sum of all three-digit numbers that are divisible by three.
-3. Turn the list `tst = ['This', 'is', 'a', 'test.']` into a single string.
-
 #### Filter
 
 Using only a single `filter` statement, solve the following puzzles:
@@ -38,7 +30,7 @@ Using only a single `filter` statement, solve the following puzzles:
 
 #### Choose Your Own Adventure
 
-Use `map`, `reduce`, and/or `filter` to solve the following puzzles:
+Use `map` and/or `filter` (and maybe `sum`) to solve the following puzzles:
 
 1. Find all the numbers evenly divisible by 3, below 100.
 2. Calculate the sum of all the even numbers from 2 to 222.
