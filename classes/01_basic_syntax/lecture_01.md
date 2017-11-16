@@ -52,13 +52,13 @@ The Python interpreter can act like a calculator:
     >>> 8 / 5.0
     1.6
     >>> 9 / 7
-    1
-
-NOTE: If you are running Python 2.x you will see the above behavior for division. But if you are running Python 3.x you will see that division always returns a float, and never an integer:
-
-    >>> # In Python 3.x
-    >>> 9 / 7
     1.2857142857142858
+
+NOTE: If you are running Python 3.x you will see the above behavior for division. But if you are running Python 2.x you will see that division of integers always returns an integer:
+
+    >>> # In Python 2.x
+    >>> 9 / 7
+    1
 
 But you can also do algebra (math with variables):
 
@@ -71,22 +71,22 @@ But you can also do algebra (math with variables):
     3
     >>> z = x / y
     >>> z
-    3
+    3.0
 
 After a mathematical operation is performed, a variable of a new type is returned:
 
     >>> 17.0 / 3.0  # float / float -> float
     5.666666666666667
-    >>> 15 / 3      # int / int -> int
-    5
+    >>> 15 / 3      # int / int -> float
+    5.0
     >>> 15 / 3.0    # int / float -> float
     5.0
     >>> 15.0 / 3    # float / int -> float
     5.0
     >>> 17 / 3.0    # int / float -> float
     5.666666666666667
-    >>> 17 / 3      # int / int -> int
-    5
+    >>> 17 / 3      # int / int -> float
+    5.666666666666667
 
 But if you try to use a variable that has not been assigned a value, Python will throw an error:
 
