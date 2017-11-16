@@ -55,31 +55,6 @@ Again, we see the old `has_key` function used. Ick. But also this is a prime exa
     else:
         print('default_value')
 
-### Iterative Loops - Solution (Reformatted Code)
-
-The problem with the above example is the `range` keyword. It will create an actual array in memory of 100,000 numbers. This might be okay, but if this happens a lot, you are suddenly wasting a lot of time and memory. If you instead use `xrange`, you are creating an [iterator](https://wiki.python.org/moin/Iterator) that will generate one number at a time. This will be faster can conserve memory.
-
-    for i in xrange(100000):
-        some_crazy_function(i)
-
-*Fun Fact:* This is such an important standard that the old `range` has been entirely replaced with `xrange` in Python 3.x.
-
-### Reading Text Files - Solution (Reformatted Code)
-
-Okay, the major problem here is `f.readlines()`. Much like `range`, this will load the entire CSV file into memory. But we says this files is millions of lines long. And, okay, this file only has two columns. But what if it had more, that's potentiall a lot to read into memory. Using `xreadlines()` generates an iterator, that will only read one line at a time. So you will only have one line at a time in memory. Much better.
-
-    f = open('/path/to/my_file.csv', 'r')
-    d = {}
-    
-    for line in f.xreadlines():
-        line_list = line.strip().split(',')
-        if line_list[0] not in d:
-            d[line_list[0]] = 0.0
-        d[line_list[0]] += float(line_list[1])
-
-    f.close()
-
-*NOTE:* Python is pretty good at this, but just go ahead and `.close()` every file you open. Worst case scenario, at least the person reading your code knows you're done with that file.
 
 ### Importing - Solution (Reformatted Code)
 
@@ -169,7 +144,7 @@ Lastly, we *could* make that whole `crew_member` definition shorter. This one is
 
 ### Mystery Example 2 - Solution (Reformatted Code)
 
-Did you use `xrange`? Good! That's still not the write answer, but that's wrong for good reasons. In this case, for both the list `a` and the dictionary `d`, we want to iterate over the indexes and values at the same time. This is where `enumerate` comes in handy. Not only will it be faster than the two procedures in the code above, but it makes for much cleaner, easier to read code.
+In this case, for both the list `a` and the dictionary `d`, we want to iterate over the indexes and values at the same time. This is where `enumerate` comes in handy. Not only will it be faster than the two procedures in the code above, but it makes for much cleaner, easier to read code.
 
     # d is some big dictionary of craziness
     # a is some big list of string
@@ -195,7 +170,7 @@ There are a few things that could be improved about that messy plotting loop:
         print('Failed to open file: ' + file_path)
         exit()
     
-    for line in f.xreadlines():
+    for line in f.readlines():
         plot_things_using_matplotlib(line)
     
     f.close()
@@ -207,7 +182,7 @@ Don't fight Python on this whitespace thing. You won't come out looking good.
     squares = {}
     cubes = {}
     
-    for i in xrange(1e7):
+    for i in range(1e7):
         if i %% 3 == 0:
             squares[i] = i * i
         if i %% 7 == 0:
