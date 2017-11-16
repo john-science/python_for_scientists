@@ -8,7 +8,7 @@ def main():
     cursor = con.cursor()
 
     print('\nLicense to Kill, part 1: Give out some licenses.')
-    for agent in xrange(4, 10):
+    for agent in range(4, 10):
         cursor.execute('''INSERT INTO licenses(id, agentID, license)
                VALUES(?,?,?)''', (agent, agent, "License to Kill"))
     con.commit()
