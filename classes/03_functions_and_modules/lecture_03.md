@@ -134,8 +134,8 @@ Let's try to use the `numop1` code we have saved in the `super_happy_fun_nums.py
 You will need to be on the commandline to do this. First, navigate to the directory that contains `super_happy_fun_nums.py`. Next, open up the Python intepreter by typing "python" on the commandline:
 
     $ python
-    Python 2.6.6 (r266:84292, Jan 22 2014, 09:42:36) 
-    [GCC 4.4.7 20120313 (Red Hat 4.4.7-4)] on linux2
+    Python 3.6.1 |Anaconda 4.4.0 (64-bit)| (default, May 11 2017, 13:09:58) 
+    [GCC 4.4.7 20120313 (Red Hat 4.4.7-1)] on linux
     Type "help", "copyright", "credits" or "license" for more information.
     >>> 
 
@@ -286,18 +286,19 @@ Once you `import math`, you can do `help(math)` to learn what options are availb
 
 The `math` library above is just the tip of the standard library iceberg. Python has all kinds of libraries built in:
 
- * datetime - tools for dealing with dates and times ([Python 2](https://docs.python.org/2/library/datetime.html) / [Python 3](https://docs.python.org/3/library/datetime.html))
- * gzip - tools for gzipping and un-gzipping files ([Python 2](https://docs.python.org/2/library/gzip.html) / [Python 3](https://docs.python.org/3/library/gzip.html))
- * random - tools for generating pseudo-random numbers ([Python 2](https://docs.python.org/2/library/random.html) / [Python 3](https://docs.python.org/3/library/random.html))
- * os - tools creating directories, checking if files exist, etc ([Python 2](https://docs.python.org/2/library/os.html) / [Python 3](https://docs.python.org/3/library/os.html))
- * sys - add commandline arguments to your programs ([Python 2](https://docs.python.org/2/library/sys.html) / [Python 3](https://docs.python.org/3/library/sys.html))
- * urllib2 - tools for dealing with HTTP communications over the internet ([Python 2](https://docs.python.org/2/library/urllib2.html) / [Python 3](https://docs.python.org/3/library/urllib2.html))
+ * [datetime](https://docs.python.org/3/library/datetime.html) - tools for dealing with dates and times
+ * [gzip](https://docs.python.org/3/library/gzip.html) - tools for gzipping and un-gzipping files
+ * [random](https://docs.python.org/3/library/random.html) - tools for generating pseudo-random numbers
+ * [os](https://docs.python.org/3/library/os.html) - tools creating directories, checking if files exist, etc
+ * [sys](https://docs.python.org/3/library/sys.html) - add commandline arguments to your programs
+ * [urllib2](https://docs.python.org/3/library/urllib2.html) - tools for dealing with HTTP communications over the internet
 
-For a full list of the Python standard libraries check here: [Python 2](https://docs.python.org/2/library/) / [Python 3](https://docs.python.org/3/library/)
+For a full list of the Python standard libraries check [here](https://docs.python.org/3/library/).
 
 Try this one:
 
     import this
+
 
 ## Wrap-Up
 
