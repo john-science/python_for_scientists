@@ -287,6 +287,6 @@ As you may have already noticed, this class is being stored and displayed using 
  * [Comments - After Hours](http://www.afterhoursprogramming.com/tutorial/Python/Comments/)
  * [Exceptions - After Hours](http://www.afterhoursprogramming.com/tutorial/Python/Exceptions/)
  * [Exceptions - Python Documentation](https://docs.python.org/2/tutorial/errors.html)
- * All Built-In Exceptions - [Python 2](https://docs.python.org/2/library/exceptions.html) / [Python 3](https://docs.python.org/3/library/exceptions.html)
+ * [All Built-In Exceptions](https://docs.python.org/3/library/exceptions.html)
 
 [Back to Syllabus](../../README.md)
