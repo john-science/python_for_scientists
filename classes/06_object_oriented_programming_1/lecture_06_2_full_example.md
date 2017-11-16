@@ -141,7 +141,7 @@ But with the new OOP version of the code, you can simply define all your files a
 Or, if you put all of your `FILES` into a `MASTER_FILES` list-of-lists, and all of y our `FTP_DIR` into a `MASTER_DIRS` list-of-lists:
 
     ftp = SimpleFTP(FTP_ADDRESS, FTP_USER, FTP_PASS, FTP_IS_PASSIVE)
-    for i in xrange(len(MASTER_FILES)):
+    for i in range(len(MASTER_FILES)):
         ftp.pull_data(MASTER_FILES[i], MASTER_DIRS[i])
 
 ### Flexibility for Importing
