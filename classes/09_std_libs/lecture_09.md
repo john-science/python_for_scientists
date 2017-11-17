@@ -4,7 +4,7 @@
 
 Batteries Included. That's the Python motto. Python comes with a huge collection of [standard libraries](http://en.wikipedia.org/wiki/Standard_library). Standard libraries are packages of code that come with Python to help you solve common tasks. Why reinvent the wheel every time?
 
-What follows is a selection of handy tools from Python's standard libraries. For a full list of the Python standard libraries check here: [Python 2](https://docs.python.org/2/library/) / [Python 3](https://docs.python.org/3/library/).
+What follows is a selection of handy tools from Python's standard libraries. For a full list of the Python standard libraries check [here](https://docs.python.org/3/library/).
 
 ## datetime
 
@@ -176,6 +176,7 @@ It can also do various kinds of exponentials and logarithms:
     >>> log10(25)
     1.3979400086720377
 
+
 ## Random
 
 ![random](http://imgs.xkcd.com/comics/random_number.png)
@@ -235,7 +236,7 @@ Another tool that is helpful, particularly for statistical studies, is the abili
 
 ## timeit
 
-One of people's main complaints about Python as a language is that it isn't as fast as C or Fortran. But it can be fast. You just have to *try* to optimize your code for speed. If you are trying to make a function faster, you will want to test it out and see if your new version is indeed faster than your old one. Python's `timeit` library is an easy way to time your code without having to change it. For instance:
+One of people's main complaints about Python is that it isn't as fast as C. But it can be fast. You just have to *try* to optimize your code for speed. If you are trying to make a function faster, you will want to test it out and see if your new version is indeed faster than your old one. Python's `timeit` library is an easy way to time your code without having to change it. For instance:
 
     >>> def build_counting_list(n):
     ...     '''build a list of lists where the elements are:
@@ -267,9 +268,11 @@ That `timeit` takes strings is a little strange. But it also allows us to write 
 
 And for timing short pieces of logic, that might be good enough.
 
+
 ## Problem Sets
 
  * [Std Libs, Part 1](problem_set_1_batteries.md)
+
 
 ## Further Reading
 
