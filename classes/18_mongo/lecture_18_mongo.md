@@ -1,6 +1,17 @@
 # MongoDB
 
-TODO
+Unlike most databases, MongoDB is a "NoSQL" database. Where most databases are based around related tables of data, Mongo allows you to store data in any old format you want. This leads to much more natural data representations. It also means your whole workflow will be very different from our a typical SQL-like database. There are advantages and disadvantages to this, but Mongo is easier to get use than most database systems, and scales well.
+
+Because Mongo is so different, in this lecture we will cover both the Mongo syntax and the Python MongoDB API, separately.
+
+
+## Installation
+
+> TODO: Install Mongo DB
+
+We will be installing the Python MongoDB API through [Anaconda](http://docs.continuum.io/anaconda/install.html). Anaconda is Python packaged with hundreds of tools and libraries that you will want, and it is certainly a good tool to use while learning Python
+
+    conda install mongodb
 
 
 ## Creating and Connecting to Databases
@@ -46,10 +57,9 @@ TODO
 
 ## Further Reading
 
- * [TODO](https://www.google.com) - TODO
+ * [Mongo DB home page](https://www.mongodb.com/)
 
 [Back to Syllabus](../../README.md)
 
-    con.close()
 
 ![XKCD Query Comic](https://imgs.xkcd.com/comics/query.png)
