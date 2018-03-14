@@ -22,35 +22,47 @@ TODO
 
 TODO
 
-### Creating Databases (CREATE DATABASE)
+## Creating Databases (CREATE DATABASE)
 
 TODO
 
-### Creating Documents
+## Databases, Collections, and Documents
 
 TODO
 
-### Inserting Data (INSERT)
+## Creating, Updating, and Deleting Documents
 
 TODO
 
-### Updating Tables (UPDATE)
+## Querying
 
 TODO
 
-### Deleting Data (DELETE)
+## Indexing
 
 TODO
 
-### Querying Data (SELECT)
+## Special Indexes
 
 TODO
 
+## Aggregation
 
+TODO
 
-### INTO OUTFILE
+## Application Design
 
-Obviously, if you are working in a Python program, you can query whatever data you want from your tables and write it to a text file. 
+TODO
+
+## Replication
+
+TODO
+
+## Sharding
+
+TODO
+
+## Server Admin
 
 TODO
 
@@ -58,6 +70,7 @@ TODO
 ## Further Reading
 
  * [Mongo DB home page](https://www.mongodb.com/)
+ * [The O'Reily MongoDB book](https://www.goodreads.com/book/show/17943788-mongodb)
 
 [Back to Syllabus](../../README.md)
 
