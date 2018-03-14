@@ -7,9 +7,9 @@ Because Mongo is so different, in this lecture we will cover both the Mongo synt
 
 ## Installation
 
-> TODO: Install Mongo DB
+For installation instructions for the MongoDB database server and client look [here](https://docs.mongodb.com/manual/tutorial/install-mongodb-on-ubuntu/).
 
-We will be installing the Python MongoDB API through [Anaconda](http://docs.continuum.io/anaconda/install.html). Anaconda is Python packaged with hundreds of tools and libraries that you will want, and it is certainly a good tool to use while learning Python
+To install the Python MongoDB API, try using [Anaconda](http://docs.continuum.io/anaconda/install.html). Anaconda is Python packaged with hundreds of tools and libraries, and it is a great learning tool.
 
     conda install mongodb
 
