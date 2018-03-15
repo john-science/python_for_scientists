@@ -16,19 +16,18 @@ To install the Python MongoDB API, try using [Anaconda](http://docs.continuum.io
 
 ## Creating and Connecting to Databases
 
-TODO
+> TODO: This is extra easy in Mongo. Connect to a database, if it doesn't exist it gets created.
+
 
 ## Interacting with the Database
 
-TODO
+> TODO: Native JavaScript interface vs Python API
 
-## Creating Databases (CREATE DATABASE)
-
-TODO
 
 ## Databases, Collections, and Documents
 
-TODO
+> TODO: Let's talk about some Mongo lingo.
+
 
 ## Creating, Updating, and Deleting Documents
 
