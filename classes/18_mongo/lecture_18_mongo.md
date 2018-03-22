@@ -94,7 +94,7 @@ A Mongo document is a different beast than a SQL table, but since it is based on
 
 ## Inserting, Removing, and Updating Documents
 
-### Creating and Inserting
+### Creating Documents and Collections
 
 To create a collection, simply add a document to it, and if it doesn't exist it will be created.
 
@@ -147,45 +147,137 @@ pymongo:
     { "_id" : ObjectId("5ab3e04f7d9a0d1d4a2ef6dd"), "name" : "Alec Trevelyan" }
 
 
-### Removing
+### Removing Documents and Collections
+
+An entire collection can be deleted by using the `remove()` or `drop()` methods. The difference is that `drop()` can only drop whole collections at a time, and `remove()` can also be used to remove individual documents. It should be noted that `drop()` truly deletes a collection, but `remove()` will simply unhook it and the data will be saved for a while. Because of this `drop()` is much faster.
+
+shell:
+
+    > db.agents.drop()
+    > db.agents.remove()
+
+pymongo:
+
+    >>> db.agents.drop()
+    >>> db.agents.remove({})
+
+If, instead, you delete a set of documents from a collection, all of those documents are irreversibly lost.  You do that by passing a query to the `remove()` method.
+
+shell:
+
+    > db.agents.remove({"name": "James Bond"})
+
+pymongo:
+
+    >>> db.agents.remove({"name": "James Bond"})
+
+
+### Updating Documents
+
+Updating documents is a big topic, so let us break it down into parts.
+
+#### Update
+
+To update an existing document, we use the `update()` method, which replaces a queried object (or set of objects) with a new one. Usually, we want to do some data mangling of the object before placing it in the database. That data mangling can be pretty much anything, and is restricted only by the limitations of the language/shell you are working in.
+
+shell:
+
+    > agent1 = db.agents.findOne()
+    { "_id" : ObjectId("5ab3d8c5836cb47f66966e35"), "name" : "James Bond" }
+    > agent1.code_name = "007";
+    > agent1.home_address = "221 B Baker Street, London"
+    > delete agent1.home_address
+    > agent1
+    {
+        "_id" : ObjectId("5ab3d8c5836cb47f66966e35"),
+        "name" : "James Bond",
+        "code_name" : "007"
+    }
+    > db.agents.update({"name": "James Bond"}, agent1)
+
+Or if we are only querying for a single document it might be easier to do the `update()` based on `_id`:
+
+    > db.agents.update({"_id": ObjectId("5ab3d8c5836cb47f66966e35")}, agent1)
+
+pymongo:
+
+    >>> agent1 = db.agents.find_one()
+    { "_id" : ObjectId("5ab3d8c5836cb47f66966e35"), "name" : "James Bond" }
+    >>> agent1["code_name"] = "007";
+    >>> agent1.["home_address"] = "221 B Baker Street, London"
+    >>> delete agent1.home_address
+    >>> agent1
+    {
+        "_id" : ObjectId("5ab3d8c5836cb47f66966e35"),
+        "name" : "James Bond",
+        "code_name" : "007"
+    }
+    >>> db.agents.update({"name": "James Bond"}, agent1)
+
+Or, again, since we know that each `_id` is unique we can play it safe by updating using that:
+
+    >>> from bson.objectid import ObjectId
+    >>> db.agents.update({"_id": ObjectId("5ab3d8c5836cb47f66966e35")}, agent1)
+
+#### Modifiers
 
 TODO
 
-### Updating
+
+#### Array Modifiers
 
 TODO
+
+
+#### Upserts
+
+TODO
+
+
+#### Multiple Documents
+
+TODO
+
 
 ### Write Concerns
 
 TODO
 
+
 ## Querying
 
 TODO
+
 
 ## Indexing
 
 TODO
 
+
 ## Special Indexes
 
 TODO
+
 
 ## Aggregation
 
 TODO
 
+
 ## Application Design
 
 TODO
+
 
 ## Replication
 
 TODO
 
+
 ## Sharding
 
 TODO
+
 
 ## Server Admin
 
