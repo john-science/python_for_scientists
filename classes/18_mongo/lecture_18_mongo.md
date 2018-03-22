@@ -18,7 +18,7 @@ To install the Python MongoDB Driver, try using [Anaconda](http://docs.continuum
 
 To connect to the MongoDB shell from the commandline, witout specifiying a DB, do:
 
-    $ mongodb -nodb
+    $ mongo -nodb
     >
 
 From there, you can connect to a MongoDB server by:
