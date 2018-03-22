@@ -14,6 +14,18 @@ To install the Python MongoDB Driver, try using [Anaconda](http://docs.continuum
     conda install pymongo
 
 
+## Starting the MongoDB Daemon
+
+Before you can connect to a Mongo database, you need a Mongo daemon (or service). That daemon will be running on some server/port somewhere in the world, but for the purposes of these tests we will use the default of port 27017 on the localhost:
+
+On my computer, to start the Mongo demon, I had to do:
+
+    $ sudo mkdir /data/db
+    $ sudo chmod 755 /data -R
+    $ sudo mongod --repair
+    $ sudo mongod
+
+
 ## Creating and Connecting to Databases
 
 To connect to the MongoDB shell from the commandline, witout specifiying a DB, do:
@@ -23,19 +35,19 @@ To connect to the MongoDB shell from the commandline, witout specifiying a DB, d
 
 From there, you can connect to a MongoDB server by:
 
-    > conn = new Mongo("some-host:30000")
+    > conn = new Mongo("127.0.0.1:27017")
 
 And then you can connect to a specific database by:
 
-    > db = conn.getDB("myDB")
+    > db = conn.getDB("secret_agents")
 
 Or you can combine both of these into:
 
-    > db = new Mongo("some-host:30000/myDB")
+    > db = new Mongo("127.0.0.1:27017/secret_agents")
 
 Alternatively, you can specific the database directly from the commandline, and it will define the `db` variable for you:
 
-    $ mongo some-host:30000/myDB
+    $ mongo 127.0.0.1:27017/secret_agents
     > 
 
 What we saw above is that MongoDB comes with its own interactive shell, much like MySQL or postgres. However, in the case of Mongo, the interactive shell is in JavaScript. You can define normal JavaScript objects, functions, and variables exactly as you would expect here.  (Obviously, teaching JavaScript is outside the scope of this course. Though there are an endless number of great resources for it online.)
