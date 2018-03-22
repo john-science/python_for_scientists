@@ -60,26 +60,102 @@ Above we connected to a MongoDB using the native Mongo shell (in JavaScript). Th
 First, let's look at the above "connecting to a database" example. Hopefully the installation is complete and we can import the driver library:
 
     $ python
-    > import pymongo
+    >>> import pymongo
 
 Again, we want to be able to connect to a MongoDB daemon:
 
-    > from pymongo import MongoClient
-    > client = MongoClient('localhost', 27017)
+    >>> from pymongo import MongoClient
+    >>> client = MongoClient('localhost', 27017)
 
 And again, we will want to connect to a specific database through that daemon:
 
-    > db = client.secret_agents
+    >>> db = client.secret_agents
 
 So far, so good. We can now connect to Mongo daemons and databases using the native Mongo shell and the `PyMongo` Python driver.  In either case, if the `secret_agents` database didn't exist, it would be created on the fly.
 
 
 ## Databases, Collections, and Documents
 
-> TODO: Let's talk about some Mongo lingo.
+In SQL-based databases, all data is stored in tables and tables are stored in schemas.  But in a Mongo Database, data is stored in `Documents` and Documents are stored in `Collections`.
+
+Whereas a classic SQL "table" is limited to rows and columns of data, a Mongo "Document" is far less structured:
+
+    {"name": "James Bond",
+     "code name" : "007",
+     "status": "Active",
+     "licenses": ["License to Kill", "License to Tango"]}
+
+The Mongo DB document stores data as key/value pairs, and the values can be another document. Documents are designed to look like JSON objects, which means they can be well represented by Python dictionaries or JavaScript objects.
+
+Unlike SQL schemas, the documents in a Mongo collection do not have to be related in any particular way. There are no restrictions on sharing keys, IDs, or relationships of any kind. While this lack of structure probably makes certain SQL-like operations slower, it provides a lot of freedom. Your data can now be represented in much more natural ways. And you can change the structure of a document without having to worry about changing the structure of all the other documents in that collection.
+
+A Mongo document is a different beast than a SQL table, but since it is based on JSON you probably already have a good intuitive understanding of it.
 
 
-## Creating, Updating, and Deleting Documents
+## Inserting, Removing, and Updating Documents
+
+### Creating and Inserting
+
+To create a collection, simply add a document to it, and if it doesn't exist it will be created.
+
+shell:
+
+    > db.agents.insert({"name": "James Bond"})
+    
+pymongo:
+
+    >>> db.agents.insert({"name": "James Bond"})
+
+You may also want to get a document from a collection.
+
+shell:
+
+    > db.agents.findOne()
+    { "_id" : ObjectId("5ab3d8c5836cb47f66966e35"), "name" : "James Bond" }
+
+pymongo:
+
+    >>> db.agents.find_one()
+    {'_id': ObjectId('5ab3d8c5836cb47f66966e35'), 'name': 'James Bond'}
+
+It will frequently be handy to add multiple documents to a collection at the same time (and it will certainly be faster).
+
+shell:
+
+    > db.agents.insert([{"name": "Scarlet Papava"}, {"name": "Alec Trevelyan"}])
+
+pymongo:
+
+    >>> db.agents.insert_many([{"name": "Scarlet Papava"}, {"name": "Alec Trevelyan"}])
+
+You may frequently want to return all the documents in a collection.  Via the shell this works exactly as expected, in PyMongo (Python v3.x) you will get an iterator instead of a simple list.
+
+shell:
+
+    > db.agents.find()
+    { "_id" : ObjectId("5ab3d8c5836cb47f66966e35"), "name" : "James Bond" }
+    { "_id" : ObjectId("5ab3da447d9a0d1d4a2ef6dc"), "name" : "Scarlet Papava" }
+    { "_id" : ObjectId("5ab3e04f7d9a0d1d4a2ef6dd"), "name" : "Alec Trevelyan" }
+
+pymongo:
+
+    >>> for doc in db.agents.find():
+    ...     print(doc)
+    ... 
+    {'_id': ObjectId('5ab3d8c5836cb47f66966e35'), 'name': 'James Bond'}
+    {'_id': ObjectId('5ab3da447d9a0d1d4a2ef6dc'), 'name': 'Scarlet Papava'}
+    { "_id" : ObjectId("5ab3e04f7d9a0d1d4a2ef6dd"), "name" : "Alec Trevelyan" }
+
+
+### Removing
+
+TODO
+
+### Updating
+
+TODO
+
+### Write Concerns
 
 TODO
 
