@@ -221,7 +221,51 @@ Or, again, since we know that each `_id` is unique we can play it safe by updati
 
 #### Modifiers
 
-TODO
+You might have noticed above that when we did `update`, `remove`, or `find` we have only been able to query for documents that exactly match a very small set of parameters. But that's no good, right? What if we want to match documents with a more complicated set of conditions? What if we want to pull all agents older than 50? What if we want to retrieve all agents whose last name starts with "B"?  What if we want to add one to an agents age, because she just had her birthday?  This is where query modifiers come in.
+
+`$set` sets the value of a field. If that field does not exist, it is created.
+
+shell:
+
+    > db.agents.find()
+    { "_id" : ObjectId("5ab3e04f7d9a0d1d4a2ef6dd"), "name" : "Alec Trevelyan" }
+    { "_id" : ObjectId("5ab3d8c5836cb47f66966e35"), "name" : "James Bond", "code_name" : "007" }
+    { "_id" : ObjectId("5ab3da447d9a0d1d4a2ef6dc"), "code_name" : "004", "name" : "Scarlet Papava" }
+    > db.agents.update({"name": "Scarlet Papava"}, {"$set": {"number_of_kills": 1}})
+    WriteResult({ "nMatched" : 1, "nUpserted" : 0, "nModified" : 1 })
+    > db.agents.find()
+    { "_id" : ObjectId("5ab3e04f7d9a0d1d4a2ef6dd"), "name" : "Alec Trevelyan" }
+    { "_id" : ObjectId("5ab3d8c5836cb47f66966e35"), "name" : "James Bond", "code_name" : "007" }
+    { "_id" : ObjectId("5ab3da447d9a0d1d4a2ef6dc"), "code_name" : "004", "name" : "Scarlet Papava", "number_of_kills" : 1 }
+    
+pymongo:
+
+    >>> db.agents.update({"name": "Scarlet Papava"}, {"$set": {"number_of_kills": 1}})
+
+`$inc` is used to "increment" an integer by one.
+
+shell:
+
+    > db.agents.update({"name": "Scarlet Papava"}, {"$inc": {"number_of_kills": 1}})
+    WriteResult({ "nMatched" : 1, "nUpserted" : 0, "nModified" : 1 })
+    > db.agents.find()
+    { "_id" : ObjectId("5ab3e04f7d9a0d1d4a2ef6dd"), "name" : "Alec Trevelyan" }
+    { "_id" : ObjectId("5ab3d8c5836cb47f66966e35"), "name" : "James Bond", "code_name" : "007" }
+    { "_id" : ObjectId("5ab3da447d9a0d1d4a2ef6dc"), "code_name" : "004", "name" : "Scarlet Papava", "number_of_kills" : 2 }
+    
+pymongo:
+
+    >>> db.agents.update({"name": "Scarlet Papava"}, {"$inc": {"number_of_kills": 1}})
+
+`$unset` removes a field from a document, and does not throw an error if the field does not yet exist.
+
+shell:
+
+    > db.agents.update({"name": "Scarlet Papava"}, {"$unset": {"number_of_kills": 1}})
+
+pymongo:
+
+    >>> db.agents.update({"name": "Scarlet Papava"}, {"$unset": {"number_of_kills": 1}})
 
 
 #### Array Modifiers
