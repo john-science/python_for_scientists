@@ -232,7 +232,6 @@ shell:
     { "_id" : ObjectId("5ab3d8c5836cb47f66966e35"), "name" : "James Bond", "code_name" : "007" }
     { "_id" : ObjectId("5ab3da447d9a0d1d4a2ef6dc"), "code_name" : "004", "name" : "Scarlet Papava" }
     > db.agents.update({"name": "Scarlet Papava"}, {"$set": {"number_of_kills": 1}})
-    WriteResult({ "nMatched" : 1, "nUpserted" : 0, "nModified" : 1 })
     > db.agents.find()
     { "_id" : ObjectId("5ab3e04f7d9a0d1d4a2ef6dd"), "name" : "Alec Trevelyan" }
     { "_id" : ObjectId("5ab3d8c5836cb47f66966e35"), "name" : "James Bond", "code_name" : "007" }
@@ -247,7 +246,6 @@ pymongo:
 shell:
 
     > db.agents.update({"name": "Scarlet Papava"}, {"$inc": {"number_of_kills": 1}})
-    WriteResult({ "nMatched" : 1, "nUpserted" : 0, "nModified" : 1 })
     > db.agents.find()
     { "_id" : ObjectId("5ab3e04f7d9a0d1d4a2ef6dd"), "name" : "Alec Trevelyan" }
     { "_id" : ObjectId("5ab3d8c5836cb47f66966e35"), "name" : "James Bond", "code_name" : "007" }
