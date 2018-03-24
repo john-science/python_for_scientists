@@ -274,41 +274,77 @@ Mongo has an extensive collection of modifiers specific to arrays. Arrays are or
 
 shell:
 
-    > TODO
+    > db.agents.update({"name": "James Bond"}, {"$set": {"languages": ["English"]}})
+    > db.agents.findOne({"name": "James Bond"})
+    {
+        "_id" : ObjectId("5ab3d8c5836cb47f66966e35"),
+        "name" : "James Bond",
+        "code_name" : "007",
+        "languages" : [ "English" ]
+    }
+    > db.agents.update({"name": "James Bond"}, {"$push": {"languages": "Russian"}})
+    > db.agents.findOne({"name": "James Bond"})
+    {
+        "_id" : ObjectId("5ab3d8c5836cb47f66966e35"),
+        "name" : "James Bond",
+        "code_name" : "007",
+        "languages" : [ "English", "Russian" ]
+    }
+
 
 pymongo:
 
-    >>> TODO
+    >>> db.agents.update({"name": "James Bond"}, {"$set": {"languages": ["English"]}})
+    >>> db.agents.update({"name": "James Bond"}, {"$push": {"languages": "Russian"}})
+
 
 `$each` allows you to push multiple elements to the end of an array.
 
 shell:
 
-    > TODO
+    > db.agents.update({"name": "James Bond"}, {"$push": {"languages": {"$each": ["Spanish", "Mandarin"]}}})
+    > db.agents.findOne({"name": "James Bond"})
+    {
+        "_id" : ObjectId("5ab3d8c5836cb47f66966e35"),
+        "name" : "James Bond",
+        "code_name" : "007",
+        "languages" : [ "English", "Russian", "Spanish", "Mandarin" ]
+    }
+
 
 pymongo:
 
-    >>> TODO
+    >>> db.agents.update({"name": "James Bond"}, {"$push": {"languages": {"$each": ["Spanish", "Mandarin"]}}})
 
-`$slice` lets you grab the first/last N elements from an array.
+
+`$slice` lets you ensure as you push elements onto an array that the array doens't grow past a certain size.
 
 shell:
 
-    > TODO
+    > db.agents.update({"name": "James Bond"}, {"$push": {"languages": {"$each": ["Urdu", "Arabic"], "$slice": -4}}})
+    > db.agents.findOne({"name": "James Bond"})
+    {
+        "_id" : ObjectId("5ab3d8c5836cb47f66966e35"),
+        "name" : "James Bond",
+        "code_name" : "007",
+        "languages" : [ "Spanish", "Mandarin", "Urdu", "Arabic" ]
+    }
 
 pymongo:
 
-    >>> TODO
+    >>> db.agents.update({"name": "James Bond"}, {"$push": {"languages": {"$each": ["Urdu", "Arabic"], "$slice": -4}}})
+
 
 `$sort` sorts the results of `find()` operation on an array.
 
 shell:
 
-    > TODO
+    > db.agents.findOne({"name": "James Bond"}).languages.sort()
 
 pymongo:
 
-    >>> TODO
+    >>> sorted(db.agents.find_one({"name": "James Bond"})["languages"])
+    
 
 You can use arrays as sets as long as you do a uniqueness check every time you add an element to the array. For this you use `$addToSet` when doing a push.
 
