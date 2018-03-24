@@ -350,11 +350,18 @@ You can use arrays as sets as long as you do a uniqueness check every time you a
 
 shell:
 
-    > TODO
+    > db.agents.findOne({"name": "James Bond"}).languages.sort()
+    [ "Arabic", "Mandarin", "Spanish", "Urdu" ]
+    > db.agents.update({"name": "James Bond"}, {"$addToSet": {"languages": "English"}})
+    > db.agents.update({"name": "James Bond"}, {"$addToSet": {"languages": "English"}})
+    > db.agents.update({"name": "James Bond"}, {"$addToSet": {"languages": "English"}})
+    > db.agents.findOne({"name": "James Bond"}).languages.sort()
+    [ "Arabic", "English", "Mandarin", "Spanish", "Urdu" ]
+
 
 pymongo:
 
-    >>> TODO
+    >>> db.agents.update({"name": "James Bond"}, {"$addToSet": {"languages": "English"}})
 
 
 #### Upserts
