@@ -268,7 +268,57 @@ pymongo:
 
 #### Array Modifiers
 
-TODO
+Mongo has an extensive collection of modifiers specific to arrays. Arrays are ordered, indexed collections of arbitary data. Think of them like linked lists, where you can "push" and "pull" the last element of the list.
+
+`$push` adds one element to the end of an array.
+
+shell:
+
+    > TODO
+
+pymongo:
+
+    >>> TODO
+
+`$each` allows you to push multiple elements to the end of an array.
+
+shell:
+
+    > TODO
+
+pymongo:
+
+    >>> TODO
+
+`$slice` lets you grab the first/last N elements from an array.
+
+shell:
+
+    > TODO
+
+pymongo:
+
+    >>> TODO
+
+`$sort` sorts the results of `find()` operation on an array.
+
+shell:
+
+    > TODO
+
+pymongo:
+
+    >>> TODO
+
+You can use arrays as sets as long as you do a uniqueness check every time you add an element to the array. For this you use `$addToSet` when doing a push.
+
+shell:
+
+    > TODO
+
+pymongo:
+
+    >>> TODO
 
 
 #### Upserts
