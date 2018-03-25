@@ -403,7 +403,9 @@ pymongo:
 
 ### Write Concerns
 
-TODO
+The default write concern is "awknowledged", and that means when you run a command against MongoDB, you get a response back. So if it fails, you know.  There is an "unawknowledged" option, whereby you get no response back at all.
+
+This seems like a terrible option to me. Maybe it's useful in low-priority logging situations? Maybe.
 
 
 ## Querying
