@@ -366,12 +366,37 @@ pymongo:
 
 #### Upserts
 
-TODO
+In MongoDB, as in other databases, an `upsert` is an update is added to the database even if the initial query is not found. Here notice we add a third arguement to the `update` command to identify this as an "upsert = True" update:
+
+shell:
+
+    > db.agents.update({"name": "Me"}, {"languages": ["English", "Old Norse"]}, {"upsert": true})
+    > db.agents.find()
+    { "_id" : ObjectId("5ab3e04f7d9a0d1d4a2ef6dd"), "name" : "Alec Trevelyan" }
+    ...
+    { "_id" : ObjectId("5ab7bd208a7e7df84707286e"), "languages" : [ "English", "Old Norse" ] }
+    > db.agents.remove({"_id" : ObjectId("5ab7bd208a7e7df84707286e")})  // just clean up
+
+pymongo:
+
+    >>> db.agents.update({"name": "Me"}, {"languages": ["English", "Old Norse"]}, upsert=True)
 
 
 #### Multiple Documents
 
-TODO
+By default, the `update` method only updates the first document it finds that matches the update criteria.  But if we want to update ALL documents that match the update criteria, we will use the fourth arguement to the `update` command:
+
+shell:
+
+    > db.agents.update({"name" : {"$exists": true}}, {"$set": {"Status": "Active"}}, false, true)
+    > db.agents.find()
+    { "_id" : ObjectId("5ab3da447d9a0d1d4a2ef6dc"), "name" : "Scarlet Papava", "Status" : "Active", ... }
+    { "_id" : ObjectId("5ab3d8c5836cb47f66966e35"), "name" : "James Bond", "Status" : "Active", ... }
+    { "_id" : ObjectId("5ab3e04f7d9a0d1d4a2ef6dd"), "name" : "Alec Trevelyan", "Status" : "Active", ... }
+
+pymongo:
+
+    >>> db.agents.update({"name" : {"$exists": True}}, {"$set": {"Status": "Active"}}, upsert=False, multi=True)
 
 
 ### Write Concerns
