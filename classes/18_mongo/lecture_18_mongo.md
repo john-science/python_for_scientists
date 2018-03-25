@@ -245,7 +245,7 @@ shell:
 
     > db.agents.update({"name": "Scarlet Papava"}, {"$inc": {"number_of_kills": 1}})
     > db.agents.find({"name": "Scarlet Papava"})
-    { "_id" : ObjectId("5ab3da447d9a0d1d4a2ef6dc"),"name" : "Scarlet Papava", "number_of_kills" : 2, ... }
+    { "_id" : ObjectId("...6dc"),"name" : "Scarlet Papava", "number_of_kills" : 2, ... }
     
 pymongo:
 
