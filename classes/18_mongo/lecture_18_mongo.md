@@ -232,10 +232,8 @@ shell:
     { "_id" : ObjectId("5ab3d8c5836cb47f66966e35"), "name" : "James Bond", "code_name" : "007" }
     { "_id" : ObjectId("5ab3da447d9a0d1d4a2ef6dc"), "code_name" : "004", "name" : "Scarlet Papava" }
     > db.agents.update({"name": "Scarlet Papava"}, {"$set": {"number_of_kills": 1}})
-    > db.agents.find()
-    { "_id" : ObjectId("5ab3e04f7d9a0d1d4a2ef6dd"), "name" : "Alec Trevelyan" }
-    { "_id" : ObjectId("5ab3d8c5836cb47f66966e35"), "name" : "James Bond", "code_name" : "007" }
-    { "_id" : ObjectId("5ab3da447d9a0d1d4a2ef6dc"), "code_name" : "004", "name" : "Scarlet Papava", "number_of_kills" : 1 }
+    > db.agents.find({"name": "Scarlet Papava"})
+    { "_id" : ObjectId("5ab3da447d9a0d1d4a2ef6dc"), "name" : "Scarlet Papava", "number_of_kills" : 1, ... }
     
 pymongo:
 
@@ -246,10 +244,8 @@ pymongo:
 shell:
 
     > db.agents.update({"name": "Scarlet Papava"}, {"$inc": {"number_of_kills": 1}})
-    > db.agents.find()
-    { "_id" : ObjectId("5ab3e04f7d9a0d1d4a2ef6dd"), "name" : "Alec Trevelyan" }
-    { "_id" : ObjectId("5ab3d8c5836cb47f66966e35"), "name" : "James Bond", "code_name" : "007" }
-    { "_id" : ObjectId("5ab3da447d9a0d1d4a2ef6dc"), "code_name" : "004", "name" : "Scarlet Papava", "number_of_kills" : 2 }
+    > db.agents.find({"name": "Scarlet Papava"})
+    { "_id" : ObjectId("5ab3da447d9a0d1d4a2ef6dc"),"name" : "Scarlet Papava", "number_of_kills" : 2, ... }
     
 pymongo:
 
@@ -302,7 +298,8 @@ pymongo:
 
 shell:
 
-    > db.agents.update({"name": "James Bond"}, {"$push": {"languages": {"$each": ["Spanish", "Mandarin"]}}})
+    > db.agents.update({"name": "James Bond"},
+          {"$push": {"languages": {"$each": ["Spanish", "Mandarin"]}}})
     > db.agents.findOne({"name": "James Bond"})
     {
         "_id" : ObjectId("5ab3d8c5836cb47f66966e35"),
@@ -314,14 +311,16 @@ shell:
 
 pymongo:
 
-    >>> db.agents.update({"name": "James Bond"}, {"$push": {"languages": {"$each": ["Spanish", "Mandarin"]}}})
+    >>> db.agents.update({"name": "James Bond"},
+            {"$push": {"languages": {"$each": ["Spanish", "Mandarin"]}}})
 
 
 `$slice` lets you ensure as you push elements onto an array that the array doens't grow past a certain size.
 
 shell:
 
-    > db.agents.update({"name": "James Bond"}, {"$push": {"languages": {"$each": ["Urdu", "Arabic"], "$slice": -4}}})
+    > db.agents.update({"name": "James Bond"},
+          {"$push": {"languages": {"$each": ["Urdu", "Arabic"], "$slice": -4}}})
     > db.agents.findOne({"name": "James Bond"})
     {
         "_id" : ObjectId("5ab3d8c5836cb47f66966e35"),
@@ -332,7 +331,8 @@ shell:
 
 pymongo:
 
-    >>> db.agents.update({"name": "James Bond"}, {"$push": {"languages": {"$each": ["Urdu", "Arabic"], "$slice": -4}}})
+    >>> db.agents.update({"name": "James Bond"},
+            {"$push": {"languages": {"$each": ["Urdu", "Arabic"], "$slice": -4}}})
 
 
 `$sort` sorts the results of `find()` operation on an array.
