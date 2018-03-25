@@ -228,12 +228,12 @@ You might have noticed above that when we did `update`, `remove`, or `find` we h
 shell:
 
     > db.agents.find()
-    { "_id" : ObjectId("5ab3e04f7d9a0d1d4a2ef6dd"), "name" : "Alec Trevelyan" }
-    { "_id" : ObjectId("5ab3d8c5836cb47f66966e35"), "name" : "James Bond", "code_name" : "007" }
-    { "_id" : ObjectId("5ab3da447d9a0d1d4a2ef6dc"), "code_name" : "004", "name" : "Scarlet Papava" }
+    { "_id" : ObjectId("...6dd"), "name" : "Alec Trevelyan" }
+    { "_id" : ObjectId("...e35"), "name" : "James Bond", "code_name" : "007" }
+    { "_id" : ObjectId("...6dc"), "code_name" : "004", "name" : "Scarlet Papava" }
     > db.agents.update({"name": "Scarlet Papava"}, {"$set": {"number_of_kills": 1}})
     > db.agents.find({"name": "Scarlet Papava"})
-    { "_id" : ObjectId("5ab3da447d9a0d1d4a2ef6dc"), "name" : "Scarlet Papava", "number_of_kills" : 1, ... }
+    { "_id" : ObjectId("...6dc"), "name" : "Scarlet Papava", "number_of_kills" : 1, ... }
     
 pymongo:
 
@@ -388,15 +388,17 @@ By default, the `update` method only updates the first document it finds that ma
 
 shell:
 
-    > db.agents.update({"name" : {"$exists": true}}, {"$set": {"Status": "Active"}}, false, true)
+    > db.agents.update({"name" : {"$exists": true}},
+          {"$set": {"Status": "Active"}}, false, true)
     > db.agents.find()
-    { "_id" : ObjectId("5ab3da447d9a0d1d4a2ef6dc"), "name" : "Scarlet Papava", "Status" : "Active", ... }
-    { "_id" : ObjectId("5ab3d8c5836cb47f66966e35"), "name" : "James Bond", "Status" : "Active", ... }
-    { "_id" : ObjectId("5ab3e04f7d9a0d1d4a2ef6dd"), "name" : "Alec Trevelyan", "Status" : "Active", ... }
+    { "_id" : ObjectId("...6dc"), "name" : "Scarlet Papava", "Status" : "Active", ... }
+    { "_id" : ObjectId("...e35"), "name" : "James Bond", "Status" : "Active", ... }
+    { "_id" : ObjectId("...6dd"), "name" : "Alec Trevelyan", "Status" : "Active", ... }
 
 pymongo:
 
-    >>> db.agents.update({"name" : {"$exists": True}}, {"$set": {"Status": "Active"}}, upsert=False, multi=True)
+    >>> db.agents.update({"name" : {"$exists": True}},
+            {"$set": {"Status": "Active"}}, upsert=False, multi=True)
 
 
 ### Write Concerns
