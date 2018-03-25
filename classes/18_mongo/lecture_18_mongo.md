@@ -91,6 +91,15 @@ Unlike SQL schemas, the documents in a Mongo collection do not have to be relate
 
 A Mongo document is a different beast than a SQL table, but since it is based on JSON you probably already have a good intuitive understanding of it.
 
+## Note on ObjectIDs
+
+Throught this lecture you will see that every document in a MongoDB has a unique "ObjectID":
+
+    {"_id": ObjectID(5ab3d8c5836cb47f66966e35)}
+
+I will abbreviate these with shorter versions, for no other reason than it makes them easier to read on GitHub:
+
+    {"_id": ObjectID(...e35)}
 
 ## Inserting, Removing, and Updating Documents
 
@@ -111,12 +120,12 @@ You may also want to get a document from a collection.
 shell:
 
     > db.agents.findOne()
-    { "_id" : ObjectId("5ab3d8c5836cb47f66966e35"), "name" : "James Bond" }
+    { "_id" : ObjectId("...e35"), "name" : "James Bond" }
 
 pymongo:
 
     >>> db.agents.find_one()
-    {'_id': ObjectId('5ab3d8c5836cb47f66966e35'), 'name': 'James Bond'}
+    {'_id': ObjectId('...e35'), 'name': 'James Bond'}
 
 It will frequently be handy to add multiple documents to a collection at the same time (and it will certainly be faster).
 
@@ -133,18 +142,18 @@ You may frequently want to return all the documents in a collection.  Via the sh
 shell:
 
     > db.agents.find()
-    { "_id" : ObjectId("5ab3d8c5836cb47f66966e35"), "name" : "James Bond" }
-    { "_id" : ObjectId("5ab3da447d9a0d1d4a2ef6dc"), "name" : "Scarlet Papava" }
-    { "_id" : ObjectId("5ab3e04f7d9a0d1d4a2ef6dd"), "name" : "Alec Trevelyan" }
+    { "_id" : ObjectId("...e35"), "name" : "James Bond" }
+    { "_id" : ObjectId("...6dc"), "name" : "Scarlet Papava" }
+    { "_id" : ObjectId("...6dd"), "name" : "Alec Trevelyan" }
 
 pymongo:
 
     >>> for doc in db.agents.find():
     ...     print(doc)
     ... 
-    {'_id': ObjectId('5ab3d8c5836cb47f66966e35'), 'name': 'James Bond'}
-    {'_id': ObjectId('5ab3da447d9a0d1d4a2ef6dc'), 'name': 'Scarlet Papava'}
-    { "_id" : ObjectId("5ab3e04f7d9a0d1d4a2ef6dd"), "name" : "Alec Trevelyan" }
+    {'_id': ObjectId('...e35'), 'name': 'James Bond'}
+    {'_id': ObjectId('...6dc'), 'name': 'Scarlet Papava'}
+    { "_id" : ObjectId("...6dd"), "name" : "Alec Trevelyan" }
 
 
 ### Removing Documents and Collections
@@ -183,13 +192,13 @@ To update an existing document, we use the `update()` method, which replaces a q
 shell:
 
     > agent1 = db.agents.findOne()
-    { "_id" : ObjectId("5ab3d8c5836cb47f66966e35"), "name" : "James Bond" }
+    { "_id" : ObjectId("...e35"), "name" : "James Bond" }
     > agent1.code_name = "007";
     > agent1.home_address = "221 B Baker Street, London"
     > delete agent1.home_address
     > agent1
     {
-        "_id" : ObjectId("5ab3d8c5836cb47f66966e35"),
+        "_id" : ObjectId("...e35"),
         "name" : "James Bond",
         "code_name" : "007"
     }
@@ -197,18 +206,18 @@ shell:
 
 Or if we are only querying for a single document it might be easier to do the `update()` based on `_id`:
 
-    > db.agents.update({"_id": ObjectId("5ab3d8c5836cb47f66966e35")}, agent1)
+    > db.agents.update({"_id": ObjectId("...e35")}, agent1)
 
 pymongo:
 
     >>> agent1 = db.agents.find_one()
-    { "_id" : ObjectId("5ab3d8c5836cb47f66966e35"), "name" : "James Bond" }
+    { "_id" : ObjectId("...e35"), "name" : "James Bond" }
     >>> agent1["code_name"] = "007";
     >>> agent1.["home_address"] = "221 B Baker Street, London"
     >>> delete agent1.home_address
     >>> agent1
     {
-        "_id" : ObjectId("5ab3d8c5836cb47f66966e35"),
+        "_id" : ObjectId("...e35"),
         "name" : "James Bond",
         "code_name" : "007"
     }
@@ -217,7 +226,7 @@ pymongo:
 Or, again, since we know that each `_id` is unique we can play it safe by updating using that:
 
     >>> from bson.objectid import ObjectId
-    >>> db.agents.update({"_id": ObjectId("5ab3d8c5836cb47f66966e35")}, agent1)
+    >>> db.agents.update({"_id": ObjectId("...e35")}, agent1)
 
 #### Modifiers
 
@@ -227,9 +236,7 @@ You might have noticed above that when we did `update`, `remove`, or `find` we h
 
 shell:
 
-    > db.agents.find()
-    { "_id" : ObjectId("...6dd"), "name" : "Alec Trevelyan" }
-    { "_id" : ObjectId("...e35"), "name" : "James Bond", "code_name" : "007" }
+    > db.agents.find({"name": "Scarlet Papava"})
     { "_id" : ObjectId("...6dc"), "code_name" : "004", "name" : "Scarlet Papava" }
     > db.agents.update({"name": "Scarlet Papava"}, {"$set": {"number_of_kills": 1}})
     > db.agents.find({"name": "Scarlet Papava"})
@@ -273,7 +280,7 @@ shell:
     > db.agents.update({"name": "James Bond"}, {"$set": {"languages": ["English"]}})
     > db.agents.findOne({"name": "James Bond"})
     {
-        "_id" : ObjectId("5ab3d8c5836cb47f66966e35"),
+        "_id" : ObjectId("...e35"),
         "name" : "James Bond",
         "code_name" : "007",
         "languages" : [ "English" ]
@@ -281,7 +288,7 @@ shell:
     > db.agents.update({"name": "James Bond"}, {"$push": {"languages": "Russian"}})
     > db.agents.findOne({"name": "James Bond"})
     {
-        "_id" : ObjectId("5ab3d8c5836cb47f66966e35"),
+        "_id" : ObjectId("...e35"),
         "name" : "James Bond",
         "code_name" : "007",
         "languages" : [ "English", "Russian" ]
@@ -302,7 +309,7 @@ shell:
           {"$push": {"languages": {"$each": ["Spanish", "Mandarin"]}}})
     > db.agents.findOne({"name": "James Bond"})
     {
-        "_id" : ObjectId("5ab3d8c5836cb47f66966e35"),
+        "_id" : ObjectId("...e35"),
         "name" : "James Bond",
         "code_name" : "007",
         "languages" : [ "English", "Russian", "Spanish", "Mandarin" ]
@@ -323,7 +330,7 @@ shell:
           {"$push": {"languages": {"$each": ["Urdu", "Arabic"], "$slice": -4}}})
     > db.agents.findOne({"name": "James Bond"})
     {
-        "_id" : ObjectId("5ab3d8c5836cb47f66966e35"),
+        "_id" : ObjectId("...e35"),
         "name" : "James Bond",
         "code_name" : "007",
         "languages" : [ "Spanish", "Mandarin", "Urdu", "Arabic" ]
@@ -372,10 +379,10 @@ shell:
 
     > db.agents.update({"name": "Me"}, {"languages": ["English", "Old Norse"]}, {"upsert": true})
     > db.agents.find()
-    { "_id" : ObjectId("5ab3e04f7d9a0d1d4a2ef6dd"), "name" : "Alec Trevelyan" }
+    { "_id" : ObjectId("...6dd"), "name" : "Alec Trevelyan" }
     ...
-    { "_id" : ObjectId("5ab7bd208a7e7df84707286e"), "languages" : [ "English", "Old Norse" ] }
-    > db.agents.remove({"_id" : ObjectId("5ab7bd208a7e7df84707286e")})  // just clean up
+    { "_id" : ObjectId("...86e"), "languages" : [ "English", "Old Norse" ] }
+    > db.agents.remove({"_id" : ObjectId("...86e")})  // just clean up
 
 pymongo:
 
