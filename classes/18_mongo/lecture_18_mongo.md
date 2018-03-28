@@ -429,6 +429,18 @@ TODO
 
 TODO
 
+#### Capped Collections
+
+TODO
+
+#### TTL Indexes
+
+TODO
+
+#### Other Indexes
+
+MongoDB also supports special indexes for searching in text and geospatial problem sets.  They look well-implemented but are so use-case specific I will not cover them here.
+
 
 ## Aggregation
 
