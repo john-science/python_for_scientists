@@ -415,9 +415,132 @@ The default write concern is "awknowledged", and that means when you run a comma
 This seems like a terrible option to me. Maybe it's useful in low-priority logging situations? Maybe.
 
 
-## Querying
+## Querying (`find`)
 
-TODO
+The primary tools for pulling data from MongoDB are `find` and `findOne`/`find_one`. The first parameter you pass it is a document you try to match to all the documents in a collection.  The second parameter is a document used to select only certain keys to be returned from each document.
+
+shell:
+
+    > db.agents.findOne()
+    { "_id" : ObjectId("...e35"), "name" : "James Bond" }
+
+    > db.agents.findOne({}, {"name": 1})
+    { "name" : "James Bond" }
+
+    > db.agents.find()
+    { "_id" : ObjectId("...e35"), "name" : "James Bond" }
+    { "_id" : ObjectId("...6dc"), "name" : "Scarlet Papava" }
+    { "_id" : ObjectId("...6dd"), "name" : "Alec Trevelyan" }
+
+    > db.agents.find({}, {"name": 1})
+    { "name" : "James Bond" }
+    { "name" : "Scarlet Papava" }
+    { "name" : "Alec Trevelyan" }
+
+pymongo:
+
+    >>> db.agents.find_one()
+    {'_id': ObjectId('...e35'), 'name': 'James Bond'}
+
+    >>> for doc in db.agents.find():
+    ...     print(doc)
+    ... 
+    {'_id': ObjectId('...e35'), 'name': 'James Bond'}
+    {'_id': ObjectId('...6dc'), 'name': 'Scarlet Papava'}
+    { "_id" : ObjectId("...6dd"), "name" : "Alec Trevelyan" }
+
+Okay, let us add some data to our `agents` database before we continue:
+
+shell:
+
+    > db.agents.update({"name": "James Bond"}, {"$set": {"number_of_kills": 100}})
+    > db.agents.update({"name": "Scarlet Papava"}, {"$set": {"number_of_kills": 25}})
+    > db.agents.update({"name": "Alec Trevelyan"}, {"$set": {"number_of_kills": 123}})
+    > 
+    > db.agents.update({"name": "James Bond"}, {"$set": {"age": 36}})
+    > db.agents.update({"name": "Scarlet Papava"}, {"$set": {"age": 25}})
+    > db.agents.update({"name": "Alec Trevelyan"}, {"$set": {"age": 45}})
+
+pymong:
+
+    same as shell
+
+There are four extra conditional keywords you can use to increase the specificity of your queries:
+
+* `$lt` - less than
+* `$lte` - less than or equal to
+* `$gt` - greater than
+* `$gte` - greater than or equal to
+
+These four conditionals are used as part of the first paratmeter in your `find` query:
+
+shell:
+
+    > db.agents.find({"age": {"$gt": 30, "$lte": 65}}, {"name": 1})
+    { "_id" : ObjectId("...e35"), "name" : "James Bond" }
+    { "_id" : ObjectId("...6dd"), "name" : "Alec Trevelyan" }
+
+pymongo:
+
+    >>> list(db.agents.find({"age": {"$gt": 30, "$lte": 65}}, {"name": 1}))
+    [{'_id': ObjectId('...e35'), 'name': 'James Bond'},
+     {'_id': ObjectId('...6dd'), 'name': 'Alec Trevelyan'}]
+
+Multiple different queries can be combined into one using the conjunction operators: `$or`, `$in`, `$nin`, or `$not`. Each of these does basically what you would expect, but the syntax needs some explanation.
+
+shell:
+
+    > db.agents.find({"age": {"$in": [25, 30]}}, {"name": 1})
+      { "_id" : ObjectId("...6dc"), "name" : "Scarlet Papava" }
+    > db.agents.find({"age": {"$nin": [25, 30]}}, {"name": 1})
+      { "_id" : ObjectId("...e35"), "name" : "James Bond" }
+      { "_id" : ObjectId("...6dd"), "name" : "Alec Trevelyan" }
+    > db.agents.find({"age": {"$not": {"$nin": [25, 30]}}}, {"name": 1})
+      { "_id" : ObjectId("....6dc"), "name" : "Scarlet Papava" }
+    > db.agents.find({"$or": [{"age": {"$gte": 40}},
+                       {"number_of_kills": {"$gt": 50}}]}, {"name": 1})
+      { "_id" : ObjectId("...e35"), "name" : "James Bond" }
+      { "_id" : ObjectId("...6dd"), "name" : "Alec Trevelyan" }
+
+pymongo:
+
+    >>> list(db.agents.find({"age": {"$in": [25, 30]}}, {"name": 1}))
+      [{'_id': ObjectId('...6dc'), 'name': 'Scarlet Papava'}]
+    >>> list(db.agents.find({"age": {"$nin": [25, 30]}}, {"name": 1}))
+      [{'_id': ObjectId('...e35'), 'name': 'James Bond'},
+       {'_id': ObjectId('...6dd'), 'name': 'Alec Trevelyan'}]
+    >>> list(db.agents.find({"age": {"$not": {"$nin": [25, 30]}}}, {"name": 1}))
+      [{'_id': ObjectId('...6dc'), 'name': 'Scarlet Papava'}]
+    >>> list(db.agents.find({"$or": [{"age": {"$gte": 40}},
+               {"number_of_kills": {"$gt": 50}}]}, {"name": 1}))
+      [{'_id': ObjectId('...e35'), 'name': 'James Bond'},
+       {'_id': ObjectId('...6dd'), 'name': 'Alec Trevelyan'}]
+
+There are also handy conditionals for queries specifically about arrays. First though, let's add some data to our database for testing:
+
+shell:
+
+    > db.agents.update({"name": "Scarlet Papava"},
+        {"$set": {"languages": ["English", "Russian", "French"]}})
+    > db.agents.update({"name": "Alec Trevelyan"},
+        {"$set": {"languages": ["English", "Russian", "Latin"]}})
+
+pymongo:
+
+    >>> db.agents.update({"name": "Scarlet Papava"},
+        {"$set": {"languages": ["English", "Russian", "French"]}})
+
+The most common array conditional keywords are:
+
+* `$all` - test if an array has all the elements in a provided array
+* `$size` - find the size of the given array
+* `$slice` - return the first (or last) N elements from an array
+* `$min` - find only those above a given limit
+* `$max` - find only those below a given limit
+
+TODO: size, min, max
+
+TODO: skip, limit, sort
 
 
 ## Indexing
