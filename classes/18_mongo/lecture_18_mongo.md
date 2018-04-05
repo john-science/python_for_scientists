@@ -535,12 +535,48 @@ The most common array conditional keywords are:
 * `$all` - test if an array has all the elements in a provided array
 * `$size` - find the size of the given array
 * `$slice` - return the first (or last) N elements from an array
-* `$min` - find only those above a given limit
-* `$max` - find only those below a given limit
 
-TODO: size, min, max
+The `$size` keyword is used just like every other keyword:
 
-TODO: skip, limit, sort
+shell:
+
+    > db.agents.find({"languages": {"$size": 5}}, {"name": 1})
+    { "_id" : ObjectId("...e35"), "name" : "James Bond" }
+
+pymongo:
+
+    >>> list(db.agents.find({"languages": {"$size": 5}}, {"name": 1}))
+    [{'_id': ObjectId('...e35'), 'name': 'James Bond'}]
+
+Mongo also provides `$skip`, `$limit`, and `$sort` keywords, which do about what you'd expect, and are syntactically easy to use:
+
+shell:
+
+    > db.agents.find({"languages": {"$size": 3}}, {"name": 1})
+    { "_id" : ObjectId("...6dc"), "name" : "Scarlet Papava" }
+    { "_id" : ObjectId("...6dd"), "name" : "Alec Trevelyan" }
+
+    > db.agents.find({"languages": {"$size": 3}}, {"name": 1}).skip(1)
+    { "_id" : ObjectId("...6dd"), "name" : "Alec Trevelyan" }
+    > db.agents.find({"languages": {"$size": 3}}, {"name": 1}).limit(1)
+    { "_id" : ObjectId("...6dc"), "name" : "Scarlet Papava" }
+    > db.agents.find({"languages": {"$size": 3}}, {"name": 1}).sort({"name": 1})
+    { "_id" : ObjectId("...6dd"), "name" : "Alec Trevelyan" }
+    { "_id" : ObjectId("...6dc"), "name" : "Scarlet Papava" }
+
+pymongo:
+
+    >>> list(db.agents.find({"languages": {"$size": 3}}, {"name": 1}))
+        [{ "_id" : ObjectId("...6dc"), "name" : "Scarlet Papava" },
+         { "_id" : ObjectId("...6dd"), "name" : "Alec Trevelyan" }]
+
+    >>> list(db.agents.find({"languages": {"$size": 3}}, {"name": 1}).skip(1))
+        [{ "_id" : ObjectId("...6dd"), "name" : "Alec Trevelyan" }]
+    >>> list(db.agents.find({"languages": {"$size": 3}}, {"name": 1}).limit(1))
+        [{ "_id" : ObjectId("...6dc"), "name" : "Scarlet Papava" }]
+    >>> db.agents.find({"languages": {"$size": 3}}, {"name": 1}).sort({"name": 1})
+        [{ "_id" : ObjectId("...6dd"), "name" : "Alec Trevelyan" },
+         { "_id" : ObjectId("...6dc"), "name" : "Scarlet Papava" }]
 
 
 ## Indexing
