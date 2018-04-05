@@ -581,20 +581,88 @@ pymongo:
 
 ## Indexing
 
-TODO
+Indexes in MongoDB work similarly to indexes in any typical relational database. If you add an index to one or more fields in a collection, doing `find` on those fields will be faster. But doing updates on that collection will be slower.
+
+Indexes in Mongo are not a given, care must be taken to decide if your application will benefit by adding an index or two. It is a question of application design.
+
+To create a single index you use:
+
+shell:
+
+    > db.collection.ensureIndex({"field_name": 1})
+
+pymongo:
+
+    >>> db.collection.ensure_index({"field_name": 1})
+
+You can also list multiple fields in the above method, and if you set the `1` above to `-1`, you can invert the order the field is indexed by.
+
+shell:
+
+    > db.collection.ensureIndex({"field1": 1, "field2": -1})
+
+pymongo:
+
+    >>> db.collection.ensure_index({"field1": 1, "field2": -1})
+
+Compound indexes are undoubtedly a powerful tool. But they bring with them a lot of complexity. Some study must be given to how compound indexes are created and used. They complicate the performance implications of queries and updates. In Mongo as in relational databases, I try my hardest to design systems so they do not *need* compound indexes. The added complexity of using them is usually the result of either (1) extraordinary needs from a *very* large project or (2) lazy application design.
+
+As a rule of thumb, indexes are helpful in Mongo for:
+
+* Large Collections
+* Large Documents
+* Very Selective Queries
+
+And indexes are typically unhelpful for:
+
+* Small Collections
+* Small Documents
+* Queries Returning a Lot of Data
 
 
 ## Special Indexes
 
-TODO
+Your run-of-the-mill generic index can be really helpful. But over the years people have built custom indexes for specialty cases. Many of these have been built into Mongo. But they are a rather hodge-podge and incomplete set. We will look at a couple, but usually when people want special indexes they have to build them themselves.
 
 #### Capped Collections
 
-TODO
+A "capped collection" is a Mongo collection that is treated like a circular queue by the index. It is an queue because the index is in the first-in-first-out (FIFO) ordering. And it is circular because there is a max size to the index. If too many documents are pushed into the collection, the first one that was added is dropped.
+
+Create a capped collection is pretty easy.  You must specify a maximum size (in bytes), but you can also specify a maximum number of documents.
+
+shell:
+
+    > db.createCollection("my_collection", {"capped": true, "size": 100000, "max": 100})
+    
+pymongo:
+
+    >>> db.create_collection("my_collection", {"capped": true, "size": 100000, "max": 100})
+
+There is no way to "un-cap" a collection. But you can convert an un-indexed collection to a capped one by doing:
+
+shell:
+
+    > db.runCommand({"convertToCapped": "my_coll", "size": 100000})
+    
+pymongo:
+
+    >>> db.run_command({"convertToCapped": "my_coll", "size": 100000})
+
 
 #### TTL Indexes
 
-TODO
+Time-To-Live (TTL) Indexed set each document in a collection to expire after a set N seconds. This can be useful for low-priority things like logs.
+
+shell:
+
+    > # 24-hour timeout
+    > db.cool.ensureIndex({"lastUpdate": 1}, {"expireAfterSecs": 60*60*24})
+
+pymongo:
+
+    >>> # 24-hour timeout
+    >>> db.cool.ensure_index({"lastUpdate": 1}, {"expireAfterSecs": 60*60*24})
+
 
 #### Other Indexes
 
