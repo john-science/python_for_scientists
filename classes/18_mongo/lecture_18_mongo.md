@@ -41,9 +41,9 @@ And then you can connect to a specific database by:
 
     > db = conn.getDB("secret_agents")
 
-Or you can combine both of these into:
+Or you can combine both of these into one statement. Though I have found this particularly problematic if you do not already have active connections running to the give database.
 
-    > db = new Mongo("127.0.0.1:27017/secret_agents")
+    > db = new Mongo("127.0.0.1:27017/secret_agents")  // don't do this
 
 Alternatively, you can specific the database directly from the commandline, and it will define the `db` variable for you:
 
