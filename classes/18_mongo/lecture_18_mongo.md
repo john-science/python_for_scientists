@@ -671,7 +671,92 @@ MongoDB also supports special indexes for searching in text and geospatial probl
 
 ## Aggregation
 
-TODO
+Okay, MongoDB is great, but this may get a little confusing.  Mongo has something called an aggregation framework and it has a MapReduce framework.  Why does it have both?  What are the situations in which you should use one versus the other?  What convient features does one have versus the other?  What are the performance implications?  You will not find clear, concise answers to these questions. It appears that the "aggregation framework" is powerful, but somewhat limited. So possibly the MapReduce framework is more general. But it is not terribly complete either.
+
+I do not know, but in SQL datbases it is frequently a performance disaster to do too much math inside the database. Perhaps it is the same here? It is usually better to do simple queries and updates and try to do the heavy lifting in the language you are calling the database from.  That is, usually not always, a better choice for performance.
+
+I cannot advise on which of these two frameworks is a better choice for you. But it seems like a strange design choice to include them both in the Mongo language.
+
+### The Aggregation Framework
+
+The aggregation framework in MongoDB is basically an pipeline system. It that allows you to string together a series of SQL-join-like commands, along with some other stuff, to allow for complicated logic. Apparently, this is to save you having to do multiple queries in a row.
+
+while these features all seem handy, I can't help but feeling the feature set is a little hodge-podge.
+
+First, let's accidentally add the MI6 accountant to our secret agents list:
+
+shell:
+
+    > db.agents.insert({"name": "Bob from Accounting"})
+    > db.agents.update({"name": "Bob from Accounting"}, {"age": 25})
+
+pymongo:
+
+    >>> # same as above
+
+Now let's use the aggregation framework to do some basic querying.
+
+shell:
+
+    > db.agents.aggregate({"$group": {"_id": "$age", "total": {"$sum": 1}}})
+    { "_id" : 45, "total" : 1 }
+    { "_id" : 25, "total" : 2 }
+    { "_id" : 36, "total" : 1 }
+   
+    > db.agents.aggregate({"$group": {"_id": "$age", "total": {"$sum": 1}}},
+                          {"$sort": {"total": -1}})
+    { "_id" : 25, "total" : 2 }
+    { "_id" : 45, "total" : 1 }
+    { "_id" : 36, "total" : 1 }
+
+pymongo:
+
+    >>> list(db.agents.aggregate({"$group": {"_id": "$age", "total": {"$sum": 1}}}))
+        [{ "_id" : 45, "total" : 1 },
+         { "_id" : 25, "total" : 2 },
+         { "_id" : 36, "total" : 1 }]
+
+    >>> list(db.agents.aggregate({"$group": {"_id": "$age", "total": {"$sum": 1}}},
+                          {"$sort": {"total": -1}}))
+        [{ "_id" : 25, "total" : 2 },
+         { "_id" : 45, "total" : 1 },
+         { "_id" : 36, "total" : 1 }]
+
+Or you can start off with a `$match` rather than a `$group`:
+
+shell:
+
+    > db.agents.aggregate({"$match": {"age": 25}})
+        { "name" : "Scarlet Papava", "age" : 25, ... }
+        { "name" : "Bob from Accounting", "age" : 25, ... }
+
+    > db.agents.aggregate({"$match": {"age": 25}},
+                          {"$group": {"_id": "name", "total": {"$sum": 1}}})
+        { "_id" : "name", "total" : 2 }
+
+    > db.agents.aggregate({"$match": {"age": 25}},
+                                     {"$sort": {"name": 1}})
+        { "name" : "Bob from Accounting", "age" : 25, ... }
+        { "name" : "Scarlet Papava", "age" : 25, ... }
+
+pymongo:
+
+    >>> list(db.agents.aggregate({"$match": {"age": 25}}))
+        [{ "name" : "Scarlet Papava", "age" : 25, ... },
+         { "name" : "Bob from Accounting", "age" : 25, ... }]
+
+    >>> db.agents.aggregate({"$match": {"age": 25}},
+                            {"$group": {"_id": "name", "total": {"$sum": 1}}})
+        { "_id" : "name", "total" : 2 }
+
+    >>> list(db.agents.aggregate({"$match": {"age": 25}},
+                                 {"$sort": {"name": 1}}))
+        [{ "name" : "Bob from Accounting", "age" : 25, ... },
+         { "name" : "Scarlet Papava", "age" : 25, ... }]
+
+### MapReduce
+
+TODO: sigh...
 
 
 ## Application Design
