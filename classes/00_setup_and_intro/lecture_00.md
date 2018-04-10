@@ -4,7 +4,7 @@
 
 Python should be easy to install on basically all desktops and laptops. There are many different versions and flavors of Python. This class will be built around Python v3.6, but you will probably be fine using anything Python v3.3 or newer.
 
-> **Please Note** The NumPy group [has said](https://github.com/numpy/numpy/blob/master/doc/neps/dropping-python2.7-proposal.rst) they will be dropping support for Python 2.X on Jan 1, 2020.  Since this library is the basis of nearly all science and engineering work in Python it will be very important that you move to Python 3.3 or newer soon.
+> **Please Note** The NumPy group [has said](https://github.com/numpy/numpy/blob/master/doc/neps/dropping-python2.7-proposal.rst) they will be dropping support for Python 2.X on Jan 1, 2020.  Since this library is the basis of nearly all science and engineering libraries in Python it will be very important that you move to Python 3.3 or newer. Soon.
 
 
 #### Basic Python
@@ -137,7 +137,7 @@ Start using Python daily. Make a GitHub account and start a silly Python project
 
 #### Help Improve the Class
 
-If you find this class useful, the best way you can repay me is to help me make it better. Help make it easier for people to spin up on Python and get working.
+If you find this class useful, the best way you can repay me is to help me make it better. Make a GitHub account. Help make it easier for people to spin up on Python and get working.
 
 Example things I am interested in:
 
