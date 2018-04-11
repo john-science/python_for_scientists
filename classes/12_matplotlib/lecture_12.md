@@ -42,6 +42,14 @@ Now, we will use those as X and Y values on a scatter plot:
 
 That's it! Once you have the data, it's just three lines to create a scatter plot!
 
+#### Jupyter Notebooks
+
+If you are using Jupyter Notebooks, you will want to run this command at the top of your notebook:
+
+    %matplotlib inline
+
+This is *not* Python code, but a Jupyter-specific command to allow your plots to show up inside your notebooks, and not as pop-up windows, or saved as external files. It is super handy and makes your notebooks a lot more sharable and useful.
+
 #### Customizations
 
 Those three lines are great. But you're going to want the power to control how that plot looks. So for each type of plot in this lecture we will show some customization options.
