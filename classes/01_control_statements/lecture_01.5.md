@@ -24,12 +24,16 @@ That was easy enough, but there is a better way to write that in Python:
 The `range` function is really helpful in Python. Much like `slice` that we saw with strings, `range` can take three inputs: `start`, `end`, and `step`. It turns out that `start` and `step` are optional:
 
     >>> range(5)
+    range(0, 5)
+    >>> type(range(5))
+    <class 'range'>
+    >>> list(range(5))
     [0, 1, 2, 3, 4]
-    >>> range(1, 5)
+    >>> list(range(1, 5))
     [1, 2, 3, 4]
-    >>> range(1, 5, 2)
+    >>> list(range(1, 5, 2))
     [1, 3]
-    >>> range(0, 30, 5)
+    >>> list(range(0, 30, 5))
     [0, 5, 10, 15, 20, 25]
 
 (**NOTE**: As you can see above, the `start` value is *inclusive* and the `end` value is *exclusive*. The default `start` is zero and the default `step` is 1.)
