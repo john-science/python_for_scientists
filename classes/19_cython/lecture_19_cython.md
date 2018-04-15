@@ -1,47 +1,57 @@
 # Cython
 
-TODO: Intro
+Writing code in Python is fast. But the code you write isn't as fast as, say, C code. Wouldn't it be nice if Python were faster? Enter Cython. Cython allows you to easily wrap C and C++ code in Python. It also allows you to use C-like static typing syntax directly in your Python code. Cython also provides parallel processing options that are not available in normal Python code.
 
 
 ## Installation
 
-TODO
+Consider installing [Anaconda](http://docs.continuum.io/anaconda/install.html). It will come packaged with Cython, but also a ton of other really great Python libraries.
+
 
 ## Compiling and Running Cython
 
 TODO
 
+
 ## Cython Syntax
 
 TODO
+
 
 ## Extension Types
 
 TODO
 
+
 ## Organizing Cython Code
 
 TODO
+
 
 ## Wrapping C in Cython
 
 TODO
 
+
 ## Wrapping C++ in Cython
 
 TODO
+
 
 ## Profiling Cython
 
 TODO
 
+
 ## NumPy and MemoryViews
 
 TODO
 
+
 ## Parallel Programming
 
 TODO
+
 
 ## Further Reading
 
