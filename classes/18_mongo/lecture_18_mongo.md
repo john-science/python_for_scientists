@@ -791,17 +791,25 @@ pymongo:
 
 ## Application Design
 
-When you are building a collection you will have to decide when to store the data in that collection, or just store a reference to it. This is where a lot of your application-level optimizations occur. It will affect your runtime performance and the complexity of any future migrations you want to do.
+A major design choice when using Mongo is whether you want to store an entire dataset, or just a reference to it, in a subdocument. There are some really good rules-of-thumb for when to do either:
 
-It's worth thinking this through a bit on a high level before designing any large applications in Mongo.
+Embedding is better for... | References are better for...
+-------------------------- | ----------------------------
+Small subdocuments         | Large subdocuments
+Data that does not change regularly | Volatile data
+When eventual consistency is acceptable | When immediate consistency is necessary
+Documents grow by a small amount | Documents grow by a large amount
+Data you'll often need a second query to fetch | Data you'll often exclude from results
+Fast Reads | Fast Writes
 
-#### Embedding vs Referencing Data
-
-TODO
 
 #### When NOT to use MongoDB
 
-TODO
+Mongo is probably usable in any situation. But there are some thing that Mongo is just not really designed to do:
+
+* **Big Joins** - Most SQL-like databases are designed to do big joins, across multiple dimensions with different types of data. This is the one thing they're good at, so they are better at it than Mongo.
+* **Transactions.** - MongoDB does not have system-wide transaction logic that enforces correctness. You can certainly build this logic yourself. But Mongo can't guarantee that a malicious client won't violate your rule.
+* **If Mongo isn't Supported** - You may get stuck using an API that only supports relational APIs. In that case, Mongo jsut isn't supported and there isn't anything you can do about it.
 
 
 ## Replication
