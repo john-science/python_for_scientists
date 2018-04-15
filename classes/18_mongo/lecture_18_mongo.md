@@ -756,10 +756,50 @@ pymongo:
 
 ### MapReduce
 
-TODO: sigh...
+The `MapReduce` framework in Mongo DB is undoubtedly used by a lot of people. But I'm not one of them, so I won't say a lot about it. It provides access for you to write your own Map and Reduce functions (in JavaScript), but not a Filter function, which is typically the third function to be included. I guess this can be accomplished with a `select` query, but it still seems like an omission to me.
+
+Using `MapReduce` goes something like this:
+
+shell:
+
+    > map = function() {
+        for (var key in this) {
+            emit(KEY, VALUE);  // INSERT YOUR CODE HERE
+        }
+    }
+    > reduce = function(KEY, EMITS) {
+        // INSERT CODE HERE
+        return (NEW_KEY: NEW_VALUE);
+    }
+    > result = db.runCommand({"mapreduce": "my_database",
+                              "map", map, "reduce": reduce)
+
+pymongo:
+
+    >>> from bson.code import Code
+    >>> map = Code("function () {"
+    ...            "  this.tags.forEach(function(z) {"
+    ...            "    emit(KEY, VALUE);"  # ENTER CODE HERE
+    ...            "  });"
+    ...            "}")
+    >>> reduce = Code("function (key, values) {"
+    ...               "  // INSERT CODE HERE
+    ...               "  return VALUE;"
+    ...               "}")
+    >>> result = db.things.map_reduce(map, reduce, "my_database")
 
 
 ## Application Design
+
+When you are building a collection you will have to decide when to store the data in that collection, or just store a reference to it. This is where a lot of your application-level optimizations occur. It will affect your runtime performance and the complexity of any future migrations you want to do.
+
+It's worth thinking this through a bit on a high level before designing any large applications in Mongo.
+
+#### Embedding vs Referencing Data
+
+TODO
+
+#### When NOT to use MongoDB
 
 TODO
 
