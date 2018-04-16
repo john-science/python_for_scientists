@@ -756,7 +756,7 @@ pymongo:
 
 ### MapReduce
 
-The `MapReduce` framework in Mongo DB is undoubtedly used by a lot of people. But I'm not one of them, so I won't say a lot about it. It provides access for you to write your own Map and Reduce functions (in JavaScript), but not a Filter function, which is typically the third function to be included. I guess this can be accomplished with a `select` query, but it still seems like an omission to me.
+The `MapReduce` framework in Mongo DB is undoubtedly used by a lot of people. But I'm not one of them, so I won't say a lot about it. It provides access for you to write your own Map and Reduce functions (in JavaScript). But it does not provide a Filter option, so I guess you have to do that with a `select` query.
 
 Using `MapReduce` goes something like this:
 
@@ -791,7 +791,7 @@ pymongo:
 
 ## Application Design
 
-A major design choice when using Mongo is whether you want to store an entire dataset, or just a reference to it, in a subdocument. There are some really good rules-of-thumb for when to do either:
+A major design chocie when using Mongo is if you want to store a dataset in a subdocument, or if you want to store just a reference to it. Here is the breakdown to help you decide which will be better for you:
 
 Embedding is better for... | References are better for...
 -------------------------- | ----------------------------
