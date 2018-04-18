@@ -2,6 +2,11 @@
 
 Writing code in Python is fast. But the code you write isn't as fast as, say, C code. Wouldn't it be nice if Python were faster? Enter Cython. Cython allows you to easily wrap C and C++ code in Python. It also allows you to use C-like static typing syntax directly in your Python code. Cython also provides parallel processing options that are not available in normal Python code.
 
+Cython is two things:
+
+* a way to add types to Python code, to make it faster
+* a way to interface between C/C++/Cython and Python
+
 
 ## Installation
 
