@@ -812,19 +812,9 @@ Mongo is probably usable in any situation. But there are some thing that Mongo i
 * **If Mongo isn't Supported** - You may get stuck using an API that only supports relational APIs. In that case, Mongo jsut isn't supported and there isn't anything you can do about it.
 
 
-## Replication
+## Replication and Sharding
 
-TODO
-
-
-## Sharding
-
-TODO
-
-
-## Server Admin
-
-TODO
+MongoDB has a lot of great configurable options for replication (saving multiple, up-to-date copies of your database on different servers) and sharding (spreading one database over multiple servers). There is some admin overhead to deal with to use these features, but they are well-tested and easier to use than most databases.
 
 
 ## Further Reading
