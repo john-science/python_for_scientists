@@ -12,6 +12,14 @@ Cython is two things:
 
 Consider installing [Anaconda](http://docs.continuum.io/anaconda/install.html). It will come packaged with Cython, but also a ton of other really great Python libraries.
 
+However, Anaconda is not the only way to install Cython. For instance, on any Debian-based Linux computer, a simple `apt-get` should work fine:
+
+    $ pip install cython
+    ...
+    $ python setup.py install
+    $ cython -V
+    Cython version 0.20.2
+
 
 ## Compiling and Running Cython
 
