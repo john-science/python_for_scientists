@@ -35,3 +35,7 @@ First, in Python, you will want to import the big Python math library:
 ## General Language Syntax
 
     TODO
+
+## Cells are Lists
+
+    TODO
