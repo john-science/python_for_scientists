@@ -596,6 +596,7 @@ We will cover NumPy statistics in the SciPy class. For a full reference on what 
 
 ## Further Reading
 
+ * [Moving from Matlab to NumPy](matlab_2_numpy.md) - Learn to move from Matlab to NumPy
  * [Why NumPy arrays instead of lists?](http://stackoverflow.com/questions/993984/why-numpy-instead-of-python-lists)
  * [Official NumPy Tutorial](http://wiki.scipy.org/Tentative_NumPy_Tutorial)
  * [Intro PDF to NumPy and Scipy from UC SB](http://www.engr.ucsb.edu/~shell/che210d/numpy.pdf)
