@@ -42,13 +42,8 @@ We can also assign these same mathematical values to variables:
     # this is the distance in meters
     print(dist)
 
-Python also has `long` and `complex` number types:
+Python also has `complex` number types:
 
-    2L
-    2L + 2
-    4L
-    2L / 2
-    2L / 2.0
     complex(1, 2)
     1 + 2j
     1 + 2j - 2j
