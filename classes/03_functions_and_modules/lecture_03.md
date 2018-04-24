@@ -159,7 +159,14 @@ A Python program consists of one (or more) modules that are executable from the 
 
     $ python super_happy_fun_nums.py
 
-If you try that line above, you will see that... nothing happens. Well, that's anti-climatic. But, after all, the function `numop1` above doesn't *do* anything until you pass it at least one number, which we didn't do. So what did you expect to happen?
+If you try that line above, you will see that...
+
+Nothing happens.
+
+Well, that's anti-climatic.
+
+But, after all, the function `numop1` above doesn't *do* anything until you pass it at least one number, which we didn't do. So what did you expect to happen?
+
 
 #### main
 
@@ -225,6 +232,7 @@ Let's run our program again:
 
 NOW we have a real program. It has a `main` function, so we can execute it from the commandline. It includes other functions that we use in `main`. We have even commented our functions. This little file could serve as a blueprint for a lot of the Python work you do from now on.
 
+
 ## Importing From Your Module
 
 Earlier, we imported `numop1` into the Python interpreter by doing:
@@ -244,13 +252,14 @@ Then, when you want to use `numop1`, you have to qualify it with the module name
 
     >>> super_happy_fun_nums.numop1(2, 2)
 
-So, there are several ways to import from a Python script in the interpreter.
+So, you have options. Design your code to make it as convenient as possible for the user.
+
 
 ## Importing In Your Module
 
 If you created another Python module and called it `testing_imports.py`, you could use all of the same imports as we did in the interpreter above, to import `numop1` from `super_happy_fun_nums` (as long as `testing_imports` and `super_happy_fun_nums` are still in the same folder):
 
-    # this is the file: testing_imports.py
+    # this is a new file: testing_imports.py
     
     from super_happy_fun_nums import numop1
     
@@ -261,6 +270,7 @@ If you created another Python module and called it `testing_imports.py`, you cou
         main()
 
 Now we can share code between different Python modules. That'll come in handy.
+
 
 ## Import Python Standard Libraries
 
