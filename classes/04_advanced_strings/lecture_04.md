@@ -164,20 +164,21 @@ And if the text file already exists, and we want to `append` more lines to the e
 
 Now, let's try a simple example of writing to a new file:
 
-    >>> soft_rains = '''"There will come soft rains and the smell of the ground,
-    ... And swallows circling with their shimmering sound;
-    ... And frogs in the pools singing at night,
-    ... And wild plum trees in tremulous white;
-    ... Robins will wear their feathery fire,
-    ... Whistling their whims on a low fence-wire;
-    ... And not one will know of the war, not one
-    ... Will care at last when it is done.
-    ... Not one would mind, neither bird nor tree,
-    ... if mankind perished utterly;
-    ... And Spring herself, when she woke at dawn
-    ... Would scarcely know that we were gone."
-    ... '''
-    ... 
+    >>> soft_rains = '''
+    "There will come soft rains and the smell of the ground,
+    And swallows circling with their shimmering sound;
+    And frogs in the pools singing at night,
+    And wild plum trees in tremulous white;
+    Robins will wear their feathery fire,
+    Whistling their whims on a low fence-wire;
+    And not one will know of the war, not one
+    Will care at last when it is done.
+    Not one would mind, neither bird nor tree,
+    if mankind perished utterly;
+    And Spring herself, when she woke at dawn
+    Would scarcely know that we were gone."
+    '''
+    
     >>> fout = open('ray_bradbury.txt', 'w')
     >>> fout.write(soft_rains)
     >>> fout.close()
