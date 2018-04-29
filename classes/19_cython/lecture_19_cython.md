@@ -15,15 +15,67 @@ Consider installing [Anaconda](http://docs.continuum.io/anaconda/install.html). 
 
 ## Compiling and Running Cython
 
-There are several ways to compile Cython code so it can be run by Python. Cython can be:
+There are several ways to compile Cython code so it can be run by Python. Cython can be compiled:
 
- * compiled and run interactively from iPython
- * compiled automatically at import time
- * compiled separately by build tools like `distutils`
- * integrated into standard build systems like `make`
+ * separately by build tools like `distutils`
+ * by hand using the `cython` commandline tool
+ * automatically at import time with `pyximport`
+ * and run interactively from iPython's `%%cython` magic
 
+### Using distutils
 
-TODO
+I think this is probably the best option. And the only one I really use in practice.
+
+Perhaps the most common Python build tool is `distutils`. This is the tool that lets people to build and install your Python projet using `python setup.py install` from the command line.  If you want to add some Cython to your Python project, write one or more modules optionally using the Cython syntax, and change the extension of your files from `.py` to `.pyx`. Then add these lines to your setup.py:
+
+    from distutils.core import setup
+    from Cython.build import cythonize
+    ...
+    setup(ext_modules=cythonize('example.pyx'))
+
+The whole process can get more complicated, but that's the core of it and a good place to start.
+
+### Compile using Cython import
+
+How do you compile Cython code by hand? Why, by using the `cython` command, obviously!
+
+    $ cython example.pyx
+
+But wait! Are there a ton of obscure commands to learn to optimize and customize your compillation? You bet there are!
+
+A typical workflow to compile Cython code into a Python extension module will look something like:
+
+    $ CFLAGS=$(python-config --cflags)
+    $ LDFLAGS=$(python-config --ldflags)
+    $ cython example.pyx                      # creates example.c
+    $ gcc -c fib.c $(CFLAGS)                  # creates example.o
+    $ gcc fib.o -o fib.so -shared ${LDFLAGS}  # creates example.so
+    $ rm example.c example.o                  # basic cleanup
+
+Of course, once you have designed commandlines to compile your Cython project, you can throw these into Bash, Batch, Make, or CMake scripts.
+
+### Using pyximport
+
+One possible way to speed up your Python code is to import all your modules as if they were Cython modules using pyximport. Which you can do easily by putting this at the top of your calling modules:
+
+    import pyximport
+    pyximport.install()
+
+### iPython Magic
+
+Okay, I never do this, but it is an option. During your iPython session you just have to initalize your Cython magic:
+
+    %load_ext cythonmagic
+
+And then you can write Cython code directly into your session:
+
+    %%cython
+    def fib(int n):
+        cdef int i
+        cdef double a = 0.0, b = 0.0
+        for i in range(n):
+            a, b = a+b, a
+        return a
 
 
 ## Cython Syntax
