@@ -4,8 +4,8 @@ Writing code in Python is fast. But the code you write isn't as fast as, say, C 
 
 Cython is two things:
 
-* a way to add types to Python code, to make it faster
-* a way to interface between C/C++/Cython and Python
+* a way to add C-like types to Python code, to improve performance
+* a way to compile Cython code to C, so it can be compiled as an extension module
 
 
 ## Installation
@@ -14,6 +14,14 @@ Consider installing [Anaconda](http://docs.continuum.io/anaconda/install.html). 
 
 
 ## Compiling and Running Cython
+
+There are several ways to compile Cython code so it can be run by Python. Cython can be:
+
+ * compiled and run interactively from iPython
+ * compiled automatically at import time
+ * compiled separately by build tools like `distutils`
+ * integrated into standard build systems like `make`
+
 
 TODO
 
