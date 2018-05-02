@@ -58,14 +58,14 @@ Of course, once you have designed commandlines to compile your Cython project, y
 
 ### Using pyximport
 
-One possible way to speed up your Python code is to import all your modules as if they were Cython modules using pyximport. Which you can do easily by putting this at the top of your calling modules:
+One possible way to speed up your Python code is to import your modules as if they were Cython modules using `pyximport`. Which you can do easily by putting this at the top of your calling modules:
 
     import pyximport
     pyximport.install()
 
 ### iPython Magic
 
-Okay, I never do this, but it is an option. During your iPython session you just have to initalize your Cython magic:
+Okay, I never do this, but it is an option. During an iPython session you just have to initalize Cython "magic":
 
     %load_ext cythonmagic
 
