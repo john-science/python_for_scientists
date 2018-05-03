@@ -128,7 +128,7 @@ Let's take another look at that `except` statement above. It is pretty vague. Wh
 
 In the final `except` statement, we can catch any type of `Exception` in case something unexpected happens. In this case it is handy to print the `Exception` and code itself, to provide more information.
 
-Here is a full list of Python's built-in Exceptions: [Python 2](https://docs.python.org/2/library/exceptions.html) / [Python 3](https://docs.python.org/3/library/exceptions.html). I refer back to this list a lot.
+Here is a full list of Python's built-in [Exceptions](https://docs.python.org/3/library/exceptions.html). I refer back to this list a lot.
 
 #### Creating your own exceptions
 
