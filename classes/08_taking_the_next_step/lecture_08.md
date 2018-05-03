@@ -2,6 +2,9 @@
 
 All the material in this course so far was just too define "the rules" of Python. But writing good code means more than just knowing the rules that define a language. You can teach a six-year-old the rules to chess, but that doesn't make them a Grand Master. A lot of knowledge, skill, and practice are needed to earn that title. The rest of this course will be devoted to taking the next step.
 
+![Code Quality](https://imgs.xkcd.com/comics/code_quality.png)
+
+
 ## Writting Better Code
 
 The most important thing is that your code works. Obviously. But some software is better than others. Good code creates *less* work for people, not *more*.
