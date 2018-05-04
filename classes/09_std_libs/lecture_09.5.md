@@ -1,5 +1,7 @@
 # Batteries Included, Part 2
 
+![Batteries Included](https://upload.wikimedia.org/wikipedia/commons/6/68/Python_batteries_included.jpg)
+
 ## os
 
 The `os` library will help your computer's file system.
