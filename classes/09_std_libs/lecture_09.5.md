@@ -292,17 +292,17 @@ To GZIP an existing file:
 
 ## Further Reading
 
- * Official Docs - os: ([Python 2](https://docs.python.org/2/library/os.html) / [Python 3](https://docs.python.org/3/library/os.html))
+ * [Official Docs - os](https://docs.python.org/3/library/os.html))
  * [effbot - os](http://www.effbot.org/librarybook/os.htm)
- * Official Docs - os.path: ([Python 2](https://docs.python.org/2/library/os.path.html#module-os.path) / [Python 3](https://docs.python.org/3/library/os.path.html#module-os.path))
+ * [Official Docs - os.path](https://docs.python.org/3/library/os.path.html#module-os.path))
  * [effbot - os.path](http://www.effbot.org/librarybook/os-path.htm)
- * Official Docs - sys: ([Python 2](https://docs.python.org/2/library/sys.html) / [Python 3](https://docs.python.org/3/library/sys.html))
+ * [Official Docs - sys](https://docs.python.org/3/library/sys.html))
  * [effbot - sys](http://www.effbot.org/librarybook/sys.htm)
- * Official Docs - glob: ([Python 2](https://docs.python.org/2/library/glob.html) / [Python 3](https://docs.python.org/3/library/glob.html))
+ * [Official Docs - glob](https://docs.python.org/3/library/glob.html))
  * [Module of the Week - glob](http://pymotw.com/2/glob/)
  * [Every Day Scripting - glob](https://everydayscripting.wordpress.com/2008/12/24/pythons-glob-module-is-really-cool/)
- * Official Docs - zipfile: ([Python 2](https://docs.python.org/2/library/zipfile.html) / [Python 3](https://docs.python.org/3/library/zipfile.html))
+ * [Official Docs - zipfile](https://docs.python.org/3/library/zipfile.html))
  * [effbot - zipfile](http://effbot.org/librarybook/zipfile.htm)
- * Official Docs - gzip: ([Python 2](https://docs.python.org/2/library/gzip.html) / [Python 3](https://docs.python.org/3/library/gzip.html))
+ * [Official Docs - gzip](https://docs.python.org/3/library/gzip.html))
 
 [Back to Syllabus](../../README.md)
