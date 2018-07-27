@@ -4,7 +4,7 @@
 
 When creating a new class, you can create potentially invalid states for your objects. For example:
 
-    class Rectangle(object):
+    class Rectangle:
     
       def __init__(self, length_of_x_side):
         self.length_of_x_side = length_of_x_side
@@ -29,7 +29,7 @@ Now, this is easily fixable:
 
 But it is still a problem that when we set up the `Rectangle` object using the `__init__` method. This is the concern we will focus on in this problem set. The standard solution to this problem is to demand all important data is present when the object is created:
 
-    class Rectangle(object):
+    class Rectangle:
     
       def __init__(self, x, y):
         self.length_of_x_side = x
@@ -39,7 +39,7 @@ But it is still a problem that when we set up the `Rectangle` object using the `
 
 Fix the problem with this object initialization:
     
-    class Student(object):
+    class Student:
     
         def __init__(self):
             self.first_name = None
@@ -52,7 +52,7 @@ Fix the problem with this object initialization:
 
 Fix the problem with this object initialization:
 
-    class Student(object):
+    class Student:
     
         def __init__(self, first, last):
             self.first_name = first
@@ -68,7 +68,7 @@ Fix the problem with this object initialization:
 
 Create a valid `__init__` method for this class.
 
-    class GPSLocation(object):
+    class GPSLocation:
     
         def print_location(self):
             '''A simple print statement, to describe the exact
@@ -83,7 +83,7 @@ Create a valid `__init__` method for this class.
 
 Create an initializing method for this class:
 
-    class Species(object):
+    class Species:
         '''This class is meant to help classify various
         endangered species.'''
 
