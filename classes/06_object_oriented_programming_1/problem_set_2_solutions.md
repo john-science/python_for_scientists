@@ -2,7 +2,7 @@
 
 ## Solution 1
 
-    class Student(object):
+    class Student:
     
         def __init__(self, first, last):
             self.first_name = first
@@ -10,7 +10,7 @@
 
 ## Solution 2
 
-    class Student(object):
+    class Student:
     
         def __init__(self, first, last, grades):
             self.first_name = first
@@ -25,7 +25,7 @@
 
 ## Solution 3
 
-    class GPSLocation(object):
+    class GPSLocation:
     
         def __init__(self, lat, lon, elevation):
             self.lat = lat
@@ -34,7 +34,7 @@
 
 ## Solution 4
 
-    class Species(object):
+    class Species:
     
         def __init__(self, com, sci, status):
             self.common_name = com
