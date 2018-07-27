@@ -18,7 +18,7 @@ First, some jargon. An "object" is a specific instance of a "class". For instanc
 
 Enough talk, let's look at an example:
 
-    class Student(object):
+    class Student:
         '''A Student is a person currently enrolled in this awesome course.
         Students have the following properties:
       
@@ -101,7 +101,7 @@ In this case, the `__init__` method is called and four variables are set: `self.
 
 Now let's talk about those `Student` methods: functions inside of the class. Mostly, they look like regular functions, except they are indented to signify they are part of the `Student` class. Also, the first input is `self`:
 
-    class Student(object):
+    class Student:
         ...
 
         def set_hw_grade(self, grade, week):
@@ -119,7 +119,7 @@ We see the `set_hw_grade` method actually only takes two inputs, not three. The 
 
 A class method is any function you include in a class and give the `self` parameter to. But what if you want to include a method in a class that is independent of the value of this particular object? These are called "static methods", and here are a couple examples:
 
-    class Student(object):
+    class Student:
         ...
         
         @staticmethod
@@ -145,7 +145,7 @@ Notice that these two new methods defined inside `Student` don't have the `self`
 
 Why use static methods? Well, it's true, you could have just written these methods without worrying about it:
 
-    class Student(object):
+    class Student:
     
         # rest of the class defined as normal
 
