@@ -33,7 +33,7 @@
 
 #### 1. Create a class named `RightTriangle`, with an `__init__` method that takes two variables: length of side a, and length of side b. The class also has a variable `hypotenuse`, that is initially undefined.
 
-    class RightTriangle(object):
+    class RightTriangle:
     
         def __init__(self, a, b):
             self.a = a
@@ -42,7 +42,7 @@
 
 #### 2. Add a method named `calculate_area` to `RightTriangle` that returns the area of a right triangle.
 
-    class RightTriangle(object):
+    class RightTriangle:
     
         def __init__(self, a, b):
             self.a = a
@@ -58,7 +58,7 @@
 
     from math import sqrt
 
-    class RightTriangle(object):
+    class RightTriangle:
     
         def __init__(self, a, b):
             self.a = a
@@ -79,7 +79,7 @@
 
     from math import sqrt
 
-    class RightTriangle(object):
+    class RightTriangle:
     
         def __init__(self, a, b):
             self.a = a
@@ -103,7 +103,7 @@
 
 #### 5. Create a new class named `Rectangle`, with a constructor that takes two variables: length and width. The class has two methods: one is named `area` and returns the area of the rectangle, and the other is named `is_square` and returns a boolean to say if the Rectangle is square or not.
 
-    class Rectangle(object):
+    class Rectangle:
     
         def __init__(self, length, width):
             self.length = length
