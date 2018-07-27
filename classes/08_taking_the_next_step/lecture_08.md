@@ -169,7 +169,7 @@ If you have more than, say, five arguments to a function consider making it a cl
 
 We could do something more like this:
     
-    class MySuperPlot(object):
+    class MySuperPlot:
     
         def __init__(self, x_data, y_data):
             self.x_data = x_data
@@ -191,7 +191,7 @@ The class version of the plot-making function is actually more code. But it will
 
 Another option is to make use of Python's keyword arguments:
 
-    class MySuperPlot(object):
+    class MySuperPlot:
     
         def __init__(self, x_data=None, y_data=None, x_title="Default Title",
                      y_title="Default Title", x_pixels=640, y_pixels=800):
