@@ -49,7 +49,7 @@ Reformat this code to meet PEP8 standards:
 
 ### Naming Things
 
-    class parallel_universe(object):
+    class parallel_universe:
     
         def __init__(self):
             self.EvilSpock = True
