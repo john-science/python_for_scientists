@@ -4,7 +4,7 @@ To start this problem set off, we will define the following abstract class:
 
     from abc import ABCMeta,abstractmethod
     
-    class Shape(object):
+    class Shape:
         __metaclass__ = ABCMeta
     
         def __init__(self, n):
