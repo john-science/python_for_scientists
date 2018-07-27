@@ -77,7 +77,7 @@ And here is the script re-written using OPP:
         ftp.pull_data(FILES, FTP_DIR)
         
     
-    class SimpleFTP(object):
+    class SimpleFTP:
     
         def __init__(self, address, user, pass, passive):
             self.address = address
