@@ -69,7 +69,7 @@ Class names should be `CamelCase`.
 Function and Method names should be `underscore_case`.
 Variable and Attribute names should be `underscore_case`.
 
-    class ParallelUniverse(object):
+    class ParallelUniverse:
     
         def __init__(self):
             self.evil_spock = True
