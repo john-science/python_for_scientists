@@ -6,7 +6,7 @@ Inheritance is taking the abstractions we create with Objects one step further. 
 
 Let's see some concrete examples:
 
-    class Polygon(object):
+    class Polygon:
     
         def __init__(self, n):
             self.number_of_sides = n
@@ -68,7 +68,7 @@ In the example above we can modify `Polygon` to become an abstract class:
 
     from abc import ABCMeta, abstractmethod
 
-    class Polygon(object):
+    class Polygon:
         __metaclass__ = ABCMeta
     
         def __init__(self, n):
