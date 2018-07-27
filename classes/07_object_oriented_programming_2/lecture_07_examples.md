@@ -6,7 +6,7 @@ What follows are just some simple examples of OOP in Python.
 
 This is a simple utility class to make reading a text file a tiny bit easier.
 
-    class TextFile(object):
+    class TextFile:
     
         def __init__(self, filepath, ditch_header=False):
             self.filepath = filepath
@@ -49,7 +49,7 @@ The power of this class is that I've done all of the work of reading my text fil
 
 Now, let's look at another class. This time we will be reading a CSV file.
 
-    class CSVFile(object):
+    class CSVFile:
     
         def __init__(self, filepath):
             self.filepath = filepath
@@ -91,7 +91,7 @@ Both `TextFile` and `CSVFile` above are fine as is. But they share a lot of code
 
     from abc import ABCMeta, abstractmethod
     
-    class AbstractTextFile(object):
+    class AbstractTextFile:
         __metaclass__ = ABCMeta
         
         def __init__(self, filepath, ditch_header):
