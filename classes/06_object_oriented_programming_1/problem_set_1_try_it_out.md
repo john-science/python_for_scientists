@@ -6,7 +6,7 @@
 
 Instantiate (create an instance of) this class:
 
-    class Plot(object):
+    class Plot:
     
         def __init__(self, num_pixels_x, num_pixels_y):
             self.pixels_x = num_pixels_x
@@ -16,7 +16,7 @@ Instantiate (create an instance of) this class:
 
 Instantiate this class and run use it's method to calculate the number of pixels in the final plot:
 
-    class Plot(object):
+    class Plot:
     
         def __init__(self, num_pixels_x, num_pixels_y):
             self.pixels_x = num_pixels_x
