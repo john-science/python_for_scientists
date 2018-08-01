@@ -38,7 +38,7 @@ The `range` function is really helpful in Python. Much like `slice` that we saw 
 
 (**NOTE**: As you can see above, the `start` value is *inclusive* and the `end` value is *exclusive*. The default `start` is zero and the default `step` is 1.)
 
-![loops](http://www.jeffpalm.com/fox/fox.jpg)
+![for loop comic](../../resources/for_loop.jpg)
 
 ### while loops
 
