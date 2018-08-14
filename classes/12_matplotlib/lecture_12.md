@@ -435,13 +435,12 @@ Here is a complete plot of both types of ways to create plots with error bars. A
     
     # create scatter plot with error bars
     from matplotlib import pyplot as plt
-    plt.subplot(1, 2, 1)
-    plt.errorbar(x, y1, yerr=arange(0.2, 1.2, 1.0/16), linestyle='none', ecolor='black')
-    plt.scatter(x, y1, alpha=0.75, c=arange(0.0, 1.0, 1.0/16.0), s=arange(0.0, 600, 600.0/16), edgecolor='none')
+    fig, (col1, col2) = plt.subplots(ncols=2)
+    col1.errorbar(x, y1, yerr=arange(0.2, 1.2, 1.0/16), linestyle='none', ecolor='black')
+    col1.scatter(x, y1, alpha=0.75, c=arange(0.0, 1.0, 1.0/16.0), s=arange(0.0, 600, 600.0/16), edgecolor='none')
     
     # create bar chart with error bars
-    plt.subplot(1, 2, 2)
-    plt.bar(x, y2, width=(pi/16)*0.8, xerr=0.1, yerr=0.25, color='red', edgecolor='none', ecolor='black')
+    col2.bar(x, y2, width=(pi/16)*0.8, xerr=0.1, yerr=0.25, color='red', edgecolor='none', ecolor='black')
     plt.show()
 
 ![Subplots with Errorbars](../../resources/subplots_with_error_bars.png)
@@ -518,9 +517,30 @@ Here is a heavily customized plot, using all of the above options:
 
 ![Google Ngram Plot](../../resources/information_age.png)
 
-## Final Note - A Common Problem
 
-Sometime matplotlib will just refuse to work at all. It turns out, sometimes, you need to tell matplotlib about where you are or what you are doing. The relevant questions are things like:
+## Style Sheets
+
+Matplotlib gives you a *lot* of power to customize plots. But the more custom you want it to look, the more time it takes. Wouldn't it be great if there were some way to define all your common customizations at once, and save them off for later? Great idea, we'll call it a "style sheet".
+
+For instance, if you want your plots to look like they were made in the R programming language with `ggplot`, you just need to add one line to your file:
+
+    plt.style.use('ggplot')
+
+In fact, MatPlotLib has a lot of default styles built in. See [here](https://matplotlib.org/examples/style_sheets/style_sheets_reference.html) for more examples.
+
+And you can easily build your own style sheet in a config-file format, which you can find more about [here](https://matplotlib.org/users/style_sheets.html).
+
+
+## The Warning - 1000 ways to skin a cat
+
+There are a *lot* of different ways to do basically everything in matplotlib. It will be easiest to learn how to use matplotlib if you figure out how to do things *one* way and just ignore all the other options. I know, I know, that doesn't sound ideal. But most of us will make plots by looking at examples online. And if you are constantly seeing different ways to do the same things it will take much longer for you to learn how to do things on your own.
+
+Are the methods presented in this lecture the only way to do things? No. But pick one way to do things in matplotlib, and find a reference that is consistent. That's the important thing.
+
+
+## Final Note - Backends, A Common Problem
+
+Sometimes matplotlib will just refuse to work at all. It turns out, sometimes, you need to tell matplotlib about where you are or what you are doing. The relevant questions are things like:
 
  * Am I running matplotlib from the commandline?
  * Am I running matplotlib from an automated script?
