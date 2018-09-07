@@ -144,11 +144,11 @@ Or, again, more verbosely:
 
 That's it! Rince and repeat and you can test all the Python you ever write.
 
-## The Build Process
+## A Build Process
 
 Tests tend to be run automatically during the build process. For that reason, it would be hard to give an introduction to testing without talking about the build process.
 
-There are a lot of tools in the Python ecosystem for helping you handle all the facets of building and distributing your code. The most standard (and useful) tools you'll want to know about are:
+There are a lot of different ways to build software, and a lot of different ways to run tests. So we will just touch the most common pathways, which use:
 
  * [DistUtils](https://docs.python.org/2/library/distutils.html) - The original tool for building and installing Python packages (no support for testing).
  * [setuptools](http://pythonhosted.org/an_example_pypi_project/setuptools.html) - Based on distutils, this is the standard tool for building and installing your Python code. It also allows you to register your code with [PyPi](https://pypi.python.org/pypi).
