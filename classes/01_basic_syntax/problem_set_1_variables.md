@@ -53,9 +53,10 @@ Python also has `complex` number types:
 There are several basic boolean operators to know:
 
     dist < 10
+    dist > -2.0
     dist <= 4.9
-    dist < (10 + 2j)
-    dist < -2.0
+    dist == 4.9
+    dist >= 4.9
     dist != 3.1415
 
 If you have ever worked in another programming language, it almost certainly had variations on all of these. However, in Python, we can natively compare almost any type of variable. And each variable type has a `False` equivalent:
