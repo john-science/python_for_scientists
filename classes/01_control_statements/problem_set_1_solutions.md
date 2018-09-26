@@ -2,7 +2,7 @@
 
 #### 1. Print the numbers 3 through 13 using a `for` loop and a `range` statement.
  
-    for i in range(1, 11):
+    for i in range(3, 14):
         print(i)
  
 #### 2. Print the numbers 2 through 20 using a `while` loop.
