@@ -230,12 +230,12 @@ Scientists frequently need to deal with [binary files](https://en.wikipedia.org/
 
     >>> myfile = open('test_bin.txt', 'wb')
     >>> for c in range(50, 70):
-    ...     myfile.write(chr(c))
+    ...     myfile.write(chr(c).encode())
     ... 
     >>> myfile.close()
     >>> myfile = open('test_bin.txt', 'rb')
     >>> myfile.read()
-    '23456789:;<=>?@ABCDE'
+    b'23456789:;<=>?@ABCDE'
     >>> myfile.close()
 
 What we did above was: create a binary file and wrote in the binary characters with ASCII values from 50 to 69. The `chr` method was used to convert the integers to their character representation. Thus, when we read the file back in, we end up reading the characters, not the integers we wanted to store. This is just one of the many possible things you have to be careful of when dealing with binary files.
