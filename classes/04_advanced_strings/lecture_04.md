@@ -276,9 +276,9 @@ Well, we know how to read text files. And CSV files are just text files. So let'
     ['source', 'dose (Sv)', 'dose (BED)']
     >>> for line in lines[1:]:
     >>>     values = line.strip().split(',')
-    >>>     print(values[0], float(values[1]), int(values[2]))
+    >>>     print(values[0], float(values[1]), float(values[2]))
 
-Notice above the use of `strip()`. This is because we want to find the integer value of that last column, so we want to do `int('1')`, not `int('1\n')`.
+Notice above the use of `strip()`. This is because we want to find the integer value of that last column, so we want to do `float('1')`, not `float('1\n')`.
 
 Also notice that `split(',')` above to a long string of text and created a list of strings:
 
