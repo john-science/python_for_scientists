@@ -141,10 +141,12 @@ Here are some easy examples:
     3
     >>> float("3.14")     # convert a string to a float
     3.14
-    >>> bool("True")     # convert a string to a boolean
+    >>> bool("True")      # convert a string to a boolean
     True
-    >>> bool("False")     # convert a string to a boolean
-    False
+    >>> bool("False")     # the Boolean of anything other than 0 is True
+    True
+    >>> bool("Anything")  # the Boolean of anything other than 0 is True
+    True
 
 ## Reading and Writing Text Files
 
