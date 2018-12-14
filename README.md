@@ -46,3 +46,4 @@ Special Topics
  * [MongoDB](classes/18_mongo/lecture_18_mongo.md)
  * [NetCDF Files - netCDF4](classes/14_netcdf/lecture_14.md)
  * [Testing Projects - unittest/setuptools](classes/17_testing_projects/lecture_17.md)
+ * [Building Python Projects](classes/19_building_projects/lecture_19.md)
