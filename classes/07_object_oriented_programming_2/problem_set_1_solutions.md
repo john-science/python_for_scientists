@@ -2,10 +2,9 @@
 
 To start this problem set off, we will define the following abstract class:
 
-    from abc import ABCMeta,abstractmethod
+    from abc import ABC,abstractmethod
     
-    class Shape:
-        __metaclass__ = ABCMeta
+    class Shape(ABC):
     
         def __init__(self, n):
             self.number_of_sides = n
