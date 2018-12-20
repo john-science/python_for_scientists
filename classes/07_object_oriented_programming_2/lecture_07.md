@@ -66,10 +66,9 @@ What we do when we define an [abstract class](https://en.wikipedia.org/wiki/Clas
 
 In the example above we can modify `Polygon` to become an abstract class:
 
-    from abc import ABCMeta, abstractmethod
+    from abc import ABC, abstractmethod
 
-    class Polygon:
-        __metaclass__ = ABCMeta
+    class Polygon(ABC):
     
         def __init__(self, n):
             self.number_of_sides = n
@@ -81,7 +80,7 @@ In the example above we can modify `Polygon` to become an abstract class:
         def get_area(self):
             pass
 
-Here we have imported the Python standard library `abc` to create an abstract class. We use the `__metaclass__ = ABCMeta` statement to define it as an abstract class. And every abstract method we mark with the `@abstractmethod` decorator. This marks the method as not being implemented.
+Here we have imported the Python standard library `abc` to create an abstract class. We subclass `ABC` to define it as an abstract class. And every abstract method we mark with the `@abstractmethod` decorator. This marks the method as not being implemented.
 
 We cannot directly implement an abstract class:
 
