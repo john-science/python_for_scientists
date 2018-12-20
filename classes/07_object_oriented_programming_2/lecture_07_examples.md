@@ -89,10 +89,9 @@ If we had an appropriate file, we could use it by doing:
 
 Both `TextFile` and `CSVFile` above are fine as is. But they share a lot of code and ideas (because CSV files are just a type of text file). And it would be nice if we didn't have to repeat ourselves, so maybe both of these classes should subclass the same abstract class:
 
-    from abc import ABCMeta, abstractmethod
+    from abc import ABC, abstractmethod
     
-    class AbstractTextFile:
-        __metaclass__ = ABCMeta
+    class AbstractTextFile(ABC):
         
         def __init__(self, filepath, ditch_header):
             self.filepath = filepath
