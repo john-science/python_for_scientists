@@ -1,5 +1,5 @@
 from time import time
-from sieve import sieve
+from sieves import sieve
 
 
 def main():
