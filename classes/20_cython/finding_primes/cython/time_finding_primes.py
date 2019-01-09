@@ -1,5 +1,5 @@
 from time import time
-from finding_primes import sieve
+from sieve import sieve
 
 
 def main():
