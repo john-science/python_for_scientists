@@ -1,0 +1,4 @@
+# Git should ignore Cython temp files
+*.c
+*.so
+build/*

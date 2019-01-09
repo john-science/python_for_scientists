@@ -1,17 +1,20 @@
-from timeit import timeit
+from time import time
 
 def main():
-    number_trials = 3
-    max_prime = 10000
+    max_prime = 100000
 
-    print("\nNaive, first pass at the Sieve of Eratosthenes:")
-    print(timeit("seive_naive(" + str(max_prime) + ")", "from __main__ import seive_naive", number=3))
+    print("\nA naive pass at the Sieve of Eratosthenes, in Cython:")
+    start = time()
+    sieve_naive(max_prime)
+    print(time() - start)
 
-    print("\nA decent pass at the Sieve of Eratosthenes:")
-    print(timeit("seive_decent(" + str(max_prime) + ")", "from __main__ import seive_decent", number=3))
+    print("\nA decent pass at the Sieve of Eratosthenes, in Cython:")
+    start = time()
+    sieve_decent(max_prime)
+    print(time() - start)
 
 
-def seive_naive(n):
+def sieve_naive(n):
     """ The Sieve of Eratosthenes - first pass
     """
     # Python indexes start at zero
@@ -35,7 +38,7 @@ def seive_naive(n):
     return primes
 
 
-def seive_decent(n):
+def sieve_decent(n):
     """ The Sieve of Eratosthenes:
         a couple small speed improvements
     """
