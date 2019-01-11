@@ -119,28 +119,34 @@ if food != 'spam':
 
 The logic desired above is so common Python provides a shortcut:
 
-    if food == 'spam':
-        print('Ummmm, my favorite!')
-    else:
-        print("No, I won't have it. I want spam!")
+```python
+if food == 'spam':
+    print('Ummmm, my favorite!')
+else:
+    print("No, I won't have it. I want spam!")
+```
 
 There is another option. What if you want to have several different conditionals chained together? That is the purpose of the `elif` symbol:
 
-    if food == 'spam':
-        print('Mmmmm, my favorite!')
-    elif food == 'spam and eggs':
-        print('Acceptable. I can pick out the eggs.')
-    elif food == 'spam and bacon':
-        print('Acceptable. I can pick out the bacon.')
-    else:
-        print("No, I won't have it. I want spam!")
+```python
+if food == 'spam':
+    print('Mmmmm, my favorite!')
+elif food == 'spam and eggs':
+    print('Acceptable. I can pick out the eggs.')
+elif food == 'spam and bacon':
+    print('Acceptable. I can pick out the bacon.')
+else:
+    print("No, I won't have it. I want spam!")
+```
 
 The `else` symbol is optional, but it is usually good practice to include it:
 
-    if food == 'spam':
-        print('Mmmmm, my favorite!')
-    elif food == 'spam and eggs':
-        print('Acceptable. I can pick out the eggs.')
+```python
+if food == 'spam':
+    print('Mmmmm, my favorite!')
+elif food == 'spam and eggs':
+    print('Acceptable. I can pick out the eggs.')
+```
 
 ### Continue, Break, and Pass
 
@@ -158,10 +164,12 @@ These are used in conjunction with the major control statements to allow for gre
 
 The `continue` statement is used inside a `for` or a `while` loop, skipping the rest of this iteration and fast forwarding to the next item in the list. Let us look at a couple examples:
 
-    for letter in 'Python':
-        if letter == 'h':
-            continue
-        print('Current Letter: ' + letter)
+```python
+for letter in 'Python':
+    if letter == 'h':
+        continue
+    print('Current Letter: ' + letter)
+```
 
 This will print:
 
@@ -173,12 +181,14 @@ This will print:
 
 Here the `print` statement was hit for every letter in `Python` except the letter `h`, because of the `continue` statement. Let's try another example:
 
-    var = 10
-    while var > 0:              
-        var = var - 1
-        if var % 2 == 0:
-            continue
-        print('Current variable value: ' + str(var))
+```python
+var = 10
+while var > 0:              
+    var = var - 1
+    if var % 2 == 0:
+        continue
+    print('Current variable value: ' + str(var))
+```
 
 This will produce following result, because the `continue` statement will skip all of the even values:
 
@@ -192,24 +202,28 @@ This will produce following result, because the `continue` statement will skip a
 
 Another important way to control the flow of a program is to use `break`. When a `break` statement is reached, you immediately terminate the `for` or `while` loop:
 
-    x = 0
-    while True:
-        x += 1
-        print(x)
-        if x > 99:
-            break
+```python
+x = 0
+while True:
+    x += 1
+    print(x)
+    if x > 99:
+        break
+```
 
 This will print the numbers `1` to `100` and then stop. You could, for instance, use this to figure how many integers (starting with 1) you need to add to get 10,000:
 
-    sum = 0
-    i = 1
-    while True:
-        sum += i
-        i += 1
-        if sum > 10000:
-            break
-    
-    print('The sum of the first ' + str(i) + ' integers is over 10,000.')
+```python
+sum = 0
+i = 1
+while True:
+    sum += i
+    i += 1
+    if sum > 10000:
+        break
+
+print('The sum of the first ' + str(i) + ' integers is over 10,000.')
+```
 
 (Notice the extra line before the `print` statement. The interpreter needs that extra line to know the `while` loop is complete.)
 
@@ -217,13 +231,15 @@ This will print the numbers `1` to `100` and then stop. You could, for instance,
 
 There is one final logical control we want to discuss. What if, when a certain set of predicates are true, we want to do nothing? That's possible. But we can't just leave the block empty, so use `pass` statement:
 
-    if x == "not spam for dinner":
-        print("I will destroy the universe")
-    elif x == "spam for dinner":
-        # I'm fine with that. I'll do nothing
-        pass
-    else:
-        print("I demand spam!")
+```python
+if x == "not spam for dinner":
+    print("I will destroy the universe")
+elif x == "spam for dinner":
+    # I'm fine with that. I'll do nothing
+    pass
+else:
+    print("I demand spam!")
+```
 
 Without that `pass` statement the `elif` block would be empty and Python would throw an error. Try that and prove that to yourself.
 
@@ -235,30 +251,36 @@ Did you notice in the `for` and `while` loops above how the content *inside* the
 
 Here is an example of a correctly indented piece of Python:
 
-    if n == 0:
-        print 0
-    elif n == 1:
-        print 1
-    else:
-        print (n - 1) + (n - 2)
+```python
+if n == 0:
+    print 0
+elif n == 1:
+    print 1
+else:
+    print (n - 1) + (n - 2)
+```
 
 Notice how the indents line up. If we didn't align the `if`, `elif`, or `else` together, Python would throw an error:
 
-    if n == 0:
-        print 0
-    elif n == 1:
-          print 1
-      else:                       # ERROR: inconsistent dedent
-       print (n - 1) + (n - 2)
+```python
+if n == 0:
+    print 0
+elif n == 1:
+      print 1
+  else:                       # ERROR: inconsistent dedent
+   print (n - 1) + (n - 2)
+```
 
 Or if we didn't indent the code inside the blocks Python would throw an error:
 
-    if n == 0:
-        print 0
-    elif n == 1:
-    print 1                       # ERROR: no indent
-    else:
-       print (n - 1) + (n - 2)
+```python
+if n == 0:
+    print 0
+elif n == 1:
+print 1                       # ERROR: no indent
+else:
+   print (n - 1) + (n - 2)
+```
 
 
 ### Comments!
@@ -267,18 +289,20 @@ Or if we didn't indent the code inside the blocks Python would throw an error:
 
 If you write code and there are no comments and no documentation, the code doesn't exist. No one will want to touch it, and they won't be able to understand it if they do.
 
-    # this is the first comment
-    spam = 1  # and this is the second comment
-              # ... and now a third!
-    text = "# This is not a comment because it's inside quotes."
-    
-    """This is an especially long comment,
-    that takes up two lines."""
+```python
+# this is the first comment
+spam = 1  # and this is the second comment
+          # ... and now a third!
+text = "# This is not a comment because it's inside quotes."
 
-    '''This is another especially long comment,
-    that takes up multiple
-    lines.
-    '''
+"""This is an especially long comment,
+that takes up two lines."""
+
+'''This is another especially long comment,
+that takes up multiple
+lines.
+'''
+```
 
 ## Problem Sets
 
