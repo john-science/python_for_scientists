@@ -38,38 +38,42 @@ For our example function, we will find prime numbers using the [Sieve of Eratost
 
 Here is our Sieve. Our first, naive version isn't very fast, so this is our starting place:
 
-    def sieve_naive(n):
-        """ The Sieve of Eratosthenes - first pass
-        """
-        # Python indexes start at zero
-        m = n + 1
+```python
+def sieve_naive(n):
+    """ The Sieve of Eratosthenes - first pass
+    """
+    # Python indexes start at zero
+    m = n + 1
 
-        # make a list of for all numbers up to n, initially all prime
-        numbers = [True for i in range(m)]
+    # make a list of for all numbers up to n, initially all prime
+    numbers = [True for i in range(m)]
 
-        # go through and remove all numbers that are a multiple of the others
-        for i in range(2, n + 1):
-          if numbers[i]:
-            for j in range(i * i, m, i):
-              numbers[j] = False
+    # go through and remove all numbers that are a multiple of the others
+    for i in range(2, n + 1):
+      if numbers[i]:
+        for j in range(i * i, m, i):
+          numbers[j] = False
 
-        # what is left are primes
-        primes = []
-        for i in range(2, m):
-          if numbers[i]:
-            primes.append(i)
+    # what is left are primes
+    primes = []
+    for i in range(2, m):
+      if numbers[i]:
+        primes.append(i)
 
     return primes
+```
 
 It's probably okay if this is not immediately obvious to you, but learning to read code is important, so go through it line-by-line and figure out what it's doing.
 
 We can run the code and find primes below a certain upper limit:
 
-    >>> sieve_naive(10)
-    [2, 3, 5, 7]
+```python
+>>> sieve_naive(10)
+[2, 3, 5, 7]
 
-    >>> sieve_naive(100)
-    [2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47, 53, 59, 61, 67, 71, 73, 79, 83, 89, 97]
+>>> sieve_naive(100)
+[2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47, 53, 59, 61, 67, 71, 73, 79, 83, 89, 97]
+```
 
 Okay, remember our mantra:
 
