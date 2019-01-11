@@ -4,37 +4,45 @@
 
 Basically, a `for` loop just does something for every value in a list. (Lists will be discussed in the next class.) For instance:
 
-    new_list = [1950, 'There Will Come Soft Rains', 'Ray Bradbury', 2026]
-    
-    for element in new_list:
-        print(element)
+```python
+new_list = [1950, 'There Will Come Soft Rains', 'Ray Bradbury', 2026]
+
+for element in new_list:
+    print(element)
+```
 
 Try that out and you will see that the above `for` loop prints every item in `new_list`. There are two important keywords here: `for` and `in`. The keyword `for` signifies the kind of loop we're going to be executing and `in` show us that we're going to be putting each item of `new_list` into the variable `element` one at a time.
 
 Let's print the numbers 1 through 10:
 
-    for number in [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]:
-        print(number)
+```python
+for number in [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]:
+    print(number)
+```
 
 That was easy enough, but there is a better way to write that in Python:
 
-    for number in range(1, 11):
-        print(number)
+```python
+for number in range(1, 11):
+    print(number)
+```
 
 The `range` function is really helpful in Python. Much like `slice` that we saw with strings, `range` can take three inputs: `start`, `end`, and `step`. It turns out that `start` and `step` are optional:
 
-    >>> range(5)
-    range(0, 5)
-    >>> type(range(5))
-    <class 'range'>
-    >>> list(range(5))
-    [0, 1, 2, 3, 4]
-    >>> list(range(1, 5))
-    [1, 2, 3, 4]
-    >>> list(range(1, 5, 2))
-    [1, 3]
-    >>> list(range(0, 30, 5))
-    [0, 5, 10, 15, 20, 25]
+```python
+>>> range(5)
+range(0, 5)
+>>> type(range(5))
+<class 'range'>
+>>> list(range(5))
+[0, 1, 2, 3, 4]
+>>> list(range(1, 5))
+[1, 2, 3, 4]
+>>> list(range(1, 5, 2))
+[1, 3]
+>>> list(range(0, 30, 5))
+[0, 5, 10, 15, 20, 25]
+```
 
 (**NOTE**: As you can see above, the `start` value is *inclusive* and the `end` value is *exclusive*. The default `start` is zero and the default `step` is 1.)
 
@@ -44,26 +52,32 @@ The `range` function is really helpful in Python. Much like `slice` that we saw 
 
 A `while` loop does something until its main condition is no longer met:
 
-    a = 0
-    while a < 10:
-        a = a + 1
-        print(a)
+```python
+a = 0
+while a < 10:
+    a = a + 1
+    print(a)
+```
 
 The above loop will print the numbers `1` through `10` and then comparison between `a` and `10` will be no longer true, and the loop will terminate. You can also create more complicated predicates for the while loop:
 
-    n = 15
-    while n > 0 and n < 30:
-        n -= 3  # this is the same as `n = n - 3`
-        print(n)
+```python
+n = 15
+while n > 0 and n < 30:
+    n -= 3  # this is the same as `n = n - 3`
+    print(n)
+```
 
 The above loop will print the numbers 12, 9, 6, 3, 0 and then the complicated predicate will no longer be true, and the loop will terminate.
 
 Unlike your typical `for` loop, `while` loops can fail in an interesting way. What if the predicate is *never* false?
 
-    >>> n = 7
-    >>> while n > 0:
-    ...     n += 1
-    ... 
+```python
+>>> n = 7
+>>> while n > 0:
+...     n += 1
+... 
+```
 
 This is called an `infinte loop`, because it would never terminate on its own. This is, obviously, not a good thing.
 
@@ -75,27 +89,33 @@ This is called an `infinte loop`, because it would never terminate on its own. T
 
 In order to write useful programs, we almost always need the ability to check conditions and change the behavior of the program accordingly. Conditional statements give us that ability. The simplest form is the `if` statement, which has the genaral form:
 
-    if PREDICATE:
-        BODY
+```python
+if PREDICATE:
+    BODY
+```
 
 In this case, only if the predicate is true is the body of the statement executed. For example:
 
-    food = 'spam'
-    
-    if food == 'spam':
-        print('Ummmm, my favorite!')
-        print('I feel like saying it 100 times...')
-        print(100 * (food + '! '))
+```python
+food = 'spam'
+
+if food == 'spam':
+    print('Ummmm, my favorite!')
+    print('I feel like saying it 100 times...')
+    print(100 * (food + '! '))
+```
 
 Above is the basic `if` statement. You will use these to control the logical flow of the program. But what if you want to execute a different block of code if the predicate isn't satisfied? Well, you could do this:
 
-    food = 'spam'
-    
-    if food == 'spam':
-        print('Joy!')
-    
-    if food != 'spam':
-        print('Sadness...')
+```python
+food = 'spam'
+
+if food == 'spam':
+    print('Joy!')
+
+if food != 'spam':
+    print('Sadness...')
+```
 
 The logic desired above is so common Python provides a shortcut:
 
