@@ -56,30 +56,34 @@ Again, there are lots of good testing tools out there. In this lecture we will u
 
 To use `unittest`, we'll first need a simple module (`cube.py`):
 
-    def cube(x):
-        '''An unnecessary function to find the
-        cube of a number.
-        '''
-        return x**3
+```python
+def cube(x):
+    '''An unnecessary function to find the
+    cube of a number.
+    '''
+    return x**3
+```
 
 Now, let's write the module `cube_test.py`:
 
-    import unittest
-    from cube import cube
-     
-    class TestCube(unittest.TestCase):
-     
-        def setUp(self):
-            pass
-     
-        def test_number_4(self):
-            self.assertEqual(cube(4), 64)
-     
-        def test_negative_one(self):
-            self.assertEqual(cube(-1), -1)
-     
-    if __name__ == '__main__':
-        unittest.main()
+```python
+import unittest
+from cube import cube
+
+class TestCube(unittest.TestCase):
+
+    def setUp(self):
+        pass
+
+    def test_number_4(self):
+        self.assertEqual(cube(4), 64)
+
+    def test_negative_one(self):
+        self.assertEqual(cube(-1), -1)
+
+if __name__ == '__main__':
+    unittest.main()
+```
 
 Notice `setUp()` can be used to load any information you want into the `TestCube` class. This can be handy if you need a more complex input for your function/method. You can instantiate a class from another part of your project, mock up a lot of fake data, or even create a temporary database for testing.
 
