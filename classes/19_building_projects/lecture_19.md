@@ -21,30 +21,34 @@ There are a lot of different ways to build software, and a lot of different ways
 
 Let's follow through on the `unittest` example from the last lecture, and test out a build environment on our script: `cube.py`:
 
-    def cube(x):
-        '''An unnecessary function to find the
-        cube of a number.
-        '''
-        return x**3
+```python
+def cube(x):
+    '''An unnecessary function to find the
+    cube of a number.
+    '''
+    return x**3
+```
 
 Now, let's write the module `cube_test.py`:
 
-    import unittest
-    from cube import cube
-     
-    class TestCube(unittest.TestCase):
-     
-        def setUp(self):
-            pass
-     
-        def test_number_4(self):
-            self.assertEqual(cube(4), 64)
-     
-        def test_negative_one(self):
-            self.assertEqual(cube(-1), -1)
-     
-    if __name__ == '__main__':
-        unittest.main()
+```python
+import unittest
+from cube import cube
+
+class TestCube(unittest.TestCase):
+
+    def setUp(self):
+        pass
+
+    def test_number_4(self):
+        self.assertEqual(cube(4), 64)
+
+    def test_negative_one(self):
+        self.assertEqual(cube(-1), -1)
+
+if __name__ == '__main__':
+    unittest.main()
+```
 
 ### The setuptools Example
 
@@ -65,14 +69,16 @@ First, we will need to layout our project something like this:
 
 Our `setup.py` will look like:
 
-    from setuptools import setup
-    
-    setup(name='super_math',
-        version='0.1',
-        description='A simple test of unittest.',
-        packages=['super_math'],
-        test_suite="test",
-        zip_safe=False)
+```python
+from setuptools import setup
+
+setup(name='super_math',
+    version='0.1',
+    description='A simple test of unittest.',
+    packages=['super_math'],
+    test_suite="test",
+    zip_safe=False)
+```
 
 You can now run these tests on the command line by doing:
 
