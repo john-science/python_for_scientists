@@ -258,11 +258,9 @@ The crownless again shall be king.
 
 Now, if someone were to call this script from the command line, they would see your poem printed:
 
-```python
-$ python glitter_gold.py
-All that is gold does not glitter,
-...
-```
+    $ python glitter_gold.py
+    All that is gold does not glitter,
+    ...
 
 But what if you want to import this string from another script? Well, you can't. To help other people import and use your code, you have to make your data globally accessible in the file:
 
