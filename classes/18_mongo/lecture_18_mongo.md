@@ -11,7 +11,9 @@ For installation instructions for the MongoDB database server and client look [h
 
 To install the Python MongoDB Driver, try using [Anaconda](http://docs.continuum.io/anaconda/install.html). Anaconda is Python packaged with hundreds of tools and libraries, and it is a great learning tool. The Mongo Driver we will use is:
 
-    conda install pymongo
+```shell
+conda install pymongo
+```
 
 
 ## Starting the MongoDB Daemon
@@ -20,35 +22,47 @@ Before you can connect to a Mongo database, you need a Mongo daemon (or service)
 
 On my computer, to start the Mongo demon the first time, I had to do:
 
-    $ sudo mkdir /data/db
-    $ sudo chmod 755 /data -R
-    $ sudo mongod --repair
-    $ sudo mongod
+```shell
+$ sudo mkdir /data/db
+$ sudo chmod 755 /data -R
+$ sudo mongod --repair
+$ sudo mongod
+```
 
 
 ## Creating and Connecting to Databases
 
 To connect to the MongoDB shell from the commandline, witout specifiying a DB, do:
 
-    $ mongo -nodb
-    >
+```shell
+$ mongo -nodb
+>
+```
 
 From there, you can connect to a MongoDB server by:
 
-    > conn = new Mongo("127.0.0.1:27017")
+```python
+> conn = new Mongo("127.0.0.1:27017")
+```
 
 And then you can connect to a specific database by:
 
-    > db = conn.getDB("secret_agents")
+```python
+> db = conn.getDB("secret_agents")
+```
 
 Or you can combine both of these into one statement. Though I have found this particularly problematic if you do not already have active connections running to the give database.
 
-    > db = new Mongo("127.0.0.1:27017/secret_agents")  // don't do this
+```python
+> db = new Mongo("127.0.0.1:27017/secret_agents")  // don't do this
+```
 
 Alternatively, you can specific the database directly from the commandline, and it will define the `db` variable for you:
 
-    $ mongo 127.0.0.1:27017/secret_agents
-    > 
+```shell
+$ mongo 127.0.0.1:27017/secret_agents
+>
+```
 
 What we saw above is that MongoDB comes with its own interactive shell, much like MySQL or postgres. However, in the case of Mongo, the interactive shell is in JavaScript. You can define normal JavaScript objects, functions, and variables exactly as you would expect here.  (Obviously, teaching JavaScript is outside the scope of this course. Though there are an endless number of great resources for it online.)
 
@@ -59,17 +73,23 @@ Above we connected to a MongoDB using the native Mongo shell (in JavaScript). Th
 
 First, let's look at the above "connecting to a database" example. Hopefully the installation is complete and we can import the driver library:
 
-    $ python
-    >>> import pymongo
+```shell
+$ python
+>>> import pymongo
+```
 
 Again, we want to be able to connect to a MongoDB daemon:
 
-    >>> from pymongo import MongoClient
-    >>> client = MongoClient('localhost', 27017)
+```python
+>>> from pymongo import MongoClient
+>>> client = MongoClient('localhost', 27017)
+```
 
 And again, we will want to connect to a specific database through that daemon:
 
-    >>> db = client.secret_agents
+```python
+>>> db = client.secret_agents
+```
 
 So far, so good. We can now connect to Mongo daemons and databases using the native Mongo shell and the `PyMongo` Python driver.  In either case, if the `secret_agents` database didn't exist, it would be created on the fly.
 
@@ -80,10 +100,12 @@ In SQL-based databases, all data is stored in tables and tables are stored in sc
 
 Whereas a classic SQL "table" is limited to rows and columns of data, a Mongo "Document" is far less structured:
 
-    {"name": "James Bond",
-     "code name" : "007",
-     "status": "Active",
-     "licenses": ["License to Kill", "License to Tango"]}
+```python
+{"name": "James Bond",
+ "code name" : "007",
+ "status": "Active",
+ "licenses": ["License to Kill", "License to Tango"]}
+```
 
 The Mongo DB document stores data as key/value pairs, and the values can be another document. Documents are designed to look like JSON objects, which means they can be well represented by Python dictionaries or JavaScript objects.
 
@@ -95,11 +117,15 @@ A Mongo document is a different beast than a SQL table, but since it is based on
 
 Throught this lecture you will see that every document in a MongoDB has a unique "ObjectID":
 
-    {"_id": ObjectID(5ab3d8c5836cb47f66966e35)}
+```javascript
+{"_id": ObjectID(5ab3d8c5836cb47f66966e35)}
+```
 
 I will abbreviate these with shorter versions, for no other reason than it makes them easier to read on GitHub:
 
-    {"_id": ObjectID(...e35)}
+```python
+{"_id": ObjectID(...e35)}
+```
 
 ## Inserting, Removing, and Updating Documents
 
@@ -109,51 +135,67 @@ To create a collection, simply add a document to it, and if it doesn't exist it 
 
 shell:
 
-    > db.agents.insert({"name": "James Bond"})
-    
+```python
+> db.agents.insert({"name": "James Bond"})
+```
+
 pymongo:
 
-    >>> db.agents.insert({"name": "James Bond"})
+```python
+>>> db.agents.insert({"name": "James Bond"})
+```
 
 You may also want to get a document from a collection.
 
 shell:
 
-    > db.agents.findOne()
-    { "_id" : ObjectId("...e35"), "name" : "James Bond" }
+```python
+> db.agents.findOne()
+{ "_id" : ObjectId("...e35"), "name" : "James Bond" }
+```
 
 pymongo:
 
-    >>> db.agents.find_one()
-    {'_id': ObjectId('...e35'), 'name': 'James Bond'}
+```python
+>>> db.agents.find_one()
+{'_id': ObjectId('...e35'), 'name': 'James Bond'}
+```
 
 It will frequently be handy to add multiple documents to a collection at the same time (and it will certainly be faster).
 
 shell:
 
-    > db.agents.insert([{"name": "Scarlet Papava"}, {"name": "Alec Trevelyan"}])
+```python
+> db.agents.insert([{"name": "Scarlet Papava"}, {"name": "Alec Trevelyan"}])
+```
 
 pymongo:
 
-    >>> db.agents.insert_many([{"name": "Scarlet Papava"}, {"name": "Alec Trevelyan"}])
+```python
+>>> db.agents.insert_many([{"name": "Scarlet Papava"}, {"name": "Alec Trevelyan"}])
+```
 
 You may frequently want to return all the documents in a collection.  Via the shell this works exactly as expected, in PyMongo (Python v3.x) you will get an iterator instead of a simple list.
 
 shell:
 
-    > db.agents.find()
-    { "_id" : ObjectId("...e35"), "name" : "James Bond" }
-    { "_id" : ObjectId("...6dc"), "name" : "Scarlet Papava" }
-    { "_id" : ObjectId("...6dd"), "name" : "Alec Trevelyan" }
+```python
+> db.agents.find()
+{ "_id" : ObjectId("...e35"), "name" : "James Bond" }
+{ "_id" : ObjectId("...6dc"), "name" : "Scarlet Papava" }
+{ "_id" : ObjectId("...6dd"), "name" : "Alec Trevelyan" }
+```
 
 pymongo:
 
-    >>> for doc in db.agents.find():
-    ...     print(doc)
-    ... 
-    {'_id': ObjectId('...e35'), 'name': 'James Bond'}
-    {'_id': ObjectId('...6dc'), 'name': 'Scarlet Papava'}
-    { "_id" : ObjectId("...6dd"), "name" : "Alec Trevelyan" }
+```python
+>>> for doc in db.agents.find():
+...     print(doc)
+... 
+{'_id': ObjectId('...e35'), 'name': 'James Bond'}
+{'_id': ObjectId('...6dc'), 'name': 'Scarlet Papava'}
+{ "_id" : ObjectId("...6dd"), "name" : "Alec Trevelyan" }
+```
 
 
 ### Removing Documents and Collections
@@ -162,23 +204,31 @@ An entire collection can be deleted by using the `remove()` or `drop()` methods.
 
 shell:
 
-    > db.agents.drop()
-    > db.agents.remove()
+```python
+> db.agents.drop()
+> db.agents.remove()
+```
 
 pymongo:
 
-    >>> db.agents.drop()
-    >>> db.agents.remove({})
+```python
+>>> db.agents.drop()
+>>> db.agents.remove({})
+```
 
 If, instead, you delete a set of documents from a collection, all of those documents are irreversibly lost.  You do that by passing a query to the `remove()` method.
 
 shell:
 
-    > db.agents.remove({"name": "James Bond"})
+```python
+> db.agents.remove({"name": "James Bond"})
+```
 
 pymongo:
 
-    >>> db.agents.remove({"name": "James Bond"})
+```python
+>>> db.agents.remove({"name": "James Bond"})
+```
 
 
 ### Updating Documents
@@ -191,42 +241,50 @@ To update an existing document, we use the `update()` method, which replaces a q
 
 shell:
 
-    > agent1 = db.agents.findOne()
-    { "_id" : ObjectId("...e35"), "name" : "James Bond" }
-    > agent1.code_name = "007";
-    > agent1.home_address = "221 B Baker Street, London"
-    > delete agent1.home_address
-    > agent1
-    {
-        "_id" : ObjectId("...e35"),
-        "name" : "James Bond",
-        "code_name" : "007"
-    }
-    > db.agents.update({"name": "James Bond"}, agent1)
+```python
+> agent1 = db.agents.findOne()
+{ "_id" : ObjectId("...e35"), "name" : "James Bond" }
+> agent1.code_name = "007";
+> agent1.home_address = "221 B Baker Street, London"
+> delete agent1.home_address
+> agent1
+{
+    "_id" : ObjectId("...e35"),
+    "name" : "James Bond",
+    "code_name" : "007"
+}
+> db.agents.update({"name": "James Bond"}, agent1)
+```
 
 Or if we are only querying for a single document it might be easier to do the `update()` based on `_id`:
 
-    > db.agents.update({"_id": ObjectId("...e35")}, agent1)
+```python
+> db.agents.update({"_id": ObjectId("...e35")}, agent1)
+```
 
 pymongo:
 
-    >>> agent1 = db.agents.find_one()
-    { "_id" : ObjectId("...e35"), "name" : "James Bond" }
-    >>> agent1["code_name"] = "007";
-    >>> agent1.["home_address"] = "221 B Baker Street, London"
-    >>> delete agent1.home_address
-    >>> agent1
-    {
-        "_id" : ObjectId("...e35"),
-        "name" : "James Bond",
-        "code_name" : "007"
-    }
-    >>> db.agents.update({"name": "James Bond"}, agent1)
+```python
+>>> agent1 = db.agents.find_one()
+{ "_id" : ObjectId("...e35"), "name" : "James Bond" }
+>>> agent1["code_name"] = "007";
+>>> agent1.["home_address"] = "221 B Baker Street, London"
+>>> delete agent1.home_address
+>>> agent1
+{
+    "_id" : ObjectId("...e35"),
+    "name" : "James Bond",
+    "code_name" : "007"
+}
+>>> db.agents.update({"name": "James Bond"}, agent1)
+```
 
 Or, again, since we know that each `_id` is unique we can play it safe by updating using that:
 
-    >>> from bson.objectid import ObjectId
-    >>> db.agents.update({"_id": ObjectId("...e35")}, agent1)
+```python
+>>> from bson.objectid import ObjectId
+>>> db.agents.update({"_id": ObjectId("...e35")}, agent1)
+```
 
 #### Modifiers
 
@@ -236,37 +294,49 @@ You might have noticed above that when we did `update`, `remove`, or `find` we h
 
 shell:
 
-    > db.agents.find({"name": "Scarlet Papava"})
-    { "_id" : ObjectId("...6dc"), "code_name" : "004", "name" : "Scarlet Papava" }
-    > db.agents.update({"name": "Scarlet Papava"}, {"$set": {"number_of_kills": 1}})
-    > db.agents.find({"name": "Scarlet Papava"})
-    { "_id" : ObjectId("...6dc"), "name" : "Scarlet Papava", "number_of_kills" : 1, ... }
+```python
+> db.agents.find({"name": "Scarlet Papava"})
+{ "_id" : ObjectId("...6dc"), "code_name" : "004", "name" : "Scarlet Papava" }
+> db.agents.update({"name": "Scarlet Papava"}, {"$set": {"number_of_kills": 1}})
+> db.agents.find({"name": "Scarlet Papava"})
+{ "_id" : ObjectId("...6dc"), "name" : "Scarlet Papava", "number_of_kills" : 1, ... }
+```
     
 pymongo:
 
-    >>> db.agents.update({"name": "Scarlet Papava"}, {"$set": {"number_of_kills": 1}})
+```python
+>>> db.agents.update({"name": "Scarlet Papava"}, {"$set": {"number_of_kills": 1}})
+```
 
 `$inc` is used to "increment" an integer by one.
 
 shell:
 
-    > db.agents.update({"name": "Scarlet Papava"}, {"$inc": {"number_of_kills": 1}})
-    > db.agents.find({"name": "Scarlet Papava"})
-    { "_id" : ObjectId("...6dc"),"name" : "Scarlet Papava", "number_of_kills" : 2, ... }
+```python
+> db.agents.update({"name": "Scarlet Papava"}, {"$inc": {"number_of_kills": 1}})
+> db.agents.find({"name": "Scarlet Papava"})
+{ "_id" : ObjectId("...6dc"),"name" : "Scarlet Papava", "number_of_kills" : 2, ... }
+```
     
 pymongo:
 
-    >>> db.agents.update({"name": "Scarlet Papava"}, {"$inc": {"number_of_kills": 1}})
+```python
+>>> db.agents.update({"name": "Scarlet Papava"}, {"$inc": {"number_of_kills": 1}})
+```
 
 `$unset` removes a field from a document, and does not throw an error if the field does not yet exist.
 
 shell:
 
-    > db.agents.update({"name": "Scarlet Papava"}, {"$unset": {"number_of_kills": 1}})
+```python
+> db.agents.update({"name": "Scarlet Papava"}, {"$unset": {"number_of_kills": 1}})
+```
 
 pymongo:
 
-    >>> db.agents.update({"name": "Scarlet Papava"}, {"$unset": {"number_of_kills": 1}})
+```python
+>>> db.agents.update({"name": "Scarlet Papava"}, {"$unset": {"number_of_kills": 1}})
+```
 
 
 #### Array Modifiers
@@ -277,98 +347,117 @@ Mongo has an extensive collection of modifiers specific to arrays. Arrays are or
 
 shell:
 
-    > db.agents.update({"name": "James Bond"}, {"$set": {"languages": ["English"]}})
-    > db.agents.findOne({"name": "James Bond"})
-    {
-        "_id" : ObjectId("...e35"),
-        "name" : "James Bond",
-        "code_name" : "007",
-        "languages" : [ "English" ]
-    }
-    > db.agents.update({"name": "James Bond"}, {"$push": {"languages": "Russian"}})
-    > db.agents.findOne({"name": "James Bond"})
-    {
-        "_id" : ObjectId("...e35"),
-        "name" : "James Bond",
-        "code_name" : "007",
-        "languages" : [ "English", "Russian" ]
-    }
-
+```python
+> db.agents.update({"name": "James Bond"}, {"$set": {"languages": ["English"]}})
+> db.agents.findOne({"name": "James Bond"})
+{
+    "_id" : ObjectId("...e35"),
+    "name" : "James Bond",
+    "code_name" : "007",
+    "languages" : [ "English" ]
+}
+> db.agents.update({"name": "James Bond"}, {"$push": {"languages": "Russian"}})
+> db.agents.findOne({"name": "James Bond"})
+{
+    "_id" : ObjectId("...e35"),
+    "name" : "James Bond",
+    "code_name" : "007",
+    "languages" : [ "English", "Russian" ]
+}
+```
 
 pymongo:
 
-    >>> db.agents.update({"name": "James Bond"}, {"$set": {"languages": ["English"]}})
-    >>> db.agents.update({"name": "James Bond"}, {"$push": {"languages": "Russian"}})
+```python
+>>> db.agents.update({"name": "James Bond"}, {"$set": {"languages": ["English"]}})
+>>> db.agents.update({"name": "James Bond"}, {"$push": {"languages": "Russian"}})
+```
 
 
 `$each` allows you to push multiple elements to the end of an array.
 
 shell:
 
-    > db.agents.update({"name": "James Bond"},
-          {"$push": {"languages": {"$each": ["Spanish", "Mandarin"]}}})
-    > db.agents.findOne({"name": "James Bond"})
-    {
-        "_id" : ObjectId("...e35"),
-        "name" : "James Bond",
-        "code_name" : "007",
-        "languages" : [ "English", "Russian", "Spanish", "Mandarin" ]
-    }
+```python
+> db.agents.update({"name": "James Bond"},
+      {"$push": {"languages": {"$each": ["Spanish", "Mandarin"]}}})
+> db.agents.findOne({"name": "James Bond"})
+{
+    "_id" : ObjectId("...e35"),
+    "name" : "James Bond",
+    "code_name" : "007",
+    "languages" : [ "English", "Russian", "Spanish", "Mandarin" ]
+}
+```
 
 
 pymongo:
 
-    >>> db.agents.update({"name": "James Bond"},
-            {"$push": {"languages": {"$each": ["Spanish", "Mandarin"]}}})
+```python
+>>> db.agents.update({"name": "James Bond"},
+        {"$push": {"languages": {"$each": ["Spanish", "Mandarin"]}}})
+```
 
 
 `$slice` lets you ensure as you push elements onto an array that the array doens't grow past a certain size.
 
 shell:
 
-    > db.agents.update({"name": "James Bond"},
-          {"$push": {"languages": {"$each": ["Urdu", "Arabic"], "$slice": -4}}})
-    > db.agents.findOne({"name": "James Bond"})
-    {
-        "_id" : ObjectId("...e35"),
-        "name" : "James Bond",
-        "code_name" : "007",
-        "languages" : [ "Spanish", "Mandarin", "Urdu", "Arabic" ]
-    }
+```python
+> db.agents.update({"name": "James Bond"},
+      {"$push": {"languages": {"$each": ["Urdu", "Arabic"], "$slice": -4}}})
+> db.agents.findOne({"name": "James Bond"})
+{
+    "_id" : ObjectId("...e35"),
+    "name" : "James Bond",
+    "code_name" : "007",
+    "languages" : [ "Spanish", "Mandarin", "Urdu", "Arabic" ]
+}
+```
 
 pymongo:
 
-    >>> db.agents.update({"name": "James Bond"},
-            {"$push": {"languages": {"$each": ["Urdu", "Arabic"], "$slice": -4}}})
+```python
+>>> db.agents.update({"name": "James Bond"},
+        {"$push": {"languages": {"$each": ["Urdu", "Arabic"], "$slice": -4}}})
+```
 
 
 `$sort` sorts the results of `find()` operation on an array.
 
 shell:
 
-    > db.agents.findOne({"name": "James Bond"}).languages.sort()
+```python
+> db.agents.findOne({"name": "James Bond"}).languages.sort()
+```
 
 pymongo:
 
-    >>> sorted(db.agents.find_one({"name": "James Bond"})["languages"])
+```python
+>>> sorted(db.agents.find_one({"name": "James Bond"})["languages"])
+```
     
 
 You can use arrays as sets as long as you do a uniqueness check every time you add an element to the array. For this you use `$addToSet` when doing a push.
 
 shell:
 
-    > db.agents.findOne({"name": "James Bond"}).languages.sort()
-    [ "Arabic", "Mandarin", "Spanish", "Urdu" ]
-    > db.agents.update({"name": "James Bond"}, {"$addToSet": {"languages": "English"}})
-    > db.agents.update({"name": "James Bond"}, {"$addToSet": {"languages": "English"}})
-    > db.agents.update({"name": "James Bond"}, {"$addToSet": {"languages": "English"}})
-    > db.agents.findOne({"name": "James Bond"}).languages.sort()
-    [ "Arabic", "English", "Mandarin", "Spanish", "Urdu" ]
+```python
+> db.agents.findOne({"name": "James Bond"}).languages.sort()
+[ "Arabic", "Mandarin", "Spanish", "Urdu" ]
+> db.agents.update({"name": "James Bond"}, {"$addToSet": {"languages": "English"}})
+> db.agents.update({"name": "James Bond"}, {"$addToSet": {"languages": "English"}})
+> db.agents.update({"name": "James Bond"}, {"$addToSet": {"languages": "English"}})
+> db.agents.findOne({"name": "James Bond"}).languages.sort()
+[ "Arabic", "English", "Mandarin", "Spanish", "Urdu" ]
+```
 
 
 pymongo:
 
-    >>> db.agents.update({"name": "James Bond"}, {"$addToSet": {"languages": "English"}})
+```python
+>>> db.agents.update({"name": "James Bond"}, {"$addToSet": {"languages": "English"}})
+```
 
 
 #### Upserts
@@ -377,16 +466,20 @@ In MongoDB, as in other databases, an `upsert` is an update is added to the data
 
 shell:
 
-    > db.agents.update({"name": "Me"}, {"languages": ["English", "Old Norse"]}, {"upsert": true})
-    > db.agents.find()
-    { "_id" : ObjectId("...6dd"), "name" : "Alec Trevelyan" }
-    ...
-    { "_id" : ObjectId("...86e"), "languages" : [ "English", "Old Norse" ] }
-    > db.agents.remove({"_id" : ObjectId("...86e")})  // just clean up
+```python
+> db.agents.update({"name": "Me"}, {"languages": ["English", "Old Norse"]}, {"upsert": true})
+> db.agents.find()
+{ "_id" : ObjectId("...6dd"), "name" : "Alec Trevelyan" }
+...
+{ "_id" : ObjectId("...86e"), "languages" : [ "English", "Old Norse" ] }
+> db.agents.remove({"_id" : ObjectId("...86e")})  // just clean up
+```
 
 pymongo:
 
-    >>> db.agents.update({"name": "Me"}, {"languages": ["English", "Old Norse"]}, upsert=True)
+```python
+>>> db.agents.update({"name": "Me"}, {"languages": ["English", "Old Norse"]}, upsert=True)
+```
 
 
 #### Multiple Documents
@@ -395,17 +488,21 @@ By default, the `update` method only updates the first document it finds that ma
 
 shell:
 
-    > db.agents.update({"name" : {"$exists": true}},
-          {"$set": {"Status": "Active"}}, false, true)
-    > db.agents.find()
-    { "_id" : ObjectId("...6dc"), "name" : "Scarlet Papava", "Status" : "Active", ... }
-    { "_id" : ObjectId("...e35"), "name" : "James Bond", "Status" : "Active", ... }
-    { "_id" : ObjectId("...6dd"), "name" : "Alec Trevelyan", "Status" : "Active", ... }
+```python
+> db.agents.update({"name" : {"$exists": true}},
+      {"$set": {"Status": "Active"}}, false, true)
+> db.agents.find()
+{ "_id" : ObjectId("...6dc"), "name" : "Scarlet Papava", "Status" : "Active", ... }
+{ "_id" : ObjectId("...e35"), "name" : "James Bond", "Status" : "Active", ... }
+{ "_id" : ObjectId("...6dd"), "name" : "Alec Trevelyan", "Status" : "Active", ... }
+```
 
 pymongo:
 
-    >>> db.agents.update({"name" : {"$exists": True}},
-            {"$set": {"Status": "Active"}}, upsert=False, multi=True)
+```python
+>>> db.agents.update({"name" : {"$exists": True}},
+        {"$set": {"Status": "Active"}}, upsert=False, multi=True)
+```
 
 
 ### Write Concerns
@@ -421,45 +518,51 @@ The primary tools for pulling data from MongoDB are `find` and `findOne`/`find_o
 
 shell:
 
-    > db.agents.findOne()
-    { "_id" : ObjectId("...e35"), "name" : "James Bond" }
+```python
+> db.agents.findOne()
+{ "_id" : ObjectId("...e35"), "name" : "James Bond" }
 
-    > db.agents.findOne({}, {"name": 1})
-    { "name" : "James Bond" }
+> db.agents.findOne({}, {"name": 1})
+{ "name" : "James Bond" }
 
-    > db.agents.find()
-    { "_id" : ObjectId("...e35"), "name" : "James Bond" }
-    { "_id" : ObjectId("...6dc"), "name" : "Scarlet Papava" }
-    { "_id" : ObjectId("...6dd"), "name" : "Alec Trevelyan" }
+> db.agents.find()
+{ "_id" : ObjectId("...e35"), "name" : "James Bond" }
+{ "_id" : ObjectId("...6dc"), "name" : "Scarlet Papava" }
+{ "_id" : ObjectId("...6dd"), "name" : "Alec Trevelyan" }
 
-    > db.agents.find({}, {"name": 1})
-    { "name" : "James Bond" }
-    { "name" : "Scarlet Papava" }
-    { "name" : "Alec Trevelyan" }
+> db.agents.find({}, {"name": 1})
+{ "name" : "James Bond" }
+{ "name" : "Scarlet Papava" }
+{ "name" : "Alec Trevelyan" }
+```
 
 pymongo:
 
-    >>> db.agents.find_one()
-    {'_id': ObjectId('...e35'), 'name': 'James Bond'}
+```python
+>>> db.agents.find_one()
+{'_id': ObjectId('...e35'), 'name': 'James Bond'}
 
-    >>> for doc in db.agents.find():
-    ...     print(doc)
-    ... 
-    {'_id': ObjectId('...e35'), 'name': 'James Bond'}
-    {'_id': ObjectId('...6dc'), 'name': 'Scarlet Papava'}
-    { "_id" : ObjectId("...6dd"), "name" : "Alec Trevelyan" }
+>>> for doc in db.agents.find():
+...     print(doc)
+... 
+{'_id': ObjectId('...e35'), 'name': 'James Bond'}
+{'_id': ObjectId('...6dc'), 'name': 'Scarlet Papava'}
+{ "_id" : ObjectId("...6dd"), "name" : "Alec Trevelyan" }
+```
 
 Okay, let us add some data to our `agents` database before we continue:
 
 shell:
 
-    > db.agents.update({"name": "James Bond"}, {"$set": {"number_of_kills": 100}})
-    > db.agents.update({"name": "Scarlet Papava"}, {"$set": {"number_of_kills": 25}})
-    > db.agents.update({"name": "Alec Trevelyan"}, {"$set": {"number_of_kills": 123}})
-    > 
-    > db.agents.update({"name": "James Bond"}, {"$set": {"age": 36}})
-    > db.agents.update({"name": "Scarlet Papava"}, {"$set": {"age": 25}})
-    > db.agents.update({"name": "Alec Trevelyan"}, {"$set": {"age": 45}})
+```python
+> db.agents.update({"name": "James Bond"}, {"$set": {"number_of_kills": 100}})
+> db.agents.update({"name": "Scarlet Papava"}, {"$set": {"number_of_kills": 25}})
+> db.agents.update({"name": "Alec Trevelyan"}, {"$set": {"number_of_kills": 123}})
+> 
+> db.agents.update({"name": "James Bond"}, {"$set": {"age": 36}})
+> db.agents.update({"name": "Scarlet Papava"}, {"$set": {"age": 25}})
+> db.agents.update({"name": "Alec Trevelyan"}, {"$set": {"age": 45}})
+```
 
 pymong:
 
@@ -476,59 +579,71 @@ These four conditionals are used as part of the first paratmeter in your `find` 
 
 shell:
 
-    > db.agents.find({"age": {"$gt": 30, "$lte": 65}}, {"name": 1})
-    { "_id" : ObjectId("...e35"), "name" : "James Bond" }
-    { "_id" : ObjectId("...6dd"), "name" : "Alec Trevelyan" }
+```python
+> db.agents.find({"age": {"$gt": 30, "$lte": 65}}, {"name": 1})
+{ "_id" : ObjectId("...e35"), "name" : "James Bond" }
+{ "_id" : ObjectId("...6dd"), "name" : "Alec Trevelyan" }
+```
 
 pymongo:
 
-    >>> list(db.agents.find({"age": {"$gt": 30, "$lte": 65}}, {"name": 1}))
-    [{'_id': ObjectId('...e35'), 'name': 'James Bond'},
-     {'_id': ObjectId('...6dd'), 'name': 'Alec Trevelyan'}]
+```python
+>>> list(db.agents.find({"age": {"$gt": 30, "$lte": 65}}, {"name": 1}))
+[{'_id': ObjectId('...e35'), 'name': 'James Bond'},
+ {'_id': ObjectId('...6dd'), 'name': 'Alec Trevelyan'}]
+```
 
 Multiple different queries can be combined into one using the conjunction operators: `$or`, `$in`, `$nin`, or `$not`. Each of these does basically what you would expect, but the syntax needs some explanation.
 
 shell:
 
-    > db.agents.find({"age": {"$in": [25, 30]}}, {"name": 1})
-      { "_id" : ObjectId("...6dc"), "name" : "Scarlet Papava" }
-    > db.agents.find({"age": {"$nin": [25, 30]}}, {"name": 1})
-      { "_id" : ObjectId("...e35"), "name" : "James Bond" }
-      { "_id" : ObjectId("...6dd"), "name" : "Alec Trevelyan" }
-    > db.agents.find({"age": {"$not": {"$nin": [25, 30]}}}, {"name": 1})
-      { "_id" : ObjectId("....6dc"), "name" : "Scarlet Papava" }
-    > db.agents.find({"$or": [{"age": {"$gte": 40}},
-                       {"number_of_kills": {"$gt": 50}}]}, {"name": 1})
-      { "_id" : ObjectId("...e35"), "name" : "James Bond" }
-      { "_id" : ObjectId("...6dd"), "name" : "Alec Trevelyan" }
+```python
+> db.agents.find({"age": {"$in": [25, 30]}}, {"name": 1})
+  { "_id" : ObjectId("...6dc"), "name" : "Scarlet Papava" }
+> db.agents.find({"age": {"$nin": [25, 30]}}, {"name": 1})
+  { "_id" : ObjectId("...e35"), "name" : "James Bond" }
+  { "_id" : ObjectId("...6dd"), "name" : "Alec Trevelyan" }
+> db.agents.find({"age": {"$not": {"$nin": [25, 30]}}}, {"name": 1})
+  { "_id" : ObjectId("....6dc"), "name" : "Scarlet Papava" }
+> db.agents.find({"$or": [{"age": {"$gte": 40}},
+                   {"number_of_kills": {"$gt": 50}}]}, {"name": 1})
+  { "_id" : ObjectId("...e35"), "name" : "James Bond" }
+  { "_id" : ObjectId("...6dd"), "name" : "Alec Trevelyan" }
+```
 
 pymongo:
 
-    >>> list(db.agents.find({"age": {"$in": [25, 30]}}, {"name": 1}))
-      [{'_id': ObjectId('...6dc'), 'name': 'Scarlet Papava'}]
-    >>> list(db.agents.find({"age": {"$nin": [25, 30]}}, {"name": 1}))
-      [{'_id': ObjectId('...e35'), 'name': 'James Bond'},
-       {'_id': ObjectId('...6dd'), 'name': 'Alec Trevelyan'}]
-    >>> list(db.agents.find({"age": {"$not": {"$nin": [25, 30]}}}, {"name": 1}))
-      [{'_id': ObjectId('...6dc'), 'name': 'Scarlet Papava'}]
-    >>> list(db.agents.find({"$or": [{"age": {"$gte": 40}},
-               {"number_of_kills": {"$gt": 50}}]}, {"name": 1}))
-      [{'_id': ObjectId('...e35'), 'name': 'James Bond'},
-       {'_id': ObjectId('...6dd'), 'name': 'Alec Trevelyan'}]
+```python
+>>> list(db.agents.find({"age": {"$in": [25, 30]}}, {"name": 1}))
+  [{'_id': ObjectId('...6dc'), 'name': 'Scarlet Papava'}]
+>>> list(db.agents.find({"age": {"$nin": [25, 30]}}, {"name": 1}))
+  [{'_id': ObjectId('...e35'), 'name': 'James Bond'},
+   {'_id': ObjectId('...6dd'), 'name': 'Alec Trevelyan'}]
+>>> list(db.agents.find({"age": {"$not": {"$nin": [25, 30]}}}, {"name": 1}))
+  [{'_id': ObjectId('...6dc'), 'name': 'Scarlet Papava'}]
+>>> list(db.agents.find({"$or": [{"age": {"$gte": 40}},
+           {"number_of_kills": {"$gt": 50}}]}, {"name": 1}))
+  [{'_id': ObjectId('...e35'), 'name': 'James Bond'},
+   {'_id': ObjectId('...6dd'), 'name': 'Alec Trevelyan'}]
+```
 
 There are also handy conditionals for queries specifically about arrays. First though, let's add some data to our database for testing:
 
 shell:
 
-    > db.agents.update({"name": "Scarlet Papava"},
-        {"$set": {"languages": ["English", "Russian", "French"]}})
-    > db.agents.update({"name": "Alec Trevelyan"},
-        {"$set": {"languages": ["English", "Russian", "Latin"]}})
+```python
+> db.agents.update({"name": "Scarlet Papava"},
+    {"$set": {"languages": ["English", "Russian", "French"]}})
+> db.agents.update({"name": "Alec Trevelyan"},
+    {"$set": {"languages": ["English", "Russian", "Latin"]}})
+```
 
 pymongo:
 
-    >>> db.agents.update({"name": "Scarlet Papava"},
-        {"$set": {"languages": ["English", "Russian", "French"]}})
+```python
+>>> db.agents.update({"name": "Scarlet Papava"},
+    {"$set": {"languages": ["English", "Russian", "French"]}})
+```
 
 The most common array conditional keywords are:
 
@@ -540,43 +655,51 @@ The `$size` keyword is used just like every other keyword:
 
 shell:
 
-    > db.agents.find({"languages": {"$size": 5}}, {"name": 1})
-    { "_id" : ObjectId("...e35"), "name" : "James Bond" }
+```python
+> db.agents.find({"languages": {"$size": 5}}, {"name": 1})
+{ "_id" : ObjectId("...e35"), "name" : "James Bond" }
+```
 
 pymongo:
 
-    >>> list(db.agents.find({"languages": {"$size": 5}}, {"name": 1}))
-    [{'_id': ObjectId('...e35'), 'name': 'James Bond'}]
+```python
+>>> list(db.agents.find({"languages": {"$size": 5}}, {"name": 1}))
+[{'_id': ObjectId('...e35'), 'name': 'James Bond'}]
+```
 
 Mongo also provides `$skip`, `$limit`, and `$sort` keywords, which do about what you'd expect, and are syntactically easy to use:
 
 shell:
 
-    > db.agents.find({"languages": {"$size": 3}}, {"name": 1})
-    { "_id" : ObjectId("...6dc"), "name" : "Scarlet Papava" }
-    { "_id" : ObjectId("...6dd"), "name" : "Alec Trevelyan" }
+```python
+> db.agents.find({"languages": {"$size": 3}}, {"name": 1})
+{ "_id" : ObjectId("...6dc"), "name" : "Scarlet Papava" }
+{ "_id" : ObjectId("...6dd"), "name" : "Alec Trevelyan" }
 
-    > db.agents.find({"languages": {"$size": 3}}, {"name": 1}).skip(1)
-    { "_id" : ObjectId("...6dd"), "name" : "Alec Trevelyan" }
-    > db.agents.find({"languages": {"$size": 3}}, {"name": 1}).limit(1)
-    { "_id" : ObjectId("...6dc"), "name" : "Scarlet Papava" }
-    > db.agents.find({"languages": {"$size": 3}}, {"name": 1}).sort({"name": 1})
-    { "_id" : ObjectId("...6dd"), "name" : "Alec Trevelyan" }
-    { "_id" : ObjectId("...6dc"), "name" : "Scarlet Papava" }
+> db.agents.find({"languages": {"$size": 3}}, {"name": 1}).skip(1)
+{ "_id" : ObjectId("...6dd"), "name" : "Alec Trevelyan" }
+> db.agents.find({"languages": {"$size": 3}}, {"name": 1}).limit(1)
+{ "_id" : ObjectId("...6dc"), "name" : "Scarlet Papava" }
+> db.agents.find({"languages": {"$size": 3}}, {"name": 1}).sort({"name": 1})
+{ "_id" : ObjectId("...6dd"), "name" : "Alec Trevelyan" }
+{ "_id" : ObjectId("...6dc"), "name" : "Scarlet Papava" }
+```
 
 pymongo:
 
-    >>> list(db.agents.find({"languages": {"$size": 3}}, {"name": 1}))
-        [{ "_id" : ObjectId("...6dc"), "name" : "Scarlet Papava" },
-         { "_id" : ObjectId("...6dd"), "name" : "Alec Trevelyan" }]
+```python
+>>> list(db.agents.find({"languages": {"$size": 3}}, {"name": 1}))
+    [{ "_id" : ObjectId("...6dc"), "name" : "Scarlet Papava" },
+     { "_id" : ObjectId("...6dd"), "name" : "Alec Trevelyan" }]
 
-    >>> list(db.agents.find({"languages": {"$size": 3}}, {"name": 1}).skip(1))
-        [{ "_id" : ObjectId("...6dd"), "name" : "Alec Trevelyan" }]
-    >>> list(db.agents.find({"languages": {"$size": 3}}, {"name": 1}).limit(1))
-        [{ "_id" : ObjectId("...6dc"), "name" : "Scarlet Papava" }]
-    >>> db.agents.find({"languages": {"$size": 3}}, {"name": 1}).sort({"name": 1})
-        [{ "_id" : ObjectId("...6dd"), "name" : "Alec Trevelyan" },
-         { "_id" : ObjectId("...6dc"), "name" : "Scarlet Papava" }]
+>>> list(db.agents.find({"languages": {"$size": 3}}, {"name": 1}).skip(1))
+    [{ "_id" : ObjectId("...6dd"), "name" : "Alec Trevelyan" }]
+>>> list(db.agents.find({"languages": {"$size": 3}}, {"name": 1}).limit(1))
+    [{ "_id" : ObjectId("...6dc"), "name" : "Scarlet Papava" }]
+>>> db.agents.find({"languages": {"$size": 3}}, {"name": 1}).sort({"name": 1})
+    [{ "_id" : ObjectId("...6dd"), "name" : "Alec Trevelyan" },
+     { "_id" : ObjectId("...6dc"), "name" : "Scarlet Papava" }]
+```
 
 
 ## Indexing
@@ -589,21 +712,29 @@ To create a single index you use:
 
 shell:
 
-    > db.collection.ensureIndex({"field_name": 1})
+```python
+> db.collection.ensureIndex({"field_name": 1})
+```
 
 pymongo:
 
-    >>> db.collection.ensure_index({"field_name": 1})
+```python
+>>> db.collection.ensure_index({"field_name": 1})
+```
 
 You can also list multiple fields in the above method, and if you set the `1` above to `-1`, you can invert the order the field is indexed by.
 
 shell:
 
-    > db.collection.ensureIndex({"field1": 1, "field2": -1})
+```python
+> db.collection.ensureIndex({"field1": 1, "field2": -1})
+```
 
 pymongo:
 
-    >>> db.collection.ensure_index({"field1": 1, "field2": -1})
+```python
+>>> db.collection.ensure_index({"field1": 1, "field2": -1})
+```
 
 Compound indexes are undoubtedly a powerful tool. But they bring with them a lot of complexity. Some study must be given to how compound indexes are created and used. They complicate the performance implications of queries and updates. In Mongo as in relational databases, I try my hardest to design systems so they do not *need* compound indexes. The added complexity of using them is usually the result of either (1) extraordinary needs from a *very* large project or (2) lazy application design.
 
@@ -632,21 +763,29 @@ Create a capped collection is pretty easy.  You must specify a maximum size (in 
 
 shell:
 
-    > db.createCollection("my_collection", {"capped": true, "size": 100000, "max": 100})
+```python
+> db.createCollection("my_collection", {"capped": true, "size": 100000, "max": 100})
+```
     
 pymongo:
 
-    >>> db.create_collection("my_collection", {"capped": true, "size": 100000, "max": 100})
+```python
+>>> db.create_collection("my_collection", {"capped": true, "size": 100000, "max": 100})
+```
 
 There is no way to "un-cap" a collection. But you can convert an un-indexed collection to a capped one by doing:
 
 shell:
 
-    > db.runCommand({"convertToCapped": "my_coll", "size": 100000})
+```python
+> db.runCommand({"convertToCapped": "my_coll", "size": 100000})
+```
     
 pymongo:
 
-    >>> db.run_command({"convertToCapped": "my_coll", "size": 100000})
+```python
+>>> db.run_command({"convertToCapped": "my_coll", "size": 100000})
+```
 
 
 #### TTL Indexes
@@ -655,13 +794,17 @@ Time-To-Live (TTL) Indexed set each document in a collection to expire after a s
 
 shell:
 
-    > # 24-hour timeout
-    > db.cool.ensureIndex({"lastUpdate": 1}, {"expireAfterSecs": 60*60*24})
+```python
+> # 24-hour timeout
+> db.cool.ensureIndex({"lastUpdate": 1}, {"expireAfterSecs": 60*60*24})
+```
 
 pymongo:
 
-    >>> # 24-hour timeout
-    >>> db.cool.ensure_index({"lastUpdate": 1}, {"expireAfterSecs": 60*60*24})
+```python
+>>> # 24-hour timeout
+>>> db.cool.ensure_index({"lastUpdate": 1}, {"expireAfterSecs": 60*60*24})
+```
 
 
 #### Other Indexes
@@ -687,72 +830,82 @@ First, let's accidentally add the MI6 accountant to our secret agents list:
 
 shell:
 
-    > db.agents.insert({"name": "Bob from Accounting"})
-    > db.agents.update({"name": "Bob from Accounting"}, {"age": 25})
+```python
+> db.agents.insert({"name": "Bob from Accounting"})
+> db.agents.update({"name": "Bob from Accounting"}, {"age": 25})
+```
 
 pymongo:
 
-    >>> # same as above
+    same as shell
 
 Now let's use the aggregation framework to do some basic querying.
 
 shell:
 
-    > db.agents.aggregate({"$group": {"_id": "$age", "total": {"$sum": 1}}})
-    { "_id" : 45, "total" : 1 }
-    { "_id" : 25, "total" : 2 }
-    { "_id" : 36, "total" : 1 }
-   
-    > db.agents.aggregate({"$group": {"_id": "$age", "total": {"$sum": 1}}},
-                          {"$sort": {"total": -1}})
-    { "_id" : 25, "total" : 2 }
-    { "_id" : 45, "total" : 1 }
-    { "_id" : 36, "total" : 1 }
+```python
+> db.agents.aggregate({"$group": {"_id": "$age", "total": {"$sum": 1}}})
+{ "_id" : 45, "total" : 1 }
+{ "_id" : 25, "total" : 2 }
+{ "_id" : 36, "total" : 1 }
+
+> db.agents.aggregate({"$group": {"_id": "$age", "total": {"$sum": 1}}},
+                      {"$sort": {"total": -1}})
+{ "_id" : 25, "total" : 2 }
+{ "_id" : 45, "total" : 1 }
+{ "_id" : 36, "total" : 1 }
+```
 
 pymongo:
 
-    >>> list(db.agents.aggregate({"$group": {"_id": "$age", "total": {"$sum": 1}}}))
-        [{ "_id" : 45, "total" : 1 },
-         { "_id" : 25, "total" : 2 },
-         { "_id" : 36, "total" : 1 }]
+```python
+>>> list(db.agents.aggregate({"$group": {"_id": "$age", "total": {"$sum": 1}}}))
+    [{ "_id" : 45, "total" : 1 },
+     { "_id" : 25, "total" : 2 },
+     { "_id" : 36, "total" : 1 }]
 
-    >>> list(db.agents.aggregate({"$group": {"_id": "$age", "total": {"$sum": 1}}},
-                          {"$sort": {"total": -1}}))
-        [{ "_id" : 25, "total" : 2 },
-         { "_id" : 45, "total" : 1 },
-         { "_id" : 36, "total" : 1 }]
+>>> list(db.agents.aggregate({"$group": {"_id": "$age", "total": {"$sum": 1}}},
+                      {"$sort": {"total": -1}}))
+    [{ "_id" : 25, "total" : 2 },
+     { "_id" : 45, "total" : 1 },
+     { "_id" : 36, "total" : 1 }]
+```
 
 Or you can start off with a `$match` rather than a `$group`:
 
 shell:
 
-    > db.agents.aggregate({"$match": {"age": 25}})
-        { "name" : "Scarlet Papava", "age" : 25, ... }
-        { "name" : "Bob from Accounting", "age" : 25, ... }
+```python
+> db.agents.aggregate({"$match": {"age": 25}})
+    { "name" : "Scarlet Papava", "age" : 25, ... }
+    { "name" : "Bob from Accounting", "age" : 25, ... }
 
-    > db.agents.aggregate({"$match": {"age": 25}},
-                          {"$group": {"_id": "name", "total": {"$sum": 1}}})
-        { "_id" : "name", "total" : 2 }
+> db.agents.aggregate({"$match": {"age": 25}},
+                      {"$group": {"_id": "name", "total": {"$sum": 1}}})
+    { "_id" : "name", "total" : 2 }
 
-    > db.agents.aggregate({"$match": {"age": 25}},
-                                     {"$sort": {"name": 1}})
-        { "name" : "Bob from Accounting", "age" : 25, ... }
-        { "name" : "Scarlet Papava", "age" : 25, ... }
+> db.agents.aggregate({"$match": {"age": 25}},
+                                 {"$sort": {"name": 1}})
+    { "name" : "Bob from Accounting", "age" : 25, ... }
+    { "name" : "Scarlet Papava", "age" : 25, ... }
+```
 
 pymongo:
 
-    >>> list(db.agents.aggregate({"$match": {"age": 25}}))
-        [{ "name" : "Scarlet Papava", "age" : 25, ... },
-         { "name" : "Bob from Accounting", "age" : 25, ... }]
+```python
+>>> list(db.agents.aggregate({"$match": {"age": 25}}))
+    [{ "name" : "Scarlet Papava", "age" : 25, ... },
+     { "name" : "Bob from Accounting", "age" : 25, ... }]
 
-    >>> db.agents.aggregate({"$match": {"age": 25}},
-                            {"$group": {"_id": "name", "total": {"$sum": 1}}})
-        { "_id" : "name", "total" : 2 }
+>>> db.agents.aggregate({"$match": {"age": 25}},
+                        {"$group": {"_id": "name", "total": {"$sum": 1}}})
+    { "_id" : "name", "total" : 2 }
 
-    >>> list(db.agents.aggregate({"$match": {"age": 25}},
-                                 {"$sort": {"name": 1}}))
-        [{ "name" : "Bob from Accounting", "age" : 25, ... },
-         { "name" : "Scarlet Papava", "age" : 25, ... }]
+>>> list(db.agents.aggregate({"$match": {"age": 25}},
+                             {"$sort": {"name": 1}}))
+    [{ "name" : "Bob from Accounting", "age" : 25, ... },
+     { "name" : "Scarlet Papava", "age" : 25, ... }]
+```
 
 ### MapReduce
 
@@ -762,31 +915,35 @@ Using `MapReduce` goes something like this:
 
 shell:
 
-    > map = function() {
-        for (var key in this) {
-            emit(KEY, VALUE);  // INSERT YOUR CODE HERE
-        }
+```python
+> map = function() {
+    for (var key in this) {
+        emit(KEY, VALUE);  // INSERT YOUR CODE HERE
     }
-    > reduce = function(KEY, EMITS) {
-        // INSERT CODE HERE
-        return (NEW_KEY: NEW_VALUE);
-    }
-    > result = db.runCommand({"mapreduce": "my_database",
-                              "map", map, "reduce": reduce)
+}
+> reduce = function(KEY, EMITS) {
+    // INSERT CODE HERE
+    return (NEW_KEY: NEW_VALUE);
+}
+> result = db.runCommand({"mapreduce": "my_database",
+                          "map", map, "reduce": reduce)
+```
 
 pymongo:
 
-    >>> from bson.code import Code
-    >>> map = Code("function () {"
-    ...            "  this.tags.forEach(function(z) {"
-    ...            "    emit(KEY, VALUE);"  # ENTER CODE HERE
-    ...            "  });"
-    ...            "}")
-    >>> reduce = Code("function (key, values) {"
-    ...               "  // INSERT CODE HERE
-    ...               "  return VALUE;"
-    ...               "}")
-    >>> result = db.things.map_reduce(map, reduce, "my_database")
+```python
+>>> from bson.code import Code
+>>> map = Code("function () {"
+...            "  this.tags.forEach(function(z) {"
+...            "    emit(KEY, VALUE);"  # ENTER CODE HERE
+...            "  });"
+...            "}")
+>>> reduce = Code("function (key, values) {"
+...               "  // INSERT CODE HERE
+...               "  return VALUE;"
+...               "}")
+>>> result = db.things.map_reduce(map, reduce, "my_database")
+```
 
 
 ## Application Design
