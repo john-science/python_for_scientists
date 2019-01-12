@@ -8,17 +8,21 @@ A function is a handy way to encasuplate a piece of logic that needs to be used 
 
 Here we use the `def` keyword to *define* a function named `say_hi`, that prints `Hi!` to the screen.
 
-    >>> def say_hi():
-    ...     print('Hi!')
-    ...
-    >>> say_hi()
-    Hi!
+```python
+>>> def say_hi():
+...     print('Hi!')
+...
+>>> say_hi()
+Hi!
+```
 
 The structure of a function definition is:
 
-    def FUNCTION_NAME(arg1, arg2, ..., kw1=v1, kw2=v2, ...):
-        '''EXPLANATION OF WHAT THE FUNCTION DOES'''
-        FUNCTION_BODY
+```python
+def FUNCTION_NAME(arg1, arg2, ..., kw1=v1, kw2=v2, ...):
+    '''EXPLANATION OF WHAT THE FUNCTION DOES'''
+    FUNCTION_BODY
+```
 
 The `arg1` above are function arguments, and if a function has arguments, then the user must give a value for those arguments when calling the function. And the order of arguments is important.
 
@@ -36,38 +40,44 @@ Notice also that every function should have a short 1-to-5 line comment block de
 
 Let's look at some simple example functions. First, we'll create a trivial function to add a couple numbers:
 
-    >>> def addnums(x, y):
-    ...     '''Add two numbers'''
-    ...     return x + y
+```python
+>>> def addnums(x, y):
+...     '''Add two numbers'''
+...     return x + y
+```
 
 And now let's use the function:
 
-    >>> addnums(2, 3)
-    5
-    >>> addnums("a", "b")  # Wait, what?
-    ab
-    >>> addnums("cat", 23232)
-    TypeError: cannot concatenate 'str' and 'int' objects
+```python
+>>> addnums(2, 3)
+5
+>>> addnums("a", "b")  # Wait, what?
+ab
+>>> addnums("cat", 23232)
+TypeError: cannot concatenate 'str' and 'int' objects
+```
 
 What we see is that the function works as expected for numbers, but since Python is a *dynamic* language, it doesn't stop you from trying to add a `string` and an `integer`. Of course, you can't add these, so a type error is thrown. This is part of the Python "we're all consenting adults" philosophy; you are trusted to know what you're doing.
 
 Let's see that same example with key word arguments:
 
-    >>> def addnums(x, y=2):
-            '''Add two numbers, with a default value of
-            two for the second number.
-            '''
-            return x + y
-    >>> addnums(3)
-    5
-    >>> addnums(3, y=3)
-    6
-    >>> addnums(3, 3)
-    6
-    >>> addnums(3, 3, 3)
-    TypeError: addnums() takes at most 2 arguments (3 given)
-    >>> addnums("oops")
-    TypeError: cannot concatenate 'str' and 'int' objects
+```python
+>>> def addnums(x, y=2):
+        '''Add two numbers, with a default value of
+        two for the second number.
+        '''
+        return x + y
+>>> addnums(3)
+5
+>>> addnums(3, y=3)
+6
+>>> addnums(3, 3)
+6
+>>> addnums(3, 3, 3)
+TypeError: addnums() takes at most 2 arguments (3 given)
+>>> addnums("oops")
+TypeError: cannot concatenate 'str' and 'int' objects
+```
 
 Here we see a few valid was to call the `addnums` function, and a couple invalid ones. Take some time and make sure each of these cases makes sense to you.
 
@@ -75,15 +85,17 @@ Here we see a few valid was to call the `addnums` function, and a couple invalid
 
 The [scope](https://en.wikipedia.org/wiki/Scope_%28computer_science%29) of a variable is where the name of that variable is accessable from. Inside a function, Python keeps a local variables list. Below, `pi` is not modified globally, and so printing it inside and outside of the function yields two different results:
 
-    >>> pi = 1.0
-    >>> def set_pi():
-            '''set and print the value of pi'''
-            pi = 3.1415926
-            print(pi)
-    >>> set_pi()
-    3.1415926
-    >>> print(pi)
-    1.0
+```python
+>>> pi = 1.0
+>>> def set_pi():
+        '''set and print the value of pi'''
+        pi = 3.1415926
+        print(pi)
+>>> set_pi()
+3.1415926
+>>> print(pi)
+1.0
+```
 
 #### Documentation
 
@@ -95,19 +107,21 @@ The [scope](https://en.wikipedia.org/wiki/Scope_%28computer_science%29) of a var
 
 Here is a nice example of a helpful docstring for the function `numop1`:
 
-    def numop1(x, y, multiplier=1.0, greetings="Thank you for your inquiry."):
-        """
-            Purpose: does a simple operation on two numbers.
+```python
+def numop1(x, y, multiplier=1.0, greetings="Thank you for your inquiry."):
+    """
+        Purpose: does a simple operation on two numbers.
 
-            Input: We expect x,y are numbers. multiplier is also a number
-            (a float is preferred) and is optional.
-            It defaults to 1.0. You can also specify a small greeting as a string.
+        Input: We expect x,y are numbers. multiplier is also a number
+        (a float is preferred) and is optional.
+        It defaults to 1.0. You can also specify a small greeting as a string.
 
-            Output: return x + y times the multiplier
-        """
-        if greetings is not None:
-            print(greetings)
-            return (x + y) * multiplier
+        Output: return x + y times the multiplier
+    """
+    if greetings is not None:
+        print(greetings)
+        return (x + y) * multiplier
+```
 
 Let's write our first Python script as a stand-alone file. Leave the interpreter and create a file `super_happy_fun_nums.py`. Copy the above `numop1` function into that file, save and close. Then, go to the command line and run the following command:
 
@@ -141,13 +155,15 @@ You will need to be on the commandline to do this. First, navigate to the direct
 
 Now, let's import and use `numop1`:
 
-    >>> from super_happy_fun_nums import numop1
-    >>> numop1(5, 7)
-    Thank you for your inquiry.
-    12.0
-    >>> numop1(2, 4, multiplier=2.5, greetings="Yo.")
-    Yo
-    15.0
+```python
+>>> from super_happy_fun_nums import numop1
+>>> numop1(5, 7)
+Thank you for your inquiry.
+12.0
+>>> numop1(2, 4, multiplier=2.5, greetings="Yo.")
+Yo
+15.0
+```
 
 Let's recap. We wrote a Python function into a file with the `*.py` extension. That extension allowed the Python intepreter to know that there was importable Python code to be found. We then used `"from FILENAME import THING"` to import the Python code into the intepreter and use it.
 
@@ -172,38 +188,44 @@ But, after all, the function `numop1` above doesn't *do* anything until you pass
 
 It turns out, to create turn a Python module into an executable program, you need to add two things. The first is a `main` function that does something:
 
-    def main():
-        print('Hello, World!')
+```python
+def main():
+    print('Hello, World!')
+```
 
 Second, you need to add these two lines:
 
-    if __name__ == '__main__':
-        main()
+```python
+if __name__ == '__main__':
+    main()
+```
 
 If you do the above, your file will now look like:
 
-    def main():
-        '''Classic First Program'''
-        print('Hello, World!')
+```python
+def main():
+    '''Classic First Program'''
+    print('Hello, World!')
 
 
-    def numop1(x,y,multiplier=1.0,greetings="Thank you for your inquiry."):
-        """
-            Purpose: does a simple operation on two numbers.
-    
-            Input: We expect x,y are numbers. multiplier is also a number
-            (a float is preferred) and is optional.
-            It defaults to 1.0. You can also specify a small greeting as a string.
-    
-            Output: return x + y times the multiplier
-        """
-        if greetings is not None:
-            print(greetings)
-            return (x + y) * multiplier
+def numop1(x,y,multiplier=1.0,greetings="Thank you for your inquiry."):
+    """
+        Purpose: does a simple operation on two numbers.
+
+        Input: We expect x,y are numbers. multiplier is also a number
+        (a float is preferred) and is optional.
+        It defaults to 1.0. You can also specify a small greeting as a string.
+
+        Output: return x + y times the multiplier
+    """
+    if greetings is not None:
+        print(greetings)
+        return (x + y) * multiplier
 
 
-    if __name__ == '__main__':
-        main()
+if __name__ == '__main__':
+    main()
+```
 
 **NOTE**: Within a function we might leave a single blank line here and there. But I put the standard *two* blank lines between functions. This just makes it easier to read the code.
 
@@ -214,11 +236,13 @@ Okay, let's run our new script!
 
 Awesome, we just made our first Python program! But... wait, what about `numop1`? Well, we didn't call that function in the `main` function, so we didn't use it. That seems silly. So let's change the main method to:
 
-    def main():
-        '''Just printing some silly tests'''
-        print(numop1(2, 2))
-        print(numop1(3, 3, multiplier=3.3))
-        print(numop1(4, 4, multiplier=4, greetings='(4 + 4) * 4:'))
+```python
+def main():
+    '''Just printing some silly tests'''
+    print(numop1(2, 2))
+    print(numop1(3, 3, multiplier=3.3))
+    print(numop1(4, 4, multiplier=4, greetings='(4 + 4) * 4:'))
+```
 
 Let's run our program again:
 
@@ -259,15 +283,17 @@ So, you have options. Design your code to make it as convenient as possible for 
 
 If you created another Python module and called it `testing_imports.py`, you could use all of the same imports as we did in the interpreter above, to import `numop1` from `super_happy_fun_nums` (as long as `testing_imports` and `super_happy_fun_nums` are still in the same folder):
 
-    # this is a new file: testing_imports.py
-    
-    from super_happy_fun_nums import numop1
-    
-    def main():
-        print(numop1(2, 2))
-    
-    if __name__ == '__main__':
-        main()
+```python
+# this is a new file: testing_imports.py
+
+from super_happy_fun_nums import numop1
+
+def main():
+    print(numop1(2, 2))
+
+if __name__ == '__main__':
+    main()
+```
 
 Now we can share code between different Python modules. That'll come in handy.
 
@@ -280,15 +306,17 @@ The Python moto is "batteries included". That means Python comes with all kinds 
 
 An obvious first library for a scientist / engineer to know about is the [math](https://docs.python.org/2/library/math.html) library:
 
-    >>> import math
-    >>> math.sqrt(4.00)
-    2.0
-    >>> math.sin(0.0)
-    0.0
-    >>> math.log(1)
-    0.0
-    >>> math.pi
-    3.141592653589793
+```python
+>>> import math
+>>> math.sqrt(4.00)
+2.0
+>>> math.sin(0.0)
+0.0
+>>> math.log(1)
+0.0
+>>> math.pi
+3.141592653589793
+```
 
 Once you `import math`, you can do `help(math)` to learn what options are availble. Similarly, you can also do `help(math.sqrt)` to learn more about something specific. If you have a question, just ask Python.
 
@@ -307,7 +335,9 @@ For a full list of the Python standard libraries check [here](https://docs.pytho
 
 Try this one:
 
-    import this
+```python
+import this
+```
 
 
 ## Wrap-Up
