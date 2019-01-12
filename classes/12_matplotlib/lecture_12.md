@@ -26,17 +26,21 @@ Consider installing [Anaconda](http://docs.continuum.io/anaconda/install.html) i
 
 First, let's generate a few random numpy arrays:
 
-    from numpy import random
-    
-    N = 100
-    x = random.rand(N)
-    y = random.rand(N)
+```python
+from numpy import random
+
+N = 100
+x = random.rand(N)
+y = random.rand(N)
+```
 
 Now, we will use those as X and Y values on a scatter plot:
 
-    import matplotlib.pyplot as plt
-    plt.scatter(x, y)
-    plt.show()
+```python
+import matplotlib.pyplot as plt
+plt.scatter(x, y)
+plt.show()
+```
 
 ![Simple Scatter Plot](../../resources/scatter1.png)
 
@@ -46,7 +50,9 @@ That's it! Once you have the data, it's just three lines to create a scatter plo
 
 If you are using Jupyter Notebooks, you will want to run this command at the top of your notebook:
 
-    %matplotlib inline
+```python
+%matplotlib inline
+```
 
 This is *not* Python code, but a Jupyter-specific command to allow your plots to show up inside your notebooks, and not as pop-up windows, or saved as external files. It is super handy and makes your notebooks a lot more sharable and useful.
 
@@ -58,11 +64,13 @@ Those three lines are great. But you're going to want the power to control how t
 
 We can change the color of the dots in several ways:
 
-    # all the same
-    plt.scatter(x, y, c='red')
-    
-    # each different
-    plt.scatter(x, y, c=np.random.rand(N))
+```python
+# all the same
+plt.scatter(x, y, c='red')
+
+# each different
+plt.scatter(x, y, c=np.random.rand(N))
+```
 
 We can use single letters ('r', 'g', 'b', ...), special words ('red', 'green' 'blue', 'none'), or even numbers from 0.0 to 1.0 to represent colors. And we can provide a single color, or a list of them (one for each point). For more information on color options in matplotlib check the [documentation](http://matplotlib.org/api/colors_api.html) or [these examples](http://matplotlib.org/examples/color/named_colors.html).
 
@@ -70,11 +78,13 @@ We can use single letters ('r', 'g', 'b', ...), special words ('red', 'green' 'b
 
 Much like color, we can provide one value for all data points, or one value for each data point:
 
-    # all the same
-    plt.scatter(x, y, s=100)
-    
-    # each different
-    plt.scatter(x, y, s=100 * np.random.rand(N))
+```python
+# all the same
+plt.scatter(x, y, s=100)
+
+# each different
+plt.scatter(x, y, s=100 * np.random.rand(N))
+```
 
 The `s` values shown are the area of your dot in pixels. So, if you are using circles, your area is: pi * r * r. If you want to get the exact size you want, calculate the area of the dot you want.
 
@@ -82,11 +92,13 @@ The `s` values shown are the area of your dot in pixels. So, if you are using ci
 
 Perhaps you want your dots to be partially transparent, to help see overlapping dots:
 
-    # all the same
-    plt.scatter(x, y, alpha=0.5)
-    
-    # each different
-    plt.scatter(x, y, alpha=np.random.rand(N))
+```python
+# all the same
+plt.scatter(x, y, alpha=0.5)
+
+# each different
+plt.scatter(x, y, alpha=np.random.rand(N))
+```
 
 Alpha goes from 0.0 (invisible) to 1.0 (not transparent at all).
 
@@ -94,31 +106,37 @@ Alpha goes from 0.0 (invisible) to 1.0 (not transparent at all).
 
 If you don't want your dot shapes to have those black edges, you can do:
 
-    # all the same
-    plt.scatter(x, y, edgecolors='none')
+```python
+# all the same
+plt.scatter(x, y, edgecolors='none')
+```
 
 Of course, if you want, you can change the color of your edges using the same terms you used to change the color of the dots:
 
-    # all the same
-    plt.scatter(x, y, edgecolors='b')
-    
-    # each different
-    plt.scatter(x, y, edgecolors=np.random.rand(N))
+```python
+# all the same
+plt.scatter(x, y, edgecolors='b')
+
+# each different
+plt.scatter(x, y, edgecolors=np.random.rand(N))
+```
 
 #### Full Example
 
 Here is the simple scatter plot example above, using several customizations:
 
-    # create random data points
-    from numpy import random
-    N = 100
-    x = random.rand(N)
-    y = random.rand(N)
+```python
+# create random data points
+from numpy import random
+N = 100
+x = random.rand(N)
+y = random.rand(N)
 
-    # plot the data
-    import matplotlib.pyplot as plt
-    plt.scatter(x, y, c=x*y, s=1000*random.rand(N), alpha=0.5, edgecolor='none')
-    plt.show()
+# plot the data
+import matplotlib.pyplot as plt
+plt.scatter(x, y, c=x*y, s=1000*random.rand(N), alpha=0.5, edgecolor='none')
+plt.show()
+```
 
 ![Customized Scatter Plot](../../resources/scatter2.png)
 
@@ -126,15 +144,17 @@ Here is the simple scatter plot example above, using several customizations:
 
 You can use `plot` to take make a line plot out of a series of points:
 
-    # mock up some data
-    from numpy import arange, cos
-    x = arange(10)
-    y = cos(x)
-    
-    # make a line plot
-    import matplotlib.pyplot as plt
-    plt.plot(x, y)
-    plt.show()
+```python
+# mock up some data
+from numpy import arange, cos
+x = arange(10)
+y = cos(x)
+
+# make a line plot
+import matplotlib.pyplot as plt
+plt.plot(x, y)
+plt.show()
+```
 
 ![Simple Line Plot](../../resources/line_plot_1.png)
 
@@ -142,57 +162,65 @@ You can use `plot` to take make a line plot out of a series of points:
 
 Your line can be a solid line, or several kinds of dashed lines:
 
-    # dashed line
-    plt.plot(x, y, linestyle='--')
-    
-    # dashed and dotted line
-    plt.plot(x, y, linestyle='-.')
-    
-    # solid line
-    plt.plot(x, y, linestyle='-')
-    
-    # dotted
-    plt.plot(x, y, linestyle=':')
+```python
+# dashed line
+plt.plot(x, y, linestyle='--')
+
+# dashed and dotted line
+plt.plot(x, y, linestyle='-.')
+
+# solid line
+plt.plot(x, y, linestyle='-')
+
+# dotted
+plt.plot(x, y, linestyle=':')
+```
 
 #### Line Width
 
 You can also set the width of your line (in pixels):
 
-    # thin (default) line width
-    plt.plot(x, y, linewidth=1)
-    
-    # very thick line
-    plt.plot(x, y, linewidth=5)
+```python
+# thin (default) line width
+plt.plot(x, y, linewidth=1)
+
+# very thick line
+plt.plot(x, y, linewidth=5)
+```
 
 #### Line Color
 
 You set line color using the same options you used to set scatter plot color, but now you can only provide one color, not many:
 
-    # red line
-    plt.plot(x, y, c='red')
-    
-    # blue line
-    plt.plot(x, y, c='b')
-    
-    # white line
-    plt.plot(x, y, c='white')
-    
-    # green line
-    plt.plot(x, y, c='g')
+```python
+# red line
+plt.plot(x, y, c='red')
+
+# blue line
+plt.plot(x, y, c='b')
+
+# white line
+plt.plot(x, y, c='white')
+
+# green line
+plt.plot(x, y, c='g')
+```
 
 #### Full Example
 
 And now let's pull it all together. We can make a line plot of chosen color, width, and style:
 
-    # mock up some data
-    from numpy import arange, cos
-    x = arange(10)
-    y = cos(x)
-    
-    # make a line plot
-    import matplotlib.pyplot as plt
-    plt.plot(x, y, linestyle='-.', linewidth=10, c='red')
-    plt.show()
+```python
+# mock up some data
+from numpy import arange, cos
+x = arange(10)
+y = cos(x)
+
+# make a line plot
+import matplotlib.pyplot as plt
+plt.plot(x, y, linestyle='-.', linewidth=10, c='red')
+plt.show()
+```
 
 ![Fancish Line Plot](../../resources/line_plot_2.png)
 
@@ -200,21 +228,25 @@ And now let's pull it all together. We can make a line plot of chosen color, wid
 
 You can use `bar` to create vertical bar chart:
 
-    >>> import numpy as np
-    >>> N = 20
-    >>> x = np.arange(N)
-    >>> y = np.random.randint(1, 100, N)
-    >>> 
-    >>> from matplotlib import pyplot as plt
-    >>> plt.bar(x, y)
-    >>> plt.show()
+```python
+>>> import numpy as np
+>>> N = 20
+>>> x = np.arange(N)
+>>> y = np.random.randint(1, 100, N)
+>>> 
+>>> from matplotlib import pyplot as plt
+>>> plt.bar(x, y)
+>>> plt.show()
+```
 
 ![Simple Vertical Bar Chart](../../resources/bar_plot_simple_1.png)
 
 Or `barh` to create a horizontal bar chart:
 
-    >>> plt.barh(x, y)
-    >>> plt.show()
+```python
+>>> plt.barh(x, y)
+>>> plt.show()
+```
 
 ![Simple Horizontal Bar Chart](../../resources/barh_plot_simple_1.png)
 
@@ -226,31 +258,37 @@ As before, you can use `color` and `alpha` keywords to set the color and transpa
 
 Use the `align` keyword to orient your bars in relation to the values they represent. You have to options:
 
-    # align bars so left edge is on their values (default)
-    plt.bar(x, y, align='edge')
-    
-    # align bars so they are centers on their values
-    plt.bar(x, y, align='center')
+```python
+# align bars so left edge is on their values (default)
+plt.bar(x, y, align='edge')
+
+# align bars so they are centers on their values
+plt.bar(x, y, align='center')
+```
 
 #### Edgecolor
 
 Use the `edgecolor` keyword to set the outline color of your bars.
 
-    # set no outline
-    plt.barh(x, y, edgecolor='none')
-    
-    # set outline color to blue
-    plt.barh(x, y, edgecolor='blue')
+```python
+# set no outline
+plt.barh(x, y, edgecolor='none')
+
+# set outline color to blue
+plt.barh(x, y, edgecolor='blue')
+```
 
 #### Width
 
 Use `width` to make the bars wider or thinner. You can set the width of them as you want. But if your width is greater than the spacing of your bars, they will overlap.
 
-    # bars just barely touch
-    plt.bar(x, y, width=1.0)
-    
-    # bars are far apart
-    plt.bar(x, y, width=0.5)
+```python
+# bars just barely touch
+plt.bar(x, y, width=1.0)
+
+# bars are far apart
+plt.bar(x, y, width=0.5)
+```
 
 #### Log
 
@@ -260,32 +298,36 @@ Use `log=True` if you want your bar chart to be logarithmic along the Y-axis. Th
 
 Use `bottom` to shift offset a set of bars up above the X-axis. This will allow you to plot multiple bars in a multiple bar chart:
 
-    >>> from numpy import array
-    >>> x = array([1, 2, 3, 4, 5])
-    >>> y1 = array([2, 3, 4, 6, 4])
-    >>> y2 = array([7, 5, 4, 6, 8])
-    >>> 
-    >>> from matplotlib import pyplot as plt
-    >>> plt.bar(x, y1, color='b')
-    >>> plt.bar(x, y2, color='r', bottom=y1)
-    >>> plt.show()
+```python
+>>> from numpy import array
+>>> x = array([1, 2, 3, 4, 5])
+>>> y1 = array([2, 3, 4, 6, 4])
+>>> y2 = array([7, 5, 4, 6, 8])
+>>> 
+>>> from matplotlib import pyplot as plt
+>>> plt.bar(x, y1, color='b')
+>>> plt.bar(x, y2, color='r', bottom=y1)
+>>> plt.show()
+```
 
 #### Full Example
 
 Let's put it all together and make a stacked bar chart with custom colors and widths.
 
-    import numpy as np
-    N = 10
-    x = numpy.arange(N)
-    y1 = np.random.randint(1, 30, N)
-    y2 = np.random.randint(1, 10, N)
-    y3 = np.random.randint(1, 20, N)
+```python
+import numpy as np
+N = 10
+x = numpy.arange(N)
+y1 = np.random.randint(1, 30, N)
+y2 = np.random.randint(1, 10, N)
+y3 = np.random.randint(1, 20, N)
 
-    from matplotlib import pyplot as plt
-    plt.bar(x, y1, color='r', edgecolor='none', width=0.9)
-    plt.bar(x, y2, color='g', edgecolor='none', width=0.9, bottom=y1)
-    plt.bar(x, y3, color='b', edgecolor='none', width=0.9, bottom=y1+y2)
-    plt.show()
+from matplotlib import pyplot as plt
+plt.bar(x, y1, color='r', edgecolor='none', width=0.9)
+plt.bar(x, y2, color='g', edgecolor='none', width=0.9, bottom=y1)
+plt.bar(x, y3, color='b', edgecolor='none', width=0.9, bottom=y1+y2)
+plt.show()
+```
 
 ![Stack Bar Chart](../../resources/bar_plot_fancy_1.png)
 
@@ -293,8 +335,10 @@ Let's put it all together and make a stacked bar chart with custom colors and wi
 
 You can `hist` to create a histogram:
 
-    # x is some array of values
-    plt.hist(x, 10)
+```python
+# x is some array of values
+plt.hist(x, 10)
+```
 
 #### alpha and edgecolor
 
@@ -310,14 +354,16 @@ Use `normed` to normalize your histogram so the vertical scale represents the pr
 
 #### Full Example
 
-    import numpy as np
-    from matplotlib import pyplot as plt
-    mu = 100
-    sigma = 20
-    data = mu + sigma * np.random.randn(1000)
-    
-    plt.hist(data, 20, normed=1, facecolor='r', edgecolor='none')
-    plt.show()
+```python
+import numpy as np
+from matplotlib import pyplot as plt
+mu = 100
+sigma = 20
+data = mu + sigma * np.random.randn(1000)
+
+plt.hist(data, 20, normed=1, facecolor='r', edgecolor='none')
+plt.show()
+```
 
 ![Normalized Histogram](../../resources/histogram_plot_1.png)
 
@@ -325,50 +371,60 @@ Use `normed` to normalize your histogram so the vertical scale represents the pr
 
 For the most part, putting multiple datasets on the same plot is super easy; you just add more plots to `matplotlib.pyplot` before you `pyplot.show()`.
 
-    # x = some X-values
-    # y1 = some Y-values
-    # y2 = some other Y-values
+```python
+# x = some X-values
+# y1 = some Y-values
+# y2 = some other Y-values
+```
 
 For scatter plots:
 
-    from matplotlib import pyplot as plt
-    plt.scatter(x, y1)
-    plt.scatter(x, y2)
-    plt.show()
+```python
+from matplotlib import pyplot as plt
+plt.scatter(x, y1)
+plt.scatter(x, y2)
+plt.show()
+```
     
 For line plots, the same thing:
 
-    from matplotlib import pyplot as plt
-    plt.plot(x, y1)
-    plt.plot(x, y2)
-    plt.show()
+```python
+from matplotlib import pyplot as plt
+plt.plot(x, y1)
+plt.plot(x, y2)
+plt.show()
+```
 
 And this even gives us a nice option, we can overlay a scatter plot with a line plot, to show the relationship between our measurements:
 
-    from matplotlib import pyplot as plt
-    plt.scatter(x, y1)
-    plt.plot(x, y1)
-    plt.show()
+```python
+from matplotlib import pyplot as plt
+plt.scatter(x, y1)
+plt.plot(x, y1)
+plt.show()
+```
 
 ![Line-and-Scatter Plot](../../resources/line_and_scatter_plot_1.png)
 
 For bar charts, it is a little different; we need to place the bars side-by-side. This means we have to do a little math about the width of the bars:
 
-    # define data
-    import numpy as np
-    
-    N = 10
-    x = np.arange(N)
-    y1 = np.random.randint(5, 50, N)
-    y2 = np.random.randint(5, 25, N)
-    
-    # create plot
-    import matplotlib.pyplot as plt
-    
-    width = 0.4
-    plt.bar(x, y1, width, color='b')
-    plt.bar(x + width, y2, width, color='r')
-    plt.show()
+```python
+# define data
+import numpy as np
+
+N = 10
+x = np.arange(N)
+y1 = np.random.randint(5, 50, N)
+y2 = np.random.randint(5, 25, N)
+
+# create plot
+import matplotlib.pyplot as plt
+
+width = 0.4
+plt.bar(x, y1, width, color='b')
+plt.bar(x + width, y2, width, color='r')
+plt.show()
+```
 
 ![Multi-Bar Plot](../../resources/multibar_plot_1.png)
 
@@ -378,18 +434,20 @@ Frequently, in a real-world analysis, we will want to show more than one plot at
 
 First way, `plt.subplots(ncols=N1, nrows=N2)`:
 
-    # create random data points
-    from numpy import random
-    N = 100
-    x = random.rand(N)
-    y = random.rand(N)
+```python
+# create random data points
+from numpy import random
+N = 100
+x = random.rand(N)
+y = random.rand(N)
 
-    # plot the data on two side-by-side subplots
-    import matplotlib.pyplot as plt
-    fig, (col1, col2) = plt.subplots(ncols=2)
-    col1.plot(x, y)
-    col2.scatter(y, x)
-    plt.show()
+# plot the data on two side-by-side subplots
+import matplotlib.pyplot as plt
+fig, (col1, col2) = plt.subplots(ncols=2)
+col1.plot(x, y)
+col2.scatter(y, x)
+plt.show()
+```
 
 ![Simple 2-Column plot](../../resources/simple_2_column_plot_1.png)
 
@@ -397,11 +455,13 @@ So, what did we do here? First, we mocked up some random data. Then we used `pyp
 
 Second way, `plt.subplot(NROWS, NCOLS, NPLOT)`:
 
-    plt.subplot(1, 2, 1)
-    plt.plot(x, y)
-    plt.subplot(1, 2, 2)
-    plt.scatter(y, x)
-    plt.show()
+```python
+plt.subplot(1, 2, 1)
+plt.plot(x, y)
+plt.subplot(1, 2, 2)
+plt.scatter(y, x)
+plt.show()
+```
 
 This will produce the exact same 2-column plot as before. The only difference is that we used multiple `subplot` statements, rather than a single `subplots` statement.
 
@@ -409,39 +469,45 @@ This will produce the exact same 2-column plot as before. The only difference is
 
 Use `errorbar` to create a `plot`-like line plot, with error bars:
 
-    # mock up some data
-    from numpy import arange, cos
-    x = arange(10)
-    y = cos(x)
-    
-    # make a line plot
-    import matplotlib.pyplot as plt
-    plt.errorbar(x, y, xerr=0.2, yerr=0.4)
-    plt.show()
+```python
+# mock up some data
+from numpy import arange, cos
+x = arange(10)
+y = cos(x)
+
+# make a line plot
+import matplotlib.pyplot as plt
+plt.errorbar(x, y, xerr=0.2, yerr=0.4)
+plt.show()
+```
 
 Or, if you want error bars on your bar charts, use `xerr` and `yerr` parameters there as well:
 
-    plt.bar(x, y, xerr=0.2, yerr=0.4)
+```python
+plt.bar(x, y, xerr=0.2, yerr=0.4)
+```
 
 #### Full Example
 
 Here is a complete plot of both types of ways to create plots with error bars. Also included, you'll notice, is a way to put error bars on a scatter plot, by setting `linestyle=none` on the `errorbar` plot:
 
-    # mock up some crazy data
-    from numpy import arange, cos, cosh, pi
-    x = arange(0.0, pi, pi/16)
-    y1 = cosh(x)
-    y2 = cos(x)
-    
-    # create scatter plot with error bars
-    from matplotlib import pyplot as plt
-    fig, (col1, col2) = plt.subplots(ncols=2)
-    col1.errorbar(x, y1, yerr=arange(0.2, 1.2, 1.0/16), linestyle='none', ecolor='black')
-    col1.scatter(x, y1, alpha=0.75, c=arange(0.0, 1.0, 1.0/16.0), s=arange(0.0, 600, 600.0/16), edgecolor='none')
-    
-    # create bar chart with error bars
-    col2.bar(x, y2, width=(pi/16)*0.8, xerr=0.1, yerr=0.25, color='red', edgecolor='none', ecolor='black')
-    plt.show()
+```python
+# mock up some crazy data
+from numpy import arange, cos, cosh, pi
+x = arange(0.0, pi, pi/16)
+y1 = cosh(x)
+y2 = cos(x)
+
+# create scatter plot with error bars
+from matplotlib import pyplot as plt
+fig, (col1, col2) = plt.subplots(ncols=2)
+col1.errorbar(x, y1, yerr=arange(0.2, 1.2, 1.0/16), linestyle='none', ecolor='black')
+col1.scatter(x, y1, alpha=0.75, c=arange(0.0, 1.0, 1.0/16.0), s=arange(0.0, 600, 600.0/16), edgecolor='none')
+
+# create bar chart with error bars
+col2.bar(x, y2, width=(pi/16)*0.8, xerr=0.1, yerr=0.25, color='red', edgecolor='none', ecolor='black')
+plt.show()
+```
 
 ![Subplots with Errorbars](../../resources/subplots_with_error_bars.png)
 
@@ -451,69 +517,83 @@ The various plot types above are extremely useful for displaying all kinds of sc
 
 Use `.title()` to add a title to your plot:
 
-    plt.scatter(x, y)
-    plt.title('Mortality rate of base jumpers over time')
-    plt.show()
+```python
+plt.scatter(x, y)
+plt.title('Mortality rate of base jumpers over time')
+plt.show()
+```
 
 Use `.xlabel()` and `.ylabel()` to add labels to the X and Y-axis independently:
 
-    plt.scatter(x, y)
-    plt.yaxis('Deaths')
-    plt.xaxis('year')
-    plt.show()
+```python
+plt.scatter(x, y)
+plt.yaxis('Deaths')
+plt.xaxis('year')
+plt.show()
+```
 
 Use `xlim(XMIN, XMAX)` and `ymin(YMIN, YMAX)` to manually set the range of the X or Y-axis:
 
-    plt.scatter(x, y)
-    plt.xlim(1985, 2015)
-    plt.ylim(1, 100)
-    plt.show()
+```python
+plt.scatter(x, y)
+plt.xlim(1985, 2015)
+plt.ylim(1, 100)
+plt.show()
+```
 
 Use `.grid()` to add a little gridded pattern to the background of the plot:
 
-    plt.scatter(x, y)
-    plt.grid()
-    plt.show()
+```python
+plt.scatter(x, y)
+plt.grid()
+plt.show()
+```
 
 Use `.legend()` to add a legend to your plot. To do this, make sure and add a `label=XXX` attribute to each of your data plots:
 
-    plt.scatter(x, y1, label='Deaths from Equipment Failure')
-    plt.scatter(x, y1, label='Total Deaths')
-    plt.legend()
-    plt.show()
+```python
+plt.scatter(x, y1, label='Deaths from Equipment Failure')
+plt.scatter(x, y1, label='Total Deaths')
+plt.legend()
+plt.show()
+```
 
 Use `.savefig(FILE_PATH)` to save your plot to a file:
 
-    plt.scatter(x, y)
-    plt.savefig('/path/to/my_file.png')
+```python
+plt.scatter(x, y)
+plt.savefig('/path/to/my_file.png')
+```
 
 #### Full Example
 
 Here is a heavily customized plot, using all of the above options:
 
-    # data taking from Google Ngram Viewer
-    from numpy import array
-    years = arange(1920, 2011, 5)
-    machine_age = array([5.0, 10, 110, 190, 130, 100, 73, 55, 43, 69, 35, 30, 25, 20, 21, 18, 20, 17, 10])
-    machine_age /= 1.0e6
-    space_age = array([0.0, 0, 0, 0, 0, 0, 0, 5, 52, 38, 43, 35, 30, 33, 28, 20, 19, 16, 8])
-    space_age /= 1.0e6
-    information_age = array([0.0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 8, 41, 43, 79, 131, 121, 98])
-    information_age /= 1.0e6
-    
-    # making customized triple-plot
-    from matplotlib import pyplot as plt
-    plt.plot(years, machine_age, c='green', linewidth=3, label='Machine Age')
-    plt.plot(years, space_age, c='red', linewidth=3, label='Space Age')
-    plt.plot(years, information_age, c='blue', linewidth=3, label='Information Age')
-    plt.grid()
-    plt.title('Relative Occurance of Terms in Books Over Time')
-    plt.xlabel('year')
-    plt.ylabel('Word Occurence (% of published works)')
-    plt.xlim(1920, 2008)
-    plt.ylim(0, 0.0002)
-    plt.legend()
-    plt.savefig('information_age.png')
+```python
+# data taking from Google Ngram Viewer
+from numpy import array
+years = arange(1920, 2011, 5)
+machine_age = array([5.0, 10, 110, 190, 130, 100, 73, 55, 43, 69, 35, 30, 25, 20, 21, 18, 20, 17, 10])
+machine_age /= 1.0e6
+space_age = array([0.0, 0, 0, 0, 0, 0, 0, 5, 52, 38, 43, 35, 30, 33, 28, 20, 19, 16, 8])
+space_age /= 1.0e6
+information_age = array([0.0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 8, 41, 43, 79, 131, 121, 98])
+information_age /= 1.0e6
+
+# making customized triple-plot
+from matplotlib import pyplot as plt
+plt.plot(years, machine_age, c='green', linewidth=3, label='Machine Age')
+plt.plot(years, space_age, c='red', linewidth=3, label='Space Age')
+plt.plot(years, information_age, c='blue', linewidth=3, label='Information Age')
+plt.grid()
+plt.title('Relative Occurance of Terms in Books Over Time')
+plt.xlabel('year')
+plt.ylabel('Word Occurence (% of published works)')
+plt.xlim(1920, 2008)
+plt.ylim(0, 0.0002)
+plt.legend()
+plt.savefig('information_age.png')
+```
 
 ![Google Ngram Plot](../../resources/information_age.png)
 
@@ -524,7 +604,9 @@ Matplotlib gives you a *lot* of power to customize plots. But the more custom yo
 
 For instance, if you want your plots to look like they were made in the R programming language with `ggplot`, you just need to add one line to your file:
 
-    plt.style.use('ggplot')
+```python
+plt.style.use('ggplot')
+```
 
 In fact, MatPlotLib has a lot of default styles built in. See [here](https://matplotlib.org/examples/style_sheets/style_sheets_reference.html) for more examples.
 
