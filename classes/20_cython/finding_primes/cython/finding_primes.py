@@ -8,7 +8,7 @@ def main():
     print("\nA decent pass at the Sieve of Eratosthenes, in Cython:")
     start = time()
     sieve(max_prime)
-    print(time() - start)
+    print('{0} seconds'.format(time() - start))
 
 
 

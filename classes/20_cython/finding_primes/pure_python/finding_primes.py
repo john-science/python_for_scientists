@@ -6,12 +6,12 @@ def main():
     print("\nA naive pass at the Sieve of Eratosthenes, in Cython:")
     start = time()
     sieve_naive(max_prime)
-    print(time() - start)
+    print('{0} seconds'.format(time() - start))
 
     print("\nA decent pass at the Sieve of Eratosthenes, in Cython:")
     start = time()
     sieve_decent(max_prime)
-    print(time() - start)
+    print('{0} seconds'.format(time() - start))
 
 
 def sieve_naive(n):
