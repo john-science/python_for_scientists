@@ -270,7 +270,9 @@ Another tool that is helpful, particularly for statistical studies, is the abili
 
 ## timeit
 
-One of people's main complaints about Python is that it isn't as fast as C. But it can be fast. You just have to *try* to optimize your code for speed. If you are trying to make a function faster, you will want to test it out and see if your new version is indeed faster than your old one. Python's `timeit` library is an easy way to time your code without having to change it. For instance:
+One of people's main complaints about Python is that it isn't as fast as C. But it can be faster if you try. The first thing you will need to try to make your Python code faster is a way to time how long the code takes to run. That way, if you make some modification to your code, you can time the original version and your new version to see which is fastest. That is, generally, the only way to prove that you've made your code faster.
+
+Python's `timeit` library is an easy way to time your code without having to change it. For instance, let's say we have a function we are trying to speed up:
 
 ```python
 >>> def build_counting_list(n):
@@ -301,6 +303,18 @@ There are two things to understand about that last line. First off, we have to e
 0.5770218372344971
 ```
 
+Sometimes, if you are running `timeit` on something inside a script (.py file), you will have to do something just a little bit funnier to get `timeit` to work:
+
+```python
+from timeit import timeit
+
+def build_counting_list(n):
+    ...
+
+t = timeit('from __main__ import build_counting_list;build_counting_list(100', number=10000)
+print(t)
+```
+
 That `timeit` takes strings is a little strange. But it also allows us to write our code directly into the `timeit` statement:
 
 ```python
@@ -308,7 +322,7 @@ That `timeit` takes strings is a little strange. But it also allows us to write 
 1.1704330444335938
 ```
 
-And for timing short pieces of logic, that might be good enough.
+Timeit is a really handy tool. Maybe it takes a little getting used to, but it is a lot more accurate than most other ways you might try to mock up to time your code.
 
 
 ## Problem Sets
