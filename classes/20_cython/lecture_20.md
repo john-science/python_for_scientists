@@ -81,17 +81,100 @@ Okay, remember our mantra:
 
 Based on the order of those, we are good. It works and it outputs the correct prime numbers like it is supposed to. Good. Now we can finally worry about making our Python code fast(er).
 
+Step 1 to making our code faster is timing it, to see how long it takes to run. That way we have a benchmark to compare any future modifications to:
 
-## Making it Faster without Python
+```python
+max_prime = 100000
+
+start = time()
+sieve_naive(max_prime)
+print('{0} seconds'.format(time() - start))
+ 
+ # 0.026287317276000977 seconds
+```
+
+## Making it Faster without Cython
+
+First things first, we don't actually need Cython to make Python code faster. There are a lot of smart choices we can make that can improve the performance. We will break these choices into two categories: knowing Python better and knowing your subject matter better.
 
 ### Python Tricks
 
-TODO
+The first way we can improve any piece of Python code is to use the tools provided in the Python language to make small tweaks to the code. The the better you know the Python language, the more of these kinds of performance improvements you will be able to find.
 
+For instance, in the `sieve_naive` function above we use this line to create a list of `True` values of size `m`:
+
+```python
+numbers = [True for i in range(m)]
+```
+
+But it turns out that list comprehensions are so powerful they are not optimal for generating really simple lists like this. It would be much faster to use a function that does nothing but create uniform lists:
+
+```python
+numbers = [True] * m
+```
 
 ### Math Tricks
 
-TODO
+The second major way we can improve Python performance is with math. That is, the better you know the problem you are trying to solve, the more you can conceptually optimize it.
+
+For instance, in our `naive` function above, we iterated from 1 to N to remove all the prime numbers in the range:
+
+```python
+for i in range(2, n + 1):
+```
+
+But, if you think about it for a second, we only have to iterate from 1 to the square root of N, because this number times itself is N, and anything bigger than that can't be a prime factor of N (considering we have already knocked out all the lower primes. So, knowing something about math means we can simplify our iterator to:
+
+```python
+for i in range(2, int(n**0.5 + 1)):
+```
+
+### Testing our performance
+
+We have made two performance-improving changes above, yielding our new function to find primes:
+
+```python
+def sieve_decent(n):
+    """ The Sieve of Eratosthenes:
+        a couple small speed improvements
+    """
+    # Python indexes start at zero
+    m = n + 1
+
+    # make a list of for all numbers up to n, initially all prime
+    numbers = [True] * m  # NOTE: faster due to Python magic
+
+    # go through and remove all numbers that are a multiple of the others
+    for i in range(2, int(n**0.5 + 1)):  # NOTE: faster due to basic math
+      if numbers[i]:
+        for j in range(i * i, m, i):
+          numbers[j] = False
+
+    # what is left are primes
+    primes = []
+    for i in range(2, m):
+      if numbers[i]:
+        primes.append(i)
+
+    return primes
+```
+
+Again, we should time our function to see how we did:
+
+
+```python
+max_prime = 100000
+
+start = time()
+sieve_decent(max_prime)
+print('{0} seconds'.format(time() - start))
+ 
+ # 0.015769004821777344 seconds
+```
+
+Not bad! Without using Cython at all we managed to improve our peformance by 42%!
+
+We will do even better below, but it is important to remember that Cython isn't the only way to improve your performance.
 
 
 ## Cythonizing Script
