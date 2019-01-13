@@ -202,6 +202,14 @@ TODO: What did we learn?
 TODO
 
 
+## Example Scripts
+
+If you want to try this out for yourself, the above examples (with Cython build scripts) are included in this class:
+
+* [pure Python example](finding_primes/pure_python)
+* [cython example](finding_primes/cython)
+
+
 ## Further Reading
 
  * [todo](https://duck.com) - TODO
