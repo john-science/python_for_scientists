@@ -33,7 +33,7 @@ You can also modify and interact with lists in a wide variety of convenient ways
 ```python
 >>> list1 = [1, 2, 3]
 >>> list2 = [4, 5, 6]
->>> list1 + list 2
+>>> list1 + list2
 [1, 2, 3, 4, 5, 6]
 >>> list1.append(9)
 >>> list1
@@ -248,7 +248,7 @@ len(dow)
 len(class1)
 ```
 
-Notice that `len` of a dictionary only returns the number of keys, it doesn't say anything about the number of values in the dictionary. It is the same for all four data structures, actually. If you have a list of lists, using `len` will only tell you the number of outermost elements. Make some lists of lists, or lists of sets, and try this out.
+Notice that `len` of a dictionary only returns the number of keys, it doesn't say anything about the size of the values in the dictionary. It is the same for all four data structures, actually. If you have a list of lists, using `len` will only tell you the number of outermost elements. Make some lists of lists, or lists of sets, and try this out.
 
 #### in
 
