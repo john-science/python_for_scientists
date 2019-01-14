@@ -1,10 +1,10 @@
 # Data Structures
 
-A "data structure" is a way to organize data in a computer. In the first class we only saw the simplest data structure, a single primitive `type`: integers, floats, strings, and booleans. But if you're using a computer to solve a problem, chances are you have many pieces of data that are related to each other in some way. Python has four standard data structures that you will find useful when organizing your data: lists, dictionaries, tuples, and sets.
+A "data structure" is a way to organize data in a computer. In the first lecture, we looked at the simplest data structure, a single primitive `type`: integers, floats, strings, and booleans. But if you're using a computer to solve a problem, chances are you have many pieces of data that are inter-related to each other in some way. Python has four standard data structures that you will find useful when organizing your data: lists, dictionaries, tuples, and sets.
 
 ###  lists
 
-This is the most frequently data structure in Python. Lists are what they sound like: a sequental collection of values. Each value is numbered, starting with zero. You can retrieve these numbered values or modify them. And the values don't even need to be the same type:
+This is the most frequently used data structure in Python. Lists are what they sound like: a sequental collection of values. Each value is numbered, starting with zero. You can retrieve these numbered values or modify them. And the values don't even need to be the same type:
 
 ```python
 new_list = []                         # empty list
@@ -114,6 +114,7 @@ dict_keys([16244600, 8358400, 40711, 681, 3425956])
 
 **NOTE**: It is important to know that when you retreive all of the keys or values from a dictionary in this way, they will not be ordered. Do not expect that you can predict what *order* these keys or values come out in.
 
+
 ###  tuples
 
 Tuples are just like lists, but you can't change their values (they are "immutable"). Again, each value is numbered starting from zero. As an example, the days of the week:
@@ -147,6 +148,7 @@ empty = ()
 ```
 
 But I find that I don't do this much, as now I have an empty tuple that I can't modify. So... what good does it do me?
+
 
 ###  sets
 
