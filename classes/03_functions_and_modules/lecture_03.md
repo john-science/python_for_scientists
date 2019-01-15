@@ -6,12 +6,17 @@
 
 A function is a handy way to encasuplate a piece of logic that needs to be used again by you or your friends.
 
-Here we use the `def` keyword to *define* a function named `say_hi`, that prints `Hi!` to the screen.
+Here we use the `def` keyword to *define* a function named `say_hi`. All it does is print `Hi!` to the screen.
 
 ```python
 >>> def say_hi():
+...     """ print a greeting """
 ...     print('Hi!')
 ...
+>>> say_hi()
+Hi!
+>>> say_hi()
+Hi!
 >>> say_hi()
 Hi!
 ```
@@ -57,7 +62,7 @@ ab
 TypeError: cannot concatenate 'str' and 'int' objects
 ```
 
-What we see is that the function works as expected for numbers, but since Python is a *dynamic* language, it doesn't stop you from trying to add a `string` and an `integer`. Of course, you can't add these, so a type error is thrown. This is part of the Python "we're all consenting adults" philosophy; you are trusted to know what you're doing.
+What we see is that the function works as expected for numbers, but since Python is a *dynamic* language, it doesn't stop you from trying to add a `string` and an `integer`. Of course, you can't add these, so a type error is thrown. This is part of the Python "we're all consenting adults" philosophy: you are trusted to know what you're doing.
 
 Let's see that same example with key word arguments:
 
@@ -96,6 +101,9 @@ The [scope](https://en.wikipedia.org/wiki/Scope_%28computer_science%29) of a var
 >>> print(pi)
 1.0
 ```
+
+Variable scoping is a common source of little bugs. In Python, it is pretty easy to understand what the scope of a variable *should* be if you are looking for it. But for people new to the concept it takes a little time for it to become second nature.
+
 
 #### Documentation
 
