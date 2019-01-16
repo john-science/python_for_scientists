@@ -141,15 +141,6 @@ Traceback (most recent call last):
 TypeError: 'tuple' object does not support item assignment
 ```
 
-Of course, you can create and empty tuple, by doing this:
-
-```python
-empty = ()
-```
-
-But I find that I don't do this much, as now I have an empty tuple that I can't modify. So... what good does it do me?
-
-
 ###  sets
 
 Imagine we want to know every country that the students in this class were born in. If we went through each student and asked them where they were born, we would probably get the response "United States" several times. But that's not quite what we want. We want a short list with each country just written once. There is a standard Python data structure for this called a "set".
