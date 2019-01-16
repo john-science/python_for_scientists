@@ -21,7 +21,7 @@ Hi!
 Hi!
 ```
 
-The structure of a function definition is:
+The general structure of a Python function definition is:
 
 ```python
 def FUNCTION_NAME(arg1, arg2, ..., kw1=v1, kw2=v2, ...):
@@ -47,7 +47,7 @@ Let's look at some simple example functions. First, we'll create a trivial funct
 
 ```python
 >>> def addnums(x, y):
-...     '''Add two numbers'''
+...     ''' Add two numbers '''
 ...     return x + y
 ```
 
@@ -68,8 +68,8 @@ Let's see that same example with key word arguments:
 
 ```python
 >>> def addnums(x, y=2):
-        '''Add two numbers, with a default value of
-        two for the second number.
+        ''' Add two numbers, with a default value of
+            two for the second number.
         '''
         return x + y
 >>> addnums(3)
@@ -93,7 +93,7 @@ The [scope](https://en.wikipedia.org/wiki/Scope_%28computer_science%29) of a var
 ```python
 >>> pi = 1.0
 >>> def set_pi():
-        '''set and print the value of pi'''
+        ''' set and print the value of pi '''
         pi = 3.1415926
         print(pi)
 >>> set_pi()
@@ -117,8 +117,7 @@ Here is a nice example of a helpful docstring for the function `numop1`:
 
 ```python
 def numop1(x, y, multiplier=1.0, greetings="Thank you for your inquiry."):
-    """
-        Purpose: does a simple operation on two numbers.
+    """ Purpose: does a simple operation on two numbers.
 
         Input: We expect x,y are numbers. multiplier is also a number
         (a float is preferred) and is optional.
