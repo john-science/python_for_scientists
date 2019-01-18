@@ -1,5 +1,75 @@
 # Advanced Strings
 
+## Quick Review
+
+First, let's do a quick review of what we already know about strings in Python.
+
+You know how to define strings:
+
+```python
+>>> s1 = "Hello "
+>>> s2 = "World"
+```
+
+And how to add two strings:
+
+```python
+>>> s1 + s2
+"Hello World"
+```
+
+You can also retrive a single letter from a string like it is an element of a list:
+
+```python
+>>> s1[0]
+'H'
+>>> s1[1]
+'e'
+```
+
+You can also get the last character in a string, if that's easier:
+
+```python
+>>> s2[-1]
+'d'
+>>> s2[-2]
+'l'
+```
+
+It is far less common, but you can even multiply strings:
+
+```python
+>>> 3 * 'hi'
+'hihihi'
+>>> 4 * 'Hello! '
+'Hello! Hello! Hello! Hello! '
+```
+
+You can also take a `slice` of a string:
+
+```python
+>>> s2[1:4]
+'orl'
+>>> s1[0:4]
+'Hell'
+>>> s1[:4]
+'Hell'
+>>> s2[1:5]
+'orld'
+>>> s2[1:99999]  # error surpressed!
+'orld'
+```
+
+Another really popular tool is `len`, which calculates the number of characters in a string:
+
+```python
+>>> len(s1)
+6
+>>> len(s2)
+5
+```
+
+
 ## String Operations
 
 Python has a nice variety of tools to do commonly-desired things to strings.
