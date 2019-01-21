@@ -18,7 +18,7 @@ And how to add two strings:
 "Hello World"
 ```
 
-You can also retrive a single letter from a string like it is an element of a list:
+You can also retrieve a single letter from a string like it is an element of a list:
 
 ```python
 >>> s1[0]
@@ -39,10 +39,10 @@ You can also get the last character in a string, if that's easier:
 It is far less common, but you can even multiply strings:
 
 ```python
->>> 3 * 'hi'
-'hihihi'
->>> 4 * 'Hello! '
-'Hello! Hello! Hello! Hello! '
+>>> 2 * 'hi'
+'hihi'
+>>> 3 * 'Hello! '
+'Hello! Hello! Hello! '
 ```
 
 You can also take a `slice` of a string:
@@ -60,7 +60,7 @@ You can also take a `slice` of a string:
 'orld'
 ```
 
-Another really popular tool is `len`, which calculates the number of characters in a string:
+Another really handy tool is `len`, which calculates the number of characters in a string:
 
 ```python
 >>> len(s1)
