@@ -72,7 +72,7 @@ Another really handy tool is `len`, which calculates the number of characters in
 
 ## String Operations
 
-Python has a nice variety of tools to do commonly-desired things to strings.
+Now let's take a look at some of the other string tools Python has.
 
 ### `lower`, `upper`, `capitalize` do what you'd think
 
