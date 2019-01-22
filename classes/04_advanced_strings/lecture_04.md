@@ -8,7 +8,7 @@ You know how to define strings:
 
 ```python
 >>> s1 = "Hello "
->>> s2 = "World"
+>>> s2 = 'World'
 ```
 
 And how to add two strings:
@@ -79,8 +79,10 @@ Now let's take a look at some of the other string tools Python has.
 ```python
 >>> "funKY tOwn".capitalize()
 'Funky town'
+
 >>> "funky tOwn".lower()
 'funky town'
+
 >>> "funky tOwn".upper()
 'FUNKY TOWN'
 ```
@@ -90,8 +92,10 @@ Now let's take a look at some of the other string tools Python has.
 ```python
 >>> "bright copper kettles and warm woolen mittens".split(" ")
 ['bright', 'copper', 'kettles', 'and', 'warm', 'woolen', 'mittens']
+
 >>> "bright,copper,kettles,and,warm,woolen,mittens".split(",")
 ['bright', 'copper', 'kettles', 'and', 'warm', 'woolen', 'mittens']
+
 >>> "bright copper kettles and warm woolen mittens".split('tt')
 ['bright copper ke', 'les and warm woolen mi', 'ens']
 ```
@@ -101,6 +105,7 @@ Now let's take a look at some of the other string tools Python has.
 ```python
 >>> "funKY tOwn".split()
 ['funKY', 'tOwn']
+
 >>> "funKY tOwn".capitalize().split()
 ['Funky', 'town']
 ```
@@ -111,10 +116,13 @@ Notice that by default, `split` uses spaces to split the string.
 
 ```python
 >>> csv_string = '  Dog,Cat,Spam, Defenestrate,1, 3.1415 \n\t'
+
 >>> csv_string.strip()
 'Dog,Cat,Spam, Defenestrate,1, 3.1415'
+
 >>> csv_string.rstrip()
 '  Dog,Cat,Spam, Defenestrate,1, 3.1415'
+
 >>> csv_string.lstrip()
 'Dog,Cat,Spam, Defenestrate,1, 3.1415 \n\t'
 ```
@@ -127,6 +135,7 @@ Notice `rstrip()` just strips the right side of the string, `lstrip()` just stri
 >>> zen = ['Simple', 'is', 'better', 'than', 'complex.']
 >>> ' '.join(zen)
 'Simple is better than complex.'
+
 >>> under = ['python', 'naming', 'convension']
 >>> '_'.join(under)
 'python_naming_convension'
@@ -136,8 +145,10 @@ Notice `rstrip()` just strips the right side of the string, `lstrip()` just stri
 
 ```python
 >>> csv_string = 'Dog,Cat,Spam,Defenestrate,1, 3.1415 \n\t'
+
 >>> csv_string.strip().replace(' ', '')
 'Dog,Cat,Spam,Defenestrate,1,3.1415'
+
 >>> csv_string.strip().replace(' ', '').replace(',', '! ')
 'Dog! Cat! Spam! Defenestrate! 1! 3.1415'
 ```
