@@ -1,6 +1,6 @@
 # Lambda and Looping Faster
 
-The goal of this lecture is to show you `map`, `filter`, and `reduce`. But before you can use these great tools, you will have to understand a couple of things first: `lambda` and `yield`.
+The real goal of this lecture is introduce `map`, `filter`, and `reduce`. But before you can use these great tools, you will have to understand two things: `lambda` and `yield`.
 
 ## Lambda
 
@@ -73,6 +73,7 @@ This is a major principle in Python:
 
 > DRY = Don't Repeat Yourself
 
+
 ## Yield
 
 #### What is an Iterator?
@@ -86,7 +87,7 @@ range(0, 5)
 <class 'range'>
 ```
 
-In the older version of Python, `range(5)` simply created a list of integers from zero to five. But in Python 3, `range` creates an [iterator](https://en.wikipedia.org/wiki/Iterator) from zero to five.  What's an iterator? Think of it as a function that will create all the values you need, but not until you ask for them.
+In the older version of Python, `range(5)` simply created a list of integers from zero to four. But in Python 3, `range` creates an [iterator](https://en.wikipedia.org/wiki/Iterator) from zero to four.  What's an iterator? Think of it as a function that will create all the values you need, but not until you ask for them.
 
 For instance, imagine you tried to make a list from zero to `1000000000000000000000`. Well, that list would take up more memory than you (probably) have on your computer, right? But if you ask me for the 14th element in that list I immediately know it is `13`, so why bother keeping the whole thing in memory, when you can just get the one element you want WHEN you want it? Iterators let you do this. They are built into Python 3 everywhere, and they are a great performance-enhancing tool.
 
@@ -97,14 +98,14 @@ But if you *really* want a list, you can just change your iterator to a list by 
 [0, 1, 2, 3, 4]
 ```
 
-#### Creating our own Iterators
+#### Creating your own Iterators
 
-The [yield](http://pythontips.com/2013/09/29/the-python-yield-keyword-explained/) keyword in Python is used to create [iterators](https://en.wikipedia.org/wiki/Iterator) for looping. Before jumping into using these tools, let's take a look at a stupid example of why we want them. In Python v2.x we will define a function:
+The [yield](http://pythontips.com/2013/09/29/the-python-yield-keyword-explained/) keyword in Python is used to create [iterators](https://en.wikipedia.org/wiki/Iterator). Before jumping into using these tools, let's take a look at a stupid example of why we want them. Suppose we define a stupid function:
 
 ```python
 def sum_odd_even(N):
     total = 0
-    for i in range(N):
+    for i in list(range(N)):
         if i % 2 == 0:
             total += i
         else:
