@@ -1,4 +1,4 @@
-# Lambda and Looping Faster
+# Lambda and Looping
 
 The real goal of this lecture is introduce `map`, `filter`, and `reduce`. But before you can use these great tools, you will have to understand two things: `lambda` and `yield`.
 
@@ -38,7 +38,7 @@ Let's print the even numbers in the Fibonacci Sequence (the usual way):
 ```python
 fibonacci = [0, 1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89, 144, 233]
 
-def print_even_numbers(lst)
+def print_even_numbers(lst):
     for element in lst:
         if element % 2 == 0:
             print(element)
@@ -249,7 +249,7 @@ This may seem like more work, but now we have a lot of flexibility to filter num
 
 ## List Comprehensions
 
-If want to create a list from another list, `map` isn't the only option. You can use a [list comprenhension](https://en.wikipedia.org/wiki/List_comprehension).
+As a secondary goal for todays grab-bag of a lecture, let's talk about some other ways we can loop over lists/data: [list comprenhension](https://en.wikipedia.org/wiki/List_comprehension).
 
 Here we take a list of integers and create a list of their squares using the list comprehension `[EXPRESSION for X in LIST]` syntax:
 
@@ -340,6 +340,10 @@ Which we would usually just write in two lines:
 >>> dict(zip(range(7), dow))
 {0: 'Mon', 1: 'Tue', 2: 'Wed', 3: 'Thu', 4: 'Fri', 5: 'Sat', 6: 'Sun'}
 ```
+
+## What did all of this have in common?
+
+What *was* this lecture? What did all of these disparate topics have in common? Looping. You really only *need* for-loops and while-loops. But you will write them so often it's good to have optiions. This lecture gives you loads of new options for your work-hourse control flows.
 
 
 ## Problem Sets
