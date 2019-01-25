@@ -2,6 +2,7 @@
 
 [Object-Oriented Programming](https://en.wikipedia.org/wiki/Object-oriented_programming) (OOP) means programming with [classes](https://en.wikipedia.org/wiki/Class_%28computer_programming%29). The "class" is a fundamental building block in Python, and used everywhere.
 
+
 ### The `class` Keyword
 
 In Python we use the `class` keyword to create classes in a similar way we use the `def` keyword to create functions. "And what is a class?" you ask. A class is a logical grouping of data and functions.
@@ -9,6 +10,7 @@ In Python we use the `class` keyword to create classes in a similar way we use t
 **Fun Fact**: when a "function" is part of a class, we call it a "method".
 
 Classes can help you organize your code. Find a core concept or idea (like a file, a plot, or a database) and make a class out of it. This will help you organize your code and your thoughts. Things that belong to your idea will become variables or methods inside of the class. This will help you keep everything else separate. When thinking about larger amounts of code, you will only have to think about one class at a time.
+
 
 ### Classes are Blueprints
 
