@@ -5,16 +5,21 @@
 
 ### The `class` Keyword
 
-In Python we use the `class` keyword to create classes in a similar way we use the `def` keyword to create functions. "And what is a class?" you ask. A class is a logical grouping of data and functions.
+In Python we use the `class` keyword to create classes in a similar way we use the `def` keyword to create functions. "And what is a class?" you ask.
+
+> A class is a logical grouping of data and functions.
+
 
 **Fun Fact**: when a "function" is part of a class, we call it a "method".
 
-Classes can help you organize your code. Find a core concept or idea (like a file, a plot, or a database) and make a class out of it. This will help you organize your code and your thoughts. Things that belong to your idea will become variables or methods inside of the class. This will help you keep everything else separate. When thinking about larger amounts of code, you will only have to think about one class at a time.
+> Using a class can help you organize your code.
+
+Find a core concept or idea (like a file, a plot, or a database) and make a class out of it. This will help you organize your code and your thoughts. Things that belong to your idea will become variables or methods inside of the class. This will help you keep everything else separate. When thinking about larger amounts of code, you will only have to think about one class at a time.
 
 
 ### Classes are Blueprints
 
-A class is a blueprint for an idea.
+> A class is a blueprint for an idea.
 
 First, some jargon. An "object" is a specific instance of a "class". For instance, if I have a "student" class, each "student" would have a few pieces of information attached to it: name, student id, grades, etc. But if you make a particular student named "beth", then we would say "beth is an object of the student class". Or we might say "an object is an instance of a class".
 
