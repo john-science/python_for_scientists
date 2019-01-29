@@ -138,6 +138,7 @@ emmy.set_hw_grade(99.0, 0)
 
 We see the `set_hw_grade` method actually only takes two inputs, not three. The `self` input is provided by doing the `emmy.`. Another thing we see is that by using a class method, we have access to all of the class attributes. In this case, that means we can modify the values in the `self.hw_grades` list.
 
+
 ### Static Methods
 
 A class method is any function you include in a class and give the `self` parameter to. But what if you want to include a method in a class that is independent of the value of this particular object? These are called "static methods", and here are a couple examples:
@@ -173,7 +174,7 @@ Why use static methods? Well, it's true, you could have just written these metho
 ```python
 class Student:
 
-    # rest of the class defined as normal
+    # ...rest of the class defined as normal
 
     def fail_student(self):
         '''Hilarious print statement'''
@@ -223,6 +224,7 @@ And after you create the `lst` object, you can call class methods on that object
 ```
 
 And if you call `help(lst)` the documentation you see starts with `class list(object)` because nearly everything in Python is a class or an object. Object-oriented programming is so important in Python, it's hard to understand the language without it.
+
 
 ## Problem Sets
 
