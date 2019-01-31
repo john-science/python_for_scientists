@@ -1,6 +1,6 @@
 # Taking the Next Step
 
-All the material in this course so far was just too define "the rules" of Python. But writing good code means more than just knowing the rules that define a language. You can teach a six-year-old the rules to chess, but that doesn't make them a Grand Master. A lot of knowledge, skill, and practice are needed to earn that title. The rest of this course will be devoted to taking the next step.
+All the material in this course so far was just too define "the rules" of Python. But writing good code means more than just knowing the rules that define a language. You can probably teach a clever six-year-old to use a hatchet, but that mean you'd want to live in a log cabin they built. A lot of knowledge, skill, and practice are needed to become a true craftsman. The rest of this course will be devoted to taking that next step.
 
 ![Code Quality](https://imgs.xkcd.com/comics/code_quality.png)
 
@@ -29,7 +29,7 @@ def F (n):
 
 What does it do? This method has a subtle bug, can you find it?
 
-#### PEP8
+#### The PEP8 Example
 
 Here is the exact same function, but following the [PEP8 Style Guide](https://www.python.org/dev/peps/pep-0008/):
 
