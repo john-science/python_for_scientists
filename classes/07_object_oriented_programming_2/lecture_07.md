@@ -16,7 +16,7 @@ class Polygon:
 
     def print_num_sides(self):
         '''a quick, informational print statement'''
-        print('There are ' + str(self.number_of_sides) + 'sides.')
+        print('There are ' + str(self.number_of_sides) + ' sides.')
 
 class Rectangle(Polygon):
 
@@ -83,7 +83,7 @@ class Polygon(ABC):
         self.number_of_sides = n
 
     def print_num_sides(self):
-        print('There are ' + str(self.number_of_sides) + 'sides.')
+        print('There are ' + str(self.number_of_sides) + ' sides.')
 
     @abstractmethod
     def get_area(self):
