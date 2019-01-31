@@ -104,9 +104,9 @@ TypeError: Can't instantiate abstract class Polygon with abstract methods get_ar
 And in order to implement a subclass of `Polygon`, it must provide an implementation of all of the abstract methods, like `get_area`:
 
 ```python
->>> class Circle(Polygon)
->>> def __init__(self):
->>>     Polygon.__init__(self, 1)
+>>> class Circle(Polygon):
+>>>     def __init__(self):
+>>>         Polygon.__init__(self, 1)
 >>> 
 >>> c = Circle()
 TypeError: Can't instantiate abstract class Circle with abstract methods get_area
