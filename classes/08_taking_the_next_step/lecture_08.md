@@ -289,6 +289,9 @@ print(glitter)
 
 It works the same with functions as it does with the `glitter` string above. The more content you put under the `if __name__ == '__main__':` statement, the less will be easily available for import.
 
+![Code Quality 2](https://imgs.xkcd.com/comics/code_quality_2.png)
+
+
 ## Code Repositories
 
 Software works best when it is shared. Software shared between multiple people, developed and improved by everyone becomes easier to understand, easier to use, easier to update, and better.
