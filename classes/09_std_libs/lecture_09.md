@@ -119,8 +119,8 @@ There's actually one more Really useful thing we can do with these date formmati
 
 ```python
 >>> from datetime import datetime
->>> some_text = '2015-03-14'
->>> d = datetime.strptime(some_text, '%Y-%m-%d')
+>>> pi_day = '2015-03-14'
+>>> d = datetime.strptime(pi_day, '%Y-%m-%d')
 >>> print(d)
 datetime.datetime(2015, 3, 14, 0, 0)
 ```
@@ -205,9 +205,12 @@ It can also do various kinds of exponentials and logarithms:
 
 ## Random
 
-![random](http://imgs.xkcd.com/comics/random_number.png)
+How not to generate random numbers:
 
-There area  lot of different ways to generate pseudo-random numbers in Python. But here is a short introduction to the three you can use to generate all the other functionality in the library.
+![citation](http://imgs.xkcd.com/comics/random_number.png)
+
+There are a lot of different ways to generate pseudo-random numbers in Python. But here is a short introduction to the three you can use to generate all the other functionality in the library.
+
 
 #### random
 
