@@ -14,16 +14,8 @@ from Cython.Build import cythonize
 from glob import glob
 
 
-#setup(cmdclass={'build_ext': build_ext},
-#      ext_modules=cythonize('finding_primes.pxd'))
-
-#setup(cmdclass={'build_ext': build_ext},
-#      ext_modules=cythonize(Extension('*', ['finding_primes.pxd'])))
-
-
 EXT_MODULES = [Extension(p[:-4], [p, p[:-2] + 'y'], extra_compile_args=["-w"])
                for p in glob('*.pxd')]
-
 
 
 # do the actual setup / install

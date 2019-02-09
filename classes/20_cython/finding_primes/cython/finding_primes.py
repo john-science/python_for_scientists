@@ -11,6 +11,5 @@ def main():
     print('{0} seconds'.format(time() - start))
 
 
-
 if __name__ == '__main__':
     main()

@@ -3,12 +3,12 @@ from time import time
 def main():
     max_prime = 100000
 
-    print("\nA naive pass at the Sieve of Eratosthenes, in Cython:")
+    print("\nA naive pass at the Sieve of Eratosthenes, in vanilla Python:")
     start = time()
     sieve_naive(max_prime)
     print('{0} seconds'.format(time() - start))
 
-    print("\nA decent pass at the Sieve of Eratosthenes, in Cython:")
+    print("\nA decent pass at the Sieve of Eratosthenes, in vanilla Python:")
     start = time()
     sieve_decent(max_prime)
     print('{0} seconds'.format(time() - start))
