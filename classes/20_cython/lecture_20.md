@@ -322,19 +322,33 @@ Okay, it has taken us a while to get here, let's run our new code and see how we
 Success! All we had to do was conver the code to Cython and it ran 5 times faster than our original version, and three times faster than our optimized Python code!
 
 
-## We can do even better!
+## Can you do better?
 
-TODO
+Can you make the Cython code above even faster? Try it!
+
+After the initial, cheap, speed improvements provided by Cython, a lot more performance boosts can be had. For instance, our function still takes `int n` and not `cython.int n`. We still have two lists instead of two `np.array` objects. At this point, we typically take a look at each part of the code and see if we can tweak it to behave more like Pure C and less like Python. There is never a guaranteed way to improve the speed of your code. Though chances are the more you play around, the faster you will be able to make your code.
+
+Also, the better you know the C language the faster this process will be.
+
+One trick is to make a change, compile your Cython and see how many lines there are in the resultant `.c` file. *Probably* fewer lines will mean faster code.
 
 
 ## In Conclusion
 
-TODO: What did we learn?
+> What did we learn?
+
+1. We learned that the first thing we can do to improve the performance of our Python code is to look at the Python code. Look for Python tricks and math tricks to make you code faster.
+2. We also learned to create `.pxd` files to improve our code's performance without ever touching our Python code.
+3. We learned how to setup those `.pxd` files.
+4. And we learned how to use `distutils` to compile and Cython code into a Python-ready library.
+5. Finally, we learned there is a certain amount of guess-and-check in what changes you can make to Python/Cython code to improve its performance.
+
+> If Python makes writing code fast. Cython can make the code you write fast.
 
 
-## Other Approaches
+## A Quick Note
 
-TODO
+There are lots of other ways to use Cython to improve your code performance. This was just one example approach that seemed short enough to explain in a limited time.
 
 
 ## Example Scripts
@@ -348,6 +362,7 @@ If you want to try this out for yourself, the above examples (with Cython build 
 ## Further Reading
 
  * [Cython language basics](http://docs.cython.org/en/latest/src/reference/language_basics.html) - A great reference, but kind of boring to read end-to-end.
+ * [SciPy Con Cython tutorial](https://conference.scipy.org/proceedings/SciPy2009/paper_1/full_text.pdf) - PDF tutorial about Cython. In depth and complete.
  
 
 [Back to Syllabus](../../README.md)
