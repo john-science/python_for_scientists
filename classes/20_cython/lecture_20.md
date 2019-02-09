@@ -179,12 +179,147 @@ We will do even better below, but it is important to remember that Cython isn't 
 
 ## Cythonizing Script
 
-TODO
+The first move to Cythonizing our little script is to pull out all the heavy lifting and place it in a separate file that we can Cythonize. First, we will put the `sieves` functions into a file `sieves.py` that looks like this:
+
+```python
+def sieve(n):
+    """ The Sieve of Eratosthenes
+    """
+    # Python indexes start at zero
+    m = n + 1
+
+    # make a list of for all numbers up to n, initially all prime
+    numbers = [True] * m  # NOTE: faster due to Python magic
+
+    # go through and remove all numbers that are a multiple of the others
+    for i in range(2, int(n**0.5 + 1)):  # NOTE: faster due to basic math
+      if numbers[i]:
+        for j in range(i * i, m, i):
+          numbers[j] = False
+
+    # what is left are primes
+    primes = []
+    for i in range(2, m):
+      if numbers[i]:
+        primes.append(i)
+
+    return primes
+```
+
+But none of the unimportant glue code really needs to be Cythonized. So we will create a helper script called `finding_primes.py` that looks like this:
+
+```python
+from time import time
+from sieves import sieve
+
+
+def main():
+    max_prime = 100000
+
+    print("\nA decent pass at the Sieve of Eratosthenes, in Cython:")
+    start = time()
+    sieve(max_prime)
+    print('{0} seconds'.format(time() - start))
+
+
+if __name__ == '__main__':
+    main()
+```
+
+Okay, obviously we haven't done any Cythonizing yet, but let's just do a quick check to see that our performance hasn't changed.
+
+    $ python finding_primes.py
+    A decent pass at the Sieve of Eratosthenes, in Cython:
+    0.015347957611083984 seconds
+
+Good, we got back our original performance. 
+
+Now, in the same folder we are going to create our new Cython file `sieves.pxd`, which will look like this:
+
+```python
+cimport cython
+
+@cython.locals(m=cython.int, i=cython.int, j=cython.int, numbers=list, primes=list)
+cpdef list sieve(int n)
+```
+
+Two things will tell the Cython compiler what this file is. First, we called it `sieves.pxd` and put it in the same folder as `sieves.py`. Second is that little `cimport cython` at the top of the file.
+
+Notice this the `pxd` file appears to declare the same function (`sieve(n)`) that we have in `sieves.py`. This new declaration looks broadly like our Python version except it has type information everywhere. 
+
+Above, type the inputs and outputs of a function, which we don't usually do in Python.
+
+* We have `sieve(int n)` rather than just `sieve(n)`, so we are forcing the function input to be an `int`.
+* We have `def list sieve()` rather than just `def sieve()`, so we are forcing the function output to be a `list`.
+
+We are also adding that strange `@cython.locals()` decorator to the function, to force all the variables internal to the function to have certain types as well:
+
+* `m=cython.int` - forces the type so Cython can optimize statements like `m = n + 1`
+* `i=cython.int` - forces types so Cython can optimize things like `for i in range(2, m):`
+* `j=cython.int` - again, forcing types for loop indexing
+* `numbers=list` - we want to create a `list` like `numbers = [True] * m`
+* `primes=list` - This gets returned, so it needs to match the functions return type.
+
+Finally, notice that the function has that `cpdef` at the beginning, instead of the normal Python `def`. Cython has a few options:
+
+* `def` - Normal Python function, no Cython optimization.
+* `cdef` - A fully C-like Cython function. This can only be called from other Cython function, not pure Python code.
+* `cpdef` - A middle-ground function that is optimized by Cython, but can still be called by vanilla Python code.
+
+Since our calling script (`finding_primes.py`) is a vanilla Python script, we needed to declare our Cythonize `sieves()` function as `cpdef`.
 
 
 ## Compiling and Running Your Script
 
-TODO
+Okay, we have defined our Python code, our Cython code, and we are ready to run it. Now we just need to compile our Cython code down to C and convert it to something Python will understand. Luckily, there are lots of Python tools to automate this process. We will use `distutils` because it's a community standard and worth seeing.
+
+In the same folder we have been working in we will create a file called `setup.py` and put this in it:
+
+```python
+from setuptools import setup, find_packages
+from setuptools.command.install import install
+from distutils.extension import Extension
+from Cython.Distutils import build_ext
+from Cython.Build import cythonize
+from glob import glob
+
+
+EXT_MODULES = [Extension(p[:-4], [p, p[:-2] + 'y'], extra_compile_args=["-w"])
+               for p in glob('*.pxd')]
+
+
+# do the actual setup / install
+setup(cmdclass={'install': install, 'build_ext': build_ext},
+      name='finding_primes',
+      packages=find_packages(),
+      ext_modules=cythonize(EXT_MODULES, force=True))
+```
+
+Okay, now we have a directory with the following files all laid out:
+
+* finding_primes.py
+* sieves.py
+* sieves.pxd
+* setup.py
+
+FINALLY, we can compile our Cython code from the command line by running this command:
+
+    python setup.py build_ext --inplace
+
+After you do that you will see a couple new files pop up:
+
+* `sieves.c` - The C code generated from our Python code. Usually long and hard to read. But fast!
+* `sieves.cpython-36m-x86_64-linux-gnu.so` - Or something named vaguely like that. This `.so` file is a compiled Cython library that Python can understand.
+
+### Let's Try it!
+
+Okay, it has taken us a while to get here, let's run our new code and see how we did:
+
+    $ python finding_primes.py 
+    A decent pass at the Sieve of Eratosthenes, in Cython:    
+    0.005792379379272461 seconds
+
+Success! All we had to do was conver the code to Cython and it ran 5 times faster than our original version, and three times faster than our optimized Python code!
 
 
 ## We can do even better!
@@ -207,11 +342,12 @@ TODO
 If you want to try this out for yourself, the above examples (with Cython build scripts) are included in this class:
 
 * [pure Python example](finding_primes/pure_python)
-* [cython example](finding_primes/cython)
+* [Cython example](finding_primes/cython)
 
 
 ## Further Reading
 
- * [todo](https://duck.com) - TODO
+ * [Cython language basics](http://docs.cython.org/en/latest/src/reference/language_basics.html) - A great reference, but kind of boring to read end-to-end.
+ 
 
 [Back to Syllabus](../../README.md)
