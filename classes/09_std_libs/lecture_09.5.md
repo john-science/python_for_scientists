@@ -4,7 +4,7 @@
 
 ## os
 
-The `os` library will help your computer's file system.
+The `os` library will help you navigate around your computer's file system.
 
 For instance, if I wanted to create a directory for this class, I could use `mkdir`:
 
@@ -77,7 +77,7 @@ Same thing for the `class11_batteries_included_2` directory and the Python class
 >>> os.rmdir('python_class')
 ```
 
-If you are familiar with basic computer admin, you will also find other useful tools in the `os` package. You can get and set environment variables (`getenv` & `putenv`), you can create and remove softlinks between files and folder (`link` & `unlink`), and a lot more.
+If you are familiar with command line basics from MacOs, Linux, or Unix, you will also find other useful tools in the `os` package. You can get and set environment variables (`getenv` & `putenv`), you can create and remove softlinks between files and folder (`link` & `unlink`), and a lot more.
 
 #### os.path
 
