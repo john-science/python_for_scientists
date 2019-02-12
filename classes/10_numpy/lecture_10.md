@@ -1,4 +1,4 @@
-# NumPy
+# NumPy - Arrays Instead of Lists
 
 NumPy is the most popular mathematics library for Python. NumPy takes a big step toward making Python as fast as other languages for serious mathematical computations. There are hundreds of scientific libraries in Python that just could not exist without NumPy. Several of these libraries we will cover in this sourse: SciPy, matplotlib, pandas, and netCDF4.
 
