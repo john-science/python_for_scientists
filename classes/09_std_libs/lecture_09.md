@@ -335,6 +335,7 @@ Timeit is a really handy tool. Maybe it takes a little getting used to, but it i
 
 ## Further Reading
 
+ * [The Python Standard Library](https://docs.python.org/3/library/)
  * [Official Docs - datetime](https://docs.python.org/3/library/datetime.html)
  * [Module of the Week - datetime](http://pymotw.com/2/datetime/)
  * [Official Docs - datetime formatting](https://docs.python.org/3/library/datetime.html#strftime-and-strptime-behavior)
