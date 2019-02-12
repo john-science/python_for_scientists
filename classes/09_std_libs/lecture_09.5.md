@@ -350,6 +350,7 @@ To GZIP an existing file:
 
 ## Further Reading
 
+ * [The Python Standard Library](https://docs.python.org/3/library/)
  * [Official Docs - os](https://docs.python.org/3/library/os.html))
  * [effbot - os](http://www.effbot.org/librarybook/os.htm)
  * [Official Docs - os.path](https://docs.python.org/3/library/os.path.html#module-os.path))
