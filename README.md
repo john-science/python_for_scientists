@@ -38,7 +38,7 @@ Python Standard Libraries
 
 Special Topics
 
- * [Math - NumPy](classes/10_numpy/lecture_10.md)
+ * [NumPy Arrays](classes/10_numpy/lecture_10.md)
  * [Plotting - matplotlib](classes/12_matplotlib/lecture_12.md)
  * [Statistics - SciPy](classes/11_scipy/lecture_11.md)
  * [Data Analysis - pandas and Jupyter](classes/13_pandas/lecture_13.md)
