@@ -1,6 +1,7 @@
-# Data Analysis Toolkit: Pandas and Jupyter Notebooks
+# Pandas for Data Analysis
 
-Several of the scientists I know and most of the data scientists I know use Pandas paired with Jupyter Notebooks for all their data analysis. Separately they are great tools, but together they create an amazingly expressive, friendly environment for analyzing data extremely quickly. Working soley with these two tools is such a common paradigm we need to least try it for at least one lecture. 
+Pandas is a great toolbox for starting out any data analysis. Several of the scientists I know and most of the data scientists I know use Pandas paired with Jupyter Notebooks for their primary work flow. Separately they are great tools, but together they create an amazingly expressive, friendly environment for analyzing data extremely quickly. Working soley with these two tools is such a common paradigm in the industry we should try it for at least one lecture. 
+
 
 ## Installation
 
@@ -11,9 +12,9 @@ Like most of the libraries used in our "special topics" lectures, `pandas` and `
 Consider installing [Anaconda](http://docs.continuum.io/anaconda/install.html) instead. Anaconda is Python packaged with hundreds of libraries that you will want (including `pandas`, `Jupyter notebooks` and almost everything else we will use in this course.)
 
 
-## Jupyter Notebooks
+## Jupyter Notebooks - A Reminder
 
-When working through this lecture and the related homework, I recommend using [Jupyter Notebooks](http://ipython.org/ipython-doc/stable/notebook/index.html). The real topic of the lecture is the `pandas` library. But Pandas and Jupyter together create a wonderfully interactive platform for analyzing data. Jupyter notebooks give you a lot of added functionality:
+We already discussed Jupyter Notebooks in the  [course introdution](../00_setup_and_intro/lecture_00.md#jupyter-notebooks). But I will mention them again here, because Jupyter Notebooks and Pandas play so well together. Jupyter notebooks give you a lot of added functionality:
 
  * You can go back and edit previous lines, like in a text editor.
  * Tab auto-completion
@@ -21,15 +22,27 @@ When working through this lecture and the related homework, I recommend using [J
  * Better history management
  * Basic UNIX/LINUX shell integration
  * Tools for debugging code.
- * Helpful `%` syntax to expedite plotting and timing.
+ * ["Magic" `%` commands](https://ipython.readthedocs.io/en/stable/interactive/magics.html)
 
-For a quick refresher on installing and using Jupyter Notebooks, look back at the [course introdution](../00_setup_and_intro/lecture_00.md#jupyter-notebooks).
-
-After installation, you can invoke Jupyter on the command line by typing: `jupyter notebook`. Then click "new" in the top-right corner and create a "notebook". This will give you an empty notebook to start working. Valid Python code can be entered in these cells:
+Valid Python code is entered, and executed, in semi-independent "cells" of code:
 
 ![Jupyter: enter code](../../resources/ipython_2_basic_python.png)
 
-Hit shift-and-enter to execute the code in your current cell. You will see a new cell to pop up below to continue your work.
+Hit shift-and-enter to execute the code in your current cell. You will see a new cell to pop up below to continue your work. Each cell is typically executed separately, though they can share variables and data.
+
+### Jupyter "Magic"
+
+Jupyter comes with several handy ["magic" commands](https://ipython.readthedocs.io/en/stable/interactive/magics.html), prepended with `%`. These are not valid Python but Jupyter-only commands meant to help automate certain tasts.
+
+One handy command is `%matplotlib inline`, which allows plots to exist right along side code:
+
+![Jupyter: fancy plotting example](../../resources/ipython_6_plotting.png)
+
+Using `%matplotlib inline` along side your data analysis allows (data) scientists to quickly and easily share their thoughts and results, just by sharing a `*.ipynb` file
+
+There are tons of these time-saving `%` commands. Checkout `%timeit` to test your code performance. Feel free to look through the official docs for a full listing of [Jupyter "Magics"](https://ipython.readthedocs.io/en/stable/interactive/magics.html).
+
+Now back to Pandas.
 
 
 ## pandas
