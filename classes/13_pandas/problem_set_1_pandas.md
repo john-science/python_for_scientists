@@ -10,7 +10,7 @@
 3. Read in the fixed-width file "client_list.txt". Assign as variable `df3`
 4. Read in the comma-separated file "client_list.csv", skip the first 3 rows, and ignore the header. Do not assign to variable (just return a view).
 5. Read in the comma-separated file "client_list.csv". Set the column headers in all caps. Assign as variable `df`.
-6. Read in the comma-separated file "client_list_practice.csv" and only extract the columns ["FIRST_NAME","AGE","EYE_COLOR"]. Do not assign to a variable.
+6. Read in the comma-separated file "client_list_practice.csv" and only extract the columns `["FIRST_NAME","AGE","EYE_COLOR"]`. Do not assign to a variable.
 
 
 #### Slicing a Data Set
