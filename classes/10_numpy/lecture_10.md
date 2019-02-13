@@ -1,21 +1,27 @@
-# NumPy - Arrays Instead of Lists
+# NumPy Arrays
 
-NumPy is the most popular mathematics library for Python. NumPy takes a big step toward making Python as fast as other languages for serious mathematical computations. There are hundreds of scientific libraries in Python that just could not exist without NumPy. Several of these libraries we will cover in this sourse: SciPy, matplotlib, pandas, and netCDF4.
+> NumPy arrays are the starting point for nearly all hard math and science work in Python.
+
+NumPy is the most popular mathematics library for Python. NumPy takes a big step toward making Python as fast as C for serious mathematical computations. There are hundreds of scientific and mathematical libraries in Python that just could not exist without NumPy. Several of these libraries we will cover in this sourse: SciPy, matplotlib, pandas, and netCDF4.
+
+For sure, NumPy is a big math library with more than just `np.array`. But you have to start somewhere, so this lecture will focus on NumPy arrays.
+
 
 #### Installation
 
 NumPy is the first third-party library we will use in this class. But it won't be the last. There are a ton of amazing tools written for Python that you as a scientist/engineer/geek/whatever will want to use. But they don't come pre-packaged with Python. You will have to install them separately. 
 
-You will want Python v3.3 and newer to use NumPy and all of the other libraries that require it.
+You will want Python v3.3 (or newer) to use NumPy and all of the other libraries that require it.
 
 You can find instructions for installing NumPy [here](http://docs.scipy.org/doc/numpy/user/install.html).
 
-> **Please Note** The NumPy group [has said](https://github.com/numpy/numpy/blob/master/doc/neps/dropping-python2.7-proposal.rst) they will be dropping support for Python 2.X on Jan 1, 2020.  Since this library is the basis of nearly all science and engineering work in Python it will be very important that you move to Python 3.X at some point.
+> **Please Note** The NumPy group [has said](https://github.com/numpy/numpy/blob/master/doc/neps/dropping-python2.7-proposal.rst) they will be dropping support for Python 2.X on Jan 1, 2020.  Since this library is the basis of nearly all science and engineering work in Python it will be very important that you move from Python 2.X to Python 3.X at some point.
 
 
 #### Anaconda
 
 Consider installing [Anaconda](http://docs.continuum.io/anaconda/install.html) instead. Anaconda is Python packaged with hundreds of tools and libraries that you will want (This includes NumPy and everything else we will use in this course.)
+
 
 ## The NumPy array
 
@@ -500,7 +506,10 @@ array([[1, 2, 3, 4, 5],
 
 What do you suppose would happen if you tried to `np.concatenate` or `np.vstack` 2D arrays?
 
+
 ## NumPy Random Numbers
+
+Well, now that we've seen the basics of NumPy arrays let's try using them for something. 
 
 NumPy also has a lot of tools built in to help you generate [random numbers](https://en.wikipedia.org/wiki/Pseudorandom_number_generator). We will not cover the topic of random number generation in detail, as it is a whole field onto itself. If this topic interests you, start your research [here](https://en.wikipedia.org/wiki/Random_number_generation). There are many different distributions of random numbers, and though we will only cover two, there are many more supported by NumPy that you can read about in the [documentation](http://docs.scipy.org/doc/numpy/reference/routines.random.html).
 
