@@ -1,4 +1,4 @@
-# Data Analysis with Pandas and Jupyter Notebooks
+# Data Analysis Toolkit: Pandas and Jupyter Notebooks
 
 Several of the scientists I know and most of the data scientists I know use Pandas paired with Jupyter Notebooks for all their data analysis. Separately they are great tools, but together they create an amazingly expressive, friendly environment for analyzing data extremely quickly. Working soley with these two tools is such a common paradigm we need to least try it for at least one lecture. 
 
@@ -9,6 +9,7 @@ Like most of the libraries used in our "special topics" lectures, `pandas` and `
 #### Anaconda
 
 Consider installing [Anaconda](http://docs.continuum.io/anaconda/install.html) instead. Anaconda is Python packaged with hundreds of libraries that you will want (including `pandas`, `Jupyter notebooks` and almost everything else we will use in this course.)
+
 
 ## Jupyter Notebooks
 
@@ -29,6 +30,7 @@ After installation, you can invoke Jupyter on the command line by typing: `jupyt
 ![Jupyter: enter code](../../resources/ipython_2_basic_python.png)
 
 Hit shift-and-enter to execute the code in your current cell. You will see a new cell to pop up below to continue your work.
+
 
 ## pandas
 
