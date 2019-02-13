@@ -333,7 +333,7 @@ Now let's select multiple columns by name:
     
 Alternatively, we could do: `df[['FIRST_NAME','LAST_NAME']]`, which accomplishes the same thing.
 
-We could also do `df.loc[:,cols]`, but we'll go into more detail about this later.
+We could also do `df.loc[:,cols]`or `df.iloc[:,cols]`, but we'll go into more detail about this later.
     
 #### Select Data by Row
 
@@ -363,19 +363,27 @@ Selecting dataframe data by row looks a lot like slicing a standard Python list:
 
 #### Select Data by Row and Column
 
-The `loc` function is my preferred tool for row and column-wise slicing of dataframes. The format for using `loc` is `df.loc[row_indexer, column_indexer]`. Below we slice the `DataFrame` by row and by column to select just the data we want:
+The `loc` and `iloc` functions are the standard tools for slicing DataFrames by rows and/or columns. The format for using both is `df.loc[row_indexer, column_indexer]`. The difference is the indexers for `.loc()` are the names of the rows/columns, and the indexers for `.iloc()` are numerical indexes.
 
-    In [6]: df.loc[3:8,['FIRST_NAME','AGE','EYE_COLOR']]
+Below we slice the `DataFrame` by row and by column to select just the data we want using `.loc()`:
+
+    In [6]: df.loc[3:5,['FIRST_NAME','AGE','EYE_COLOR']]
     Out[6]: 
       FIRST_NAME  AGE EYE_COLOR
     3       Mary   42      blue
     4     Robert   37     brown
     5     Thomas   60      blue
-    6    Natalie   21     green
-    7     Brenda   18     brown
-    8    Michael   58     brown
 
-We'll cover more of the `loc` function when we discuss query-like data selecting.
+and using `.iloc()`:
+
+    In [6]: df.iloc[3:5,0:2]
+    Out[6]: 
+      FIRST_NAME  AGE EYE_COLOR
+    3       Mary   42      blue
+    4     Robert   37     brown
+    5     Thomas   60      blue
+
+We'll cover more about the `loc` and `iloc` functions when we discuss query-like data selecting.
 
 
 ## Returning a View Versus a Copy
