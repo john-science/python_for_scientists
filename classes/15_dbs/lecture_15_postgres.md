@@ -159,6 +159,8 @@ A [Join](https://en.wikipedia.org/wiki/Join_%28SQL%29) is a special kind of quer
 
 The SQL language defines three types of joins: inner, cross, and outer.  Some PostgreSQL libraries do not support the `CROSS JOIN`, so we will omit it here.
 
+![Venn diagram of join types](../../resources/join_venn_diagrams.jpg)
+
 #### Inner Join (INNER JOIN)
 
 Earlier, we created a list of all the agents who are currently active. That query worked fine, but it only returned the agent IDs, not there names. That's inconvenient, but we could do a slightly more complicated `SELECT` query to get their names from the other table:
