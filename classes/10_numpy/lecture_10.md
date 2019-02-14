@@ -471,6 +471,23 @@ So, `numpy` provides the `tolist()` method, which will convert deep into the `ar
 There are two convenient methods for combining arrays in numpy, `concatenate` and `vstack`:
 
 ```python
+>>> import numpy as np
+>>> from numpy import array
+>>> 
+>>> a = array([1,2,3,4,5])
+>>> b = array([9,8,7,6,5])
+>>> 
+>>> np.concatenate((a, b))
+array([1, 2, 3, 4, 5, 9, 8, 7, 6, 5])
+>>> 
+>>> np.vstack((a, b))
+array([[1, 2, 3, 4, 5],
+       [9, 8, 7, 6, 5]])
+```
+
+Both of these methods work on multi-dimensional arrays as well. Though higher dimensional math is always more fun:
+
+```python
 >>> c = array([[1,2,3], [4,5,6]])
 >>> d = array([[5,6,7], [8,9,0]])
 >>> 
@@ -486,25 +503,6 @@ array([[1, 2, 3],
        [5, 6, 7],
        [8, 9, 0]])
 ```
-
-The above 2D array example makes these seem very similar. But there is a difference, which is easiest to see in a 1D example:
-
-```python
->>> import numpy as np
->>> from numpy import array
->>> 
->>> a = array([1,2,3,4,5])
->>> b = array([9,8,7,6,5])
->>> 
->>> np.concatenate((a, b))
-array([1, 2, 3, 4, 5, 9, 8, 7, 6, 5])
->>> 
->>> np.vstack((a, b))
-array([[1, 2, 3, 4, 5],
-       [9, 8, 7, 6, 5]])
-```
-
-What do you suppose would happen if you tried to `np.concatenate` or `np.vstack` 2D arrays?
 
 
 ## NumPy Random Numbers
