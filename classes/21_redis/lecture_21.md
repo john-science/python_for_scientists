@@ -1,6 +1,16 @@
 # Redis
 
-## Install and Start Service
+>  What is Redis?
+
+Redis is an in-memory key-value store.
+
+In theory, Redis is just a specialized, in-memory database. But because Redis has more limited storage options than most databases, it is Very Fast. It's also pretty light-weight. Redis is typically used for:
+
+* [queues](https://en.wikipedia.org/wiki/Queueing_theory)
+* [caches](https://en.wikipedia.org/wiki/Cache_(computing))
+* [pub / subs](https://en.wikipedia.org/wiki/Publish%E2%80%93subscribe_pattern)
+
+## Install and Start
 
 We will actually need to install two things for this lecture:
 
@@ -36,17 +46,6 @@ And you can use the Redis Command Line Interface (CLI) to check that the service
 In Linux, you can also check the status of the Redis service by doing:
 
     service redis status
-
-
-# What is Redis?
-
-Redis is an in-memory key-value store.
-
-In theory, Redis is just an in-memory database. But becasue it is more limited to just key-value storing it is very fast and light-weight. These limitations mean Redis is typically used for:
-
-* [queues](https://en.wikipedia.org/wiki/Queueing_theory)
-* [caches](https://en.wikipedia.org/wiki/Cache_(computing))
-* [pub / subs](https://en.wikipedia.org/wiki/Publish%E2%80%93subscribe_pattern)
 
 
 # Redis CLI Commands
