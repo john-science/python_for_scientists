@@ -4,7 +4,7 @@
 
 Redis is an in-memory key-value store.
 
-In theory, Redis is just a specialized, in-memory database. But because Redis has more limited storage options than most databases, it is Very Fast. It's also pretty light-weight. Redis is typically used for:
+In theory, Redis is just a specialized, in-memory database. But because Redis has more limited storage options than most databases, it is Very Fast. It's also deliciously light-weight. Redis is typically used for:
 
 * [queues](https://en.wikipedia.org/wiki/Queueing_theory)
 * [caches](https://en.wikipedia.org/wiki/Cache_(computing))
@@ -48,12 +48,11 @@ In Linux, you can also check the status of the Redis service by doing:
     service redis status
 
 
-# Redis CLI Commands
+# Redis via the CLI
 
-TODO
+First, let's learn Redis on its own terms. The Redis Command Line Interface (CLI) has over a hundred commands to drive control and operate data in Redis. We will can learn a lot about Redis by working through some of these commands. Then we will move on to learning how to do all of those same oeprations through the Python `rq` library.
 
-
-## Choose Your Data Base
+## Choose Your Database
 
 TODO
 
