@@ -55,7 +55,7 @@ This class is not meant to provide a rigorous computer science background. To ge
 **Development Tools**
 
 * [Building Python Projects](classes/19_building_projects/lecture_19.md)
-* [Testing Projects - unittest / setuptools](classes/17_testing_projects/lecture_17.md)
+* [Software Testing - an introduction with unittest](classes/17_testing_projects/lecture_17.md)
 * [Cython](classes/20_cython/lecture_20.md)
 
 **Special topics**
