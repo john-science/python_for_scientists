@@ -76,7 +76,9 @@ We can use single letters ('r', 'g', 'b', ...), special words ('red', 'green' 'b
 
 #### Size
 
-Much like color, we can provide one value for all data points, or one value for each data point:
+You can also set the exact size of all the dots on your plot, in pixels, using the `s` option. The size is actually the area, so `s = pi * r * r`, if you want to calculate your radius in pixels you'll have to do a little math. Usually, I just try a couple values and pick the one I like.
+
+Much like color, we can provide one size for all data points, or one size for each data point:
 
 ```python
 # all the same
@@ -85,8 +87,6 @@ plt.scatter(x, y, s=100)
 # each different
 plt.scatter(x, y, s=100 * np.random.rand(N))
 ```
-
-The `s` values shown are the area of your dot in pixels. So, if you are using circles, your area is: pi * r * r. If you want to get the exact size you want, calculate the area of the dot you want.
 
 #### Alpha
 
