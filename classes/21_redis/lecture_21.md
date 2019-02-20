@@ -52,17 +52,32 @@ In Linux, you can also check the status of the Redis service by doing:
 
 First, let's learn Redis on its own terms. The Redis Command Line Interface (CLI) has over a hundred commands to drive control and operate data in Redis. We will can learn a lot about Redis by working through some of these commands. Then we will move on to learning how to do all of those same oeprations through the Python `rq` library.
 
-## Choose Your Database
+You can boot up the Redis CLI from the command lineL
 
-TODO
+    $ redis-cli
+    127.0.0.1:6379>
 
 ## CLI Commands, by Data Structure
 
-TODO
+Redis stores key-values pairs. The keys can be (simple) strings, but the the values can be one of a few (really performant) data structures:
+
+* integer
+* string
+* list
+* set
+* sorted sets
+
+So let's use some variables of each of these types and see how they work.
 
 ### Simple Types
 
-TODO
+Setting the variable `hello` to the string `World` is easy:
+
+    127.0.0.1:6379> set hello World
+    OK
+    127.0.0.1:6379> get hello
+    "World"
+
 
 ### Lists
 
@@ -73,6 +88,8 @@ TODO
 TODO
 
 ## Other Important Commands
+
+Redis doesn't call them "databases", it calls them "namespaces". It's not important distinction. By default Redis dumps you into the `0` namespace. But you can select a namespace by using `SELECT`.
 
 TODO: EXPIRY and such
 
