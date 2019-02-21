@@ -22,7 +22,7 @@ Let us start by creating a couple of arrays of random numbers:
 
 ```python
 >>> import scipy
->>> from numpy as np
+>>> import numpy as np
 >>>
 >>> a_1d = np.random.uniform(low=0.0, high=10.0, size=(10,))
 >>> a_1d
