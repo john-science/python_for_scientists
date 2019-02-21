@@ -267,7 +267,7 @@ Or, to get the transpose of your data:
                pop_density  9.041393e+01  1.148061e+02  8.588376e+01  1.390767e+02  3.801874e+01
 
 
-## Slicing a DataFrame
+### Slicing a DataFrame
 
 #### Column Names in All Caps
 
@@ -399,7 +399,7 @@ and using `.iloc()`:
 We'll cover more about the `loc` and `iloc` functions when we discuss query-like data selecting.
 
 
-## Returning a View Versus a Copy
+### Returning a View Versus a Copy
 
 The previous `loc` slice can also be accomplished by:
 
@@ -407,7 +407,7 @@ The previous `loc` slice can also be accomplished by:
     
 This is called *chained indexing*: the rows are sliced first, then the columns. This works for data selection, but if you then wanted to set values in this subset, it wouldn't alter the original DataFrame. As such, the `loc` function is typically a better option. For more information about the dangers of chain indexing, see the [pandas manual](http://pandas.pydata.org/pandas-docs/stable/indexing.html#returning-a-view-versus-a-copy).
 
-## Useful Dataframe Tools
+### Basic Dataframe Tools
 
 #### Dropping columns
 
@@ -456,7 +456,300 @@ You can also do all of the above on a single column of a dataframe:
     In [14]: df['HAIR_COLOR'].unique().tolist()
     Out[14]: ['black', 'brown', 'red', 'blonde']
 
-## Querying Data
+### More Dataframe Operations
+
+#### Merge
+
+`merge` is the pandas equivalent to a SQL join. Like SQL joins, a `merge` can be "left", "right", "inner", or "outer".
+
+First, we need some data to merge into our client `DataFrame` above:
+
+    In [108]: genders = pd.DataFrame({'GENDER': ['M', 'F'], 'GENDER_LONG': ['male', 'female']})
+    In [109]: genders
+    Out[109]: 
+      GENDER GENDER_LONG
+    0      M        male
+    1      F      female
+
+Okay, and here we `merge` the client `DataFrame` with our new `genders` `DataFrame` to add information to the former:
+
+    In [110]: pd.merge(left=df, right=genders, how='left', on=['GENDER'])
+    Out[110]: 
+       FIRST_NAME LAST_NAME GENDER  AGE HAIR_COLOR EYE_COLOR  RAND_INT GENDER_LONG
+    0    Jennifer     Jones      F   27      black     brown         2      female
+    1       Jaime   Roberts      M   32   brunette     hazel         9        male
+    2     Michael   Johnson      M   55        red     green         3        male
+    3        Mary     Adams      F   42     blonde      blue         9      female
+    4      Robert  Phillips      M   37     blonde     brown         6        male
+    5      Thomas     Moore      M   60   brunette      blue         5        male
+    6     Natalie    Potter      F   21   brunette     green         5      female
+    7      Brenda     Jones      F   18     blonde     brown         6      female
+    8     Michael     Smith      M   58   brunette     brown         1        male
+    9    Jennifer     Smith      F   36      black     brown         2      female
+    10    Michael     Smith      M   37      black     hazel         4        male
+    11    Jessica    Rabbit      F   19      black      blue         7      female
+    12      Molly    Bryant      F   21   brunette      blue         2      female
+    13      Jaime  Anderson      F   46   brunette     green         9      female
+    
+When using `merge`, you can create one-to-many relationships:
+
+    In [111]: genders = pd.DataFrame({'GENDER': ['M', 'M', 'F'], 'GENDER_LONG': ['male', 'man', 'female']})
+    In [111]: genders
+    Out[111]: 
+    GENDER GENDER_LONG
+    0      M        male
+    1      M         man
+    2      F      female
+    
+    In [112]: pd.merge(right=df, left=genders, how='left', on=['GENDER'])
+    Out[112]: 
+       GENDER GENDER_LONG FIRST_NAME LAST_NAME  AGE HAIR_COLOR EYE_COLOR  RAND_INT
+    0       M        male      Jaime   Roberts   32   brunette     hazel         9
+    1       M        male    Michael   Johnson   55        red     green         3
+    2       M        male     Robert  Phillips   37     blonde     brown         6
+    3       M        male     Thomas     Moore   60   brunette      blue         5
+    4       M        male    Michael     Smith   58   brunette     brown         1
+    5       M        male    Michael     Smith   37      black     hazel         4
+    6       M         man      Jaime   Roberts   32   brunette     hazel         9
+    7       M         man    Michael   Johnson   55        red     green         3
+    8       M         man     Robert  Phillips   37     blonde     brown         6
+    9       M         man     Thomas     Moore   60   brunette      blue         5
+    10      M         man    Michael     Smith   58   brunette     brown         1
+    11      M         man    Michael     Smith   37      black     hazel         4
+    12      F      female   Jennifer     Jones   27      black     brown         2
+    13      F      female       Mary     Adams   42     blonde      blue         9
+    14      F      female    Natalie    Potter   21   brunette     green         5
+    15      F      female     Brenda     Jones   18     blonde     brown         6
+    16      F      female   Jennifer     Smith   36      black     brown         2
+    17      F      female    Jessica    Rabbit   19      black      blue         7
+    18      F      female      Molly    Bryant   21   brunette      blue         2
+    19      F      female      Jaime  Anderson   46   brunette     green         9
+
+The above one-to-many relationship could be what you want. But this is a common failure mode to watch out for during a `merge`. In the case above, we ended up with 19 final records instead of the original 13. It is not hard to imagine a case where these extra 6 records were not intentional or desired. It's just something to think about when merging.
+    
+#### Groupby
+
+The `groupby` allows you to aggregate a DataFrame object by field and then, possibly, map the results with some function. Here are some example use cases:
+
+ * A big box company groups it's purchase log by item category (men's clothing, women's clothing, home furnishings, etc.) and region, then applys `sum` to the sale prices. This creates a break down of sales volume by region and category.
+
+ * A forum website groups its members by age and topics of interest. They they apply `min`/`max` to the age for each topic. This gives the website creators some idea of trendy topics for different age groups.
+
+Let's group our client list by last name and then count the number of people with each eye color:
+
+    In [103]: df.groupby(['LAST_NAME', 'EYE_COLOR'], as_index=False)['EYE_COLOR'].count()
+    Out[103]: 
+    LAST_NAME  EYE_COLOR
+    Adams      blue         1
+    Anderson   green        1
+    Bryant     blue         1
+    Johnson    green        1
+    Jones      brown        2
+    Moore      blue         1
+    Phillips   brown        1
+    Potter     green        1
+    Rabbit     blue         1
+    Roberts    hazel        1
+    Smith      brown        2
+               hazel        1
+    dtype: int64
+
+Or let's group all of our clients by first name and count how many have the same hair color (yes, some of these examples are a little contrived):
+    
+    In [104]: df.groupby(['FIRST_NAME', 'HAIR_COLOR'], as_index=False)['HAIR_COLOR'].count()
+    Out[104]: 
+    FIRST_NAME  HAIR_COLOR
+    Brenda      blonde        1
+    Jaime       brunette      2
+    Jennifer    black         2
+    Jessica     black         1
+    Mary        blonde        1
+    Michael     black         1
+                brunette      1
+                red           1
+    Molly       brunette      1
+    Natalie     brunette      1
+    Robert      blonde        1
+    Thomas      brunette      1
+    dtype: int64
+
+And just as one final exercise, let's insert a "random integer" field to our data frame:
+
+    In [105]: df['RAND_INT'] = np.random.randint(1, 10, size=len(df))
+    In [106]: df
+    Out[106]: 
+       FIRST_NAME LAST_NAME GENDER  AGE HAIR_COLOR EYE_COLOR  RAND_INT
+    0    Jennifer     Jones      F   27      black     brown         8
+    1       Jaime   Roberts      M   32      brown     hazel         5
+    2     Michael   Johnson      M   55        red     green         6
+    3        Mary     Adams      F   42     blonde      blue         9
+    4      Robert  Phillips      M   37     blonde     brown         6
+    5      Thomas     Moore      M   60      brown      blue         2
+    6     Natalie    Potter      F   21      brown     green         7
+    7      Brenda     Jones      F   18     blonde     brown         6
+    8     Michael     Smith      M   58      brown     brown         2
+    9    Jennifer     Smith      F   36      black     brown         1
+    10    Michael     Smith      M   37      black     hazel         1
+    11    Jessica    Rabbit      F   19      black      blue         4
+    12      Molly    Bryant      F   21      brown      blue         7
+    13      Jaime  Anderson      F   46      brown     green         8
+
+Now we can group our data by last name and gender and sum the random integers in each group:
+
+    In [107]: df.groupby(['LAST_NAME', 'GENDER'], as_index=False)['RAND_INT'].sum()
+    Out[107]: 
+       LAST_NAME GENDER  RAND_INT
+    0      Adams      F         9
+    1   Anderson      F         9
+    2     Bryant      F         2
+    3    Johnson      M         3
+    4      Jones      F         8
+    5      Moore      M         5
+    6   Phillips      M         6
+    7     Potter      F         5
+    8     Rabbit      F         7
+    9    Roberts      M         9
+    10     Smith      F         2
+    11     Smith      M         5
+
+#### Sort
+
+The pandas `DataFrame.sort()` allows you to sort a DataFrame object by one or more columns. In the case of multiple columns, the order you provide them will be the order of priority for sorting. For instance:
+
+    In [117]: df.sort(['LAST_NAME', 'FIRST_NAME', 'AGE'])
+    Out[117]: 
+        FIRST_NAME LAST_NAME GENDER  AGE HAIR_COLOR EYE_COLOR  RAND_INT
+    3        Mary     Adams      F   42     blonde      blue         9
+    13      Jaime  Anderson      F   46   brunette     green         9
+    12      Molly    Bryant      F   21   brunette      blue         2
+    2     Michael   Johnson      M   55        red     green         3
+    7      Brenda     Jones      F   18     blonde     brown         6
+    0    Jennifer     Jones      F   27      black     brown         2
+    5      Thomas     Moore      M   60   brunette      blue         5
+    4      Robert  Phillips      M   37     blonde     brown         6
+    6     Natalie    Potter      F   21   brunette     green         5
+    11    Jessica    Rabbit      F   19      black      blue         7
+    1       Jaime   Roberts      M   32   brunette     hazel         9
+    9    Jennifer     Smith      F   36      black     brown         2
+    10    Michael     Smith      M   37      black     hazel         4
+    8     Michael     Smith      M   58   brunette     brown         1
+
+Notice the order of priority in the sorting. The three Smiths are last alphabetically for last names. But the two Michael Smiths come after Jennifer Smith, because of their first name. And finally, one Michael Smith comes after the other due to their ages.
+
+#### append
+
+You can use `append` to add one DataFrame object onto the end of another:
+
+    In [12]: df1 = df[:8]
+    In [13]: df2 = df[8:]
+    In [14]: df_appended = df2.append(df1)
+    In [15]: df_appended
+    Out[15]: 
+       FIRST_NAME LAST_NAME GENDER  AGE HAIR_COLOR EYE_COLOR  RAND_INT
+    8     Michael     Smith      M   58   brunette     brown         1
+    9    Jennifer     Smith      F   36      black     brown         2
+    10    Michael     Smith      M   37      black     hazel         4
+    11    Jessica    Rabbit      F   19      black      blue         7
+    12      Molly    Bryant      F   21   brunette      blue         2
+    13      Jaime  Anderson      F   46   brunette     green         9
+    0    Jennifer     Jones      F   27      black     brown         2
+    1       Jaime   Roberts      M   32   brunette     hazel         9
+    2     Michael   Johnson      M   55        red     green         3
+    3        Mary     Adams      F   42     blonde      blue         9
+    4      Robert  Phillips      M   37     blonde     brown         6
+    5      Thomas     Moore      M   60   brunette      blue         5
+    6     Natalie    Potter      F   21   brunette     green         5
+    7      Brenda     Jones      F   18     blonde     brown         6
+
+Notice the order is preserved in append, based on which DataFrame object is being appended to.
+
+#### concat
+
+You can use `concat` to append two or more DataFrame objects:
+
+    In [15]: DFs = []
+    In [16]: DFs.append(df[10:])
+    In [17]: DFs.append(df[5:10])
+    In [18]: DFs.append(df[0:5])
+    
+    In [19]: len(DFs)
+    Out[19]: 3
+    
+    In [20]: pd.concat(DFs)
+    Out[20]: 
+       FIRST_NAME LAST_NAME GENDER  AGE HAIR_COLOR EYE_COLOR  RAND_INT
+    10    Michael     Smith      M   37      black     hazel         4
+    11    Jessica    Rabbit      F   19      black      blue         7
+    12      Molly    Bryant      F   21   brunette      blue         2
+    13      Jaime  Anderson      F   46   brunette     green         9
+    5      Thomas     Moore      M   60   brunette      blue         5
+    6     Natalie    Potter      F   21   brunette     green         5
+    7      Brenda     Jones      F   18     blonde     brown         6
+    8     Michael     Smith      M   58   brunette     brown         1
+    9    Jennifer     Smith      F   36      black     brown         2
+    0    Jennifer     Jones      F   27      black     brown         2
+    1       Jaime   Roberts      M   32   brunette     hazel         9
+    2     Michael   Johnson      M   55        red     green         3
+    3        Mary     Adams      F   42     blonde      blue         9
+    4      Robert  Phillips      M   37     blonde     brown         6
+
+#### apply
+
+Frequently, we don't just want to edit the data we already have, but we want to generate new data from it. For this we use `.apply`.
+
+For instance, say we have some basic dimensional data for a few recangles:
+
+    In [0]: rectangles = [{ 'height': 40, 'width': 10 },
+                          { 'height': 20, 'width': 9 },
+                          { 'height': 3.4, 'width': 4 }]
+    In [1]: df = pd.DataFrame(rectangles)
+    In [2]: df
+    Out[2]:
+       height  width
+    0    40.0     10
+    1    20.0      9
+    2     3.4      4
+
+But, for whatever reason, we need to know the total distance these rectangles take up in each direction. Well, one option is to use `.apply` to sum all of the heights and widths separately. In Pandas, when we `apply` by row, that is acting along the `0` axis:
+
+    In [3]: df.apply(np.sum, axis=0)
+    Out[3]:
+    height    63.4
+    width     23.0
+    dtype: float64
+
+    In [4]: df.loc[3] = df.apply(np.sum, axis=0)
+    In [5]: df
+    Out[5]:
+       height  width
+    0    40.0   10.0
+    1    20.0    9.0
+    2     3.4    4.0
+    3    63.4   23.0
+
+Well, now that we have all the dimenstions, we might want to know the area of our rectangles (and the all-encompassing outer rectange). For that we will use `df.apply()` again, but this time by column (which is axis 1 in Pandas speak).
+
+    In [6]: df.apply(np.sum, axis=1)
+    Out[6]:
+    0    50.0
+    1    29.0
+    2     7.4
+    3    86.4
+    dtype: float64
+
+    In [7]: df['area'] = df.apply(np.sum, axis=1)
+    In [8]: df
+    Out[8]:
+       height  width  area
+    0    40.0   10.0  50.0
+    1    20.0    9.0  29.0
+    2     3.4    4.0   7.4
+    3    63.4   23.0  86.4
+
+Of course, it doesn't just have to be `np.sum` that is the function passed into `df.apply()`. Really, any function, method, or lambda that takes in a sequence will do. Thus the power of `.apply()`.
+
+
+### Querying Data
 
 Pandas allows you to query a `DataFrame`, much like you might query a database. Below are some basic queries.
 
@@ -729,242 +1022,6 @@ First you have to use `eval` to convert the text to Python code:
 
 When the Python interpretter converts the text you write into executable bytecode, it uses the exact same tools that are available to you through `eval`.
 
-## More Dataframe Operations
-
-#### Merge
-
-`merge` is the pandas equivalent to a SQL join. Like SQL joins, a `merge` can be "left", "right", "inner", or "outer".
-
-First, we need some data to merge into our client `DataFrame` above:
-
-    In [108]: genders = pd.DataFrame({'GENDER': ['M', 'F'], 'GENDER_LONG': ['male', 'female']})
-    In [109]: genders
-    Out[109]: 
-      GENDER GENDER_LONG
-    0      M        male
-    1      F      female
-
-Okay, and here we `merge` the client `DataFrame` with our new `genders` `DataFrame` to add information to the former:
-
-    In [110]: pd.merge(left=df, right=genders, how='left', on=['GENDER'])
-    Out[110]: 
-       FIRST_NAME LAST_NAME GENDER  AGE HAIR_COLOR EYE_COLOR  RAND_INT GENDER_LONG
-    0    Jennifer     Jones      F   27      black     brown         2      female
-    1       Jaime   Roberts      M   32   brunette     hazel         9        male
-    2     Michael   Johnson      M   55        red     green         3        male
-    3        Mary     Adams      F   42     blonde      blue         9      female
-    4      Robert  Phillips      M   37     blonde     brown         6        male
-    5      Thomas     Moore      M   60   brunette      blue         5        male
-    6     Natalie    Potter      F   21   brunette     green         5      female
-    7      Brenda     Jones      F   18     blonde     brown         6      female
-    8     Michael     Smith      M   58   brunette     brown         1        male
-    9    Jennifer     Smith      F   36      black     brown         2      female
-    10    Michael     Smith      M   37      black     hazel         4        male
-    11    Jessica    Rabbit      F   19      black      blue         7      female
-    12      Molly    Bryant      F   21   brunette      blue         2      female
-    13      Jaime  Anderson      F   46   brunette     green         9      female
-    
-When using `merge`, you can create one-to-many relationships:
-
-    In [111]: genders = pd.DataFrame({'GENDER': ['M', 'M', 'F'], 'GENDER_LONG': ['male', 'man', 'female']})
-    In [111]: genders
-    Out[111]: 
-    GENDER GENDER_LONG
-    0      M        male
-    1      M         man
-    2      F      female
-    
-    In [112]: pd.merge(right=df, left=genders, how='left', on=['GENDER'])
-    Out[112]: 
-       GENDER GENDER_LONG FIRST_NAME LAST_NAME  AGE HAIR_COLOR EYE_COLOR  RAND_INT
-    0       M        male      Jaime   Roberts   32   brunette     hazel         9
-    1       M        male    Michael   Johnson   55        red     green         3
-    2       M        male     Robert  Phillips   37     blonde     brown         6
-    3       M        male     Thomas     Moore   60   brunette      blue         5
-    4       M        male    Michael     Smith   58   brunette     brown         1
-    5       M        male    Michael     Smith   37      black     hazel         4
-    6       M         man      Jaime   Roberts   32   brunette     hazel         9
-    7       M         man    Michael   Johnson   55        red     green         3
-    8       M         man     Robert  Phillips   37     blonde     brown         6
-    9       M         man     Thomas     Moore   60   brunette      blue         5
-    10      M         man    Michael     Smith   58   brunette     brown         1
-    11      M         man    Michael     Smith   37      black     hazel         4
-    12      F      female   Jennifer     Jones   27      black     brown         2
-    13      F      female       Mary     Adams   42     blonde      blue         9
-    14      F      female    Natalie    Potter   21   brunette     green         5
-    15      F      female     Brenda     Jones   18     blonde     brown         6
-    16      F      female   Jennifer     Smith   36      black     brown         2
-    17      F      female    Jessica    Rabbit   19      black      blue         7
-    18      F      female      Molly    Bryant   21   brunette      blue         2
-    19      F      female      Jaime  Anderson   46   brunette     green         9
-
-The above one-to-many relationship could be what you want. But this is a common failure mode to watch out for during a `merge`. In the case above, we ended up with 19 final records instead of the original 13. It is not hard to imagine a case where these extra 6 records were not intentional or desired. It's just something to think about when merging.
-    
-#### Groupby
-
-The `groupby` allows you to aggregate a DataFrame object by field and then, possibly, map the results with some function. Here are some example use cases:
-
- * A big box company groups it's purchase log by item category (men's clothing, women's clothing, home furnishings, etc.) and region, then applys `sum` to the sale prices. This creates a break down of sales volume by region and category.
-
- * A forum website groups its members by age and topics of interest. They they apply `min`/`max` to the age for each topic. This gives the website creators some idea of trendy topics for different age groups.
-
-Let's group our client list by last name and then count the number of people with each eye color:
-
-    In [103]: df.groupby(['LAST_NAME', 'EYE_COLOR'], as_index=False)['EYE_COLOR'].count()
-    Out[103]: 
-    LAST_NAME  EYE_COLOR
-    Adams      blue         1
-    Anderson   green        1
-    Bryant     blue         1
-    Johnson    green        1
-    Jones      brown        2
-    Moore      blue         1
-    Phillips   brown        1
-    Potter     green        1
-    Rabbit     blue         1
-    Roberts    hazel        1
-    Smith      brown        2
-               hazel        1
-    dtype: int64
-
-Or let's group all of our clients by first name and count how many have the same hair color (yes, some of these examples are a little contrived):
-    
-    In [104]: df.groupby(['FIRST_NAME', 'HAIR_COLOR'], as_index=False)['HAIR_COLOR'].count()
-    Out[104]: 
-    FIRST_NAME  HAIR_COLOR
-    Brenda      blonde        1
-    Jaime       brunette      2
-    Jennifer    black         2
-    Jessica     black         1
-    Mary        blonde        1
-    Michael     black         1
-                brunette      1
-                red           1
-    Molly       brunette      1
-    Natalie     brunette      1
-    Robert      blonde        1
-    Thomas      brunette      1
-    dtype: int64
-
-And just as one final exercise, let's insert a "random integer" field to our data frame:
-
-    In [105]: df['RAND_INT'] = np.random.randint(1, 10, size=len(df))
-    In [106]: df
-    Out[106]: 
-       FIRST_NAME LAST_NAME GENDER  AGE HAIR_COLOR EYE_COLOR  RAND_INT
-    0    Jennifer     Jones      F   27      black     brown         8
-    1       Jaime   Roberts      M   32      brown     hazel         5
-    2     Michael   Johnson      M   55        red     green         6
-    3        Mary     Adams      F   42     blonde      blue         9
-    4      Robert  Phillips      M   37     blonde     brown         6
-    5      Thomas     Moore      M   60      brown      blue         2
-    6     Natalie    Potter      F   21      brown     green         7
-    7      Brenda     Jones      F   18     blonde     brown         6
-    8     Michael     Smith      M   58      brown     brown         2
-    9    Jennifer     Smith      F   36      black     brown         1
-    10    Michael     Smith      M   37      black     hazel         1
-    11    Jessica    Rabbit      F   19      black      blue         4
-    12      Molly    Bryant      F   21      brown      blue         7
-    13      Jaime  Anderson      F   46      brown     green         8
-
-Now we can group our data by last name and gender and sum the random integers in each group:
-
-    In [107]: df.groupby(['LAST_NAME', 'GENDER'], as_index=False)['RAND_INT'].sum()
-    Out[107]: 
-       LAST_NAME GENDER  RAND_INT
-    0      Adams      F         9
-    1   Anderson      F         9
-    2     Bryant      F         2
-    3    Johnson      M         3
-    4      Jones      F         8
-    5      Moore      M         5
-    6   Phillips      M         6
-    7     Potter      F         5
-    8     Rabbit      F         7
-    9    Roberts      M         9
-    10     Smith      F         2
-    11     Smith      M         5
-
-#### Sort
-
-The pandas `DataFrame.sort()` allows you to sort a DataFrame object by one or more columns. In the case of multiple columns, the order you provide them will be the order of priority for sorting. For instance:
-
-    In [117]: df.sort(['LAST_NAME', 'FIRST_NAME', 'AGE'])
-    Out[117]: 
-        FIRST_NAME LAST_NAME GENDER  AGE HAIR_COLOR EYE_COLOR  RAND_INT
-    3        Mary     Adams      F   42     blonde      blue         9
-    13      Jaime  Anderson      F   46   brunette     green         9
-    12      Molly    Bryant      F   21   brunette      blue         2
-    2     Michael   Johnson      M   55        red     green         3
-    7      Brenda     Jones      F   18     blonde     brown         6
-    0    Jennifer     Jones      F   27      black     brown         2
-    5      Thomas     Moore      M   60   brunette      blue         5
-    4      Robert  Phillips      M   37     blonde     brown         6
-    6     Natalie    Potter      F   21   brunette     green         5
-    11    Jessica    Rabbit      F   19      black      blue         7
-    1       Jaime   Roberts      M   32   brunette     hazel         9
-    9    Jennifer     Smith      F   36      black     brown         2
-    10    Michael     Smith      M   37      black     hazel         4
-    8     Michael     Smith      M   58   brunette     brown         1
-
-Notice the order of priority in the sorting. The three Smiths are last alphabetically for last names. But the two Michael Smiths come after Jennifer Smith, because of their first name. And finally, one Michael Smith comes after the other due to their ages.
-
-#### append
-
-You can use `append` to add one DataFrame object onto the end of another:
-
-    In [12]: df1 = df[:8]
-    In [13]: df2 = df[8:]
-    In [14]: df_appended = df2.append(df1)
-    In [15]: df_appended
-    Out[15]: 
-       FIRST_NAME LAST_NAME GENDER  AGE HAIR_COLOR EYE_COLOR  RAND_INT
-    8     Michael     Smith      M   58   brunette     brown         1
-    9    Jennifer     Smith      F   36      black     brown         2
-    10    Michael     Smith      M   37      black     hazel         4
-    11    Jessica    Rabbit      F   19      black      blue         7
-    12      Molly    Bryant      F   21   brunette      blue         2
-    13      Jaime  Anderson      F   46   brunette     green         9
-    0    Jennifer     Jones      F   27      black     brown         2
-    1       Jaime   Roberts      M   32   brunette     hazel         9
-    2     Michael   Johnson      M   55        red     green         3
-    3        Mary     Adams      F   42     blonde      blue         9
-    4      Robert  Phillips      M   37     blonde     brown         6
-    5      Thomas     Moore      M   60   brunette      blue         5
-    6     Natalie    Potter      F   21   brunette     green         5
-    7      Brenda     Jones      F   18     blonde     brown         6
-
-Notice the order is preserved in append, based on which DataFrame object is being appended to.
-
-#### concat
-
-You can use `concat` to append two or more DataFrame objects:
-
-    In [15]: DFs = []
-    In [16]: DFs.append(df[10:])
-    In [17]: DFs.append(df[5:10])
-    In [18]: DFs.append(df[0:5])
-    
-    In [19]: len(DFs)
-    Out[19]: 3
-    
-    In [20]: pd.concat(DFs)
-    Out[20]: 
-       FIRST_NAME LAST_NAME GENDER  AGE HAIR_COLOR EYE_COLOR  RAND_INT
-    10    Michael     Smith      M   37      black     hazel         4
-    11    Jessica    Rabbit      F   19      black      blue         7
-    12      Molly    Bryant      F   21   brunette      blue         2
-    13      Jaime  Anderson      F   46   brunette     green         9
-    5      Thomas     Moore      M   60   brunette      blue         5
-    6     Natalie    Potter      F   21   brunette     green         5
-    7      Brenda     Jones      F   18     blonde     brown         6
-    8     Michael     Smith      M   58   brunette     brown         1
-    9    Jennifer     Smith      F   36      black     brown         2
-    0    Jennifer     Jones      F   27      black     brown         2
-    1       Jaime   Roberts      M   32   brunette     hazel         9
-    2     Michael   Johnson      M   55        red     green         3
-    3        Mary     Adams      F   42     blonde      blue         9
-    4      Robert  Phillips      M   37     blonde     brown         6
     
 ## Writing Files
 
@@ -978,6 +1035,7 @@ Writing your DataFrame object to a common format file is similar to reading file
 #### Other Data Formats
 
 For more information on writing to other data formats, consult the [pandas manual](http://pandas.pydata.org/pandas-docs/stable/api.html#serialization-io-conversion).
+
 
 ## Problem Sets
 
