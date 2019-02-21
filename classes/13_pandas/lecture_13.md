@@ -729,24 +729,25 @@ But, for whatever reason, we need to know the total distance these rectangles ta
 
 Well, now that we have all the dimenstions, we might want to know the area of our rectangles (and the all-encompassing outer rectange). For that we will use `df.apply()` again, but this time by column (which is axis 1 in Pandas speak).
 
-    In [6]: df.apply(np.sum, axis=1)
-    Out[6]:
-    0    50.0
-    1    29.0
-    2     7.4
-    3    86.4
+    In [6]: multiply = lambda lst: lst[0] * lst[1]
+    In [7]: df.apply(multiply, axis=1)
+    Out[7]:
+    0    400.0
+    1    180.0
+    2     13.6
+    3   1458.2
     dtype: float64
 
-    In [7]: df['area'] = df.apply(np.sum, axis=1)
-    In [8]: df
-    Out[8]:
+    In [8]: df['area'] = df.apply(multiply, axis=1)
+    In [9]: df
+    Out[9]:
        height  width  area
-    0    40.0   10.0  50.0
-    1    20.0    9.0  29.0
-    2     3.4    4.0   7.4
-    3    63.4   23.0  86.4
+    0    40.0   10.0   400.0
+    1    20.0    9.0   180.0
+    2     3.4    4.0    13.6
+    3    63.4   23.0  1458.2
 
-Of course, it doesn't just have to be `np.sum` that is the function passed into `df.apply()`. Really, any function, method, or lambda that takes in a sequence will do. Thus the power of `.apply()`.
+You can use basically *any* function inside your `.apply()`, which is what makes this so powerful.
 
 
 ### Querying Data
