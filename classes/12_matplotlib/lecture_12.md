@@ -643,6 +643,8 @@ This lecture is also available as a series of Jupyter (iPython) notebooks. Which
 6. [Interactive Plots](interactive_plots.py) - example Python script
 7. [Interactive Plots](interactive_plots2.py) - example Python script (OOP)
 
+You can even download these Notebooks and run them yourself! Have fun with them, play around with the plots. It's the best way to learn.
+
 
 ## Problem Set
 
