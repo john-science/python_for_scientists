@@ -631,6 +631,19 @@ Sometimes matplotlib will just refuse to work at all. It turns out, sometimes, y
 
 All you need to do is set the "backend" for matplotlib, so it knows what you are doing. It's just two lines. Hopefully you don't run into this problem, but if you do, look at the full explanation and guide [here](http://matplotlib.org/faq/usage_faq.html#what-is-a-backend).
 
+## Matplotlib through Jupyter Notebooks
+
+This lecture is also available as a series of Jupyter (iPython) notebooks. Which you can see rendered in all their beauty here. They cover somewhat more information than what is above, with plots and all included right there.
+
+1. [Line Plots](1_line_plots.ipynb)
+2. [Scatter Plots](2_points_and_errorbars.ipynb) - and Error Bars
+3. [Histograms](3_histograms.ipynb)
+4. [Multi-Panel Figures](4_multipanel_figures.ipynb)
+5. [Stylizing Plots](5_stylizing_plots.ipynb)
+6. [Interactive Plots](interactive_plots.py) - example Python script
+7. [Interactive Plots](interactive_plots2.py) - example Python script (OOP)
+
+
 ## Problem Set
 
  * [Example Matplot Problems](problem_set_1_matplotlib.md)
