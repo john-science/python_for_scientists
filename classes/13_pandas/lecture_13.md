@@ -269,6 +269,30 @@ Or, to get the transpose of your data:
 
 ### Slicing a DataFrame
 
+For this section, we are going to load some data from a CSV (in the same folder as this lecture):
+
+    In [1]: df = pd.read_csv("client_list.csv")
+    In [2]: df
+    Out[2]: 
+       first_name LAST_NAME gender  Age Hair_COLOR eye_Color
+    0    Jennifer     Jones      F   27      black     brown
+    1       Jaime   Roberts      M   32      brown     hazel
+    2     Michael   Johnson      M   55        red     green
+    3        Mary     Adams      F   42     blonde      blue
+    4      Robert  Phillips      M   37     blonde     brown
+    5      Thomas     Moore      M   60      brown      blue
+    6     Natalie    Potter      F   21      brown     green
+    7      Brenda     Jones      F   18     blonde     brown
+    8     Michael     Smith      M   58      brown     brown
+    9    Jennifer     Smith      F   36      black     brown
+    10    Michael     Smith      M   37      black     hazel
+    11    Jessica    Rabbit      F   19      black      blue
+    12      Molly    Bryant      F   21      brown      blue
+    13      Jaime  Anderson      F   46      brown     green
+
+Ugh, those column headers are ugly. We'll have to fix that.
+   
+
 #### Column Names in All Caps
 
 It is common in Pandas to convert column headers to all caps. This is because data in the real world is messy and inconsistently labeled columns headers can cost you time.
