@@ -134,6 +134,7 @@ We could write this very quickly in Python for 1D arrays:
 def median_1d(a):
     ''' Find the median value in a 1D array '''
     s = sorted(a)
+    length = len(s)
     mid = length // 2  # integer division
 
     if len(s) % 2 == 1:
