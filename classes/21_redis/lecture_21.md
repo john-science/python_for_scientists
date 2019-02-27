@@ -78,14 +78,80 @@ Setting the variable `hello` to the string `World` is easy:
     127.0.0.1:6379> get hello
     "World"
 
+So now we can store a key/value pair of strings we want:
+
+    127.0.0.1:6379> set big_lebowski "The dude abides"
+    OK
+    127.0.0.1:6379> get big_lebowski
+    "The dude abides"
+
+Similarly, we can store integers in Redis:
+
+    127.0.0.1:6379> set count 1
+    OK
+    127.0.0.1:6379> get count
+    "1"
+
+But for integers we have the ability to "increment by 1" with the `incr` command:
+
+    127.0.0.1:6379> incr count
+    (integer) 2
+    127.0.0.1:6379> get count
+    "2"
+    127.0.0.1:6379> incr count
+    (integer) 3
+    127.0.0.1:6379> incr count
+    (integer) 4
+    127.0.0.1:6379> get count
+    "4"
+
+Those are really the two primitive types worth trusting in Redis, though it does store off doubles (and calls them float, just like Python):
+
+    127.0.0.1:6379> set pi 3.14159265
+    OK
+    127.0.0.1:6379> incrbyfloat pi 1.111
+    "4.25259265"
+    127.0.0.1:6379> get pi
+    "4.25259265"
+
+### A Couple More Basics
+
+First off, you can `SET` and `GET` more than one thing a time use multi-set (`MSET`) and multi-get (`MGET`):
+
+    127.0.0.1:6379> MSET abc 1 def 3
+    OK
+    127.0.0.1:6379> MGET def abc
+    1) "3"
+    2) "1"
+
+Now that we have our primitive data types out of the way, Redis provides us a handy way to store nested key/value pairs: hashes. Using hashes looks a lot like `SET` and `GET` for primitive types above, but you use `MSET` and `MGET`
+
+> TODO
+
+Okay, but you're a busy person, and when you interact with your Redis database you don't just want to send one tiny little command you have a LOT of things you want to do all in one go. For that, you will use `MULTI` to start you series of commands and `EXEC` to execute everything all in one go:
+
+    127.0.0.1:6379> MULTI
+    OK
+    127.0.0.1:6379> set hi mom
+    QUEUED
+    127.0.0.1:6379> incr count
+    QUEUED
+    127.0.0.1:6379> EXEC
+    1) OK
+    2) (integer) 6
+
+So, if all you wanted to do was store key/value pairs that were simple strings or primitive types, you'd be done here. But since we almost always need more powerful datastructures than that to store our data, let's take a look at two of the other, super powerful and fast, data types that come with Redis.
+
 
 ### Lists
 
 TODO
 
+
 ### Sets
 
 TODO
+
 
 ## Other Important Commands
 
