@@ -63,13 +63,17 @@ Redis stores key-values pairs. The keys can be (simple) strings, but the the val
 
 * integer
 * string
+* hash
 * list
 * set
-* sorted sets
+* sorted set
 
 So let's use some variables of each of these types and see how they work.
 
+
 ### Simple Types
+
+#### Strings
 
 Setting the variable `hello` to the string `World` is easy:
 
@@ -84,6 +88,8 @@ So now we can store a key/value pair of strings we want:
     OK
     127.0.0.1:6379> get big_lebowski
     "The dude abides"
+
+#### Integers
 
 Similarly, we can store integers in Redis:
 
@@ -105,6 +111,8 @@ But for integers we have the ability to "increment by 1" with the `incr` command
     127.0.0.1:6379> get count
     "4"
 
+#### Floats
+
 Those are really the two primitive types worth trusting in Redis, though it does store off doubles (and calls them float, just like Python):
 
     127.0.0.1:6379> set pi 3.14159265
@@ -114,7 +122,21 @@ Those are really the two primitive types worth trusting in Redis, though it does
     127.0.0.1:6379> get pi
     "4.25259265"
 
-### A Couple More Basics
+#### Hashes
+
+Now that we have our primitive data types out of the way, Redis provides us a handy way to store nested key/value pairs: hashes. Similar to before, you can set and get hashes with `HSET` and `HVALS`/`HKEYS`:
+
+    127.0.0.1:6379> hset name first "Emmy" last "Noether"
+    (integer) 0
+    127.0.0.1:6379> hkeys name
+    1) "first"
+    2) "last"
+    127.0.0.1:6379> hvals name
+    1) "Emmy"
+    2) "Noether"
+
+
+### Doing Multiple Things at Once
 
 First off, you can `SET` and `GET` more than one thing a time use multi-set (`MSET`) and multi-get (`MGET`):
 
@@ -123,10 +145,6 @@ First off, you can `SET` and `GET` more than one thing a time use multi-set (`MS
     127.0.0.1:6379> MGET def abc
     1) "3"
     2) "1"
-
-Now that we have our primitive data types out of the way, Redis provides us a handy way to store nested key/value pairs: hashes. Using hashes looks a lot like `SET` and `GET` for primitive types above, but you use `MSET` and `MGET`
-
-> TODO
 
 Okay, but you're a busy person, and when you interact with your Redis database you don't just want to send one tiny little command you have a LOT of things you want to do all in one go. For that, you will use `MULTI` to start you series of commands and `EXEC` to execute everything all in one go:
 
@@ -145,7 +163,107 @@ So, if all you wanted to do was store key/value pairs that were simple strings o
 
 ### Lists
 
-TODO
+Just like Python, Redis supports a list data structure. (And, just like Python, this is a [doubly-linked list](https://en.wikipedia.org/wiki/Doubly_linked_list).) To interact with a list in Redis you can "push" new elements onto the left side of the list (`LPUSH`) or the right side of the list (`RPUSH`) or you can take one element off the left side of the list (`LPOP`) or the right side of the list (`RPOP`). And we can see what elements are on the list using "list range" (`LRANGE`). Let's try it.
+
+We create a new list by "push"ing elements onto the list, just like we would if it already existed:
+
+    127.0.0.1:6379> rpush rainbow blue green yellow
+    (integer) 3
+
+Okay, but now we want the ability to view the elements of the list, which we do with the `LRANGE` function:
+
+    127.0.0.1:6379> lrange rainbow 0 -1
+    1) "blue"
+    2) "green"
+    3) "yellow"
+
+That should seem *really* similar to indexing a list in Python. Except in Redis there are no defaults, so you explicitly have to say the first and last index you want to see:
+
+    127.0.0.1:6379> lrange rainbow 0 1
+    1) "blue"
+    2) "green"
+    127.0.0.1:6379> lrange rainbow 0 111
+    1) "blue"
+    2) "green"
+    3) "yellow"
+
+But, again just like Python, you can also use negative numbers to count from the right end of the list:
+
+    127.0.0.1:6379> lrange rainbow 1 -1
+    1) "green"
+    2) "yellow"
+    127.0.0.1:6379> lrange rainbow 1 -2
+    1) "green"
+
+Cool, so let's say we want to add more elements to the right side of the list:
+
+    127.0.0.1:6379> rpush rainbow orange
+    (integer) 4
+    127.0.0.1:6379> rpush rainbow red
+    (integer) 5
+    127.0.0.1:6379> lrange rainbow 0 -1
+    1) "blue"
+    2) "green"
+    3) "yellow"
+    4) "orange"
+    5) "red"
+
+Likewise, we can add elements to the left side of the list:
+
+    127.0.0.1:6379> lpush rainbow indigo
+    (integer) 6
+    127.0.0.1:6379> lpush rainbow violet
+    (integer) 7
+    127.0.0.1:6379> lrange rainbow 0 -1
+    1) "violet"
+    2) "indigo"
+    3) "blue"
+    4) "green"
+    5) "yellow"
+    6) "orange"
+    7) "red"
+
+Some of these command names are a little obtuse if you don't already know what they are. Sure. But once you know "Left Push" == "LPUSH", they are super easy to use. So there's some trade off there.
+
+Unlike Python lists, which you can split and chop in lots of ways, Redis lists are only really editable in one fast, efficient way: by popping elments off either end of the list. For instance, we can *pop* elements off the left end of the list. That will return a single element to us to use, but also shorten the list by one. For example:
+
+    127.0.0.1:6379> lpop rainbow
+    "violet"
+    127.0.0.1:6379> lrange rainbow 0 -1
+    1) "indigo"
+    2) "blue"
+    3) "green"
+    4) "yellow"
+    5) "orange"
+    6) "red"
+    127.0.0.1:6379> lpop rainbow
+    "indigo"
+    127.0.0.1:6379> lrange rainbow 0 -1
+    1) "blue"
+    2) "green"
+    3) "yellow"
+    4) "orange"
+    5) "red"
+
+It works the same way for *popping* things off the right side of the list:
+
+    127.0.0.1:6379> rpop rainbow
+    "red"
+    127.0.0.1:6379> lrange rainbow 0 -1
+    1) "blue"
+    2) "green"
+    3) "yellow"
+    4) "orange"
+    127.0.0.1:6379> rpop rainbow
+    "orange"
+    127.0.0.1:6379> lrange rainbow 0 -1
+    1) "blue"
+    2) "green"
+    3) "yellow"
+
+List in Redis, just like in Python, are super handy and easy to use. But the slightly more limited functionality in Redis means that Redis list are also super fast. Which is nice.
+
+*SIDE NOTE*: For the more computer science inclined, it is useful to note that people typically use Redis lists as either [queues](https://en.wikipedia.org/wiki/Queue_(abstract_data_type)) or [stacks](https://en.wikipedia.org/wiki/Stack_(abstract_data_type)). Remember, a queue is [FIFO](https://en.wikipedia.org/wiki/Queue_(abstract_data_type)) so it would mean designing your code to use `RPUSH` and `LPOP`. And to create a [stack (LIFO)](https://en.wikipedia.org/wiki/Stack_(abstract_data_type)) you would just use `LPUSH` and `LPOP`.
 
 
 ### Sets
