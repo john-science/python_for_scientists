@@ -57,7 +57,7 @@ You can boot up the Redis CLI from the command lineL
     $ redis-cli
     127.0.0.1:6379>
 
-## CLI Commands, by Data Structure
+## Basic Redis Commands
 
 Redis stores key-values pairs. The keys can be (simple) strings, but the the values can be one of a few (really performant) data structures:
 
@@ -359,11 +359,15 @@ TODO
 
 TODO
 
-## CLI Commands, by Data Structure
+## Basic Redis Commands
 
 TODO
 
 ### Simple Types
+
+TODO
+
+### Hashes
 
 TODO
 
@@ -372,6 +376,10 @@ TODO
 TODO
 
 ### Sets
+
+TODO
+
+### Doing Multiple Things at Once
 
 TODO
 
