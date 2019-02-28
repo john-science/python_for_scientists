@@ -66,7 +66,6 @@ Redis stores key-values pairs. The keys can be (simple) strings, but the the val
 * hash
 * list
 * set
-* sorted set
 
 So let's use some variables of each of these types and see how they work.
 
@@ -268,7 +267,81 @@ List in Redis, just like in Python, are super handy and easy to use. But the sli
 
 ### Sets
 
-TODO
+Redis sets are must like Python sets, they are an unordered collection of unique objects. To create a new set, or add elements to an existing one, use `SADD`, and determine what elments are already in a set, use `SMEMBERS`:
+
+    127.0.0.1:6379> sadd tolkien elves wizards
+    (integer) 2
+    127.0.0.1:6379> smembers tolkien
+    1) "wizards"
+    2) "elves"
+
+But uniquenes is the name of the game here. It doesn't matter how many times we add a string to the set, it will still only ever be in the set once:
+
+    127.0.0.1:6379> sadd tolkien elves
+    (integer) 0
+    127.0.0.1:6379> sadd tolkien elves
+    (integer) 0
+    127.0.0.1:6379> sadd tolkien wizards
+    (integer) 0
+    127.0.0.1:6379> smembers tolkien
+    1) "wizards"
+    2) "elves"
+    127.0.0.1:6379> sadd tolkien swords
+    (integer) 1
+    127.0.0.1:6379> smembers tolkien
+    1) "swords"
+    2) "wizards"
+    3) "elves"
+
+Just to help give us another exampl, let's create another set:
+
+    127.0.0.1:6379> sadd rowling wizards wands goblins
+    (integer) 3
+    127.0.0.1:6379> smembers rowling
+    1) "wands"
+    2) "wizards"
+    3) "goblins"
+    127.0.0.1:6379> 
+    127.0.0.1:6379> 
+
+Okay, now that we have two sets we can start comparing them, using all the basic set operations. For instance, if we want to see what elements two sets have in common (the "interesection" of the sets), we use `SINTER`:
+
+    127.0.0.1:6379> sinter tolkien rowling
+    1) "wizards"
+
+To figure out what elements are in the left set that aren't in the right set, (the "difference"), we use `SDIFF`:
+
+    127.0.0.1:6379> sdiff tolkien rowling
+    1) "elves"
+    2) "swords"
+
+And there is no "right difference", so to find that we have to switch the order of the sets being compared:
+
+    127.0.0.1:6379> sdiff rowling tolkien
+    1) "wands"
+    2) "goblins"
+
+To make a big set with all the elements of both, we use `SUNION`. But the result is still a set, so notice how "wizards" still only appears once:
+
+    127.0.0.1:6379> sunion tolkien rowling
+    1) "wizards"
+    2) "elves"
+    3) "swords"
+    4) "wands"
+    5) "goblins"
+
+There are lots of less commmonly used set operations you can look up, but one that seems useful to me is the ability to automatically store off the union of two sets as a new set:
+
+    127.0.0.1:6379> sunionstore fantasy tolkien rowling
+    (integer) 5
+    127.0.0.1:6379> smembers fantasy
+    1) "wizards"
+    2) "elves"
+    3) "swords"
+    4) "wands"
+    5) "goblins"
+
+Set theory is a big topic, and there are lots of little subtleties we are glossing over, but this is the major flavor of sets in Redis. They are really easy to use and very performant.
 
 
 ## Other Important Commands
