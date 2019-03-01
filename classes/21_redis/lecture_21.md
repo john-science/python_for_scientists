@@ -346,18 +346,70 @@ Set theory is a big topic, and there are lots of little subtleties we are glossi
 
 ## Other Important Commands
 
+Okay, so now we know how to use the basic Redis data structures. Let's learn some more of the kinds of tools we'll want to do our work.
+
+#### Choosing a Namespace
+
 Redis doesn't call them "databases", it calls them "namespaces". It's not important distinction. By default Redis dumps you into the `0` namespace. But you can select a namespace by using `SELECT`.
 
-TODO: EXPIRY and such
+#### Which keys exist?
+
+If you want to list all the keys that exist in your current namespace just type:
+
+    127.0.0.1:6379> KEYS *
+    1) "rowling"
+    2) "hello"
+    3) "hi"
+    4) "bond"
+    5) "rainbow"
+    6) "def"
+    ...
+
+But caveat emptor, if there are a million keys in your namespace you just returned way too much stuff. A better solution might be to change your logic to just test if  single key exists. The command `EXISTS` returns `1` for "true" and `0` for "false":
+
+    127.0.0.1:6379> EXISTS rowling
+    (integer) 1
+    127.0.0.1:6379> EXISTS tolkien
+    (integer) 1
+    127.0.0.1:6379> EXISTS Pratchett
+    (integer) 0
+
+#### Setting keys to disappear on timeout
+
+If you want a key to disappear of N seconds, you can you `EXPIRE`:
+
+    127.0.0.1:6379> set ice "I'm melting..."
+    OK
+    127.0.0.1:6379> expire ice 10
+    (integer) 1
+
+You can use `EXISTS` to check if the key is still there:
+
+    127.0.0.1:6379> exists ice
+    (integer) 1
+
+Now wait 11 seconds, and it is gone:
+
+    127.0.0.1:6379> exists ice
+    (integer) 0
+
+Setting and expiring keys is so common you can do both at once using the `SETEX` command:
+
+    127.0.0.1:6379> setex ice 10 "I'm melting..."
+
+If you want to know how long a key has left before it expires:
+
+    127.0.0.1:6379> ttl ice
+    7
+
+Lastly, you can stop a key from expiring at any time using `PERSIST`:
+
+    127.0.0.1:6379> persist ice
 
 
 # Redis via Python
 
-TODO
-
-## Choose Your Data Base
-
-TODO
+Above we learned about the basic Redis functionality. But this is a Python class, so let's go over all those commands an functionality again using Python through the `rq` library.
 
 ## Basic Redis Commands
 
@@ -385,8 +437,19 @@ TODO
 
 ## Other Important Commands
 
-TODO: EXPIRY and such
+TODO
 
+#### Choosing a Namespace
+
+TODO
+
+#### Which keys exist?
+
+TODO
+
+#### Setting keys to disappear on timeout
+
+TODO
 
 # Further Reading
 
