@@ -571,7 +571,7 @@ Here is a heavily customized plot, using all of the above options:
 
 ```python
 # data taking from Google Ngram Viewer
-from numpy import array
+from numpy import array, arange
 years = arange(1920, 2011, 5)
 machine_age = array([5.0, 10, 110, 190, 130, 100, 73, 55, 43, 69, 35, 30, 25, 20, 21, 18, 20, 17, 10])
 machine_age /= 1.0e6
