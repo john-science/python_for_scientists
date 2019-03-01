@@ -25,13 +25,13 @@ On my Linux box it was as easy as:
 
     sudo apt-get install redis-server
 
-#### Installing RQ
+#### Installing Redis for Python
 
-The Python library we will use to iterface with Redis is [rq](https://python-rq.org/).
+The Python library we will use to iterface with Redis is just called [Redis](https://redislabs.com/lp/python-redis/).
 
 On my Linux box installing it was as easy as:
 
-    pip install rq
+    pip install redis
 
 #### Starting Redis
 
@@ -50,7 +50,7 @@ In Linux, you can also check the status of the Redis service by doing:
 
 # Redis via the CLI
 
-First, let's learn Redis on its own terms. The Redis Command Line Interface (CLI) has over a hundred commands to drive control and operate data in Redis. We will can learn a lot about Redis by working through some of these commands. Then we will move on to learning how to do all of those same oeprations through the Python `rq` library.
+First, let's learn Redis on its own terms. The Redis Command Line Interface (CLI) has over a hundred commands to drive control and operate data in Redis. We will can learn a lot about Redis by working through some of these commands. Then we will move on to learning how to do all of those same oeprations through the Python `Redis` library.
 
 You can boot up the Redis CLI from the command lineL
 
@@ -409,11 +409,17 @@ Lastly, you can stop a key from expiring at any time using `PERSIST`:
 
 # Redis via Python
 
-Above we learned about the basic Redis functionality. But this is a Python class, so let's go over all those commands an functionality again using Python through the `rq` library.
+Above we learned about the basic Redis functionality. But this is a Python class, so let's go over all those commands an functionality again using Python through the `Redis` library.
 
 ## Basic Redis Commands
 
-TODO
+Let's learn how to use the basic Redis datastructures through Python:
+
+* integer
+* string
+* hash
+* list
+* set
 
 ### Simple Types
 
@@ -451,10 +457,17 @@ TODO
 
 TODO
 
+
+## RQ?
+
+TODO
+
+
 # Further Reading
 
  * [Redis official homepage](https://redis.io/)
  * [Redis data types](https://redis.io/topics/data-types-intro)
+ * [Redis Python library](https://redislabs.com/lp/python-redis/)
  * [rq](https://python-rq.org/) - our Python library of choice
  
 [Back to Syllabus](../../README.md)
