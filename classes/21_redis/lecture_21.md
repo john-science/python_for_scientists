@@ -411,6 +411,27 @@ Lastly, you can stop a key from expiring at any time using `PERSIST`:
 
 Above we learned about the basic Redis functionality. But this is a Python class, so let's go over all those commands an functionality again using Python through the `Redis` library.
 
+## Connecting to Redis via Python
+
+Connecting to a Redis instance is pretty easy via Python:
+
+```python
+import redis
+
+r = redis.Redis(host='hostname',
+                port=port)
+```
+
+Or, if you have a password set up:
+
+```python
+import redis
+
+r = redis.Redis(host='hostname',
+                port=port, 
+                password='password')
+```
+
 ## Basic Redis Commands
 
 Let's learn how to use the basic Redis datastructures through Python:
@@ -423,11 +444,104 @@ Let's learn how to use the basic Redis datastructures through Python:
 
 ### Simple Types
 
-TODO
+#### Strings
 
-### Hashes
+Setting the variable `hello` to the string `World` is easy:
 
-TODO
+```python
+r.set("hello", "world")
+r.get("hello")
+# world
+```
+
+So now we can store a key/value pair of strings we want:
+
+```python
+r.set("big_lebowski", "The dude abides")
+r.get("big_lebowski")
+# "The dude abides"
+```
+
+#### Integers
+
+Similarly, we can store integers in Redis:
+
+```python
+r.set("count", 1)
+# True
+r.get("count")
+# 1
+```
+
+But for integers we have the ability to "increment by 1" with the `incr` command:
+
+```python
+r.incr('count')
+# 2
+r.get("count")
+# 2
+r.incr('count')
+# 3
+r.incr('count')
+# 4
+r.get("count")
+# 4
+```
+
+#### Floats
+
+Those are really the two primitive types worth trusting in Redis, though it does store off doubles (and calls them float, just like Python):
+
+```python
+r.set("pi", 3.14159265)
+r.incrbyfloat('pi', 1.111)
+r.get("count")
+# 4.25259265
+```
+
+#### Hashes
+
+Now that we have our primitive data types out of the way, Redis provides us a handy way to store nested key/value pairs: hashes. Similar to before, you can set and get hashes with `HSET` and `HVALS`/`HKEYS`:
+
+```python
+r.hset("name", "first", "Emmy")
+r.hset("name", "last", "Noether")
+r.hkeys("name")
+# ["first", "last"]
+r.hvals("name")
+# ["Emmy", "Noether"]
+```
+
+### Doing Multiple Things at Once
+
+First off, you can `SET` and `GET` more than one thing a time use multi-set (`MSET`) and multi-get (`MGET`):
+
+```python
+```
+
+    127.0.0.1:6379> MSET abc 1 def 3
+    OK
+    127.0.0.1:6379> MGET def abc
+    1) "3"
+    2) "1"
+
+Okay, but you're a busy person, and when you interact with your Redis database you don't just want to send one tiny little command you have a LOT of things you want to do all in one go. For that, you will use `MULTI` to start you series of commands and `EXEC` to execute everything all in one go:
+
+```python
+```
+
+    127.0.0.1:6379> MULTI
+    OK
+    127.0.0.1:6379> set hi mom
+    QUEUED
+    127.0.0.1:6379> incr count
+    QUEUED
+    127.0.0.1:6379> EXEC
+    1) OK
+    2) (integer) 6
+
+So, if all you wanted to do was store key/value pairs that were simple strings or primitive types, you'd be done here. But since we almost always need more powerful datastructures than that to store our data, let's take a look at two of the other, super powerful and fast, data types that come with Redis.
+
 
 ### Lists
 
@@ -468,6 +582,7 @@ TODO
  * [Redis official homepage](https://redis.io/)
  * [Redis data types](https://redis.io/topics/data-types-intro)
  * [Redis Python library](https://redislabs.com/lp/python-redis/)
- * [rq](https://python-rq.org/) - our Python library of choice
+ * [Redis with Python tutorial](https://www.bogotobogo.com/python/python_redis_with_python.php)
+ * [rq](https://python-rq.org/) - our Python library of choice for building queues
  
 [Back to Syllabus](../../README.md)
