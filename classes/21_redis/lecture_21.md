@@ -4,11 +4,12 @@
 
 Redis is an in-memory key-value store.
 
-In theory, Redis is just a specialized, in-memory database. But because Redis has more limited storage options than most databases, it is Very Fast. It's also deliciously light-weight. Redis is typically used for:
+In theory, Redis is just a specialized, in-memory database. But because Redis has more limited storage options (only key-value pairs, not tables or whatever) it is Very Fast. It's also deliciously light-weight. Redis is typically used for:
 
 * [queues](https://en.wikipedia.org/wiki/Queueing_theory)
 * [caches](https://en.wikipedia.org/wiki/Cache_(computing))
 * [pub / subs](https://en.wikipedia.org/wiki/Publish%E2%80%93subscribe_pattern)
+
 
 ## Install and Start
 
@@ -749,15 +750,59 @@ r.persist('ice')
 ```
 
 
-## RQ?
+## RQ - A Typical Redis Use Case
 
-TODO
+Since Redis is a little funny in the database world, it might be helpful to see an example of Redis getting used in practice. We are going to create a queueing system. We want the ability to send long processes at our server, and let them execute one at a time until they're all done.
+
+First, we need to install the `rq` library. It will be something like:
+
+    pip install rq
+
+Or perhaps:
+
+    conda install rq
+
+Now we need to start a "Worker", that will listen at various named queues:
+
+    rq worker high normal low
+
+Okay, now we can send jobs to queues with three different names: `high`, `medium`, or `low`.
+
+First, let's pretend we have a big function that does a lot of heavy-lifting work around the office:
+
+```python
+def my_fancy_function(data, url):
+    # ... stuff
+    return thing
+```
+
+Now we can use `rq` and Redis to send our job to the queueing system to get run:
+
+    from rq import Queue
+    from redis import Redis
+    from somewhere import my_fancy_function
+
+    # tell RQ what Redis connection to use
+    redis_conn = Redis()
+    q = Queue('high', connection=redis_conn)
+
+    # delay execution of our function
+    job = q.enqueue(my_fancy_function, big_data, 'http://www.example.com')
+    print(job.result)   # => None
+
+    # now, wait a while, until the worker is finished
+    time.sleep(10)
+    print(job.result)   # lots of exiciting things
+
+And, of course, the function you're trying to run might not return anything. It might just write a lot of data to text files, or create a bunch of plots. In which case, you may still want to return an error code, just to make sure you know if everything ran all right.
+
+But that's it! You now have a queueing system that is infinitely flexible, totally free, and easy to use. Redis made it possible.
 
 
 # Further Reading
 
  * [Redis official homepage](https://redis.io/)
- * [Redis data types](https://redis.io/topics/data-types-intro)
+ * [Redis data types](https://redis.io/topics/data-types-intro)cl
  * [Redis Python library](https://redislabs.com/lp/python-redis/)
  * [Redis with Python tutorial](https://www.bogotobogo.com/python/python_redis_with_python.php)
  * [rq](https://python-rq.org/) - our Python library of choice for building queues
