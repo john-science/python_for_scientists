@@ -778,21 +778,23 @@ def my_fancy_function(data, url):
 
 Now we can use `rq` and Redis to send our job to the queueing system to get run:
 
-    from rq import Queue
-    from redis import Redis
-    from somewhere import my_fancy_function
+```python
+from rq import Queue
+from redis import Redis
+from somewhere import my_fancy_function
 
-    # tell RQ what Redis connection to use
-    redis_conn = Redis()
-    q = Queue('high', connection=redis_conn)
+# tell RQ what Redis connection to use
+redis_conn = Redis()
+q = Queue('high', connection=redis_conn)
 
-    # delay execution of our function
-    job = q.enqueue(my_fancy_function, big_data, 'http://www.example.com')
-    print(job.result)   # => None
+# delay execution of our function
+job = q.enqueue(my_fancy_function, big_data, 'http://www.example.com')
+print(job.result)   # => None
 
-    # now, wait a while, until the worker is finished
-    time.sleep(10)
-    print(job.result)   # lots of exiciting things
+# now, wait a while, until the worker is finished
+time.sleep(10)
+print(job.result)   # lots of exiciting things
+```
 
 And, of course, the function you're trying to run might not return anything. It might just write a lot of data to text files, or create a bunch of plots. In which case, you may still want to return an error code, just to make sure you know if everything ran all right.
 
