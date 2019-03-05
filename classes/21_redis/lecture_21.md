@@ -520,7 +520,7 @@ First off, you can `SET` and `GET` more than one thing a time use multi-set (`MS
 ```python
 r.mset({'abc': 1, 'def': 3})
 r.mget(['abc', 'def'])
-# [b'1', b'3']
+# ['1', '3']
 ```
 
 So, if all you wanted to do was store key/value pairs that were simple strings or primitive types, you'd be done here. But since we almost always need more powerful datastructures than that to store our data, let's take a look at two of the other, super powerful and fast, data types that come with Redis.
@@ -593,7 +593,7 @@ r.lpop('rainbow')
 r.lrange('rainbow', 0, -1)
 # ['indigo', 'blue', 'green', 'yellow', 'orange', 'red']
 r.lpop('rainbow')
-# b'indigo'
+# 'indigo'
 r.lrange('rainbow', 0, -1)
 # ['blue', 'green', 'yellow', 'orange', 'red']
 ```
@@ -630,7 +630,7 @@ r.sadd('tolkien', 'elves')
 r.sadd('tolkien', 'elves')
 r.sadd('tolkien', 'wizards')
 r.smembers('tolkien')
-# {b'elves', b'wizards'}
+# {'elves', 'wizards'}
 r.sadd('tolkien', 'swords')
 r.smembers('tolkien')
 # {'elves', 'swords', 'wizards'}
