@@ -51,6 +51,7 @@ This class is not meant to provide a rigorous computer science background. To ge
   - [postgres](classes/15_dbs/lecture_15_postgres.md)
   - [sqlite3](classes/15_dbs/lecture_15_sqlite.md)
 * [MongoDB](classes/18_mongo/lecture_18_mongo.md)
+* [Redis](classes/21_redis/lecture_21.md)
 
 **Development Tools**
 
