@@ -418,8 +418,8 @@ Connecting to a Redis instance is pretty easy via Python:
 ```python
 import redis
 
-r = redis.Redis(host='hostname',
-                port=port)
+r = redis.Redis(host='localhost',
+                port=6379)
 ```
 
 Or, if you have a password set up:
@@ -517,59 +517,236 @@ r.hvals("name")
 First off, you can `SET` and `GET` more than one thing a time use multi-set (`MSET`) and multi-get (`MGET`):
 
 ```python
+r.mset({'abc': 1, 'def': 3})
+r.mget(['abc', 'def'])
+# [b'1', b'3']
 ```
-
-    127.0.0.1:6379> MSET abc 1 def 3
-    OK
-    127.0.0.1:6379> MGET def abc
-    1) "3"
-    2) "1"
-
-Okay, but you're a busy person, and when you interact with your Redis database you don't just want to send one tiny little command you have a LOT of things you want to do all in one go. For that, you will use `MULTI` to start you series of commands and `EXEC` to execute everything all in one go:
-
-```python
-```
-
-    127.0.0.1:6379> MULTI
-    OK
-    127.0.0.1:6379> set hi mom
-    QUEUED
-    127.0.0.1:6379> incr count
-    QUEUED
-    127.0.0.1:6379> EXEC
-    1) OK
-    2) (integer) 6
 
 So, if all you wanted to do was store key/value pairs that were simple strings or primitive types, you'd be done here. But since we almost always need more powerful datastructures than that to store our data, let's take a look at two of the other, super powerful and fast, data types that come with Redis.
 
 
 ### Lists
 
-TODO
+To interact with a list in Redis you can "push" new elements onto the left side of the list (`LPUSH`) or the right side of the list (`RPUSH`) or you can take one element off the left side of the list (`LPOP`) or the right side of the list (`RPOP`). And we can see what elements are on the list using "list range" (`LRANGE`). Let's try it.
+
+We create a new list by "push"ing elements onto the list, just like we would if it already existed:
+
+```python
+r.rpush('rainbow', 'blue')
+r.rpush('rainbow', 'green')
+r.rpush('rainbow', 'yellow')
+```
+
+Okay, but now we want the ability to view the elements of the list, which we do with the `LRANGE` function:
+
+```python
+r.lrange('rainbow', 0, -1)
+# ['blue', 'green', 'yellow']
+```
+
+
+That should seem *really* similar to indexing a list in Python. Except in Redis there are no defaults, so you explicitly have to say the first and last index you want to see:
+
+```python
+r.lrange('rainbow', 0, 1)
+# ['blue', 'green']
+r.lrange('rainbow', 0, 111)
+# ['blue', 'green', 'yellow']
+```
+
+
+But, again just like Python, you can also use negative numbers to count from the right end of the list:
+
+```python
+r.lrange('rainbow', 1, -1)
+# ['green', 'yellow']
+r.lrange('rainbow', 1, -2)
+# ['green']
+```
+
+Cool, so let's say we want to add more elements to the right side of the list:
+
+```python
+r.rpush('rainbow', 'orange')
+r.rpush('rainbow', 'red')
+r.lrange('rainbow', 0, -1)
+['blue', 'green', 'yellow', 'orange', 'red']
+```
+
+Likewise, we can add elements to the left side of the list:
+
+```python
+r.lpush('rainbow', 'indigo')
+r.lpush('rainbow', 'violet')
+r.lrange('rainbow', 0, -1)
+['violet', 'indigo', 'blue', 'green', 'yellow', 'orange', 'red']
+```
+
+Some of these command names are a little obtuse if you don't already know what they are. Sure. But once you know "Left Push" == "LPUSH", they are super easy to use. So there's some trade off there.
+
+Unlike Python lists, which you can split and chop in lots of ways, Redis lists are only really editable in one fast, efficient way: by popping elments off either end of the list. For instance, we can *pop* elements off the left end of the list. That will return a single element to us to use, but also shorten the list by one. For example:
+
+```python
+r.lpop('rainbow')
+# 'violet'
+r.lrange('rainbow', 0, -1)
+# ['indigo', 'blue', 'green', 'yellow', 'orange', 'red']
+r.lpop('rainbow')
+# b'indigo'
+r.lrange('rainbow', 0, -1)
+# ['blue', 'green', 'yellow', 'orange', 'red']
+```
+
+It works the same way for *popping* things off the right side of the list:
+
+```python
+r.rpop('rainbow')
+# 'red'
+r.lrange('rainbow', 0, -1)
+# ['blue', 'green', 'yellow', 'orange']
+r.rpop('rainbow')
+# 'orange'
+r.lrange('rainbow', 0, -1)
+# ['blue', 'green', 'yellow']
+```
+
 
 ### Sets
 
-TODO
+Redis sets are must like Python sets, they are an unordered collection of unique objects. To create a new set, or add elements to an existing one, use `SADD`, and determine what elments are already in a set, use `SMEMBERS`:
 
-### Doing Multiple Things at Once
+```python
+r.sadd('tolkien', 'elves')
+r.sadd('tolkien', 'wizards')
+r.smembers('tolkien')
+# {'elves', 'wizards'}
+```
 
-TODO
+But uniquenes is the name of the game here. It doesn't matter how many times we add a string to the set, it will still only ever be in the set once:
+
+```python
+r.sadd('tolkien', 'elves')
+r.sadd('tolkien', 'elves')
+r.sadd('tolkien', 'wizards')
+r.smembers('tolkien')
+# {b'elves', b'wizards'}
+r.sadd('tolkien', 'swords')
+r.smembers('tolkien')
+# {'elves', 'swords', 'wizards'}
+```
+
+Just to help give us another exampl, let's create another set:
+
+```python
+r.sadd('rowling', 'wizards')
+r.sadd('rowling', 'wands')
+r.sadd('rowling', 'goblins')
+r.smembers('rowling')
+# {'wands', 'goblins', 'wizards'}
+```
+
+Okay, now that we have two sets we can start comparing them, using all the basic set operations. For instance, if we want to see what elements two sets have in common (the "interesection" of the sets), we use `SINTER`:
+
+```python
+r.sinter('tolkien', 'rowling')
+# {'wizards'}
+```
+To figure out what elements are in the left set that aren't in the right set, (the "difference"), we use `SDIFF`:
+
+```python
+r.sdiff('tolkien', 'rowling')
+# {'elves', 'swords'}
+```
+
+And there is no "right difference", so to find that we have to switch the order of the sets being compared:
+
+```python
+r.sdiff('tolkien', 'rowling')
+# {'wands', 'goblins'}
+```
+
+To make a big set with all the elements of both, we use `SUNION`. But the result is still a set, so notice how "wizards" still only appears once:
+
+```python
+r.sunion('rowling', 'tolkien')
+# {'elves', 'swords', 'wizards', 'goblins', 'wands'}
+```
+
+There are lots of less commmonly used set operations you can look up, but one that seems useful to me is the ability to automatically store off the union of two sets as a new set:
+
+```python
+r.sunionstore('fantasy', 'rowling', 'tolkien')
+r.smembers('fantasy')
+# {'elves', 'swords', 'wizards', 'goblins', 'wands'}
+```
 
 ## Other Important Commands
 
-TODO
-
 #### Choosing a Namespace
 
-TODO
+By default Redis dumps you into the `0` namespace. But you can select a namespace by using `r.select()`.
 
 #### Which keys exist?
 
-TODO
+If you want to list all the keys that exist in your current namespace just type:
+
+```python
+r.keys()
+# ['abc', 'fantasy', 'rowling', 'hi', 'bob', ...]
+```
+
+But caveat emptor, if there are a million keys in your namespace you just returned way too much stuff. A better solution might be to change your logic to just test if  single key exists. The command `r.exists()` returns a True/False:
+
+```python
+r.exists('rowling')
+# 1
+r.exists('tolkien')
+# 1
+r.exists('Pratchett')
+# 0
+```
 
 #### Setting keys to disappear on timeout
 
-TODO
+If you want a key to disappear of N seconds, you can you `r.expire()`:
+
+```python
+r.set('ice', "I'm melting...")
+r.expire('ice', 10)
+```
+
+You can use `r.exists()` to check if the key is still there:
+
+```python
+r.exists('ice')
+# 1
+```
+
+Now wait 11 seconds, and it is gone:
+
+```python
+r.exists('ice')
+# 0
+```
+
+Setting and expiring keys is so common you can do both at once using the `r.setex()` command:
+
+```python
+r.setex('ice', 10, "I'm melting...")
+```
+
+If you want to know how long a key has left before it expires:
+
+```python
+r.ttl('ice')
+# 7
+```
+
+Lastly, you can stop a key from expiring at any time using `r.persist()`:
+
+```python
+r.persist('ice')
+```
 
 
 ## RQ?
