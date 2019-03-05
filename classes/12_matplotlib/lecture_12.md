@@ -95,9 +95,6 @@ Perhaps you want your dots to be partially transparent, to help see overlapping 
 ```python
 # all the same
 plt.scatter(x, y, alpha=0.5)
-
-# each different
-plt.scatter(x, y, alpha=np.random.rand(N))
 ```
 
 Alpha goes from 0.0 (invisible) to 1.0 (not transparent at all).
