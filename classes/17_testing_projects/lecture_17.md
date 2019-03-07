@@ -1,10 +1,10 @@
-# Testing Python Projects
+# Unit Testing
 
-This lecture does not apply to stand-alone Python scripts. It's not even for small programs with one or two modules. This lecture is for Python projects that have gotten big enough to have several modules and be distributed to several people.
+Today we're goingt to begin a big conversation about testing code. This lecture does not apply to stand-alone Python scriptr, or even small programs with one or two modules. The bigger a program gets, the more important testing becomes.
 
 #### Installation
 
-There are many libraries for testing Python projects. To keep this lecture from becoming its own course, we only show examples using `unittest`, which is the standar libraries (Python v2.7 or v3.2 or newer).
+None! Everything we talk about today is part of the Python standard library.
 
 ## Unit Tests
 
@@ -14,7 +14,7 @@ A [developer's mantra](http://c2.com/cgi/wiki?MakeItWorkMakeItRightMakeItFast):
     Make it right.
     Make it fast.
 
-Today we'll talk about that second thing: let's make sure our code is *right* (producing the desired outputs). And the only way to know if your code is *right* is to test it.
+Today we'll talk about that second thing: let's make sure our code is *right* (that it produces the desired outputs). And the only way to know if your code is *right* is to test it.
 
 #### Different Types of Software Tests
 
@@ -26,6 +26,8 @@ Without getting too pedantic, there are generally three kinds of [software testi
 
 As your project gets larger, the items lower on this list become more important. But everything starts with unit tests.
 
+So today we will just focus on unit tests.
+
 #### Why Unit Test?
 
 Unit Tests will answer several questions, that become more important as the size of your code base and your user base increase:
@@ -36,58 +38,108 @@ Unit Tests will answer several questions, that become more important as the size
 
 A logical follow-up question will be:
 
- * How can I automate this process, so it doesn't take up all my time?
+ * How can I automate this process, so testing code doesn't take up all my time?
 
 #### Unit Testing Frameworks
 
 Software testing is an increasingly big topic, and there are a lot of good tools out there to help you test your software. Perhaps five of the most popular tools in Python are:
 
- * [unittest](http://pythontesting.net/framework/unittest/unittest-introduction/) - Python standard library unit testing tool
- * [nose](http://pythontesting.net/framework/nose/nose-introduction)/ - Built as an extension to unittest, to make it easier.
+ * [unittest](http://pythontesting.net/framework/unittest/unittest-introduction/) - in the Python standard library
+ * [nose](http://pythontesting.net/framework/nose/nose-introduction)/ - built as an extension to unittest
  * [pytest](http://pythontesting.net/framework/pytest/pytest-introduction/) - Simple, easy-to-use, unit testing library
  * [mock](http://www.voidspace.org.uk/python/mock/) - A Java-style testing framework that allows you to replace components of your code with "mock" components with known results.
  * [tox](http://tox.readthedocs.org/en/latest/) - VirtualEnv management tool that acts as a wrapper for your other unit testing libraries
 
 For a nice discussion on the differences between the first three unit testing frameworks, see [this](http://pythontesting.net/podcast/pytest-vs-unittest-vs-nose-pt002/) article over at [pythontesting.net](http://pythontesting.net).
 
-Again, there are lots of good testing tools out there. In this lecture we will use `unittest`, because it is part of the Python standard library.
+Again, there are lots of good testing tools out there. In this lecture we will use `unittest`, just because it is part of the Python standard library.
 
 #### A Simple Example
 
-To use `unittest`, we'll first need a simple module (`cube.py`):
+To use `unittest`, we'll put the `Student` class from our object-oriented lecture into a file called `student.py`:
 
 ```python
-def cube(x):
-    '''An unnecessary function to find the
-    cube of a number.
-    '''
-    return x**3
+class Student:
+    ''' A Student is a person currently enrolled in this awesome course. '''
+
+    def __init__(self, name, sid):
+        ''' return a Student object, with a name, id, and fresh grades '''
+        self.name = name
+        self.student_id = sid
+        self.hw_grades = [0.0] * 10
+        self.test_grades = [0.0, 0.0]
+
+    def set_hw_grade(self, grade, week):
+        ''' Set the grade for a specific homework '''
+        self.hw_grades[week] = grade
+
+    def set_test_grade(self, grade, exam):
+        ''' Set the grade for a specific test '''
+        self.test_grades[exam] = grade
+
+    def calculate_grade(self):
+        ''' Return the current grade of the student.
+            Tests and homeworks are each worth 50%.
+        '''
+        average_hw_grade = sum(self.hw_grades) / len(self.hw_grades)
+        average_test_grade = sum(self.test_grades) / len(self.test_grades)
+        final_grade = (average_hw_grade + average_test_grade) / 2.0
+
+        return final_grade
+
+    @staticmethod
+    def letter_grade(percent_grade):
+        ''' return a letter grade from a percentage grade '''
+        if percent_grade >= 90.0 and percent_grade <= 100.0:
+            return 'A'
+        elif percent_grade >= 80.0:
+            return 'B'
+        elif percent_grade >= 70.0:
+            return 'C'
+        elif percent_grade >= 60.0:
+            return 'D'
+        else:
+            return 'F'
 ```
 
-Now, let's write the module `cube_test.py`:
+Now we will create a file called `student_test.py` in the same folder and filling in a couple of basic tests.
 
 ```python
 import unittest
-from cube import cube
+from student import Student
 
-class TestCube(unittest.TestCase):
 
-    def setUp(self):
-        pass
+class TestStudent(unittest.TestCase):
 
-    def test_number_4(self):
-        self.assertEqual(cube(4), 64)
+    def test_no_grades(self):
+        ''' Test that the constructor works, and that calculate_grade works when there are no grades '''
+        charles = Student("Charlie Brown", 12345)
+        self.assertEqual(charles.calculate_grade(), 0.0)
 
-    def test_negative_one(self):
-        self.assertEqual(cube(-1), -1)
+    def test_perfect_grades(self):
+        ''' Test that this works for students with perfect grades '''
+        emmy = Student("Emmy Noether", 14152)
+
+        # set all of the grades to perfect
+        emmy.set_test_grade(100.0, 0)
+        emmy.set_test_grade(100.0, 1)
+        for i in range(10):
+            emmy.set_hw_grade(100.0, i)
+
+        self.assertEqual(emmy.calculate_grade(), 100.0)
+
 
 if __name__ == '__main__':
     unittest.main()
 ```
 
-Notice `setUp()` can be used to load any information you want into the `TestCube` class. This can be handy if you need a more complex input for your function/method. You can instantiate a class from another part of your project, mock up a lot of fake data, or even create a temporary database for testing.
+Okay, so we have some unit tests. Let's try and unpack all of that.
 
-Also notice `assertEqual` is the meat of the test. It will throw an error if if arguments are not equal. There are several [other assert methods](https://docs.python.org/2/library/unittest.html#unittest.TestCase) built-into `TestCase`:
+First things first, if you want a unit test, just subclass `unittest.TestCase`, that brings with it all the architecture you need to automate your testing. Also, notice that we added `unittest.main()` to the main block. That means we can now call this script from the command line to run all the tests. That's handy!
+
+There is a little magic happening here. Any method that has "test" in the name is a unit test. That is, `TestCase` handles finding all methods with these names and running them as tests. You can put other helper methods in this class and they won't be run as unit tests. This is *super handy*, but also falls into the realm of invisible magic so don't code like this yourself.
+
+Basically, in each "test" method, you will see that we use the `Student` class, and then test it's output. In both of the tests above `assertEqual` is the meat of the test. It will throw an error if if arguments are not equal. There are several [other assert methods](https://docs.python.org/2/library/unittest.html#unittest.TestCase) built-into `TestCase`:
 
 | Method | Checks that |
 | ------ | ----------- |
@@ -106,9 +158,9 @@ Also notice `assertEqual` is the meat of the test. It will throw an error if if 
 
 #### Running the Simple Example
 
-Now, since the `cube_test.py` has a `main` function at the bottom of it, we can run the test on the command line:
+Now, since the `student_test.py` has a `main` function at the bottom of it, we can run the test on the command line:
 
-    > python cube_test.py
+    > python student_test.py
     ..
     ----------------------------------------------------------------------
     Ran 2 tests in 0.000s
@@ -116,45 +168,119 @@ Now, since the `cube_test.py` has a `main` function at the bottom of it, we can 
 To get more detailed output, we can use the `-v` flag:
 
     OK
-    > python cube_test.py -v
-    test_number_4 (__main__.TestCube) ... ok
-    test_negative_one (__main__.TestCube) ... ok
-     
+    > python student_test.py -v
+    test_no_grades (__main__.TestStudent)
+    Test that the constructor works, and that calculate_grade works when there are no grades ... ok
+    test_perfect_grades (__main__.TestStudent)
+    Test that this works for students with perfect grades ... ok
     ----------------------------------------------------------------------
     Ran 2 tests in 0.000s
-     
     OK
 
 Here we get nice, human-friendly results for each of our tests. We have a unit test for our code and can execute it. That's really all you *need*. But on a larger project you will collect a lot of these testing modules, and you won't want to run them all by hand. As it happens, `unittest` has self-discovery functionality built-in so you can execute all your tests at once.
 
-Let us say that both of the above modules are in the same directory (/super_math/). We can run all the `unittest` tests at once by doing:
+Let us say that both of the above modules are in the same directory (/python_class/). We can run all the `unittest` tests at once by doing:
 
-    > python -m unittest discover super_math
+    > python -m unittest discover python_class
     ..
     ----------------------------------------------------------------------
     Ran 2 tests in 0.000s
 
 Or, again, more verbosely:
 
-    OK
-    > python -m unittest discover -v super_math
-    test_number_4 (test_cube_unittest.TestCube) ... ok
-    test_negative_one (test_cube_unittest.TestCube) ... ok
-     
-    ----------------------------------------------------------------------
-    Ran 2 tests in 0.000s
-     
-    OK
+    > python -m unittest discover -v python_class
 
 That's it! Rince and repeat and you can test all the Python you ever write.
 
+#### More Practice
+
+Let's add some more tests to `TestStudent`.
+
+```python
+class TestStudent(unittest.TestCase):
+    # ...as before
+
+    def test_better_than_perfect_grades(self):
+        ''' Test that this works for students with extra credit '''
+        emmy = Student("Emmy Noether", 14152)
+
+        # set all of the grades to perfect
+        emmy.set_test_grade(100.0, 0)
+        emmy.set_test_grade(110.0, 1)
+        for i in range(10):
+            emmy.set_hw_grade(100.0, i)
+
+        final_grade = emmy.calculate_grade()
+        self.assertEqual(final_grade, 102.5)
+        self.assertEqual(Student.letter_grade(final_grade), 'A')
+```
+
+And we run the test again:
+
+    $ py student_test.py
+    F..
+    ======================================================================
+    FAIL: test_better_than_perfect_grades (__main__.TestStudent)
+    Test that this works for students with extra credit
+    ----------------------------------------------------------------------
+    Traceback (most recent call last):
+      File "student_test.py", line 36, in test_better_than_perfect_grades
+        self.assertEqual(Student.letter_grade(final_grade), 'A')
+    AssertionError: 'B' != 'A'
+    - B
+    + A
+    ----------------------------------------------------------------------
+    Ran 3 tests in 0.001s
+    FAILED (failures=1)
+
+Oops. Wait. What? 102.5% final grade is a B? What?
+
+Okay, it turns out this line in `letter_grade` is the culprit:
+
+```python
+if percent_grade >= 90.0 and percent_grade <= 100.0:
+```
+
+Grades over 100% are excluded from being As! Okay, we can fix that by changing the code:
+
+```python
+if percent_grade >= 90.0:
+```
+
+And now are unit tests run great again:
+
+    $ py student_test.py
+    ...
+    ----------------------------------------------------------------------
+    Ran 3 tests in 0.000s
+    OK
+
+We might want to write a lot more unit tests for the `Student` class, actually. We could do this to ensure that even when someone changes little things in the code, the functionality we want still persists:
+
+* Entering a homework grade for homework #11 should throw an error.
+* A student with 100% on the tests and 0% on the homeworks should get a 50% in the class.
+* A student with 0% on the tests and 100% on the homeworks should get a 50% in the class.
+* A student with a 69.9% should get a D.
+* A student with a 79.9% should get a C.
+* A student with a 90.0001% should get an A.
+
+We might also use unit tests to help us make important design decisions:
+
+* Can students get negative grades?
+* If a student is within 0.1% of getting a higher final grade... can't we just round up?
+* If we want to drop the lowest homework grade... how does that effect our code?
+
+Try writing unit tests for all of the above. See what happens!
+
+
 ## Why Bother?
 
-If you're asking why bother, you're not the first person. The truth is, some people spend too much time worrying about the testing processes.
+If you're asking why bother, you're not the first person. The truth is, some people spend too much time worrying about the testing.
 
 The truth is also that every software company in the world tests their code. As projects get bigger, not every single person committing code to the project will understand every function/class in the project.
 
 Well-tested code tends to be less buggy. And the tests can save people time.
+
 
 ## Real-World Examples
 
@@ -162,6 +288,7 @@ GitHub is a great place to look for example Python projects. There are thousands
 
  * [mazelib](https://github.com/theJollySin/mazelib) - A Python algorithm library for creating and solving mazes.
  * [pytextgame](https://github.com/theJollySin/pytextgame) - A cross-platform text-game engine.
+
 
 ## Further Reading
 
