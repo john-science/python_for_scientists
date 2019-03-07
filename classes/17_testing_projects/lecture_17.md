@@ -1,6 +1,6 @@
 # Unit Testing
 
-Today we're goingt to begin a big conversation about testing code. This lecture does not apply to stand-alone Python scriptr, or even small programs with one or two modules. The bigger a program gets, the more important testing becomes.
+Today we're going to begin the big conversation of testing code. This lecture does not apply to stand-alone Python scripts, or even small programs with one or two modules. The bigger a program gets, the more important testing becomes.
 
 #### Installation
 
