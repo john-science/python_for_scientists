@@ -10,12 +10,11 @@ There are many libraries for testing and building Python projects. To keep this 
 
 Tests tend to be run automatically during the build process. For that reason, it would be hard to give an introduction to testing without talking about the build process.
 
-There are a lot of different ways to build software, and a lot of different ways to run tests. So we will just touch the most common pathways, which use:
+There are a lot of different ways to build software, and a lot of different ways to run tests. So we will just touch the most command, and central, tools to building Python code:
 
  * [DistUtils](https://docs.python.org/2/library/distutils.html) - The original tool for building and installing Python packages (no support for testing).
  * [setuptools](http://pythonhosted.org/an_example_pypi_project/setuptools.html) - Based on distutils, this is the standard tool for building and installing your Python code. It also allows you to register your code with [PyPi](https://pypi.python.org/pypi).
- * [easy_install](http://pythonhosted.org/setuptools/easy_install.html) - A tool that comes with `setuptools` to help you download, build, and install Python packages.
- * [VirtualEnv](http://docs.python-guide.org/en/latest/dev/virtualenvs/) - The standard tool in Python for keeping the dependencies for different projects on the same machine separate.
+ 
 
 ### A Simple Example
 
