@@ -17,6 +17,7 @@
 
 ## Further Reading
 
- * [VirtualEnv Documentation](https://virtualenv.pypa.io/en/stable/)
+* [Gentle VirtualEnv Intro](http://docs.python-guide.org/en/latest/dev/virtualenvs/)
+* [VirtualEnv Documentation](https://virtualenv.pypa.io/en/stable/)
 
 [Back to Syllabus](../../README.md)
