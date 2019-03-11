@@ -56,7 +56,7 @@ This class is not meant to provide a rigorous computer science background. To ge
 **Development Tools**
 
 * [Unit Tests](classes/17_testing_projects/lecture_17.md)
-* [Building Projects](classes/19_building_projects/lecture_19.md)
+* [Building Projects with Setuptools](classes/19_building_projects/lecture_19.md)
 * [Cython](classes/20_cython/lecture_20.md)
 
 **Special topics**
