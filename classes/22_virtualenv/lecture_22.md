@@ -22,11 +22,18 @@ On a Mac you can do something like:
 
 ## Example 1 - A Data Scientist's Env
 
-> TODO
+> TODO: python3.6
+
+    pandas==0.20.0
+    numpy==1.16.2
+    matplotlib>=3.0.3
 
 ## Example 2 - A Web Developer's Env
 
-> TODO
+> TODO: python2.7
+
+    dango==1.11.20
+    numpy==1.15.0
 
 ## Clean Up
 
