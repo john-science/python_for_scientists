@@ -43,7 +43,7 @@ Okay, now through this text into a file called `requirements.txt`:
 
     pandas == 0.20.0
     numpy == 1.16.2
-    matplotlib >= 3.0.3
+    matplotlib >= 3.0.0
 
 Now run this `pip` command (this is a standard way to install third-party libraries in Python and is not specific to VirtualEnv):
 
