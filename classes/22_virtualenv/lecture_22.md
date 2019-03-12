@@ -22,11 +22,34 @@ On a Mac you can do something like:
 
 ## Example 1 - A Data Scientist's Env
 
-> TODO: python3.6
+Let's say a data scientist is sharing code with you. You use Python 3.7 and she's still using 3.6. She uses a new version of NumPy, but an older version of Pandas. You do the opposite. You want to use her code, but you don't want to wreck your whole system to do it.
 
-    pandas==0.20.0
-    numpy==1.16.2
-    matplotlib>=3.0.3
+Enter VirtualEnv.
+
+First, let's make a directory to drop her code into:
+
+    mkdir data_work
+    cd data_work
+
+Now let's create a VirtualEnv to mimic her environment:
+
+    virtualenv --python=python3.6 data_env
+
+Now we can start using that environment:
+
+    source data_env/bin/activate
+
+Okay, now through this text into a file called `requirements.txt`:
+
+    pandas == 0.20.0
+    numpy == 1.16.2
+    matplotlib >= 3.0.3
+
+Now run this `pip` command (this is a standard way to install third-party libraries in Python and is not specific to VirtualEnv):
+
+    pip install -r requirements.txt
+
+> TODO: Continue
 
 ## Example 2 - A Web Developer's Env
 
