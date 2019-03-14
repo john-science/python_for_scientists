@@ -49,6 +49,10 @@ Now run this `pip` command (this is a standard way to install third-party librar
 
     pip install -r requirements.txt
 
+Okay! Now we have a Virtual Environment with all our packages installed, and we can use it:
+
+    $ python
+
 > TODO: Continue
 
 ## Example 2 - A Web Developer's Env
