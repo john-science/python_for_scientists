@@ -57,10 +57,38 @@ Okay! Now we have a Virtual Environment with all our packages installed, and we 
 
 ## Example 2 - A Web Developer's Env
 
-> TODO: python2.7
+Okay, for our second example say you are looking at the code for a little web app a colleague is making. For some reason, she uses Python 2.7, not the 3.6 your data scientist uses or even the 3.7 you use. And she uses an older version of NumPy , and installs Django (for making websites). Again, you don't want to wreck your own code, and now you don't want to wreck your data scientist area either.
+
+VirtualEnv to the rescue!
+
+First, let's make a directory to drop her code into:
+
+    mkdir web_work
+    cd web_work
+
+Now let's create a VirtualEnv to mimic her environment:
+
+    virtualenv --python=python3.6 web_env
+
+Now we can start using that environment:
+
+    source web_env/bin/activate
+
+Okay, now through this text into a file called `requirements.txt`:
 
     dango==1.11.20
-    numpy==1.15.0
+    numpy == 1.15.0
+
+Now run this `pip` command (this is a standard way to install third-party libraries in Python and is not specific to VirtualEnv):
+
+    pip install -r requirements.txt
+
+Okay! Now we have a Virtual Environment with all our packages installed, and we can use it:
+
+    $ python
+
+> TODO: python
+
 
 ## Clean Up
 
