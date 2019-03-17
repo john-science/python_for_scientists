@@ -55,6 +55,9 @@ Okay! Now we have a Virtual Environment with all our packages installed, and we 
 
 > TODO: Continue
 
+> TODO: deactivate
+
+
 ## Example 2 - A Web Developer's Env
 
 Okay, for our second example say you are looking at the code for a little web app a colleague is making. For some reason, she uses Python 2.7, not the 3.6 your data scientist uses or even the 3.7 you use. And she uses an older version of NumPy , and installs Django (for making websites). Again, you don't want to wreck your own code, and now you don't want to wreck your data scientist area either.
@@ -89,10 +92,20 @@ Okay! Now we have a Virtual Environment with all our packages installed, and we 
 
 > TODO: python
 
+> TODO: deactivate
 
 ## Clean Up
 
-> TODO
+Cleaning up a VirtualEnv is actually really easy. We've already seen that all you need to do to stop using a VirtualEnv is `deactivate`. Well, if you are done with a VirtualEnv forever, all you have to do is delete the folder you created for the env.
+
+In Mac / Linux:
+
+    rm -rf data_env/
+    rm -rf web_env/
+
+Or in Windows, just right-click the folder and delete it.
+
+It's that easy!
 
 
 ## Further Reading
