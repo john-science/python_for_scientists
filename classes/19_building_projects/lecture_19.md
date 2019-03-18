@@ -123,7 +123,7 @@ First, we will need to layout our project something like this:
     |   |-- __init__.py
     |   |-- student_test.py
 
-(Quick Note: Since we are moving `student_test.py` into a new directory, the import line at the top should now read: `from gradebook.student import Student`.)
+(**Quick Note**: We moved `student_test.py` into a new directory, which is why the the import line at the top reads: `from gradebook.student import Student`. This is the only change from the [Unit Testing lecture](../17_testing_projects/lecture_17.md).)
 
 Our `setup.py` will look like:
 
