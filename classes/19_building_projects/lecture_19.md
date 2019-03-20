@@ -171,7 +171,11 @@ And, if your tests pass, you will get something like this:
 
 We saw that we can use `python setup.py test` to test our code using `setuptools`. But now that we have a working `setup.py`, we can perform a lot of different build steps.
 
-We can build our project:
+We can install our project to the system Python on our computer:
+
+    python setup.py install
+
+We can build our project (so it can only be imported locally):
 
     python setup.py build
 
@@ -182,10 +186,6 @@ We can clean a previous build:
 We can build a source distribution (tar ball, zip file, exe, etc..):
 
     python setup.py sdist
-
-We can install our project to the local Python on our computer:
-
-    python setup.py install
 
 And [a lot more](http://pythonhosted.org/an_example_pypi_project/setuptools.html#using-setup-py).
 
