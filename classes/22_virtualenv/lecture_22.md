@@ -94,6 +94,11 @@ Okay! Now we have a Virtual Environment with all our packages installed, and we 
 
 > TODO: deactivate
 
+## Recap: Why are we doing this again?
+
+> TODO
+
+
 ## Clean Up
 
 Cleaning up a VirtualEnv is actually really easy. We've already seen that all you need to do to stop using a VirtualEnv is `deactivate`. Well, if you are done with a VirtualEnv forever, all you have to do is delete the folder you created for the env.
