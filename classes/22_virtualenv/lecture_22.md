@@ -43,7 +43,7 @@ Okay, now through this text into a file called `requirements.txt`:
 
     pandas == 0.20.0
     numpy == 1.16.2
-    matplotlib >= 3.0.0
+    matplotlib >= 2.0.0
 
 Now run this `pip` command (this is a standard way to install third-party libraries in Python and is not specific to VirtualEnv):
 
@@ -52,10 +52,16 @@ Now run this `pip` command (this is a standard way to install third-party librar
 Okay! Now we have a Virtual Environment with all our packages installed, and we can use it:
 
     $ python
+    >>> import numpy
+    >>> numpy.__version__
+    '1.16.2'
+    >>> import matplotlib
+    >>> matplotlib.__version__
+    '2.1.2'
 
-> TODO: Continue
+And when your done using your friends code you can leave that all behind with by just typing `deactivate` from the command line:
 
-> TODO: deactivate
+    $ deactivate
 
 
 ## Example 2 - A Web Developer's Env
@@ -79,7 +85,7 @@ Now we can start using that environment:
 
 Okay, now through this text into a file called `requirements.txt`:
 
-    dango==1.11.20
+    django==1.11.20
     numpy == 1.15.0
 
 Now run this `pip` command (this is a standard way to install third-party libraries in Python and is not specific to VirtualEnv):
@@ -89,14 +95,16 @@ Now run this `pip` command (this is a standard way to install third-party librar
 Okay! Now we have a Virtual Environment with all our packages installed, and we can use it:
 
     $ python
+    >>> import numpy
+    >>> numpy.__version__
+    '1.15.0'
+    >>> import django
+    >>> django.__version__
+    '1.11.20'
 
-> TODO: python
+Again, when you want to go back to your own code, you can just type `deactivate` from the command line:
 
-> TODO: deactivate
-
-## Recap: Why are we doing this again?
-
-> TODO
+    $ deactivate
 
 
 ## Clean Up
