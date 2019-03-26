@@ -19,6 +19,8 @@ On a Mac you can do something like:
 
     homebrew install virtualenv
 
+For this lecture, I am just going to assume you're not on a Windows machine.  If you are, I am not sure how to help you.
+
 
 ## Example 1 - A Data Scientist's Env
 
@@ -39,6 +41,11 @@ Now we can start using that environment:
 
     source data_env/bin/activate
 
+After that, you will see your commandline will helpfully remind you that you're in an env by listing the name of the env before your command prompt:
+
+    (data_env) $
+    (data_env) $ ls whatever
+
 Okay, now through this text into a file called `requirements.txt`:
 
     pandas == 0.20.0
@@ -51,7 +58,7 @@ Now run this `pip` command (this is a standard way to install third-party librar
 
 Okay! Now we have a Virtual Environment with all our packages installed, and we can use it:
 
-    $ python
+    (data_env) $ python
     >>> import numpy
     >>> numpy.__version__
     '1.16.2'
@@ -61,7 +68,7 @@ Okay! Now we have a Virtual Environment with all our packages installed, and we 
 
 And when your done using your friends code you can leave that all behind with by just typing `deactivate` from the command line:
 
-    $ deactivate
+    (data_env) $ deactivate
 
 
 ## Example 2 - A Web Developer's Env
@@ -94,7 +101,7 @@ Now run this `pip` command (this is a standard way to install third-party librar
 
 Okay! Now we have a Virtual Environment with all our packages installed, and we can use it:
 
-    $ python
+    (web_env) $ python
     >>> import numpy
     >>> numpy.__version__
     '1.15.0'
@@ -104,7 +111,7 @@ Okay! Now we have a Virtual Environment with all our packages installed, and we 
 
 Again, when you want to go back to your own code, you can just type `deactivate` from the command line:
 
-    $ deactivate
+    (web_env) $ deactivate
 
 
 ## Clean Up
@@ -118,7 +125,7 @@ In Mac / Linux:
 
 Or in Windows, just right-click the folder and delete it.
 
-It's that easy!
+Ditching a VirtualEnv that easy!
 
 
 ## Further Reading
