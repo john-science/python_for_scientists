@@ -2,7 +2,7 @@
 
 ### The Disclaimer
 
-Cython is a big topic. It would take 4-8 lectures to cover it completely. So we won't be doing that. But it would also be a disservice to skip it entirely. The approach we will take here is to show *one example of how to use Cython*. This is not, by any means, the only way to use Cython. This is just one approach.
+Cython is a big topic. It would take 4-8 lectures to cover it completely. So we won't be doing that. But it would also be a disservice to skip it entirely. The approach we will take here is to show *one example* of how to use Cython. This is not, by any means, the only way to use Cython. This is just one approach.
 
 This lecture shows some examples of how to speed up pre-existing Python code using Cython. The approach we will take is to add a `*.pxd` file for each `*.py` file, and juggle the new Cython build process.
 
@@ -21,20 +21,20 @@ For Linux and Mac, the installation is merely a single line of `apt-get`.
 
 #### Anaconda
 
-Consider installing [Anaconda](http://docs.continuum.io/anaconda/install.html) instead. Anaconda is Python packaged with hundreds of tools and libraries that you will want (This includes matplotlib and everything else we will use in this course.)
+Consider installing [Anaconda](http://docs.continuum.io/anaconda/install.html) instead. Anaconda is Python packaged with hundreds of tools and libraries that you will want (This includes Cython and nearly everything else we use in this course.)
 
 
 ## The Example Python Script - Finding Primes
 
-We need a piece of Python code to try and speed up with Cython. For our example, we will chose a simple function to find prime numbers.
+We need a piece of Python code to try and speed up. For our example, we will chose a simple function that finds prime numbers.
 
-#### Wait, Wait, What's a Prime Again?
+#### Wait, Wait... What's a Prime Again?
 
-A [prime number](https://en.wikipedia.org/wiki/Prime_number) is a number that is only divided by itself and 1.  For instance, `3`, `5`, and `7` are prime, but `2`, `6`, and `8` are not.
+A [prime number](https://en.wikipedia.org/wiki/Prime_number) is a number that is only divided by itself and 1.  For instance, `3`, `5`, and `7` are prime, but `2`, `6`, and `15` are not.
 
 #### Finding Primes
 
-For our example function, we will find prime numbers using the [Sieve of Eratosthenes](https://en.wikipedia.org/wiki/Sieve_of_Eratosthenes). Basically, the process is we take all the numbers up to N and assume they are prime. Then we remove all the ones divisible by each prime as we find then. So, go through the list and remove everything divisible by 2. Then everything divisble by 3. Four is already gone, so then we remove everything divisible by 5. And so on. What's left when we get through the list are only the prime numbers.
+For our example function, we will find prime numbers using the [Sieve of Eratosthenes](https://en.wikipedia.org/wiki/Sieve_of_Eratosthenes). Basically, the process is: we take all the numbers up to N and assume they are prime. Then we remove all the ones divisible by each prime as we find then. So, go through the list and remove everything divisible by 2. Then everything divisble by 3. Four is already gone, so then we remove everything divisible by 5. And so on. What's left when we get through the list are only the prime numbers.
 
 Here is our Sieve. Our first, naive version isn't very fast, so this is our starting place:
 
@@ -95,7 +95,7 @@ print('{0} seconds'.format(time() - start))
 
 ## Making it Faster without Cython
 
-First things first, we don't actually need Cython to make Python code faster. There are a lot of smart choices we can make that can improve the performance. We will break these choices into two categories: knowing Python better and knowing your subject matter better.
+First things first, we don't actually need Cython to make Python code faster. There are a lot of choices we can make that can improve the performance. We will break these choices into two categories: knowing Python better and knowing your subject matter better.
 
 ### Python Tricks
 
