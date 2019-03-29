@@ -30,7 +30,7 @@ We need a piece of Python code to try and speed up. For our example, we will cho
 
 #### Wait, Wait... What's a Prime Again?
 
-A [prime number](https://en.wikipedia.org/wiki/Prime_number) is a number that is only divided by itself and 1.  For instance, `3`, `5`, and `7` are prime, but `2`, `6`, and `15` are not.
+A [prime number](https://en.wikipedia.org/wiki/Prime_number) is a number that is only divided by itself and 1.  For instance, `3`, `5`, and `7` are prime, but `4`, `6`, and `15` are not.
 
 #### Finding Primes
 
@@ -49,7 +49,7 @@ def sieve_naive(n):
     numbers = [True for i in range(m)]
 
     # go through and remove all numbers that are a multiple of the others
-    for i in range(2, n + 1):
+    for i in range(2, m):
       if numbers[i]:
         for j in range(i * i, m, i):
           numbers[j] = False
@@ -120,7 +120,7 @@ The second major way we can improve Python performance is with math. That is, th
 For instance, in our `naive` function above, we iterated from 1 to N to remove all the prime numbers in the range:
 
 ```python
-for i in range(2, n + 1):
+for i in range(2, m):
 ```
 
 But, if you think about it for a second, we only have to iterate from 1 to the square root of N, because this number times itself is N, and anything bigger than that can't be a prime factor of N (considering we have already knocked out all the lower primes. So, knowing something about math means we can simplify our iterator to:
