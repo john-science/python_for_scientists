@@ -251,7 +251,7 @@ And let's add some data to the table:
     cursor.execute('INSERT into licenses(id, agentID, license) VALUES(1, 1, "License to Kill")')
     cursor.execute('INSERT into licenses(id, agentID, license) VALUES(2, 4, "License to Kill")')
     cursor.execute('INSERT into licenses(id, agentID, license) VALUES(3, 1, "License to Tango")')
-    cursor.commit()
+    con.commit()
 
 Now let's peform a `LEFT JOIN` to pull out all of the licenses for our agents, along with the agent names.
 
