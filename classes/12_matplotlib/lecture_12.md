@@ -4,6 +4,8 @@ Matplotlib is a standard plotting library in Python. That is, people use it all 
 
 Matplotlib allows for a dizzying amount of customization, so you can create anything from quick-and-easy plots to publication-quality plots.
 
+![I make a lot of plots](../../resources/simpsons_make_graphs.jpg)
+
 ## Installing matplotlib
 
 Like most of the libraries used in our "special topics" lectures, matplotlib does not come standard with Python and will have to be installed. Please check the official [SciPy Stack Install Guide](http://www.scipy.org/install.html). For Linux and Mac, the installation is merely a single line of `apt-get`. For Windows, pre-built installers are provided.
