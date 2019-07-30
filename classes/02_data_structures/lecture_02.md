@@ -182,16 +182,16 @@ set(['United States', 'China', 'Columbia', 'France'])
 The picture to have in your mind, is that [sets](http://en.wikipedia.org/wiki/Set_%28abstract_data_type%29) are like [Venn diagrams](https://en.wikipedia.org/wiki/Venn_diagram). Two different sets might overlap a little or a lot. And we can consider their [union](https://en.wikipedia.org/wiki/Union_%28set_theory%29), [intersection](https://en.wikipedia.org/wiki/Intersection_%28set_theory%29), or if one is a [subset](http://en.wikipedia.org/wiki/Subset) of another. All of these general ideas about sets can be computed inside Python:
 
 ```python
->>> class2 = set(['Icleand', 'United States'])
+>>> class2 = set(['Iceland', 'United States'])
 >>> class1.union(class2)
 set(['United States', 'China', 'Columbia', 'France', 'Iceland'])
->>> johanna = set(['Icleand'])
+>>> johanna = set(['Iceland'])
 >>> johanna.issubset(class2)  # determine if one set is a subset of another
 True
 >>> class2.issuperset(johanna)  # determine if one set is a superset of another
 True
 >>> johanna.intersection(class2)  # find the intersection of two sets
-set(['Icleand'])
+set(['Iceland'])
 ```
 
 ### Helper Methods
