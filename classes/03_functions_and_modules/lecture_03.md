@@ -4,7 +4,7 @@
 
 #### Defining a Function
 
-A function is a handy way to encasuplate a piece of logic that needs to be used again by you or your friends.
+A function is a handy way to encasuplate a piece of logic that needs to be used again and again.
 
 Here we use the `def` keyword to *define* a function named `say_hi`. All it does is print `Hi!` to the screen.
 
@@ -43,7 +43,7 @@ Notice also that every function should have a short 1-to-5 line comment block de
 
 #### Example Functions
 
-Let's look at some simple example functions. First, we'll create a trivial function to add a couple numbers:
+Let's look at some simple examples. First, we'll create a trivial function to add a couple numbers:
 
 ```python
 >>> def addnums(x, y):
@@ -62,9 +62,9 @@ ab
 TypeError: cannot concatenate 'str' and 'int' objects
 ```
 
-What we see is that the function works as expected for numbers, but since Python is a *dynamic* language, it doesn't stop you from trying to add a `string` and an `integer`. Of course, you can't add these, so a type error is thrown. This is part of the Python "we're all consenting adults" philosophy: you are trusted to know what you're doing.
+What we see is that the function works as expected for numbers, but since Python is a *dynamic* language, it doesn't stop you from trying to add a `string` and an `integer`. Of course, you can't add these, so a `TypeError` is thrown. This is part of the Python "we're all consenting adults" philosophy: you are trusted to know what you're doing.
 
-Let's see that same example with key word arguments:
+Let's see that same example with keyword arguments:
 
 ```python
 >>> def addnums(x, y=2):
