@@ -4,7 +4,7 @@
 
 Python should be easy to install on basically all desktops and laptops. There are many different versions and flavors of Python. This class will be built around Python v3.6, but you will probably be fine using anything Python v3.3 or newer.
 
-> **Please Note** The NumPy group [has said](https://github.com/numpy/numpy/blob/master/doc/neps/dropping-python2.7-proposal.rst) they will be dropping support for Python 2.X on Jan 1, 2020.  Since this library is the basis of nearly all science and engineering libraries in Python it will be very important that you move to Python 3.3 or newer. Soon.
+> **Please Note** The NumPy group [has said](https://github.com/numpy/numpy/blob/master/doc/neps/dropping-python2.7-proposal.rst) they will be dropping support for Python 2.X on Jan 1, 2020.  Since NumPy is the basis of nearly all science and engineering libraries in Python it will be very important that you move to Python 3.3 or newer. Soon.
 
 
 #### Basic Python
@@ -15,7 +15,7 @@ The installation procedure depends on what operating system you have installed. 
  * [Mac OS X](http://docs.python-guide.org/en/latest/starting/install/osx/)
  * [Linux](http://docs.python-guide.org/en/latest/starting/install/linux/)
 
-**NOTE**: The above guide also explains how to install SetupTools, Pip, and VirtualEnv. While these are great tools worth learning, and I highly encourage it, they are not yet necessary for this course.
+**NOTE**: The above guide also explains how to install SetupTools, Pip, and VirtualEnv. While these are great tools worth learning, and I highly encourage it, they are not yet necessary for most of this course.
 
 #### Anaconda
 
