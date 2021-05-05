@@ -1,6 +1,6 @@
 # Package Management VirtualEnv
 
-VirtualEnv is the most pervasive [package management system](https://en.wikipedia.org/wiki/Package_manager) for Python. If you install *any* third-party apps or ever work on more than one Python project, and you don't use a package management system, you will end up in [dependency hell](https://en.wikipedia.org/wiki/Dependency_hell):
+VirtualEnv is the most popular [package management system](https://en.wikipedia.org/wiki/Package_manager) for Python. If you install *any* third-party apps or ever work on more than one Python project, and you don't use a package management system, you will end up in [dependency hell](https://en.wikipedia.org/wiki/Dependency_hell):
 
 ![Dependency Hell](https://imgs.xkcd.com/comics/python_environment.png)
 
@@ -24,7 +24,7 @@ For this lecture, I am just going to assume you're not on a Windows machine.  If
 
 ## Example 1 - A Data Scientist's Env
 
-Let's say a data scientist is sharing code with you. You use Python 3.7 and she's still using 3.6. She uses a new version of NumPy, but an older version of Pandas. You do the opposite. You want to use her code, but you don't want to wreck your whole system to do it.
+Let's say a data scientist is sharing code with you. You use Python 3.7 and she's still using 3.6. She uses a new version of NumPy, but an older version of Pandas. You want to use her code, but you don't want to wreck your whole system to do it.
 
 Enter VirtualEnv.
 
@@ -46,7 +46,7 @@ After that, you will see your commandline will helpfully remind you that you're 
     (data_env) $
     (data_env) $ ls whatever
 
-Okay, now through this text into a file called `requirements.txt`:
+Okay, now throw this text into a file called `requirements.txt`:
 
     pandas == 0.20.0
     numpy == 1.16.2
@@ -70,10 +70,11 @@ And when your done using your friends code you can leave that all behind with by
 
     (data_env) $ deactivate
 
+You can reactive this env at any time. Thus keeping the different versions of Python and various Python libraries separate.
 
 ## Example 2 - A Web Developer's Env
 
-Okay, for our second example say you are looking at the code for a little web app a colleague is making. For some reason, she uses Python 2.7, not the 3.6 your data scientist uses or even the 3.7 you use. And she uses an older version of NumPy , and installs Django (for making websites). Again, you don't want to wreck your own code, and now you don't want to wreck your data scientist area either.
+For our second example, say you are looking at the code for a little web app a colleague is making. For some reason, she uses Python 2.7, not the 3.6 your data scientist uses or even the 3.7 you use. And she uses an older version of NumPy , and installs Django (for making websites). Again, you don't want to wreck your own code, and now you don't want to wreck your data scientist area either.
 
 VirtualEnv to the rescue!
 
@@ -90,7 +91,7 @@ Now we can start using that environment:
 
     source web_env/bin/activate
 
-Okay, now through this text into a file called `requirements.txt`:
+Okay, now throw this text into a file called `requirements.txt`:
 
     django==1.11.20
     numpy == 1.15.0
