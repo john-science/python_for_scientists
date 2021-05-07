@@ -2,9 +2,9 @@
 
 ### The Disclaimer
 
-Cython is a big topic. It would take 4-8 lectures to cover it completely. So we won't be doing that. But it would also be a disservice to skip it entirely. The approach we will take here is to show *one example* of how to use Cython. This is not, by any means, the only way to use Cython. This is just one approach.
+Cython is a big topic. It could easily fill 4-8 lectures. So we won't be doing that. But it would also be a disservice to skip it entirely. The approach we will take here is to show *one example* of how to use Cython. This is not, by any means, the only way to use Cython.
 
-This lecture shows some examples of how to speed up pre-existing Python code using Cython. The approach we will take is to add a `*.pxd` file for each `*.py` file, and juggle the new Cython build process.
+This lecture shows some examples of how to speed up pre-existing Python code using Cython. We will add a `*.pxd` file for each `*.py` file, and juggle the new Cython build process.
 
 Again, this is not the only way to use Cython, but a common and useful one.
 
@@ -21,7 +21,7 @@ For Linux and Mac, the installation is merely a single line of `apt-get`.
 
 #### Anaconda
 
-Consider installing [Anaconda](http://docs.continuum.io/anaconda/install.html) instead. Anaconda is Python packaged with hundreds of tools and libraries that you will want (This includes Cython and nearly everything else we use in this course.)
+Consider installing [Anaconda](http://docs.continuum.io/anaconda/install.html) instead. Anaconda is Python packaged with hundreds of tools and libraries that you will want. (This includes Cython and nearly everything else we use in this course.)
 
 
 ## The Example Python Script - Finding Primes
@@ -63,7 +63,7 @@ def sieve_naive(n):
     return primes
 ```
 
-It's probably okay if this is not immediately obvious to you, but learning to read code is important, so go through it line-by-line and figure out what it's doing.
+It's okay if this is not immediately obvious to you, but learning to read code is important, so go through it line-by-line and figure out what it's doing.
 
 We can run the code and find primes below a certain upper limit:
 
@@ -77,7 +77,7 @@ We can run the code and find primes below a certain upper limit:
 
 Okay, remember our mantra:
 
-> Make it work, make it right, make it fast
+> Make it work, make it right, make it fast.
 
 Based on the order of those, we are good. It works and it outputs the correct prime numbers like it is supposed to. Good. Now we can finally worry about making our Python code fast(er).
 
@@ -95,7 +95,7 @@ print('{0} seconds'.format(time() - start))
 
 ## Making it Faster without Cython
 
-First things first, we don't actually need Cython to make Python code faster. There are a lot of choices we can make that can improve the performance. We will break these choices into two categories: knowing Python better and knowing your subject matter better.
+First things first, we don't actually need Cython to make Python code faster. There are a lot of choices we can make that can improve the performance. We will break these choices into two categories: knowing Python better, and knowing the subject matter better.
 
 ### Python Tricks
 
@@ -123,7 +123,7 @@ For instance, in our `naive` function above, we iterated from 1 to N to remove a
 for i in range(2, m):
 ```
 
-But, if you think about it for a second, we only have to iterate from 1 to the square root of N, because this number times itself is N, and anything bigger than that can't be a prime factor of N (considering we have already knocked out all the lower primes. So, knowing something about math means we can simplify our iterator to:
+But, if you think about it for a second, we only have to iterate from 1 to the square root of N, because this number times itself is N, and anything bigger than that can't be a prime factor of N (considering we have already knocked out all the lower primes). So, knowing something about math means we can simplify our iterator to:
 
 ```python
 for i in range(2, int(n**0.5 + 1)):
@@ -337,7 +337,7 @@ One trick is to make a change, compile your Cython and see how many lines there 
 
 > What did we learn?
 
-1. We learned that the first thing we can do to improve the performance of our Python code is to look at the Python code. Look for Python tricks and math tricks to make you code faster.
+1. We learned that the first thing we can do to improve the performance of our Python code is to look at the Python code. Look for Python tricks and math tricks to make your code faster.
 2. We also learned to create `.pxd` files to improve our code's performance without ever touching our Python code.
 3. We learned how to setup those `.pxd` files.
 4. And we learned how to use `distutils` to compile and Cython code into a Python-ready library.
