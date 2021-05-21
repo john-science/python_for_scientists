@@ -170,7 +170,7 @@ The jargon itself is not as important as the relationship between these classes.
 
 #### Be Warned
 
-The above example of `Square` seems reasonable enough. But using multiple inhertance is not risk free. You can create classes with subclasses of subclasses of subclasses of subclasses of subclasses of subclasses so deep that you can no longer keep the whole chain of inheritance chain easily in mind. At some level deep down the rabbit hole adding another layer of abstraction begins to add more complexity than it removes.
+The above example of `Square` seems reasonable enough. But using multiple inhertance is not risk free. You can create classes with subclasses of subclasses of subclasses of subclasses of subclasses of subclasses so deep that you can no longer keep the whole chain of inheritance easily in mind. At some level deep down the rabbit hole adding another layer of abstraction begins to add more complexity than it removes.
 
 Where to draw the line is up to you. Conceptual abstractions can be helpful or confusing. Good design helps, but in the end it is a judgement call.
 
