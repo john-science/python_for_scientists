@@ -66,6 +66,13 @@ Okay! Now we have a Virtual Environment with all our packages installed, and we 
     >>> matplotlib.__version__
     '2.1.2'
 
+Or you can use the pip command `freeze` to see what packages you have installed:
+
+    (data_env) $ pip freeze
+    matplotlib==2.1.2
+    numpy==1.16.2
+    pandas==0.20.0
+
 And when your done using your friends code you can leave that all behind with by just typing `deactivate` from the command line:
 
     (data_env) $ deactivate
@@ -109,6 +116,12 @@ Okay! Now we have a Virtual Environment with all our packages installed, and we 
     >>> import django
     >>> django.__version__
     '1.11.20'
+
+Or you can use the pip command `freeze` to see what packages you have installed:
+
+    (data_env) $ pip freeze
+    django==1.11.20
+    numpy==1.15.0
 
 Again, when you want to go back to your own code, you can just type `deactivate` from the command line:
 
