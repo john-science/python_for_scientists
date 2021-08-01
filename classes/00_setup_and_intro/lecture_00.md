@@ -2,7 +2,7 @@
 
 ## How to install Python?
 
-Python should be easy to install on basically all desktops and laptops. There are many different versions and flavors of Python. This class will be built around Python v3.6, but you will probably be fine using anything Python v3.3 or newer.
+Python should be easy to install on basically all desktops and laptops. There are many different versions and flavors of Python. This class will be built around Python v3.6, but you will probably be fine using anything Python v3.3 to v3.9.
 
 > **Please Note** The NumPy group [has said](https://github.com/numpy/numpy/blob/master/doc/neps/dropping-python2.7-proposal.rst) they will be dropping support for Python 2.X on Jan 1, 2020.  Since NumPy is the basis of nearly all science and engineering libraries in Python it will be very important that you move to Python 3.3 or newer. Soon.
 
