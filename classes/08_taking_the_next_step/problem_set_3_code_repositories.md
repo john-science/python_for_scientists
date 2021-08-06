@@ -15,7 +15,7 @@ Just click [here](https://help.github.com/articles/signing-up-for-a-new-github-a
 
 A good way to learn how to use all the features on GitHub is to copy someone else's repository. This class is on GitHub, stary by copying (or "forking") this class.
 
-Just click the "fork" button in the top-right corner of the [class website](https://github.com/theJollySin/python_for_scientists).
+Just click the "fork" button in the top-right corner of the [class website](https://github.com/john-science/python_for_scientists).
 
 ## Learn Your Way Around GitHub
 

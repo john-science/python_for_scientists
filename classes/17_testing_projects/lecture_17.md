@@ -286,8 +286,8 @@ Well-tested code tends to be less buggy. And the tests can save people time.
 
 GitHub is a great place to look for example Python projects. There are thousands of projects using the tools in this lecture. For two simple example Python projects using `setuptools`, take a look at two of my other projects on GitHub:
 
- * [mazelib](https://github.com/theJollySin/mazelib) - A Python algorithm library for creating and solving mazes.
- * [pytextgame](https://github.com/theJollySin/pytextgame) - A cross-platform text-game engine.
+ * [mazelib](https://github.com/john-science/mazelib) - A Python algorithm library for creating and solving mazes.
+ * [pytextgame](https://github.com/john-science/pytextgame) - A cross-platform text-game engine.
 
 
 ## Further Reading

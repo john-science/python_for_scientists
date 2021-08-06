@@ -74,7 +74,7 @@ But there are also multi-line comments as we saw in the [Functions and Modules](
 ```python
 '''
 This
-is a 
+is a
 multi-line
 comment
 '''
@@ -302,7 +302,7 @@ The two most popular code repositories are Git and SVN. Both are good and have t
 
 ## The Git Primer
 
-I have already written a short introduction to Git, it is on GitHub [here](https://gist.github.com/theJollySin/7a2ee80c05d073996d16).
+I have already written a short introduction to Git, it is on GitHub [here](https://gist.github.com/john-science/7a2ee80c05d073996d16).
 
 ## Git-Game
 

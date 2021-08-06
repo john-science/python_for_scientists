@@ -4,7 +4,7 @@
 
 #### SQLite
 
-1. The first step is to create the database we built in the lectures. The easiest way to do this would be to download [this](https://github.com/theJollySin/python_for_scientists/blob/master/classes/15_sqlite3/secret_agent_lecture_sqlite3.py) Python script and run it. It will create the database and everything in it. (Another option is to go through the lecture by hand, and write out all the queries yourself, this would take more time but be a useful learning practice.)
+1. The first step is to create the database we built in the lectures. The easiest way to do this would be to download [this](https://github.com/john-science/python_for_scientists/blob/master/classes/15_sqlite3/secret_agent_lecture_sqlite3.py) Python script and run it. It will create the database and everything in it. (Another option is to go through the lecture by hand, and write out all the queries yourself, this would take more time but be a useful learning practice.)
 
 2. WARNING: Python will only be able to edit a database file if the file and/or the folder it is in have general write permissions. If you are on a Mac/Linux computer, all you have to do is "chmod 777". If you are on a Windows computer, simply right-click the file and navigate through the menus to add write permissions.
 

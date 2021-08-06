@@ -16,13 +16,13 @@ Consider installing [Anaconda](http://docs.continuum.io/anaconda/install.html) i
 
 ## Outline
 
- * [Scatter Plots](https://github.com/theJollySin/python_for_scientists/blob/master/classes/12_matplotlib/lecture_12.md#scatter-plots)
- * [Line Plots](https://github.com/theJollySin/python_for_scientists/blob/master/classes/12_matplotlib/lecture_12.md#line-plots)
- * [Bar Charts](https://github.com/theJollySin/python_for_scientists/blob/master/classes/12_matplotlib/lecture_12.md#bar-charts)
- * [Histograms](https://github.com/theJollySin/python_for_scientists/blob/master/classes/12_matplotlib/lecture_12.md#histograms)
- * [Multiple Plots](https://github.com/theJollySin/python_for_scientists/blob/master/classes/12_matplotlib/lecture_12.md#multiple-plots)
- * [Error Bars](https://github.com/theJollySin/python_for_scientists/blob/master/classes/12_matplotlib/lecture_12.md#error-bars)
- * [Common Customizations](https://github.com/theJollySin/python_for_scientists/blob/master/classes/12_matplotlib/lecture_12.md#common-customizations)
+ * [Scatter Plots](https://github.com/john-science/python_for_scientists/blob/master/classes/12_matplotlib/lecture_12.md#scatter-plots)
+ * [Line Plots](https://github.com/john-science/python_for_scientists/blob/master/classes/12_matplotlib/lecture_12.md#line-plots)
+ * [Bar Charts](https://github.com/john-science/python_for_scientists/blob/master/classes/12_matplotlib/lecture_12.md#bar-charts)
+ * [Histograms](https://github.com/john-science/python_for_scientists/blob/master/classes/12_matplotlib/lecture_12.md#histograms)
+ * [Multiple Plots](https://github.com/john-science/python_for_scientists/blob/master/classes/12_matplotlib/lecture_12.md#multiple-plots)
+ * [Error Bars](https://github.com/john-science/python_for_scientists/blob/master/classes/12_matplotlib/lecture_12.md#error-bars)
+ * [Common Customizations](https://github.com/john-science/python_for_scientists/blob/master/classes/12_matplotlib/lecture_12.md#common-customizations)
 
 ## Scatter Plots
 
