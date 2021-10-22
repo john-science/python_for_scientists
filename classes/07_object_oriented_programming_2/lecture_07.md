@@ -1,5 +1,19 @@
 # Object-Oriented Programming, Part 2
 
+This lecture continues outlining the basics of OOP in Python that was started [here](../06_object_oriented_programming_1/lecture_06.md).
+
+## Table of Contents
+
+1. [Inheritance](#inheritance)
+2. [Abstract Classes](#abstract-classes)
+3. [Multiple Inheritance](#multiple-inheritance)
+   - [Be Warned](#be-warned)
+4. [More Examples](#more-examples)
+5. [Problem Sets](#problem-sets)
+6. [Further Reading](#further-reading)
+
+<br/>
+
 ## Inheritance
 
 Inheritance is taking the abstractions we create with Objects one step further
@@ -66,6 +80,8 @@ And if we create a `Triangle`, we can call both the methods in `Triangle` and th
 
 We have created a connection between the idea of a triangle and the idea of a polygon. We say that "Triangle inherits from Polygon". We have set up a conceptual connection such that everything in `Polygon` should appear in `Triangle`. We use this connection in code to help us think about the logic of our situation. The goal is to create relationships among the ideas that we can represent in the code.
 
+<br/>
+
 ## Abstract Classes
 
 You may have noticed a chance to improve the `Polygon` example above. Both the `Triangle` and `Rectangle` examples above have a `get_area()` method. Wouldn't it be nice if we could include that in `Polygon` somehow? But the problem is that you calculate the area of triangles and rectangles differently, so we can't just write the equation directly in `Polygon`. This is where abstract classes come into play.
@@ -107,7 +123,7 @@ And in order to implement a subclass of `Polygon`, it must provide an implementa
 >>> class Circle(Polygon):
 >>>     def __init__(self):
 >>>         Polygon.__init__(self, 1)
->>> 
+>>>
 >>> c = Circle()
 TypeError: Can't instantiate abstract class Circle with abstract methods get_area
 ```
@@ -122,6 +138,7 @@ But as long as the subclass implements all the abstract methods, we can create a
 
 What we did by making `Polygon` abstract is create a more complete blueprint for `Triangle` and `Rectangle`, that includes the idea (if not the implementation) that every polygon has an area. This can be useful in organizing our thoughts in code. If at some point in the distant future we want to add a `Heptadecagon` class, we would have the abstract blueprint in `Polygon` to remind us we need to write a `get_area` method.
 
+<br/>
 
 ## Multiple Inheritance
 
@@ -168,12 +185,13 @@ In the language of OOP, we could describe the above classes in a few ways:
 The jargon itself is not as important as the relationship between these classes. Multiple inheritance is a powerful abstraction tool, giving us a huge amount of flexibilty to organize our thoughts and thus our code.
 
 
-#### Be Warned
+### Be Warned
 
 The above example of `Square` seems reasonable enough. But using multiple inhertance is not risk free. You can create classes with subclasses of subclasses of subclasses of subclasses of subclasses of subclasses so deep that you can no longer keep the whole chain of inheritance easily in mind. At some level deep down the rabbit hole adding another layer of abstraction begins to add more complexity than it removes.
 
 Where to draw the line is up to you. Conceptual abstractions can be helpful or confusing. Good design helps, but in the end it is a judgement call.
 
+<br/>
 
 ## More Examples
 
@@ -185,7 +203,7 @@ The two object-oriented programming classes have been quite short. There is not 
 ## Problem Sets
 
  * [Inheritance](problem_set_1_interheritance.md)
- 
+
 
 ## Further Reading
 

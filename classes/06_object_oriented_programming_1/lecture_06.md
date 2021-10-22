@@ -2,8 +2,21 @@
 
 [Object-Oriented Programming](https://en.wikipedia.org/wiki/Object-oriented_programming) (OOP) means programming with [classes](https://en.wikipedia.org/wiki/Class_%28computer_programming%29). The "class" is a fundamental building block in Python, and used everywhere.
 
+## Table of Contents
 
-### The `class` Keyword
+1. [The class Keyword](#the-class-keyword)
+2. [Classes are Blueprints](#classes-are-blueprints)
+3. [self](#self)
+4. [init](#init)
+5. [Class Methods](#class-methods)
+6. [Static Methods](#static-methods)
+7. [Python is Built on Classes](#python-is-built-on-classes)
+8. [Problem Sets](#problem-sets)
+9. [Further Reading](#further-reading)
+
+<br/>
+
+## The `class` Keyword
 
 In Python we use the `class` keyword to create classes in a similar way we use the `def` keyword to create functions. "And what is a class?" you ask.
 
@@ -16,8 +29,9 @@ In Python we use the `class` keyword to create classes in a similar way we use t
 
 Find a core concept or idea (like a file, a plot, or a database) and make a class out of it. This will help you organize your code and your thoughts. Things that belong to your idea will become variables or methods inside of the class. This will help you keep everything else separate. When thinking about larger amounts of code, you will only have to think about one class at a time.
 
+<br/>
 
-### Classes are Blueprints
+## Classes are Blueprints
 
 > A class is a blueprint for an idea.
 
@@ -72,7 +86,9 @@ emmy = Student('Emmy Noether', 837195783)
 
 Here we create an "object" from the `Student` class, and call it `emmy`. Notice that `'Emmy Noether'` and `837195783` match the inputs (ignore `self` for now) of the `__init__` method in the `Student` class. Where the generic, abstract notion of a `Student` is defined by the class, the details for the particular student `emmy` form an "object".
 
-### `self`
+<br/>
+
+## `self`
 
 What is with that `self` parameter used throughout the `Student` class? It is a reference to the "instance" of that class. For example, let's say we had all these "instances" of the `Student` class:
 
@@ -110,13 +126,17 @@ Just to be clear, let's print all the names above:
 'Marie'
 ```
 
-### `__init__`
+<br/>
+
+## `__init__`
 
 What is the deal with that `__init__` in `Student`? When we create a new object by doing something like `emmy = Student("Emmy Noether", 837195783)`, the `__init__` is called, and the code inside is executed to create the initial form of the object.
 
 In this case, the `__init__` method is called and four variables are set: `self.name`, `self.student_id`, `self.hw_grades`, and `self.test_grades`. Two variables are set to the values `"Emmy Noether"` and `837195783` and the other two are given default values. This is the purpose of the `__init__` method; to give the attributes of the object starting values.
 
-### Class Methods
+<br/>
+
+## Class Methods
 
 Now let's talk about those `Student` methods: functions inside of the class. Mostly, they look like regular functions, except they are indented to signify they are part of the `Student` class. Also, the first input is `self`:
 
@@ -138,8 +158,9 @@ emmy.set_hw_grade(99.0, 0)
 
 We see the `set_hw_grade` method actually only takes two inputs, not three. The `self` input is provided by doing the `emmy.`. Another thing we see is that by using a class method, we have access to all of the class attributes. In this case, that means we can modify the values in the `self.hw_grades` list.
 
+<br/>
 
-### Static Methods
+## Static Methods
 
 A class method is any function you include in a class and give the `self` parameter to. But what if you want to include a method in a class that is independent of the value of this particular object? These are called "static methods", and here are a couple examples:
 
@@ -196,7 +217,9 @@ class Student:
 
 Written like this, these methods would still run. But using the `@staticmethod` decorator has some performance improvements. Also, when you look at a method with the `@staticmethod` decorator on top, you instantly know a lot about it. It will help the next person who looks at your code read and understand what is going on.
 
-### Python is Built on Classes
+<br/>
+
+## Python is Built on Classes
 
 You don't have to go far to find examples of classes being used in Python. We've already seen tons of them: `int`, `float`, `list`, `dict`, `True`, `csv`, the list goes on.
 
@@ -214,22 +237,24 @@ And after you create the `lst` object, you can call class methods on that object
 >>> lst.append(-9)
 >>> lst
 [1, 2, 3, -9]
->>> 
+>>>
 >>> lst.sort()
 >>> lst
 [-9, 1, 2, 3]
->>> 
+>>>
 >>> lst.count(1)
 1
 ```
 
 And if you call `help(lst)` the documentation you see starts with `class list(object)` because nearly everything in Python is a class or an object. Object-oriented programming is so important in Python, it's hard to understand the language without it.
 
+<br/>
 
 ## Problem Sets
 
  * [Simple Classes](problem_set_1_try_it_out.md)
  * [init Problems](problem_set_2_init.md)
+
 
 ## Further Reading
 
