@@ -7,7 +7,7 @@
 1. [The class Keyword](#the-class-keyword)
 2. [Classes are Blueprints](#classes-are-blueprints)
 3. [self](#self)
-4. [init](#init)
+4. [init](#__init__)
 5. [Class Methods](#class-methods)
 6. [Static Methods](#static-methods)
 7. [Python is Built on Classes](#python-is-built-on-classes)
