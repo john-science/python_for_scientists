@@ -137,7 +137,7 @@ Okay, so we have some unit tests. Let's try and unpack all of that.
 
 First things first, if you want a unit test, just subclass `unittest.TestCase`, that brings with it all the architecture you need to automate your testing. Also, notice that we added `unittest.main()` to the main block. That means we can now call this script from the command line to run all the tests. That's handy!
 
-There is a little magic happening here. Any method that has "test" in the name is a unit test. That is, `TestCase` handles finding all methods with these names and running them as tests. You can put other helper methods in this class and they won't be run as unit tests. This is *super handy*, but also falls into the realm of invisible magic so don't code like this yourself.
+There is a little magic happening here. Any method whose name starts with "test" is a unit test. That is, `TestCase` handles finding all methods with these names and running them as tests. You can put other helper methods in this class and they won't be run as unit tests. This is *super handy*, but also falls into the realm of invisible magic so don't code like this yourself.
 
 Basically, in each "test" method, you will see that we use the `Student` class, and then test it's output. In both of the tests above `assertEqual` is the meat of the test. It will throw an error if if arguments are not equal. There are several [other assert methods](https://docs.python.org/2/library/unittest.html#unittest.TestCase) built-into `TestCase`:
 
