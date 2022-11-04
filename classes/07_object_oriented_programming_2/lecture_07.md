@@ -34,13 +34,13 @@ class Polygon:
 
 class Rectangle(Polygon):
 
-    def __init__(self, lenghts_of_sides):
+    def __init__(self, lengths_of_sides):
         Polygon.__init__(self, 4)
         self.lengths_of_sides = lengths_of_sides  # list of two numbers
 
     def get_area(self):
         '''return the area of the rectangle: length x width'''
-        x, y = self.lenghts_of_sides
+        x, y = self.lengths_of_sides
         return x * y
 
 class Triangle(Polygon):
