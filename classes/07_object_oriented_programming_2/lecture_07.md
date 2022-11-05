@@ -147,13 +147,13 @@ There is one more really major topic we need to cover in OOP before we can move 
 ```python
 class Square(Polygon):
 
-    def __init__(self, lenghts_of_side):
+    def __init__(self, lengths_of_side):
         Polygon.__init__(self, 4)
         self.lengths_of_sides = [lengths_of_side]  # list of two numbers
 
     def get_area(self):
         '''return the area of the rectangle: length x width'''
-        x = self.lenghts_of_sides[0]
+        x = self.lengths_of_sides[0]
         return x * x
 ```
 
