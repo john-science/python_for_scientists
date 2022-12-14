@@ -217,22 +217,22 @@ Knowning how to use a particular data structure is good, but that won't do you a
 
 #### 1. Print the days of the week (`"Monday"` through `"Sunday"`) and the numbers `1` through `7` using a single `for` loop.
 
-    dows = {"Monday": 1, "Tuesday": 2, "Wednesday": 3, "Thursday": 4,
-            "Friday": 5, "Saturday": 6, "Sunday": 7}
+    dows = ("Monday", "Tuesday", "Wednesday", "Thursday",
+            "Friday", "Saturday", "Sunday")
     
-    for dow, i in dows.iteritems():
+    for i, dow in enumerate(dows):
         print(dow + " is day-of-week number " + str(i))
 
 #### 2. Print the names of the planets in alphabetical order: `"Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"`.
 
     planets = ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"]
     
-    for planet in planets:
+    for planet in sorted(planets):
         print(planet)
 
 #### 3. Create a collection of the names of three science fiction auhors `"Ray Bradbury"`, `"Isaac Asimov"`, and `"Terry Pratchett"` such that it can never be altered.
 
-    authors = ("Ray Bradbury"`, `"Isaac Asimov"`, and `"Terry Pratchett")
+    authors = ("Ray Bradbury", "Isaac Asimov", "Terry Pratchett")
 
 #### 4. Find all the unique letters in the phrase: `"the sweettoothed bookkeeper"`.
 
