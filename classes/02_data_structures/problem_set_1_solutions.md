@@ -236,11 +236,7 @@ Knowning how to use a particular data structure is good, but that won't do you a
 
 #### 4. Find all the unique letters in the phrase: `"the sweettoothed bookkeeper"`.
 
-    phrase = "the sweettoothed bookkeeper".replace(' ', '')
-    letters = set()
-    
-    for letter in phrase:
-        letters.add(letter)
+    letters = set("the sweettoothed bookkeeper".replace(' ', ''))
 
 #### 5. For each month of the year, match the number of days in the month to the number (1 through 12) of that month.
 
