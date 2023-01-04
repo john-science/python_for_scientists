@@ -37,6 +37,7 @@ Write a function named:
         i = 1
         while i <= number:
             sum += 1
+            i += 1
         
         return sum
     
@@ -54,7 +55,7 @@ Write a function named:
 
     def list_average(lst):
         '''averages a list of numbers'''
-        return sum(lst) / len(avg)
+        return sum(lst) / len(lst)
         
 #### 5. `odd_filter` that takes a `list` of integers and returns a list containing only the odd numbers.
 
