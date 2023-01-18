@@ -59,7 +59,7 @@ def print_some_numbers(lst, predicate):
 print_some_numbers(fibonacci, is_even)
 ```
 
-Well, those approaches look pretty similar. But what if we want to print the odd numbers in the Fibonacci Sequence? We would have to write a whole new method `print_odd_numbers`. And if we wanted to print numbers divisible by 3, again we'd need to write a whole new function. But with the `print_some_numbers` method, all we have to do is define one new (short) lambda predicate function. This keeps us having to repeat ourselves. If `print_some_numbers` was very long, you could save a lot of repitition.
+Well, those approaches look pretty similar. But what if we want to print the odd numbers in the Fibonacci Sequence? We would have to write a whole new method `print_odd_numbers`. And if we wanted to print numbers divisible by 3, again we'd need to write a whole new function. But with the `print_some_numbers` method, all we have to do is define one new (short) lambda predicate function. (A predicate function returns `True` or `False`.) This keeps us having to repeat ourselves. If `print_some_numbers` was very long, you could save a lot of repitition.
 
 ```python
 is_odd = lambda n: n % 2 == 1
