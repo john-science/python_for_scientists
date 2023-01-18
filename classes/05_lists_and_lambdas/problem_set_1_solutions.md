@@ -45,7 +45,7 @@
     filter(lambda n: (sqrt(n) % 1 == 0) and (n % 2 == 0), range(10000))
     
     # 3. How many positive, even numbers less than 1,000,000 are evenly divisible by 99?
-    len(filter(lambda i: i % 99 == 0, range(1000000)))  # answer: 10102
+    len(list(filter(lambda i: i % 99 == 0, range(1000000))))  # answer: 10102
 
 #### Choose Your Own Adventure
 
