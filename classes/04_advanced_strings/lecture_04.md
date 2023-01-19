@@ -186,6 +186,24 @@ See if you understand this short example:
 'Quarentine' contains 'tine'.
 ```
 
+### String Formatting with f-strings
+
+In Python, you can build up more complicated strings from variables in lots of ways. These days [f-strings](https://realpython.com/python-f-strings/) are commonly considered to be the preferred way.
+
+Let's just work an example:
+
+```python
+>>> x = 1
+>>> s = "planet"
+>>> print(f"We only have {x} {s}.")
+We only have 1 planet.
+```
+
+What we did there was start our string with `f` (`f"whatever"`), and then we used local variable names inside curly brackets (like `{x}`) to have Python insert that variable's string representation our the larger string.
+
+This is pretty easy to use. And has the benefit of being very readable.
+
+
 ## Type Conversions
 
 This is a quick aside. Python has several methods built-in to do type coversions, just like we did with `str()` above. There are built-in type converters for each primitive type:
