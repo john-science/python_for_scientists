@@ -76,9 +76,13 @@ This is a major principle in Python:
 
 ## Yield
 
-#### What is an Iterator?
+### What is an Iterator?
 
-Let us take a look at a wonderful built-in Python function, `range`:
+An iterator is a way of generating only ONE item in a sequence at a time. If you need a list a billion items long, that will take up all the memory in your computer. But if you just create one item at a time, then you can still loop through that billion-item list, but only one item will have to be in memory at a time. Doubly useful if you exit the loop half way through; maybe you will never need the whole list anyway!
+
+#### range as an example iterator
+
+We have seen `range()` a couple times already. Well, `range()` returns an iterator, not a list, so let us take a look:
 
 ```python
 >>> range(5)
@@ -145,7 +149,12 @@ def sum_odd_even(N):
 
 ## Map and Filter
 
-In theory we could do anything with our data. But in practice, what we do with a `list` of data frequently falls into a few basic categories: apply a function to each member of a list, sum or reduce a whole list to one number, or select some elements from a list. Python has three handy tools built in to speed those processes up: `map`, `reduce`, and `filter`.
+In the world of data science and data analysis, "map, reduce, filter" is a critical idea. This is foundational in how many data scientists think about breaking apart data and collating it for their own needs. This idea is so important that the creators of Python decided to build them directly into the language with the tools `map`, `reduce`, `filter`, and `lambda` which ties them all together.
+
+In theory we could do anything with our data. But in practice, what we do with a `collection` of data frequently falls into a few basic categories: apply a function to each member of a list, sum or reduce a whole list to one number, or select some elements from a list. These [MapReduce](https://en.wikipedia.org/wiki/MapReduce) concept might sound high-minded, and indeed much [academic](http://web.mit.edu/6.005/www/fa15/classes/25-map-filter-reduce/) has been said about them. But let's just work through some basic building-block examples.
+
+Maybe one day you will have more complicated data than these little integer examples below, and you'll be able to use these tools to analyze it.
+
 
 ### Map
 
