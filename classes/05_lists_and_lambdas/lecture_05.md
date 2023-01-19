@@ -156,7 +156,7 @@ Let's say we want to take a `list` of numbers and create another list, by applyi
 <map object at 0x7fed22b304e0>
 ```
 
-Notice here that `lambda` returns an iterator, just like `range`. Of course, we can still use `list` to convert that to a list if we want to take a look at it:
+Notice here that `map` returns an iterator, just like `range`. Of course, we can still use `list` to convert that to a list if we want to take a look at it:
 
 ```python
 >>> list(map(lambda n: n * n, range(5)))
