@@ -143,7 +143,7 @@ In this case, the `__init__` method is called and four variables are set: `self.
 
 ## Methods
 
-Now let's talk about those `Student` methods: functions inside of the class. Mostly, they look like regular functions, except they are indented to signify they are part of the `Student` class. Also, the first input is `self`:
+Now let's talk about those `Student` methods: functions inside of a class. Mostly, they look like regular functions, except they are indented to signify they are part of the `Student` class. Also, the first input is `self`:
 
 ```python
 class Student:
@@ -154,20 +154,20 @@ class Student:
         self.hw_grades[week] = grade
 ```
 
-The first parameter to this function is `self`, not because you need to pass a `self` variable in, but to signify that this method takes the attributes (`self.name`, `self.student_id`, `self.hw_grades`) from this instance of Student. To set the first homework grade to 99 percent, we would do this:
+The first parameter to this function is `self`, not because you need to pass a `self` variable in, but to signify that this method uses the class attributes (`self.name`, `self.student_id`, `self.hw_grades`) from this instance of Student. To set the first homework grade to 99 percent, we would do this:
 
 ```python
 emmy = Student("Emmy Noether", 837195783)
 emmy.set_hw_grade(99.0, 0)
 ```
 
-We see the `set_hw_grade` method actually only takes two inputs, not three. The `self` input is provided by doing the `emmy.`. Another thing we see is that by using a class method, we have access to all of the class attributes. In this case, that means we can modify the values in the `self.hw_grades` list.
+We see the `set_hw_grade` method actually only takes two inputs, not three. The `self` input is provided by doing the `"Emmy Noether".`. Another thing we see is that by using a method, we have access to all of the class attributes. In this case, that means we can modify the values in the `self.hw_grades` list.
 
 <br/>
 
 ## Static Methods
 
-A class method is any function you include in a class and give the `self` parameter to. But what if you want to include a method in a class that is independent of the value of this particular object? These are called "static methods", and here are a couple examples:
+A method is any function you include in a class and give the `self` parameter to. But what if you want to include a method in a class that is independent of the value of that particular object? These are called "static methods", and here are a couple examples:
 
 ```python
 class Student:
@@ -220,7 +220,7 @@ class Student:
             return 'F'
 ```
 
-Written like this, these methods would still run. But using the `@staticmethod` decorator has some performance improvements. Also, when you look at a method with the `@staticmethod` decorator on top, you instantly know a lot about it. It will help the next person who looks at your code read and understand what is going on.
+Written like this, these methods would still run. But using the `@staticmethod` decorator has some performance improvements. Also, when you look at a method with the `@staticmethod` decorator on top, you instantly know a lot about it. It will help the next person who looks at your code read and understand what is going on more quickly.
 
 <br/>
 
@@ -231,27 +231,27 @@ There are lots of other decorators in Python. But a super handy one for OOP is t
 ```python
 class Celsius:
 
-	def __init__(self, temp=0):
-		self._temperature = temp
+    def __init__(self, temp=0):
+        self._temperature = temp
 
-	@property
-	def temp(self):
-		return self._temperature
+    @property
+    def temp(self):
+        return self._temperature
 
-	@temp.setter
-	def temp(self, val):
-		if val < -273.15:
-			raise ValueError(f"In reality, temepratures can't go this low: {val}")
+    @temp.setter
+    def temp(self, val):
+        if val < -273.15:
+            raise ValueError(f"In reality, temepratures can't go this low: {val}")
 
         # sets the temperature
-		self._temperature = val
+        self._temperature = val
 ```
 
-Okay, so here we create a simple `Celcius` class. And (for now) it only has one attribute, the temperature. And its private (it starts with an underscore). What the `@property` decorator gets us over the `def temp` method is just a way to return the private temperature value. And that might not seem that valuable. But then we look at the `@temp.setter` decorator which goes along with the `@property` decorator and we can see the _reason_ for all this. 
+Okay, so here we create a simple `Celcius` class. And (for now) it only has one attribute, the temperature. And that attribute is private (it starts with an underscore). What the `@property` decorator says is "this just returns an attribute of the class". And that might not seem that valuable. But then we look at the `@temp.setter` decorator (which goes along with the `@property` decorator) and we can see the _reason_ for all this. 
 
-We don't want people to set the temperature to an impossible value!
+> We don't want people to set the temperature to an impossible value!
 
-So the `@temp.setter` decorator allows us to do error-checking when we "set" and "get" the private `self._temperature` value. This ability to ensure the values of a class are valid can be really helpful. It is a great way to enforce that everything is in a reasonable state, and will work properly.
+So the `@temp.setter` decorator allows us to do error-checking when we "set" the private `self._temperature` value. This ability to ensure the values of a class are valid can be really helpful. Ensuring that your code is in a sensical state can be crucial to a program running well.
 
 Let's use our new little toy class:
 
@@ -270,10 +270,10 @@ Great! That worked out! Super easy to use.
 But what if we try to do this?
 
 ```python
-cel.temp = -300
+cel.temp = -300  # explodes
 ```
 
-Boom! Failure! The program throws a `ValueError`. But that's great. It means that thousands of lines of code later than this, we know the Celcius temperature value we are using is valid. And that confidence in correctness can be game-changing.
+**Boom!** Failure! The program throws a `ValueError`. But that's great. It means that thousands of lines of code later than this, we know the Celcius temperature value we are using is valid. And that confidence in correctness can be game-changing.
 
 <br/>
 
