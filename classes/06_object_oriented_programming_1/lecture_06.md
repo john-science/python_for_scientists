@@ -8,7 +8,7 @@
 2. [Classes are Blueprints](#classes-are-blueprints)
 3. [self](#self)
 4. [init](#__init__)
-5. [Class Methods](#class-methods)
+5. [Methods](#class-methods)
 6. [Static Methods](#static-methods)
 7. [Python is Built on Classes](#python-is-built-on-classes)
 8. [Problem Sets](#problem-sets)
@@ -136,7 +136,7 @@ In this case, the `__init__` method is called and four variables are set: `self.
 
 <br/>
 
-## Class Methods
+## Methods
 
 Now let's talk about those `Student` methods: functions inside of the class. Mostly, they look like regular functions, except they are indented to signify they are part of the `Student` class. Also, the first input is `self`:
 
@@ -216,6 +216,59 @@ class Student:
 ```
 
 Written like this, these methods would still run. But using the `@staticmethod` decorator has some performance improvements. Also, when you look at a method with the `@staticmethod` decorator on top, you instantly know a lot about it. It will help the next person who looks at your code read and understand what is going on.
+
+<br/>
+
+## Properties
+
+There are lots of other decorators in Python. But a super handy one for OOP is the `@property` decorator. First, let's see an example:
+
+```python
+class Celsius:
+
+	def __init__(self, temp=0):
+		self._temperature = temp
+
+	@property
+	def temp(self):
+		return self._temperature
+
+	@temp.setter
+	def temp(self, val):
+		if val < -273.15:
+			raise ValueError(f"In reality, temepratures can't go this low: {val}")
+
+        # sets the temperature
+		self._temperature = val
+```
+
+Okay, so here we create a simple `Celcius` class. And (for now) it only has one attribute, the temperature. And its private (it starts with an underscore). What the `@property` decorator gets us over the `def temp` method is just a way to return the private temperature value. And that might not seem that valuable. But then we look at the `@temp.setter` decorator which goes along with the `@property` decorator and we can see the _reason_ for all this. 
+
+We don't want people to set the temperature to an impossible value!
+
+So the `@temp.setter` decorator allows us to do error-checking when we "set" and "get" the private `self._temperature` value. This ability to ensure the values of a class are valid can be really helpful. It is a great way to enforce that everything is in a reasonable state, and will work properly.
+
+Let's use our new little toy class:
+
+```python
+cel = Celsius();
+
+# using the @temp.setter, under the hood
+cel.temp = -270
+
+# using the @property getting, under the hood
+print(cel.temp)
+```
+
+Great! That worked out! Super easy to use.
+
+But what if we try to do this?
+
+```python
+cel.temp = -300
+```
+
+Boom! Failure! The program throws a `ValueError`. But that's great. It means that thousands of lines of code later than this, we know the Celcius temperature value we are using is valid. And that confidence in correctness can be game-changing.
 
 <br/>
 
