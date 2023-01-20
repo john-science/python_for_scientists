@@ -6,11 +6,12 @@ This lecture continues outlining the basics of OOP in Python that was started [h
 
 1. [Inheritance](#inheritance)
 2. [Abstract Classes](#abstract-classes)
+3. [Multilevel Inheritance](#multilevel-inheritance)
 3. [Multiple Inheritance](#multiple-inheritance)
-   - [Be Warned](#be-warned)
-4. [More Examples](#more-examples)
-5. [Problem Sets](#problem-sets)
-6. [Further Reading](#further-reading)
+4. [Be Warned](#be-warned)
+5. [More Examples](#more-examples)
+6. [Problem Sets](#problem-sets)
+7. [Further Reading](#further-reading)
 
 <br/>
 
@@ -140,9 +141,9 @@ What we did by making `Polygon` abstract is create a more complete blueprint for
 
 <br/>
 
-## Multiple Inheritance
+## Multilevel Inheritance
 
-There is one more really major topic we need to cover in OOP before we can move on. Starting with the examples above, imagine we want to create a `Square` class. Now, we could do this by inheriting directly from our abstract `Polygon` class as before:
+Starting with the examples above, imagine we want to create a `Square` class. Now, we could do this by inheriting directly from our abstract `Polygon` class as before:
 
 ```python
 class Square(Polygon):
@@ -182,16 +183,47 @@ In the language of OOP, we could describe the above classes in a few ways:
  * `Square` is a subclass of `Rectangle`, which is a subclass of `Polygon`.
  * `Polygon` is a superclass of `Rectangle`, which is a superclass of `Square`.
 
-The jargon itself is not as important as the relationship between these classes. Multiple inheritance is a powerful abstraction tool, giving us a huge amount of flexibilty to organize our thoughts and thus our code.
+The jargon itself is not as important as the relationship between these classes. Multilevel Inheritance is a powerful abstraction tool, giving us a huge amount of flexibilty to organize our thoughts and thus our code. Multilevel Inheritance is also just super common in OOP codebases. Especially in Java, people who tend to write one class want to do things with them, and they will just naturally happen upon [Multilevel Inheritance](https://en.wikipedia.org/wiki/Inheritance_(object-oriented_programming)#Types) all the time.
+
+## Multiple Inheritance
+
+What we have above is a straight line of inheritance.  `Square` -> `Rectangle` -> `Polygon`.  But Python also supports [Multiple Inheritance](https://en.wikipedia.org/wiki/Inheritance_(object-oriented_programming)#Types), where a single class inherits things from two or more other classes.  Let's see a simple example:
+
+```python
+class Class1:
+    def m(self):
+        print("In Class1") 
+        
+class Class2(Class1):
+    def m(self):
+        print("In Class2")
+  
+class Class3:
+    def x(self):
+        print("In Class3")  
+         
+class Class4(Class2, Class3):
+    pass
+```
+
+Here our `Class4` inherits from `Class2` AND `Class3`. (Also, `Class4` could have all it's own methods and attributes, I'm just trying to keep it simple.) 
+
+What would happen if we asked for `Class4.x()`? How about `Class4.m()`?  Let's try it!
+
+```python
+c4 = Class4()
+c4.m()  # prints: "In Class 2"
+c4.x()  # prints: "In Class 3"
+```
+
+Okay, since only `Class3` has an `.x()` method, that one is easy. `Class4` gets the `Class3` `.x()` method. But that `c4.m()` is tricker. That comes from `Class2`, because `Class2` overrides that method from `Class`.
 
 
 ### Be Warned
 
-The above example of `Square` seems reasonable enough. But using multiple inhertance is not risk free. You can create classes with subclasses of subclasses of subclasses of subclasses of subclasses of subclasses so deep that you can no longer keep the whole chain of inheritance easily in mind. At some level deep down the rabbit hole adding another layer of abstraction begins to add more complexity than it removes.
+So maybe you can tell that Multilevel / Multiple Inheritance are really powerful. But hopefully you can also tell that it they can lead to a lot of complexity. And that's an important thing to consider in OOP:
 
-Where to draw the line is up to you. Conceptual abstractions can be helpful or confusing. Good design helps, but in the end it is a judgement call.
-
-<br/>
+> Only add layers of abstraction in your classes if it simplifies things. Code that is too abstracted is hard to understand and reason about.
 
 ## More Examples
 
@@ -212,6 +244,7 @@ The two object-oriented programming classes have been quite short. There is not 
  * [Python Inheritance Intro](http://www.jesshamrick.com/2011/05/18/an-introduction-to-classes-and-inheritance-in-python/)
  * [Dave On Code: Abstract Classes](http://www.daveoncode.com/2014/10/07/abstract-classes-in-python-using-abc-module/)
  * [Module of the Week: abc](http://pymotw.com/2/abc/)
+ * [Multilevel & Multiple Inheritance](https://en.wikipedia.org/wiki/Inheritance_(object-oriented_programming)#Types)
 
 
 [Back to Syllabus](../../README.md)
