@@ -28,7 +28,9 @@ In Python we use the `class` keyword to create classes in a similar way we use t
 
 > Using a class can help you organize your code.
 
-Find a core concept or idea (like a file, a plot, or a database) and make a class out of it. This will help you organize your code and your thoughts. Things that belong to your idea will become variables or methods inside of the class. This will help you keep everything else separate. When thinking about larger amounts of code, you will only have to think about one class at a time.
+To use OOP design, find a core concept or idea (like a file, a plot, or a database) and make a class out of it. This will help you organize your code and your thoughts. Your class will include data in the form of variables, which we call "attributes". And your class will include logic in the form of functions, which we call "methods". Keeping your data and logic together for one big important idea (your class) can help your code organization. But at its best, it will help you think and reason about a complicated mix of data and logic that is all tied up together.
+
+Maybe if your code is broken into multiple class, you'll only have to think about one class at a time. And that might help you organize your thoughts on a very large amount of code more easily.
 
 <br/>
 
@@ -36,13 +38,14 @@ Find a core concept or idea (like a file, a plot, or a database) and make a clas
 
 > A class is a blueprint for an idea.
 
-First, some jargon. An "object" is a specific instance of a "class". For instance, if I have a "student" class, each "student" would have a few pieces of information attached to it: name, student id, grades, etc. But if you make a particular student named "beth", then we would say "beth is an object of the student class". Or we might say "an object is an instance of a class".
+First, some jargon. An "object" is a specific instance of a "class". For instance, if I have a "Student" class, each "Student" would have a few pieces of information attached to it: name, student id, grades, etc. But if you make a particular student named "Beth", then we would say "Beth is an object of theStudent class". Or we might say "an object is an instance of a class".
 
 Enough talk, let's look at an example:
 
 ```python
 class Student:
     '''A Student is a person currently enrolled in this awesome course.
+
     Students have the following properties:
 
     Attributes:
@@ -69,7 +72,8 @@ class Student:
 
     def calculate_grade(self):
         '''Return the current grade of the student.
-        Tests and homeworks are each worth 50%.'''
+        Tests and homeworks are each worth 50%.
+	'''
         average_hw_grade = sum(self.hw_grades) / len(self.hw_grades)
         average_test_grade = sum(self.test_grades) / len(self.test_grades)
         final_grade = (average_hw_grade + average_hw_grade) / 2.0
@@ -77,15 +81,15 @@ class Student:
         return final_grade
 ```
 
-The code above does not create an "object"; we didn't decide this `student` has a name of `beth` and a student id of `12345789`. The code above just creates a blueprint for a student. The first line `class Student(object):` tells Python that we are going to start defining a class blueprint.
+The code above does not create an "object"; we didn't decide this `Student` has a name of `Beth` and a student id of `12345789`. The code above just creates a blueprint for a student. The first line `class Student:` tells Python that we are going to start defining a class blueprint.
 
 To create a specific `Student` object, we would do something like:
 
 ```python
-emmy = Student('Emmy Noether', 837195783)
+emmy = Student("Emmy Noether", 837195783)
 ```
 
-Here we create an "object" from the `Student` class, and call it `emmy`. Notice that `'Emmy Noether'` and `837195783` match the inputs (ignore `self` for now) of the `__init__` method in the `Student` class. Where the generic, abstract notion of a `Student` is defined by the class, the details for the particular student `emmy` form an "object".
+Here we create an "object" from the `Student` class, and call it `"Emmy Noether"`. Notice that `"Emmy Noether"` and `837195783` match the inputs of the `__init__` method in the `Student` class (ignore `self` for now). Where the generic, abstract notion of a `Student` is defined by the class, the details for the particular student `"Emmy"` form an "object".
 
 <br/>
 
@@ -131,7 +135,7 @@ Just to be clear, let's print all the names above:
 
 ## `__init__`
 
-What is the deal with that `__init__` in `Student`? When we create a new object by doing something like `emmy = Student("Emmy Noether", 837195783)`, the `__init__` is called, and the code inside is executed to create the initial form of the object.
+What is the deal with that `__init__` in `Student`? When we create a new object by doing something like `emmy = Student("Emmy Noether", 837195783)`, the `__init__` is called, and the code inside is executed to create the initial form of the object. We call this special method "the constructor", and most classes should have them.
 
 In this case, the `__init__` method is called and four variables are set: `self.name`, `self.student_id`, `self.hw_grades`, and `self.test_grades`. Two variables are set to the values `"Emmy Noether"` and `837195783` and the other two are given default values. This is the purpose of the `__init__` method; to give the attributes of the object starting values.
 
