@@ -17,9 +17,9 @@ This lecture continues outlining the basics of OOP in Python that was started [h
 
 ## Inheritance
 
-Inheritance is taking the abstractions we create with Objects one step further
+Inheritance is taking the abstractions we create with Classes one step further.
 
-Imagine we have a class for various kinds of shapes: `Rectangle`, `Triangle`, `Octohedron`, and so on. Instead of just creating a class for `Rectangle` and a class for `Triangle`, we make the logical leap that both of these are polygons and thus have some things in common. So we create a `Polygon` class for our other shapes to inherit from.
+Imagine we have different classes for various kinds of shapes: `Rectangle`, `Triangle`, `Octohedron`, and so on. Instead of just creating a class for `Rectangle` and a class for `Triangle`, we make the logical leap that both of these are polygons and thus have some things in common. So we create a `Polygon` class for our other shapes to inherit from.
 
 Let's see some concrete examples:
 
@@ -30,8 +30,8 @@ class Polygon:
         self.number_of_sides = n
 
     def print_num_sides(self):
-        '''a quick, informational print statement'''
-        print('There are ' + str(self.number_of_sides) + ' sides.')
+        '''A quick, informational print statement.'''
+        print(f'There are {self.number_of_sides} sides.')
 
 class Rectangle(Polygon):
 
@@ -40,7 +40,7 @@ class Rectangle(Polygon):
         self.lengths_of_sides = lengths_of_sides  # list of two numbers
 
     def get_area(self):
-        '''return the area of the rectangle: length x width'''
+        '''Return the area of the rectangle: length x width.'''
         x, y = self.lengths_of_sides
         return x * y
 
@@ -51,7 +51,7 @@ class Triangle(Polygon):
         self.lengths_of_sides = lengths_of_sides  # list of three numbers
 
     def get_area(self):
-        '''return the area of the triangle using the semi-perimeter method'''
+        '''Return the area of the triangle using the semi-perimeter method.'''
         a, b, c = self.lengths_of_sides
 
         # calculate the semi-perimeter
@@ -79,7 +79,7 @@ And if we create a `Triangle`, we can call both the methods in `Triangle` and th
 3
 ```
 
-We have created a connection between the idea of a triangle and the idea of a polygon. We say that "Triangle inherits from Polygon". We have set up a conceptual connection such that everything in `Polygon` should appear in `Triangle`. We use this connection in code to help us think about the logic of our situation. The goal is to create relationships among the ideas that we can represent in the code.
+We have created a connection between the idea of a triangle and the idea of a polygon. We say that "Triangle inherits from Polygon". We have set up a conceptual connection such that everything in `Polygon` should appear in `Triangle`. And we use this connection in code to help us think about the logic of our situation. The goal is to create relationships in code that miror the real world we are trying to mimic. This will make OOP powerful, and make it a lot easier for humans (like you) to think and reason about the code.
 
 <br/>
 
@@ -87,9 +87,9 @@ We have created a connection between the idea of a triangle and the idea of a po
 
 You may have noticed a chance to improve the `Polygon` example above. Both the `Triangle` and `Rectangle` examples above have a `get_area()` method. Wouldn't it be nice if we could include that in `Polygon` somehow? But the problem is that you calculate the area of triangles and rectangles differently, so we can't just write the equation directly in `Polygon`. This is where abstract classes come into play.
 
-What we do when we define an [abstract class](https://en.wikipedia.org/wiki/Class_%28computer_programming%29#Abstract_and_concrete) is we create the blueprint of all the classes that will inherit from it (the [subclasses](http://en.wikipedia.org/wiki/Inheritance_%28object-oriented_programming%29#Subclasses_and_superclasses)). And we let those subclasses give the details (like how to calculate their area).
+What we do when we define an [abstract class](https://en.wikipedia.org/wiki/Class_%28computer_programming%29#Abstract_and_concrete) is we create the blueprint of all the classes that will inherit from it (the [subclasses](http://en.wikipedia.org/wiki/Inheritance_%28object-oriented_programming%29#Subclasses_and_superclasses)). And we let those subclasses fill in the details (like how to calculate their area).
 
-In the example above we can modify `Polygon` to become an abstract class:
+We could modify the example above to make `Polygon` an abstract class:
 
 ```python
 from abc import ABC, abstractmethod
@@ -100,16 +100,16 @@ class Polygon(ABC):
         self.number_of_sides = n
 
     def print_num_sides(self):
-        print('There are ' + str(self.number_of_sides) + ' sides.')
+        print(f'There are {self.number_of_sides} sides.')
 
     @abstractmethod
     def get_area(self):
         pass
 ```
 
-Here we have imported the Python standard library `abc` to create an abstract class. We subclass `ABC` to define it as an abstract class. And every abstract method we mark with the `@abstractmethod` decorator. This marks the method as not being implemented.
+Here we have imported the Python standard library `abc` to create an "abstract base class". We subclass `ABC` to define it as an abstract class. And every abstract method we mark with the `@abstractmethod` decorator. This marks the method as not being implemented, so a subclass has to fill it in later.
 
-An abstract base class cannot be implemented directly, so we can no longer create a generic `Polygon`:
+An abstract base class cannot be created directly, so we can no longer create a generic `Polygon`:
 
 ```python
 >>> p = Polygon(3)
@@ -137,7 +137,7 @@ But as long as the subclass implements all the abstract methods, we can create a
 3
 ```
 
-What we did by making `Polygon` abstract is create a more complete blueprint for `Triangle` and `Rectangle`, that includes the idea (if not the implementation) that every polygon has an area. This can be useful in organizing our thoughts in code. If at some point in the distant future we want to add a `Heptadecagon` class, we would have the abstract blueprint in `Polygon` to remind us we need to write a `get_area` method.
+What we did by making `Polygon` abstract is create a more complete blueprint for `Triangle` and `Rectangle`, that includes the idea (but not the implementation) that every polygon has an area. This can be useful in organizing our thoughts in code. If at some point in the distant future we want to add a `Heptadecagon` class, we would have the abstract blueprint in `Polygon` to remind us we need to write a `get_area()` method.
 
 <br/>
 
@@ -153,7 +153,7 @@ class Square(Polygon):
         self.lengths_of_sides = [lengths_of_side]  # list of two numbers
 
     def get_area(self):
-        '''return the area of the rectangle: length x width'''
+        '''Return the area of the rectangle: length x width.'''
         x = self.lengths_of_sides[0]
         return x * x
 ```
@@ -183,7 +183,9 @@ In the language of OOP, we could describe the above classes in a few ways:
  * `Square` is a subclass of `Rectangle`, which is a subclass of `Polygon`.
  * `Polygon` is a superclass of `Rectangle`, which is a superclass of `Square`.
 
-The jargon itself is not as important as the relationship between these classes. Multilevel Inheritance is a powerful abstraction tool, giving us a huge amount of flexibilty to organize our thoughts and thus our code. Multilevel Inheritance is also just super common in OOP codebases. Especially in Java, people who tend to write one class want to do things with them, and they will just naturally happen upon [Multilevel Inheritance](https://en.wikipedia.org/wiki/Inheritance_(object-oriented_programming)#Types) all the time.
+Okay, there's some jargon here. But the jargon itself is not as important as the relationship between these classes. Multilevel Inheritance is a powerful abstraction tool, giving us a huge amount of flexibilty to organize our thoughts and thus our code. Multilevel Inheritance is also super common in OOP codebases. Especially in Python and Java, people who write one class tend to think of more and more things to do with them, and [Multilevel Inheritance](https://en.wikipedia.org/wiki/Inheritance_(object-oriented_programming)#Types) will just happen.
+
+<br/>
 
 ## Multiple Inheritance
 
@@ -206,7 +208,7 @@ class Class4(Class2, Class3):
     pass
 ```
 
-Here our `Class4` inherits from `Class2` AND `Class3`. (Also, `Class4` could have all it's own methods and attributes, I'm just trying to keep it simple.) 
+Here our `Class4` inherits from `Class2` AND `Class3`. (`Class4` could have other methods and attributes, I'm just trying to keep it simple.) 
 
 What would happen if we asked for `Class4.x()`? How about `Class4.m()`?  Let's try it!
 
@@ -216,14 +218,16 @@ c4.m()  # prints: "In Class 2"
 c4.x()  # prints: "In Class 3"
 ```
 
-Okay, since only `Class3` has an `.x()` method, that one is easy. `Class4` gets the `Class3` `.x()` method. But that `c4.m()` is tricker. That comes from `Class2`, because `Class2` overrides that method from `Class`.
+Okay, since only `Class3` has an `.x()` method, that one is easy. `Class4` gets the `Class3` `.x()` method. But that `c4.m()` is trickier. That comes from `Class2`, because `Class2` overrides that method from `Class1`.
+
+<br/>
 
 
 ### Be Warned
 
-So maybe you can tell that Multilevel / Multiple Inheritance are really powerful. But hopefully you can also tell that it they can lead to a lot of complexity. And that's an important thing to consider in OOP:
+So maybe you can tell that Multilevel / Multiple Inheritance are really powerful. But hopefully you can also tell that they can lead to a lot of complexity. And that's an important thing to consider in OOP:
 
-> Only add layers of abstraction in your classes if it simplifies things. Code that is too abstracted is hard to understand and reason about.
+> Only add layers of abstraction in your classes if it simplifies things. Code that is too abstracted is hard to understand and work with.
 
 ## More Examples
 
