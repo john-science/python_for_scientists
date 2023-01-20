@@ -10,9 +10,10 @@
 4. [init](#__init__)
 5. [Methods](#class-methods)
 6. [Static Methods](#static-methods)
-7. [Python is Built on Classes](#python-is-built-on-classes)
-8. [Problem Sets](#problem-sets)
-9. [Further Reading](#further-reading)
+7. [Properties](#properties)
+8. [Python is Built on Classes](#python-is-built-on-classes)
+9. [Problem Sets](#problem-sets)
+10. [Further Reading](#further-reading)
 
 <br/>
 
