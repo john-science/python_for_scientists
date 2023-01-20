@@ -80,7 +80,7 @@ This is a major principle in Python:
 
 An iterator is a way of generating only ONE item in a sequence at a time. If you need a list a billion items long, that will take up all the memory in your computer. But if you just create one item at a time, then you can still loop through that billion-item list, but only one item will have to be in memory at a time. Doubly useful if you exit the loop half way through; maybe you will never need the whole list anyway!
 
-#### range as an example iterator
+#### range() as an example iterator
 
 We have seen `range()` a couple times already. Well, `range()` returns an iterator, not a list, so let us take a look:
 
@@ -101,6 +101,8 @@ But if you *really* want a list, you can just change your iterator to a list by 
 >>> list(range(5))
 [0, 1, 2, 3, 4]
 ```
+
+Most generators will be like `range()`; they will somehow, magically, internally keep track of what item they just generated so they know which one to generate next. For a look under the hood at how that works, let's create our own generators with `yield`.
 
 #### Creating your own Iterators
 
