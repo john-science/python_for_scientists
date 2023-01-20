@@ -243,17 +243,16 @@ class Celsius:
         if val < -273.15:
             raise ValueError(f"In reality, temepratures can't go this low: {val}")
 
-        # sets the temperature
         self._temperature = val
 ```
 
-Okay, so here we create a simple `Celcius` class. And (for now) it only has one attribute, the temperature. And that attribute is private (it starts with an underscore). What the `@property` decorator says is "this just returns an attribute of the class". And that might not seem that valuable. But then we look at the `@temp.setter` decorator (which goes along with the `@property` decorator) and we can see the _reason_ for all this. 
+Okay, so here we create a simple `Celcius` class. And (for now) it only has one attribute, the temperature. And that attribute is private. A "private" attribute in Python is one that starts with an underscore (`self._temperature`) to signify to other people that they shouldn't try to access it. What the `@property` decorator says is "this just returns a clean, valid attribute from this class". And that might not seem that valuable compared to just using a more standard `self.temp` value. But then we look at the `@temp.setter` decorator (which goes along with the temp `@property` decorator) and we can see the _reason_ for all this. 
 
 > We don't want people to set the temperature to an impossible value!
 
-So the `@temp.setter` decorator allows us to do error-checking when we "set" the private `self._temperature` value. This ability to ensure the values of a class are valid can be really helpful. Ensuring that your code is in a sensical state can be crucial to a program running well.
+So the `@temp.setter` decorator allows us to do error-checking when we "set" the private `self._temperature` value. This ability to ensure the values of a class are valid can be really helpful. Especially if your class is big and complicated, you're going to want some tools to ensure all the data in it are in a valid state.
 
-Let's use our new little toy class:
+Let's use our little toy class:
 
 ```python
 cel = Celsius();
@@ -261,7 +260,7 @@ cel = Celsius();
 # using the @temp.setter, under the hood
 cel.temp = -270
 
-# using the @property getting, under the hood
+# using the @property getter, under the hood
 print(cel.temp)
 ```
 
@@ -273,13 +272,13 @@ But what if we try to do this?
 cel.temp = -300  # explodes
 ```
 
-**Boom!** Failure! The program throws a `ValueError`. But that's great. It means that thousands of lines of code later than this, we know the Celcius temperature value we are using is valid. And that confidence in correctness can be game-changing.
+**Boom!** Failure! The program throws a `ValueError`. But that's correct; we can't have a temperature below absolute zero. It means that thousands of lines of code later than this, we know the Celcius temperature value we are using is valid. And that confidence in correctness can be game-changing.
 
 <br/>
 
 ## Python is Built on Classes
 
-You don't have to go far to find examples of classes being used in Python. We've already seen tons of them: `int`, `float`, `list`, `dict`, `True`, `csv`, the list goes on.
+You don't have too go far to find examples of classes being used in Python. We've already seen tons of them: `int`, `float`, `list`, `dict`, `True`, `csv`, the list goes on.
 
 A lot of the features of a `list` start to look like a class immediately. You can create an object from the list class:
 
@@ -304,7 +303,7 @@ And after you create the `lst` object, you can call class methods on that object
 1
 ```
 
-And if you call `help(lst)` the documentation you see starts with `class list(object)` because nearly everything in Python is a class or an object. Object-oriented programming is so important in Python, it's hard to understand the language without it.
+And if you call `help(lst)` the documentation you see starts with `class list:` because nearly everything in Python is a class or an object. Object-oriented programming is so important in Python, it's hard to understand the language without it.
 
 <br/>
 
