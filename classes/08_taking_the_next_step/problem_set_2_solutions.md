@@ -3,9 +3,9 @@
 #### 1. This function returns the fraction of two numbers. But what happens when the denominator is zero?
 
     def calc_fraction(num, denom):
-        '''calculate the fraction of two numbers'''
+        """calculate the fraction of two numbers"""
         if denom == 0.0:
-            raise Exception('Cannot divide by zero.')
+            raise Exception("Cannot divide by zero.")
 
         return num / demon
 
@@ -14,11 +14,11 @@
 This is the easy way:
 
     def read_lines(filepath):
-        '''simply read in the lines of a text file'''
+        """simply read in the lines of a text file"""
         try:
-            f = open(filepath, 'r')
+            f = open(filepath, "r")
         except:
-            print('File not found')
+            print("File not found")
             return None
         lines = f.readlines()
         f.close()
@@ -28,7 +28,7 @@ But it is better to be as specific as possible when catching errors. The idea is
     def read_lines(filepath):
         """simply read in the lines of a text file"""
         try:
-            f = open(filepath, 'r')
+            f = open(filepath, "r")
         except IOError as e:
             print(f"File not found: {e}")
             return None
@@ -112,7 +112,7 @@ The easy way:
         Albert Schweitzer,1.00,95,89,27,82
         Frank B. Kellogg,0.975,85,73,25,98
         """
-        line_split = line.strip().split(',')
+        line_split = line.strip().split(",")
         student name = line_split[0]
         try:
             average_hw = (float(line_split[2]) + float(line_split[3]) + float(line_split[4])) / 3.0
@@ -139,20 +139,20 @@ A better way:
         Albert Schweitzer,1.00,95,89,27,82
         Frank B. Kellogg,0.975,85,73,25,98
         """
-        line_split = line.strip().split(',')
+        line_split = line.strip().split(",")
         student name = line_split[0]
         try:
             average_hw = (float(line_split[2]) + float(line_split[3]) + float(line_split[4])) / 3.0
             exam = float(line_split[5])
         except ValueError as ve:
-            print('The CSV column contains text, and not a number.')
+            print("The CSV column contains text, and not a number.")
             return {}
         except IndexError as ie:
-            print('The CSV line does not contain enough columns.')
+            print("The CSV line does not contain enough columns.")
             return {}
 
         d = {}
-        d[line_split[0]] = {'average_hw': average_hw, 'final_exam': exam}
+        d[line_split[0]] = {"average_hw": average_hw, "final_exam": exam}
         
         return d
 
@@ -165,9 +165,9 @@ The easy way:
     def average_grades(grade1, grade2, grade3):
         """return the avearge of three homework grades"""
         if grade1 < 0 or grade2 < 0 or grade3 < 0:
-            raise Exception('Grades cannot be below zero.)
+            raise Exception("Grades cannot be below zero.")
         elif grade1 > 100 or grade2 > 100 or grade3 > 100:
-            raise Exception('Grades cannot be above one hundred.)
+            raise Exception("Grades cannot be above one hundred.")
         
         total = grade1 + grade2 + grade3
         return (total / 3.0)
@@ -175,11 +175,11 @@ The easy way:
 A better way:
 
     def average_grades(grade1, grade2, grade3):
-        '''return the avearge of three homework grades'''
+        """Return the avearge of three homework grades."""
         if grade1 < 0 or grade2 < 0 or grade3 < 0:
-            raise ValueError('Grades cannot be below zero.)
+            raise ValueError("Grades cannot be below zero.")
         elif grade1 > 100 or grade2 > 100 or grade3 > 100:
-            raise ValueError('Grades cannot be above one hundred.)
+            raise ValueError("Grades cannot be above one hundred.")
         
         total = grade1 + grade2 + grade3
         return (total / 3.0)
