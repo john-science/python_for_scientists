@@ -66,8 +66,8 @@ Keep each `import` on a separate line. And most people keep them in alphabetical
 ### Naming Things - Solution (Reformatted Code)
 
 Class names should be `CamelCase`.
-Function and Method names should be `underscore_case`.
-Variable and Attribute names should be `underscore_case`.
+Function and Method names should be `snake_case`.
+Variable and Attribute names should be `snake_case`.
 
     class ParallelUniverse:
     
@@ -123,12 +123,12 @@ Lastly, we *could* make that whole `crew_member` definition shorter. This one is
             print('Runaway!')
         else:
             crew_member = 'Spock' if little_list[1] == 'Spock' else 'Sulu'
-            print(crew_member + ' Fire the torpedos!')
+            print(f"{crew_member} Fire the torpedos!")
 
 ### Mystery Example 1 - Solution (Reformatted Code)
 
     def fibonacci_list(n):
-        '''Returns all of the Fibonacci Numbers below n'''
+        """Returns all of the Fibonacci Numbers below n"""
         result_list = []
         a = 0
         b = 1
@@ -153,7 +153,7 @@ In this case, for both the list `a` and the dictionary `d`, we want to iterate o
         some_function(i, value)
     
     for j, value in enumerate(a):
-        print('Value number ' + str(j) + ' is: ' + value)
+        print(f"Value number {j} is: {value}")
 
 ### Mystery Example 3 - Solution (Reformatted Code)
 
@@ -162,12 +162,12 @@ There are a few things that could be improved about that messy plotting loop:
     import matplotlib
     import numpy
     
-    file_path = '/path/to/some_file.txt'
+    file_path = "/path/to/some_file.txt"
     
     try:
         f = open(file_path, 'r')
     except IOError:
-        print('Failed to open file: ' + file_path)
+        print(f"Failed to open file: {file_path}")
         exit()
     
     for line in f.readlines():
