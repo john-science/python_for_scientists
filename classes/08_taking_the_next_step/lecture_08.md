@@ -35,7 +35,7 @@ Here is the exact same function, but following the [PEP8 Style Guide](https://ww
 
 ```python
 def fibonacci(n):
-    ''' Returns the n-th term in the Fibonacci Sequence '''
+    """ Returns the n-th term in the Fibonacci Sequence """
     if n == 0:
         return 0
     elif n == 1:
@@ -104,7 +104,7 @@ We could fix the `fibonacci` function above by adding a raising a single `Except
 
 ```python
 def fibonacci(n):
-    ''' Returns the n-th term in the Fibonacci Sequence '''
+    """ Returns the n-th term in the Fibonacci Sequence """
     if n < 0:
         raise Exception('fibonacci only accepts non-negative inputs')
 
