@@ -16,6 +16,26 @@ TODO
 
 TODO
 
+```python
+def time_it(func):
+    def wrapper(*arg):
+        t = time.time()
+        res = func(*arg)
+        print(time.time() - t)
+        return res
+
+    return wrapper
+
+
+@time_it
+def wait_one_sec():
+    time.sleep(1)
+
+
+wait_one_sec()
+```
+
+
 ### Validate the Inputs
 
 TODO
