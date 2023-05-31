@@ -128,7 +128,7 @@ class Student:
         self.grade = 100.0
 
     def getName(self):
-        return name
+        return self.name
 
     @staticmethod
     def getLetterGrade(num):
