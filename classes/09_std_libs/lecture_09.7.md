@@ -131,7 +131,7 @@ class Student:
         return self.name
 
     @staticmethod
-    def getLetterGrade(num):
+    def get_letter_grade(num):
         if num >= 90:
             return "A"
         elif num >= 80:
@@ -153,15 +153,17 @@ A more recent, but super helpufl tool is Python's `@proprety` system, which allo
 class Student:
     def __init__(self, name):
         self.name = name
-        self._grade = None
+        self._grades = [100.0, 95.0]
 
     @property
     def grade(self):
-        return self._grade
+        return sum(self._grades) / len(self._grades)
 
     @grade.setter
     def grade(self, value):
-        self._grade = value
+        assert value >= 0.0
+        assert value <= 100.0
+        self._grades.append(value)
 ```
 
 And there are just [so many more examples](https://github.com/lord63/awesome-python-decorator) of Python decorators.
