@@ -1,12 +1,13 @@
 # Decorators
 
-> TODO
+Python decorators are s simple tool with their own special syntax in the Python language.
 
 ## What is a Decorator?
 
 A "decorator" is a wrapper you define around a function or classs in Python. A decorator might allow you to modify the inputs or outputs of a function. A decorator might allow you to wrap different functions with the same error / validity checking logic.
 
 We will have to look at some examples, but decorators are a great way to write logic to "wrap around" other logic.  It's a useful and powerful idea, once you have used it a couple of times.
+
 
 ## Toy Examples
 
@@ -113,12 +114,58 @@ some_math(1, 2, 3, -4)  # fails
 
 ## Standard Library Examples
 
-TODO
+Python decoartors are super helpful, and as such you will find them _all over_ the standard libraries, and in many third-party libraries. You'll find a good list [here](https://github.com/lord63/awesome-python-decorator).
 
 
-## Problem Sets
+### staticmethod
 
- * TODO
+One of the original uses of decorators in Python is the `@staticmethod`, which identifies a method on a class that doesn't need access to the `self` object:
+
+```python
+class Student:
+    def __init__(self, name):
+        self.name = name
+        self.grade = 100.0
+
+    def getName(self):
+        return name
+
+    @staticmethod
+    def getLetterGrade(num):
+        if num >= 90:
+            return "A"
+        elif num >= 80:
+            return "B"
+        elif num >= 70:
+            return "C"
+        elif num >= 60:
+            return "D"
+        elif num >= 80:
+            return "F"
+```
+
+
+### property
+
+A more recent, but super helpufl tool is Python's `@proprety` system, which allows you to create Java-like setters and getters for class attributes in ARMI:
+
+```python
+class Student:
+    def __init__(self, name):
+        self.name = name
+        self._grade = None
+
+    @property
+    def grade(self):
+        return self._grade
+
+    @grade.setter
+    def grade(self, value):
+        self._grade = value
+```
+
+And there are just [so many more examples](https://github.com/lord63/awesome-python-decorator) of Python decorators.
+
 
 ## Further Reading
 
