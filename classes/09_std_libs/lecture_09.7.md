@@ -1,6 +1,7 @@
 # Decorators
 
-Python decorators are s simple tool with their own special syntax in the Python language.
+Python decorators are a little piece of [syntactic sugar](https://en.wikipedia.org/wiki/Syntactic_sugar) that will finish off our understanding of the Python language syntax.
+
 
 ## What is a Decorator?
 
@@ -140,7 +141,7 @@ class Student:
             return "C"
         elif num >= 60:
             return "D"
-        elif num >= 80:
+        else:
             return "F"
 ```
 
