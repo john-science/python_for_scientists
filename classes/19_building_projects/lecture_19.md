@@ -1,4 +1,4 @@
-# Building Python Projects with Setuptools
+# Building Python Projects from Scratch
 
 This lecture does not apply to stand-alone Python scripts. It's not even for small programs with one or two modules. This lecture is for Python projects that have gotten big enough to have several modules and be distributed to several people.
 
