@@ -1,13 +1,40 @@
-# Setup and Introduction
+# Introduction and Setup
+
+## Why Python?
+
+Python is arguably the most popular programming language in the world ([depending on how you count](https://spectrum.ieee.org/top-programming-languages-2022)). But it is definitely the most popular language with scientists and engineers. There are a few major reasons for this, but the sheer momentum Python has in our communities means if you want to do something science-y, there are probably already tools ready to solve your problems. And if you have questions, there are a million answers and high-quality tutorials online to help you.
+
+> You'll never find a programming language that frees you from the burden of clarifying your ideas.
+
+![the well](http://imgs.xkcd.com/comics/well_2.png)
+
+Perhaps the reason Python original got so popular was that it is easy to learn. Every programming language has syntax, the rules that make up the language. But Python's syntax design makes it one of the easiest languages in the world to learn. Especially for beginners.
+
+### Batteries Included
+
+That's the Python motto. The author of the first version of Python, [Guido von Rossom](http://en.wikipedia.org/wiki/Benevolent_dictator_for_life), has started a culture in the Python community that code should be easy to use. To that end, Python comes with a large collection of [standard libraries](https://en.wikipedia.org/wiki/Standard_library). These are tools to do the sorts of things that people frequently want to do with a computer programming language: complex math, random numbers, calendars, dates and times, dealing with *.zip files, communicating over the internet via HTTP, reading CSV files, you name it.
+
+## How to make the most of this class
+
+> Write code.
+
+If you really want to learn the material in this class, there's only one solution: use what you learn.
+
+As a starting point, there will be example problem sets at the end of each lecture. But don't stop there!
+
+At the beginning of the class, maybe all you can do is replace your calculator with Python. As the class continues, you should be able to replace Excel with Python. Eventually, you should be able to do *all* your data analysis and scripting work in Python. But the trick is to start using what you learn every week at work, school, or home.
+
+> Practice.
+
+Start using Python daily. Make a GitHub account and start a silly Python project, just for fun.
+
 
 ## How to install Python?
 
-Python should be easy to install on basically all desktops and laptops. There are many different versions and flavors of Python. This class will be built around Python v3.6, but you will probably be fine using anything Python v3.3 to v3.9.
-
-> **Please Note** The NumPy group [has said](https://github.com/numpy/numpy/blob/master/doc/neps/dropping-python2.7-proposal.rst) they will be dropping support for Python 2.X on Jan 1, 2020.  Since NumPy is the basis of nearly all science and engineering libraries in Python it will be very important that you move to Python 3.3 or newer. Soon.
+Python should be easy to install on basically all desktops and laptops. There are many different versions and flavors of Python. This class will be built around Python v3.9, but you will probably be fine using anything Python v3.7 to v3.11.
 
 
-#### Basic Python
+### Basic Python
 
 The installation procedure depends on what operating system you have installed. [The Hitchhiker's Guide to Python](http://docs.python-guide.org/en/latest/) has a great description of how to install for the three major operating systems:
 
@@ -17,7 +44,7 @@ The installation procedure depends on what operating system you have installed. 
 
 **NOTE**: The above guide also explains how to install SetupTools, Pip, and VirtualEnv. While these are great tools worth learning, and I highly encourage it, they are not yet necessary for most of this course.
 
-#### Anaconda
+### Anaconda
 
 I strongly recommend installing [Anaconda](http://docs.continuum.io/anaconda/install.html) instead. Anaconda is Python packaged with hundreds of tools and libraries you will want.
 
@@ -109,42 +136,17 @@ Jupyter is an ideal choice if you just want to do some quick thinking, data anal
 
 **NOTE**: Jupyter notebooks used to be called "iPython Notebooks". There was a name change because Jupyter notebooks now support more than just Python, but we won't worry about that in this class.
 
-## Why Python?
 
-> You'll never find a programming language that frees you from the burden of clarifying your ideas.
-
-![the well](http://imgs.xkcd.com/comics/well_2.png)
-
-Every programming language has syntax; rules you have to learn. Python's rules are easier to learn than most, which helps you focus on what really matters. And after a few years of traction, there are a ton of libraries and tools written in Python for scientists and engineers. Learning to use tools can make your work a lot easier.
-
-#### Batteries Included
-
-That's the Python motto. The author of the first version of Python, [Guido von Rossom](http://en.wikipedia.org/wiki/Benevolent_dictator_for_life), has started a culture in the Python community that code should be easy to use. To that end, Python comes with a large collection of [standard libraries](https://en.wikipedia.org/wiki/Standard_library). These are tools to do the sorts of things that people frequently want to do with a computer programming language: complex math, random numbers, calendars, dates and times, dealing with *.zip files, communicating over the internet via HTTP, reading CSV files, you name it.
-
-## How to make the most of this class
-
-> Write code.
-
-If you really want to learn the material in this class, there's only one solution: use what you learn.
-
-As a starting point, there will be example problem sets at the end of each lecture. But don't stop there!
-
-At the beginning of the class, maybe all you can do is replace your calculator with Python. As the class continues, you should be able to replace Excel with Python. Eventually, you should be able to do *all* your data analysis and scripting work in Python. But the trick is to start using what you learn every week at work, school, or home.
-
-> Practice.
-
-Start using Python daily. Make a GitHub account and start a silly Python project, just for fun.
-
-#### Help Improve the Class
+## Help Improve the Class
 
 If you find this class useful, the best way you can repay me is to help me make it better. Make a GitHub account. Help make it easier for people to spin up on Python and get working.
 
-Example things I am interested in:
+Things I would love from you?
 
-* Is a lecture unclear?
-* Is there a grammatical error?
-* Did you find a great reference for the "further reading" section?
-* Do you have an idea to improve a lecture?
+* Is a lecture unclear?  Open a [ticket](https://github.com/john-science/python_for_scientists/issues).
+* Is there a grammatical error?  Open a [Pull Request](https://github.com/john-science/python_for_scientists/pulls).
+* Did you find a great reference for the "further reading" section?  Open a [ticket](https://github.com/john-science/python_for_scientists/issues).
+* Do you have an idea to improve a lecture?  Open a [ticket](https://github.com/john-science/python_for_scientists/issues).
 
 
 [Back to Syllabus](../../README.md)
