@@ -139,7 +139,7 @@ Jupyter is an ideal choice if you just want to do some quick thinking, data anal
 
 ## Help Improve the Class
 
-If you find this class useful, the best way you can repay me is to help me make it better. Make a GitHub account. Help make it easier for people to spin up on Python and get working.
+If you find this class useful, the best way you can repay me is to help me make it better. Make a GitHub account, and help me clarify and polish the course.
 
 Things I would love from you?
 
