@@ -8,7 +8,7 @@ Python is arguably the most popular programming language in the world ([dependin
 
 ![the well](http://imgs.xkcd.com/comics/well_2.png)
 
-Perhaps the reason Python original got so popular was that it is easy to learn. Every programming language has syntax, the rules that make up the language. But Python's syntax design makes it one of the easiest languages in the world to learn. Especially for beginners.
+Perhaps the reason Python originally got so popular was that it is easy to learn. Every programming language has syntax, the rules that make up the language. But Python's syntax design makes it one of the easiest languages in the world to learn. Especially for beginners.
 
 ### Batteries Included
 
