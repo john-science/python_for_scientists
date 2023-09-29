@@ -60,27 +60,29 @@ To use `unittest`, we'll put the `Student` class from our object-oriented lectur
 
 ```python
 class Student:
-    ''' A Student is a person currently enrolled in this awesome course. '''
+    """A Student is a person currently enrolled in this awesome course."""
 
     def __init__(self, name, sid):
-        ''' return a Student object, with a name, id, and fresh grades '''
+        """Return a Student object, with a name, id, and fresh grades."""
         self.name = name
         self.student_id = sid
         self.hw_grades = [0.0] * 10
         self.test_grades = [0.0, 0.0]
 
     def set_hw_grade(self, grade, week):
-        ''' Set the grade for a specific homework '''
+        """Set the grade for a specific homework."""
         self.hw_grades[week] = grade
 
     def set_test_grade(self, grade, exam):
-        ''' Set the grade for a specific test '''
+        """Set the grade for a specific test."""
         self.test_grades[exam] = grade
 
     def calculate_grade(self):
-        ''' Return the current grade of the student.
-            Tests and homeworks are each worth 50%.
-        '''
+        """
+        Return the current grade of the student.
+
+        (Tests and homeworks are each worth 50%.)
+        """
         average_hw_grade = sum(self.hw_grades) / len(self.hw_grades)
         average_test_grade = sum(self.test_grades) / len(self.test_grades)
         final_grade = (average_hw_grade + average_test_grade) / 2.0
@@ -89,35 +91,35 @@ class Student:
 
     @staticmethod
     def letter_grade(percent_grade):
-        ''' return a letter grade from a percentage grade '''
-        if percent_grade >= 90.0 and percent_grade <= 100.0:
-            return 'A'
+        """Return a letter grade from a percentage grade."""
+        if percent_grade >= 90.0:
+            return "A"
         elif percent_grade >= 80.0:
-            return 'B'
+            return "B"
         elif percent_grade >= 70.0:
-            return 'C'
+            return "C"
         elif percent_grade >= 60.0:
-            return 'D'
+            return "D"
         else:
-            return 'F'
+            return "F"
 ```
 
-Now we will create a file called `student_test.py` in the same folder and filling in a couple of basic tests.
+Now we will create a file called `test_student.py` in the same folder and filling in a couple of basic tests.
 
 ```python
 import unittest
-from student import Student
+
+from gradebook.student import Student
 
 
 class TestStudent(unittest.TestCase):
-
     def test_no_grades(self):
-        ''' Test that the constructor works, and that calculate_grade works when there are no grades '''
+        """Test that the constructor works, and that calculate_grade works when there are no grades."""
         charles = Student("Charlie Brown", 12345)
         self.assertEqual(charles.calculate_grade(), 0.0)
 
     def test_perfect_grades(self):
-        ''' Test that this works for students with perfect grades '''
+        """Test that this works for students with perfect grades."""
         emmy = Student("Emmy Noether", 14152)
 
         # set all of the grades to perfect
@@ -127,10 +129,6 @@ class TestStudent(unittest.TestCase):
             emmy.set_hw_grade(100.0, i)
 
         self.assertEqual(emmy.calculate_grade(), 100.0)
-
-
-if __name__ == '__main__':
-    unittest.main()
 ```
 
 Okay, so we have some unit tests. Let's try and unpack all of that.
@@ -158,9 +156,9 @@ Basically, in each "test" method, you will see that we use the `Student` class, 
 
 #### Running the Simple Example
 
-Now, since the `student_test.py` has a `main` function at the bottom of it, we can run the test on the command line:
+Now, since the `test_student.py` has a `main` function at the bottom of it, we can run the test on the command line:
 
-    > python student_test.py
+    > python test_student.py
     ..
     ----------------------------------------------------------------------
     Ran 2 tests in 0.000s
@@ -168,7 +166,7 @@ Now, since the `student_test.py` has a `main` function at the bottom of it, we c
 To get more detailed output, we can use the `-v` flag:
 
     OK
-    > python student_test.py -v
+    > python test_student.py -v
     test_no_grades (__main__.TestStudent)
     Test that the constructor works, and that calculate_grade works when there are no grades ... ok
     test_perfect_grades (__main__.TestStudent)
@@ -201,7 +199,7 @@ class TestStudent(unittest.TestCase):
     # ...as before
 
     def test_better_than_perfect_grades(self):
-        ''' Test that this works for students with extra credit '''
+        """Test that this works for students with extra credit."""
         emmy = Student("Emmy Noether", 14152)
 
         # set all of the grades to perfect
@@ -212,19 +210,19 @@ class TestStudent(unittest.TestCase):
 
         final_grade = emmy.calculate_grade()
         self.assertEqual(final_grade, 102.5)
-        self.assertEqual(Student.letter_grade(final_grade), 'A')
+        self.assertEqual(Student.letter_grade(final_grade), "A")
 ```
 
 And we run the test again:
 
-    $ py student_test.py
+    $ py test_student.py
     F..
     ======================================================================
     FAIL: test_better_than_perfect_grades (__main__.TestStudent)
     Test that this works for students with extra credit
     ----------------------------------------------------------------------
     Traceback (most recent call last):
-      File "student_test.py", line 36, in test_better_than_perfect_grades
+      File "test_student.py", line 36, in test_better_than_perfect_grades
         self.assertEqual(Student.letter_grade(final_grade), 'A')
     AssertionError: 'B' != 'A'
     - B
@@ -249,7 +247,7 @@ if percent_grade >= 90.0:
 
 And now are unit tests run great again:
 
-    $ py student_test.py
+    $ py test_student.py
     ...
     ----------------------------------------------------------------------
     Ran 3 tests in 0.000s

@@ -1,16 +1,16 @@
 import unittest
+
 from gradebook.student import Student
 
 
 class TestStudent(unittest.TestCase):
-
     def test_no_grades(self):
-        ''' Test that the constructor works, and that calculate_grade works when there are no grades '''
+        """Test that the constructor works, and that calculate_grade works when there are no grades."""
         charles = Student("Charlie Brown", 12345)
         self.assertEqual(charles.calculate_grade(), 0.0)
 
     def test_perfect_grades(self):
-        ''' Test that this works for students with perfect grades '''
+        """Test that this works for students with perfect grades."""
         emmy = Student("Emmy Noether", 14152)
 
         # set all of the grades to perfect
@@ -22,7 +22,7 @@ class TestStudent(unittest.TestCase):
         self.assertEqual(emmy.calculate_grade(), 100.0)
 
     def test_better_than_perfect_grades(self):
-        ''' Test that this works for students with extra credit '''
+        """Test that this works for students with extra credit."""
         emmy = Student("Emmy Noether", 14152)
 
         # set all of the grades to perfect
@@ -33,8 +33,4 @@ class TestStudent(unittest.TestCase):
 
         final_grade = emmy.calculate_grade()
         self.assertEqual(final_grade, 102.5)
-        self.assertEqual(Student.letter_grade(final_grade), 'A')
-
-
-if __name__ == '__main__':
-    unittest.main()
+        self.assertEqual(Student.letter_grade(final_grade), "A")
