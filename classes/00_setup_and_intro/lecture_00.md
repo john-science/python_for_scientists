@@ -14,6 +14,17 @@ Perhaps the reason Python originally got so popular was that it is easy to learn
 
 That's the Python motto. The author of the first version of Python, [Guido von Rossom](http://en.wikipedia.org/wiki/Benevolent_dictator_for_life), has started a culture in the Python community that code should be easy to use. To that end, Python comes with a large collection of [standard libraries](https://en.wikipedia.org/wiki/Standard_library). These are tools to do the sorts of things that people frequently want to do with a computer programming language: complex math, random numbers, calendars, dates and times, dealing with *.zip files, communicating over the internet via HTTP, reading CSV files, you name it.
 
+### Compared to Other Popular Languages
+
+If you are a scientist or (non-software) engineer or some kind, you probably have tried other programming languages.
+
+> How does Python compare?
+
+Well, first off, if you have experience with Matlab, LabView, JavaScript, or LaTeX the big difference is: Python is a general-purpose programming language. Unlike those languages, Python is used in the real world to just do practically (almost) everything you want to do with software.
+
+If, in the past, you have experience with C, C++, Java, Fortran, or Rust, the first thing you'll notice is that Python is a lot easier to learn. And _much_ faster to get really good with. The second thing you'll notice is that Python isn't a strongly-typed language, and that will be strange for you. Lastly, Python code will run slower than those other languages. The cost-benefit argument that Python makes is that sometimes you want to optimize for faster code, but sometimes you want to optimize for your developers time. And in that case, there's no comparison: Python wins.
+
+
 ## How to make the most of this class
 
 > Write code.
