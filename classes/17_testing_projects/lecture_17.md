@@ -45,9 +45,9 @@ A logical follow-up question will be:
 Software testing is an increasingly big topic, and there are a lot of good tools out there to help you test your software. Perhaps five of the most popular tools in Python are:
 
  * [unittest](http://pythontesting.net/framework/unittest/unittest-introduction/) - in the Python standard library
+ * [mock](http://www.voidspace.org.uk/python/mock/) - A  way to test untestable code, and a great way to keep your code and your tests maintainable
  * [nose](http://pythontesting.net/framework/nose/nose-introduction)/ - built as an extension to unittest
- * [pytest](http://pythontesting.net/framework/pytest/pytest-introduction/) - Simple, easy-to-use, unit testing library
- * [mock](http://www.voidspace.org.uk/python/mock/) - A Java-style testing framework that allows you to replace components of your code with "mock" components with known results.
+ * [pytest](http://pythontesting.net/framework/pytest/pytest-introduction/) - Simple, easy-to-use, unit testing libraryresults.
  * [tox](http://tox.readthedocs.org/en/latest/) - VirtualEnv management tool that acts as a wrapper for your other unit testing libraries
 
 For a nice discussion on the differences between the first three unit testing frameworks, see [this](http://pythontesting.net/podcast/pytest-vs-unittest-vs-nose-pt002/) article over at [pythontesting.net](http://pythontesting.net).
@@ -270,10 +270,144 @@ We might also use unit tests to help us make important design decisions:
 
 Try writing unit tests for all of the above. See what happens!
 
+## Good Unit Tests and Testable Code
+
+Some code is more testable than others. If you write code that calls an external executable, or calls out to the internet for information, your code _might_ be fine, but testing your code will be slow (if your executable takes more than 1ms to run) or flaky (internet connections aren't guaranteed).
+
+This leads us to an important idea in software testing: "mocking". When you write a unit test, you want to test the smallest possible piece of your code (say, one small function/method or even just part of one). But software is often heavily inter-connected or (as suggested above), your code makes a call out to something external. In all these cases, we can insert some "mocked" code that fakes an external interface to the small part of code we are testing.
+
+### Example: Getting the world population from Wikipedia
+
+For our example, we're going to write a little piece of code that scrapes a Wikipedia page and gets the world's total population. (As a side note, this code is a bad idea, but we are only concerned with testing here.)
+
+The simple version of this code would be:
+
+```python
+import requests
+
+CSV_PATH = "world_pop.csv"
+WIKI_POP_URL = "https://en.wikipedia.org/wiki/List_of_countries_by_population_(United_Nations)"
+
+def get_world_pop(url=WIKI_POP_URL, csv_path=CSV_PATH):
+    pops = get_world_pop_wikipedia(url)
+    return sum_values(pops)
+```
+
+As you can see, our straw-man code goes two Wikipedia, scrapes some data (population by country) and then returns the sum.
+
+In detail, let's put this code in `world_pop.py`:
+
+```python
+import requests
+
+WIKI_POP_URL = "https://en.wikipedia.org/wiki/List_of_countries_by_population_(United_Nations)"
+
+def get_world_pop(url=WIKI_POP_URL, csv_path=CSV_PATH):
+    """Get the world population from Wikipedia."""
+    pops = get_world_pop_wikipedia(url)
+    return sum_values(pops)
+
+def get_world_pop_wikipedia(url):
+    """NOTE: This is a terrible way to parse HTML. Use BeautifulSoup."""
+    r = requests.get(url)
+    rows = str(r.content).split("<table")[1].split("table>")[0].split("<tr")[2:-1]
+
+    pops = {}
+    for row in rows:
+        country = row.split("<td")[1].split("</a>")[0].split(">")[-1]
+        pop = int(row.split("<td")[5].split("<")[0].split(">")[1].replace(",",""))
+        pops[country] = pop
+    
+    return pops
+
+def sum_values(dct):
+    """Return the sum of all the values in a dictionary."""
+    if len(dct):
+        return sum(dct.values())
+    else:
+        return 0
+```
+
+Okay, now that we have the above code (which worked in early 2023), we can write a simple test (in `test_world_pop.py`):
+
+```python
+import unittest
+import world_pop
+
+class TestWorldPop(unittest.TestCase):
+    def test_sum_values(self):
+        # Test Case: empty dict
+        d = {}
+        self.assertEqual(world_pop.sum_values(d), 0)
+
+        # Test Case: mixed integers and floats
+        d = {"a": 1, "b": 2.2}
+        self.assertEqual(world_pop.sum_values(d), 3.2)
+
+        # Test Case: large set of values
+        d = {str(i): i for i in range(100)}
+        self.assertEqual(world_pop.sum_values(d), 4950)
+
+if __name__ == "__main__":
+    unittest.main()
+```
+
+Here, we have only tested one of the three functions in `world_pop.py`, of course. We could imagine writing a test of the whole system:
+
+```python
+    def test_world_pop_end2end(self):
+        self.assertEqual(world_pop.get_world_pop(), 7975105156)
+```
+
+But the above test, I argue strongly, is horrible.  For several reasons:
+
+* Wikipedia WILL update this page regularly, so the exact number here will change.
+* Wikipedia might change the URL to this page. Or the exact contents of this page might change.
+* This test fails if you don't have internet access.
+* **More importantly**, this test doesn't just test our code, we are doing a lot of work to run our external sources.
+  * This means the test will run in several seconds, instead of milliseconds.
+  * But the greater concern is test maintainability, and not just run time.
+
+Finally, with all this "world pop" background, we can talk about "mocking". In this case, what we would LOVE to do is fake (mock) the internet call to Wikipedia, and just have a set unit test tool return some default/known HTML to us. And then our test will only TEST our code, and we are no longer call out to the internet.
+
+Such a test might look like:
+
+```python
+import unittest
+from unittest.mock import MagicMock, patch
+import world_pop
+
+EX_HTML = """<!DOCTYPE html><html><head></head><body><table>
+<thead><th></th><th>Country</th><th>region</th><th>subregion</th><th>pop1</th><th>pop2</th><th>Change</th></thead><tr></tr>
+<tr>::before<td><a>Aba</a></td><td>Asia</td><td>East Asia</td><td>400</td><td>401</td><td>+0.25%</td></tr>
+<tr>::before<td><a>Bac</a></td><td>Asia</td><td>East Asia</td><td>100</td><td>101</td><td>+1.0%</td></tr>
+<tr></tr></table></body></html>"""
+
+class TestWorldPop(unittest.TestCase):
+    # other tests...
+    @patch('world_pop.requests')
+    def test_world_pop_end2end(self, mock_requests):
+        # mock the response return value of the get() method
+        mock_response = MagicMock()
+        mock_response.status_code = 200
+        mock_response.content = EX_HTML
+        mock_requests.get.return_value = mock_response
+
+        # check that the code returns the test value from test HTML
+        self.assertEqual(world_pop.get_world_pop(), 502)
+
+if __name__ == "__main__":
+    unittest.main()
+```
+
+First, you can ignore the `EX_HTML` above, we just hard code some test/sample/example HTML data that matches what we expect to see on Wikipedia. Of course, for brevity, we only include two countries (and 502 people here), instead of ALL countries.
+
+More importantly, see that we have used `unittest.mock.patch` to NOT really call `requests.get()` but replace that code with a `MagicMock` that returns the data we want. This is the crux we need to understand to build fast, maintainabe tests. And mocking allows us to easily write tests for code that would otherwise _seem_ untestable.
+
 
 ## Why Bother?
 
-If you're asking why bother, you're not the first person. The truth is, some people spend too much time worrying about the testing.
+If you're asking why bother, you're not the first person. But most teams lose a lot of time and energy because their code isn't tested enough.
 
 The truth is also that every software company in the world tests their code. As projects get bigger, not every single person committing code to the project will understand every function/class in the project.
 
