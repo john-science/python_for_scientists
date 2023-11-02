@@ -198,6 +198,11 @@ True
 0
 ```
 
+What are these operators?
+
+* `and` - Are **both** of these things (on the left and right of `and`) true?
+* `or` - Are **either** of these things (on the left and right of `or`) true?
+
 (**NOTE**: In a pinch, you can replace `True` and `False` with the numbers `1` and `0`.)
 
 There are some basic comparison operators that act on numbers and return boolean values, these are called `predicates`:
@@ -216,6 +221,8 @@ True
 >>> 8 != 9.1234
 True
 ```
+
+Notice that these boolean opetors compare the values on either side of the operator. The `type` on either side is frequently not important, and ARMI might do the type conversion for you.
 
 ## Types
 
