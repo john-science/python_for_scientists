@@ -253,33 +253,33 @@ Here is an example of a correctly indented piece of Python:
 
 ```python
 if n == 0:
-    print 0
+    print(0)
 elif n == 1:
-    print 1
+    print(1)
 else:
-    print (n - 1) + (n - 2)
+    print((n - 1) + (n - 2))
 ```
 
 Notice how the indents line up. If we didn't align the `if`, `elif`, or `else` together, Python would throw an error:
 
 ```python
 if n == 0:
-    print 0
+    print(0)
 elif n == 1:
-      print 1
+      print (1)
   else:                       # ERROR: inconsistent dedent
-   print (n - 1) + (n - 2)
+   print((n - 1) + (n - 2))
 ```
 
 Or if we didn't indent the code inside the blocks Python would throw an error:
 
 ```python
 if n == 0:
-    print 0
+    print  (0 )
 elif n == 1:
-print 1                       # ERROR: no indent
+print(1    )                   # ERROR: no indent
 else:
-   print (n - 1) + (n - 2)
+   print((n - 1) + (n - 2))
 ```
 
 
