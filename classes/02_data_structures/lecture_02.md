@@ -109,7 +109,7 @@ To retreive all the keys or values from a dictionary (Python 3.x):
 >>> gdp.keys()
 dict_keys(['USA', 'Germany', 'China', 'Samoa', 'Ghana'])
 >>> gdp.values()
-dict_keys([16244600, 8358400, 40711, 681, 3425956])
+dict_values([16244600, 8358400, 40711, 681, 3425956])
 ```
 
 **NOTE**: It is important to know that when you retreive all of the keys or values from a dictionary in this way, they will not be ordered. Do not expect that you can predict what *order* these keys or values come out in.
