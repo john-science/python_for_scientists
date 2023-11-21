@@ -134,6 +134,10 @@ Let's write our first Python script as a stand-alone file. Leave the interpreter
 
     pydoc -w super_happy_fun_nums
 
+If that doesn't work, try:
+
+    python -m pydoc -w super_happy_fun_nums
+
 This will generate a nicely-formmated HTML file with all the documentation for the functions in that file:
 
 ![docstrings](../../resources/docstring_screencap.png)
