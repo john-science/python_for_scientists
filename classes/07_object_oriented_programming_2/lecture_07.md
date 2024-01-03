@@ -31,7 +31,7 @@ class Polygon:
 
     def print_num_sides(self):
         '''A quick, informational print statement.'''
-        print(f'There are {self.number_of_sides} sides.')
+        print(f"There are {self.number_of_sides} sides.")
 
 class Rectangle(Polygon):
 
@@ -76,7 +76,7 @@ And if we create a `Triangle`, we can call both the methods in `Triangle` and th
 >>> print(tri.get_area())
 6.0
 >>> tri.print_num_sides()
-3
+There are 3 sides.
 ```
 
 We have created a connection between the idea of a triangle and the idea of a polygon. We say that "Triangle inherits from Polygon". We have set up a conceptual connection such that everything in `Polygon` should appear in `Triangle`. And we use this connection in code to help us think about the logic of our situation. The goal is to create relationships in code that miror the real world we are trying to mimic. This will make OOP powerful, and make it a lot easier for humans (like you) to think and reason about the code.
@@ -94,13 +94,13 @@ We could modify the example above to make `Polygon` an abstract class:
 ```python
 from abc import ABC, abstractmethod
 
-class Polygon(ABC):
+class APolygon(ABC):
 
     def __init__(self, n):
         self.number_of_sides = n
 
     def print_num_sides(self):
-        print(f'There are {self.number_of_sides} sides.')
+        print(f"There are {self.number_of_sides} sides.")
 
     @abstractmethod
     def get_area(self):
@@ -112,7 +112,7 @@ Here we have imported the Python standard library `abc` to create an "abstract b
 An abstract base class cannot be created directly, so we can no longer create a generic `Polygon`:
 
 ```python
->>> p = Polygon(3)
+>>> p = APolygon(3)
 Traceback (most recent call last):
   File "<stdin>", line 1, in <module>
 TypeError: Can't instantiate abstract class Polygon with abstract methods get_area
@@ -121,9 +121,9 @@ TypeError: Can't instantiate abstract class Polygon with abstract methods get_ar
 And in order to implement a subclass of `Polygon`, it must provide an implementation of all of the abstract methods, like `get_area`:
 
 ```python
->>> class Circle(Polygon):
+>>> class Circle(APolygon):
 >>>     def __init__(self):
->>>         Polygon.__init__(self, 1)
+>>>         APolygon.__init__(self, 1)
 >>>
 >>> c = Circle()
 TypeError: Can't instantiate abstract class Circle with abstract methods get_area
