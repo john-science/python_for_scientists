@@ -44,8 +44,8 @@
     from math import sqrt
     filter(lambda n: (sqrt(n) % 1 == 0) and (n % 2 == 0), range(10000))
     
-    # 3. How many positive numbers less than 1,000,000 are evenly divisible by 99?
-    len(list(filter(lambda i: i % 99 == 0, range(1000000))))  # answer: 10102
+    # 3. How many positive, even numbers less than 1,000,000 are evenly divisible by 99?
+    len(list(filter(lambda i: i % 99 == 0 and i % 2 == 0, range(1000000))))  # answer: 5051
 
 #### Choose Your Own Adventure
 
