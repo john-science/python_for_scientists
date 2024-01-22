@@ -179,7 +179,7 @@ It can also do various kinds of exponentials and logarithms:
 
 ```python
 >>> from math import e, exp, log, log10
->>> 
+>>>
 >>> exp(1)
 2.718281828459045
 >>> exp(2)
@@ -201,6 +201,26 @@ It can also do various kinds of exponentials and logarithms:
 >>> log10(25)
 1.3979400086720377
 ```
+
+You might have noticed above we imported modules from `datetime` and `math` slightly differently. Just to be clear, both of the following options are valid Python code, and will have the same results:
+
+```python
+>>> from math import cos, pi
+>>>
+>>> cos(pi / 4)
+0.7071067811865476
+```
+
+or
+
+```python
+>>> import math
+>>>
+>>> math.cos(math.pi / 4)
+0.7071067811865476
+```
+
+People will have their preferences, but the results are the same.
 
 
 ## Random
