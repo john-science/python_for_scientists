@@ -28,7 +28,7 @@ This class is not meant to provide a rigorous computer science background. To ge
 * [Lambda and Looping Faster](classes/05_lists_and_lambdas/lecture_05.md)
 * [Object-Oriented Programming, Part 1](classes/06_object_oriented_programming_1/lecture_06.md)
 * [Object-Oriented Programming, Part 2](classes/07_object_oriented_programming_2/lecture_07.md)
-* [Decorators](classes/09_std_libs/lecture_09.7.md)
+  * [Object-Oriented Programming, Decorators](classes/09_std_libs/lecture_09.7.md)
 * [The Craftsmanship of Coding](classes/08_taking_the_next_step/lecture_08.md)
 
 ### Python Standard Libraries
