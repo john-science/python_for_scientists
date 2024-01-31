@@ -49,7 +49,7 @@ Software testing is an increasingly big topic, and there are a lot of good tools
 
  * [unittest](http://pythontesting.net/framework/unittest/unittest-introduction/) - in the Python standard library
  * [mock](http://www.voidspace.org.uk/python/mock/) - A  way to test untestable code, and a great way to keep your code and your tests maintainable
- * [nose](http://pythontesting.net/framework/nose/nose-introduction)/ - built as an extension to unittest
+ * [nose](http://pythontesting.net/framework/nose/nose-introduction) - built as an extension to unittest
  * [pytest](https://docs.pytest.org/en/8.0.x/) - Simple, easy-to-use, unit testing library.
  * [tox](http://tox.readthedocs.org/en/latest/) - VirtualEnv management tool that acts as a wrapper for your other unit testing libraries
 
