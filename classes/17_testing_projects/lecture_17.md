@@ -4,7 +4,10 @@ Today we're going to begin the big conversation of testing code. This lecture do
 
 #### Installation
 
-None! Everything we talk about today is part of the Python standard library.
+In today's lecture we will cover two testing frameworks: `unittest` and `pytest`.
+The `unittest` framework is included with python, and no additional work is required if python is already installed.
+The `pytest` framework is widely availble with `pip`, `conda`, or virtually any other python package manager.
+
 
 ## Unit Tests
 
