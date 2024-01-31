@@ -109,7 +109,7 @@ Now we will create a file called `test_student.py` in the same folder and fillin
 ```python
 import unittest
 
-from gradebook.student import Student
+from student import Student
 
 
 class TestStudent(unittest.TestCase):
@@ -215,7 +215,7 @@ class TestStudent(unittest.TestCase):
 
 And we run the test again:
 
-    $ py test_student.py
+    $ python test_student.py
     F..
     ======================================================================
     FAIL: test_better_than_perfect_grades (__main__.TestStudent)
@@ -247,7 +247,7 @@ if percent_grade >= 90.0:
 
 And now are unit tests run great again:
 
-    $ py test_student.py
+    $ python test_student.py
     ...
     ----------------------------------------------------------------------
     Ran 3 tests in 0.000s
