@@ -47,12 +47,12 @@ Software testing is an increasingly big topic, and there are a lot of good tools
  * [unittest](http://pythontesting.net/framework/unittest/unittest-introduction/) - in the Python standard library
  * [mock](http://www.voidspace.org.uk/python/mock/) - A  way to test untestable code, and a great way to keep your code and your tests maintainable
  * [nose](http://pythontesting.net/framework/nose/nose-introduction)/ - built as an extension to unittest
- * [pytest](http://pythontesting.net/framework/pytest/pytest-introduction/) - Simple, easy-to-use, unit testing libraryresults.
+ * [pytest](https://docs.pytest.org/en/8.0.x/) - Simple, easy-to-use, unit testing library.
  * [tox](http://tox.readthedocs.org/en/latest/) - VirtualEnv management tool that acts as a wrapper for your other unit testing libraries
 
 For a nice discussion on the differences between the first three unit testing frameworks, see [this](http://pythontesting.net/podcast/pytest-vs-unittest-vs-nose-pt002/) article over at [pythontesting.net](http://pythontesting.net).
 
-Again, there are lots of good testing tools out there. In this lecture we will use `unittest`, just because it is part of the Python standard library.
+Again, there are lots of good testing tools out there. In this lecture we will first present `unittest`, because it is part of the Python standard library. A brief introduction to `pytest` will follow because it is a popular alternative to `unittest`.
 
 #### A Simple Example
 
@@ -403,6 +403,11 @@ if __name__ == "__main__":
 First, you can ignore the `EX_HTML` above, we just hard code some test/sample/example HTML data that matches what we expect to see on Wikipedia. Of course, for brevity, we only include two countries (and 502 people here), instead of ALL countries.
 
 More importantly, see that we have used `unittest.mock.patch` to NOT really call `requests.get()` but replace that code with a `MagicMock` that returns the data we want. This is the crux we need to understand to build fast, maintainabe tests. And mocking allows us to easily write tests for code that would otherwise _seem_ untestable.
+
+
+## Pytest
+
+<Expand>
 
 
 ## Why Bother?
