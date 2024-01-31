@@ -35,7 +35,7 @@ First, let's make a directory to drop her code into:
 
 Now let's create a VirtualEnv to mimic her environment:
 
-    virtualenv --python=python3.6 data_env
+    python --python=python3.9 -m venv data_env
 
 Now we can start using that environment:
 
@@ -92,7 +92,7 @@ First, let's make a directory to drop her code into:
 
 Now let's create a VirtualEnv to mimic her environment:
 
-    virtualenv --python=python3.6 web_env
+    python --python=python3.9 -m venv web_env
 
 Now we can start using that environment:
 
