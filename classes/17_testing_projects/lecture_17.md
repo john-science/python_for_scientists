@@ -92,7 +92,7 @@ class Student:
     @staticmethod
     def letter_grade(percent_grade):
         """Return a letter grade from a percentage grade."""
-        if percent_grade >= 90.0:
+        if percent_grade >= 90.0 and percent_grade <= 100.0:
             return "A"
         elif percent_grade >= 80.0:
             return "B"
@@ -293,7 +293,7 @@ def get_world_pop(url=WIKI_POP_URL, csv_path=CSV_PATH):
     return sum_values(pops)
 ```
 
-As you can see, our straw-man code goes two Wikipedia, scrapes some data (population by country) and then returns the sum.
+As you can see, our straw-man code goes to Wikipedia, scrapes some data (population by country) and then returns the sum.
 
 In detail, let's put this code in `world_pop.py`:
 
