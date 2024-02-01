@@ -112,7 +112,7 @@ Now we will create a file called `test_student.py` in the same folder and fillin
 ```python
 import unittest
 
-from gradebook.student import Student
+from student import Student
 
 
 class TestStudent(unittest.TestCase):
@@ -132,6 +132,10 @@ class TestStudent(unittest.TestCase):
             emmy.set_hw_grade(100.0, i)
 
         self.assertEqual(emmy.calculate_grade(), 100.0)
+
+
+if __name__ == '__main__':
+    unittest.main()
 ```
 
 Okay, so we have some unit tests. Let's try and unpack all of that.
@@ -191,7 +195,7 @@ Or, again, more verbosely:
 
     > python -m unittest discover -v python_class
 
-That's it! Rince and repeat and you can test all the Python you ever write.
+That's it! Rinse and repeat and you can test all the Python you ever write.
 
 #### More Practice
 
@@ -410,7 +414,10 @@ More importantly, see that we have used `unittest.mock.patch` to NOT really call
 
 ## Pytest
 
-<Expand>
+[Pytest](https://docs.pytest.org/en/8.0.x/) is a popular alternative to unittest.
+
+
+This lecture was developed with python 3.12.1 and pytest 8.0.0.
 
 
 ## Why Bother?
