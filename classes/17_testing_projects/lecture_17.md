@@ -411,13 +411,28 @@ First, you can ignore the `EX_HTML` above, we just hard code some test/sample/ex
 
 More importantly, see that we have used `unittest.mock.patch` to NOT really call `requests.get()` but replace that code with a `MagicMock` that returns the data we want. This is the crux we need to understand to build fast, maintainabe tests. And mocking allows us to easily write tests for code that would otherwise _seem_ untestable.
 
-
 ## Pytest
 
 [Pytest](https://docs.pytest.org/en/8.0.x/) is a popular alternative to unittest.
+One nice feature is that tests that have been written with the unittest framework can already be run with pytest.
+For example, the file `test_student.py` can be run on the command line as follows:
+
+    > pytest test_student.py
+    ============================= test session starts ==============================
+    platform <platform info>
+    rootdir: <path to rootdir>
+    collected 3 items
+
+    test_student.py ...                                                      [100%]
+
+    ============================== 3 passed in 0.00s ===============================
 
 
-This lecture was developed with python 3.12.1 and pytest 8.0.0.
+Some advantages that pytest has over unittest is that it enables more pythonic ways to write unit tests, and it has many [helpful plugins](https://docs.pytest.org/en/8.0.x/reference/plugin_list.html#plugin-list).
+There are two python projects worth mentioning that are compatible with pytest are [hypothesis](https://hypothesis.readthedocs.io/en/latest/) and [pytest-dependency](https://pypi.org/project/pytest-dependency/).
+
+For more information on how to get started with pytest checkout the [Get Started](https://docs.pytest.org/en/8.0.x/getting-started.html#get-started) page for a basic introduction.
+For a more indepth introduction [this two hour tutorial](https://www.youtube.com/watch?v=LX2ksGYXJ80) covers pytest in scientific computing applications.
 
 
 ## Why Bother?
