@@ -103,7 +103,7 @@ What do you think will happen if you run this code?
 You can use `numpy.arange` to fill a `numpy.array` much like you used `range` to fill a Python-standard `list`:
 
 ```python
->>> count = range(5)
+>>> count = list(range(5))
 >>> count
 [0, 1, 2, 3, 4]
 >>> 
