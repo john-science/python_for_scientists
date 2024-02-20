@@ -112,7 +112,7 @@ class TestStudent(unittest.TestCase):
 First, we will need to layout our project something like this:
 
     gradebook/
-    |-- setup.py
+    |-- pyproject.toml
     |-- gradebook/
     |   |-- __init__.py
     |   |-- student.py
