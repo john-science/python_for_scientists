@@ -1,6 +1,6 @@
 # Stats with SciPy
 
-For this problem set, we will be using real data. We will analyze the height and weight of the athletes at the 2012 London Olympics. You can find the CSV for this dataset [here](https://raw.githubusercontent.com/john-sciecen/python_for_scientists/master/classes/11_scipy/london_2012_olympic_athlete_data.csv).
+For this problem set, we will be using real data. We will analyze the height and weight of the athletes at the 2012 London Olympics. You can find the CSV for this dataset [here](london_2012_olympic_athlete_data.csv).
 
 ## Reading the Data
 
