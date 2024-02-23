@@ -5,8 +5,8 @@ Today we're going to begin the big conversation of testing code. This lecture do
 #### Installation
 
 In today's lecture we will cover two testing frameworks: `unittest` and `pytest`.
-The `unittest` framework is included with python, and no additional work is required if python is already installed.
-The `pytest` framework is widely availble with `pip`, `conda`, or virtually any other python package manager.
+The `unittest` framework is included with Python, and no additional work is required if Python is already installed.
+The `pytest` framework is widely available with `pip`, `conda`, or virtually any other Python package manager.
 
 
 ## Unit Tests
@@ -415,7 +415,7 @@ More importantly, see that we have used `unittest.mock.patch` to NOT really call
 
 [Pytest](https://docs.pytest.org/en/8.0.x/) is a popular alternative to unittest.
 One nice feature is that tests that have been written with the unittest framework can already be run with pytest.
-For example, the file `test_student.py` can be run on the command line as follows:
+For example, the file `test_student.py` above can be run on the command line as follows:
 
     > pytest test_student.py
     ============================= test session starts ==============================
@@ -428,11 +428,11 @@ For example, the file `test_student.py` can be run on the command line as follow
     ============================== 3 passed in 0.00s ===============================
 
 
-Some advantages that pytest has over unittest is that it enables more pythonic ways to write unit tests, and it has many [helpful plugins](https://docs.pytest.org/en/8.0.x/reference/plugin_list.html#plugin-list).
-There are two python projects worth mentioning that are compatible with pytest are [hypothesis](https://hypothesis.readthedocs.io/en/latest/) and [pytest-dependency](https://pypi.org/project/pytest-dependency/).
+One advantage of `pytest` over `unittest` is that it supports [plugins](https://docs.pytest.org/en/8.0.x/reference/plugin_list.html#plugin-list).
+There are two Python projects worth mentioning that are compatible with pytest: [hypothesis](https://hypothesis.readthedocs.io/en/latest/) and [pytest-dependency](https://pypi.org/project/pytest-dependency/).
 
 For more information on how to get started with pytest checkout the [Get Started](https://docs.pytest.org/en/8.0.x/getting-started.html#get-started) page for a basic introduction.
-For a more indepth introduction [this two hour tutorial](https://www.youtube.com/watch?v=LX2ksGYXJ80) covers pytest in scientific computing applications.
+For a more in-depth introduction [this two hour tutorial](https://www.youtube.com/watch?v=LX2ksGYXJ80) covers pytest in scientific computing applications.
 
 
 ## Why Bother?
