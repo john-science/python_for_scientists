@@ -33,10 +33,10 @@ These are just some basic array manipulation problems to get you used to working
 
 #### Set 4
 
-1. Use `numpy.ones` to create an array, `a`, which is five elements long.
-2. Use `arange` to create an array, `b`, which is the integers from 2 to 6 (five elements long).
-3. Use `arange` to create an array, `c`, which is the even integers 2 to 12. (HINT: With `range`, you could do: range(min, max, step).)
-4. Use `arange` to creat3 an array, `d`, which is the float values of the integers from 1 to 5.
+1. Use `np.ones` to create an array, `a`, which is five elements long.
+2. Use `np.arange` to create an array, `b`, which is the integers from 2 to 6 (five elements long).
+3. Use `np.arange` to create an array, `c`, which is the even integers 2 to 12. (HINT: With `range`, you could do: range(min, max, step).)
+4. Use `np.arange` to creat3 an array, `d`, which is the float values of the integers from 1 to 5.
 5. Create a new array: x = c + a - b.
 6. What is the value of d - x?
 

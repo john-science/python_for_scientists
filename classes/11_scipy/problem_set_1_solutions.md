@@ -280,11 +280,11 @@ They actually turn out to be nearly identical fits to the data. In this case, us
 
 #### 1. Convert the following from lists to `numpy.array`: `ages_female`, `ages_male`, `bmi_female`, and `bmi_male`.
 
-    >>> from numpy import array
-    >>> ages_female = array(ages_female)
-    >>> ages_male = array(ages_male)
-    >>> bmi_female = array(bmi_female)
-    >>> bmi_male = array(bmi_male)
+    >>> import numpy as np
+    >>> ages_female = np.array(ages_female)
+    >>> ages_male = np.array(ages_male)
+    >>> bmi_female = np.array(bmi_female)
+    >>> bmi_male = np.array(bmi_male)
 
 #### 2. Create a function named `linear` that takes `x`, `a`, and `b` and returns ax + b.
 

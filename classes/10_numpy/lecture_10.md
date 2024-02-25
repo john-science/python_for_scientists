@@ -23,24 +23,50 @@ You can find instructions for installing NumPy [here](http://docs.scipy.org/doc/
 Consider installing [Anaconda](http://docs.continuum.io/anaconda/install.html) instead. Anaconda is Python packaged with hundreds of tools and libraries that you will want (This includes NumPy and everything else we will use in this course.)
 
 
+## Unofficial Community Standard Import
+
+People use NumPy _a lot_, and as such, they get tired of doing:
+
+```python
+import numpy
+
+numpy.array
+numpy.ones
+# numpy.whatever
+```
+
+So, the unofficial community standard import is to do:
+
+```python
+import numpy as np
+```
+
+And then to do:
+
+```python
+np.array
+np.ones
+# np.whatever
+```
+
+This "renaming the import" is super common, so we will try to use it here.
+
+
 ## The NumPy array
 
 ### Lists vs Arrays
 
 The `list` is the standard ordered-sequence data structure in Python. The Python `list` is an extremely flexible tool. But, it turns out, that flexibility costs speed. NumPy introduces its own data structure, the  [array](http://wiki.scipy.org/Tentative_NumPy_Tutorial#head-c5f4ceae0ab4b1313de41aba9104d0d7648e35cc):
 
-```python
->>> from numpy import array
-```
-
-One of the first differences you will find is that, unlike lists, all of the items in a NumPy `array` have to be of the same type.
+One of the first differences you will find is that, unlike lists, all of the items in a NumPy `np.array` have to be of the same type.
 
 ```python
+>>> import numpy as np
+>>>
 >>> lst = [1, 2, 3, 4.5]
 >>> lst
 [1, 2, 3, 4.5]
->>> from numpy import array
->>> a = array([1, 2, 3, 4.5])
+>>> a = np.array([1, 2, 3, 4.5])
 >>> a
 array([ 1.,  2.,  3.,  4.5])
 ```
@@ -70,13 +96,13 @@ There are, of course, many other data types in NumPy. For a full list, look [her
 One difference between lists and NumPy.arrays is that arrays don't just have to be one-dimensional:
 
 ```python
->>> from numpy import array
+>>> import numpy as np
 >>>
->>> array([[1, 2, 3], [7, 8, 9]])
+>>> np.array([[1, 2, 3], [7, 8, 9]])
 array([[1, 2, 3],
        [7, 8, 9]])
 >>> 
->>> array([[1, 2, 3], [7, 8, 9]], dtype=float)
+>>> np.array([[1, 2, 3], [7, 8, 9]], dtype=float)
 array([[ 1.,  2.,  3.],
        [ 7.,  8.,  9.]])
 ```
@@ -84,7 +110,7 @@ array([[ 1.,  2.,  3.],
 And if you start out with a 1D `array`, you can make a 2D `array` using `reshape`:
 
 ```python
->>> a = array([1, 2, 3, 4.5])
+>>> a = np.array([1, 2, 3, 4.5])
 >>> b = a.reshape(2, 2)
 >>> b
 array([[ 1. ,  2. ],
@@ -96,7 +122,7 @@ The `.reshape()` method is really pretty smart. It doesn't move any of the data 
 What do you think will happen if you run this code?
 
 ```python
->>> a = array([1, 2, 3, 4.5])
+>>> a = np.array([1, 2, 3, 4.5])
 >>> c = a.reshape(3, 3)
 ```
 
@@ -107,9 +133,7 @@ You can use `numpy.arange` to fill a `numpy.array` much like you used `range` to
 >>> count
 [0, 1, 2, 3, 4]
 >>> 
->>> from numpy import arange
->>> 
->>> c = arange(18)
+>>> c = np.arange(18)
 >>> c
 array([ 0,  1,  2,  3,  4,  5,  6,  7,  8,  9, 10, 11, 12, 13, 14, 15, 16, 17])
 ```
@@ -117,31 +141,30 @@ array([ 0,  1,  2,  3,  4,  5,  6,  7,  8,  9, 10, 11, 12, 13, 14, 15, 16, 17])
 The `numpy.arange` function can work like it does above, or it can take three paramters: `min`, `max`, and `step`:
 
 ```python
->>> arange(2, 15, 4)
+>>> np.arange(2, 15, 4)
 array([ 2,  6, 10, 14])
 ```
 
 What do you think the following code will produce?
 
 ```python
->>> arange(2, 15)
+>>> np.arange(2, 15)
 ```
 
-Here's a quick example using `arange` and `reshape` together:
+Here's a quick example using `np.arange` and `reshape` together:
 
 ```python
->>> d = arange(18).reshape(3,6)
+>>> d = np.arange(18).reshape(3,6)
 >>> d
 array([[ 0,  1,  2,  3,  4,  5],
        [ 6,  7,  8,  9, 10, 11],
        [12, 13, 14, 15, 16, 17]])
 ```
 
-You can also create a multi-dimensional `array` right from the start:
+You can also create a multi-dimensional `np.array` right from the start:
 
 ```python
->>> from numpy import array
->>> e = array([[0, 1, 2, 3], [4, 5, 6, 7]])
+>>> e = np.array([[0, 1, 2, 3], [4, 5, 6, 7]])
 >>> e
 array([[0, 1, 2, 3],
        [4, 5, 6, 7]])
@@ -150,8 +173,7 @@ array([[0, 1, 2, 3],
 And, unlike the standard Python libraries, NumPy will let you define the type of the array:
 
 ```python
->>> from numpy import array
->>> f = array([[0, 1, 2, 3], [4, 5, 6, 7]], np.float32)
+>>> f = np.array([[0, 1, 2, 3], [4, 5, 6, 7]], np.float32)
 >>> f
 array([[ 0.,  1.,  2.,  3.],
        [ 4.,  5.,  6.,  7.]])
@@ -160,13 +182,11 @@ array([[ 0.,  1.,  2.,  3.],
 Frequently, you will want to initialize an `np.array` with all zero values:
 
 ```python
->>> from numpy import zeros
->>>
->>> z = zeros(5, dtype=np.int64)
+>>> z = np.zeros(5, dtype=np.int64)
 >>> z
 array([0, 0, 0, 0, 0])
 >>> 
->>> y = zeros((2, 3), dtype=np.float32)
+>>> y = np.zeros((2, 3), dtype=np.float32)
 >>> y
 array([[ 0.,  0.,  0.],
        [ 0.,  0.,  0.]])
@@ -175,12 +195,10 @@ array([[ 0.,  0.,  0.],
 Similarly, you can use `ones` to initialize an array to all 1 values:
 
 ```python
->>> from numpy import ones
->>> 
->>> ones(4)
+>>> np.ones(4)
 array([ 1.,  1.,  1.,  1.])
 >>> 
->>> ones((2, 5), dtype=np.int64)
+>>> np.ones((2, 5), dtype=np.int64)
 array([[1, 1, 1, 1, 1],
        [1, 1, 1, 1, 1]])
 ```
@@ -190,9 +208,8 @@ array([[1, 1, 1, 1, 1],
 One of the great things about numpy is that it makes operating on every element of an array super easy. For instance, if you want to add or subtract two arrays:
 
 ```python
->>> from numpy import array
->>> a = array([1, 2, 3])
->>> b = array([-1, 2, 3])
+>>> a = np.array([1, 2, 3])
+>>> b = np.array([-1, 2, 3])
 >>> 
 >>> a + b
 array([0, 4, 6])
@@ -235,7 +252,7 @@ Another great feature of numpy arrays is the huge variety of helper methods.
 Use `.ndim` to determine how many dimensions your multi-dimensional `np.array` has:
 
 ```python
->>> r = zeros((3, 2), dtype=np.float64)
+>>> r = np.zeros((3, 2), dtype=np.float64)
 >>> r
 array([[ 0.,  0.],
        [ 0.,  0.],
@@ -247,7 +264,7 @@ array([[ 0.,  0.],
 And another example:
 
 ```python
->>> cube = zeros((2, 2, 2), dtype=np.float64)
+>>> cube = np.zeros((2, 2, 2), dtype=np.float64)
 >>> cube.ndim
 3
 ```
@@ -285,7 +302,7 @@ dtype('float64')
 Use `flatten` to convert a multi-dimensional `array` to a single dimension:
 
 ```python
->>> a = array([[2,3,4],[7,8,9]])
+>>> a = np.array([[2,3,4],[7,8,9]])
 >>> a
 array([[2, 3, 4],
        [7, 8, 9]])
@@ -301,7 +318,7 @@ Remember, this is quite fast because the data is not being move around, it is on
 Use `transpose` to flip the x and y directions in your `array`:
 
 ```python
->>> a = array([[2, 3, 4], [7, 8, 9]])
+>>> a = np.array([[2, 3, 4], [7, 8, 9]])
 >>> a
 array([[2, 3, 4],
        [7, 8, 9]])
@@ -315,7 +332,7 @@ array([[2, 7],
 Alternatively, you can just use the shorthand `.T` to do the same thing.
 
 ```python
->>> a = array([[2, 3, 4], [7, 8, 9]])
+>>> a = np.array([[2, 3, 4], [7, 8, 9]])
 >>> a.T
 array([[2, 7],
        [3, 8],
@@ -333,9 +350,8 @@ Notice that neither of these methods changes what is in the `a` place in memory;
 NumPy even has mathematical functions designed to act on entire arrays. A lot of them, like `sqrt`:
 
 ```python
->>> from numpy import sqrt
->>> a = array([1, 4, 9, 25, 144, 81])
->>> sqrt(a)
+>>> a = np.array([1, 4, 9, 25, 144, 81])
+>>> np.sqrt(a)
 array([  1.,   2.,   3.,   5.,  12.,   9.])
 ```
 
@@ -344,21 +360,19 @@ array([  1.,   2.,   3.,   5.,  12.,   9.])
 Use `ceil` and `floor` to round NumPy `np.float64`s up or down to the nearest integer:
 
 ```python
->>> from numpy import ceil, floor
+>>> a = np.array([1.001, 2.49, 2.5, 3.5001, 9.9])
 >>> 
->>> a = array([1.001, 2.49, 2.5, 3.5001, 9.9])
->>> 
->>> ceil(a)
+>>> np.ceil(a)
 array([  2.,   3.,   3.,   4.,  10.])
->>> floor(a)
+>>> np.floor(a)
 array([ 1.,  2.,  2.,  3.,  9.])
 ```
 
 What would you expect this to return?
 
 ```python
->>> x = array([3.912, 15.8999, 35.98989])
->>> floor(sqrt(x))
+>>> x = np.array([3.912, 15.8999, 35.98989])
+>>> np.floor(np.sqrt(x))
 ```
 
 #### sum & prod
@@ -366,25 +380,24 @@ What would you expect this to return?
 NumPy also includes the ability to make the sum and product of all the elements in an array:
 
 ```python
->>> from numpy import sum, prod
->>> a = array([1, 2, 3, 4, 5, 6])
+>>> a = np.array([1, 2, 3, 4, 5, 6])
 >>> 
->>> sum(a)
+>>> np.sum(a)
 21
->>> prod(a)
+>>> np.prod(a)
 720
 ```
 
 And since they are built into NumPy, `sum` and `prod` can handle multi-dimensional arrays:
 
 ```python
->>> m = array([[1, 2, 3], [4, 5, 6]])
+>>> m = np.array([[1, 2, 3], [4, 5, 6]])
 >>> m
 array([[1, 2, 3],
        [4, 5, 6]])
->>> sum(m)
+>>> np.sum(m)
 21
->>> prod(m)
+>>> np.prod(m)
 720
 ```
 
@@ -393,20 +406,19 @@ array([[1, 2, 3],
 Use `sort` to put the elements of a 1D array in order:
 
 ```python
->>> from numpy import sort
->>> a = array([1, 2, 3, 4, 5, 4, 3, 2, 1])
->>> sort(a)
+>>> a = np.array([1, 2, 3, 4, 5, 4, 3, 2, 1])
+>>> np.sort(a)
 array([1, 1, 2, 2, 3, 3, 4, 4, 5])
 ```
 
 And if you apply `sort` to a multi-dimensional `array`, it will return each sub-array ordered:
 
 ```python
->>> m = array([[9, 4, 2], [1, 0, -3]])
+>>> m = np.array([[9, 4, 2], [1, 0, -3]])
 >>> m
 array([[ 9,  4,  2],
        [ 1,  0, -3]])
->>> sort(m)
+>>> np.sort(m)
 array([[ 2,  4,  9],
        [-3,  0,  1]])
 ```
@@ -424,13 +436,11 @@ A related function is `argsort`, which instead returns the indices of the sorted
 Use `clip` if you want to set the max and min value allowed in your array:
 
 ```python
->>> from numpy import clip
+>>> a = np.array([1, 2, 3, 0, -32, 99, 999])
 >>> 
->>> a = array([1, 2, 3, 0, -32, 99, 999])
->>> 
->>> clip(a, 0, 10000)
+>>> np.clip(a, 0, 10000)
 array([  1,   2,   3,   0,   0,  99, 999])
->>> clip(a, -999, 1)
+>>> np.clip(a, -999, 1)
 array([  1,   1,   1,   0, -32,   1,   1])
 ```
 
@@ -441,7 +451,7 @@ This simple goes through your array and converts any values below your `MIN` to 
 You could convert a `numpy.array` to a standard Python `list` using `list()`:
 
 ```python
->>> a = array([1, 4, 1, 5, 9])
+>>> a = np.array([1, 4, 1, 5, 9])
 >>> a
 array([1, 4, 1, 5, 9])
 >>> list(a)
@@ -451,7 +461,7 @@ array([1, 4, 1, 5, 9])
 But this might not behave like you expect for a multidimensional `array`. It just returns list of arrays:
 
 ```python
->>> m = array([[1, 2, 3], [7, 8, 9]])
+>>> m = np.array([[1, 2, 3], [7, 8, 9]])
 >>> m
 array([[1, 2, 3],
        [7, 8, 9]])
@@ -472,10 +482,9 @@ There are two convenient methods for combining arrays in numpy, `concatenate` an
 
 ```python
 >>> import numpy as np
->>> from numpy import array
 >>> 
->>> a = array([1,2,3,4,5])
->>> b = array([9,8,7,6,5])
+>>> a = np.array([1,2,3,4,5])
+>>> b = np.array([9,8,7,6,5])
 >>> 
 >>> np.concatenate((a, b))
 array([1, 2, 3, 4, 5, 9, 8, 7, 6, 5])
@@ -488,8 +497,8 @@ array([[1, 2, 3, 4, 5],
 Both of these methods work on multi-dimensional arrays as well. Though higher dimensional math is always more fun:
 
 ```python
->>> c = array([[1,2,3], [4,5,6]])
->>> d = array([[5,6,7], [8,9,0]])
+>>> c = np.array([[1,2,3], [4,5,6]])
+>>> d = np.array([[5,6,7], [8,9,0]])
 >>> 
 >>> np.concatenate((c, d))
 array([[1, 2, 3],
@@ -520,13 +529,11 @@ When we say a distribution of random numbers is *flat*, we mean that the numbers
 Use `random.rand` to fill a NumPy `array` with random `float64` values between 0.0 and 1.0:
 
 ```python
->>> from numpy import random
->>> 
->>> random.rand(1)
+>>> np.random.rand(1)
 array([ 0.05895439])
->>> random.rand(3)
+>>> np.random.rand(3)
 array([ 0.3581962, 0.5377904, 0.0094921])
->>> random.rand(2, 3)
+>>> np.random.rand(2, 3)
 array([[ 0.35675058,  0.51579755,  0.03851769],
        [ 0.74684991,  0.55219055,  0.37000399]])
 ```
@@ -538,41 +545,40 @@ Use `random.randint` to fill a NumPy `array` with random `int64` values, where y
 You can just provide a maximum integer (min defaults to zero, max is exclusive):
 
 ```python
->>> from numpy import random
->>> random.randint(5)
+>>> np.random.randint(5)
 0
->>> random.randint(5)
+>>> np.random.randint(5)
 4
->>> random.randint(5)
+>>> np.random.randint(5)
 3
->>> random.randint(5)
+>>> np.random.randint(5)
 2
 ```
 
 Or you can provide a min and a max (min inclusive, max exclusive):
 
 ```python
->>> random.randint(5, 10)
+>>> np.random.randint(5, 10)
 9
->>> random.randint(5, 10)
+>>> np.random.randint(5, 10)
 5
->>> random.randint(5, 10)
+>>> np.random.randint(5, 10)
 5
->>> random.randint(5, 10)
+>>> np.random.randint(5, 10)
 7
 ```
 
 Or you can create an entire array of random integers by providing the dimensions of the array as a third parameter:
 
 ```python
->>> random.randint(1, 10, 3)
+>>> np.random.randint(1, 10, 3)
 array([5, 2, 9])
 >>> 
->>> random.randint(5, 10, (2, 3))
+>>> np.random.randint(5, 10, (2, 3))
 array([[5, 6, 9],
        [8, 9, 6]])
 >>> 
->>> random.randint(1, 10, (3, 5))
+>>> np.random.randint(1, 10, (3, 5))
 array([[5, 4, 7, 1, 4],
        [6, 5, 5, 5, 4],
        [6, 9, 8, 7, 1]])
@@ -583,17 +589,17 @@ array([[5, 4, 7, 1, 4],
 You can use `random.choice` to select an element from a 1D `array` (multidimensional arrays won't work):
 
 ```python
->>> from numpy import array, random
->>> a = array([1, 2, 3, 4, 5, 6, 7])
->>> random.choice(a)
+>>> a = np.array([1, 2, 3, 4, 5, 6, 7])
+>>> np.random.choice(a)
 5
->>> random.choice(a)
+>>> np.random.choice(a)
 7
->>> random.choice(a)
+>>> np.random.choice(a)
 1
 ```
 
 The `choice` function is part of a flat distribution, because each element in the list is equally likely to be selected.
+
 
 ### Normal Distribution
 
@@ -601,24 +607,23 @@ When random numbers are generated with a [Normal Distribution](https://en.wikipe
 
 ![Normal Distribution](http://upload.wikimedia.org/wikipedia/commons/thumb/7/74/Normal_Distribution_PDF.svg/350px-Normal_Distribution_PDF.svg.png)
 
-Use `random.randn` to produce an `array` of `float64` values, with a Normal Distribution (centered around zero, with a standard deviation of 1):
+Use `np.random.randn` to produce an `np.array` of `np.float64` values, with a Normal Distribution (centered around zero, with a standard deviation of 1):
 
 ```python
->>> from numpy import random
->>> random.randn(1)
+>>> np.random.randn(1)
 array([ 0.82712644])
->>> random.randn(4)
+>>> np.random.randn(4)
 array([-0.0518932 ,  1.02017916, -0.50273024,  0.63187314])
 ```
 
 And, again, we can create higher-dimensional arrays:
 
 ```python
->>> random.randn(2, 4)
+>>> np.random.randn(2, 4)
 array([[-0.1366172 , -0.41921541,  1.98640058, -0.75165991],
        [ 1.69984245,  0.65345415, -1.90558238, -0.41176329]])
 >>>
->>> random.randn(2, 2, 2)
+>>> np.random.randn(2, 2, 2)
 array([[[ 0.16383478, -0.03612812],
         [ 0.03078127,  0.54628765]],
        [[ 0.23479626,  1.0837927 ],
@@ -634,11 +639,11 @@ A common desire is to randomly order an existing sequence of values. NumPy provi
 Use `random.shuffle` if you want to randomly switch all the elements in a NumPy `array` in place:
 
 ```python
->>> a = array([1, 2, 3, 4, 5])
->>> random.shuffle(a)
+>>> a = np.array([1, 2, 3, 4, 5])
+>>> np.random.shuffle(a)
 >>> a
 array([4, 1, 5, 3, 2])
->>> random.shuffle(a)
+>>> np.random.shuffle(a)
 >>> a
 array([1, 3, 5, 2, 4])
 ```
@@ -646,11 +651,11 @@ array([1, 3, 5, 2, 4])
 The caveat here is that this shuffling is not deep. For a multi-dimensional `array`, it will only shuffle the outermost arrays:
 
 ```python
->>> m = array([[1, 2, 3], [4, 5, 6]])
+>>> m = np.array([[1, 2, 3], [4, 5, 6]])
 >>> m
 array([[1, 2, 3],
        [4, 5, 6]])
->>> random.shuffle(m)
+>>> np.random.shuffle(m)
 >>> m
 array([[4, 5, 6],
        [1, 2, 3]])
@@ -664,18 +669,18 @@ array([[1, 2, 3],
 Use `permutation` if you don't want to alter the original `array`, but just create a randomized version of it:
 
 ```python
->>> a = array([1, 2, 3, 4, 5])
->>> m = array([[1, 2, 3], [4, 5, 6]])
+>>> a = np.array([1, 2, 3, 4, 5])
+>>> m = np.array([[1, 2, 3], [4, 5, 6]])
 >>> 
->>> random.permutation(a)
+>>> np.random.permutation(a)
 array([3, 4, 1, 2, 5])
->>> random.permutation(a)
+>>> np.random.permutation(a)
 array([2, 4, 1, 3, 5])
 >>> 
->>> random.permutation(m)
+>>> np.random.permutation(m)
 array([[1, 2, 3],
        [4, 5, 6]])
->>> random.permutation(m)
+>>> np.random.permutation(m)
 array([[4, 5, 6],
        [1, 2, 3]])
 >>> 

@@ -168,8 +168,8 @@ Reading and writing data to/from NetCDF files is pretty easy.
 
 The first thing we know is that `temp` is a 4D variable, where one of the dimensions is time. So we will create a four-dimensional array, and store the values in `temp`:
 
-    >>> from numpy.random import random
-    >>> temp[0:1,0:11,:,:] = 100.0 * random(size=(1, 11, 321, 291)) + 70.0
+    >>> import numpy as np
+    >>> temp[0:1,0:11,:,:] = 100.0 * np.random.random(size=(1, 11, 321, 291)) + 70.0
 
 At this point, we could even address an individual data point directly:
 
@@ -177,8 +177,8 @@ At this point, we could even address an individual data point directly:
 
 Or we could use the `list` slicing syntax to set several locations at once:
 
-    >>> from numpy import arange
-    >>> temp[0][10][34][56:78] = 2.0 * arange(56, 78)
+    >>> import numpy as np
+    >>> temp[0][10][34][56:78] = 2.0 * np.arange(56, 78)
 
 It is important to note though that until you initialize all of the values of a variable, you can't set individual values:
 
@@ -248,8 +248,8 @@ Working with unlimited dimensions is actually pretty easy. For instance, if we p
 
 But the time dimension will automatically extend if we simply add more data:
 
-    >>> from numpy.random import random
-    >>> temp[0:5,0:11,:,:] = random(size=(5, 11, 321, 291))
+    >>> import numpy as np
+    >>> temp[0:5,0:11,:,:] = np.random.random(size=(5, 11, 321, 291))
     >>> print(temp.shape)
     (5, 11, 321, 291)
 

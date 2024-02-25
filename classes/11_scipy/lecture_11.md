@@ -335,7 +335,7 @@ If you have no prior opinion about how you want your histogram to look, use `sta
 If you want to know [percentile](https://en.wikipedia.org/wiki/Percentile) of a dataset a certain value would be at, you could use `stats.percentileofscore`:
 
 ```python
->>> from numpy as np
+>>> import numpy as np
 >>> from scipy import stats
 >>> 
 >>> >>> grades = np.random.normal(75, 9, 100)
@@ -380,9 +380,9 @@ Finally, we can plot a histogram of the 100 grades above, and use the percentile
 Use `stats.interp1d` if you have a 1D series of data points and you want to build a spline interpolating function:
 
 ```python
->>> from numpy import sin, pi
+>>> import numpy as np
 >>> x = [float(i) for i in range(10)]
->>> y = [sin(i) for i in range(10)]
+>>> y = [np.sin(i) for i in range(10)]
 >>> 
 >>> from scipy.interpolate import interp1d
 >>> 
@@ -393,9 +393,9 @@ Use `stats.interp1d` if you have a 1D series of data points and you want to buil
 Here we used `interp1d` to create the Python functions `f` and `f2` that we can now use, just like any other Python function:
 
 ```python
->>> f([pi/2, pi, 2*pi])
+>>> f([np.pi/2, np.pi, 2*np.pi])
 array([ 0.88018607,  0.01398078, -0.01424018])
->>> f2([pi/2, pi, 2*pi])
+>>> f2([np.pi/2, np.pi, 2*np.pi])
 array([  9.92889428e-01,   5.22304460e-04,   4.39283521e-05])
 ```
 
@@ -432,9 +432,9 @@ First, let's create some sample data sets along the curve `y = A x^2 + b x + c`:
 Now, because we're working with NumPy and SciPy, we have to convert these to the `numpy.array` type:
 
 ```python
->>> from numpy import array
->>> x = array(x)
->>> y = array(y)
+>>> import numpy as np
+>>> x = np.array(x)
+>>> y = np.array(y)
 ```
 
 Okay, unlike `interp1d`, when we use `curve_fit` we have to provide a generic equation to fit to, in the form of a function:

@@ -2,9 +2,9 @@
 
 ## Bar Chart
 
-    from numpy import arange, array
-    x = arange(1, 13)
-    y = array([7, 8, 5, 5, 3, 4, 4, 6, 9, 7, 8, 8])
+    import numpy as np
+    x = np.arange(1, 13)
+    y = np.array([7, 8, 5, 5, 3, 4, 4, 6, 9, 7, 8, 8])
 
     from matplotlib import pyplot as plt
     plt.bar(x, y, width=0.25, color='green', edgecolor='none')
@@ -19,9 +19,9 @@
 
 ## Scatter and Line Plots
 
-    from numpy import arange, cos, pi
-    x = arange(0.0, 2 * pi, pi / 16.0)
-    y = 2 * cos(x)
+    import numpy as np
+    x = np.arange(0.0, 2 * np.pi, np.pi / 16.0)
+    y = 2 * np.cos(x)
     
     from matplotlib import pyplot as plt
     plt.plot(x, y, linewidth=3, c='green', linestyle='--', label='approx')
@@ -35,12 +35,12 @@
 
 ## Multiplot, Histogram, and Errorbar
 
-    from numpy import random
+    import numpy as np
     mu = 10500
     sigma = 250
-    values = mu + sigma * random.randn(10000)
-    x = mu + sigma * random.randn(100)
-    y = mu + sigma * random.randn(100)
+    values = mu + sigma * np.random.randn(10000)
+    x = mu + sigma * np.random.randn(100)
+    y = mu + sigma * np.random.randn(100)
     
     from matplotlib import pyplot as plt
     plt.subplot(1, 2, 1)

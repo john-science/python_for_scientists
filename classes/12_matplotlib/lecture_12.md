@@ -29,11 +29,11 @@ Consider installing [Anaconda](http://docs.continuum.io/anaconda/install.html) i
 First, let's generate a few random numpy arrays:
 
 ```python
-from numpy import random
+import numpy as np
 
 N = 100
-x = random.rand(N)
-y = random.rand(N)
+x = np.random.rand(N)
+y = np.random.rand(N)
 ```
 
 Now, we will use those as X and Y values on a scatter plot:
@@ -126,14 +126,14 @@ Here is the simple scatter plot example above, using several customizations:
 
 ```python
 # create random data points
-from numpy import random
+import numpy as np
 N = 100
-x = random.rand(N)
-y = random.rand(N)
+x = np.random.rand(N)
+y = np.random.rand(N)
 
 # plot the data
 import matplotlib.pyplot as plt
-plt.scatter(x, y, c=x*y, s=1000*random.rand(N), alpha=0.5, edgecolor='none')
+plt.scatter(x, y, c=x*y, s=1000*np.random.rand(N), alpha=0.5, edgecolor='none')
 plt.show()
 ```
 
@@ -145,9 +145,9 @@ You can use `plot` to take make a line plot out of a series of points:
 
 ```python
 # mock up some data
-from numpy import arange, cos
-x = arange(10)
-y = cos(x)
+import numpy as np
+x = np.arange(10)
+y = np.cos(x)
 
 # make a line plot
 import matplotlib.pyplot as plt
@@ -211,9 +211,9 @@ And now let's pull it all together. We can make a line plot of chosen color, wid
 
 ```python
 # mock up some data
-from numpy import arange, cos
-x = arange(10)
-y = cos(x)
+import numpy as np
+x = np.arange(10)
+y = np.cos(x)
 
 # make a line plot
 import matplotlib.pyplot as plt
@@ -298,10 +298,10 @@ Use `log=True` if you want your bar chart to be logarithmic along the Y-axis. Th
 Use `bottom` to shift offset a set of bars up above the X-axis. This will allow you to plot multiple bars in a multiple bar chart:
 
 ```python
->>> from numpy import array
->>> x = array([1, 2, 3, 4, 5])
->>> y1 = array([2, 3, 4, 6, 4])
->>> y2 = array([7, 5, 4, 6, 8])
+>>> import numpy as np
+>>> x = np.array([1, 2, 3, 4, 5])
+>>> y1 = np.array([2, 3, 4, 6, 4])
+>>> y2 = np.array([7, 5, 4, 6, 8])
 >>> 
 >>> from matplotlib import pyplot as plt
 >>> plt.bar(x, y1, color='b')
@@ -435,10 +435,10 @@ First way, `plt.subplots(ncols=N1, nrows=N2)`:
 
 ```python
 # create random data points
-from numpy import random
+import numpy as np
 N = 100
-x = random.rand(N)
-y = random.rand(N)
+x = np.random.rand(N)
+y = np.random.rand(N)
 
 # plot the data on two side-by-side subplots
 import matplotlib.pyplot as plt
@@ -470,9 +470,9 @@ Use `errorbar` to create a `plot`-like line plot, with error bars:
 
 ```python
 # mock up some data
-from numpy import arange, cos
-x = arange(10)
-y = cos(x)
+import numpy as np
+x = np.arange(10)
+y = np.cos(x)
 
 # make a line plot
 import matplotlib.pyplot as plt
@@ -492,16 +492,16 @@ Here is a complete plot of both types of ways to create plots with error bars. A
 
 ```python
 # mock up some crazy data
-from numpy import arange, cos, cosh, pi
-x = arange(0.0, pi, pi/16)
-y1 = cosh(x)
-y2 = cos(x)
+import numpy as np
+x = np.arange(0.0, pi, pi/16)
+y1 = np.cosh(x)
+y2 = np.cos(x)
 
 # create scatter plot with error bars
 from matplotlib import pyplot as plt
 fig, (col1, col2) = plt.subplots(ncols=2)
-col1.errorbar(x, y1, yerr=arange(0.2, 1.2, 1.0/16), linestyle='none', ecolor='black')
-col1.scatter(x, y1, alpha=0.75, c=arange(0.0, 1.0, 1.0/16.0), s=arange(0.0, 600, 600.0/16), edgecolor='none')
+col1.errorbar(x, y1, yerr=np.arange(0.2, 1.2, 1.0/16), linestyle='none', ecolor='black')
+col1.scatter(x, y1, alpha=0.75, c=np.arange(0.0, 1.0, 1.0/16.0), s=np.arange(0.0, 600, 600.0/16), edgecolor='none')
 
 # create bar chart with error bars
 col2.bar(x, y2, width=(pi/16)*0.8, xerr=0.1, yerr=0.25, color='red', edgecolor='none', ecolor='black')
@@ -570,13 +570,13 @@ Here is a heavily customized plot, using all of the above options:
 
 ```python
 # data taking from Google Ngram Viewer
-from numpy import array, arange
-years = arange(1920, 2011, 5)
-machine_age = array([5.0, 10, 110, 190, 130, 100, 73, 55, 43, 69, 35, 30, 25, 20, 21, 18, 20, 17, 10])
+import numpy as np
+years = np.arange(1920, 2011, 5)
+machine_age = np.array([5.0, 10, 110, 190, 130, 100, 73, 55, 43, 69, 35, 30, 25, 20, 21, 18, 20, 17, 10])
 machine_age /= 1.0e6
-space_age = array([0.0, 0, 0, 0, 0, 0, 0, 5, 52, 38, 43, 35, 30, 33, 28, 20, 19, 16, 8])
+space_age = np.array([0.0, 0, 0, 0, 0, 0, 0, 5, 52, 38, 43, 35, 30, 33, 28, 20, 19, 16, 8])
 space_age /= 1.0e6
-information_age = array([0.0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 8, 41, 43, 79, 131, 121, 98])
+information_age = np.array([0.0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 8, 41, 43, 79, 131, 121, 98])
 information_age /= 1.0e6
 
 # making customized triple-plot

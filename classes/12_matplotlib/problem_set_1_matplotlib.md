@@ -4,9 +4,9 @@
 
 Use the following data to make your plot:
 
-    from numpy import arange, array
-    x = arange(1, 13)
-    y = array([7, 8, 5, 5, 3, 4, 4, 6, 9, 7, 8, 8])
+    import numpy as np
+    x = np.arange(1, 13)
+    y = np.array([7, 8, 5, 5, 3, 4, 4, 6, 9, 7, 8, 8])
 
 1. Add a bar chart to your plot, using `x` and `y` above. Fix it so there is no outline (edgecolor), set the color of the bars to green, and set their width to 0.25.
 2. Fix your X-axis to go from 1 to 13.
@@ -20,9 +20,9 @@ Use the following data to make your plot:
 
 Use the following data:
 
-    from numpy import arange, cos, pi
-    x = arange(0.0, 2 * pi, pi / 16.0)
-    y = 2 * cos(x)
+    import numpy as np
+    x = np.arange(0.0, 2 * np.pi, np.pi / 16.0)
+    y = 2 * np.cos(x)
 
 1. Add a line plot, using `x` and `y` above. Set the width of the line to 3, set the color to green, set the style to dashed, with a label of "approx".
 2. Add a scatter plot, using `x` and `y` above. Set the size to 1000, set the edgecolor to none, set the color to blue, and set the label to "discrete".
@@ -35,12 +35,12 @@ Use the following data:
 
 Use the following data:
 
-    from numpy import random
+    import numpy as np
     mu = 10500
     sigma = 250
-    values = mu + sigma * random.randn(10000)
-    x = mu + sigma * random.randn(100)
-    y = mu + sigma * random.randn(100)
+    values = mu + sigma * np.random.randn(10000)
+    x = mu + sigma * np.random.randn(100)
+    y = mu + sigma * np.random.randn(100)
 
 1. Use `subplot` to initialize the first plot (left column) in a two-column subplot image.
 2. Create a histogram of `values` with 25 columns, set the facecolor to green, and set the edgecolor to none.

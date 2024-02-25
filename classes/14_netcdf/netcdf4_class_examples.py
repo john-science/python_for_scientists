@@ -1,4 +1,6 @@
 from netCDF4 import Dataset
+import numpy as np
+
 
 # Creating testing NetCDF file
 root = Dataset("heat_map.nc", "w", format="NETCDF4")
@@ -51,14 +53,12 @@ for name in root.ncattrs():
     print('attribute: ' + name + ', value: ' + str(getattr(root, name)))
 
 # Writing Data
-from numpy.random import random
-temp[0:1,0:11,:,:] = 100.0 * random(size=(1, 11, 321, 291)) + 70.0
+temp[0:1,0:11,:,:] = 100.0 * np.random(size=(1, 11, 321, 291)) + 70.0
 print('temp.shape = ' + str(temp.shape))
 
 # Altering Data
 temp[0][0][0][0] = -24.5
-from numpy import arange
-temp[0][10][34][56:78] = 2.0 * arange(56, 78)
+temp[0][10][34][56:78] = 2.0 * np.arange(56, 78)
 
 # Reading Data
 print('\ntemp[0][0][0][0] = ' + str(temp[0][0][0][0]))

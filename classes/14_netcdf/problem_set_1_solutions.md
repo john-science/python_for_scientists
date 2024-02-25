@@ -48,7 +48,7 @@
 ## Writing to a NetCDF File
 
     from netCDF4 import Dataset
-    from numpy import array, arange, cos, float32, pi
+    import numpy as np
     
     def fill_valley_elevation(file_path):
         '''example function to write some test data to a test file'''
@@ -56,9 +56,9 @@
         root = Dataset(file_path, 'r+', format="NETCDF4")
         
         # build the fake elevation data
-        steps = arange(0.0, 2 * pi, pi / 50.0)
-        yosemite = 1.218 * cos(steps) + 1.372
-        valley = array([1.219 * cos(arange(0, 2*pi, pi/50.0)) + 1.372]*100, float32).reshape(1,100,100)
+        steps = np.arange(0.0, 2 * np.pi, np.pi / 50.0)
+        yosemite = 1.218 * np.cos(steps) + 1.372
+        valley = np.array([1.219 * np.cos(np.arange(0, 2*np.pi, np.pi/50.0)) + 1.372]*100, np.float32).reshape(1,100,100)
         
         # load elevation data
         elevation = root.variables['elevation']

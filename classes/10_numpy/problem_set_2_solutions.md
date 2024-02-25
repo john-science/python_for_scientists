@@ -4,15 +4,15 @@
 ## Set 1 - Testing Flatness randint
 
     # 1. Use `zeros` to create an array with 10 elements, name it `counts`.
-    >>> from numpy import zeros
-    >>> counts = zeros(10)
+    >>> import numpy as np
+    >>> counts = np.zeros(10)
     >>> counts
     array([ 0.,  0.,  0.,  0.,  0.,  0.,  0.,  0.,  0.,  0.])
 
-    # 2. Use a `for` loop to create 100,000 `random.randint` numbers less than 10. Add 1.0 to each element of `counts` that your random integer matches.
-    >>> from numpy import random
+    # 2. Use a `for` loop to create 100,000 `np.random.randint` numbers less than 10. Add 1.0 to each element of `counts` that your random integer matches.
+    >>> import numpy as np
     >>> for i in range(100000):
-    ...     counts[random.randint(10)] += 1.0
+    ...     counts[np.random.randint(10)] += 1.0
     ... 
     >>> counts
     array([  9960.,  10165.,  10037.,   9810.,  10044.,   9943.,   9953.,
@@ -27,15 +27,15 @@
     # 4. Are all 10 spots in `bins` the same?
     # They are REALLY close to the same. It looks *pretty* flat.
     # Maybe we should write a function to make running these tests easier:
-    >>> from numpy import zeros, random
+    >>> import numpy as np
     >>> def test_randint_10_bins(num_trials):
-    ...     '''test the numpy.random.randint function
+    ...     """Test the np.random.randint function
     ...     for a set number of trials. Return a list
     ...     of 10 values; the more equal they are, the
-    ...     more "flat" the randint distribution is.'''
-    ...     counts = zeros(10)
+    ...     more "flat" the randint distribution is."""
+    ...     counts = np.zeros(10)
     ...     for i in range(num_trials):
-    ...         counts[random.randint(10)] += 1.0
+    ...         counts[np.random.randint(10)] += 1.0
     ...     return counts / num_trials
     ... 
     >>> 
@@ -55,12 +55,12 @@
 ## Set 2 - Testing Flatness rand
 
     # 1. Use `zeros` to create an array with 10 elements, name it `counts`.
-    >>> counts = zeros(10)
+    >>> counts = np.zeros(10)
 
     # 2. Use a `for` loop to create 100,000 random decimals between zero and one (use `rand`). For each number you generate, multiple it by 10 and convert it to an integer using `int()`. Then add your number to the `counts` bin, as we did in part 2 of set 2.
-    >>> counts = zeros(10)
+    >>> counts = np.zeros(10)
     >>> for i in range(100000):
-    ...     counts[int(10.0 * random.rand())] += 1.0
+    ...     counts[int(10.0 * np.random.rand())] += 1.0
     ... 
     >>> counts
     array([  9941.,  10051.,  10039.,   9981.,   9712.,  10193.,   9988.,
@@ -74,11 +74,11 @@
 
     # 4. Are all 10 spots in `bins` the same?
     # They're pretty close!  But let's write another function to test them more!
-    >>> from numpy import zeros, random
+    >>> import numpy as np
     >>> def test_rand_10_bins(num_trials):
-    ...     counts = zeros(10)
+    ...     counts = np.zeros(10)
     ...     for i in range(num_trials):
-    ...         counts[int(10.0 * random.rand())] += 1.0
+    ...         counts[int(10.0 * np.random.rand())] += 1.0
     ...     return counts / num_trials
     ... 
     >>> 
@@ -91,12 +91,12 @@
 
 ## Set 3 - Testing Flatness randn
 
-    # 1. Use `zeros` to create an array with 10 elements, name it `counts`.
-    >>> counts = zeros(10)
+    # 1. Use `np.zeros` to create an array with 10 elements, name it `counts`.
+    >>> counts = np.zeros(10)
 
     # 2. Use a `for` loop to create 100,000 random decimals using `randn`. Take the absolute value (`abs`) of each of your numbers, then convert it to an integer using `int`. If your number is less than 10, add 1.0 to the appropriate element in your `counts` array, as in Sets 1 and 2 above.
     >>> for i in range(100000):
-    ...     n = abs(random.randn())
+    ...     n = abs(np.random.randn())
     ...     if n < 10:
     ...         counts[int(n)] += 1.0
     ... 
@@ -121,16 +121,14 @@
 
 ## Set 4 - Shuffle & Choice
 
-    # 1. Use `arange` to create an array `a` with values 0 to 99.
-    >>> from numpy import arange
-    >>> a = arange(100)
+    # 1. Use `np.arange` to create an array `a` with values 0 to 99.
+    >>> a = np.arange(100)
 
-    # 2. Use `numpy.random.shuffle` to randomly re-order `a`.
-    >>> from numpy import random
-    >>> random.shuffle(a)
+    # 2. Use `np.random.shuffle` to randomly re-order `a`.
+    >>> np.random.shuffle(a)
 
-    # 3. Randomly select an element from `a` using `numpy.random.choice`.
-    >>> number = random.choice(a)
+    # 3. Randomly select an element from `a` using `np.random.choice`.
+    >>> number = np.random.choice(a)
     >>> number
     34
 
