@@ -1,6 +1,6 @@
 import unittest
 
-from gradebook.student import Student
+from student import Student
 
 
 class TestStudent(unittest.TestCase):
@@ -34,3 +34,7 @@ class TestStudent(unittest.TestCase):
         final_grade = emmy.calculate_grade()
         self.assertEqual(final_grade, 102.5)
         self.assertEqual(Student.letter_grade(final_grade), "A")
+
+
+if __name__ == '__main__':
+    unittest.main()

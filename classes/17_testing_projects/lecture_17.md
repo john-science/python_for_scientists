@@ -4,7 +4,10 @@ Today we're going to begin the big conversation of testing code. This lecture do
 
 #### Installation
 
-None! Everything we talk about today is part of the Python standard library.
+In today's lecture we will cover two testing frameworks: `unittest` and `pytest`.
+The `unittest` framework is included with Python, and no additional work is required if Python is already installed.
+The `pytest` framework is widely available with `pip`, `conda`, or virtually any other Python package manager.
+
 
 ## Unit Tests
 
@@ -46,13 +49,13 @@ Software testing is an increasingly big topic, and there are a lot of good tools
 
  * [unittest](http://pythontesting.net/framework/unittest/unittest-introduction/) - in the Python standard library
  * [mock](http://www.voidspace.org.uk/python/mock/) - A  way to test untestable code, and a great way to keep your code and your tests maintainable
- * [nose](http://pythontesting.net/framework/nose/nose-introduction)/ - built as an extension to unittest
- * [pytest](http://pythontesting.net/framework/pytest/pytest-introduction/) - Simple, easy-to-use, unit testing libraryresults.
+ * [nose](http://pythontesting.net/framework/nose/nose-introduction) - built as an extension to unittest
+ * [pytest](https://docs.pytest.org/en/8.0.x/) - Simple, easy-to-use, unit testing library.
  * [tox](http://tox.readthedocs.org/en/latest/) - VirtualEnv management tool that acts as a wrapper for your other unit testing libraries
 
 For a nice discussion on the differences between the first three unit testing frameworks, see [this](http://pythontesting.net/podcast/pytest-vs-unittest-vs-nose-pt002/) article over at [pythontesting.net](http://pythontesting.net).
 
-Again, there are lots of good testing tools out there. In this lecture we will use `unittest`, just because it is part of the Python standard library.
+Again, there are lots of good testing tools out there. In this lecture we will first present `unittest`, because it is part of the Python standard library. A brief introduction to `pytest` will follow because it is a popular alternative to `unittest`.
 
 #### A Simple Example
 
@@ -129,6 +132,10 @@ class TestStudent(unittest.TestCase):
             emmy.set_hw_grade(100.0, i)
 
         self.assertEqual(emmy.calculate_grade(), 100.0)
+
+
+if __name__ == '__main__':
+    unittest.main()
 ```
 
 Okay, so we have some unit tests. Let's try and unpack all of that.
@@ -188,7 +195,7 @@ Or, again, more verbosely:
 
     > python -m unittest discover -v python_class
 
-That's it! Rince and repeat and you can test all the Python you ever write.
+That's it! Rinse and repeat and you can test all the Python you ever write.
 
 #### More Practice
 
@@ -403,6 +410,29 @@ if __name__ == "__main__":
 First, you can ignore the `EX_HTML` above, we just hard code some test/sample/example HTML data that matches what we expect to see on Wikipedia. Of course, for brevity, we only include two countries (and 502 people here), instead of ALL countries.
 
 More importantly, see that we have used `unittest.mock.patch` to NOT really call `requests.get()` but replace that code with a `MagicMock` that returns the data we want. This is the crux we need to understand to build fast, maintainabe tests. And mocking allows us to easily write tests for code that would otherwise _seem_ untestable.
+
+## Pytest
+
+[Pytest](https://docs.pytest.org/en/8.0.x/) is a popular alternative to unittest.
+One nice feature is that tests that have been written with the unittest framework can already be run with pytest.
+For example, the file `test_student.py` above can be run on the command line as follows:
+
+    > pytest test_student.py
+    ============================= test session starts ==============================
+    platform <platform info>
+    rootdir: <path to rootdir>
+    collected 3 items
+
+    test_student.py ...                                                      [100%]
+
+    ============================== 3 passed in 0.00s ===============================
+
+
+One advantage of `pytest` over `unittest` is that it supports [plugins](https://docs.pytest.org/en/8.0.x/reference/plugin_list.html#plugin-list).
+There are two Python projects worth mentioning that are compatible with pytest: [hypothesis](https://hypothesis.readthedocs.io/en/latest/) and [pytest-dependency](https://pypi.org/project/pytest-dependency/).
+
+For more information on how to get started with pytest checkout the [Get Started](https://docs.pytest.org/en/8.0.x/getting-started.html#get-started) page for a basic introduction.
+For a more in-depth introduction [this two hour tutorial](https://www.youtube.com/watch?v=LX2ksGYXJ80) covers pytest in scientific computing applications.
 
 
 ## Why Bother?
