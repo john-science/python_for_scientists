@@ -37,7 +37,7 @@ df.columns = [x.upper() for x in df.columns]
 6. Read in the comma-separated file "client_list_practice.csv" and only extract the columns `["FIRST_NAME","AGE","EYE_COLOR"]`. Do not assign to a variable.
 
 ```python
-d.read_csv("client_list_practice.csv", usecols=["FIRST_NAME","AGE","EYE_COLOR"])
+pd.read_csv("client_list_practice.csv", usecols=["FIRST_NAME","AGE","EYE_COLOR"])
 ```
 
 
